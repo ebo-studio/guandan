@@ -1,10 +1,10 @@
 export module UrlConfig {
     export function getSocketUrl() {
-        return "ws://121.41.170.43:8001";
+        return "ws://18.167.55.115/ws";
     }
 
     export function getHttpUrl() {
-        return "http://card.zhongyigames.com/";
+        return "http://18.167.55.115/";
     }
 
 }

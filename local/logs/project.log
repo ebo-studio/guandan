@@ -1,39 +1,39 @@
-2025-07-07T06:41:32.374Z - log: [Package] menu@1.0.0 enable
-2025-07-07T06:41:32.377Z - log: [Package] profile@1.0.0 enable
-2025-07-07T06:41:32.388Z - log: [Package] project@1.0.2 enable
-2025-07-07T06:41:32.393Z - log: [Package] messages@1.0.0 enable
-2025-07-07T06:41:32.397Z - log: [Package] program@1.0.0 enable
-2025-07-07T06:41:32.402Z - log: [Package] tester@1.0.0 enable
-2025-07-07T06:41:32.407Z - log: [Package] preferences@1.0.0 enable
-2025-07-07T06:41:36.290Z - log: Profile changed: engine (modules.includeModules: 2d,3d,animation,audio,base,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-builtin,primitive,profiler,spine,tween,ui)
-2025-07-07T06:41:36.306Z - log: [Package] engine@1.0.6 enable
-2025-07-07T06:41:37.369Z - log: [Package] programming@1.0.0 enable
-2025-07-07T06:41:37.513Z - warn: 
-2025-07-07T06:41:37.552Z - warn: 
-2025-07-07T06:41:37.800Z - log: [Package] device@1.0.1 enable
-2025-07-07T06:41:37.833Z - log: [Package] ui-kit@1.0.1 enable
-2025-07-07T06:41:37.862Z - log: [Package] engine-extends@1.0.0 enable
-2025-07-07T06:41:37.941Z - log: [Package] asset-db@1.0.0 enable
-2025-07-07T06:41:37.942Z - warn: 
-2025-07-07T06:41:37.977Z - log: [Package] scene@1.0.0 enable
-2025-07-07T06:41:38.142Z - log: [Package] server@1.0.0 enable
-2025-07-07T06:41:38.175Z - log: [Package] utils@1.0.0 enable
-2025-07-07T06:41:38.959Z - warn: Browserslist: caniuse-lite is outdated. Please run:
+2025-07-07T11:23:36.560Z - log: [Package] menu@1.0.0 enable
+2025-07-07T11:23:36.563Z - log: [Package] profile@1.0.0 enable
+2025-07-07T11:23:36.571Z - log: [Package] project@1.0.2 enable
+2025-07-07T11:23:36.574Z - log: [Package] messages@1.0.0 enable
+2025-07-07T11:23:36.577Z - log: [Package] program@1.0.0 enable
+2025-07-07T11:23:36.581Z - log: [Package] tester@1.0.0 enable
+2025-07-07T11:23:36.585Z - log: [Package] preferences@1.0.0 enable
+2025-07-07T11:23:39.528Z - log: Profile changed: engine (modules.includeModules: 2d,3d,animation,audio,base,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-builtin,primitive,profiler,spine,tween,ui)
+2025-07-07T11:23:39.540Z - log: [Package] engine@1.0.6 enable
+2025-07-07T11:23:40.494Z - log: [Package] programming@1.0.0 enable
+2025-07-07T11:23:40.550Z - warn: 
+2025-07-07T11:23:40.583Z - warn: 
+2025-07-07T11:23:40.831Z - log: [Package] device@1.0.1 enable
+2025-07-07T11:23:40.865Z - log: [Package] ui-kit@1.0.1 enable
+2025-07-07T11:23:40.893Z - log: [Package] engine-extends@1.0.0 enable
+2025-07-07T11:23:40.956Z - log: [Package] asset-db@1.0.0 enable
+2025-07-07T11:23:40.957Z - warn: 
+2025-07-07T11:23:40.995Z - log: [Package] scene@1.0.0 enable
+2025-07-07T11:23:41.162Z - log: [Package] server@1.0.0 enable
+2025-07-07T11:23:41.189Z - log: [Package] utils@1.0.0 enable
+2025-07-07T11:23:41.846Z - warn: Browserslist: caniuse-lite is outdated. Please run:
 npx browserslist@latest --update-db
 
 Why you should do it regularly:
 https://github.com/browserslist/browserslist#browsers-data-updating
-2025-07-07T06:41:47.318Z - warn: 
-2025-07-07T06:41:47.318Z - warn: 
-2025-07-07T06:41:47.319Z - warn: 
-2025-07-07T06:41:47.413Z - warn: 
-2025-07-07T06:41:47.413Z - warn: 
-2025-07-07T06:41:47.413Z - warn: 
-2025-07-07T06:41:49.082Z - warn: 
-2025-07-07T06:41:49.248Z - log: [Package] preview@1.0.1 enable
-2025-07-07T06:41:49.281Z - log: [Package] animator@1.0.0 enable
-2025-07-07T06:41:49.323Z - log: pluginManager init: 0.287ms
-2025-07-07T06:41:49.294Z - warn: [Programming] Browserslist: caniuse-lite is outdated. Please run:
+2025-07-07T11:23:44.439Z - warn: 
+2025-07-07T11:23:44.440Z - warn: 
+2025-07-07T11:23:44.440Z - warn: 
+2025-07-07T11:23:44.527Z - warn: 
+2025-07-07T11:23:44.527Z - warn: 
+2025-07-07T11:23:44.527Z - warn: 
+2025-07-07T11:23:45.919Z - warn: 
+2025-07-07T11:23:45.974Z - log: [Package] preview@1.0.1 enable
+2025-07-07T11:23:46.005Z - log: [Package] animator@1.0.0 enable
+2025-07-07T11:23:46.052Z - log: pluginManager init: 0.097ms
+2025-07-07T11:23:46.003Z - warn: [Programming] Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme[Programming] Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
@@ -46,94 +46,74 @@ at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar
 at getTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\helper-compilation-targets\lib\index.js:210:27)  
 at getLocalTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\preset-env\lib\index.js:227:48)  
 at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\preset-env\lib\index.js:288:15
-2025-07-07T06:41:50.461Z - log: [Package] builder@1.3.3 enable
-2025-07-07T06:41:50.497Z - log: [Package] shortcuts@1.0.1 enable
-2025-07-07T06:41:50.529Z - log: [Package] animation-graph@1.0.0 enable
-2025-07-07T06:41:50.556Z - log: [Package] about@1.0.0 enable
-2025-07-07T06:41:50.583Z - log: [Package] assets@1.0.0 enable
-2025-07-07T06:41:50.619Z - log: [Package] console@1.0.0 enable
-2025-07-07T06:41:50.799Z - log: [Package] extension@3.0.16 enable
-2025-07-07T06:41:50.841Z - log: [Package] hierarchy@1.0.0 enable
-2025-07-07T06:41:50.874Z - log: [Package] inspector@1.0.0 enable
-2025-07-07T06:41:50.902Z - log: [Package] lightmap@1.0.4 enable
-2025-07-07T06:41:51.483Z - log: [Package] localization-editor@1.0.0 enable
-2025-07-07T06:41:51.491Z - log: [Build-plugin] register pkg localization-editor: 5.285ms
-2025-07-07T06:41:51.516Z - log: [Package] node-library@1.0.1 enable
-2025-07-07T06:41:51.543Z - log: [Package] package-asset@1.0.0 enable
-2025-07-07T06:41:51.580Z - log: [Package] process@1.0.0 enable
-2025-07-07T06:41:51.614Z - log: [Package] reference-image@1.0.0 enable
-2025-07-07T06:41:51.636Z - log: [Package] alipay-mini-game@1.0.1 enable
-2025-07-07T06:41:51.641Z - log: [Build-plugin] register pkg alipay-mini-game: 4.702ms
-2025-07-07T06:41:51.668Z - log: [Package] android@1.0.1 enable
-2025-07-07T06:41:51.675Z - log: [Build-plugin] register pkg android: 5.983ms
-2025-07-07T06:41:51.699Z - log: [Package] baidu-mini-game@1.0.1 enable
-2025-07-07T06:41:51.700Z - log: [Build-plugin] register pkg baidu-mini-game: 0.979ms
-2025-07-07T06:41:51.771Z - log: [Package] bytedance-mini-game@1.0.2 enable
-2025-07-07T06:41:51.774Z - log: [Build-plugin] register pkg bytedance-mini-game: 2.954ms
-2025-07-07T06:41:51.809Z - log: [Package] certificate@1.0.0 enable
-2025-07-07T06:41:51.841Z - log: [Package] channel-upload-tools@1.0.0 enable
-2025-07-07T06:41:51.871Z - log: [Package] cocos-play@1.0.1 enable
-2025-07-07T06:41:51.875Z - log: [Build-plugin] register pkg cocos-play: 4.293ms
-2025-07-07T06:41:51.905Z - log: [Package] huawei-agc@1.0.0 enable
-2025-07-07T06:41:51.909Z - log: [Build-plugin] register pkg huawei-agc: 4.036ms
-2025-07-07T06:41:51.935Z - log: [Package] huawei-quick-game@1.0.1 enable
-2025-07-07T06:41:51.940Z - log: [Build-plugin] register pkg huawei-quick-game: 4.458ms
-2025-07-07T06:41:51.969Z - log: [Package] ios@1.0.0 enable
-2025-07-07T06:41:51.973Z - log: [Build-plugin] register pkg ios: 3.826ms
-2025-07-07T06:41:51.997Z - log: [Package] linux@1.0.0 enable
-2025-07-07T06:41:51.998Z - log: [Build-plugin] register pkg linux: 1.073ms
-2025-07-07T06:41:52.029Z - log: [Package] mac@1.0.0 enable
-2025-07-07T06:41:52.033Z - log: [Build-plugin] register pkg mac: 4.326ms
-2025-07-07T06:41:52.145Z - log: [Package] native@1.0.2 enable
-2025-07-07T06:41:52.148Z - log: [Build-plugin] register pkg native: 3.265ms
-2025-07-07T06:41:52.172Z - log: [Package] ohos@1.0.0 enable
-2025-07-07T06:41:52.175Z - log: [Build-plugin] register pkg ohos: 3.222ms
-2025-07-07T06:41:52.203Z - log: [Package] open-harmonyos@1.0.0 enable
-2025-07-07T06:41:52.204Z - log: [Build-plugin] register pkg open-harmonyos: 1.205ms
-2025-07-07T06:41:52.237Z - log: [Package] oppo-mini-game@1.0.1 enable
-2025-07-07T06:41:52.241Z - log: [Build-plugin] register pkg oppo-mini-game: 3.583ms
-2025-07-07T06:41:52.267Z - log: [Package] runtime-dev-tools@1.0.0 enable
-2025-07-07T06:41:52.297Z - log: [Package] vivo-mini-game@1.0.1 enable
-2025-07-07T06:41:52.302Z - log: [Build-plugin] register pkg vivo-mini-game: 4.434ms
-2025-07-07T06:41:52.351Z - log: [Package] web-desktop@1.0.1 enable
-2025-07-07T06:41:52.355Z - log: [Build-plugin] register pkg web-desktop: 4.006ms
-2025-07-07T06:41:52.398Z - log: [Package] web-mobile@1.0.1 enable
-2025-07-07T06:41:52.402Z - log: [Build-plugin] register pkg web-mobile: 3.076ms
-2025-07-07T06:41:52.445Z - log: [Package] wechatgame@1.0.2 enable
-2025-07-07T06:41:52.449Z - log: [Build-plugin] register pkg wechatgame: 3.729ms
-2025-07-07T06:41:52.472Z - log: [Package] windows@1.0.1 enable
-2025-07-07T06:41:52.476Z - log: [Build-plugin] register pkg windows: 4.191ms
-2025-07-07T06:41:52.506Z - log: [Package] xiaomi-quick-game@1.0.1 enable
-2025-07-07T06:41:52.511Z - log: [Build-plugin] register pkg xiaomi-quick-game: 4.536ms
-2025-07-07T06:41:52.781Z - log: [Package] cocos-service@3.0.4 enable
-2025-07-07T06:41:52.784Z - log: [Build-plugin] register pkg cocos-service: 1.977ms
-2025-07-07T06:41:52.825Z - log: [Package] importer@1.0.0 enable
-2025-07-07T06:41:53.087Z - log: [Im-plugin] Check im-plugin version.
-2025-07-07T06:41:53.093Z - log: [Package] im-plugin@3.0.9 enable
-2025-07-07T06:42:02.292Z - warn: [Asset DB] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating[Asset DB] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at console.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at Object.oldDataWarning (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\node_modules\browserslist\node.js:373:15)  
-at browserslist (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\node_modules\browserslist\index.js:432:7)  
-at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\lib\index.js:174:20)  
-at getTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\lib\index.js:214:27)  
-at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\core\lib\config\resolve-targets.js:58:50)  
-at loadPrivatePartialConfig (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\core\lib\config\partial.js:94:49)
-2025-07-07T06:42:03.183Z - warn: 
-2025-07-07T06:42:03.183Z - warn: 
-2025-07-07T06:42:03.183Z - warn: 
-2025-07-07T06:42:03.184Z - log: [Im-plugin] No online info of im-plugin.
-2025-07-07T06:42:04.222Z - log: [Scene] Please specifiy a default value for "cc.EditorExtendable.__editorExtras__" property at its declaration:
+2025-07-07T11:23:47.067Z - warn: 
+2025-07-07T11:23:47.067Z - warn: 
+2025-07-07T11:23:47.067Z - warn: 
+2025-07-07T11:23:47.096Z - log: [Package] builder@1.3.3 enable
+2025-07-07T11:23:47.134Z - log: [Package] shortcuts@1.0.1 enable
+2025-07-07T11:23:47.179Z - log: [Package] animation-graph@1.0.0 enable
+2025-07-07T11:23:47.218Z - log: [Package] about@1.0.0 enable
+2025-07-07T11:23:47.246Z - log: [Package] assets@1.0.0 enable
+2025-07-07T11:23:47.273Z - log: [Package] console@1.0.0 enable
+2025-07-07T11:23:47.462Z - log: [Package] extension@3.0.16 enable
+2025-07-07T11:23:47.493Z - log: [Package] hierarchy@1.0.0 enable
+2025-07-07T11:23:47.523Z - log: [Package] inspector@1.0.0 enable
+2025-07-07T11:23:47.558Z - log: [Package] lightmap@1.0.4 enable
+2025-07-07T11:23:48.062Z - log: [Package] localization-editor@1.0.0 enable
+2025-07-07T11:23:48.068Z - log: [Build-plugin] register pkg localization-editor: 3.988ms
+2025-07-07T11:23:48.095Z - log: [Package] node-library@1.0.1 enable
+2025-07-07T11:23:48.117Z - log: [Package] package-asset@1.0.0 enable
+2025-07-07T11:23:48.148Z - log: [Package] process@1.0.0 enable
+2025-07-07T11:23:48.188Z - log: [Package] reference-image@1.0.0 enable
+2025-07-07T11:23:48.210Z - log: [Package] alipay-mini-game@1.0.1 enable
+2025-07-07T11:23:48.215Z - log: [Build-plugin] register pkg alipay-mini-game: 4.872ms
+2025-07-07T11:23:48.246Z - log: [Package] android@1.0.1 enable
+2025-07-07T11:23:48.252Z - log: [Build-plugin] register pkg android: 5.625ms
+2025-07-07T11:23:48.277Z - log: [Package] baidu-mini-game@1.0.1 enable
+2025-07-07T11:23:48.278Z - log: [Build-plugin] register pkg baidu-mini-game: 1.218ms
+2025-07-07T11:23:48.345Z - log: [Package] bytedance-mini-game@1.0.2 enable
+2025-07-07T11:23:48.348Z - log: [Build-plugin] register pkg bytedance-mini-game: 2.547ms
+2025-07-07T11:23:48.371Z - log: [Package] certificate@1.0.0 enable
+2025-07-07T11:23:48.403Z - log: [Package] channel-upload-tools@1.0.0 enable
+2025-07-07T11:23:48.435Z - log: [Package] cocos-play@1.0.1 enable
+2025-07-07T11:23:48.440Z - log: [Build-plugin] register pkg cocos-play: 5.33ms
+2025-07-07T11:23:48.465Z - log: [Package] huawei-agc@1.0.0 enable
+2025-07-07T11:23:48.469Z - log: [Build-plugin] register pkg huawei-agc: 3.724ms
+2025-07-07T11:23:48.497Z - log: [Package] huawei-quick-game@1.0.1 enable
+2025-07-07T11:23:48.501Z - log: [Build-plugin] register pkg huawei-quick-game: 3.761ms
+2025-07-07T11:23:48.532Z - log: [Package] ios@1.0.0 enable
+2025-07-07T11:23:48.535Z - log: [Build-plugin] register pkg ios: 3.411ms
+2025-07-07T11:23:48.558Z - log: [Package] linux@1.0.0 enable
+2025-07-07T11:23:48.559Z - log: [Build-plugin] register pkg linux: 0.789ms
+2025-07-07T11:23:48.590Z - log: [Package] mac@1.0.0 enable
+2025-07-07T11:23:48.594Z - log: [Build-plugin] register pkg mac: 3.805ms
+2025-07-07T11:23:48.699Z - log: [Package] native@1.0.2 enable
+2025-07-07T11:23:48.703Z - log: [Build-plugin] register pkg native: 3.211ms
+2025-07-07T11:23:48.729Z - log: [Package] ohos@1.0.0 enable
+2025-07-07T11:23:48.734Z - log: [Build-plugin] register pkg ohos: 4.686ms
+2025-07-07T11:23:48.760Z - log: [Package] open-harmonyos@1.0.0 enable
+2025-07-07T11:23:48.761Z - log: [Build-plugin] register pkg open-harmonyos: 1.237ms
+2025-07-07T11:23:48.792Z - log: [Package] oppo-mini-game@1.0.1 enable
+2025-07-07T11:23:48.796Z - log: [Build-plugin] register pkg oppo-mini-game: 3.745ms
+2025-07-07T11:23:48.822Z - log: [Package] runtime-dev-tools@1.0.0 enable
+2025-07-07T11:23:48.854Z - log: [Package] vivo-mini-game@1.0.1 enable
+2025-07-07T11:23:48.858Z - log: [Build-plugin] register pkg vivo-mini-game: 4.129ms
+2025-07-07T11:23:48.904Z - log: [Package] web-desktop@1.0.1 enable
+2025-07-07T11:23:48.910Z - log: [Build-plugin] register pkg web-desktop: 4.093ms
+2025-07-07T11:23:48.953Z - log: [Package] web-mobile@1.0.1 enable
+2025-07-07T11:23:48.956Z - log: [Build-plugin] register pkg web-mobile: 3.186ms
+2025-07-07T11:23:49.000Z - log: [Package] wechatgame@1.0.2 enable
+2025-07-07T11:23:49.005Z - log: [Build-plugin] register pkg wechatgame: 4.647ms
+2025-07-07T11:23:49.041Z - log: [Package] windows@1.0.1 enable
+2025-07-07T11:23:49.045Z - log: [Build-plugin] register pkg windows: 3.623ms
+2025-07-07T11:23:49.071Z - log: [Package] xiaomi-quick-game@1.0.1 enable
+2025-07-07T11:23:49.075Z - log: [Build-plugin] register pkg xiaomi-quick-game: 3.925ms
+2025-07-07T11:23:49.323Z - log: [Package] cocos-service@3.0.4 enable
+2025-07-07T11:23:49.326Z - log: [Build-plugin] register pkg cocos-service: 1.51ms
+2025-07-07T11:23:49.355Z - log: [Package] importer@1.0.0 enable
+2025-07-07T11:23:49.601Z - log: [Im-plugin] Check im-plugin version.
+2025-07-07T11:23:49.605Z - log: [Package] im-plugin@3.0.9 enable
+2025-07-07T11:23:52.761Z - log: [Scene] Please specifiy a default value for "cc.EditorExtendable.__editorExtras__" property at its declaration:
 
  
 // Before:
@@ -142,7 +122,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.240Z - log: [Scene] Please specifiy a default value for "CCPropertyOverrideInfo.value" property at its declaration:
+2025-07-07T11:23:52.778Z - log: [Scene] Please specifiy a default value for "CCPropertyOverrideInfo.value" property at its declaration:
 
  
 // Before:
@@ -151,7 +131,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.241Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.asset" property at its declaration:
+2025-07-07T11:23:52.779Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.asset" property at its declaration:
 
  
 // Before:
@@ -160,7 +140,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.241Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.nestedPrefabInstanceRoots" property at its declaration:
+2025-07-07T11:23:52.779Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.nestedPrefabInstanceRoots" property at its declaration:
 
  
 // Before:
@@ -169,9 +149,9 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.244Z - log: [Scene] The 'default' attribute of 'ColorDesc.beginAccesses' must be an array
-2025-07-07T06:42:04.244Z - log: [Scene] The 'default' attribute of 'ColorDesc.endAccesses' must be an array
-2025-07-07T06:42:04.255Z - log: [Scene] Please specifiy a default value for "cc.animation.TrackBinding.proxy" property at its declaration:
+2025-07-07T11:23:52.781Z - log: [Scene] The 'default' attribute of 'ColorDesc.beginAccesses' must be an array
+2025-07-07T11:23:52.782Z - log: [Scene] The 'default' attribute of 'ColorDesc.endAccesses' must be an array
+2025-07-07T11:23:52.792Z - log: [Scene] Please specifiy a default value for "cc.animation.TrackBinding.proxy" property at its declaration:
 
  
 // Before:
@@ -180,7 +160,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.256Z - log: [Scene] Please specifiy a default value for "cc.animation.Channel._curve" property at its declaration:
+2025-07-07T11:23:52.792Z - log: [Scene] Please specifiy a default value for "cc.animation.Channel._curve" property at its declaration:
 
  
 // Before:
@@ -189,7 +169,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.256Z - log: [Scene] Please specifiy a default value for "cc.animation.SingleChannelTrack._channel" property at its declaration:
+2025-07-07T11:23:52.792Z - log: [Scene] Please specifiy a default value for "cc.animation.SingleChannelTrack._channel" property at its declaration:
 
  
 // Before:
@@ -198,7 +178,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.256Z - log: [Scene] Please specifiy a default value for "cc.animation.VectorTrack._channels" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.VectorTrack._channels" property at its declaration:
 
  
 // Before:
@@ -207,7 +187,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.256Z - log: [Scene] Please specifiy a default value for "cc.animation.ColorTrack._channels" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.ColorTrack._channels" property at its declaration:
 
  
 // Before:
@@ -216,7 +196,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.SizeTrack._channels" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.SizeTrack._channels" property at its declaration:
 
  
 // Before:
@@ -225,7 +205,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.from" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.from" property at its declaration:
 
  
 // Before:
@@ -234,7 +214,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.to" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.to" property at its declaration:
 
  
 // Before:
@@ -243,7 +223,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._entryState" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._entryState" property at its declaration:
 
  
 // Before:
@@ -252,7 +232,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._exitState" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._exitState" property at its declaration:
 
  
 // Before:
@@ -261,7 +241,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._anyState" property at its declaration:
+2025-07-07T11:23:52.793Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._anyState" property at its declaration:
 
  
 // Before:
@@ -270,7 +250,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.257Z - log: [Scene] Please specifiy a default value for "cc.animation.Layer._stateMachine" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.Layer._stateMachine" property at its declaration:
 
  
 // Before:
@@ -279,7 +259,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._values" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._values" property at its declaration:
 
  
 // Before:
@@ -288,7 +268,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._isQuantized" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._isQuantized" property at its declaration:
 
  
 // Before:
@@ -297,7 +277,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.times" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.times" property at its declaration:
 
  
 // Before:
@@ -306,7 +286,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.values" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.values" property at its declaration:
 
  
 // Before:
@@ -315,7 +295,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.originalPrecision" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.originalPrecision" property at its declaration:
 
  
 // Before:
@@ -324,7 +304,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.min" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.min" property at its declaration:
 
  
 // Before:
@@ -333,7 +313,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.extent" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.extent" property at its declaration:
 
  
 // Before:
@@ -342,7 +322,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.258Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.values" property at its declaration:
+2025-07-07T11:23:52.794Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.values" property at its declaration:
 
  
 // Before:
@@ -351,16 +331,17 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-2025-07-07T06:42:04.299Z - log: [Scene] 'cc.ParticleSystem2D.color' hides inherited property 'cc.UIRenderer.color'. To make the current property override that implementation, add the `override: true` attribute please.
-2025-07-07T06:42:04.335Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._receiveShadow", which its default value is type of Boolean.
-2025-07-07T06:42:04.335Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._useNormalmap", which its default value is type of Boolean.
-2025-07-07T06:42:04.335Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._usePBR", which its default value is type of Boolean.
-2025-07-07T06:42:04.335Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._lodEnable", which its default value is type of Boolean.
-2025-07-07T06:42:04.469Z - info: [Scene] [Physics][Bullet]: Using asmjs Bullet libs.
-2025-07-07T06:42:04.487Z - info: [Scene] [PHYSICS]: using builtin.
-2025-07-07T06:42:04.608Z - log: [Scene] Cocos Creator v3.6.0
-2025-07-07T06:42:04.608Z - info: [Scene] Forward render pipeline initialized.
-2025-07-07T06:42:05.185Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
+2025-07-07T11:23:52.823Z - log: [Scene] 'cc.ParticleSystem2D.color' hides inherited property 'cc.UIRenderer.color'. To make the current property override that implementation, add the `override: true` attribute please.
+2025-07-07T11:23:52.855Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._receiveShadow", which its default value is type of Boolean.
+2025-07-07T11:23:52.855Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._useNormalmap", which its default value is type of Boolean.
+2025-07-07T11:23:52.855Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._usePBR", which its default value is type of Boolean.
+2025-07-07T11:23:52.855Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._lodEnable", which its default value is type of Boolean.
+2025-07-07T11:23:52.942Z - info: [Scene] [Physics][Bullet]: Using asmjs Bullet libs.
+2025-07-07T11:23:52.949Z - info: [Scene] [PHYSICS]: using builtin.
+2025-07-07T11:23:53.341Z - log: [Im-plugin] No online info of im-plugin.
+2025-07-07T11:23:53.063Z - log: [Scene] Cocos Creator v3.6.0
+2025-07-07T11:23:53.063Z - info: [Scene] Forward render pipeline initialized.
+2025-07-07T11:23:53.669Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
     at factory (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/8a/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js:5335:5)
     at CjsLoader._load (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
     at CjsLoader._tryModuleLoad (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
@@ -388,60 +369,3 @@ myProp = 0;
     at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
     at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
     at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-07T06:42:07.117Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/8a/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-07T06:42:07.428Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/8a/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-07T06:48:47.033Z - log: [vscode-workflow]: Chrome debug setting has been updated to D:\xuhang\guan_dan\.vscode\launch.json, please install Debugger for Chrome VS Code extension to debug your project.

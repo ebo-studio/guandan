@@ -3,7 +3,8 @@
     "outputName": "android",
     "mainBundleCompressionType": "merge_dep",
     "platform": "android",
-    "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a"
+    "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
+    "name": "Egglaying"
   },
   "options": {
     "android": {

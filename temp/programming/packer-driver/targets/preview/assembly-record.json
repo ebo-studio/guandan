@@ -1,122 +1,5 @@
 {
   "chunks": {
-    "39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e": {
-      "imports": {
-        "__unresolved_0": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/2d"
-          },
-          "messages": []
-        },
-        "__unresolved_1": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/3d"
-          },
-          "messages": []
-        },
-        "__unresolved_10": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/physics-2d-framework"
-          },
-          "messages": []
-        },
-        "__unresolved_11": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/primitive"
-          },
-          "messages": []
-        },
-        "__unresolved_12": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/profiler"
-          },
-          "messages": []
-        },
-        "__unresolved_13": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/spine"
-          },
-          "messages": []
-        },
-        "__unresolved_14": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/tween"
-          },
-          "messages": []
-        },
-        "__unresolved_15": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/ui"
-          },
-          "messages": []
-        },
-        "__unresolved_2": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/animation"
-          },
-          "messages": []
-        },
-        "__unresolved_3": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/audio"
-          },
-          "messages": []
-        },
-        "__unresolved_4": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/base"
-          },
-          "messages": []
-        },
-        "__unresolved_5": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/gfx-webgl"
-          },
-          "messages": []
-        },
-        "__unresolved_6": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/gfx-webgl2"
-          },
-          "messages": []
-        },
-        "__unresolved_7": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/intersection-2d"
-          },
-          "messages": []
-        },
-        "__unresolved_8": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/particle-2d"
-          },
-          "messages": []
-        },
-        "__unresolved_9": {
-          "resolved": {
-            "type": "external",
-            "specifierOrURL": "cce:/internal/x/cc-fu/physics-2d-builtin"
-          },
-          "messages": []
-        }
-      },
-      "timestamp": 1751870514231
-    },
     "e58821d74b83277f5ac02986f9eef2fd87298a30": {
       "imports": {
         "__unresolved_0": {
@@ -191,10 +74,6 @@
         }
       },
       "timestamp": 1751870514473
-    },
-    "3a1fd7b13056478820ebedd306d3446d1aa408cc": {
-      "imports": {},
-      "timestamp": 1751870514490
     },
     "18c5c931afd14a447711a880d97fdfe841811aa4": {
       "imports": {
@@ -491,7 +370,7 @@
         "__unresolved_1": {
           "resolved": {
             "type": "chunk",
-            "id": "c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f"
+            "id": "ca6a6a96dbaad5e56a62ca229daa52ea67788549"
           },
           "messages": []
         },
@@ -504,18 +383,6 @@
         }
       },
       "timestamp": 1751870515435
-    },
-    "c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f": {
-      "imports": {
-        "cc": {
-          "resolved": {
-            "type": "chunk",
-            "id": "39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e"
-          },
-          "messages": []
-        }
-      },
-      "timestamp": 1751870515457
     },
     "c26397a358f1a30b2d149d5a8ab5983d41b287ef": {
       "imports": {
@@ -1354,7 +1221,7 @@
         "__unresolved_7": {
           "resolved": {
             "type": "chunk",
-            "id": "c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f"
+            "id": "ca6a6a96dbaad5e56a62ca229daa52ea67788549"
           },
           "messages": []
         },
@@ -3943,6 +3810,235 @@
       },
       "timestamp": 1751870519460
     },
+    "eee131872bda13e8b623ec842ebdc99efc2eb577": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "3a1fd7b13056478820ebedd306d3446d1aa408cc"
+          },
+          "messages": []
+        },
+        "__unresolved_1": {
+          "resolved": {
+            "type": "chunk",
+            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
+          },
+          "messages": []
+        },
+        "__unresolved_2": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
+          },
+          "messages": []
+        },
+        "__unresolved_3": {
+          "resolved": {
+            "type": "chunk",
+            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
+          },
+          "messages": []
+        },
+        "__unresolved_4": {
+          "resolved": {
+            "type": "chunk",
+            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1751870524209
+    },
+    "e72902a0c9841352860cb2f81e93030a18b942e0": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1751870524763
+    },
+    "99863e251964de3aea15f8fdbdb7d940d135e5a0": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "3a1fd7b13056478820ebedd306d3446d1aa408cc"
+          },
+          "messages": []
+        },
+        "__unresolved_1": {
+          "resolved": {
+            "type": "chunk",
+            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
+          },
+          "messages": []
+        },
+        "__unresolved_2": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
+          },
+          "messages": []
+        },
+        "__unresolved_3": {
+          "resolved": {
+            "type": "chunk",
+            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
+          },
+          "messages": []
+        },
+        "__unresolved_4": {
+          "resolved": {
+            "type": "chunk",
+            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1751870524823
+    },
+    "f315ec695826be5785f9bec51ed7e870e5ef4eb0": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "chunk",
+            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1751870525002
+    },
+    "39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e": {
+      "imports": {
+        "__unresolved_0": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/2d"
+          },
+          "messages": []
+        },
+        "__unresolved_1": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/3d"
+          },
+          "messages": []
+        },
+        "__unresolved_10": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/physics-2d-framework"
+          },
+          "messages": []
+        },
+        "__unresolved_11": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/primitive"
+          },
+          "messages": []
+        },
+        "__unresolved_12": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/profiler"
+          },
+          "messages": []
+        },
+        "__unresolved_13": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/spine"
+          },
+          "messages": []
+        },
+        "__unresolved_14": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/tween"
+          },
+          "messages": []
+        },
+        "__unresolved_15": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/ui"
+          },
+          "messages": []
+        },
+        "__unresolved_2": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/animation"
+          },
+          "messages": []
+        },
+        "__unresolved_3": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/audio"
+          },
+          "messages": []
+        },
+        "__unresolved_4": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/base"
+          },
+          "messages": []
+        },
+        "__unresolved_5": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/gfx-webgl"
+          },
+          "messages": []
+        },
+        "__unresolved_6": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/gfx-webgl2"
+          },
+          "messages": []
+        },
+        "__unresolved_7": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/intersection-2d"
+          },
+          "messages": []
+        },
+        "__unresolved_8": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/particle-2d"
+          },
+          "messages": []
+        },
+        "__unresolved_9": {
+          "resolved": {
+            "type": "external",
+            "specifierOrURL": "cce:/internal/x/cc-fu/physics-2d-builtin"
+          },
+          "messages": []
+        }
+      },
+      "timestamp": 1751887426440
+    },
+    "3a1fd7b13056478820ebedd306d3446d1aa408cc": {
+      "imports": {},
+      "timestamp": 1751887426495
+    },
+    "bfe72779096c71ed4dc3545a580f7065d44c03f9": {
+      "imports": {},
+      "timestamp": 1751887427441
+    },
     "9d999d82b9e3bb8747f7a6ec4360727f0d81b557": {
       "imports": {
         "__unresolved_0": {
@@ -4529,7 +4625,7 @@
         "__unresolved_84": {
           "resolved": {
             "type": "chunk",
-            "id": "c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f"
+            "id": "ca6a6a96dbaad5e56a62ca229daa52ea67788549"
           },
           "messages": []
         },
@@ -4597,115 +4693,19 @@
           "messages": []
         }
       },
-      "timestamp": 1751870524162
+      "timestamp": 1751893428809
     },
-    "eee131872bda13e8b623ec842ebdc99efc2eb577": {
+    "ca6a6a96dbaad5e56a62ca229daa52ea67788549": {
       "imports": {
-        "__unresolved_0": {
+        "cc": {
           "resolved": {
             "type": "chunk",
-            "id": "3a1fd7b13056478820ebedd306d3446d1aa408cc"
-          },
-          "messages": []
-        },
-        "__unresolved_1": {
-          "resolved": {
-            "type": "chunk",
-            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
-          },
-          "messages": []
-        },
-        "__unresolved_2": {
-          "resolved": {
-            "type": "chunk",
-            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
-          },
-          "messages": []
-        },
-        "__unresolved_3": {
-          "resolved": {
-            "type": "chunk",
-            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
-          },
-          "messages": []
-        },
-        "__unresolved_4": {
-          "resolved": {
-            "type": "chunk",
-            "id": "e72902a0c9841352860cb2f81e93030a18b942e0"
+            "id": "39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e"
           },
           "messages": []
         }
       },
-      "timestamp": 1751870524209
-    },
-    "e72902a0c9841352860cb2f81e93030a18b942e0": {
-      "imports": {
-        "__unresolved_0": {
-          "resolved": {
-            "type": "chunk",
-            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
-          },
-          "messages": []
-        }
-      },
-      "timestamp": 1751870524763
-    },
-    "bfe72779096c71ed4dc3545a580f7065d44c03f9": {
-      "imports": {},
-      "timestamp": 1751870524803
-    },
-    "99863e251964de3aea15f8fdbdb7d940d135e5a0": {
-      "imports": {
-        "__unresolved_0": {
-          "resolved": {
-            "type": "chunk",
-            "id": "3a1fd7b13056478820ebedd306d3446d1aa408cc"
-          },
-          "messages": []
-        },
-        "__unresolved_1": {
-          "resolved": {
-            "type": "chunk",
-            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
-          },
-          "messages": []
-        },
-        "__unresolved_2": {
-          "resolved": {
-            "type": "chunk",
-            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
-          },
-          "messages": []
-        },
-        "__unresolved_3": {
-          "resolved": {
-            "type": "chunk",
-            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
-          },
-          "messages": []
-        },
-        "__unresolved_4": {
-          "resolved": {
-            "type": "chunk",
-            "id": "f315ec695826be5785f9bec51ed7e870e5ef4eb0"
-          },
-          "messages": []
-        }
-      },
-      "timestamp": 1751870524823
-    },
-    "f315ec695826be5785f9bec51ed7e870e5ef4eb0": {
-      "imports": {
-        "__unresolved_0": {
-          "resolved": {
-            "type": "chunk",
-            "id": "bfe72779096c71ed4dc3545a580f7065d44c03f9"
-          },
-          "messages": []
-        }
-      },
-      "timestamp": 1751870525002
+      "timestamp": 1751893428828
     }
   },
   "entries": {
@@ -4735,7 +4735,6 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/SoundManager.ts": "4372d86922927cc41c15cbd2a8b2b9a93d38e7de",
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIConfig.ts": "c26397a358f1a30b2d149d5a8ab5983d41b287ef",
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIManager.ts": "0cc6e9e3e668ea2d1b687688a63fe3f25f1e253c",
-    "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts": "c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f",
     "file:///D:/xuhang/guan_dan/assets/scripts/platform/platform.ts": "2b5f17e6c2db2f88ad13d7051d5efd9c96bb6e52",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/PbManager.ts": "9c27c29b3ace5c4c3286a3cacd85fcbec769dec4",
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts": "e3ed359f8ae8cbce63d12988f42ce294720b41f0",
@@ -4803,6 +4802,7 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts": "d21badd7eef3386ed2ff79bfe522485b17e87630",
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/PostMessage/PostMessage.ts": "4ddcd61d8234e58d279f283802a54d91ec72e48e",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js": "eee131872bda13e8b623ec842ebdc99efc2eb577",
-    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "99863e251964de3aea15f8fdbdb7d940d135e5a0"
+    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "99863e251964de3aea15f8fdbdb7d940d135e5a0",
+    "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts": "ca6a6a96dbaad5e56a62ca229daa52ea67788549"
   }
 }

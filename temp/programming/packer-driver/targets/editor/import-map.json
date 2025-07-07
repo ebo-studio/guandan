@@ -26,7 +26,6 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/SoundManager.ts": "./chunks/b2/b2eb4819de22e639444e8d156b92b471389773f9.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIConfig.ts": "./chunks/89/894435cab628b6eea0effbfa111ddc6357679b42.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIManager.ts": "./chunks/dc/dc5ee015b4ad7a0c542d8dcb9b947268c1be0f23.js",
-    "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts": "./chunks/c9/c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/platform/platform.ts": "./chunks/89/891e2793336f4d2b050ce51af8abbec910430923.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/PbManager.ts": "./chunks/b5/b51d70d60f859e5dc1df7cf8c71d18da6115e4da.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts": "./chunks/c5/c518da8dff6ddc99cdbd6c61d544aa0ec9266d21.js",
@@ -94,7 +93,8 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts": "./chunks/4d/4db90b464929b9aa020af31c6675bf6971a3970a.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/PostMessage/PostMessage.ts": "./chunks/4d/4ddcd61d8234e58d279f283802a54d91ec72e48e.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js": "./chunks/ee/eee131872bda13e8b623ec842ebdc99efc2eb577.js",
-    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js"
+    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js",
+    "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts": "./chunks/ca/ca6a6a96dbaad5e56a62ca229daa52ea67788549.js"
   },
   "scopes": {
     "./chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js": {
@@ -208,7 +208,7 @@
       "__unresolved_81": "./chunks/b2/b2eb4819de22e639444e8d156b92b471389773f9.js",
       "__unresolved_82": "./chunks/89/894435cab628b6eea0effbfa111ddc6357679b42.js",
       "__unresolved_83": "./chunks/dc/dc5ee015b4ad7a0c542d8dcb9b947268c1be0f23.js",
-      "__unresolved_84": "./chunks/c9/c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f.js",
+      "__unresolved_84": "./chunks/ca/ca6a6a96dbaad5e56a62ca229daa52ea67788549.js",
       "__unresolved_85": "./chunks/89/891e2793336f4d2b050ce51af8abbec910430923.js",
       "__unresolved_86": "./chunks/b5/b51d70d60f859e5dc1df7cf8c71d18da6115e4da.js",
       "__unresolved_87": "./chunks/ee/eee131872bda13e8b623ec842ebdc99efc2eb577.js",
@@ -265,10 +265,10 @@
       "__unresolved_4": "./chunks/75/751076288163a0b0b6dab3393053b2feacd6ac73.js",
       "__unresolved_5": "./chunks/89/894435cab628b6eea0effbfa111ddc6357679b42.js",
       "__unresolved_6": "./chunks/dc/dc5ee015b4ad7a0c542d8dcb9b947268c1be0f23.js",
-      "__unresolved_7": "./chunks/c9/c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f.js",
+      "__unresolved_7": "./chunks/ca/ca6a6a96dbaad5e56a62ca229daa52ea67788549.js",
       "cc": "./chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js"
     },
-    "./chunks/c9/c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f.js": {
+    "./chunks/ca/ca6a6a96dbaad5e56a62ca229daa52ea67788549.js": {
       "cc": "./chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js"
     },
     "./chunks/dc/dc5ee015b4ad7a0c542d8dcb9b947268c1be0f23.js": {
@@ -329,7 +329,7 @@
     },
     "./chunks/84/843e8ce1b592ec2fb3fee03df3224090f36e35b1.js": {
       "__unresolved_0": "./chunks/84/84741ad843cea9a440c5d8c2d379669b6551400d.js",
-      "__unresolved_1": "./chunks/c9/c9d4f0348c460c3f91bfecf4980df8c2feb2ee9f.js",
+      "__unresolved_1": "./chunks/ca/ca6a6a96dbaad5e56a62ca229daa52ea67788549.js",
       "cc": "./chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js"
     },
     "./chunks/e9/e95b742744ac4eb9106ee830ddad6521cba2a61c.js": {

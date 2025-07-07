@@ -2,6 +2,9 @@
   "common": {
     "polyfills": {
       "asyncFunctions": true
-    }
+    },
+    "outputName": "web-mobile",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "web-desktop"
   }
 }
