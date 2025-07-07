@@ -1,0 +1,14 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "content": {
+    "name": "loading",
+    "spriteFrames": [
+      "bar",
+      "129470ee-d896-4045-a775-a0390a2241c7@315f2",
+      "bg",
+      "129470ee-d896-4045-a775-a0390a2241c7@58cb7",
+      "start",
+      "129470ee-d896-4045-a775-a0390a2241c7@e7632"
+    ]
+  }
+}

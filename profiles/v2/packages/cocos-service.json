@@ -1,0 +1,21 @@
+{
+  "options": {
+    "web-desktop": {
+      "configID": "944002",
+      "services": []
+    },
+    "web-mobile": {
+      "configID": "944002",
+      "services": []
+    },
+    "android": {
+      "configID": "944002",
+      "services": []
+    }
+  },
+  "builder-options": {
+    "configID": "944002",
+    "services": [],
+    "__version__": "3.0.5"
+  }
+}

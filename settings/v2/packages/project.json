@@ -1,0 +1,27 @@
+{
+  "general": {
+    "designResolution": {
+      "width": 1624,
+      "height": 750,
+      "fitHeight": true,
+      "fitWidth": false
+    }
+  },
+  "physics": {
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "bullet"
+      },
+      {
+        "index": 2,
+        "name": "enemy"
+      }
+    ],
+    "collisionMatrix": {
+      "0": 0,
+      "1": 4,
+      "2": 2
+    }
+  }
+}

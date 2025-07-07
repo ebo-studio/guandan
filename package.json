@@ -1,0 +1,11 @@
+{
+  "name": "Test",
+  "uuid": "96ec38bc-d888-44dd-a0cc-d1972c872bce",
+  "version": "3.6.0",
+  "creator": {
+    "version": "3.6.0"
+  },
+  "dependencies": {
+    "protobufjs": "^7.2.0"
+  }
+}

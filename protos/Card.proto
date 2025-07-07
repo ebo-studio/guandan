@@ -1,0 +1,103 @@
+// 显示声明使用proto3; 否则使用默认的proto2
+syntax = "proto3";
+package Message;
+// 生成类的包名
+
+message Login {
+    string token = 1;
+}
+
+// 错误提示
+message Error {
+    int32 type = 1;   //1:提示 2:自己看,不提示
+    string msg = 2;
+}
+
+// 用戶信息
+message User {
+    int32 id = 1;
+    string name = 2;
+    string headImg = 3;
+    string groupId = 4;
+    string groupName = 5;
+    int32 gold = 6;
+    int32 index = 7;
+}
+
+message UserList {
+    repeated User list = 1;
+}
+
+message Time {
+    int32 time = 1;
+}
+
+message Room {
+    int32 room_id = 1;
+}
+
+message Cards {
+    repeated int32 card = 1;
+}
+
+message Start {
+    repeated int32 cards = 1; // 牌
+    int32 time = 2; // 时间
+    int32 level = 3; // 当前等级
+    int32 maxnum = 4; // 最大局数
+    int32 num = 5; // 当前局数
+}
+
+message NextUser {
+    int32 id = 1; // 要出的用户ID
+    int32 is_not = 2; // 是否不出  0 不显示 1显示
+    int32 is_send = 3; // 是否可以出牌和提示， 0 不显示 1显示
+    int32 is_hit = 4;
+    repeated Cards hit_cards= 5; // 提示的牌
+    
+}
+
+message SendCard {
+    int32 id = 1; // 要出的用户ID
+    int32 is_send = 2; // 是否出牌  1 出牌 2 不出
+    int32 card_type = 3; // 牌的类型
+    repeated int32 cards= 4; // 出的牌
+    int32 next_id = 5; // 下标
+    int32 time = 6; // 时间
+}
+
+
+message UserWin {
+    int32 id = 1;
+    int32 win = 2;
+}
+
+message ResUser{
+    int32 id = 1;
+    string name = 2;
+    string headImg = 3;
+    int32 res = 4;
+    int32 type = 5;
+}
+
+message WinList {
+    repeated ResUser list = 1;
+}
+
+message Gong {
+    int32 fromId = 1;
+    int32 toId = 2;
+    int32 card = 3;
+}
+
+message GongList {
+    repeated Gong list = 1;
+    int32 time = 2;
+}
+
+
+
+
+
+
+

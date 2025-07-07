@@ -1,0 +1,50 @@
+// 显示声明使用proto3; 否则使用默认的proto2
+syntax = "proto3";
+package GameMsg;
+// 生成类的包名
+
+message Login {
+    string token = 1;
+}
+
+// 错误提示
+message Error {
+    int32 type = 1;
+    string msg = 2;
+}
+
+
+message Prize {
+    int32 type = 1;
+    int32 num = 2;
+    int32 hero_type = 3;
+}
+
+
+message User {
+    int32 id = 1;
+    string name = 2;
+    string headImg = 3;
+    string heroGroup = 4;
+    int32 combatLevel = 5;
+    int32 combatExp = 6;
+    int32 exp = 7;
+    repeated Prize prize = 8;
+    int32 sl = 9;
+}
+
+message UserList {
+    repeated User list = 1;
+}
+
+message Time {
+    int32 time = 1;
+}
+
+message Room {
+    int32 room_id = 1;
+    string head_img = 3;
+}
+
+
+
