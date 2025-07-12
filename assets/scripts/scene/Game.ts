@@ -63,7 +63,7 @@ export class Game extends Component {
     preLoad(){
         console.log("销毁所有 4--->");
         UIManager.Instace?.clearAllUI();
-        GlobalData.cardInfo.cardDir = true;
+        // GlobalData.cardInfo.cardDir = false;
     }
     onLoad() {
         Game.Instance = this;
@@ -317,6 +317,8 @@ export class Game extends Component {
                 cancleName: "取消",
                 des: "游戏进行中,是否退出?",
                 okFunc: () => {
+                    GlobalData.cardInfo.oneCard = false;
+                    GlobalData.cardInfo.sortCard = false;
                     //逻辑退出
                     let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.ExitGame, null);
                     GameSocket.send(sendBuffer);

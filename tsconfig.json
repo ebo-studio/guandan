@@ -4,6 +4,8 @@
 
   /* Add your custom configuration here. */
   "compilerOptions": {
-    "strict": false
+    "strict": false,
+    "target": "es2019",
+    "lib": ["ES2019", "dom"]  // ✅ 添加 es2016（或更高），确保支持 includes
   }
 }

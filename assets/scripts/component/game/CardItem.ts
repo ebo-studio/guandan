@@ -17,6 +17,26 @@ export class CardItem extends Component {
     //牌背
     @property(Node)
     picBack: Node = null;
+    //同花顺标识
+    @property(Node)
+    tonghua: Node = null;
+    //六炸标识
+    @property(Node)
+    liuzha: Node = null;
+    //五炸
+    @property(Node)
+    wuzha: Node = null;
+    //四炸标识
+    @property(Node)
+    sizha: Node = null;
+    @property(Node)
+    wanzha: Node = null;
+    @property(Node)
+    shunzi: Node = null;
+    @property(Node)
+    sandaier: Node = null;
+    @property(Node)
+    liandui: Node = null;
 
     boolSelect: boolean = false
     boolMask: boolean = false
@@ -40,6 +60,26 @@ export class CardItem extends Component {
     isSelect() {
         return this.boolSelect;
     }
+    showTonghua(isShow:boolean) {
+        this.tonghua.active = isShow;
+    }
+    showBomb(bombNumber: number) {
+        this.liuzha.active = bombNumber == 6;
+        this.wuzha.active = bombNumber == 5;
+        this.sizha.active = bombNumber == 4;
+    }
+    showThreeTwo(isShow: boolean) {
+        this.sandaier.active = isShow;
+    }
+    showShunzi(isShow: boolean) {
+        this.shunzi.active = isShow;
+    }
+    showWangza(isShow: boolean){
+        this.wanzha.active = isShow;
+    }
+    showliandui(isShow: boolean){
+        this.liandui.active = isShow;
+    }
     //逢人配
     showReplace(type: boolean) {
          this.nodeReplace.active = type;
@@ -52,6 +92,12 @@ export class CardItem extends Component {
         let size = value % 16;
         this.showReplace(color == GlobalData.cardInfo.unitCardColor && size == GlobalData.cardInfo.levelCard);
         this.setBack(false);
+        this.showTonghua(false);
+        this.showThreeTwo(false);
+        this.showWangza(false);
+        this.showShunzi(false);
+        this.showliandui(false);
+        this.showBomb(3);
     }
     setIndex(idx: number) {
         this.index = idx;

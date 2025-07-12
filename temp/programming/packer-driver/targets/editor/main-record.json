@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 6317.155599999998,
+      "mTimestamp": 5855.548399999738,
       "chunkId": "ca4374a3008ca85000d465787e739a302e4e4ac6",
       "imports": [
         {
@@ -535,7 +535,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 6008917.5614,
+      "mTimestamp": 27988930.9313,
       "chunkId": "978b22243191fdd96aabdcebbba296d0810bc72d",
       "imports": [
         {
@@ -2498,7 +2498,7 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts": {
       "mTimestamp": {
-        "mtime": 1717471859123.7974,
+        "mtime": 1752322461592.2146,
         "uuid": "c2b5ae0e-a4c5-4750-a9cb-fd5bc8b3d928"
       },
       "chunkId": "6ad1a6ec4e01e157e476f8caef2f49c2f9f29c7f",
@@ -2728,7 +2728,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1751887419658,
+      "mTimestamp": 1752296734029,
       "chunkId": "84741ad843cea9a440c5d8c2d379669b6551400d",
       "imports": [],
       "type": "esm",
@@ -3054,10 +3054,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts": {
       "mTimestamp": {
-        "mtime": 1713781037656.1555,
+        "mtime": 1752237518354.0652,
         "uuid": "dfbca6da-1a0b-4009-852f-67fadb47bedb"
       },
-      "chunkId": "751076288163a0b0b6dab3393053b2feacd6ac73",
+      "chunkId": "87309fbb064a7badbc78926aa062190e5140820d",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -3613,10 +3613,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts": {
       "mTimestamp": {
-        "mtime": 1751893327615.3835,
+        "mtime": 1751948806328.7656,
         "uuid": "5c2e2bb9-440a-4b8b-8bf3-32c1459dbadb"
       },
-      "chunkId": "ca6a6a96dbaad5e56a62ca229daa52ea67788549",
+      "chunkId": "fbc0342285746fb671ae0904068e1f3709a9f15b",
       "imports": [
         {
           "value": "cc"
@@ -5851,10 +5851,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts": {
       "mTimestamp": {
-        "mtime": 1692926458212.7014,
+        "mtime": 1752323551890.654,
         "uuid": "644aa24f-acd0-4a8d-877c-c0d1525639e6"
       },
-      "chunkId": "86976556ca54382a46be26cbd182e521d4790d89",
+      "chunkId": "b2d5ccfaa95193b37a9069bfb06d543890d88789",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -11379,10 +11379,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardItem.ts": {
       "mTimestamp": {
-        "mtime": 1697184224318.41,
+        "mtime": 1752249107227.8494,
         "uuid": "833e237f-c8c1-4668-9f37-5d683cd8860d"
       },
-      "chunkId": "8561cca668d69c7cbe4fe21d3ca61816ed8e2cad",
+      "chunkId": "4d7369c40ef1d5b0933618c53cf28cb67c61cf4c",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -11484,10 +11484,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts": {
       "mTimestamp": {
-        "mtime": 1697789399511.7188,
+        "mtime": 1752324710422.8994,
         "uuid": "00929b0b-fae0-43f2-97c0-5193244ae8a2"
       },
-      "chunkId": "c0cf23c1ecff26253e0b6118461d83bfa6afbac3",
+      "chunkId": "149927bdc6c080f5dc728e793f445e16286f87d6",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -11799,7 +11799,7 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameTimer.ts": {
       "mTimestamp": {
-        "mtime": 1693560004013.7507,
+        "mtime": 1752243725725.618,
         "uuid": "3046ff49-1fc9-41d6-9093-9761abd0b2aa"
       },
       "chunkId": "f52960fd6153a9e325ae45656390c8842ab10bab",
@@ -13607,10 +13607,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts": {
       "mTimestamp": {
-        "mtime": 1697183766099.939,
+        "mtime": 1752247775029.362,
         "uuid": "02bb093d-637c-4870-8096-3d35b2f74821"
       },
-      "chunkId": "c518da8dff6ddc99cdbd6c61d544aa0ec9266d21",
+      "chunkId": "51b4eda2603afa21af5ff44f714835111dfe84c8",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -14393,7 +14393,7 @@
       ]
     },
     "cce:/internal/ml/cjs-loader.mjs": {
-      "mTimestamp": 1751887419658,
+      "mTimestamp": 1752296734029,
       "chunkId": "e22b6f02adf5d686a7ebd142d6b23614b189f373",
       "imports": [],
       "type": "esm",

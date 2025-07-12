@@ -692,8 +692,6 @@
         "8f6460a6-f665-4f05-a2f1-50b5646c5c6f@f9941",
         "a02787af-3da2-4d7b-9c23-d2d8640d96e8@f9941",
         "80fea89a-cb0a-4382-b9f4-8f34f1d805a8@f9941",
-        "0fdd0a34-d8a3-486e-805d-7d69bd59d3c2@f9941",
-        "8698f9b3-e61e-40f1-b4fa-13fe0b3f5432@f9941",
         "1cb06a06-3eb6-4ebe-9b0b-e3a12d497c3c@f9941",
         "1cb06a06-3eb6-4ebe-9b0b-e3a12d497c3c@f9941",
         "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
@@ -799,6 +797,9 @@
         "8698f9b3-e61e-40f1-b4fa-13fe0b3f5432@f9941",
         "b8628c3b-d9b8-4efb-9696-02cae1110c5a@f9941",
         "af02dfee-b5c3-42b9-8857-c125438bdbaa@f9941",
+        "0fdd0a34-d8a3-486e-805d-7d69bd59d3c2@f9941",
+        "0fdd0a34-d8a3-486e-805d-7d69bd59d3c2@f9941",
+        "9c924f4a-07bf-46f8-90f9-3940c105f80e@f9941",
         "a85f8c78-4576-48c4-bead-f844201d7dd2@f9941",
         "8698f9b3-e61e-40f1-b4fa-13fe0b3f5432@f9941",
         "bd998d39-fb01-4925-b563-f27d8fc907e0@f9941",
@@ -1151,6 +1152,14 @@
         "4392ebfd-6d09-4b53-a7e0-45761c83bf3e@65408",
         "4392ebfd-6d09-4b53-a7e0-45761c83bf3e@f997d",
         "4392ebfd-6d09-4b53-a7e0-45761c83bf3e@3f402",
+        "8a703145-9f99-43f8-a543-7a679efea3f3@f9941",
+        "ac945459-c214-4d9b-8e0b-ae7c0fcf619f@f9941",
+        "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a@f9941",
+        "25913e92-8693-463a-bdb1-f4f7e6be103e@f9941",
+        "a93b6563-3d63-4a53-ae11-f27e23bd1949@f9941",
+        "63b971ea-dc43-4e92-9ac7-00953658152a@f9941",
+        "e727b4e4-c0e7-4964-8bc2-e9fac087d47d@f9941",
+        "8f394e20-20f4-4f29-9e15-485747e6d212@f9941",
         "4392ebfd-6d09-4b53-a7e0-45761c83bf3e@f997d"
       ]
     }
@@ -5773,6 +5782,296 @@
     "url": "db://assets/resources/audio/card/2/2_9.mp3",
     "value": {
       "depends": []
+    }
+  },
+  "ce1d29b9-a03a-44a9-ac21-2734a97c6059": {
+    "url": "db://assets/resources/texture/game/game.rar",
+    "value": {}
+  },
+  "9c924f4a-07bf-46f8-90f9-3940c105f80e": {
+    "url": "db://assets/resources/texture/game/yjlp.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "9c924f4a-07bf-46f8-90f9-3940c105f80e@6c48a": {
+    "url": "db://assets/resources/texture/game/yjlp.png@6c48a",
+    "value": {
+      "depends": [
+        "9c924f4a-07bf-46f8-90f9-3940c105f80e"
+      ]
+    }
+  },
+  "9c924f4a-07bf-46f8-90f9-3940c105f80e@f9941": {
+    "url": "db://assets/resources/texture/game/yjlp.png@f9941",
+    "value": {
+      "depends": [
+        "9c924f4a-07bf-46f8-90f9-3940c105f80e@6c48a"
+      ]
+    }
+  },
+  "95d8763c-222c-4ab4-bff7-f69cf888b532": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "95d8763c-222c-4ab4-bff7-f69cf888b532@6c48a": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png@6c48a",
+    "value": {
+      "depends": [
+        "95d8763c-222c-4ab4-bff7-f69cf888b532"
+      ]
+    }
+  },
+  "95d8763c-222c-4ab4-bff7-f69cf888b532@f9941": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png@f9941",
+    "value": {
+      "depends": [
+        "95d8763c-222c-4ab4-bff7-f69cf888b532@6c48a"
+      ]
+    }
+  },
+  "f0359358-6b2f-4043-85ca-a1532f71fd5c": {
+    "url": "db://assets/resources/texture/card/liuzha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "f0359358-6b2f-4043-85ca-a1532f71fd5c@6c48a": {
+    "url": "db://assets/resources/texture/card/liuzha.png@6c48a",
+    "value": {
+      "depends": [
+        "f0359358-6b2f-4043-85ca-a1532f71fd5c"
+      ]
+    }
+  },
+  "8f394e20-20f4-4f29-9e15-485747e6d212": {
+    "url": "db://assets/resources/texture/card/liandui.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "e727b4e4-c0e7-4964-8bc2-e9fac087d47d": {
+    "url": "db://assets/resources/texture/card/shunzi.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "95b44517-a4bb-4e95-852a-5d2b55aaa9a5": {
+    "url": "db://assets/resources/texture/card/sizha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a93b6563-3d63-4a53-ae11-f27e23bd1949": {
+    "url": "db://assets/resources/texture/card/wangzha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ba20dfd8-5618-44ae-ad2f-b79bed6491b3": {
+    "url": "db://assets/resources/texture/card/wuzha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "e727b4e4-c0e7-4964-8bc2-e9fac087d47d@6c48a": {
+    "url": "db://assets/resources/texture/card/shunzi.png@6c48a",
+    "value": {
+      "depends": [
+        "e727b4e4-c0e7-4964-8bc2-e9fac087d47d"
+      ]
+    }
+  },
+  "a93b6563-3d63-4a53-ae11-f27e23bd1949@6c48a": {
+    "url": "db://assets/resources/texture/card/wangzha.png@6c48a",
+    "value": {
+      "depends": [
+        "a93b6563-3d63-4a53-ae11-f27e23bd1949"
+      ]
+    }
+  },
+  "8f394e20-20f4-4f29-9e15-485747e6d212@6c48a": {
+    "url": "db://assets/resources/texture/card/liandui.png@6c48a",
+    "value": {
+      "depends": [
+        "8f394e20-20f4-4f29-9e15-485747e6d212"
+      ]
+    }
+  },
+  "ba20dfd8-5618-44ae-ad2f-b79bed6491b3@6c48a": {
+    "url": "db://assets/resources/texture/card/wuzha.png@6c48a",
+    "value": {
+      "depends": [
+        "ba20dfd8-5618-44ae-ad2f-b79bed6491b3"
+      ]
+    }
+  },
+  "95b44517-a4bb-4e95-852a-5d2b55aaa9a5@6c48a": {
+    "url": "db://assets/resources/texture/card/sizha.png@6c48a",
+    "value": {
+      "depends": [
+        "95b44517-a4bb-4e95-852a-5d2b55aaa9a5"
+      ]
+    }
+  },
+  "f0359358-6b2f-4043-85ca-a1532f71fd5c@f9941": {
+    "url": "db://assets/resources/texture/card/liuzha.png@f9941",
+    "value": {
+      "depends": [
+        "f0359358-6b2f-4043-85ca-a1532f71fd5c@6c48a"
+      ]
+    }
+  },
+  "ba20dfd8-5618-44ae-ad2f-b79bed6491b3@f9941": {
+    "url": "db://assets/resources/texture/card/wuzha.png@f9941",
+    "value": {
+      "depends": [
+        "ba20dfd8-5618-44ae-ad2f-b79bed6491b3@6c48a"
+      ]
+    }
+  },
+  "95b44517-a4bb-4e95-852a-5d2b55aaa9a5@f9941": {
+    "url": "db://assets/resources/texture/card/sizha.png@f9941",
+    "value": {
+      "depends": [
+        "95b44517-a4bb-4e95-852a-5d2b55aaa9a5@6c48a"
+      ]
+    }
+  },
+  "63b971ea-dc43-4e92-9ac7-00953658152a": {
+    "url": "db://assets/resources/texture/card/sandaier.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "63b971ea-dc43-4e92-9ac7-00953658152a@6c48a": {
+    "url": "db://assets/resources/texture/card/sandaier.png@6c48a",
+    "value": {
+      "depends": [
+        "63b971ea-dc43-4e92-9ac7-00953658152a"
+      ]
+    }
+  },
+  "ac945459-c214-4d9b-8e0b-ae7c0fcf619f": {
+    "url": "db://assets/resources/texture/card/liuzha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "25913e92-8693-463a-bdb1-f4f7e6be103e": {
+    "url": "db://assets/resources/texture/card/sizha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "8a703145-9f99-43f8-a543-7a679efea3f3": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a": {
+    "url": "db://assets/resources/texture/card/wuzha.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "25913e92-8693-463a-bdb1-f4f7e6be103e@6c48a": {
+    "url": "db://assets/resources/texture/card/sizha.png@6c48a",
+    "value": {
+      "depends": [
+        "25913e92-8693-463a-bdb1-f4f7e6be103e"
+      ]
+    }
+  },
+  "8a703145-9f99-43f8-a543-7a679efea3f3@6c48a": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png@6c48a",
+    "value": {
+      "depends": [
+        "8a703145-9f99-43f8-a543-7a679efea3f3"
+      ]
+    }
+  },
+  "ac945459-c214-4d9b-8e0b-ae7c0fcf619f@6c48a": {
+    "url": "db://assets/resources/texture/card/liuzha.png@6c48a",
+    "value": {
+      "depends": [
+        "ac945459-c214-4d9b-8e0b-ae7c0fcf619f"
+      ]
+    }
+  },
+  "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a@6c48a": {
+    "url": "db://assets/resources/texture/card/wuzha.png@6c48a",
+    "value": {
+      "depends": [
+        "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a"
+      ]
+    }
+  },
+  "8a703145-9f99-43f8-a543-7a679efea3f3@f9941": {
+    "url": "db://assets/resources/texture/card/tonghuashun.png@f9941",
+    "value": {
+      "depends": [
+        "8a703145-9f99-43f8-a543-7a679efea3f3@6c48a"
+      ]
+    }
+  },
+  "ac945459-c214-4d9b-8e0b-ae7c0fcf619f@f9941": {
+    "url": "db://assets/resources/texture/card/liuzha.png@f9941",
+    "value": {
+      "depends": [
+        "ac945459-c214-4d9b-8e0b-ae7c0fcf619f@6c48a"
+      ]
+    }
+  },
+  "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a@f9941": {
+    "url": "db://assets/resources/texture/card/wuzha.png@f9941",
+    "value": {
+      "depends": [
+        "061e9c04-b8d6-471a-9d69-bf4bc2dfd13a@6c48a"
+      ]
+    }
+  },
+  "25913e92-8693-463a-bdb1-f4f7e6be103e@f9941": {
+    "url": "db://assets/resources/texture/card/sizha.png@f9941",
+    "value": {
+      "depends": [
+        "25913e92-8693-463a-bdb1-f4f7e6be103e@6c48a"
+      ]
+    }
+  },
+  "a93b6563-3d63-4a53-ae11-f27e23bd1949@f9941": {
+    "url": "db://assets/resources/texture/card/wangzha.png@f9941",
+    "value": {
+      "depends": [
+        "a93b6563-3d63-4a53-ae11-f27e23bd1949@6c48a"
+      ]
+    }
+  },
+  "e727b4e4-c0e7-4964-8bc2-e9fac087d47d@f9941": {
+    "url": "db://assets/resources/texture/card/shunzi.png@f9941",
+    "value": {
+      "depends": [
+        "e727b4e4-c0e7-4964-8bc2-e9fac087d47d@6c48a"
+      ]
+    }
+  },
+  "63b971ea-dc43-4e92-9ac7-00953658152a@f9941": {
+    "url": "db://assets/resources/texture/card/sandaier.png@f9941",
+    "value": {
+      "depends": [
+        "63b971ea-dc43-4e92-9ac7-00953658152a@6c48a"
+      ]
+    }
+  },
+  "8f394e20-20f4-4f29-9e15-485747e6d212@f9941": {
+    "url": "db://assets/resources/texture/card/liandui.png@f9941",
+    "value": {
+      "depends": [
+        "8f394e20-20f4-4f29-9e15-485747e6d212@6c48a"
+      ]
     }
   }
 }

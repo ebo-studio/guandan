@@ -319,7 +319,9 @@ export namespace GlobalData {
         /**
          * 打自己的
         */
-        cardDir: true, //true:横向 false:纵向
+        cardDir: false, //true:恢复 false:理牌
+        sortCard: false, //理牌
+        oneCard: false, //一键理牌
     }
     //创建房间
     export const createRoomInfo = {
