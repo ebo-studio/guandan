@@ -571,36 +571,71 @@ export module GameLogic {
     }
 
     function findStraightByCard(cards: number[]): number[][] {
+        const getCardRank = (card: number) => card % 16;
+        const getCardColor = (card: number) => Math.floor(card / 16);
+        const HONGTAO = 1;
+
         const map = getCardCountMap(cards);
-        const allRanks = Array.from(map.keys())
-            .filter(r => r >= 3 && r <= 14) // 3~A
-            .sort((a, b) => a - b);
-
+        const rankMap = new Map<number, number[]>(map); // 拷贝，避免修改原始 map
         const results: number[][] = [];
-        let temp: number[] = [];
 
-        for (let i = 0; i < allRanks.length; i++) {
-            const rank = allRanks[i];
+        // 所有点数，A=1，2=2，... K=13
+        // 排除 2，构建可用顺子点数（包括 1）
+        const legalRanks = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
-            if (temp.length === 0 || rank === allRanks[i - 1] + 1) {
-                temp.push(rank);
-            } else {
-                temp = [rank];
+        // 构建所有长度 >=5 的连续 rank 序列
+        const seqList: number[][] = [];
+        for (let i = 0; i <= legalRanks.length - 5; i++) {
+            for (let len = 5; len <= legalRanks.length - i; len++) {
+                const seq = legalRanks.slice(i, i + len);
+                seqList.push(seq);
             }
+        }
 
-            if (temp.length === 5) {
-                // 构建5张对应的原牌值
-                let group: number[] = [];
-                for (let r of temp) {
-                    // 从 map 中拿出当前 rank 的任意一张
-                    const list = map.get(r);
-                    if (list && list.length > 0) {
-                        group.push(list[0]);
-                        list.shift(); // 用掉这张牌
+        // ✅ 加入 AKQJ10 的特殊顺子
+        seqList.push([10, 11, 12, 13, 1]);
+
+        // ✅ 检查每个序列是否匹配
+        for (const seq of seqList) {
+            const group: number[] = [];
+            let valid = true;
+
+            for (const r of seq) {
+                // 红桃2特殊处理
+                if (r === 2) {
+                    const hongtao2 = cards.find(c => getCardRank(c) === 2 && getCardColor(c) === HONGTAO);
+                    if (hongtao2 !== undefined) {
+                        group.push(hongtao2);
+                        cards.splice(cards.indexOf(hongtao2), 1);
+                        continue;
+                    } else {
+                        valid = false;
+                        break;
                     }
                 }
-                if (group.length === 5) results.push(group);
-                temp.shift(); // 滑动窗口继续往后找
+
+                const list = rankMap.get(r);
+                if (!list || list.length === 0) {
+                    valid = false;
+                    break;
+                }
+
+                group.push(list[0]); // 取一张
+            }
+
+            if (valid) {
+                results.push(group);
+
+                // 消耗除红桃2外的牌
+                for (const c of group) {
+                    const r = getCardRank(c);
+                    const color = getCardColor(c);
+                    if (!(r === 2 && color === HONGTAO)) {
+                        rankMap.get(r)!.shift();
+                    }
+                }
+
+                break; // 找一个顺子就停
             }
         }
 
@@ -644,33 +679,40 @@ export module GameLogic {
 
     function findFeiji(cards: number[]): number[][] {
         const map = getCardCountMap(cards);
-        const triplets: number[] = [];
+        const rankToTripletCards: Map<number, number[]> = new Map();
 
-        // 取出所有三张相同点数的牌
+        // 收集所有点数 >=3 且有 3 张以上的牌（不能包含 2、王）
         for (const [rank, list] of map.entries()) {
-            if (rank < 3 || rank > 14) continue; // 排除非法的牌
-            if (list.length === 3) {
-                triplets.push(rank);
+            if (rank < 3 || rank > 14) continue;
+            if (list.length >= 3) {
+                rankToTripletCards.set(rank, list.slice(0, 3)); // 只取3张参与飞机
             }
         }
 
-        if (triplets.length < 2) return []; // 飞机至少需要两组三张牌
+        if (rankToTripletCards.size < 2) return [];
 
-        // 检查是否连续
-        triplets.sort((a, b) => a - b);
-        for (let i = 1; i < triplets.length; i++) {
-            if (triplets[i] !== triplets[i - 1] + 1) {
-                return []; // 非连续，不是合法飞机
+        const sortedRanks = Array.from(rankToTripletCards.keys()).sort((a, b) => a - b);
+
+        // 寻找连续的rank组
+        for (let i = 0; i < sortedRanks.length - 1; i++) {
+            let group: number[][] = [rankToTripletCards.get(sortedRanks[i])!];
+
+            for (let j = i + 1; j < sortedRanks.length; j++) {
+                const prev = sortedRanks[j - 1];
+                const curr = sortedRanks[j];
+                if (curr === prev + 1) {
+                    group.push(rankToTripletCards.get(curr)!);
+                    if (group.length >= 2) {
+                        // 找到第一组合法飞机（长度>=2）
+                        return [group.flat()];
+                    }
+                } else {
+                    break;
+                }
             }
         }
 
-        // 组装飞机
-        const result: number[][] = [];
-        for (let rank of triplets) {
-            result.push([rank, rank, rank]);
-        }
-
-        return result;
+        return [];
     }
 
     export function removeOutCardsFromGrouped(grouped: number[][], outCards: number[]): number[][] {
@@ -811,7 +853,7 @@ export module GameLogic {
     }
 
     export function getCardTypeByFeiji(cards: number[]): number {
-        if (cards.length >= 6 && cards.length % 3 === 0) {
+        if (cards.length == 6 && cards.length % 3 === 0) {
             const map = getCardCountMap(cards);
             const triplets: number[] = [];
 
@@ -836,36 +878,38 @@ export module GameLogic {
 
             return GameDefine.KIND_CARDS_SHUNZI_3; // ✅ 飞机
         }
+        else {
+            return GameDefine.KIND_CARDS_ERROR;
+        }
     }
 
     export function getCardTypeByLiandui(cards: number[]): number {
-        // 连对（对子连续 >= 3 对）
-        if (cards.length >= 6 && cards.length % 2 === 0) {
-            const map = getCardCountMap(cards);
-            const pairRanks: number[] = [];
+        if (cards.length !== 6) return GameDefine.KIND_CARDS_ERROR;
 
-            for (const [rank, list] of map.entries()) {
-                if (rank < 3 || rank > 14) return GameDefine.KIND_CARDS_ERROR; // 排除2和王
-                if (list.length === 2) {
-                    pairRanks.push(rank);
-                } else {
-                    return GameDefine.KIND_CARDS_ERROR; // 不满足连对
-                }
+        const map = getCardCountMap(cards);
+        const pairRanks: number[] = [];
+
+        for (const [rank, list] of map.entries()) {
+            // 排除点数不合法（如 2、王）
+            if (rank < 3 || rank > 13) return GameDefine.KIND_CARDS_ERROR;
+
+            if (list.length === 2) {
+                pairRanks.push(rank);
+            } else {
+                return GameDefine.KIND_CARDS_ERROR; // 出现非对子
             }
-
-            // 确保有足够的对子
-            if (pairRanks.length * 2 !== cards.length) return GameDefine.KIND_CARDS_ERROR;
-
-            // 判断是否连续
-            pairRanks.sort((a, b) => a - b);
-            for (let i = 1; i < pairRanks.length; i++) {
-                if (pairRanks[i] !== pairRanks[i - 1] + 1) {
-                    return GameDefine.KIND_CARDS_ERROR; // 非连续
-                }
-            }
-
-            return GameDefine.KIND_CARDS_SHUNZI_2; // ✅ 连对
         }
+
+        // 必须正好3个对子
+        if (pairRanks.length !== 3) return GameDefine.KIND_CARDS_ERROR;
+
+        // 检查是否连续
+        pairRanks.sort((a, b) => a - b);
+        for (let i = 1; i < pairRanks.length; i++) {
+            if (pairRanks[i] !== pairRanks[i - 1] + 1) return GameDefine.KIND_CARDS_ERROR;
+        }
+
+        return GameDefine.KIND_CARDS_SHUNZI_2;
     }
 
     export function getCardType(cards: number[]): number {
@@ -890,12 +934,27 @@ export module GameLogic {
         // 飞机（需要至少2组三张牌且连续）
 
 
+        if (cards.length == 6) {
+            const feijiType = GameLogic.getCardTypeByFeiji(cards);
+            if (feijiType == GameDefine.KIND_CARDS_SHUNZI_3) {
+                return GameDefine.KIND_CARDS_SHUNZI_3;
+            }
+            else {
+                const lianduiType = GameLogic.getCardTypeByLiandui(cards);
+                if (lianduiType == GameDefine.KIND_CARDS_SHUNZI_2) {
+                    return GameDefine.KIND_CARDS_SHUNZI_2;
+                }
+                // else {
+                //     return
+                // }
+            }
 
+        }
 
 
 
         // ✅ 顺子判断（支持长度 >= 5）
-        if (cards.length >= 5) {
+        if (cards.length == 5) {
             const rankSet = new Set<number>();
             for (let card of cards) {
                 const rank = getCardSize(card);
@@ -914,6 +973,38 @@ export module GameLogic {
 
             return GameDefine.KIND_CARDS_SHUNZI_1; // ✅ 顺子
         }
+
+        if (cards.length === 4) {
+            const kings = cards.filter(c => isKing(c));
+            if (kings.length === 4) {
+                return GameDefine.KIND_CARDS_KING; // 自定义四王炸类型
+            }
+        }
+
+        // ✅ 王炸（大小王各一张）
+        // if (cards.length === 2) {
+        //     const ranks = cards.map(c => GameLogic.getCardSize(c)).sort();
+        //     if (ranks.includes(16) && ranks.includes(17)) {
+        //         return GameDefine.KIND_CARDS_BOMB_KING2; // 自定义王炸类型
+        //     }
+        // }
+
+        const map = getCardCountMap(cards);
+        for (const list of map.values()) {
+            if (list.length >= 4 && list.length === cards.length) {
+                switch (list.length) {
+                    case 4:
+                        return GameDefine.KIND_CARDS_BOMB_45;  // 四炸
+                    case 5:
+                        return GameDefine.KIND_CARDS_BOMB_45;  // 五炸
+                    case 6:
+                        return GameDefine.KIND_CARDS_BOMB_678;  // 六炸
+                    default:
+                        return GameDefine.KIND_CARDS_BOMB_678; // 六张以上大炸
+                }
+            }
+        }
+
         // ... 判断三带、顺子、连对、炸弹等
         return GameDefine.KIND_CARDS_ERROR;
     }
@@ -1734,76 +1825,6 @@ export module GameLogic {
 
     /** 一键理牌主函数 */
     export function smartSortCards(cards: number[]): number[][] {
-        // const mainResult: number[][] = [];     // 主牌型区（固定优先级）
-        // const randomPart: number[][] = [];     // 飞机、连对、顺子、三带二等
-        // const used = new Set<number>();
-
-        // // const pushAndMark = (group: number[], toMain: boolean = true) => {
-        // //     (toMain ? mainResult : randomPart).push(group);
-        // //     group.forEach(card => used.add(card));
-        // // };
-
-        // // const getUnused = () => cards.filter(c => !used.has(c));
-        // const usedIndex = new Set<number>();
-        // const getUnused = () =>
-        //     cards.filter((_, idx) => !usedIndex.has(idx));
-
-        // const pushAndMark = (group: number[], toMain = true) => {
-        //     const realGroup: number[] = [];
-        //     for (const g of group) {
-        //         const idx = cards.findIndex((c, i) => c === g && !usedIndex.has(i));
-        //         if (idx !== -1) {
-        //             usedIndex.add(idx);
-        //             realGroup.push(cards[idx]);
-        //         }
-        //     }
-        //     if (realGroup.length > 0) {
-        //         (toMain ? mainResult : randomPart).push(realGroup);
-        //     }
-        // };
-
-        // // 0. 王炸
-        // findRocket(getUnused()).forEach(g => pushAndMark(g));
-
-        // // 1. 六炸
-        // findBombsByCount(getUnused(), 6).forEach(g => pushAndMark(g));
-
-        // // 2. 同花顺
-        // findFlushStraight(getUnused()).forEach(g => pushAndMark(g));
-
-        // // 3. 五炸
-        // findBombsByCount(getUnused(), 5).forEach(g => pushAndMark(g));
-
-        // // 4. 四炸
-        // findBombsByCount(getUnused(), 4).forEach(g => pushAndMark(g));
-
-
-        // // ------- 以下为杂牌型，最后追加 -------
-        // // 飞机（不带）
-        // findPlane(getUnused()).forEach(g => pushAndMark(g, false));
-
-        // // 连对
-        // findChainPairs(getUnused()).forEach(g => pushAndMark(g, false));
-
-        // // 顺子
-        // findStraight(getUnused()).forEach(g => pushAndMark(g, false));
-
-        // // 三带二
-        // findThreeWithTwo(getUnused()).forEach(g => pushAndMark(g, false));
-
-
-        // // 5. 对子
-        // findPair(getUnused()).forEach(g => pushAndMark(g));
-
-        // // 6. 单张
-        // getUnused().forEach(c => pushAndMark([c]));
-
-        // // mainResult = getSameCardSizeList(mainResult,);
-
-        // const randomList = groupBySizeDown(flatten(randomPart));
-
-        // console.log("理牌分组：", mainResult.concat(randomList));
-        // return mainResult.concat(randomPart); // 返回最终理牌结果
 
         const mainResult: number[][] = [];  // 固定牌型
         const randomPart: number[][] = [];  // 飞机/连对/顺子/三带二
@@ -1834,12 +1855,19 @@ export module GameLogic {
 
         // ===== 杂牌型，放在后面 =====
         const straightList = findStraight(getUnused());
+        const threeWithList = findThreeWithTwoBy(getUnused());
 
         if (straightList.length === 1) {
             straightList.forEach(g => pushAndMark(g, false)); // 顺子
             findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
         } else if (straightList.length === 0) {
-            findThreeWithTwoBy(getUnused(), usedIndex, 2).forEach(g => pushAndMark(g, false)); // 三带二（尽可能两组）
+            if (threeWithList.length > 2) {
+                findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
+            }
+            else {
+                threeWithList.forEach(g => pushAndMark(g, false)); // 所有顺子
+            }
+            // findThreeWithTwoBy(getUnused(), usedIndex, 2).forEach(g => pushAndMark(g, false)); // 三带二（尽可能两组）
         } else {
             straightList.forEach(g => pushAndMark(g, false)); // 所有顺子
         }
@@ -2106,6 +2134,475 @@ export module GameLogic {
         for (const list of map.values()) {
             if (list.length === 1) {
                 result.push([...list]); // 每张单牌包装成一组
+            }
+        }
+
+        return result;
+    }
+
+    export function getHintCards(targetCards: number[], groupedCards: number[][]): number[][] {
+        const hintList: number[][] = [];
+
+        if (!targetCards || targetCards.length === 0) return [];
+
+        const type = GameLogic.getCardType(targetCards);
+
+        // 获取目标主牌点（比如单张、对子、三带）
+        const targetMainSize = getMainCardSize(targetCards);
+
+        switch (type) {
+            case GameDefine.KIND_CARDS_1:
+                // 优先从散牌中找
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length === 1) {
+                        const card = group[0];
+                        if (compareCardSize(card, targetCards[0]) > 0) {
+                            hintList.push([card]);
+                        }
+                    }
+                }
+
+                // 没找到，再从对子中拆一张
+                if (hintList.length === 0) {
+                    for (let i = groupedCards.length - 1; i >= 0; i--) {
+                        const group = groupedCards[i];
+                        if (group.length === 2) {
+                            const card = group[0];
+                            if (compareCardSize(card, targetCards[0]) > 0) {
+                                hintList.push([card]);
+                            }
+                        }
+                    }
+                }
+
+                if (hintList.length === 0) {
+                    for (let i = groupedCards.length - 1; i >= 0; i--) {
+                        const group = groupedCards[i];
+                        if (group.length === 3) {
+                            const card = group[0];
+                            if (compareCardSize(card, targetCards[0]) > 0) {
+                                hintList.push([card]);
+                            }
+                        }
+                    }
+                }
+
+                if (hintList.length === 0) {
+                    for (let i = groupedCards.length - 1; i >= 0; i--) {
+                        const group = groupedCards[i];
+                        if (group.length >= 4) {
+                            // const groupRank = getCompareSize(group[0]);
+                            // const targetRank = getCompareSize(targetCards[0]);
+
+                            // if (groupRank > targetRank) {
+                            hintList.push([...group]);
+                            // }
+                        }
+                    }
+                }
+
+                break;
+
+            case GameDefine.KIND_CARDS_2:
+                // 只从原始对子中找（group.length === 2）
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length === 2) {
+                        if (GameLogic.getCardSize(group[0]) > targetMainSize) {
+                            hintList.push([...group]); // 复制一个对子
+                        }
+                    }
+                }
+                break;
+
+            case GameDefine.KIND_CARDS_3: {
+                // 找出所有三张，且大于目标点
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length === 3) {
+                        const size = GameLogic.getCardSize(group[0]);
+                        if (size > targetMainSize) {
+                            hintList.push([...group]);
+                        }
+                    }
+                }
+                break;
+            }
+
+            case GameDefine.KIND_CARDS_3_2: {
+                // 三带二：找出三张+一对，三张部分要大
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group3 = groupedCards[i];
+                    if (group3.length === 3) {
+                        const size = GameLogic.getCardSize(group3[0]);
+                        if (size <= targetMainSize) continue;
+
+                        // 再找一组对子（不能跟三张重复点数）
+                        for (let j = groupedCards.length - 1; j >= 0; j--) {
+                            if (j === i) continue;
+                            const group2 = groupedCards[j];
+                            if (group2.length === 2 && GameLogic.getCardSize(group2[0]) !== size) {
+                                hintList.push([...group3, ...group2]);
+                                break; // 一组就够了
+                            }
+                        }
+                    }
+                }
+                break;
+            }
+
+
+            case GameDefine.KIND_CARDS_BOMB_45:
+                // ✅ 找更大的炸弹
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length >= 4) {
+                        const groupRank = GameLogic.getCardSize(group[0]);
+                        if (group.length > targetCards.length || (group.length === targetCards.length && groupRank > targetMainSize)) {
+                            hintList.push([...group]);
+                        }
+                    }
+                }
+
+                // ✅ 加入同花顺提示（同花色 + 顺子长度 >= 5）
+                const colorGroups: Map<number, number[]> = new Map(); // color -> [cards]
+
+                for (const card of groupedCards.flat()) {
+                    const color = GameLogic.getCardColor(card);
+                    if (!colorGroups.has(color)) colorGroups.set(color, []);
+                    colorGroups.get(color)!.push(card);
+                }
+
+                for (const cards of colorGroups.values()) {
+                    const sorted = cards
+                        .filter(c => {
+                            const s = GameLogic.getCardSize(c);
+                            return s >= 3 && s <= 14;
+                        })
+                        .sort((a, b) => GameLogic.getCardSize(a) - GameLogic.getCardSize(b));
+
+                    const sizeMap = new Map<number, number[]>();
+                    for (const c of sorted) {
+                        const s = GameLogic.getCardSize(c);
+                        if (!sizeMap.has(s)) sizeMap.set(s, []);
+                        sizeMap.get(s)!.push(c);
+                    }
+
+                    const sizes = Array.from(sizeMap.keys()).sort((a, b) => a - b);
+
+                    // 滑窗查找连续 >= 5 的同花顺
+                    for (let i = 0; i <= sizes.length - 5; i++) {
+                        let ok = true;
+                        for (let j = 1; j < 5; j++) {
+                            if (sizes[i + j] !== sizes[i + j - 1] + 1) {
+                                ok = false;
+                                break;
+                            }
+                        }
+                        if (ok) {
+                            const group: number[] = [];
+                            for (let j = 0; j < 5; j++) {
+                                const s = sizes[i + j];
+                                const list = sizeMap.get(s)!;
+                                group.push(list.pop()!); // 拿一张即可
+                            }
+                            hintList.push(group);
+                        }
+                    }
+                }
+
+                // ✅ 王炸也可出（已定义好的）
+                const kings = groupedCards.flat().filter(c => isKing(c));
+                if (kings.length === 4) {
+                    hintList.push(kings.slice(0, 4));
+                }
+
+                break;
+            case GameDefine.KIND_CARDS_BOMB_678:
+                // ✅ 对方是炸弹，我们只能出更大的炸弹或王炸
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length >= 6) {
+                        const groupRank = GameLogic.getCardSize(group[0]);
+                        if (groupRank > targetMainSize) {
+                            hintList.push([...group]);
+                        }
+                    }
+                }
+
+                const kings1 = groupedCards.flat().filter(c => isKing(c));
+                if (kings1.length === 4) {
+                    hintList.push([...kings1]);
+                }
+
+                break;
+
+
+            case GameDefine.KIND_CARDS_SHUNZI_1: {
+                const targetLength = targetCards.length;
+                const targetStart = GameLogic.getCardSize(targetCards[0]);
+
+                const singles = groupedCards.flat().filter(c => {
+                    const size = GameLogic.getCardSize(c);
+                    return size >= 3 && size <= 13; // 排除 2 和王
+                });
+
+                const rankMap = new Map<number, number[]>();
+                for (const card of singles) {
+                    const size = GameLogic.getCardSize(card);
+                    if (!rankMap.has(size)) rankMap.set(size, []);
+                    rankMap.get(size)!.push(card);
+                }
+
+                const allRanks = Array.from(rankMap.keys()).sort((a, b) => a - b);
+
+                for (let i = 0; i <= allRanks.length - targetLength; i++) {
+                    const seq = allRanks.slice(i, i + targetLength);
+                    const isContinuous = seq.every((r, idx) => idx === 0 || r === seq[idx - 1] + 1);
+
+                    if (isContinuous && seq[0] > targetStart) {
+                        const group: number[] = [];
+                        for (const r of seq) {
+                            group.push(rankMap.get(r)!.pop()!);
+                        }
+                        hintList.push(group);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case GameDefine.KIND_CARDS_COLOR: {
+                const targetLength = targetCards.length;
+                const targetStart = GameLogic.getCardSize(targetCards[0]);
+                const targetColor = GameLogic.getCardColor(targetCards[0]);
+
+                const singles = groupedCards.flat().filter(c => {
+                    const size = GameLogic.getCardSize(c);
+                    const color = GameLogic.getCardColor(c);
+                    return size >= 3 && size <= 13 && color === targetColor;
+                });
+
+                const rankMap = new Map<number, number[]>();
+                for (const card of singles) {
+                    const size = GameLogic.getCardSize(card);
+                    if (!rankMap.has(size)) rankMap.set(size, []);
+                    rankMap.get(size)!.push(card);
+                }
+
+                const allRanks = Array.from(rankMap.keys()).sort((a, b) => a - b);
+
+                for (let i = 0; i <= allRanks.length - targetLength; i++) {
+                    const seq = allRanks.slice(i, i + targetLength);
+                    const isContinuous = seq.every((r, idx) => idx === 0 || r === seq[idx - 1] + 1);
+
+                    if (isContinuous && seq[0] > targetStart) {
+                        const group: number[] = [];
+                        for (const r of seq) {
+                            group.push(rankMap.get(r)!.pop()!);
+                        }
+                        hintList.push(group);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case GameDefine.KIND_CARDS_SHUNZI_3: {
+                const targetTriplets = targetCards.filter(
+                    c => GameLogic.getCardCount(targetCards, GameLogic.getCardSize(c)) === 3
+                );
+                const targetLength = targetTriplets.length;
+                const targetMin = Math.min(...targetTriplets.map(GameLogic.getCardSize));
+
+                const tripletGroups: { rank: number, cards: number[] }[] = [];
+
+                for (let g of groupedCards) {
+                    if (g.length === 3) {
+                        tripletGroups.push({ rank: GameLogic.getCardSize(g[0]), cards: g });
+                    }
+                }
+
+                tripletGroups.sort((a, b) => a.rank - b.rank);
+
+                for (let i = 0; i <= tripletGroups.length - (targetLength / 3); i++) {
+                    let group: number[] = [];
+                    let ok = true;
+
+                    for (let j = 0; j < targetLength / 3; j++) {
+                        const cur = tripletGroups[i + j];
+                        if (j > 0 && cur.rank !== tripletGroups[i + j - 1].rank + 1) {
+                            ok = false;
+                            break;
+                        }
+                        group.push(...cur.cards);
+                    }
+
+                    if (ok && tripletGroups[i].rank > targetMin) {
+                        hintList.push(group);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case GameDefine.KIND_CARDS_SHUNZI_2: {
+                const targetRanks = targetCards.filter(
+                    c => GameLogic.getCardCount(targetCards, GameLogic.getCardSize(c)) === 2
+                ).map(GameLogic.getCardSize);
+
+                const targetLength = targetRanks.length;
+                const targetMin = Math.min(...targetRanks);
+
+                const pairGroups: { rank: number, cards: number[] }[] = [];
+
+                for (let g of groupedCards) {
+                    if (g.length === 2) {
+                        pairGroups.push({ rank: GameLogic.getCardSize(g[0]), cards: g });
+                    }
+                }
+
+                pairGroups.sort((a, b) => a.rank - b.rank);
+
+                for (let i = 0; i <= pairGroups.length - (targetLength / 2); i++) {
+                    let group: number[] = [];
+                    let ok = true;
+
+                    for (let j = 0; j < targetLength / 2; j++) {
+                        const cur = pairGroups[i + j];
+                        if (j > 0 && cur.rank !== pairGroups[i + j - 1].rank + 1) {
+                            ok = false;
+                            break;
+                        }
+                        group.push(...cur.cards);
+                    }
+
+                    if (ok && pairGroups[i].rank > targetMin) {
+                        hintList.push(group);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            default:
+                // 其他牌型的提示：暂不处理
+                return [];
+        }
+
+        // 排序（牌点从小到大）
+        hintList.sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
+
+        return hintList;
+    }
+
+    function getMainCardSize(cards: number[]): number {
+        const map = getCardCountMap(cards);
+        const countArr = Array.from(map.entries()).map(([rank, list]) => ({
+            rank,
+            count: list.length,
+        }));
+
+        // 按 count 降序，再按 rank 降序
+        countArr.sort((a, b) => {
+            if (b.count !== a.count) return b.count - a.count;
+            return b.rank - a.rank;
+        });
+
+        const main = countArr[0];
+        return main?.rank ?? -1;
+    }
+
+    export function getCardCount(cards: number[], size: number): number {
+        return cards.filter(c => GameLogic.getCardSize(c) === size).length
+    }
+
+    function isKing(card: number): boolean {
+        const rank = GameLogic.getCardSize(card);
+        return rank === 15 || rank === 16; // 假设小王=15，大王=16
+    }
+
+    function compareCardSize(a: number, b: number): number {
+        const sizeA = GameLogic.getCardSize(a);
+        const sizeB = GameLogic.getCardSize(b);
+
+        // A=1 特殊处理：当作14参与比较
+        const valueA = sizeA === 1 ? 14 : sizeA;
+        const valueB = sizeB === 1 ? 14 : sizeB;
+
+        return valueA - valueB;
+    }
+
+    function getCompareSize(card: number): number {
+        const size = GameLogic.getCardSize(card);
+        if (size === 1) return 14;         // A → 14
+        if (size === 2) return 15;         // 级牌2 → 15
+        if (size === 16) return 16;        // 小王
+        if (size === 17) return 17;        // 大王
+        return size;
+    }
+
+    export function hasNaturalFormedGroups(cards: number[]): boolean {
+        if (!cards || cards.length < 5) return false;
+
+        // 排序（由大到小）
+        const sorted = sortCardsBySizeDown(cards, cards.length);
+
+        // 检查是否包含炸弹
+        const map = getCardCountMap(sorted);
+        for (const group of map.values()) {
+            if (group.length >= 4) return true; // 炸弹或更大
+        }
+
+        // 检查顺子（五张及以上）
+        const straights = findStraightByCard(sorted);
+        if (straights.length > 0) return true;
+
+        // 检查飞机
+        const feiji = findFeiji(sorted);
+        if (feiji.length > 0) return true;
+
+        // 检查三带二
+        const threeWithTwo = hasfindThreeWithTwo(sorted);
+        if (threeWithTwo.length > 0) return true;
+
+        // 检查三连对
+        const liandui = findLiandui(sorted);
+        if (liandui.length > 0) return true;
+
+        // 同花顺（如果你支持）
+        const tonghuashun = findFlushStraight(sorted);
+        if (tonghuashun.length > 0) return true;
+
+        return false;
+    }
+
+    function hasfindThreeWithTwo(cards: number[]): number[][] {
+        const result: number[][] = [];
+        const map = getCardCountMap(cards);
+
+        const triples: number[][] = [];
+        const pairs: number[][] = [];
+
+        for (const list of map.values()) {
+            if (list.length === 3) {
+                triples.push([...list]);
+            } else if (list.length === 2) {
+                pairs.push([...list]);
+            } else if (list.length > 3) {
+                // 比如四张，可以拆成 3+1 参与三带
+                triples.push(list.slice(0, 3));
+            }
+        }
+
+        for (const tri of triples) {
+            for (const pair of pairs) {
+                const total = [...tri, ...pair];
+                // 保证三带二是完整 5 张牌，且两组牌点不同
+                if (new Set(total.map(c => getCardSize(c))).size >= 2) {
+                    result.push(total);
+                }
             }
         }
 

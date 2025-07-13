@@ -4,6 +4,8 @@
         "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
         "version": "Windows 10 Pro"
     },
-    "sceneListMap": {},
+    "sceneListMap": {
+        "8cd0fb05-2535-4c33-abbf-584bac560df0": "D:\\xuhang\\guan_dan\\assets\\scenes\\Game.scene"
+    },
     "deviceMd5": "6735e8106567caa89dc6206aad3dd28d"
 }
