@@ -734,6 +734,28 @@ export module GameLogic {
         selectedHistory = [];
     }
 
+    function checkIfSameColorOrFengRenPei(straight: number[]): boolean {
+        // 检查是否为同花顺
+        const firstCardColor = straight[0] % 4;
+        const isSameColor = straight.every(card => card % 4 === firstCardColor);
+
+        // 检查是否为逢人配：即选中的牌是连续的，且任意花色
+        const sortedStraight = straight.sort((a, b) => a - b);
+        const isFengRenPei = isFengRenPeiSorted(sortedStraight);
+
+        return isSameColor || isFengRenPei;
+    }
+
+    function isFengRenPeiSorted(sortedCards: number[]): boolean {
+        // 判断是否是连续的顺子
+        for (let i = 1; i < sortedCards.length; i++) {
+            if (sortedCards[i] !== sortedCards[i - 1] + 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     let selectedHistory: number[] = []
     export function moveSelectedCardsToBack(cards: number[], selected: number[], prevSelected: number[], prevGrouped: number[][]): number[][] {
         const result: number[][] = [];
@@ -750,7 +772,14 @@ export module GameLogic {
             }
         }
 
-        // ✅ 步骤2：识别这次新选中的三带二组合（只识别当前选中的）
+        // ✅ 步骤2：识别炸弹（六炸、五炸、四炸等）包括红心级牌
+        const bombs = findBombsWithHeartCard(selected.filter(c => !usedCards.has(c)));
+        for (let bomb of bombs) {
+            result.unshift(bomb);  // 将炸弹放在最左边
+            bomb.forEach(c => usedCards.add(c));  // 标记炸弹牌已使用
+        }
+
+        // ✅ 步骤3：识别三带二
         let triple: number[] = [];
         let pair: number[] = [];
 
@@ -766,27 +795,34 @@ export module GameLogic {
             group.forEach(c => usedCards.add(c));
         }
 
-        // ✅ 步骤3：识别飞机
+        // ✅ 步骤4：识别飞机
         const triplets = findFeiji(selected.filter(c => !usedCards.has(c)));
         for (let group of triplets) {
             moveToBack.push(group);
             group.forEach(c => usedCards.add(c));
         }
 
+        // ✅ 步骤5：识别顺子
         const straights = findStraightByCard(selected.filter(c => !usedCards.has(c)));
         for (let s of straights) {
-            moveToBack.push(s);
+            // 检查是否是同花顺或逢人配
+            const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
+            if (isSameColorStraight) {
+                result.unshift(s);  // 将同花顺或逢人配放在最左边
+            } else {
+                moveToBack.push(s);
+            }
             s.forEach(c => usedCards.add(c));
         }
 
-        // ✅ 连对识别
+        // ✅ 步骤6：连对识别
         const lianduiGroups = findLiandui(selected.filter(c => !usedCards.has(c)));
         for (let group of lianduiGroups) {
             moveToBack.push(group);
             group.forEach(c => usedCards.add(c));
         }
 
-        // ✅ 步骤3：将剩余未处理的牌按点数分组
+        // ✅ 步骤7：将剩余未处理的牌按点数分组
         const remaining = cards.filter(card => !usedCards.has(card));
         const sortValue = sortCardsBySizeDown(remaining, remaining.length);
         const uniqueList = getUniqueCard(sortValue);
@@ -828,8 +864,55 @@ export module GameLogic {
             }
         }
 
-        return result.concat(moveToBack);
+        // 最后返回结果，炸弹已经在最前面
+        return [...result, ...moveToBack];
+
     }
+
+    function findBombsWithHeartCard(cards: number[]): number[][] {
+        const countMap = getCardCountMap(cards);  // 获取每个点数的牌组
+        const bombs: number[][] = [];
+        const heartCards = cards.filter(card => isHeartCard(card));  // 识别红心级牌
+
+        // 查找六炸、五炸、四炸（即三个、四个、五个相同点数的牌 + 红心级牌）
+        for (const [rank, list] of countMap) {
+            // 识别普通炸弹（四个或更多相同点数的牌）
+            if (list.length >= 4) {
+                bombs.push(list);  // 形成炸弹
+            }
+
+            // 对于三张相同点数的牌，检查是否有逢人配来组成炸弹
+            if (list.length === 3) {
+                // 找到剩余的牌，检查是否有红心级牌
+                const remainingCards = cards.filter(card => card !== list[0]);
+                const sortedRemainingCards = remainingCards.sort((a, b) => a - b);
+
+                // 判断是否能通过红心级牌补充
+                const heartCard = heartCards.find(card => !remainingCards.includes(card));
+
+                if (heartCard) {
+                    // 如果有逢人配，可以扩展成四炸、五炸或六炸
+                    if (list.length === 3) {
+                        bombs.push([...list, heartCard]);  // 形成四炸
+                    } else if (list.length === 4) {
+                        bombs.push([...list, heartCard]);  // 形成五炸
+                    } else if (list.length === 5) {
+                        bombs.push([...list, heartCard]);  // 形成六炸
+                    }
+                }
+            }
+        }
+
+        return bombs;
+    }
+
+    // 用来识别红心级牌，假设红心牌的规则是通过 card % 16 获取花色
+    function isHeartCard(card: number): boolean {
+        const rank = card % 16;
+        return rank === GlobalData.cardInfo.levelCard;  // 例如，这里假设 `levelCard` 为红心2或其它特殊牌
+    }
+
+
 
     export function getCardGroupsByOrder(cards: number[]): number[][] {
         const groupList: number[][] = [];
@@ -918,6 +1001,37 @@ export module GameLogic {
         if (cards.length === 2 && getCardSize(cards[0]) === getCardSize(cards[1])) {
             return GameDefine.KIND_CARDS_2;
         }
+        const map = getCardCountMap(cards);
+        var hasLevelCard: boolean = false;
+        for (const list of map.values()) {
+            if (list.length >= 4 && list.length === cards.length) {
+                switch (list.length) {
+                    case 4:
+                        return GameDefine.KIND_CARDS_BOMB_45;  // 四炸
+                    case 5:
+                        return GameDefine.KIND_CARDS_BOMB_45;  // 五炸
+                    case 6:
+                        return GameDefine.KIND_CARDS_BOMB_678;  // 六炸
+                    default:
+                        return GameDefine.KIND_CARDS_BOMB_678; // 六张以上大炸
+                }
+            }
+            else {
+                if (list.length == 1) {
+                    for (let i = 0; i < list.length; i++) {
+                        var rank = list[i] % 16;
+                        if (rank === GlobalData.cardInfo.levelCard) {
+                            continue;
+                        }
+                    }
+                }
+                else {
+
+                }
+
+
+            }
+        }
         if (cards.length === 5) {
             const map = getCardCountMap(cards);
             let hasTriple = false;
@@ -950,8 +1064,6 @@ export module GameLogic {
             }
 
         }
-
-
 
         // ✅ 顺子判断（支持长度 >= 5）
         if (cards.length == 5) {
@@ -988,22 +1100,6 @@ export module GameLogic {
         //         return GameDefine.KIND_CARDS_BOMB_KING2; // 自定义王炸类型
         //     }
         // }
-
-        const map = getCardCountMap(cards);
-        for (const list of map.values()) {
-            if (list.length >= 4 && list.length === cards.length) {
-                switch (list.length) {
-                    case 4:
-                        return GameDefine.KIND_CARDS_BOMB_45;  // 四炸
-                    case 5:
-                        return GameDefine.KIND_CARDS_BOMB_45;  // 五炸
-                    case 6:
-                        return GameDefine.KIND_CARDS_BOMB_678;  // 六炸
-                    default:
-                        return GameDefine.KIND_CARDS_BOMB_678; // 六张以上大炸
-                }
-            }
-        }
 
         // ... 判断三带、顺子、连对、炸弹等
         return GameDefine.KIND_CARDS_ERROR;
@@ -1728,6 +1824,32 @@ export module GameLogic {
         return map;
     }
 
+    export function getCardCountMap_I(cards: number[]): Map<number, number[]> {
+        const map = new Map<number, number[]>();
+        const heartCards: number[] = [];  // 用于存储红心级牌（逢人配）
+
+        // 统计每个点数的牌
+        for (const card of cards) {
+            const rank = card % 16;  // 获取牌的点数（去掉花色）
+            const isHeartCardRank = isHeartCard(card);
+            if (!map.has(rank)) {
+                map.set(rank, [])
+            }
+            map.get(rank)!.push(card);
+        }
+
+        // // 将红心级牌（逢人配）映射到 `map` 中
+        // for (const heartCard of heartCards) {
+        //     const rank = heartCard % 16;  // 获取红心级牌的点数
+        //     if (!map.has(rank)) {
+        //         map.set(rank, []);
+        //     }
+        //     map.get(rank)!.push(heartCard);  // 将红心级牌添加到对应的点数分组中
+        // }
+
+        return map;
+    }
+
     export function findBombs(cards: number[]): number[][] {
         const map = this.getCardCountMap(cards);
         const results: number[][] = [];
@@ -1873,8 +1995,8 @@ export module GameLogic {
         findBombsByCount(getUnused(), 4).forEach(g => pushAndMark(g));  // 四炸
 
         // ===== 杂牌型，放在后面 =====
-        const straightList = findStraight(getUnused());
-        const threeWithList = findThreeWithTwoBy(getUnused());
+        var straightList = findStraight(getUnused());
+        var threeWithList = findThreeWithTwoBy(getUnused());
 
         if (straightList.length === 1) {
             straightList.forEach(g => pushAndMark(g, false)); // 顺子
@@ -1884,11 +2006,12 @@ export module GameLogic {
                 findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
             }
             else {
-                threeWithList.forEach(g => pushAndMark(g, false)); // 所有顺子
+                threeWithList.forEach(g => pushAndMark(g, false));
             }
             // findThreeWithTwoBy(getUnused(), usedIndex, 2).forEach(g => pushAndMark(g, false)); // 三带二（尽可能两组）
-        } else {
-            straightList.forEach(g => pushAndMark(g, false)); // 所有顺子
+        } else {//说明顺子超过2组
+            findStraight_I(getUnused()).forEach(g => pushAndMark(g, false));
+            findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
         }
 
 
@@ -2099,6 +2222,51 @@ export module GameLogic {
         }
 
         return results;
+    }
+
+    /** 查找顺子（最多返回两组） */
+    export function findStraight_I(cards: number[]): number[][] {
+        const map = new Map<number, number[]>();
+
+        // 构建 rank -> cards 映射（过滤大小王）
+        for (const card of cards) {
+            const rank = getCardSize(card);
+            if (rank < 3 || rank > 14) continue; // 3~A
+            if (!map.has(rank)) map.set(rank, []);
+            map.get(rank).push(card);
+        }
+
+        const ranks = Array.from(map.keys()).sort((a, b) => a - b);
+        const result: number[][] = [];
+
+        // 查找顺子
+        for (let i = 0; i <= ranks.length - 5; i++) {
+            const seq = ranks.slice(i, i + 5);
+            let isConsecutive = true;
+            for (let j = 1; j < 5; j++) {
+                if (seq[j] !== seq[j - 1] + 1) {
+                    isConsecutive = false;
+                    break;
+                }
+            }
+
+            if (isConsecutive) {
+                const straight: number[] = [];
+                for (const rank of seq) {
+                    straight.push(map.get(rank).pop());
+                    if (map.get(rank).length === 0) map.delete(rank);
+                }
+                result.push(straight);
+                i += 4; // 跳过这段，防止重复重叠
+            }
+        }
+
+        // 返回最小的顺子
+        if (result.length > 0) {
+            return [result[0]]; // 取最小的顺子
+        } else {
+            return []; // 没有顺子
+        }
     }
 
     /** 查找顺子（点数连续的单牌，最少5张） */

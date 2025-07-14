@@ -1436,6 +1436,8 @@ export class CardLayer extends Component {
         );
         console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
         GlobalData.cardInfo.sortCard = true;
+        this.picHuifuDir.node.active = true;
+        this.picCardDir.node.active = false;
         // ✅ 更新手牌
         this.handCardsValue = this.groupedCards.flat();
         this.setHandCards(this.handCardsValue);

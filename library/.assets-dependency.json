@@ -50,6 +50,57 @@
     ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\card\\a_cards.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\card\\a_cards.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dzz_cj_wl.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dzz_cj_wl.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\gangban.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\gangban.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\jiefeng.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\jiefeng.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sandaiyidui.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sandaiyidui.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sanbudai.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sanbudai.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\shunzi.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\shunzi.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\pipei.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\pipei.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\loading\\loading.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\loading\\loading.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rank\\rank.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rank\\rank.png"
     ]
   },
   "uuid": {
@@ -90,6 +141,45 @@
       "1242ff07-ab08-4c5f-8669-1560348ee2a7@6c48a"
     ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\match\\serch.json": [
+      "5dbdab4f-6c9d-44b6-b56f-253da34874dd@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.json": [
+      "e82e7b6e-5561-4186-971a-259fbcdfe877@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dzz_cj_wl.json": [
+      "92045f95-3c3c-48f2-a2c9-9a5e3ad582ba@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\gangban.json": [
+      "493c4308-36a7-444c-8039-d286060511a5@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\jiefeng.json": [
+      "5025e615-9f76-41b5-97e3-5863656ca576@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.json": [
+      "89619051-4fb7-4466-8638-f676483f6dea@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sanbudai.json": [
+      "0e26cd57-4232-4b77-a681-49e6c1a2a549@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sandaiyidui.json": [
+      "b2edef24-6197-4bb6-bb5a-0b86e615c3f7@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\shunzi.json": [
+      "4f1810d3-4659-443d-b807-56b4ab1c9610@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.json": [
+      "ddb1c143-5499-41be-8201-a7b68b20f9c4@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.json": [
+      "efaae7fd-1003-47d3-aff4-1e9e4f4e26ef@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.json": [
+      "d6cb9cbc-0915-4784-bf17-576ada8335e9@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\pipei.json": [
+      "1242ff07-ab08-4c5f-8669-1560348ee2a7@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.json": [
       "5dbdab4f-6c9d-44b6-b56f-253da34874dd@6c48a"
     ]
   }
