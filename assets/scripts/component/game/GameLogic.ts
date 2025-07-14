@@ -1261,9 +1261,10 @@ export module GameLogic {
             .filter(([_, list]) => list.length >= 3)
             .sort((a, b) => a[0] - b[0]);  // 三张牌点数升序
 
+        // ✅ 只允许真正的对子（不能从三条或炸弹拆）
         const pairs = Array.from(countMap.entries())
-            .filter(([_, list]) => list.length >= 2)
-            .sort((a, b) => a[0] - b[0]);  // 对子牌点数升序
+            .filter(([_, list]) => list.length === 2)
+            .sort((a, b) => a[0] - b[0]);
 
         const used = new Set<number>(); // 避免重复使用同一张牌
 
@@ -1283,17 +1284,17 @@ export module GameLogic {
                 ];
 
                 // 标记为已使用
-                [triple[0], triple[1], triple[2], pair[0], pair[1]].forEach(c => used.add(c));
+                group.forEach(c => used.add(c));
                 result.push(group);
                 break; // 每组三带二只找一个对子
             }
 
             if (result.length >= maxCount) {
                 return result;
-            };
+            }
         }
 
-        return result; // 如果只找到一组也返回，不为空就行
+        return result;
     }
 
     function findThreeWithTwo(cards: number[], usedIndex: Set<number>, maxCount: number = 1): number[][] {
@@ -1302,27 +1303,28 @@ export module GameLogic {
         // 分组：按点数归类（排除特殊点数：大小王、参谋、级牌 2）
         for (const card of cards) {
             const rank = card % 16;
-            if (rank <= GlobalData.cardInfo.levelCard || rank >= 14) continue;  // ❌ 排除 2、大王、小王、参谋
+            if (rank <= GlobalData.cardInfo.levelCard || rank >= 14) continue;  // 排除大小王/参谋/级牌
             if (!countMap.has(rank)) countMap.set(rank, []);
             countMap.get(rank)!.push(card);
         }
 
-        // 找到所有满足条件的三张、对子
+        // 找所有三张
         const triples = Array.from(countMap.entries())
             .filter(([_, list]) => list.length >= 3)
             .sort((a, b) => a[0] - b[0]); // 最小的三张优先
 
+        // 找所有对子（⚠️ 只找那些 list.length === 2，不能从三张拆）
         const pairs = Array.from(countMap.entries())
-            .filter(([_, list]) => list.length >= 2)
-            .sort((a, b) => a[0] - b[0]); // 最小的对子优先
+            .filter(([_, list]) => list.length === 2)
+            .sort((a, b) => a[0] - b[0]); // 最小对子优先
 
-        // 尝试组合三带二（点数不同）
+        // 尝试组合三带二（三张 + 另一对）
         for (const [tripleRank, tripleCards] of triples) {
             for (const [pairRank, pairCards] of pairs) {
                 if (tripleRank !== pairRank) {
                     return [[
                         ...tripleCards.slice(0, 3),
-                        ...pairCards.slice(0, 2),
+                        ...pairCards
                     ]];
                 }
             }
@@ -1792,22 +1794,39 @@ export module GameLogic {
  * @returns 牌组数组，每组为 count 张相同点数的牌
  */
     export function findBombsByCount(cards: number[], count: number): number[][] {
+        const result: number[][] = [];
         const map = new Map<number, number[]>();
+        const frpCards: number[] = []; // 红桃级牌列表
 
+        // 分类：分出红桃级牌和普通牌
         for (const card of cards) {
             const rank = card % 16;
-            if (!map.has(rank)) {
-                map.set(rank, []);
+            const color = Math.floor(card / 16);
+            if (rank === GlobalData.cardInfo.levelCard && color === 2) {
+                frpCards.push(card);
+            } else {
+                if (!map.has(rank)) map.set(rank, []);
+                map.get(rank).push(card);
             }
-            map.get(rank).push(card);
         }
 
-        const result: number[][] = [];
-        for (const group of map.values()) {
-            if (group.length >= count) {
-                // 若多于 count 张相同牌，可以拆出多组炸弹
-                for (let i = 0; i + count <= group.length; i += count) {
-                    result.push(group.slice(i, i + count));
+        const usedFrp = new Set<number>(); // 红桃级牌使用记录
+
+        for (const [rank, group] of map.entries()) {
+            const fullCount = Math.floor(group.length / count); // 能组成几组完整炸弹
+            for (let i = 0; i < fullCount; i++) {
+                result.push(group.slice(i * count, (i + 1) * count));
+            }
+
+            // 如果还能组成 count-1 张，尝试补一张红桃级牌
+            const remain = group.slice(fullCount * count);
+            if (remain.length === count - 1) {
+                for (const frp of frpCards) {
+                    if (!usedFrp.has(frp)) {
+                        result.push([...remain, frp]);
+                        usedFrp.add(frp);
+                        break;
+                    }
                 }
             }
         }
@@ -1914,48 +1933,79 @@ export module GameLogic {
 
     /** 查找同花顺（同一花色的顺子，至少5张） */
     export function findFlushStraight(cards: number[]): number[][] {
+        const result: number[][] = [];
+
+        const redTrumpCards: number[] = [];
+        const usedFrp = new Set<number>();
+
         const colorMap = new Map<number, number[]>();
 
+        // 分组：红桃级牌 + 花色分组
         for (const card of cards) {
             const rank = card % 16;
             const color = Math.floor(card / 16);
+
             if (rank < 3 || rank > 14) continue;
 
-            if (!colorMap.has(color)) colorMap.set(color, []);
-            colorMap.get(color).push(card);
+            if (color === 2 && rank === GlobalData.cardInfo.levelCard) {
+                redTrumpCards.push(card); // 红桃级牌
+            } else {
+                if (!colorMap.has(color)) colorMap.set(color, []);
+                colorMap.get(color).push(card);
+            }
         }
 
-        const result: number[][] = [];
-
-        for (const group of colorMap.values()) {
-            // 分析同花色牌
+        for (const [color, colorCards] of colorMap.entries()) {
             const rankMap = new Map<number, number[]>();
-            for (const card of group) {
+            for (const card of colorCards) {
                 const rank = card % 16;
                 if (!rankMap.has(rank)) rankMap.set(rank, []);
                 rankMap.get(rank).push(card);
             }
 
-            const ranks = Array.from(rankMap.keys()).sort((a, b) => a - b);
+            const sortedRanks = Array.from(rankMap.keys()).sort((a, b) => a - b);
 
-            for (let i = 0; i <= ranks.length - 5; i++) {
-                const seq = ranks.slice(i, i + 5);
-                let isConsecutive = true;
-                for (let j = 1; j < 5; j++) {
-                    if (seq[j] !== seq[j - 1] + 1) {
-                        isConsecutive = false;
-                        break;
+            for (let start = 3; start <= 10; start++) {
+                const sequence = [start, start + 1, start + 2, start + 3, start + 4];
+                const straight: number[] = [];
+                const tempPopped: [number, number][] = []; // [rank, card]
+                let missing = 0;
+
+                for (const r of sequence) {
+                    const list = rankMap.get(r);
+                    if (list && list.length > 0) {
+                        const c = list.pop();
+                        straight.push(c);
+                        tempPopped.push([r, c]);
+                        if (list.length === 0) rankMap.delete(r);
+                    } else {
+                        missing++;
                     }
                 }
 
-                if (isConsecutive) {
-                    const straight: number[] = [];
-                    for (const rank of seq) {
-                        straight.push(rankMap.get(rank).pop());
-                        if (rankMap.get(rank).length === 0) rankMap.delete(rank);
-                    }
+                if (missing === 0) {
                     result.push(straight);
-                    i += 4;
+                    start += 4;
+                } else if (missing === 1) {
+                    const frp = redTrumpCards.find(c => !usedFrp.has(c));
+                    if (frp !== undefined) {
+                        straight.push(frp);
+                        usedFrp.add(frp);
+                        result.push(straight);
+                        start += 4;
+                    } else {
+                        // 恢复
+                        for (const [r, c] of tempPopped) {
+                            if (!rankMap.has(r)) rankMap.set(r, []);
+                            rankMap.get(r).push(c);
+                        }
+                    }
+                } else {
+                    // 恢复
+                    for (const [r, c] of tempPopped) {
+                        if (!rankMap.has(r)) rankMap.set(r, []);
+                        rankMap.get(r).push(c);
+                    }
                 }
             }
         }
@@ -2057,7 +2107,7 @@ export module GameLogic {
 
         // 构建 rank -> cards 映射（过滤大小王）
         for (const card of cards) {
-            const rank = card % 16;
+            const rank = getCardSize(card);
             if (rank < 3 || rank > 14) continue; // 3~A
             if (!map.has(rank)) map.set(rank, []);
             map.get(rank).push(card);
@@ -2108,7 +2158,7 @@ export module GameLogic {
         for (const card of cards) {
             const rank = card % 16;
             // 过滤大小王
-            if (rank === 14 || rank === 15) continue;
+            // if (rank === 14 || rank === 15) continue;
 
             if (!map.has(rank)) {
                 map.set(rank, []);
@@ -2140,6 +2190,54 @@ export module GameLogic {
         return result;
     }
 
+    function isSingleCardStronger(card: number, target: number, levelRank: number): boolean {
+        const rankA = card % 16;
+        const rankB = target % 16;
+
+        const isJokerA = rankA >= 14;
+        const isJokerB = rankB >= 14;
+
+        const isLevelA = rankA === levelRank;
+        const isLevelB = rankB === levelRank;
+
+        // 不能压王
+        if (isJokerB) {
+            return isJokerA && rankA > rankB; // 只能大王压小王
+        }
+
+        // 级牌能压除王以外的所有牌
+        if (isLevelA && !isJokerB) return true;
+
+        return compareCardSize(card, target) > 0;
+    }
+
+    function isSamePointWithFrp(group: number[], levelRank: number): boolean {
+        if (group.length < 4) return false;
+
+        let mainRank: number | null = null;
+        let frpCount = 0;
+
+        for (const card of group) {
+            const rank = card % 16;
+            const color = Math.floor(card / 16);
+
+            const isFrp = rank === levelRank && color === 2;
+
+            if (isFrp) {
+                frpCount++;
+                continue;
+            }
+
+            if (mainRank === null) {
+                mainRank = rank;
+            } else if (rank !== mainRank) {
+                return false;
+            }
+        }
+
+        return frpCount <= 1; // 允许最多 1 张红桃级牌，其余必须相同点数
+    }
+
     export function getHintCards(targetCards: number[], groupedCards: number[][]): number[][] {
         const hintList: number[][] = [];
 
@@ -2157,7 +2255,7 @@ export module GameLogic {
                     const group = groupedCards[i];
                     if (group.length === 1) {
                         const card = group[0];
-                        if (compareCardSize(card, targetCards[0]) > 0) {
+                        if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
                             hintList.push([card]);
                         }
                     }
@@ -2169,7 +2267,7 @@ export module GameLogic {
                         const group = groupedCards[i];
                         if (group.length === 2) {
                             const card = group[0];
-                            if (compareCardSize(card, targetCards[0]) > 0) {
+                            if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
                                 hintList.push([card]);
                             }
                         }
@@ -2181,7 +2279,7 @@ export module GameLogic {
                         const group = groupedCards[i];
                         if (group.length === 3) {
                             const card = group[0];
-                            if (compareCardSize(card, targetCards[0]) > 0) {
+                            if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
                                 hintList.push([card]);
                             }
                         }
@@ -2191,17 +2289,19 @@ export module GameLogic {
                 if (hintList.length === 0) {
                     for (let i = groupedCards.length - 1; i >= 0; i--) {
                         const group = groupedCards[i];
-                        if (group.length >= 4) {
-                            // const groupRank = getCompareSize(group[0]);
-                            // const targetRank = getCompareSize(targetCards[0]);
 
-                            // if (groupRank > targetRank) {
-                            hintList.push([...group]);
-                            // }
+                        // 只判断是否为炸弹（四张及以上，同点数）
+                        if (group.length == 4) {
+                            const rank = group[0] % 16;
+                            const isBomb = group.every(card => card % 16 === rank);
+
+                            if (isBomb) {
+                                hintList.push([...group]); // 不需要比较大小，炸弹就是万能压单
+                                break;
+                            }
                         }
                     }
                 }
-
                 break;
 
             case GameDefine.KIND_CARDS_2:
@@ -2257,9 +2357,19 @@ export module GameLogic {
                 // ✅ 找更大的炸弹
                 for (let i = groupedCards.length - 1; i >= 0; i--) {
                     const group = groupedCards[i];
+
                     if (group.length >= 4) {
+                        // ✅ 点数必须全部一致，才是炸弹
+                        const isBomb = isSamePointWithFrp(group, GlobalData.cardInfo.levelCard);
+
+                        if (!isBomb) continue;
+
                         const groupRank = GameLogic.getCardSize(group[0]);
-                        if (group.length > targetCards.length || (group.length === targetCards.length && groupRank > targetMainSize)) {
+
+                        if (
+                            group.length > targetCards.length ||
+                            (group.length === targetCards.length && groupRank > targetMainSize)
+                        ) {
                             hintList.push([...group]);
                         }
                     }
@@ -2277,8 +2387,8 @@ export module GameLogic {
                 for (const cards of colorGroups.values()) {
                     const sorted = cards
                         .filter(c => {
-                            const s = GameLogic.getCardSize(c);
-                            return s >= 3 && s <= 14;
+                            const rank = c % 16;
+                            return (rank >= 3 && rank <= 13) || rank === GlobalData.cardInfo.levelCard;
                         })
                         .sort((a, b) => GameLogic.getCardSize(a) - GameLogic.getCardSize(b));
 
@@ -2324,6 +2434,7 @@ export module GameLogic {
                 for (let i = groupedCards.length - 1; i >= 0; i--) {
                     const group = groupedCards[i];
                     if (group.length >= 6) {
+                        if (!isSamePointWithFrp(group, GlobalData.cardInfo.levelCard)) continue;
                         const groupRank = GameLogic.getCardSize(group[0]);
                         if (groupRank > targetMainSize) {
                             hintList.push([...group]);

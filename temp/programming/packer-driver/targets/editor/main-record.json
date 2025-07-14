@@ -535,7 +535,7 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 120002713.11829999,
+      "mTimestamp": 207568120.8858,
       "chunkId": "978b22243191fdd96aabdcebbba296d0810bc72d",
       "imports": [
         {
@@ -5851,10 +5851,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts": {
       "mTimestamp": {
-        "mtime": 1752416733508.559,
+        "mtime": 1752504301328.2632,
         "uuid": "644aa24f-acd0-4a8d-877c-c0d1525639e6"
       },
-      "chunkId": "35d1826e220b883c2ef20aab30688095bdafa8dd",
+      "chunkId": "4ba3328fc1a8c9b3faab60dc1dae3effa23a4b6e",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
