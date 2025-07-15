@@ -443,61 +443,33 @@ export module GameLogic {
     }
     //剔除固定牌值,返回剩余
     export function getRemainCardsByDelete(value: number[], deleteCards: number[], keepOrder: boolean = false, select: number[] = [], prevSelected: number[] = []) {
-        // let delList: number[] = utils.deepCopy(deleteCards);
-        // let remainCards = [];
-        // let deleteIdx: number[] = [];
-        // let tmpList: number[] = [];
+        let delList: number[] = utils.deepCopy(deleteCards);
+        let remainCards = [];
+        let deleteIdx: number[] = [];
+        let tmpList: number[] = [];
 
-        // let sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder, select, prevSelected);
-        // for (let i = 0; i < sameSizeList.length; i++) {
-        //     const list = sameSizeList[i];
-        //     for (let j = list.length - 1; j >= 0; j--) {
-        //         tmpList.push(list[j]);
-        //     }
-        // }
-        // for (let i = 0; i < tmpList.length; i++) {
-        //     let find = false;
-        //     for (let j = 0; j < delList.length; j++) {
-        //         if (tmpList[i] == delList[j]) {
-        //             delList.splice(j, 1);
-        //             deleteIdx.push(i);
-        //             find = true;
-        //             break;
-        //         }
-        //     }
-        //     if (!find) {
-        //         remainCards.push(tmpList[i]);
-        //     }
-        // }
-        // // }
-        // return { cards: remainCards, idxs: deleteIdx };
-        const remainCards: number[] = [];
-        const deleteIdx: number[] = [];
-
-        const sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder, select, prevSelected);
-        const flatList: number[] = [];
-
-        for (const list of sameSizeList) {
+        let sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder);
+        for (let i = 0; i < sameSizeList.length; i++) {
+            const list = sameSizeList[i];
             for (let j = list.length - 1; j >= 0; j--) {
-                flatList.push(list[j]);
+                tmpList.push(list[j]);
             }
         }
-
-        // 精确匹配：逐个从 delList 中找匹配项（保留原始索引）
-        const usedSet = new Set<number>();  // 标记已经删除的牌（精确牌值）
-
-        for (let i = 0; i < flatList.length; i++) {
-            const card = flatList[i];
-            const indexInDelete = deleteCards.findIndex(c => c === card && !usedSet.has(c));
-
-            if (indexInDelete !== -1) {
-                usedSet.add(card);  // 标记这张牌已经删除（防止重复删）
-                deleteIdx.push(i);
-            } else {
-                remainCards.push(card);
+        for (let i = 0; i < tmpList.length; i++) {
+            let find = false;
+            for (let j = 0; j < delList.length; j++) {
+                if (tmpList[i] == delList[j]) {
+                    delList.splice(j, 1);
+                    deleteIdx.push(i);
+                    find = true;
+                    break;
+                }
+            }
+            if (!find) {
+                remainCards.push(tmpList[i]);
             }
         }
-
+        // }
         return { cards: remainCards, idxs: deleteIdx };
     }
     //获取唯一值  从大到小排序
@@ -525,7 +497,7 @@ export module GameLogic {
         return sortCardsBySizeDown(tmpList, tmpList.length);
     }
     //数组[[2,2],[3,3,3]] (从大到小)
-    export function getSameCardSizeList(value: number[], keepOrder: boolean = false, select: number[] = [], prevSelected: number[] = []) {
+    export function getSameCardSizeList(value: number[], keepOrder: boolean = false) {
         if (!keepOrder) {
             let tmpList: number[][] = [];
             let sortValue = sortCardsBySizeDown(value, value.length);
@@ -550,10 +522,6 @@ export module GameLogic {
             // console.log("tmpList---> ", tmpList);
             return tmpList;
         }
-        // else {
-        //     return moveSelectedCardsToBack(value, select, prevSelected, []);
-        // }
-
     }
 
     function findStraightByCard(cards: number[]): number[][] {
@@ -2755,6 +2723,10 @@ export module GameLogic {
         // 排序（牌点从小到大）
         hintList.sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
 
+        // for (let i = 0; i < hintList.length; i++) {
+        //     let lits = hintList[i];
+        //     printCardDetails(lits);
+        // }
         return hintList;
     }
 
@@ -3082,4 +3054,83 @@ export module GameLogic {
 
         return bombs;
     }
+
+    export function printCardDetails(cards: number[][], isServer: boolean = true): void {
+        const result = cards.map(group => {
+            return group.map(card => {
+                const color = Math.floor(card / 16); // 获取花色（通过除以16）
+                const rank = card % 16; // 获取点数（通过取余16）
+                return `[${getCardColorByName(color)} ${getCardRank(rank)}]`;
+            });
+        });
+
+        console.log(JSON.stringify(result));
+    }
+
+    export function printCardList(cards: number[]): void {
+        const result = cards.map(card => {
+            const color = Math.floor(card / 16); // 获取花色
+            const rank = card % 16;              // 获取点数
+            return `[${getCardColorByName(color)}, ${getCardRank(rank)}]`;
+        });
+
+        console.log(`出牌>>>>{ ${result.join(', ')} }`);
+    }
+
+    // 获取花色名称
+    function getCardColorByName(color: number): string {
+        //客户端 黑 红 梅 方
+        //       3  2  1  0
+        // let tmpColor = value % 10;
+        //     let tmpSize = Math.floor(value / 10);
+        //     //牌色转换
+        //     if (tmpColor == 1) { tmpColor = 2 }//红
+        //     else if (tmpColor == 2) { tmpColor = 0 }//方
+        //     else if (tmpColor == 3) { tmpColor = 1 }//梅
+        //     else if (tmpColor == 4) { tmpColor = 3 }//黑
+        //     else if (tmpColor == 5) { tmpColor = 4 }//小王,大王
+        //     //牌值转换
+        //     if (tmpSize == 14) { tmpSize = 1 }
+        //     else if (tmpSize == 15) { tmpSize = 14 }
+        //     else if (tmpSize == 16) { tmpSize = 15 }
+
+        switch (color) {
+            case 3: return "♠"; // 黑桃
+            case 2: return "♥"; // 红心
+            case 1: return "♣";  // 梅花
+            case 0: return "方块"; // 方块
+            case 4: return "大王，小王"
+            default: return "Unknown";
+        }
+    }
+
+    // 获取点数名称
+    function getCardRank(rank: number): string {
+        // let card = value % 16;
+        //     if (card == 1)
+        //         return 14;
+        //     else if (card == GlobalData.cardInfo.levelCard)
+        //         // 王>级牌>1
+        //         return 15;
+        //     else if (card == 14)
+        //         return 16;
+        //     else if (card == 15)
+        //         return 17;
+        //     return card;
+        switch (rank) {
+            case 14: return "A"; // A
+            case 11: return "J"; // J
+            case 12: return "Q"; // Q
+            case 13: return "K"; // K
+            case 15: return "2"; // 2
+            // case 15: return "红心2"; // 3
+            case 16: return "小王";
+            case 17: return "大王";
+            // 处理点数
+            default: return rank.toString(); // 其他数字牌
+        }
+    }
 }
+
+
+

@@ -137,6 +137,12 @@ export class CardItem extends Component {
         this.cardColor = 0;
         this.cardSize = 0;
         this.index = null;
+        this.showTonghua(false);
+        this.showThreeTwo(false);
+        this.showWangza(false);
+        this.showShunzi(false);
+        this.showliandui(false);
+        this.showBomb(3);
     }
 }
 
