@@ -1,3 +1,4 @@
+import { Game } from "cc";
 import { utils } from "../../common/utils";
 import { GlobalData } from "../../manager/GlobalData";
 import { SoundManager } from "../../manager/SoundManager";
@@ -442,49 +443,61 @@ export module GameLogic {
     }
     //剔除固定牌值,返回剩余
     export function getRemainCardsByDelete(value: number[], deleteCards: number[], keepOrder: boolean = false, select: number[] = [], prevSelected: number[] = []) {
-        let delList: number[] = utils.deepCopy(deleteCards);
-        let remainCards = [];
-        let deleteIdx: number[] = [];
-        // if (GlobalData.cardInfo.cardDir) {
-        //     for (let i = 0; i < value.length; i++) {
-        //         let find = false;
-        //         for (let j = 0; j < delList.length; j++) {
-        //             if (value[i] == delList[j]) {
-        //                 delList.splice(j, 1);
-        //                 deleteIdx.push(i);
-        //                 find = true;
-        //                 break;
-        //             }
-        //         }
-        //         if (!find) {
-        //             remainCards.push(value[i]);
+        // let delList: number[] = utils.deepCopy(deleteCards);
+        // let remainCards = [];
+        // let deleteIdx: number[] = [];
+        // let tmpList: number[] = [];
+
+        // let sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder, select, prevSelected);
+        // for (let i = 0; i < sameSizeList.length; i++) {
+        //     const list = sameSizeList[i];
+        //     for (let j = list.length - 1; j >= 0; j--) {
+        //         tmpList.push(list[j]);
+        //     }
+        // }
+        // for (let i = 0; i < tmpList.length; i++) {
+        //     let find = false;
+        //     for (let j = 0; j < delList.length; j++) {
+        //         if (tmpList[i] == delList[j]) {
+        //             delList.splice(j, 1);
+        //             deleteIdx.push(i);
+        //             find = true;
+        //             break;
         //         }
         //     }
-        // } else {
-        let tmpList: number[] = [];
-
-        let sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder, select, prevSelected);
-        for (let i = 0; i < sameSizeList.length; i++) {
-            const list = sameSizeList[i];
-            for (let j = list.length - 1; j >= 0; j--) {
-                tmpList.push(list[j]);
-            }
-        }
-        for (let i = 0; i < tmpList.length; i++) {
-            let find = false;
-            for (let j = 0; j < delList.length; j++) {
-                if (tmpList[i] == delList[j]) {
-                    delList.splice(j, 1);
-                    deleteIdx.push(i);
-                    find = true;
-                    break;
-                }
-            }
-            if (!find) {
-                remainCards.push(tmpList[i]);
-            }
-        }
+        //     if (!find) {
+        //         remainCards.push(tmpList[i]);
+        //     }
         // }
+        // // }
+        // return { cards: remainCards, idxs: deleteIdx };
+        const remainCards: number[] = [];
+        const deleteIdx: number[] = [];
+
+        const sameSizeList = GameLogic.getSameCardSizeList(value, keepOrder, select, prevSelected);
+        const flatList: number[] = [];
+
+        for (const list of sameSizeList) {
+            for (let j = list.length - 1; j >= 0; j--) {
+                flatList.push(list[j]);
+            }
+        }
+
+        // 精确匹配：逐个从 delList 中找匹配项（保留原始索引）
+        const usedSet = new Set<number>();  // 标记已经删除的牌（精确牌值）
+
+        for (let i = 0; i < flatList.length; i++) {
+            const card = flatList[i];
+            const indexInDelete = deleteCards.findIndex(c => c === card && !usedSet.has(c));
+
+            if (indexInDelete !== -1) {
+                usedSet.add(card);  // 标记这张牌已经删除（防止重复删）
+                deleteIdx.push(i);
+            } else {
+                remainCards.push(card);
+            }
+        }
+
         return { cards: remainCards, idxs: deleteIdx };
     }
     //获取唯一值  从大到小排序
@@ -541,33 +554,6 @@ export module GameLogic {
         //     return moveSelectedCardsToBack(value, select, prevSelected, []);
         // }
 
-    }
-
-    function groupBySizeDown(value: number[]): number[][] {
-        const tmpList: number[][] = [];
-        const sortValue = sortCardsBySizeDown(value, value.length);
-        const uniqueList = getUniqueCard(sortValue);
-        let idx: number = 0;
-
-        for (let j = 0; j < uniqueList.length; j++) {
-            const d = uniqueList[j];
-            const list1: number[] = [];
-
-            for (let i = idx; i < sortValue.length; i++) {
-                if (getCardSize(d) === getCardSize(sortValue[i])) {
-                    list1.push(sortValue[i]);
-                    if (i === sortValue.length - 1) {
-                        tmpList.push(list1);
-                    }
-                } else {
-                    idx = i;
-                    tmpList.push(list1);
-                    break;
-                }
-            }
-        }
-
-        return tmpList;
     }
 
     function findStraightByCard(cards: number[]): number[][] {
@@ -870,35 +856,34 @@ export module GameLogic {
     }
 
     function findBombsWithHeartCard(cards: number[]): number[][] {
-        const countMap = getCardCountMap(cards);  // 获取每个点数的牌组
+        const countMap = getCardCountMap(cards);
         const bombs: number[][] = [];
-        const heartCards = cards.filter(card => isHeartCard(card));  // 识别红心级牌
+        const heartCards = cards.filter(card => isHeartCard(card));
 
-        // 查找六炸、五炸、四炸（即三个、四个、五个相同点数的牌 + 红心级牌）
+        // 标记已使用的红心级牌
+        const usedHeartCards = new Set<number>();
+
         for (const [rank, list] of countMap) {
-            // 识别普通炸弹（四个或更多相同点数的牌）
-            if (list.length >= 4) {
-                bombs.push(list);  // 形成炸弹
+            const len = list.length;
+
+            // 普通炸弹（4张或以上）
+            if (len >= 4) {
+                bombs.push([...list]);
+                continue;
             }
 
-            // 对于三张相同点数的牌，检查是否有逢人配来组成炸弹
-            if (list.length === 3) {
-                // 找到剩余的牌，检查是否有红心级牌
-                const remainingCards = cards.filter(card => card !== list[0]);
-                const sortedRemainingCards = remainingCards.sort((a, b) => a - b);
+            // 三张、四张、五张时，尝试用红心级牌扩展
+            if (len >= 3 && len < 6) {
+                const availableHearts = heartCards.filter(c => !usedHeartCards.has(c));
 
-                // 判断是否能通过红心级牌补充
-                const heartCard = heartCards.find(card => !remainingCards.includes(card));
+                const need = 6 - len;
+                const canUse = Math.min(availableHearts.length, need);
 
-                if (heartCard) {
-                    // 如果有逢人配，可以扩展成四炸、五炸或六炸
-                    if (list.length === 3) {
-                        bombs.push([...list, heartCard]);  // 形成四炸
-                    } else if (list.length === 4) {
-                        bombs.push([...list, heartCard]);  // 形成五炸
-                    } else if (list.length === 5) {
-                        bombs.push([...list, heartCard]);  // 形成六炸
-                    }
+                if (canUse > 0) {
+                    const used = availableHearts.slice(0, canUse);
+                    used.forEach(c => usedHeartCards.add(c));
+
+                    bombs.push([...list, ...used]);
                 }
             }
         }
@@ -1001,35 +986,24 @@ export module GameLogic {
         if (cards.length === 2 && getCardSize(cards[0]) === getCardSize(cards[1])) {
             return GameDefine.KIND_CARDS_2;
         }
-        const map = getCardCountMap(cards);
-        var hasLevelCard: boolean = false;
-        for (const list of map.values()) {
-            if (list.length >= 4 && list.length === cards.length) {
-                switch (list.length) {
-                    case 4:
-                        return GameDefine.KIND_CARDS_BOMB_45;  // 四炸
-                    case 5:
-                        return GameDefine.KIND_CARDS_BOMB_45;  // 五炸
-                    case 6:
-                        return GameDefine.KIND_CARDS_BOMB_678;  // 六炸
-                    default:
-                        return GameDefine.KIND_CARDS_BOMB_678; // 六张以上大炸
-                }
+
+        //识别王炸、六炸、五炸、四炸
+
+        if (cards.length >= 4) {
+            // ✅ 点数必须全部一致，才是炸弹
+            const isBomb = isSamePointWithFrp(cards, GlobalData.cardInfo.levelCard);
+            if (isBomb) {
+                return GameDefine.KIND_CARDS_BOMB_45;
             }
-            else {
-                if (list.length == 1) {
-                    for (let i = 0; i < list.length; i++) {
-                        var rank = list[i] % 16;
-                        if (rank === GlobalData.cardInfo.levelCard) {
-                            continue;
-                        }
-                    }
-                }
-                else {
-
-                }
-
-
+        }
+        const straights = findStraightByCard(cards);
+        for (let s of straights) { //识别同花顺
+            // 检查是否是同花顺或逢人配
+            const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
+            if (isSameColorStraight) {
+                return GameDefine.KIND_CARDS_COLOR;
+            } else {
+                return GameDefine.KIND_CARDS_SHUNZI_1;
             }
         }
         if (cards.length === 5) {
@@ -2373,8 +2347,10 @@ export module GameLogic {
             return isJokerA && rankA > rankB; // 只能大王压小王
         }
 
-        // 级牌能压除王以外的所有牌
-        if (isLevelA && !isJokerB) return true;
+        // 级牌能压除王和级牌以外的所有牌
+        if (isLevelA && !isJokerB && !isLevelB) {
+            return true;
+        }
 
         return compareCardSize(card, target) > 0;
     }
@@ -2457,17 +2433,23 @@ export module GameLogic {
                 if (hintList.length === 0) {
                     for (let i = groupedCards.length - 1; i >= 0; i--) {
                         const group = groupedCards[i];
-
-                        // 只判断是否为炸弹（四张及以上，同点数）
-                        if (group.length == 4) {
-                            const rank = group[0] % 16;
-                            const isBomb = group.every(card => card % 16 === rank);
-
-                            if (isBomb) {
-                                hintList.push([...group]); // 不需要比较大小，炸弹就是万能压单
-                                break;
+                        if (group.length >= 4) {
+                            const bombs = GameLogic.newfindBombs(group);
+                            if (bombs.length != 0) {
+                                hintList.push(group);
                             }
                         }
+
+                        // // 只判断是否为炸弹（四张及以上，同点数）
+                        // if (group.length == 4) {
+                        //     const rank = group[0] % 16;
+                        //     const isBomb = group.every(card => card % 16 === rank);
+
+                        //     if (isBomb) {
+                        //         hintList.push([...group]); // 不需要比较大小，炸弹就是万能压单
+                        //         break;
+                        //     }
+                        // }
                     }
                 }
                 break;
@@ -2886,5 +2868,218 @@ export module GameLogic {
         }
 
         return result;
+    }
+
+    export function getHintList(handCards: number[][], targetCards: number[]): number[][] {
+        const hintList: number[][] = [];
+
+        const targetType = GameLogic.getCardType(targetCards);
+        const groupedCards = handCards
+
+        const targetRank = GameLogic.getCardSize(targetCards[0]);
+
+        // ------------------ 单张 ------------------
+        if (targetType === GameDefine.KIND_CARDS_1) {
+            // 先找散牌中大于它的
+            for (let i = groupedCards.length - 1; i >= 0; i--) {
+                const group = groupedCards[i];
+                if (group.length === 1 && GameLogic.getCardSize(group[0]) > targetRank) {
+                    hintList.push([group[0]]);
+                }
+            }
+            // 没找到，再从对子中拆一张
+            if (hintList.length === 0) {
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length === 2) {
+                        const card = group[0];
+                        if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
+                            hintList.push([card]);
+                        }
+                    }
+                }
+            }
+
+            if (hintList.length === 0) {
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length === 3) {
+                        const card = group[0];
+                        if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
+                            hintList.push([card]);
+                        }
+                    }
+                }
+            }
+
+            if (hintList.length === 0) {
+                for (let i = groupedCards.length - 1; i >= 0; i--) {
+                    const group = groupedCards[i];
+                    if (group.length >= 4) {
+                        const bombs = GameLogic.newfindBombs(group);
+                        if (bombs.length != 0) {
+                            hintList.push(group);
+                        }
+                    }
+                }
+            }
+        }
+
+        // ------------------ 对子 ------------------
+        else if (targetType === GameDefine.KIND_CARDS_2) {
+            for (const group of groupedCards) {
+                if (group.length === 2 && GameLogic.getCardSize(group[0]) > targetRank) {
+                    hintList.push([...group]);
+                }
+            }
+        }
+
+        // ------------------ 三不带 ------------------
+        else if (targetType === GameDefine.KIND_CARDS_3) {
+            for (const group of groupedCards) {
+                if (group.length === 3 && GameLogic.getCardSize(group[0]) > targetRank) {
+                    hintList.push([...group]);
+                }
+            }
+        }
+
+        // ------------------ 三带二 ------------------
+        else if (targetType === GameDefine.KIND_CARDS_3_2) {
+            for (const group of groupedCards) {
+                if (group.length === 3 && GameLogic.getCardSize(group[0]) > targetRank) {
+                    // 找一个对子作为带牌
+                    const pair = groupedCards.find(g => g.length === 2 && g !== group);
+                    if (pair) {
+                        hintList.push([...group, ...pair]);
+                    }
+                }
+            }
+        }
+
+        // // ------------------ 顺子 ------------------
+        // else if (targetType === GameDefine.KIND_CARDS_SHUNZI_1) {
+        //     const straights = GameLogic.findStraight(handCards);
+        //     for (const s of straights) {
+        //         if (s.length === targetCards.length && GameLogic.getCardSize(s[0]) > targetRank) {
+        //             hintList.push(s);
+        //         }
+        //     }
+        // }
+
+        // // ------------------ 连对 ------------------
+        // else if (targetType === GameDefine.KIND_CARDS_SHUNZI_2) {
+        //     const doubles = GameLogic.findDoubleSeq(handCards); // 例如：334455
+        //     for (const d of doubles) {
+        //         if (d.length === targetCards.length && GameLogic.getCardSize(d[0]) > targetRank) {
+        //             hintList.push(d);
+        //         }
+        //     }
+        // }
+
+        // // ------------------ 飞机 ------------------
+        // else if (targetType === GameDefine.KIND_CARDS_SHUNZI_3) {
+        //     const planes = GameLogic.findPlane(handCards);
+        //     for (const p of planes) {
+        //         if (GameLogic.compare(p, targetCards) > 0) {
+        //             hintList.push(p);
+        //         }
+        //     }
+        // }
+
+        // // ------------------ 炸弹 ------------------
+        // const bombs = GameLogic.findBombs(handCards); // 包括逢人配五炸、六炸、王炸
+        // for (const bomb of bombs) {
+        //     if (GameLogic.compare(bomb, targetCards) > 0) {
+        //         hintList.push(bomb);
+        //     }
+        // }
+
+        // // ------------------ 王炸 ------------------
+        // if (GameLogic.isJokerBomb(handCards)) {
+        //     const bomb = GameLogic.getJokerBomb(handCards);
+        //     if (GameLogic.compare(bomb, targetCards) > 0) {
+        //         hintList.push(bomb);
+        //     }
+        // }
+
+        return hintList;
+    }
+
+    export function newfindBombs(cards: number[], levelRank: number = GlobalData.cardInfo.levelCard): number[][] {
+        const countMap = new Map<number, number[]>();
+        const bombs: number[][] = [];
+
+        // 分组点数
+        for (const card of cards) {
+            const rank = card % 16;
+            if (!countMap.has(rank)) countMap.set(rank, []);
+            countMap.get(rank)!.push(card);
+        }
+
+        // 红心级牌（逢人配）
+        const heartCards = cards.filter(card => {
+            const rank = card % 16;
+            const color = Math.floor(card / 16);
+            return rank === levelRank && color === 2;
+        });
+
+        const usedHearts = new Set<number>();
+        const sortedRanks = Array.from(countMap.keys()).sort((a, b) => b - a);
+
+        for (const rank of sortedRanks) {
+            const group = countMap.get(rank)!;
+            const len = group.length;
+
+            if (len >= 6) {
+                bombs.push([...group]); // 六炸
+            }
+
+            if (len === 5) {
+                bombs.push([...group]); // 五炸
+                const heart = heartCards.find(h => !usedHearts.has(h));
+                if (heart) {
+                    bombs.push([...group, heart]); // 五张 + 红心 = 六炸
+                    usedHearts.add(heart);
+                }
+            }
+
+            if (len === 4) {
+                bombs.push([...group]); // 四炸
+
+                const availableHearts = heartCards.filter(h => !usedHearts.has(h));
+                if (availableHearts.length >= 1) {
+                    bombs.push([...group, availableHearts[0]]); // 五炸
+                    usedHearts.add(availableHearts[0]);
+                }
+                if (availableHearts.length >= 2) {
+                    bombs.push([...group, availableHearts[0], availableHearts[1]]); // 六炸
+                    usedHearts.add(availableHearts[1]);
+                }
+            }
+
+            if (len === 3) {
+                const heart = heartCards.find(h => !usedHearts.has(h));
+                if (heart) {
+                    bombs.push([...group, heart]); // 四炸（3+红心）
+                    usedHearts.add(heart);
+                }
+            }
+        }
+
+        // ------------------ 王炸 ------------------
+        const jokers = cards.filter(c => {
+            const r = c % 16;
+            return r === 14 || r === 15;
+        });
+
+        const smallJokers = jokers.filter(c => c % 16 === 14);
+        const bigJokers = jokers.filter(c => c % 16 === 15);
+
+        if (smallJokers.length >= 2 && bigJokers.length >= 2) {
+            const kingBomb = [smallJokers[0], smallJokers[1], bigJokers[0], bigJokers[1]];
+            bombs.push(kingBomb);
+        }
+
+        return bombs;
     }
 }

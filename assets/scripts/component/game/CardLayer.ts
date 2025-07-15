@@ -679,8 +679,16 @@ export class CardLayer extends Component {
         } else if (viewid == GlobalData.viewId.opposite) {
             this.outCardList = [];
             this.outCardList = cardList;
-            const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
-            this.hintCards = hintList;
+            if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+                const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+                this.hintCards = hintList;
+            }
+            else {
+                const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
+                this.hintCards = hintList;
+            }
+            // const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+            // this.hintCards = hintList;
             //出牌动作
             this.initOutStartPosX(tempCards.length, true);
             let pos_Y = this.userHeadPos[viewid].y;
@@ -708,8 +716,14 @@ export class CardLayer extends Component {
         else {
             this.outCardList = [];
             this.outCardList = cardList;
-            const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
-            this.hintCards = hintList;
+            if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+                const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+                this.hintCards = hintList;
+            }
+            else {
+                const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
+                this.hintCards = hintList;
+            }
             let pos_Y = this.userHeadPos[viewid].y;
             let pos_X = this.userHeadPos[viewid].x;
             let startX = 0;
@@ -1662,6 +1676,21 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = show;
         this.picOneCard.node.active = show;
         this.picHuifuDir.node.active = GlobalData.cardInfo.oneCard;
+        if (GlobalData.cardInfo.sortCard) {
+            this.picCardDir.node.active = false;
+            this.picHuifuDir.node.active = true;
+        }
+        else {
+            if(GlobalData.cardInfo.oneCard) {
+                this.picCardDir.node.active = false;
+                this.picHuifuDir.node.active = true;
+            }
+            else {
+                this.picCardDir.node.active = true;
+                this.picHuifuDir.node.active = false;
+            }
+            
+        }
         // if (show) {
         //     this.picCardDir.spriteFrame = this.spCardDirs[Number(!GlobalData.cardInfo.cardDir)];
         // }
@@ -1712,20 +1741,20 @@ export class CardLayer extends Component {
         console.log("hint card--> ", data.hitCards);
         if (data.hitCards && data.hitCards.length > 0) {
             // if (!GlobalData.cardInfo.oneCard) {
-            this.hintCards = [];
-            for (let i = 0; i < data.hitCards.length; i++) {
-                this.hintCards.push(GameLogic.convertCardListS2C(data.hitCards[i].card));
-            }
-            if (this.outCardList.length != 0) {
-                if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
-                    const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
-                    this.hintCards = hintList;
-                }
-                else {
-                    const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
-                    this.hintCards = hintList;
-                }
-            }
+            // this.hintCards = [];
+            // for (let i = 0; i < data.hitCards.length; i++) {
+            //     this.hintCards.push(GameLogic.convertCardListS2C(data.hitCards[i].card));
+            // }
+            // if (this.outCardList.length != 0) {
+            //     if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+            //         const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+            //         this.hintCards = hintList;
+            //     }
+            //     else {
+            //         const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
+            //         this.hintCards = hintList;
+            //     }
+            // }
 
             //剔除提示牌一样的数据 例如:两个黑桃8,只保留一个
             // this.hintCards = GameLogic.getOnlyValueList(this.hintCards);
@@ -1834,30 +1863,41 @@ export class CardLayer extends Component {
             let cards = GameLogic.convertCardListS2C(data.cards);
             if (viewId == GlobalData.viewId.self && this.outCardList.length != 0) {
                 if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
-                    if (data.sendType == 2) { //系统出牌
-                        this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
-                        const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
-                        if (hintList.length != 0) {
-                            cards = hintList[0];
-                        }
+                    // if (data.sendType == 2) { //系统出牌
+                    //     this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+                    //     const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
+                    //     if (hintList.length != 0) {
+                    //         cards = hintList[0];
+                    //     }
+                    // }
+                    // else {
+                    const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+                    if (hintList.length != 0) {
+                        cards = hintList[0];
                     }
-                    else {
-                        const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
-                        if (hintList.length != 0) {
-                            cards = hintList[0];
-                        }
-                    }
+                    // }
 
                 }
                 else {
-                    if (data.sendType == 2) {
-                        this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
-                        const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
-                        if (hintList.length != 0) {
-                            cards = hintList[0];
-                        }
+                    // if (data.sendType == 2) {
+                    this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+                    const hintList = GameLogic.getHintCards(this.outCardList, GameLogic.getSameCardSizeList(this.handCardsValue));
+                    if (hintList.length != 0) {
+                        cards = hintList[0];
                     }
+                    // }
 
+                }
+            }
+            else {
+                if (viewId == GlobalData.viewId.self) {
+                    if(this.groupedCards.length != 0) {
+                        cards = this.groupedCards[this.groupedCards.length - 1];
+                    }
+                    else {
+                        cards = GameLogic.getSameCardSizeList(this.handCardsValue)[0];
+                    }
+                    
                 }
             }
             //sendType: 1自己出牌 2系统出牌
