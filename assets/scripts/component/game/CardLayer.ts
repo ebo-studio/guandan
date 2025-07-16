@@ -626,8 +626,14 @@ export class CardLayer extends Component {
             }
             let sameSizeList;
             if (GlobalData.cardInfo.oneCard) {
+                if(isAuto) {
+                    this.groupedCards = GameLogic.smartSortCards(tempCards);
+                }
+                else {
+                    this.groupedCards = GameLogic.removeOutCardsFromGrouped(that.groupedCards, tempCards);
+                }
                 // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
-                this.groupedCards = GameLogic.removeOutCardsFromGrouped(that.groupedCards, tempCards);
+                
                 // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
                 sameSizeList = this.groupedCards;
             }
@@ -1353,78 +1359,98 @@ export class CardLayer extends Component {
             return;
         }
         if (this.outCardList.length == 1 && GlobalData.cardInfo.oneCard) {
-            const hints = this.hintCards;
             const grouped = this.groupedCards;
-            const total = hints.length;
-
-            let checked = 0;
             let found = false;
 
-            let hintCard: number | null = null; // 当前提示目标（用于比较）
+            function isSameArray(a: number[], b: number[]): boolean {
+                if (a.length !== b.length) return false;
+                for (let i = 0; i < a.length; i++) {
+                    if (a[i] !== b[i]) return false;
+                }
+                return true;
+            }
 
-            // ✅ 第一阶段：从 hintCards 中找不属于成型组合的单张
-            while (checked < total) {
-                const hint = hints[this.hintIndex];
-                this.hintIndex = (this.hintIndex + 1) % total;
-                checked++;
+            const totalHints = this.hintCards.length;
 
-                if (hint.length === 1) {
-                    const card = hint[0];
-                    hintCard = card;
-                    const hintSize = GameLogic.getCardSize(card);
-                    console.log('点数>>', hintSize);
+            for (let i = 0; i < totalHints; i++) {
+                const index = (this.hintIndex + i) % totalHints;
+                const hint = this.hintCards[index];
 
-                    // ✅ 先从散牌中找一个比它大的
-                    const biggerSingles = grouped
-                        .filter(g => g.length === 1 && GameLogic.getCardSize(g[0]) >= hintSize)
-                        .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
-
-                    if (biggerSingles.length > 0) {
-                        this.selectCardValue = [biggerSingles[0][0]]; // ✅ 选一个最小的符合条件的散牌
+                for (let group of grouped) {
+                    if (isSameArray(hint, group)) {
+                        this.selectCardValue = hint;
+                        this.hintIndex = (index + 1) % totalHints; // 下一次从这里继续
                         found = true;
                         break;
                     }
-
-                    // // ✅ 如果没有合适的散牌，再尝试直接用这个提示（不管它是不是成型组合）
-                    // this.selectCardValue = [card];
-                    // found = true;
-                    // break;
                 }
+
+                if (found) break;
             }
+
+            // ✅ 第一阶段：从 hintCards 中找不属于成型组合的单张
+            // while (checked < total) {
+            //     const hint = hints[this.hintIndex];
+            //     this.hintIndex = (this.hintIndex + 1) % total;
+            //     checked++;
+
+            //     if (hint.length === 1) {
+            //         const card = hint[0];
+            //         hintCard = card;
+            //         const hintSize = GameLogic.getCardSize(card);
+            //         console.log('点数>>', hintSize);
+
+            //         // ✅ 先从散牌中找一个比它大的
+            //         const biggerSingles = grouped
+            //             .filter(g => g.length === 1 && GameLogic.getCardSize(g[0]) >= hintSize)
+            //             .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
+
+            //         if (biggerSingles.length > 0) {
+            //             this.selectCardValue = [biggerSingles[0][0]]; // ✅ 选一个最小的符合条件的散牌
+            //             found = true;
+            //             break;
+            //         }
+
+            //         // // ✅ 如果没有合适的散牌，再尝试直接用这个提示（不管它是不是成型组合）
+            //         // this.selectCardValue = [card];
+            //         // found = true;
+            //         // break;
+            //     }
+            // }
 
             // ✅ 第二阶段：拆对子
-            if (!found && hintCard != null) {
-                const hintSize = GameLogic.getCardSize(hintCard);
+            // if (!found && hintCard != null) {
+            //     const hintSize = GameLogic.getCardSize(hintCard);
 
-                // 拆对子
-                const pairs = grouped
-                    .filter(g => g.length === 2 && GameLogic.getCardSize(g[0]) >= hintSize)
-                    .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
-                if (pairs.length > 0) {
-                    const pairGroup = pairs[this.breakPairIndex % pairs.length];
-                    const card = pairGroup[0];
-                    this.selectCardValue = [card];
-                    found = true;
-                    this.breakPairIndex++;
-                }
-            }
+            //     // 拆对子
+            //     const pairs = grouped
+            //         .filter(g => g.length === 2 && GameLogic.getCardSize(g[0]) >= hintSize)
+            //         .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
+            //     if (pairs.length > 0) {
+            //         const pairGroup = pairs[this.breakPairIndex % pairs.length];
+            //         const card = pairGroup[0];
+            //         this.selectCardValue = [card];
+            //         found = true;
+            //         this.breakPairIndex++;
+            //     }
+            // }
 
-            // ✅ 第三阶段：拆三张
-            if (!found && hintCard != null) {
-                const hintSize = GameLogic.getCardSize(hintCard);
+            // // ✅ 第三阶段：拆三张
+            // if (!found && hintCard != null) {
+            //     const hintSize = GameLogic.getCardSize(hintCard);
 
-                const triples = grouped
-                    .filter(g => g.length === 3 && GameLogic.getCardSize(g[0]) >= hintSize)
-                    .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
-                if (triples.length > 0) {
-                    const tripleGroup = triples[this.breakTripleIndex % triples.length];
-                    const card = tripleGroup[0];
-                    this.selectCardValue = [card];
-                    found = true;
-                    this.breakTripleIndex++;
-                }
-            }
-            // ✅ 4. 拆炸弹、五炸、六炸
+            //     const triples = grouped
+            //         .filter(g => g.length === 3 && GameLogic.getCardSize(g[0]) >= hintSize)
+            //         .sort((a, b) => GameLogic.getCardSize(a[0]) - GameLogic.getCardSize(b[0]));
+            //     if (triples.length > 0) {
+            //         const tripleGroup = triples[this.breakTripleIndex % triples.length];
+            //         const card = tripleGroup[0];
+            //         this.selectCardValue = [card];
+            //         found = true;
+            //         this.breakTripleIndex++;
+            //     }
+            // }
+            // // ✅ 4. 拆炸弹、五炸、六炸
             if (!found) {
                 const bombs = grouped.filter(g => g.length >= 4);
                 if (bombs.length > 0) {
@@ -1433,6 +1459,9 @@ export class CardLayer extends Component {
                     this.breakBombIndex++;
                     found = true;
                 }
+            }
+            if (this.hintIndex >= this.hintCards.length) {
+                this.hintIndex = 0;
             }
         }
         else {
@@ -1964,6 +1993,44 @@ export class CardLayer extends Component {
         //1 出牌 0不出
         if (Boolean(data.isSend)) {
             let cards = GameLogic.convertCardListS2C(data.cards);
+            if (viewId == GlobalData.viewId.self) {
+                if (this.outCardList.length != 0 && this.hintCards.length != 0) { //对方出牌了,并有提示牌
+                    if (data.sendType == 2) { //系统出牌
+                        const grouped = this.groupedCards;
+                        let found = false;
+
+                        function isSameArray(a: number[], b: number[]): boolean {
+                            if (a.length !== b.length) return false;
+                            for (let i = 0; i < a.length; i++) {
+                                if (a[i] !== b[i]) return false;
+                            }
+                            return true;
+                        }
+
+                        const totalHints = this.hintCards.length;
+
+                        for (let i = 0; i < totalHints; i++) {
+                            // const index = (this.hintIndex + i) % totalHints;
+                            const hint = this.hintCards[i];
+
+                            for (let group of grouped) {
+                                if (isSameArray(hint, group)) {
+                                    cards = hint
+                                    // this.selectCardValue = hint;
+                                    // this.hintIndex = (index + 1) % totalHints; // 下一次从这里继续
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (found) break;
+                        }
+                    }
+                }
+                else {
+                    cards = this.groupedCards[this.groupedCards.length - 1];
+                }
+            }
             // if (viewId == GlobalData.viewId.self && this.outCardList.length != 0) {
             //     if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
             //         // if (data.sendType == 2) { //系统出牌

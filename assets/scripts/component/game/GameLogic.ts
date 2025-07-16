@@ -1843,10 +1843,10 @@ export module GameLogic {
         else if (smallKings.length >= 2 && bigKings.length >= 2) {
             result.push([smallKings[0], smallKings[1], bigKings[0], bigKings[1]]);
         }
-        // 单王炸：1张小王 + 1张大王
-        else if (smallKings.length >= 1 && bigKings.length >= 1) {
-            result.push([smallKings[0], bigKings[0]]);
-        }
+        // // 单王炸：1张小王 + 1张大王
+        // else if (smallKings.length >= 1 && bigKings.length >= 1) {
+        //     result.push([smallKings[0], bigKings[0]]);
+        // }
 
         return result;
     }
