@@ -1829,8 +1829,8 @@ export module GameLogic {
     }
 
     export function findRocket(cards: number[]): number[][] {
-        const smallKings = cards.filter(c => c % 16 === 14);
-        const bigKings = cards.filter(c => c % 16 === 15);
+        const smallKings = cards.filter(c => c % 16 === 16);
+        const bigKings = cards.filter(c => c % 16 === 17);
         const allKings = [...smallKings, ...bigKings];
 
         const result: number[][] = [];

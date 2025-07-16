@@ -177,9 +177,9 @@ export class CardLayer extends Component {
         this.handCardsHeight = this.baseCardHeight * this.handScale;
         //手牌位置高度 88是底部遮罩高度
         // if (GlobalData.cardInfo.cardDir) {
-        //     this.cardsPosY = -this.halfWinHight + 88 + this.handCardsHeight * 0.5;
+        this.cardsPosY = -this.halfWinHight + 88 + this.handCardsHeight * 0.5;
         // } else {
-        this.cardsPosY = -this.halfWinHight + this.handCardsHeight * 0.5;
+        // this.cardsPosY = -this.halfWinHight + this.handCardsHeight * 0.5;
         // }
         //自己手牌(纵)
         this.handDistance_V = this.baseCardWidth * 0.8 * this.handScale;
@@ -1358,7 +1358,7 @@ export class CardLayer extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "没有大过的牌" });
             return;
         }
-        if (this.outCardList.length == 1 && GlobalData.cardInfo.oneCard) {
+        if (this.outCardList.length == 1 && (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard)) {
             const grouped = this.groupedCards;
             let found = false;
 
@@ -1794,21 +1794,21 @@ export class CardLayer extends Component {
         this.picOneCard.node.active = show;
         this.picHuifuDir.node.active = GlobalData.cardInfo.oneCard;
         if (show) {
-            if (GlobalData.cardInfo.sortCard) {
+            // if (GlobalData.cardInfo.sortCard) {
+            //     this.picCardDir.node.active = false;
+            //     this.picHuifuDir.node.active = true;
+            // }
+            // else {
+            if (GlobalData.cardInfo.oneCard) {
                 this.picCardDir.node.active = false;
                 this.picHuifuDir.node.active = true;
             }
             else {
-                if (GlobalData.cardInfo.oneCard) {
-                    this.picCardDir.node.active = false;
-                    this.picHuifuDir.node.active = true;
-                }
-                else {
-                    this.picCardDir.node.active = true;
-                    this.picHuifuDir.node.active = false;
-                }
-
+                this.picCardDir.node.active = true;
+                this.picHuifuDir.node.active = false;
             }
+
+            // }
         }
 
         // if (show) {
@@ -2028,7 +2028,9 @@ export class CardLayer extends Component {
                     }
                 }
                 else {
-                    cards = this.groupedCards[this.groupedCards.length - 1];
+                    if(GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+                        cards = this.groupedCards[this.groupedCards.length - 1];
+                    }
                 }
             }
             // if (viewId == GlobalData.viewId.self && this.outCardList.length != 0) {
