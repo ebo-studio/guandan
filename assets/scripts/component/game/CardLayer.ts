@@ -573,15 +573,29 @@ export class CardLayer extends Component {
             }
             // console.log("count--> ", tempCards);
             //出牌s
-            for (let j = 0; j < count; j++) {
-                for (const k in this.handCards) {
-                    if (this.handCards[k] && tempCards[j] == this.handCards[k].getValue() && this.selectCardIndex.indexOf(this.handCards[k].getIndex()) != -1) {
-                        this.outCards[viewid].push(this.handCards[k]);
-                        this.handCards.splice(Number(k), 1);
-                        break;
+            if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+                const outIndexes = new Set(this.selectCardIndex);
+
+                for (let i = this.handCards.length - 1; i >= 0; i--) {
+                    const card = this.handCards[i];
+                    if (outIndexes.has(card.getIndex())) {
+                        this.outCards[viewid].push(card);
+                        this.handCards.splice(i, 1);
                     }
                 }
             }
+            else {
+                for (let j = 0; j < count; j++) {
+                    for (const k in this.handCards) {
+                        if (this.handCards[k] && tempCards[j] == this.handCards[k].getValue() && this.selectCardIndex.indexOf(this.handCards[k].getIndex()) != -1) {
+                            this.outCards[viewid].push(this.handCards[k]);
+                            this.handCards.splice(Number(k), 1);
+                            break;
+                        }
+                    }
+                }
+            }
+
             // console.log("出牌 cnt---> ", utils.deepCopy(this.outCards[viewid].length));
             GameLogic.printCardList(tempCards);
             //出牌动作
@@ -593,7 +607,7 @@ export class CardLayer extends Component {
                 card.node.setSiblingIndex(k);
                 card.node.setScale(this.outScaleSelf, this.outScaleSelf, this.outScaleSelf);
                 tween(card.node)
-                    .to(.15, { position: v3(posX, -45, 0) })
+                    .to(.15, { position: v3(posX, 80, 0) })
                     .start();
             }
             this.setCanTouch(false);
@@ -627,13 +641,16 @@ export class CardLayer extends Component {
                 this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
             }
             let sameSizeList;
+            console.log("出牌前 groupedCards: ", utils.deepCopy(this.groupedCards));
+            console.log("出牌牌值: ", tempCards);
+
             if (GlobalData.cardInfo.oneCard) {
-                // if (isAuto) {
-                // this.groupedCards = GameLogic.smartSortCards(tempCards);
-                // }
-                // else {
-                this.groupedCards = GameLogic.removeOutCardsFromGrouped(that.groupedCards, tempCards);
-                // }
+                if (isAuto) {
+                    this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
+                }
+                else {
+                    this.groupedCards = GameLogic.removeOutCardsFromGrouped(that.groupedCards, tempCards);
+                }
                 // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
 
                 // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
@@ -641,8 +658,15 @@ export class CardLayer extends Component {
             }
             else {
                 if (GlobalData.cardInfo.sortCard) {
-                    this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
-                    sameSizeList = this.groupedCards;
+                    if (isAuto) {
+                        sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
+                        GlobalData.cardInfo.sortCard = false;
+                    }
+                    else {
+                        this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
+                        sameSizeList = this.groupedCards;
+                    }
+
                 }
                 else {
                     sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
@@ -720,7 +744,7 @@ export class CardLayer extends Component {
                 let moveTime = 0.15;
                 tween(card.node)
                     .parallel(
-                        tween().to(moveTime, { position: v3(posX, pos_Y - 120, 0) }),
+                        tween().to(moveTime, { position: v3(posX, pos_Y - 20, 0) }),
                         tween().to(moveTime, { scale: v3(this.outScaleOther, this.outScaleOther, this.outScaleOther) })
                     )
                     .start();
@@ -1552,11 +1576,22 @@ export class CardLayer extends Component {
             // }
         }
         else {
-            this.selectCardValue = this.hintCards[this.hintIndex];
-            this.hintIndex++;
-            if (this.hintIndex == this.hintCards.length) {
-                this.hintIndex = 0;
+            if (this.outCardList.length == 1) {
+                let netHint = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+                this.selectCardValue = netHint[this.hintIndex];
+                this.hintIndex++;
+                if (this.hintIndex == netHint.length) {
+                    this.hintIndex = 0;
+                }
             }
+            else {
+                this.selectCardValue = this.hintCards[this.hintIndex];
+                this.hintIndex++;
+                if (this.hintIndex == this.hintCards.length) {
+                    this.hintIndex = 0;
+                }
+            }
+
         }
         this.showChooseCard_V(this.selectCardValue);
         // }
@@ -1658,6 +1693,23 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = false;
         // ✅ 更新手牌
         this.handCardsValue = this.groupedCards.flat();
+        // 👉 保证 handCards 顺序与 handCardsValue 一致
+        const newHandCards: any[] = [];
+        const used: boolean[] = new Array(this.handCards.length).fill(false);
+
+        for (let i = 0; i < this.handCardsValue.length; i++) {
+            const value = this.handCardsValue[i];
+            for (let j = 0; j < this.handCards.length; j++) {
+                if (!used[j] && this.handCards[j].getValue() === value) {
+                    used[j] = true;
+                    this.handCards[j].setIndex(i); // 重设 index
+                    newHandCards.push(this.handCards[j]);
+                    break;
+                }
+            }
+        }
+
+        this.handCards = newHandCards; // ⚠️ 顺序彻底
         this.setHandCards(this.handCardsValue);
 
         // ✅ 更新 prevSelected 为这次选中的
@@ -1666,6 +1718,7 @@ export class CardLayer extends Component {
         // ✅ 清除选中状态
         this.selectCardValue = [];
         this.selectCardIndex = [];
+        this.selectedCardIndexSet.clear();
     }
 
     onBtnHuiFu() {
@@ -1679,12 +1732,14 @@ export class CardLayer extends Component {
         this.selectCardValue = [];
         this.selectCardIndex = [];
         this.prevSelected = [];
+        this.selectedCardIndexSet.clear();
         this.picHuifuDir.node.active = false;
         this.picCardDir.node.active = true;
     }
 
     onBtnOneCardDir() {
         SoundManager.playClick();
+        this.selectedCardIndexSet.clear();
         if (GlobalData.cardInfo.oneCard) {
             // 清除理牌记录
             GlobalData.cardInfo.oneCard = false;
@@ -1718,6 +1773,23 @@ export class CardLayer extends Component {
             this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
             console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
             this.handCardsValue = this.groupedCards.flat();
+            // 👉 保证 handCards 顺序与 handCardsValue 一致
+            const newHandCards: any[] = [];
+            const used: boolean[] = new Array(this.handCards.length).fill(false);
+
+            for (let i = 0; i < this.handCardsValue.length; i++) {
+                const value = this.handCardsValue[i];
+                for (let j = 0; j < this.handCards.length; j++) {
+                    if (!used[j] && this.handCards[j].getValue() === value) {
+                        used[j] = true;
+                        this.handCards[j].setIndex(i); // 重设 index
+                        newHandCards.push(this.handCards[j]);
+                        break;
+                    }
+                }
+            }
+
+            this.handCards = newHandCards; // ⚠️ 顺序彻底同步
             this.setHandCards(this.handCardsValue, false, false, true);
         }
 
@@ -2115,9 +2187,12 @@ export class CardLayer extends Component {
                     }
                 }
                 else {
-                    if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
-                        cards = this.groupedCards[this.groupedCards.length - 1];
+                    if (this.outCardList.length == 0 && this.groupedCards.length != 0) {
+                        if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+                            cards = this.groupedCards[this.groupedCards.length - 1];
+                        }
                     }
+
                 }
             }
             // if (viewId == GlobalData.viewId.self && this.outCardList.length != 0) {

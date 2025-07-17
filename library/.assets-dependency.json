@@ -51,38 +51,32 @@
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.png"
     ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.json": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.atlas"
-    ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dzz_cj_wl.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dzz_cj_wl.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\dazhadan.atlas"
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\gangban.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\gangban.atlas"
     ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.json": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.atlas"
-    ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\jiefeng.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\jiefeng.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\muban.atlas"
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sanbudai.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sanbudai.atlas"
     ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.json": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.atlas"
-    ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sandaiyidui.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\sandaiyidui.atlas"
-    ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.json": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.atlas"
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\shunzi.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\shunzi.atlas"
     ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.json": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\tonghuashun.atlas"
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.atlas"
@@ -90,17 +84,38 @@
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\pipei.json": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\pipei.atlas"
     ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\xiaozhadan.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\card\\wangzha.atlas"
+    ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\loading\\loading.plist": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\loading\\loading.png"
-    ],
-    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.plist": [
-      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.png"
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rank\\rank.plist": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rank\\rank.png"
     ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\common.png"
+    ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\card\\a_cards.plist": [
       "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\card\\a_cards.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\game\\public_res.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\game\\public_res.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\game\\game.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\game\\game.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gamEnds\\land_game.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gamEnds\\land_game.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\koutu.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\koutu.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\renwunv.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\renwunv.atlas"
     ]
   },
   "uuid": {
@@ -181,6 +196,12 @@
     ],
     "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\match\\serch.json": [
       "5dbdab4f-6c9d-44b6-b56f-253da34874dd@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\koutu.json": [
+      "24cf0c11-447c-429b-b2f6-a2621c1af079@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\freeMatch\\renwunv.json": [
+      "91bceb5d-1926-4efb-847c-388964fda5b9@6c48a"
     ]
   }
 }

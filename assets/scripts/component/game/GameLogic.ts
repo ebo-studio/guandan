@@ -670,11 +670,26 @@ export module GameLogic {
     }
 
     export function removeOutCardsFromGrouped(grouped: number[][], outCards: number[]): number[][] {
-        const outSet = new Set(outCards);
+        // 1. 统计要移除的张数（因为两副牌，值可重复）
+        const need = new Map<number, number>();
+        for (const c of outCards) {
+            need.set(c, (need.get(c) || 0) + 1);
+        }
+
         const newGrouped: number[][] = [];
 
-        for (let group of grouped) {
-            const rest = group.filter(c => !outSet.has(c));
+        // 2. 按组扫描，仅移除需要减掉的张数
+        for (const group of grouped) {
+            const rest: number[] = [];
+            for (const c of group) {
+                const left = need.get(c) || 0;
+                if (left > 0) {
+                    // 消耗 1 张
+                    need.set(c, left - 1);
+                } else {
+                    rest.push(c);
+                }
+            }
             if (rest.length > 0) {
                 newGrouped.push(rest);
             }
@@ -1284,11 +1299,11 @@ export module GameLogic {
         const result: number[][] = [];
         const countMap = new Map<number, number[]>();
 
-        // 分组：按点数归类（排除大小王、参谋、非红桃级牌2）
         for (const card of cards) {
-            const rank = card % 16;
+            const rank = getCardSize(card);;
             const color = Math.floor(card / 16);
 
+            // 排除大小王、参谋、非红桃级牌2
             if ((rank === GlobalData.cardInfo.levelCard && color !== 0) || rank <= 1 || rank > 14) continue;
 
             if (!countMap.has(rank)) countMap.set(rank, []);
@@ -1297,14 +1312,13 @@ export module GameLogic {
 
         const triples = Array.from(countMap.entries())
             .filter(([_, list]) => list.length >= 3)
-            .sort((a, b) => a[0] - b[0]);  // 三张牌点数升序
+            .sort((a, b) => a[0] - b[0]); // 小点数优先
 
-        // ✅ 只允许真正的对子（不能从三条或炸弹拆）
         const pairs = Array.from(countMap.entries())
             .filter(([_, list]) => list.length === 2)
-            .sort((a, b) => a[0] - b[0]);
+            .sort((a, b) => a[0] - b[0]); // 小点数优先
 
-        const used = new Set<number>(); // 避免重复使用同一张牌
+        const used = new Set<number>();
 
         for (const [tripleRank, tripleCards] of triples) {
             const triple = tripleCards.filter(c => !used.has(c) && !usedIndex.has(cards.indexOf(c)));
@@ -1316,21 +1330,13 @@ export module GameLogic {
                 const pair = pairCards.filter(c => !used.has(c) && !usedIndex.has(cards.indexOf(c)));
                 if (pair.length < 2) continue;
 
-                const group = [
-                    triple[0], triple[1], triple[2],
-                    pair[0], pair[1]
-                ];
-
-                // 标记为已使用
+                const group = [triple[0], triple[1], triple[2], pair[0], pair[1]];
                 group.forEach(c => used.add(c));
                 result.push(group);
-                break; // 每组三带二只找一个对子
-            }
-
-            if (result.length >= maxCount) {
-                // return result;
                 break;
             }
+
+            if (result.length >= maxCount) break;
         }
 
         result.sort((a, b) => {
@@ -1944,14 +1950,16 @@ export module GameLogic {
         findBombsByCount(getUnused(), 4).forEach(g => pushAndMark(g));  // 四炸
 
         // ===== 杂牌型，放在后面 =====
-        var straightList = findStraight(getUnused());
+        var result = countThreeWithTwoAndStraight(getUnused());
+        console.log('順子數量>>>', result.straightCount);
         // var straightList = findStraight_II(cards, usedIndex);
-        var threeWithList = findThreeWithTwoBy(getUnused());
+        //var threeWithList = findThreeWithTwoBy(getUnused());
+        console.log('三帶二', result.threeWithTwoCount);
         var lianduiList = findChainPairs(getUnused());
 
-        if (straightList.length === 1) {
-            straightList.forEach(g => pushAndMark(g, false)); // 顺子
-            if (threeWithList.length != 0) {
+        if (result.straightCount === 1) {
+            findStraight(getUnused()).forEach(g => pushAndMark(g, false)); // 顺子
+            if (result.threeWithTwoCount != 0) {
                 findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
             }
             else { //没有三带二的情况下
@@ -1962,12 +1970,12 @@ export module GameLogic {
                     findPlane(getUnused()).forEach(g => pushAndMark(g, false));
                 }
             }
-        } else if (straightList.length === 0) {
-            if (threeWithList.length >= 2) {
-                threeWithList.forEach(g => pushAndMark(g, false));
+        } else if (result.straightCount === 0) {
+            if (result.threeWithTwoCount >= 2) {
+                findThreeWithTwoBy(getUnused(), usedIndex).forEach(g => pushAndMark(g, false));
             }
             else {
-                if (threeWithList.length != 0) {
+                if (result.threeWithTwoCount != 0) {
                     findThreeWithTwo(getUnused(), usedIndex).forEach(g => pushAndMark(g, false)); // 三带二
                 }
                 else { //没有顺子和没有三带二
@@ -1978,8 +1986,8 @@ export module GameLogic {
             }
             // findThreeWithTwoBy(getUnused(), usedIndex, 2).forEach(g => pushAndMark(g, false)); // 三带二（尽可能两组）
         } else {//说明顺子超过2组
-            if (threeWithList.length == 0) {
-                straightList.forEach(g => pushAndMark(g, false)); // 顺子
+            if (result.threeWithTwoCount == 0) { //沒有三帶二的話
+                findStraight(getUnused()).forEach(g => pushAndMark(g, false)); // 顺子
             }
             else {
                 findStraight_I(getUnused()).forEach(g => pushAndMark(g, false));
@@ -2164,7 +2172,7 @@ export module GameLogic {
         const map = getCardCountMap(cards);
 
         const ranks = Array.from(map.keys()) as number[];
-        // 过滤：点数必须在 3~13（包含3~K），且至少两个
+        // 点数 3~13（3~K），且必须至少有两个相同
         const filtered = ranks
             .filter(r => map.get(r)!.length >= 2 && r >= 3 && r <= 13)
             .sort((a, b) => a - b);
@@ -2178,23 +2186,18 @@ export module GameLogic {
             if (temp.length === 0 || filtered[i - 1] === curr - 1) {
                 temp.push(map.get(curr)!.slice(0, 2));
 
-                if (temp.length === 5) {
+                // ✅ 如果达到 3 连对，直接 push 并重置
+                if (temp.length === 3) {
                     results.push(temp.flat());
                     temp = [];
                 }
             } else {
-                if (temp.length >= 3) {
-                    results.push(temp.flat());
-                }
+                // ❌ 不连了，且不是3连对则舍弃
                 temp = [map.get(curr)!.slice(0, 2)];
             }
         }
 
-        // 补最后一次
-        if (temp.length >= 3) {
-            results.push(temp.flat());
-        }
-
+        // ❌ 最后一组不是3连对，不能加
         return results;
     }
 
@@ -2207,34 +2210,52 @@ export module GameLogic {
             const rank = getCardSize(card);
             if (rank < 3 || rank > 14) continue; // 3~A
             if (!map.has(rank)) map.set(rank, []);
-            map.get(rank).push(card);
+            map.get(rank)!.push(card);
         }
 
         const ranks = Array.from(map.keys()).sort((a, b) => a - b);
         const result: number[][] = [];
 
-        // 查找顺子
-        for (let i = 0; i <= ranks.length - 5; i++) {
-            const seq = ranks.slice(i, i + 5);
-            let isConsecutive = true;
-            for (let j = 1; j < 5; j++) {
-                if (seq[j] !== seq[j - 1] + 1) {
-                    isConsecutive = false;
-                    break;
-                }
+        let i = 0;
+        while (i <= ranks.length - 5) {
+            let start = i;
+            let end = i + 1;
+
+            // 尝试向后扩展连续段
+            while (
+                end < ranks.length &&
+                ranks[end] === ranks[end - 1] + 1 &&
+                map.has(ranks[end])
+            ) {
+                end++;
             }
 
-            if (isConsecutive) {
+            const length = end - start;
+            if (length == 5) {
+                const seq = ranks.slice(start, end);
+
                 const straight: number[] = [];
+
                 for (const rank of seq) {
-                    straight.push(map.get(rank).pop());
-                    if (map.get(rank).length === 0) map.delete(rank);
+                    const cardsOfRank = map.get(rank)!;
+                    straight.push(cardsOfRank.pop()!);
+                    if (cardsOfRank.length === 0) {
+                        map.delete(rank);
+                    }
                 }
+
                 result.push(straight);
-                i += 4; // 跳过这段，防止重复重叠
+
+                // ranks 中可能仍有未删除的点数，但 map 已经删了，用过滤后的 ranks 重新再来一轮
+                i = 0;
+                // 重新生成 ranks（只保留仍有剩余牌的点数）
+                const remainingRanks = Array.from(map.keys()).sort((a, b) => a - b);
+                ranks.length = 0;
+                ranks.push(...remainingRanks);
+            } else {
+                i++;
             }
         }
-
         // 返回最小的顺子
         if (result.length > 0) {
             return [result[0]]; // 取最小的顺子
@@ -2301,6 +2322,106 @@ export module GameLogic {
         }
 
         return result;
+    }
+
+    export function countThreeWithTwoAndStraight(unused: number[]): {
+        threeWithTwoCount: number,
+        straightCount: number
+    } {
+        const usedIndex = new Set<number>(); // 用于标记已经使用的牌（按 index）
+        const rankMap = new Map<number, number[]>(); // 点数 -> 所有 index
+
+        for (let i = 0; i < unused.length; i++) {
+            const card = unused[i];
+            const rank = card % 16;
+            if (!rankMap.has(rank)) rankMap.set(rank, []);
+            rankMap.get(rank)!.push(i);
+        }
+
+        let threeWithTwoCount = 0;
+        const sortedRanks = Array.from(rankMap.keys()).sort((a, b) => b - a); // 大到小优先
+
+        // ✅ Step 1: 三带二（所有牌按 index 记录，防止共用）
+        for (const mainRank of sortedRanks) {
+            if (mainRank > 9) continue; // ✅ 排除点数大于9（三张只允许 3~9）
+            const mainIdxList = rankMap.get(mainRank)!.filter(idx => !usedIndex.has(idx));
+            if (mainIdxList.length < 3) continue;
+
+            // 取三张
+            const three = mainIdxList.slice(0, 3);
+
+            // 再找对子（不能与主牌重复）
+            let found = false;
+            for (const subRank of sortedRanks) {
+                if (subRank === mainRank) continue;
+
+                const subIdxList = rankMap.get(subRank)!.filter(idx => !usedIndex.has(idx));
+                if (subIdxList.length >= 2) {
+                    const pair = subIdxList.slice(0, 2);
+                    [...three, ...pair].forEach(idx => usedIndex.add(idx));
+                    threeWithTwoCount++;
+                    found = true;
+                    break;
+                }
+            }
+
+            // 如果没有找到对子，也不能让三张被使用
+            if (!found) continue;
+        }
+
+        // ✅ Step 2: 顺子（点数连续，排除 2 和大小王）
+        const rankToIndexes = new Map<number, number[]>();
+        for (let i = 0; i < unused.length; i++) {
+            const rank = getCardSize(unused[i]);
+            if (rank >= 3 && rank <= 14 && !usedIndex.has(i)) {
+                if (!rankToIndexes.has(rank)) rankToIndexes.set(rank, []);
+                rankToIndexes.get(rank)!.push(i);
+            }
+        }
+
+        const sorted = Array.from(rankToIndexes.keys()).sort((a, b) => a - b);
+        let straightCount = 0;
+        let seq: number[] = [];
+
+        const flushSeq = () => {
+            if (seq.length === 5) {
+                seq.forEach(idx => usedIndex.add(idx));
+                straightCount++;
+            }
+            seq = [];
+        };
+
+        for (let i = 0; i < sorted.length; i++) {
+            const r = sorted[i];
+            const idxList = rankToIndexes.get(r)!.filter(idx => !usedIndex.has(idx));
+            if (idxList.length === 0) {
+                flushSeq();
+                continue;
+            }
+
+            const currentIdx = idxList[0];
+
+            if (seq.length === 0) {
+                seq.push(currentIdx);
+            } else {
+                const prevRank = getCardSize(unused[seq[seq.length - 1]]);
+                if (r === prevRank + 1) {
+                    seq.push(currentIdx);
+                    if (seq.length === 5) {
+                        flushSeq(); // 一旦达到 5 就立刻 flush，不再继续延伸
+                    }
+                } else {
+                    flushSeq();
+                    seq.push(currentIdx);
+                }
+            }
+        }
+        flushSeq();
+
+        return {
+            threeWithTwoCount,
+            straightCount
+        };
     }
 
 
