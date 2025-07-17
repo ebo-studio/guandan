@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, EventTouch, instantiate, Node, Prefab, sp, Sprite, SpriteAtlas, SpriteFrame, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
+import { _decorator, Button, Component, EventTouch, instantiate, Node, Prefab, Rect, sp, Sprite, SpriteAtlas, SpriteFrame, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
 import { CardItem } from './CardItem';
 import { GameTimer } from './GameTimer';
 import { utils } from '../../common/utils';
@@ -215,6 +215,8 @@ export class CardLayer extends Component {
         this.clearHandCards();
         this.hintIndex = 0;
         this.hintCards = [];
+        GlobalData.cardInfo.oneCard = false;
+        GlobalData.cardInfo.sortCard = false;
     }
 
     /**
@@ -928,8 +930,8 @@ export class CardLayer extends Component {
         if (this.handCards.length == 0) {
             return;
         }
-        this.dragMode = 'none';
-        this.draggedSet.clear();
+        // this.dragMode = 'none';
+        // this.draggedSet.clear();
 
         // this.startPos = this.getLocalPos(event);
 
@@ -939,7 +941,7 @@ export class CardLayer extends Component {
         //     const card = this.handCards[i];
         //     const rect = this.getCardRect(card);
         //     if (this.selectedIndexSet.has(i) && this.isPointInRect(pos, rect)) {
-        //         this.isToggling = true;
+        //         this.selectedCardIndexSet.delete(i);
         //         break;
         //     }
         // }
@@ -954,6 +956,7 @@ export class CardLayer extends Component {
                 // } else {
                 if (card.isMask()) {
                     card.setMask(false);
+                    this.selectedCardIndexSet.delete(i);
                 } else {
                     card.setMask(true);
                 }
@@ -1051,37 +1054,54 @@ export class CardLayer extends Component {
                 let rightDown = (localStartPos.x <= localMovePos.x) && (localMovePos.y <= localStartPos.y) && (localMovePos.y <= posY) && (localMovePos.x >= posXL) && (tmpPosY <= localStartPos.y) && (tmpPosXR >= localStartPos.x);
 
                 if (leftUp || leftDown || rightUp || rightDown) {
-                    this.draggedSet.add(i);
+                    // this.draggedSet.add(i);
+                    this.handCards[i].setMask(true);
+                    // // ✅ 确定拖动模式（第一次触碰时）
+                    // if (this.dragMode === 'none') {
+                    //     this.dragMode = this.selectedIndexSet.has(i) ? 'remove' : 'add';
+                    // }
 
-                    // ✅ 确定拖动模式（第一次触碰时）
-                    if (this.dragMode === 'none') {
-                        this.dragMode = this.selectedIndexSet.has(i) ? 'remove' : 'add';
-                    }
-
-                    // ✅ 执行选中/取消逻辑
-                    if (this.dragMode === 'add') {
-                        this.handCards[i].setMask(true);
-                        this.selectedIndexSet.add(i);
-                    } else if (this.dragMode === 'remove') {
-                        this.handCards[i].setMask(false);
-                        this.selectedIndexSet.delete(i);
-                    }
+                    // // ✅ 执行选中/取消逻辑
+                    // if (this.dragMode === 'add') {
+                    //     this.handCards[i].setMask(true);
+                    //     this.selectedIndexSet.add(i);
+                    // } else if (this.dragMode === 'remove') {
+                    //     this.handCards[i].setMask(false);
+                    //     this.selectedIndexSet.delete(i);
+                    // }
                     // this.handCards[i].setMask(true);
                     // this.selectedCardIndexSet.add(i);
                 } else {
+                    const card = this.handCards[i];
+                    // const rect = this.getCardRect(card);
+                    if (this.isPointInRect(localMovePos, card.node)) {
+                        this.selectedCardIndexSet.delete(i);
+                        this.handCards[i].setMask(false);
+                        // console.log('在点上');
+                    }
+                    else {
+                        if (this.selectedCardIndexSet.has(i)) {
+                            this.handCards[i].setMask(true);
+                        }
+                        else {
+                            this.handCards[i].setMask(false);
+                        }
+                    }
+
                     // if(!this.handCards[i].isSelect) {
                     // this.handCards[i].setMask(false);
                     // }
                     // else {
 
                     // }
+                    // this.selectedCardIndexSet.delete(i);
                     // this.handCards[i].setMask(false);
                 }
             }
         }
-        this.selectedCardIndexSet.forEach(i => {
-            this.handCards[i].setMask(true);
-        });
+        // this.selectedCardIndexSet.forEach(i => {
+        //     this.handCards[i].setMask(true);
+        // });
         //第一张
         for (let i = this.handCards.length - 1; i >= 0; i--) {
             const card = this.handCards[i];
@@ -1116,8 +1136,23 @@ export class CardLayer extends Component {
         return { left, right, top, bottom };
     }
 
-    private isPointInRect(pos, rect): boolean {
-        return !(pos.x < rect.left || pos.x > rect.right || pos.y < rect.bottom || pos.y > rect.top);
+    private isPointInRect(localMovePos, card): boolean {
+        const transform = card.getComponent(UITransform)!;
+        const size = transform.contentSize;
+        const pos = card.position;
+
+        const halfW = size.width * 0.5;
+        const halfH = size.height * 0.5;
+
+        // 卡牌在父节点下的边界
+        const rect = new Rect(
+            pos.x - halfW,
+            pos.y - halfH,
+            size.width,
+            size.height
+        );
+
+        return rect.contains(localMovePos);
     }
 
     //触摸结束
@@ -1127,6 +1162,12 @@ export class CardLayer extends Component {
         }
         if (this.handCards.length == 0) {
             return;
+        }
+        for (let i = 0; i < this.handCards.length; i++) {
+            let card = this.handCards[i];
+            if (card.isMask()) {
+                this.selectedCardIndexSet.add(i);
+            }
         }
         this.dragMode = 'none';
         this.draggedSet.clear();
@@ -1235,6 +1276,7 @@ export class CardLayer extends Component {
             this.breakPairIndex = 0;
             this.breakTripleIndex = 0;
             this.breakBombIndex = 0;
+            this.selectedCardIndexSet.clear();
         }
     }
     //当前选中的牌弹起
@@ -1267,6 +1309,7 @@ export class CardLayer extends Component {
         }
         this.selectCardValue = [];
         this.selectCardIndex = [];
+        this.selectedCardIndexSet.clear();
     }
     //放下选中的牌
     private doHandCardPopDown_V() {
@@ -1278,6 +1321,7 @@ export class CardLayer extends Component {
         }
         this.selectCardValue = [];
         this.selectCardIndex = [];
+        this.selectedCardIndexSet.clear();
     }
     //弹起提示的牌
     showChooseCard(value: number[]) {
