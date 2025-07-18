@@ -36,5 +36,14 @@
     "expandLevels": [
       "0"
     ]
+  },
+  "c949f5cb-30c6-4956-9fbd-04683c8f0ef9": {
+    "assetUuid": "c949f5cb-30c6-4956-9fbd-04683c8f0ef9",
+    "animationUuid": "",
+    "expandLevels": [
+      "0",
+      "0_0",
+      "0_1"
+    ]
   }
 }

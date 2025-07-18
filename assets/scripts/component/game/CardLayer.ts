@@ -1508,7 +1508,11 @@ export class CardLayer extends Component {
             return;
         }
         if ((this.outCardList.length == 1 || this.outCardList.length == 3) && (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard)) {
-            let netHint = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+            let netHint: number[][] = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+            if (netHint.length == 0) {
+                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "没有大过的牌" });
+                return;
+            }
             this.selectCardValue = netHint[this.hintIndex];
             this.hintIndex++;
             if (this.hintIndex == netHint.length) {
@@ -1579,7 +1583,12 @@ export class CardLayer extends Component {
         }
         else {
             if (this.outCardList.length == 1) {
-                let netHint = GameLogic.getHintCards(this.outCardList, this.hintCards);
+                let sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
+                let netHint: number[][] = GameLogic.getHintCards(this.outCardList, this.hintCards);
+                if (netHint.length == 0) {
+                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "没有大过的牌" });
+                    return;
+                }
                 this.selectCardValue = netHint[this.hintIndex];
                 this.hintIndex++;
                 if (this.hintIndex == netHint.length) {
