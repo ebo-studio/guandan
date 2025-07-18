@@ -573,28 +573,28 @@ export class CardLayer extends Component {
             }
             // console.log("count--> ", tempCards);
             //出牌s
-            if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
-                const outIndexes = new Set(this.selectCardIndex);
+            // if (GlobalData.cardInfo.oneCard || GlobalData.cardInfo.sortCard) {
+            //     const outIndexes = new Set(this.selectCardIndex);
 
-                for (let i = this.handCards.length - 1; i >= 0; i--) {
-                    const card = this.handCards[i];
-                    if (outIndexes.has(card.getIndex())) {
-                        this.outCards[viewid].push(card);
-                        this.handCards.splice(i, 1);
+            //     for (let i = this.handCards.length - 1; i >= 0; i--) {
+            //         const card = this.handCards[i];
+            //         if (outIndexes.has(card.getIndex())) {
+            //             this.outCards[viewid].push(card);
+            //             this.handCards.splice(i, 1);
+            //         }
+            //     }
+            // }
+            // else {
+            for (let j = 0; j < count; j++) {
+                for (const k in this.handCards) {
+                    if (this.handCards[k] && tempCards[j] == this.handCards[k].getValue() && this.selectCardIndex.indexOf(this.handCards[k].getIndex()) != -1) {
+                        this.outCards[viewid].push(this.handCards[k]);
+                        this.handCards.splice(Number(k), 1);
+                        break;
                     }
                 }
             }
-            else {
-                for (let j = 0; j < count; j++) {
-                    for (const k in this.handCards) {
-                        if (this.handCards[k] && tempCards[j] == this.handCards[k].getValue() && this.selectCardIndex.indexOf(this.handCards[k].getIndex()) != -1) {
-                            this.outCards[viewid].push(this.handCards[k]);
-                            this.handCards.splice(Number(k), 1);
-                            break;
-                        }
-                    }
-                }
-            }
+            // }
 
             // console.log("出牌 cnt---> ", utils.deepCopy(this.outCards[viewid].length));
             GameLogic.printCardList(tempCards);
@@ -1238,6 +1238,7 @@ export class CardLayer extends Component {
         //先清空
         this.selectCardValue = [];
         this.selectCardIndex = [];
+        this.selectedCardIndexSet.clear();
         for (const key in this.handCards) {
             const item = this.handCards[key];
             if (item && item.isMask()) {
@@ -1501,6 +1502,7 @@ export class CardLayer extends Component {
         this.doHandCardPopDown_V();
         // }
         this.selectCardValue = [];
+        this.selectedCardIndexSet.clear();
         if (this.hintCards.length == 0) {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "没有大过的牌" });
             return;
@@ -1577,7 +1579,7 @@ export class CardLayer extends Component {
         }
         else {
             if (this.outCardList.length == 1) {
-                let netHint = GameLogic.getHintCards(this.outCardList, this.groupedCards);
+                let netHint = GameLogic.getHintCards(this.outCardList, this.hintCards);
                 this.selectCardValue = netHint[this.hintIndex];
                 this.hintIndex++;
                 if (this.hintIndex == netHint.length) {

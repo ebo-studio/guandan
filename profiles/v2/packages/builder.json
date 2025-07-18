@@ -16,127 +16,13 @@
   },
   "BuildTaskManager": {
     "taskMap": {
-      "1752787112342": {
+      "1752840071010": {
         "type": "build",
-        "id": "1752787112342",
-        "progress": 1,
-        "state": "failure",
-        "stage": "build",
-        "message": "2025-7-18 05:18 build failed!EPERM: operation not permitted, mkdir 'C:\\xuhang\\guandan\\guandan\\build\\web-mobile'",
-        "options": {
-          "name": "掼蛋",
-          "platform": "web-mobile",
-          "buildPath": "project://build",
-          "debug": false,
-          "md5Cache": true,
-          "skipCompressTexture": false,
-          "sourceMaps": false,
-          "polyfills": {
-            "asyncFunctions": true
-          },
-          "experimentalEraseModules": false,
-          "useBuiltinServer": false,
-          "mainBundleIsRemote": false,
-          "mainBundleCompressionType": "merge_dep",
-          "replaceSplashScreen": false,
-          "compressTexture": true,
-          "packAutoAtlas": true,
-          "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-          "outputName": "web-mobile",
-          "scenes": [
-            {
-              "url": "db://assets/scenes/Game.scene",
-              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/Lobby.scene",
-              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-              "inBundle": false
-            }
-          ],
-          "web-mobile": [],
-          "packages": {
-            "web-mobile": {
-              "orientation": "landscape",
-              "embedWebDebugger": false,
-              "__version__": "1.0.1"
-            },
-            "cocos-service": {
-              "configID": "944002",
-              "services": [],
-              "__version__": "3.0.4"
-            }
-          },
-          "__version__": "1.3.3"
-        },
-        "time": "2025-7-18 05:18",
-        "dirty": false
-      },
-      "1752787150151": {
-        "type": "build",
-        "id": "1752787150151",
-        "progress": 1,
-        "state": "failure",
-        "stage": "build",
-        "message": "2025-7-18 05:19 build failed!EPERM: operation not permitted, mkdir 'C:\\xuhang\\guandan\\guandan\\build\\web-mobile'",
-        "options": {
-          "name": "掼蛋",
-          "platform": "web-mobile",
-          "buildPath": "project://build",
-          "debug": false,
-          "md5Cache": true,
-          "skipCompressTexture": false,
-          "sourceMaps": false,
-          "polyfills": {
-            "asyncFunctions": true
-          },
-          "experimentalEraseModules": false,
-          "useBuiltinServer": false,
-          "mainBundleIsRemote": false,
-          "mainBundleCompressionType": "merge_dep",
-          "replaceSplashScreen": false,
-          "compressTexture": true,
-          "packAutoAtlas": true,
-          "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-          "outputName": "web-mobile",
-          "scenes": [
-            {
-              "url": "db://assets/scenes/Game.scene",
-              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/Lobby.scene",
-              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-              "inBundle": false
-            }
-          ],
-          "web-mobile": [],
-          "packages": {
-            "web-mobile": {
-              "orientation": "landscape",
-              "embedWebDebugger": false,
-              "__version__": "1.0.1"
-            },
-            "cocos-service": {
-              "configID": "944002",
-              "services": [],
-              "__version__": "3.0.4"
-            }
-          },
-          "__version__": "1.3.3"
-        },
-        "time": "2025-7-18 05:19",
-        "dirty": false
-      },
-      "1752789257533": {
-        "type": "build",
-        "id": "1752789257533",
+        "id": "1752840071010",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-7-18 05:55 Build success in 51985 ms!",
+        "message": "2025-7-18 20:01 Build success in 45268 ms!",
         "options": {
           "name": "掼蛋",
           "platform": "web-mobile",
@@ -184,7 +70,7 @@
           },
           "__version__": "1.3.3"
         },
-        "time": "2025-7-18 05:54",
+        "time": "2025-7-18 20:01",
         "dirty": false
       }
     }

@@ -79,7 +79,7 @@ export class AppGlobal extends Component {
                     okName: "确定",
                     cancleName: "取消",
                     des: "选择token",
-                    okFunc: (code: string) => {
+                    okFunc: (code: string = 'xuhang') => {
                         GlobalData.loginInfo.code = code;
                         GlobalData.requestLogin({
                             success: () => {
