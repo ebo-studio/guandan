@@ -638,7 +638,7 @@ export class CardLayer extends Component {
             // } else {
             // this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
             if (!GlobalData.cardInfo.sortCard && !GlobalData.cardInfo.oneCard) {
-                this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+
             }
             let sameSizeList;
             console.log("出牌前 groupedCards: ", utils.deepCopy(this.groupedCards));
@@ -669,10 +669,10 @@ export class CardLayer extends Component {
 
                 }
                 else {
+                    this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
                     sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
                 }
             }
-
             this.initHandStartPosX_V(sameSizeList.length);
             let idx: number = 0;
             let useIdxList: number[] = [];
@@ -1238,7 +1238,7 @@ export class CardLayer extends Component {
         //先清空
         this.selectCardValue = [];
         this.selectCardIndex = [];
-        this.selectedCardIndexSet.clear();
+        // this.selectedCardIndexSet.clear();
         for (const key in this.handCards) {
             const item = this.handCards[key];
             if (item && item.isMask()) {
@@ -1582,9 +1582,9 @@ export class CardLayer extends Component {
             // }
         }
         else {
-            if (this.outCardList.length == 1) {
+            if (this.outCardList.length == 1 || this.outCardList.length == 2) {
                 let sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
-                let netHint: number[][] = GameLogic.getHintCards(this.outCardList, this.hintCards);
+                let netHint: number[][] = GameLogic.getHintCards(this.outCardList, sameSizeList);
                 if (netHint.length == 0) {
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "没有大过的牌" });
                     return;
@@ -1698,6 +1698,12 @@ export class CardLayer extends Component {
             this.prevSelected, // <== 关键：传入前次理牌
             this.groupedCards
         );
+        // this.groupedCards = GameLogic.manualSortCards(
+        //     selected,
+        //     this.prevSelected, // <== 关键：传入前次理牌
+        //     this.groupedCards,
+        //     this.handCardsValue
+        // );
         console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
         GlobalData.cardInfo.sortCard = true;
         this.picHuifuDir.node.active = true;
@@ -1974,8 +1980,11 @@ export class CardLayer extends Component {
                 this.picHuifuDir.node.active = true;
             }
             else {
-                this.picCardDir.node.active = true;
-                this.picHuifuDir.node.active = false;
+                if (GlobalData.cardInfo.sortCard) {
+                    this.picCardDir.node.active = false;
+                    this.picHuifuDir.node.active = true;
+                }
+
             }
 
             // }
