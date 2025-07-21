@@ -2297,6 +2297,7 @@ export module GameLogic {
         const ranksSorted = [...rankMap.keys()].sort((a, b) => b - a);
         for (const rank of ranksSorted) {
             const list = rankMap.get(rank)!;
+            if (!list) continue; // ✅ 防止为 undefined
             const need = 3 - list.length;
 
             if (list.length >= 1 && heartCards.length >= need) {

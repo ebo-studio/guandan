@@ -1,609 +1,0 @@
-2025-7-21 06:09-debug: =================================== Build Task (web-mobile) Start ================================
-2025-7-21 06:09-debug: Start build task, options:{"name":"掼蛋","platform":"web-mobile","buildPath":"project://build","debug":false,"md5Cache":true,"skipCompressTexture":false,"sourceMaps":false,"polyfills":{"asyncFunctions":true},"experimentalEraseModules":false,"useBuiltinServer":false,"mainBundleIsRemote":false,"mainBundleCompressionType":"merge_dep","replaceSplashScreen":false,"compressTexture":true,"packAutoAtlas":true,"startScene":"61eb39d8-7561-40f3-a268-06dabc8d192a","outputName":"web-mobile","scenes":[{"url":"db://assets/scenes/Game.scene","uuid":"8cd0fb05-2535-4c33-abbf-584bac560df0","inBundle":false},{"url":"db://assets/scenes/Lobby.scene","uuid":"61eb39d8-7561-40f3-a268-06dabc8d192a","inBundle":false}],"web-mobile":[],"packages":{"web-mobile":{"orientation":"landscape","embedWebDebugger":false,"__version__":"1.0.1"},"cocos-service":{"configID":"944002","services":[],"__version__":"3.0.4"}},"__version__":"1.3.3"}
-2025-7-21 06:09-debug: // ---- cocos-service:(onBeforeBuild) ----
-2025-7-21 06:09-debug: Build with Cocos Creator 3.6.0
-2025-7-21 06:09-debug: cocos-service:(onBeforeBuild) start...0%
-2025-7-21 06:09-debug: Process: heapTotal 209.31MB heapUsed 201.53MB rss 116.18MB
-2025-7-21 06:09-debug: // ---- cocos-service:(onBeforeBuild) success ----
-2025-7-21 06:09-debug: cocos-service:(onBeforeBuild)2%
-2025-7-21 06:09-debug: Query all assets info in project
-2025-7-21 06:09-debug: init custom config: keepNodeUuid: false, useCache: true
-2025-7-21 06:09-debug: BuildAssetLibrary query-assets with assets 668
-2025-7-21 06:09-debug:   Number of all scripts: 94
-2025-7-21 06:09-debug: web-mobile:(onAfterInit) start...2%
-2025-7-21 06:09-debug: BuildAssetLibrary initialized with asset 1209!
-2025-7-21 06:09-debug:   Number of other assets: 1542
-2025-7-21 06:09-debug: Process: heapTotal 211.84MB heapUsed 203.85MB rss 120.32MB
-2025-7-21 06:09-debug: // ---- web-mobile:(onAfterInit) success ----
-2025-7-21 06:09-debug: web-mobile:(onAfterInit)4%
-2025-7-21 06:09-debug:   Number of all scenes: 2
-2025-7-21 06:09-debug: // ---- cocos-service:(onAfterInit) ----
-2025-7-21 06:09-debug: // ---- web-mobile:(onAfterInit) ----
-2025-7-21 06:09-debug: cocos-service:(onAfterInit) start...4%
-2025-7-21 06:09-debug: Process: heapTotal 211.84MB heapUsed 203.88MB rss 119.90MB
-2025-7-21 06:09-debug: // ---- cocos-service:(onAfterInit) success ----
-2025-7-21 06:09-debug: cocos-service:(onAfterInit)7%
-2025-7-21 06:09-debug: localization-editor:(onAfterInit) start...7%
-2025-7-21 06:09-debug: Process: heapTotal 211.84MB heapUsed 203.94MB rss 118.50MB
-2025-7-21 06:09-debug: // ---- localization-editor:(onAfterInit) ----
-2025-7-21 06:09-debug: // ---- localization-editor:(onAfterInit) success ----
-2025-7-21 06:09-debug: localization-editor:(onAfterInit)9%
-2025-7-21 06:09-debug: Reload project scripts start9%
-2025-7-21 06:09-log: // ---- Reload project scripts ----
-2025-7-21 06:09-debug: Process: heapTotal 211.84MB heapUsed 203.99MB rss 118.55MB
-2025-7-21 06:09-debug: reload all scripts.
-2025-7-21 06:09-debug: Incremental keys: 
-2025-7-21 06:09-debug: Set detail map pack:///resolution-detail-map.json: {}
-2025-7-21 06:09-debug: Unregister RaceScoreLineItem
-2025-7-21 06:09-debug: Unregister SetingItem
-2025-7-21 06:09-debug: Unregister MessageBoxCommon
-2025-7-21 06:09-debug: Unregister MessageHint
-2025-7-21 06:09-debug: Unregister LoadItem
-2025-7-21 06:09-debug: Unregister WaitItem
-2025-7-21 06:09-debug: Unregister RuleItem
-2025-7-21 06:09-debug: Unregister AVirtualScrollView
-2025-7-21 06:09-debug: Unregister TeamItem
-2025-7-21 06:09-debug: Unregister UIManager
-2025-7-21 06:09-debug: Unregister AItemRenderer
-2025-7-21 06:09-debug: Unregister KeyBoardItem
-2025-7-21 06:09-debug: Unregister CreateRoomItem
-2025-7-21 06:09-debug: Unregister GameEndFreeHeadItem
-2025-7-21 06:09-debug: Unregister RaceAuditionLineItem
-2025-7-21 06:09-debug: Unregister PbManager
-2025-7-21 06:09-debug: Unregister GameEndFreeItem
-2025-7-21 06:09-debug: Unregister LobbyUserHeadItem
-2025-7-21 06:09-debug: Unregister PopWindow
-2025-7-21 06:09-debug: Unregister RankScoreTeamSelfLine
-2025-7-21 06:09-debug: Unregister RankScoreTeam
-2025-7-21 06:09-debug: Unregister RankScore
-2025-7-21 06:09-debug: Unregister GameEndScoreRankPerson
-2025-7-21 06:09-debug: Unregister GameEndScoreRankTeam
-2025-7-21 06:09-debug: Unregister GameEndScoreRankItem
-2025-7-21 06:09-debug: Unregister GameEndScoreItem
-2025-7-21 06:09-debug: Unregister GameEndKickHeadItem
-2025-7-21 06:09-debug: Unregister RankScorePersonSelfLine
-2025-7-21 06:09-debug: Unregister GameEndKickItem
-2025-7-21 06:09-debug: Unregister GameEndKickUpItem
-2025-7-21 06:09-debug: Unregister TeamUpItem
-2025-7-21 06:09-debug: Unregister RaceScoreItem
-2025-7-21 06:09-debug: Unregister RaceKickLineItem
-2025-7-21 06:09-debug: Unregister RaceKickItem
-2025-7-21 06:09-debug: Unregister RankScorePerson
-2025-7-21 06:09-debug: Unregister CreateTeamItem
-2025-7-21 06:09-debug: Unregister GameStartNotice
-2025-7-21 06:09-debug: Unregister FreeUpItem
-2025-7-21 06:09-debug: Unregister RankRaceKickItem
-2025-7-21 06:09-debug: Unregister RankRaceScoreItem
-2025-7-21 06:09-debug: Unregister RankRaceItem
-2025-7-21 06:09-debug: Unregister RankRaceAuditionItem
-2025-7-21 06:09-debug: Unregister RankKick
-2025-7-21 06:09-debug: Unregister MessageBoxCommonTest
-2025-7-21 06:09-debug: Unregister RankAuditionItem
-2025-7-21 06:09-debug: Unregister GameEndAuditionHeadItem
-2025-7-21 06:09-debug: Unregister GameEndAuditionItem
-2025-7-21 06:09-debug: Unregister FreeMatchItem
-2025-7-21 06:09-debug: Unregister RaceAuditionItem
-2025-7-21 06:09-debug: Unregister AuditionMatchItem
-2025-7-21 06:09-debug: Unregister AppGlobal
-2025-7-21 06:09-debug: Unregister Test
-2025-7-21 06:09-debug: Unregister GraphicsMask
-2025-7-21 06:09-debug: Unregister CardAction
-2025-7-21 06:09-debug: Unregister CardItem
-2025-7-21 06:09-debug: Unregister GameTimer
-2025-7-21 06:09-debug: Unregister CardLayer
-2025-7-21 06:09-debug: Unregister UserHead
-2025-7-21 06:09-debug: Unregister GameEndKickUpLineItem
-2025-7-21 06:09-debug: Unregister RankAuditionLineItem
-2025-7-21 06:09-debug: Unregister GameEndScoreRankLineItem
-2025-7-21 06:09-debug: Unregister RankKickLineItem
-2025-7-21 06:09-debug: Unregister RankScoreAudition
-2025-7-21 06:09-debug: Unregister RankScorePersonLine
-2025-7-21 06:09-debug: Unregister RankScorePersonLine
-2025-7-21 06:09-debug: Unregister RankScoreTeamLine
-2025-7-21 06:09-debug: Unregister RankRaceAuditionLineItem
-2025-7-21 06:09-debug: Unregister RankRaceKickLineItem
-2025-7-21 06:09-debug: Unregister RankRaceScoreLineItem
-2025-7-21 06:09-debug: Unregister TeamLineItem
-2025-7-21 06:09-debug: Unregister PostMessage
-2025-7-21 06:09-debug: Unregister Game
-2025-7-21 06:09-debug: Unregister Lobby
-2025-7-21 06:09-debug: Unregister Start
-2025-7-21 06:09-debug: Unregister TestProto
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/97/978b22243191fdd96aabdcebbba296d0810bc72d.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/2e/2ef8c349aa11cb5bd4b9340435deb93421ff2444.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/84/84741ad843cea9a440c5d8c2d379669b6551400d.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/45/4547fef147ae4ed4bf6851555a08e53f5596fb81.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ae/ae1ccc372ea857a6232c7e8ed95795e618ea2203.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/e8/e8fd119c78651136bb38557b7e68addf311c6a3c.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d6/d69e1e5a837d092f8682c976541a1d5bb65e8f2e.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/13/13b60e814a5011399fc646920546575aa6196310.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/03/03806d15172018a2309f0bb162360a4d30f7ba5e.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ee/eeb649224630e083aa1f4ef989fbd03344fd6fbb.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/3d/3ddf15c6d716025fcef1a9200bae96feea648abc.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/58/581876d810858dfffb725bbbf8d45b4d5724a6e8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/fb/fb5ce9549f0723f79b74566f9ef7c2388ab00bad.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/bb/bba56aedb29353ef49467aa555cce65e7633eb6a.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ba/bac6806c02933fbdc7c2b2ef4754b8ea0cfd3264.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/66/66f09e7e0f1e06d45b2ec024291c03f3f07493d8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/f9/f98e70a04c2251e8c8784c283825ab7fb276ac5c.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/c1/c188129bc0d18211c00412dd369cbd01d3ed79b6.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/2e/2e6df969278ff716b2286d8c8e484199173d403d.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/5e/5eda2a724b7c2d60e4aa01e713219b4254d25bca.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/0d/0d45e7ac41a140996cad6c32e02610084bdfb500.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/72/7204bf9a162cb48e60973cacfe2af27037992dbe.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/75/75603359fb0baa53102483afe6f89db08723871e.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/72/72d9ec7e731643ee6fc6ff1b4a81be1fd8e3b295.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ba/ba6baba8c8cc8924f1e1435b14919b6c9c4e1623.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/55/55cdaab102d9fe18e4ebf1ca33142209306acbb0.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/95/95d0c1a51d056e534b77910f7b2b85a2ee8b6343.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/20/2072953f9e3d4231b0fe44527f829b24e4488cc8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/53/53aeaec2ec85b3fd487ceae1111576823ec0dbaa.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/9f/9f46495e799929b5b15ec2c343ec62a637b17e80.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/1c/1c52f3aea75b9cd29779929af7ed31c11d7d5458.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/6c/6c2cf89aa9cc52e3303dcf059815f33db49b49d4.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/e5/e59b79483a60df6522a0ad102f1a5219cc414682.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/82/829ec00f85154a45bd3df7c39e21d7eebae95ca0.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/21/21a1754254f6e4a50d45e6e062ff2c1ce4a6a95d.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ac/ac4e4256792c7d96439f6fb7121a82878feef763.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/53/53913d3576c465967c4d08fc3bba9abe3fa0e751.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/bf/bff5b75247b30b58f6954b6b09e5d1930274d6fa.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/55/55a9a8cca4323b5f6bed991c5ebe06a5aea8328a.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/cd/cd131484ce44d36c6343ddbb0941665c2691cef8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/67/679128e790bb9a804eea2e30bd0f90073f9d61c1.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d7/d7cbb72e6cbb06120831cb05333e5b0fc2076100.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/78/780fdc21b368a9ca1b8d4ed968df70eec9c24523.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d8/d87f2ffafad21525534f47b43e3b3027894c4483.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ad/ad349f4220bb38171bc8c93228ac31a29f7cd8fb.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/a6/a64c5915437b63fb045f6104b5263b02a9e92d79.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/69/693b7a034fb3ff45ab0aec965dcf01b2f152dfa0.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/c9/c979866cee919b829e49d830eb8b5deb45c7dd50.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/79/79fa8e44e1293d1d07ccf2501342944f3031c684.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/28/28945ed48170394810b93f1be852bb29f492bcfe.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/cc/ccfb7ac62319942d32f0589640039b3d1d92c86c.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/fe/fe5ed25d4aec6c345df98d3a9ea98d2bfc01b589.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/2a/2a1ba42938fd12fc790079e0b559f2632a6862d1.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/3e/3e1d939acbd9530b481be921115c33e5a49cb3a7.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/3f/3ff98748fa5e383060a7b8b86fce80e24dc20f19.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d0/d09636775aaa6d3da4391fb75dc24d30c7fde788.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ad/add7027b2164c3e7ba4c7fcd162fc4e6ccadd6c4.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/f8/f8596badc60b9d2e3a31ef7fa3113bd7ae9643fa.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/79/791ffbc32e406101a2db6da38686a66cdc6a7a50.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/8d/8d66797946a4e85d6b9e26f5cd2303563ac77e9f.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/95/9578cf18e6ba45e8a27902496e990588f9727a70.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/fd/fd645bea8c5ee73c474aa455b5b0ae1970203dff.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d1/d163b4157c508e8a4ee6d49131daff73a273b42f.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/e5/e57f24b5d7105749e1b9c7f0f9db591894faf87c.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/11/11ae5cc56e590d81a6cd01b48b3986b4c51b3213.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/a8/a8185e6df4e88d24026d0cfdedc75e520507033a.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/40/40d10caeb6372c22367e86f9510c235f59eebfd8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/60/60fbb0f174330da825ee927691af9b9113a56708.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/fd/fdeeaabdf3aa7cd8a96477054df7cc0b2140da68.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ff/ff71117ab66fc0f8d00affc6b6b480c19dd34265.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ab/abba0afd37da033d2be71e66dba047e35fbe10da.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/89/892e2eabe0d0fbb566ee0cc26dc5a4f3d8d82622.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/12/1244dc28410897fa5fda9b11ef97e3dec9692176.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/c9/c93ae7c1637347340acb6d277dee0e753db08268.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/48/4867e57b6c7b14203c78e2fa27444f3e3f63a6d2.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/04/047df9e41e447975403fcc368cbe059a5ea79261.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/cd/cd54b7595c3545803eafd03aa24a57d45eb9cdea.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/42/42d267c257d66c8d3a92b50fdf065ca14fdad7c9.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/53/53ec0ceae5ed31ed6a2352201b9db2f2f46f9828.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/ee/ee0f6ad3e158df687590d956669e84d110fe23bf.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/0f/0fc78c054c7d843f3a7113bf328e133981bf54fd.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/36/36f3181ae3f577994e9a582f6849e29b03d10a25.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/1a/1a8c21dd11eefeca34634c7904024e12bdffa7f8.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/27/27a4a8b88f676c780b63fe86d17c97e58fbbe5c9.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/02/020d34ff5f0b5de71d9de262ee8f3956275916e5.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/88/88c1806ec0c96f92d56bfd67ab673707953736c2.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/3b/3bfa46056a03f772c39cacdf8e63900148752667.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/76/7665b28602499012a300771fc936d1bd12902f36.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/e2/e22b6f02adf5d686a7ebd142d6b23614b189f373.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/d5/d5810d02e5541f953dfb304437da6cc352b2c034.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/cf/cfb07861cf572b7f20b4d362a5244031e34e1969.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/77/776735051ad7d6a6588e4bd87bf94ca6af847a0f.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/71/71fa8ee7cd5bae0808b7d2c3d546732806480347.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/90/90c8ac7ee1ac16904f1c7b57f131f4430ac1e8e9.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/17/1718d2cbc034265c14d9e7a011e6594cb0a675fc.js'
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/6f/6ffdfe97e8167ef461eaaa842ddbb38c6e44bcf9.js'
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/84/84741ad843cea9a440c5d8c2d379669b6551400d.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/58/581876d810858dfffb725bbbf8d45b4d5724a6e8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/fb/fb5ce9549f0723f79b74566f9ef7c2388ab00bad.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/97/978b22243191fdd96aabdcebbba296d0810bc72d.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/bb/bba56aedb29353ef49467aa555cce65e7633eb6a.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/66/66f09e7e0f1e06d45b2ec024291c03f3f07493d8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/45/4547fef147ae4ed4bf6851555a08e53f5596fb81.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/69/693b7a034fb3ff45ab0aec965dcf01b2f152dfa0.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register AItemRenderer
-2025-7-21 06:09-debug: [[Executor]] Register RaceAuditionLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/f9/f98e70a04c2251e8c8784c283825ab7fb276ac5c.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RaceScoreLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/c1/c188129bc0d18211c00412dd369cbd01d3ed79b6.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ba/bac6806c02933fbdc7c2b2ef4754b8ea0cfd3264.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ae/ae1ccc372ea857a6232c7e8ed95795e618ea2203.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register PopWindow
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/c9/c979866cee919b829e49d830eb8b5deb45c7dd50.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/5e/5eda2a724b7c2d60e4aa01e713219b4254d25bca.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register MessageBoxCommon
-2025-7-21 06:09-debug: [[Executor]] Register SetingItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/0d/0d45e7ac41a140996cad6c32e02610084bdfb500.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register MessageHint
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/72/7204bf9a162cb48e60973cacfe2af27037992dbe.js" loaded.
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/16/161325e7598afbe89f247e29e333ac258cbf7433.js'
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/75/75603359fb0baa53102483afe6f89db08723871e.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register LoadItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/72/72d9ec7e731643ee6fc6ff1b4a81be1fd8e3b295.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RuleItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ba/ba6baba8c8cc8924f1e1435b14919b6c9c4e1623.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register AVirtualScrollView
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/79/79fa8e44e1293d1d07ccf2501342944f3031c684.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register TeamItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/55/55cdaab102d9fe18e4ebf1ca33142209306acbb0.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register UIManager
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d6/d69e1e5a837d092f8682c976541a1d5bb65e8f2e.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register KeyBoardItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/16/161325e7598afbe89f247e29e333ac258cbf7433.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register WaitItem
-2025-7-21 06:09-debug: [[Executor]] Register CreateRoomItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/7b/7b1ebcceecb027e75601a27ad9cce7de0a9ab416.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndFreeHeadItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d1/d163b4157c508e8a4ee6d49131daff73a273b42f.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/cc/ccfb7ac62319942d32f0589640039b3d1d92c86c.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/28/28945ed48170394810b93f1be852bb29f492bcfe.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register PbManager
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/03/03806d15172018a2309f0bb162360a4d30f7ba5e.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/2e/2e6df969278ff716b2286d8c8e484199173d403d.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndFreeItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/95/95d0c1a51d056e534b77910f7b2b85a2ee8b6343.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register LobbyUserHeadItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/3f/3ff98748fa5e383060a7b8b86fce80e24dc20f19.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScorePersonSelfLine
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/e5/e57f24b5d7105749e1b9c7f0f9db591894faf87c.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScorePerson
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/8d/8d66797946a4e85d6b9e26f5cd2303563ac77e9f.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScoreTeamSelfLine
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/a8/a8185e6df4e88d24026d0cfdedc75e520507033a.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScoreTeam
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/95/9578cf18e6ba45e8a27902496e990588f9727a70.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScore
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/cd/cd131484ce44d36c6343ddbb0941665c2691cef8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndScoreRankPerson
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/fe/fe5ed25d4aec6c345df98d3a9ea98d2bfc01b589.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndScoreRankTeam
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/2a/2a1ba42938fd12fc790079e0b559f2632a6862d1.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndScoreRankItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/20/2072953f9e3d4231b0fe44527f829b24e4488cc8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndScoreItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/53/53aeaec2ec85b3fd487ceae1111576823ec0dbaa.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndKickHeadItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/3e/3e1d939acbd9530b481be921115c33e5a49cb3a7.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndKickItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/1c/1c52f3aea75b9cd29779929af7ed31c11d7d5458.js" loaded.
-2025-7-21 06:09-debug: Invalidating 'pack:///chunks/7b/7b1ebcceecb027e75601a27ad9cce7de0a9ab416.js'
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/9f/9f46495e799929b5b15ec2c343ec62a637b17e80.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndKickUpItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/6c/6c2cf89aa9cc52e3303dcf059815f33db49b49d4.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RaceScoreItem
-2025-7-21 06:09-debug: [[Executor]] Register RaceKickLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/e5/e59b79483a60df6522a0ad102f1a5219cc414682.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d0/d09636775aaa6d3da4391fb75dc24d30c7fde788.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RaceKickItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/82/829ec00f85154a45bd3df7c39e21d7eebae95ca0.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register MessageBoxCommonTest
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ac/ac4e4256792c7d96439f6fb7121a82878feef763.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register CreateTeamItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/21/21a1754254f6e4a50d45e6e062ff2c1ce4a6a95d.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameStartNotice
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/53/53913d3576c465967c4d08fc3bba9abe3fa0e751.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register FreeUpItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/bf/bff5b75247b30b58f6954b6b09e5d1930274d6fa.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceKickItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/f8/f8596badc60b9d2e3a31ef7fa3113bd7ae9643fa.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ad/add7027b2164c3e7ba4c7fcd162fc4e6ccadd6c4.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceAuditionItem
-2025-7-21 06:09-debug: [[Executor]] Register TeamUpItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/79/791ffbc32e406101a2db6da38686a66cdc6a7a50.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceItem
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceScoreItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/55/55a9a8cca4323b5f6bed991c5ebe06a5aea8328a.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankKick
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/67/679128e790bb9a804eea2e30bd0f90073f9d61c1.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RaceAuditionItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d7/d7cbb72e6cbb06120831cb05333e5b0fc2076100.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankAuditionItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d8/d87f2ffafad21525534f47b43e3b3027894c4483.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndAuditionHeadItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/fd/fd645bea8c5ee73c474aa455b5b0ae1970203dff.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndAuditionItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/78/780fdc21b368a9ca1b8d4ed968df70eec9c24523.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register FreeMatchItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ad/ad349f4220bb38171bc8c93228ac31a29f7cd8fb.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register AuditionMatchItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/a6/a64c5915437b63fb045f6104b5263b02a9e92d79.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/3d/3ddf15c6d716025fcef1a9200bae96feea648abc.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/e8/e8fd119c78651136bb38557b7e68addf311c6a3c.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/13/13b60e814a5011399fc646920546575aa6196310.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register AppGlobal
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/2e/2ef8c349aa11cb5bd4b9340435deb93421ff2444.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register Test
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/11/11ae5cc56e590d81a6cd01b48b3986b4c51b3213.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GraphicsMask
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/60/60fbb0f174330da825ee927691af9b9113a56708.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register CardAction
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/40/40d10caeb6372c22367e86f9510c235f59eebfd8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register CardItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ff/ff71117ab66fc0f8d00affc6b6b480c19dd34265.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameTimer
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ab/abba0afd37da033d2be71e66dba047e35fbe10da.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register CardLayer
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/fd/fdeeaabdf3aa7cd8a96477054df7cc0b2140da68.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register UserHead
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/12/1244dc28410897fa5fda9b11ef97e3dec9692176.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndKickUpLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/89/892e2eabe0d0fbb566ee0cc26dc5a4f3d8d82622.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register GameEndScoreRankLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/c9/c93ae7c1637347340acb6d277dee0e753db08268.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankAuditionLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/0f/0fc78c054c7d843f3a7113bf328e133981bf54fd.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankKickLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/48/4867e57b6c7b14203c78e2fa27444f3e3f63a6d2.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScoreAudition
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/04/047df9e41e447975403fcc368cbe059a5ea79261.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScorePersonLine
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/cd/cd54b7595c3545803eafd03aa24a57d45eb9cdea.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScorePersonLine
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/42/42d267c257d66c8d3a92b50fdf065ca14fdad7c9.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankScoreTeamLine
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/53/53ec0ceae5ed31ed6a2352201b9db2f2f46f9828.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceAuditionLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ee/ee0f6ad3e158df687590d956669e84d110fe23bf.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceKickLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/36/36f3181ae3f577994e9a582f6849e29b03d10a25.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register RankRaceScoreLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/1a/1a8c21dd11eefeca34634c7904024e12bdffa7f8.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register TeamLineItem
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/27/27a4a8b88f676c780b63fe86d17c97e58fbbe5c9.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/88/88c1806ec0c96f92d56bfd67ab673707953736c2.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/02/020d34ff5f0b5de71d9de262ee8f3956275916e5.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register PostMessage
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/3b/3bfa46056a03f772c39cacdf8e63900148752667.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/e2/e22b6f02adf5d686a7ebd142d6b23614b189f373.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/cf/cfb07861cf572b7f20b4d362a5244031e34e1969.js" loaded.
-2025-7-21 06:09-warn: ReferenceError: protobuf is not defined    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-2025-7-21 06:09-log: pack:///chunks/76/7665b28602499012a300771fc936d1bd12902f36.jsReferenceError: protobuf is not defined    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13false
-2025-7-21 06:09-debug: [[Executor]] Register Game
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/d5/d5810d02e5541f953dfb304437da6cc352b2c034.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register Lobby
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/77/776735051ad7d6a6588e4bd87bf94ca6af847a0f.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register Start
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/71/71fa8ee7cd5bae0808b7d2c3d546732806480347.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Register TestProto
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/90/90c8ac7ee1ac16904f1c7b57f131f4430ac1e8e9.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/17/1718d2cbc034265c14d9e7a011e6594cb0a675fc.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/6f/6ffdfe97e8167ef461eaaa842ddbb38c6e44bcf9.js" loaded.
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/97/978b22243191fdd96aabdcebbba296d0810bc72d.js" loaded.
-2025-7-21 06:09-debug: Reload project scripts √10%
-2025-7-21 06:09-debug: Query asset bundle start10%
-2025-7-21 06:09-log: // ---- Query asset bundle ----
-2025-7-21 06:09-debug: Process: heapTotal 213.36MB heapUsed 206.26MB rss 124.14MB
-2025-7-21 06:09-debug: [[Executor]] Module "pack:///chunks/ee/eeb649224630e083aa1f4ef989fbd03344fd6fbb.js" loaded.
-2025-7-21 06:09-debug: Query and organize assets start11%
-2025-7-21 06:09-debug: Query asset bundle √11%
-2025-7-21 06:09-log: // ---- Query and organize assets ----
-2025-7-21 06:09-debug: Process: heapTotal 214.36MB heapUsed 205.69MB rss 125.47MB
-2025-7-21 06:09-debug: Query preload assets from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,1baf0fc9-befa-459c-8bdd-af1a450a0319,511d2633-09a7-4bdd-ac42-f778032124b3,5d45aa00-e064-4938-b314-4265f0c2258c,28d6d6b8-3f66-4a73-9795-17a0852ba2d4,ec8106fe-05bf-4e94-943c-e0d3b7bb5e45,620b6bf3-0369-4560-837f-2a2c00b73c26,ff9be190-20a4-4e48-b68c-76e3c7cff085,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,9361fd90-ba52-4f84-aa93-6e878fd576ca,871c3b6c-7379-419d-bda3-794b239ab90d,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98
-2025-7-21 06:09-debug: Number of scenes: 2
-2025-7-21 06:09-debug: Number of assets: 774
-2025-7-21 06:09-debug: Number of asset bundle: 3
-2025-7-21 06:09-debug: Query and organize assets √13%
-2025-7-21 06:09-debug: Organize scripts start13%
-2025-7-21 06:09-log: // ---- Organize scripts ----
-2025-7-21 06:09-debug: Process: heapTotal 235.64MB heapUsed 210.66MB rss 193.16MB
-2025-7-21 06:09-debug: sort script group...
-2025-7-21 06:09-debug: Organize scripts √14%
-2025-7-21 06:09-debug: Organize texture compression tasks start14%
-2025-7-21 06:09-log: // ---- Organize texture compression tasks ----
-2025-7-21 06:09-debug: Process: heapTotal 235.64MB heapUsed 210.74MB rss 193.24MB
-2025-7-21 06:09-debug: Number of image-compress task: 0
-2025-7-21 06:09-debug: Organize texture compression tasks √15%
-2025-7-21 06:09-debug: Group json start15%
-2025-7-21 06:09-log: // ---- Group json ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 208.37MB rss 193.33MB
-2025-7-21 06:09-debug: Group json √16%
-2025-7-21 06:09-debug: Merging Texture2D json start16%
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.14MB rss 194.12MB
-2025-7-21 06:09-debug: Sort import-map.json start18%
-2025-7-21 06:09-debug: Number of json group: 174
-2025-7-21 06:09-log: // ---- Sort import-map.json ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.49MB rss 194.28MB
-2025-7-21 06:09-debug: Sort import-map.json √19%
-2025-7-21 06:09-debug: web-mobile:(onBeforeBuildAssets) start...19%
-2025-7-21 06:09-debug: // ---- web-mobile:(onBeforeBuildAssets) ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.51MB rss 194.28MB
-2025-7-21 06:09-debug: // ---- web-mobile:(onBeforeBuildAssets) success ----
-2025-7-21 06:09-debug: web-mobile:(onBeforeBuildAssets)21%
-2025-7-21 06:09-debug: localization-editor:(onBeforeBuildAssets) start...21%
-2025-7-21 06:09-debug: // ---- localization-editor:(onBeforeBuildAssets) ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.59MB rss 194.33MB
-2025-7-21 06:09-debug: Merging Texture2D json √18%
-2025-7-21 06:09-log: // ---- Merging Texture2D json ----
-2025-7-21 06:09-debug: Build auto-atlas start23%
-2025-7-21 06:09-debug: localization-editor:(onBeforeBuildAssets)23%
-2025-7-21 06:09-log: // ---- Build auto-atlas ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.69MB rss 194.21MB
-2025-7-21 06:09-debug: Build auto-atlas √30%
-2025-7-21 06:09-debug: Compress Image start30%
-2025-7-21 06:09-log: // ---- Compress Image ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.74MB rss 194.21MB
-2025-7-21 06:09-debug: Compress Image √37%
-2025-7-21 06:09-debug: Copy the resource start37%
-2025-7-21 06:09-log: // ---- Copy the resource ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.76MB rss 194.21MB
-2025-7-21 06:09-debug: // ---- localization-editor:(onBeforeBuildAssets) success ----
-2025-7-21 06:09-debug: Asset Bundle(internal) handle assets: 26
-2025-7-21 06:09-debug: Asset Bundle(resources) handle assets: 731
-2025-7-21 06:09-debug: Copy the resource √43%
-2025-7-21 06:09-debug: Build the grouped json and scatter files to the specified location start43%
-2025-7-21 06:09-log: // ---- Build the grouped json and scatter files to the specified location ----
-2025-7-21 06:09-debug: Process: heapTotal 234.76MB heapUsed 210.41MB rss 193.34MB
-2025-7-21 06:09-debug: Asset Bundle(main) handle assets: 82
-2025-7-21 06:09-debug: Json group(0cac1a735) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(090c05a0e) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0cab45bea) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(04ec1fa7c) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(07fb411d6) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0b9b221d8) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(02e7b70e1) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(05d12060e) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0f2494487) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(01411cf26) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(07d4cf92e) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0992b45f1) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(06cc9b147) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(04f6f0a5a) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(05f3df92a) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(057958a53) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0ce26a28e) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0fce55781) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0e8194be7) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(081e790f3) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0c356f83c) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0ee71569d) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(050f7616a) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(05c2faeee) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(086632640) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0ed71845c) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(01faf5c00) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(03e29bf63) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0371476bd) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(048665882) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(05d9c3ad0) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0251d5304) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(057603dca) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(02ed3f3b0) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(089a78088) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(09b5379f8) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0a902c76f) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(07a98404f) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(024f574d5) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(01a549373) compile success，json number: 6
-2025-7-21 06:09-debug: Json group(0174670c0) compile success，json number: 6
-2025-7-21 06:09-debug: Compress zip bundle start50%
-2025-7-21 06:09-log: // ---- Compress zip bundle ----
-2025-7-21 06:09-debug: Process: heapTotal 243.44MB heapUsed 222.77MB rss 208.61MB
-2025-7-21 06:09-debug: Build the grouped json and scatter files to the specified location √50%
-2025-7-21 06:09-debug: Build script start57%
-2025-7-21 06:09-debug: Process: heapTotal 243.44MB heapUsed 222.79MB rss 208.73MB
-2025-7-21 06:09-debug: Compress zip bundle √57%
-2025-7-21 06:09-log: // ---- Build script ----
-2025-7-21 06:09-debug: Build project script start...57%
-2025-7-21 06:09-debug: Process: heapTotal 254.27MB heapUsed 235.89MB rss 217.60MB
-2025-7-21 06:09-log: Run build task(build-script) in child, see: chrome://inspect/#devices
-2025-7-21 06:10-log: [build-script]Create cjs interop url for 'file:///C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js'
-2025-7-21 06:10-log: [build-script]Create cjs interop url for 'file:///C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js'
-2025-7-21 06:10-log: [build-script]Create cjs interop url for 'file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.js'
-2025-7-21 06:10-log: [build-script]Create cjs interop url for 'file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.js'
-2025-7-21 06:10-warn: [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts
-2025-7-21 06:10-warn: [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKick.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/FreeMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-2025-7-21 06:10-warn: [build-script]Unexpected: entry chunk name gameMsg.mjs_cjs=&original= is not in list.[warning]Unexpected: entry chunk name long.mjs_cjs=&original= is not in list.
-2025-7-21 06:10-debug: excute-script over with build-script 37713ms
-2025-7-21 06:10-debug: Build engine start...57%
-2025-7-21 06:10-debug: Copy externalScripts success!
-2025-7-21 06:10-debug: Build project script in (37751 ms) √57%
-2025-7-21 06:10-debug: Process: heapTotal 254.27MB heapUsed 236.56MB rss 217.88MB
-2025-7-21 06:10-debug: Use cache engine: {link(C:\Users\XUHAN~1.TCL\AppData\Local\Temp\CocosCreator\3.6.0\builder\engine\887abe63d2655211e2cb2a8b887f36d5)}
-2025-7-21 06:10-debug: {"debug":false,"sourceMaps":false,"includeModules":["2d","3d","animation","audio","base","gfx-webgl","gfx-webgl2","intersection-2d","particle-2d","physics-2d-builtin","primitive","profiler","spine","tween","ui"],"engineVersion":"3.6.0","platform":"HTML5","md5Map":[],"engineName":"cocos-js","useCache":true,"split":false,"ammoJsWasm":"fallback","assetURLFormat":"runtime-resolved","flags":{"DEBUG":false},"entry":"C:\\ProgramData\\cocos\\editors\\Creator\\3.6.0\\resources\\resources\\3d\\engine"}
-2025-7-21 06:10-debug: Build engine in (320 ms) √57%
-2025-7-21 06:10-debug: Add md5 suffix to assets start63%
-2025-7-21 06:10-debug: Build script √63%
-2025-7-21 06:10-debug: Process: heapTotal 240.52MB heapUsed 232.84MB rss 204.56MB
-2025-7-21 06:10-log: // ---- Add md5 suffix to assets ----
-2025-7-21 06:10-debug: add suffix to assets(208) success!
-2025-7-21 06:10-log: // ---- Init settings and config ----
-2025-7-21 06:10-debug: Add md5 suffix to assets √73%
-2025-7-21 06:10-debug: Init settings and config start73%
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.73MB rss 208.58MB
-2025-7-21 06:10-debug: Init settings and config √74%
-2025-7-21 06:10-log: // ---- builder.tasks.settings.macro ----
-2025-7-21 06:10-debug: builder.tasks.settings.macro start74%
-2025-7-21 06:10-debug: builder.tasks.settings.macro does not defined in i18n
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.78MB rss 208.56MB
-2025-7-21 06:10-debug: builder.tasks.settings.macro √74%
-2025-7-21 06:10-debug: Sort some build options to settings.json start74%
-2025-7-21 06:10-log: // ---- Sort some build options to settings.json ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.83MB rss 208.49MB
-2025-7-21 06:10-debug: Sort some build options to settings.json √75%
-2025-7-21 06:10-debug: custom joint texture layouts start75%
-2025-7-21 06:10-debug: custom joint physics start76%
-2025-7-21 06:10-log: // ---- custom joint texture layouts ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.90MB rss 208.54MB
-2025-7-21 06:10-log: // ---- custom joint physics ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.94MB rss 208.55MB
-2025-7-21 06:10-debug: custom joint physics √76%
-2025-7-21 06:10-debug: Fill script data to settings start76%
-2025-7-21 06:10-log: // ---- Fill script data to settings ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.95MB rss 208.57MB
-2025-7-21 06:10-debug: Fill scene data to settings start77%
-2025-7-21 06:10-debug: Fill script data to settings √77%
-2025-7-21 06:10-log: // ---- Fill scene data to settings ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 232.98MB rss 209.03MB
-2025-7-21 06:10-debug: Fill scene data to settings √77%
-2025-7-21 06:10-log: // ---- Organize assets groups，generate packedAssets and rawAssets data ----
-2025-7-21 06:10-debug: Organize assets groups，generate packedAssets and rawAssets data start77%
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.00MB rss 209.30MB
-2025-7-21 06:10-debug: Organize assets groups，generate packedAssets and rawAssets data √78%
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.39MB rss 210.00MB
-2025-7-21 06:10-log: // ---- Generate md5AssetsMap from suffixMap to settings ----
-2025-7-21 06:10-debug: Generate md5AssetsMap from suffixMap to settings √78%
-2025-7-21 06:10-debug: web-mobile:(onBeforeCompressSettings) start...78%
-2025-7-21 06:10-debug: // ---- web-mobile:(onBeforeCompressSettings) ----
-2025-7-21 06:10-debug: // ---- web-mobile:(onBeforeCompressSettings) success ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.43MB rss 210.06MB
-2025-7-21 06:10-debug: web-mobile:(onBeforeCompressSettings)81%
-2025-7-21 06:10-debug: cocos-service:(onBeforeCompressSettings) start...81%
-2025-7-21 06:10-debug: // ---- cocos-service:(onBeforeCompressSettings) ----
-2025-7-21 06:10-debug: Generate md5AssetsMap from suffixMap to settings start78%
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.69MB rss 209.48MB
-2025-7-21 06:10-debug: custom joint texture layouts √76%
-2025-7-21 06:10-debug: cocos-service:(onBeforeCompressSettings)83%
-2025-7-21 06:10-debug: // ---- cocos-service:(onBeforeCompressSettings) success ----
-2025-7-21 06:10-log: // ---- Build import-map.json ----
-2025-7-21 06:10-debug: Build import-map.json start83%
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.07MB rss 205.62MB
-2025-7-21 06:10-debug: Build import-map.json √84%
-2025-7-21 06:10-debug: Compress settings.json and config.json start84%
-2025-7-21 06:10-log: // ---- Compress settings.json and config.json ----
-2025-7-21 06:10-debug: Process: heapTotal 241.27MB heapUsed 233.11MB rss 205.66MB
-2025-7-21 06:10-debug: Compress settings.json and config.json √85%
-2025-7-21 06:10-debug: Save config.json start85%
-2025-7-21 06:10-log: // ---- Save config.json ----
-2025-7-21 06:10-debug: Process: heapTotal 244.77MB heapUsed 233.17MB rss 206.96MB
-2025-7-21 06:10-debug: Save config.json √86%
-2025-7-21 06:10-debug: Save Settings.json start86%
-2025-7-21 06:10-log: // ---- Save Settings.json ----
-2025-7-21 06:10-debug: Process: heapTotal 244.77MB heapUsed 233.52MB rss 207.41MB
-2025-7-21 06:10-debug: Save Settings.json √87%
-2025-7-21 06:10-debug: Sort build template start87%
-2025-7-21 06:10-log: // ---- Sort build template ----
-2025-7-21 06:10-debug: Process: heapTotal 244.77MB heapUsed 233.70MB rss 207.66MB
-2025-7-21 06:10-debug: Sort build template √88%
-2025-7-21 06:10-debug: cocos-service:(onAfterCompressSettings) start...88%
-2025-7-21 06:10-debug: // ---- cocos-service:(onAfterCompressSettings) ----
-2025-7-21 06:10-debug: Process: heapTotal 244.77MB heapUsed 234.26MB rss 208.89MB
-2025-7-21 06:10-debug: // ---- cocos-service:(onAfterCompressSettings) success ----
-2025-7-21 06:10-debug: web-mobile:(onAfterBuild) start...90%
-2025-7-21 06:10-debug: cocos-service:(onAfterCompressSettings)90%
-2025-7-21 06:10-debug: // ---- web-mobile:(onAfterBuild) ----
-2025-7-21 06:10-debug: Process: heapTotal 245.02MB heapUsed 233.46MB rss 210.32MB
-2025-7-21 06:10-debug: Use build-template {link(C:\xuhang\guandan\guandan\build-templates\web-mobile)}.
-2025-7-21 06:10-debug: // ---- web-mobile:(onAfterBuild) success ----
-2025-7-21 06:10-debug: web-mobile:(onAfterBuild)92%
-2025-7-21 06:10-debug: cocos-service:(onAfterBuild) start...92%
-2025-7-21 06:10-debug: // ---- cocos-service:(onAfterBuild) ----
-2025-7-21 06:10-debug: Process: heapTotal 245.02MB heapUsed 233.75MB rss 210.02MB
-2025-7-21 06:10-debug: // ---- cocos-service:(onAfterBuild) success ----
-2025-7-21 06:10-debug: cocos-service:(onAfterBuild)94%
-2025-7-21 06:10-debug: builder:build-project-total (66038ms)
-2025-7-21 06:10-debug: build success in 66038 ms!
-2025-7-21 06:10-debug: ================================ Build Task (web-mobile) Finished ================================
