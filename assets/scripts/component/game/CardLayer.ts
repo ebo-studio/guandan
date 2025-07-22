@@ -1247,7 +1247,7 @@ export class CardLayer extends Component {
             }
         }
         // this.showCardDir(false);
-        let isRecover = false;
+        // let isRecover = false;
         const selectedSet = new Set(this.selectCardValue);
         // for (let group of this.groupedCards) {
         //     if (group.some(card => selectedSet.has(card))) {
@@ -1256,12 +1256,14 @@ export class CardLayer extends Component {
         //         break;
         //     }
         // }
-        for (let card of selectedSet) {
-            if (this.sorthandCardsValue.includes(card)) {
-                isRecover = true;
-                break;
-            }
-        }
+        // for (let card of selectedSet) {
+        //     if (this.sorthandCardsValue.includes(card)) {
+        //         isRecover = true;
+        //         break;
+        //     }
+        // }
+
+        let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
         if (GlobalData.cardInfo.oneCard) {
             this.picCardDir.node.active = false;
             this.picHuifuDir.node.active = true;
@@ -1276,6 +1278,29 @@ export class CardLayer extends Component {
         // console.log("this.selectCardValue---> ", this.selectCardValue);
         // console.log("this.selectCardIndex---> ", this.selectCardIndex);
     }
+
+
+    private isSelectedRecoverGroup(selectCardIndex: number[], cards: number[], sorthandCardsValue: number[]): boolean {
+        const count = new Map<number, number>();
+        for (const v of sorthandCardsValue) {
+            count.set(v, (count.get(v) || 0) + 1);
+        }
+
+        const groupedIndex = new Set<number>();
+        for (let i = cards.length - 1; i >= 0; i--) {
+            const c = cards[i];
+            if ((count.get(c) || 0) > 0) {
+                groupedIndex.add(i);
+                count.set(c, count.get(c)! - 1);
+            }
+        }
+
+        // 判断当前选中的 index 是否命中 groupedIndex 中的任何一个
+        return selectCardIndex.some(i => groupedIndex.has(i));
+    }
+
+
+
     //连续点击两次 双击
     private checkClickTwo() {
         if (this.isClickTwo) {
@@ -1668,6 +1693,10 @@ export class CardLayer extends Component {
                 const lianduiType = GameLogic.getCardTypeByLiandui(selected);
                 if (lianduiType === GameDefine.KIND_CARDS_ERROR) {
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "不是合法的牌型" });
+                    this.doHandCardPopDown_V();
+                    // this.selectCardValue = [];
+                    // this.selectCardIndex = [];
+                    // this.selectedCardIndexSet.clear();
                     return;
                 }
             }

@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 14316.613999962807,
+      "mTimestamp": 11998.689900040627,
       "chunkId": "ca4374a3008ca85000d465787e739a302e4e4ac6",
       "imports": [
         {
@@ -535,11 +535,11 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 21930691.01369995,
+      "mTimestamp": 121283247.21229994,
       "chunkId": "978b22243191fdd96aabdcebbba296d0810bc72d",
       "imports": [
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts",
           "resolved": "__unresolved_0",
           "loc": {
             "start": {
@@ -548,1295 +548,1295 @@
             },
             "end": {
               "line": 5,
-              "column": 98
+              "column": 91
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/Test.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/Test.ts",
           "resolved": "__unresolved_1",
           "loc": {
             "start": {
               "line": 5,
-              "column": 114
+              "column": 107
             },
             "end": {
               "line": 5,
-              "column": 172
+              "column": 158
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/events.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/common/events.ts",
           "resolved": "__unresolved_2",
           "loc": {
             "start": {
               "line": 5,
-              "column": 188
+              "column": 174
             },
             "end": {
               "line": 5,
-              "column": 255
+              "column": 234
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/httprequest.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/common/httprequest.ts",
           "resolved": "__unresolved_3",
           "loc": {
             "start": {
               "line": 5,
-              "column": 271
+              "column": 250
             },
             "end": {
               "line": 5,
-              "column": 343
+              "column": 315
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/md5.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/common/md5.ts",
           "resolved": "__unresolved_4",
           "loc": {
             "start": {
               "line": 5,
-              "column": 359
+              "column": 331
             },
             "end": {
               "line": 5,
-              "column": 423
+              "column": 388
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/common/utils.ts",
           "resolved": "__unresolved_5",
           "loc": {
             "start": {
               "line": 5,
-              "column": 439
+              "column": 404
             },
             "end": {
               "line": 5,
-              "column": 505
+              "column": 463
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/websocket.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/common/websocket.ts",
           "resolved": "__unresolved_6",
           "loc": {
             "start": {
               "line": 5,
-              "column": 521
+              "column": 479
             },
             "end": {
               "line": 5,
-              "column": 591
+              "column": 542
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/CreateTeamItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/CreateTeamItem.ts",
           "resolved": "__unresolved_7",
           "loc": {
             "start": {
               "line": 5,
-              "column": 607
+              "column": 558
             },
             "end": {
               "line": 5,
-              "column": 685
+              "column": 629
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/GraphicsMask.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/GraphicsMask.ts",
           "resolved": "__unresolved_8",
           "loc": {
             "start": {
               "line": 5,
-              "column": 701
+              "column": 645
             },
             "end": {
               "line": 5,
-              "column": 777
+              "column": 714
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/LoadItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/LoadItem.ts",
           "resolved": "__unresolved_9",
           "loc": {
             "start": {
               "line": 5,
-              "column": 793
+              "column": 730
             },
             "end": {
               "line": 5,
-              "column": 865
+              "column": 795
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/LobbyUserHeadItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/LobbyUserHeadItem.ts",
           "resolved": "__unresolved_10",
           "loc": {
             "start": {
               "line": 5,
-              "column": 881
+              "column": 811
             },
             "end": {
               "line": 5,
-              "column": 962
+              "column": 885
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageBoxCommon.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageBoxCommon.ts",
           "resolved": "__unresolved_11",
           "loc": {
             "start": {
               "line": 5,
-              "column": 978
+              "column": 901
             },
             "end": {
               "line": 5,
-              "column": 1058
+              "column": 974
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageBoxCommonTest.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageBoxCommonTest.ts",
           "resolved": "__unresolved_12",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1074
+              "column": 990
             },
             "end": {
               "line": 5,
-              "column": 1158
+              "column": 1067
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageHint.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageHint.ts",
           "resolved": "__unresolved_13",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1174
+              "column": 1083
             },
             "end": {
               "line": 5,
-              "column": 1249
+              "column": 1151
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/PopWindow.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/PopWindow.ts",
           "resolved": "__unresolved_14",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1265
+              "column": 1167
             },
             "end": {
               "line": 5,
-              "column": 1338
+              "column": 1233
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/RuleItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/RuleItem.ts",
           "resolved": "__unresolved_15",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1354
+              "column": 1249
             },
             "end": {
               "line": 5,
-              "column": 1426
+              "column": 1314
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/SetingItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/SetingItem.ts",
           "resolved": "__unresolved_16",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1442
+              "column": 1330
             },
             "end": {
               "line": 5,
-              "column": 1516
+              "column": 1397
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/WaitItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/WaitItem.ts",
           "resolved": "__unresolved_17",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1532
+              "column": 1413
             },
             "end": {
               "line": 5,
-              "column": 1604
+              "column": 1478
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/cardAction/CardAction.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/cardAction/CardAction.ts",
           "resolved": "__unresolved_18",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1620
+              "column": 1494
             },
             "end": {
               "line": 5,
-              "column": 1705
+              "column": 1572
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardItem.ts",
           "resolved": "__unresolved_19",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1721
+              "column": 1588
             },
             "end": {
               "line": 5,
-              "column": 1798
+              "column": 1658
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardLayer.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts",
           "resolved": "__unresolved_20",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1814
+              "column": 1674
             },
             "end": {
               "line": 5,
-              "column": 1892
+              "column": 1745
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameDefine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameDefine.ts",
           "resolved": "__unresolved_21",
           "loc": {
             "start": {
               "line": 5,
-              "column": 1908
+              "column": 1761
             },
             "end": {
               "line": 5,
-              "column": 1987
+              "column": 1833
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts",
           "resolved": "__unresolved_22",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2003
+              "column": 1849
             },
             "end": {
               "line": 5,
-              "column": 2081
+              "column": 1920
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameTimer.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameTimer.ts",
           "resolved": "__unresolved_23",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2097
+              "column": 1936
             },
             "end": {
               "line": 5,
-              "column": 2175
+              "column": 2007
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/UserHead.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/UserHead.ts",
           "resolved": "__unresolved_24",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2191
+              "column": 2023
             },
             "end": {
               "line": 5,
-              "column": 2268
+              "column": 2093
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts",
           "resolved": "__unresolved_25",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2284
+              "column": 2109
             },
             "end": {
               "line": 5,
-              "column": 2387
+              "column": 2205
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts",
           "resolved": "__unresolved_26",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2403
+              "column": 2221
             },
             "end": {
               "line": 5,
-              "column": 2502
+              "column": 2313
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeHeadItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndFree/GameEndFreeHeadItem.ts",
           "resolved": "__unresolved_27",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2518
+              "column": 2329
             },
             "end": {
               "line": 5,
-              "column": 2613
+              "column": 2417
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts",
           "resolved": "__unresolved_28",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2629
+              "column": 2433
             },
             "end": {
               "line": 5,
-              "column": 2720
+              "column": 2517
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickHeadItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKick/GameEndKickHeadItem.ts",
           "resolved": "__unresolved_29",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2736
+              "column": 2533
             },
             "end": {
               "line": 5,
-              "column": 2831
+              "column": 2621
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKick/GameEndKickItem.ts",
           "resolved": "__unresolved_30",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2847
+              "column": 2637
             },
             "end": {
               "line": 5,
-              "column": 2938
+              "column": 2721
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts",
           "resolved": "__unresolved_31",
           "loc": {
             "start": {
               "line": 5,
-              "column": 2954
+              "column": 2737
             },
             "end": {
               "line": 5,
-              "column": 3049
+              "column": 2825
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKickUp/GameEndKickUpLineItem.ts",
           "resolved": "__unresolved_32",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3065
+              "column": 2841
             },
             "end": {
               "line": 5,
-              "column": 3164
+              "column": 2933
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts",
           "resolved": "__unresolved_33",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3180
+              "column": 2949
             },
             "end": {
               "line": 5,
-              "column": 3273
+              "column": 3035
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts",
           "resolved": "__unresolved_34",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3289
+              "column": 3051
             },
             "end": {
               "line": 5,
-              "column": 3390
+              "column": 3145
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankLineItem.ts",
           "resolved": "__unresolved_35",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3406
+              "column": 3161
             },
             "end": {
               "line": 5,
-              "column": 3511
+              "column": 3259
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts",
           "resolved": "__unresolved_36",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3527
+              "column": 3275
             },
             "end": {
               "line": 5,
-              "column": 3630
+              "column": 3371
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts",
           "resolved": "__unresolved_37",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3646
+              "column": 3387
             },
             "end": {
               "line": 5,
-              "column": 3747
+              "column": 3481
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameStartNotice/FreeUpItem.ts",
           "resolved": "__unresolved_38",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3763
+              "column": 3497
             },
             "end": {
               "line": 5,
-              "column": 3853
+              "column": 3580
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/GameStartNotice.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameStartNotice/GameStartNotice.ts",
           "resolved": "__unresolved_39",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3869
+              "column": 3596
             },
             "end": {
               "line": 5,
-              "column": 3964
+              "column": 3684
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/match/AuditionMatchItem.ts",
           "resolved": "__unresolved_40",
           "loc": {
             "start": {
               "line": 5,
-              "column": 3980
+              "column": 3700
             },
             "end": {
               "line": 5,
-              "column": 4067
+              "column": 3780
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/FreeMatchItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/match/FreeMatchItem.ts",
           "resolved": "__unresolved_41",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4083
+              "column": 3796
             },
             "end": {
               "line": 5,
-              "column": 4166
+              "column": 3872
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceAudition/RaceAuditionItem.ts",
           "resolved": "__unresolved_42",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4182
+              "column": 3888
             },
             "end": {
               "line": 5,
-              "column": 4275
+              "column": 3974
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts",
           "resolved": "__unresolved_43",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4291
+              "column": 3990
             },
             "end": {
               "line": 5,
-              "column": 4388
+              "column": 4080
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceKick/RaceKickItem.ts",
           "resolved": "__unresolved_44",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4404
+              "column": 4096
             },
             "end": {
               "line": 5,
-              "column": 4489
+              "column": 4174
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceKick/RaceKickLineItem.ts",
           "resolved": "__unresolved_45",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4505
+              "column": 4190
             },
             "end": {
               "line": 5,
-              "column": 4594
+              "column": 4272
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceScore/RaceScoreItem.ts",
           "resolved": "__unresolved_46",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4610
+              "column": 4288
             },
             "end": {
               "line": 5,
-              "column": 4697
+              "column": 4368
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceScore/RaceScoreLineItem.ts",
           "resolved": "__unresolved_47",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4713
+              "column": 4384
             },
             "end": {
               "line": 5,
-              "column": 4804
+              "column": 4468
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankAuditionItem.ts",
           "resolved": "__unresolved_48",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4820
+              "column": 4484
             },
             "end": {
               "line": 5,
-              "column": 4905
+              "column": 4562
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankAuditionLineItem.ts",
           "resolved": "__unresolved_49",
           "loc": {
             "start": {
               "line": 5,
-              "column": 4921
+              "column": 4578
             },
             "end": {
               "line": 5,
-              "column": 5010
+              "column": 4660
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKick.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankKick.ts",
           "resolved": "__unresolved_50",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5026
+              "column": 4676
             },
             "end": {
               "line": 5,
-              "column": 5103
+              "column": 4746
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKickLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankKickLineItem.ts",
           "resolved": "__unresolved_51",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5119
+              "column": 4762
             },
             "end": {
               "line": 5,
-              "column": 5204
+              "column": 4840
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScore.ts",
           "resolved": "__unresolved_52",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5220
+              "column": 4856
             },
             "end": {
               "line": 5,
-              "column": 5298
+              "column": 4927
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreAudition.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreAudition.ts",
           "resolved": "__unresolved_53",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5314
+              "column": 4943
             },
             "end": {
               "line": 5,
-              "column": 5400
+              "column": 5022
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreAuditionLine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreAuditionLine.ts",
           "resolved": "__unresolved_54",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5416
+              "column": 5038
             },
             "end": {
               "line": 5,
-              "column": 5506
+              "column": 5121
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePerson.ts",
           "resolved": "__unresolved_55",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5522
+              "column": 5137
             },
             "end": {
               "line": 5,
-              "column": 5606
+              "column": 5214
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePersonLine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePersonLine.ts",
           "resolved": "__unresolved_56",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5622
+              "column": 5230
             },
             "end": {
               "line": 5,
-              "column": 5710
+              "column": 5311
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePersonSelfLine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePersonSelfLine.ts",
           "resolved": "__unresolved_57",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5726
+              "column": 5327
             },
             "end": {
               "line": 5,
-              "column": 5818
+              "column": 5412
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeam.ts",
           "resolved": "__unresolved_58",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5834
+              "column": 5428
             },
             "end": {
               "line": 5,
-              "column": 5916
+              "column": 5503
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeamLine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeamLine.ts",
           "resolved": "__unresolved_59",
           "loc": {
             "start": {
               "line": 5,
-              "column": 5932
+              "column": 5519
             },
             "end": {
               "line": 5,
-              "column": 6018
+              "column": 5598
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeamSelfLine.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeamSelfLine.ts",
           "resolved": "__unresolved_60",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6034
+              "column": 5614
             },
             "end": {
               "line": 5,
-              "column": 6124
+              "column": 5697
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts",
           "resolved": "__unresolved_61",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6140
+              "column": 5713
             },
             "end": {
               "line": 5,
-              "column": 6233
+              "column": 5799
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceAuditionLineItem.ts",
           "resolved": "__unresolved_62",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6249
+              "column": 5815
             },
             "end": {
               "line": 5,
-              "column": 6346
+              "column": 5905
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceItem.ts",
           "resolved": "__unresolved_63",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6362
+              "column": 5921
             },
             "end": {
               "line": 5,
-              "column": 6447
+              "column": 5999
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceKickItem.ts",
           "resolved": "__unresolved_64",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6463
+              "column": 6015
             },
             "end": {
               "line": 5,
-              "column": 6552
+              "column": 6097
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceKickLineItem.ts",
           "resolved": "__unresolved_65",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6568
+              "column": 6113
             },
             "end": {
               "line": 5,
-              "column": 6661
+              "column": 6199
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceScoreItem.ts",
           "resolved": "__unresolved_66",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6677
+              "column": 6215
             },
             "end": {
               "line": 5,
-              "column": 6767
+              "column": 6298
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceScoreLineItem.ts",
           "resolved": "__unresolved_67",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6783
+              "column": 6314
             },
             "end": {
               "line": 5,
-              "column": 6877
+              "column": 6401
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/room/CreateRoomItem.ts",
           "resolved": "__unresolved_68",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6893
+              "column": 6417
             },
             "end": {
               "line": 5,
-              "column": 6976
+              "column": 6493
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/room/KeyBoardItem.ts",
           "resolved": "__unresolved_69",
           "loc": {
             "start": {
               "line": 5,
-              "column": 6992
+              "column": 6509
             },
             "end": {
               "line": 5,
-              "column": 7073
+              "column": 6583
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/team/TeamItem.ts",
           "resolved": "__unresolved_70",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7089
+              "column": 6599
             },
             "end": {
               "line": 5,
-              "column": 7166
+              "column": 6669
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamLineItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/team/TeamLineItem.ts",
           "resolved": "__unresolved_71",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7182
+              "column": 6685
             },
             "end": {
               "line": 5,
-              "column": 7263
+              "column": 6759
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/teamUp/TeamUpItem.ts",
           "resolved": "__unresolved_72",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7279
+              "column": 6775
             },
             "end": {
               "line": 5,
-              "column": 7360
+              "column": 6849
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/virtualScroll/AItemRenerer.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/virtualScroll/AItemRenerer.ts",
           "resolved": "__unresolved_73",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7376
+              "column": 6865
             },
             "end": {
               "line": 5,
-              "column": 7466
+              "column": 6948
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/virtualScroll/AVirtualScrollView.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/component/virtualScroll/AVirtualScrollView.ts",
           "resolved": "__unresolved_74",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7482
+              "column": 6964
             },
             "end": {
               "line": 5,
-              "column": 7578
+              "column": 7053
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/JavascriptBridge/BindBridge.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindBridge.ts",
           "resolved": "__unresolved_75",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7594
+              "column": 7069
             },
             "end": {
               "line": 5,
-              "column": 7684
+              "column": 7152
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts",
           "resolved": "__unresolved_76",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7700
+              "column": 7168
             },
             "end": {
               "line": 5,
-              "column": 7800
+              "column": 7261
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/PostMessage/PostMessage.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/PostMessage/PostMessage.ts",
           "resolved": "__unresolved_77",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7816
+              "column": 7277
             },
             "end": {
               "line": 5,
-              "column": 7902
+              "column": 7356
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GameSocket.ts",
           "resolved": "__unresolved_78",
           "loc": {
             "start": {
               "line": 5,
-              "column": 7918
+              "column": 7372
             },
             "end": {
               "line": 5,
-              "column": 7990
+              "column": 7437
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts",
           "resolved": "__unresolved_79",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8006
+              "column": 7453
             },
             "end": {
               "line": 5,
-              "column": 8078
+              "column": 7518
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/HttpConfig.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/HttpConfig.ts",
           "resolved": "__unresolved_80",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8094
+              "column": 7534
             },
             "end": {
               "line": 5,
-              "column": 8166
+              "column": 7599
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/SoundManager.ts",
           "resolved": "__unresolved_81",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8182
+              "column": 7615
             },
             "end": {
               "line": 5,
-              "column": 8256
+              "column": 7682
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIConfig.ts",
           "resolved": "__unresolved_82",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8272
+              "column": 7698
             },
             "end": {
               "line": 5,
-              "column": 8342
+              "column": 7761
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIManager.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIManager.ts",
           "resolved": "__unresolved_83",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8358
+              "column": 7777
             },
             "end": {
               "line": 5,
-              "column": 8429
+              "column": 7841
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UrlConfig.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts",
           "resolved": "__unresolved_84",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8445
+              "column": 7857
             },
             "end": {
               "line": 5,
-              "column": 8516
+              "column": 7921
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/platform/platform.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/platform/platform.ts",
           "resolved": "__unresolved_85",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8532
+              "column": 7937
             },
             "end": {
               "line": 5,
-              "column": 8603
+              "column": 8001
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/proto/PbManager.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/proto/PbManager.ts",
           "resolved": "__unresolved_86",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8619
+              "column": 8017
             },
             "end": {
               "line": 5,
-              "column": 8688
+              "column": 8079
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js",
           "resolved": "__unresolved_87",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8704
+              "column": 8095
             },
             "end": {
               "line": 5,
-              "column": 8771
+              "column": 8155
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Game.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts",
           "resolved": "__unresolved_88",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8787
+              "column": 8171
             },
             "end": {
               "line": 5,
-              "column": 8851
+              "column": 8228
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Lobby.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts",
           "resolved": "__unresolved_89",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8867
+              "column": 8244
             },
             "end": {
               "line": 5,
-              "column": 8932
+              "column": 8302
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Start.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts",
           "resolved": "__unresolved_90",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8948
+              "column": 8318
             },
             "end": {
               "line": 5,
-              "column": 9013
+              "column": 8376
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/testProto/TestProto.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts",
           "resolved": "__unresolved_91",
           "loc": {
             "start": {
               "line": 5,
-              "column": 9029
+              "column": 8392
             },
             "end": {
               "line": 5,
-              "column": 9102
+              "column": 8458
             }
           }
         },
         {
-          "value": "file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.js",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js",
           "resolved": "__unresolved_92",
           "loc": {
             "start": {
               "line": 5,
-              "column": 9118
+              "column": 8474
             },
             "end": {
               "line": 5,
-              "column": 9188
+              "column": 8537
             }
           }
         }
@@ -1846,651 +1846,651 @@
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/Test.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/Test.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/events.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/common/events.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/httprequest.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/common/httprequest.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/md5.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/common/md5.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/common/utils.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/common/websocket.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/common/websocket.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/CreateTeamItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/CreateTeamItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/GraphicsMask.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/GraphicsMask.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/LoadItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/LoadItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/LobbyUserHeadItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/LobbyUserHeadItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageBoxCommon.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageBoxCommon.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageBoxCommonTest.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageBoxCommonTest.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/MessageHint.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/MessageHint.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/PopWindow.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/PopWindow.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/RuleItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/RuleItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/SetingItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/SetingItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/WaitItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/WaitItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/cardAction/CardAction.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/cardAction/CardAction.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardLayer.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameDefine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameDefine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameTimer.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameTimer.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/UserHead.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/game/UserHead.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeHeadItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndFree/GameEndFreeHeadItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickHeadItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKick/GameEndKickHeadItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKick/GameEndKickItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndKickUp/GameEndKickUpLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameStartNotice/FreeUpItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/GameStartNotice.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/gameStartNotice/GameStartNotice.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/match/AuditionMatchItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/FreeMatchItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/match/FreeMatchItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceAudition/RaceAuditionItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceKick/RaceKickItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceKick/RaceKickLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceScore/RaceScoreItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/raceScore/RaceScoreLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankAuditionItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankAuditionLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKick.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankKick.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKickLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankKickLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScore.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreAudition.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreAudition.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreAuditionLine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreAuditionLine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePerson.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePersonLine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePersonLine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePersonSelfLine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScorePersonSelfLine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeam.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeamLine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeamLine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeamSelfLine.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rank/RankScoreTeamSelfLine.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceAuditionLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceKickItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceKickLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceScoreItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/rankRace/RankRaceScoreLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/room/CreateRoomItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/room/KeyBoardItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/team/TeamItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamLineItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/team/TeamLineItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/teamUp/TeamUpItem.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/virtualScroll/AItemRenerer.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/virtualScroll/AItemRenerer.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/component/virtualScroll/AVirtualScrollView.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/component/virtualScroll/AVirtualScrollView.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/JavascriptBridge/BindBridge.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindBridge.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/PostMessage/PostMessage.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/PostMessage/PostMessage.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GameSocket.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/HttpConfig.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/HttpConfig.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/SoundManager.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIConfig.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIManager.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UIManager.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UrlConfig.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/UrlConfig.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/platform/platform.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/platform/platform.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/proto/PbManager.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/proto/PbManager.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Game.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Lobby.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/scene/Start.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/testProto/TestProto.ts"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts"
           },
           "messages": []
         },
         {
           "resolved": {
             "type": "module",
-            "url": "file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.mjs?cjs=&original=.js"
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.mjs?cjs=&original=.js"
           },
           "messages": []
         }
@@ -2498,10 +2498,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts": {
       "mTimestamp": {
-        "mtime": 1752322461592.2146,
+        "mtime": 1752819386174.2544,
         "uuid": "c2b5ae0e-a4c5-4750-a9cb-fd5bc8b3d928"
       },
-      "chunkId": "6ad1a6ec4e01e157e476f8caef2f49c2f9f29c7f",
+      "chunkId": "2f2c4e3dbd4027fce37282e6ce348b72882e6b61",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -2728,7 +2728,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1753034518842,
+      "mTimestamp": 1753074972807,
       "chunkId": "84741ad843cea9a440c5d8c2d379669b6551400d",
       "imports": [],
       "type": "esm",
@@ -3054,7 +3054,7 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts": {
       "mTimestamp": {
-        "mtime": 1752237518354.0652,
+        "mtime": 1752839248917.763,
         "uuid": "dfbca6da-1a0b-4009-852f-67fadb47bedb"
       },
       "chunkId": "87309fbb064a7badbc78926aa062190e5140820d",
@@ -5851,10 +5851,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts": {
       "mTimestamp": {
-        "mtime": 1752751323192.984,
+        "mtime": 1753184467316.295,
         "uuid": "644aa24f-acd0-4a8d-877c-c0d1525639e6"
       },
-      "chunkId": "7a2a9b62aa0a2c074f3cb0fcd357cf4ab9edeb66",
+      "chunkId": "e8436260bfa951523fc359da60dee8fbafb01aa9",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -11494,10 +11494,10 @@
     },
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts": {
       "mTimestamp": {
-        "mtime": 1752759016836.823,
+        "mtime": 1753196029498.689,
         "uuid": "00929b0b-fae0-43f2-97c0-5193244ae8a2"
       },
-      "chunkId": "22582a8e481643fa8082b8942028e3b62415a3d4",
+      "chunkId": "87c9e7b3ec91e63d807566e6a78a7f72390f88d2",
       "imports": [
         {
           "value": "cce:/internal/code-quality/cr.mjs",
@@ -14403,7 +14403,7 @@
       ]
     },
     "cce:/internal/ml/cjs-loader.mjs": {
-      "mTimestamp": 1753034518842,
+      "mTimestamp": 1753074972807,
       "chunkId": "e22b6f02adf5d686a7ebd142d6b23614b189f373",
       "imports": [],
       "type": "esm",

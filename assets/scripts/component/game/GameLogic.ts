@@ -553,63 +553,68 @@ export module GameLogic {
     }
 
     function findStraightWithHongtao2_Safe(cards: number[]): number[][] {
-        const getCardRank = (card: number) => card % 16;
-        const getCardColor = (card: number) => Math.floor(card / 16);
-        const HONGTAO = 1;
+        const HONGTAO = 2;
+        const getRank = (card: number) => card % 16;
+        const getColor = (card: number) => Math.floor(card / 16);
+        const isHeartLevelCard = (card: number) =>
+            getRank(card) === 2 && getColor(card) === HONGTAO;
 
-        const results: number[][] = [];
+        const heartCards = cards.filter(isHeartLevelCard);
+        const normalCards = cards.filter(c => !isHeartLevelCard(c));
 
+        // 按花色归类
+        const colorMap = new Map<number, number[]>();
+        for (const card of normalCards) {
+            const color = getColor(card);
+            if (!colorMap.has(color)) colorMap.set(color, []);
+            colorMap.get(color)!.push(card);
+        }
+
+        // 所有合法顺子点数（不含2）
         const legalRanks = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
         const seqList: number[][] = [];
-
         for (let i = 0; i <= legalRanks.length - 5; i++) {
             for (let len = 5; len <= legalRanks.length - i; len++) {
                 seqList.push(legalRanks.slice(i, i + len));
             }
         }
-
         seqList.push([10, 11, 12, 13, 1]); // AKQJ10
 
-        for (const seq of seqList) {
-            const usedIndex = new Set<number>();
-            const group: number[] = [];
-            let valid = true;
+        // 主流程
+        for (const [color, list] of colorMap.entries()) {
+            // 当前花色的 rank -> card[]
+            const rankMap = new Map<number, number[]>();
+            for (const card of list) {
+                const r = getRank(card);
+                if (!rankMap.has(r)) rankMap.set(r, []);
+                rankMap.get(r)!.push(card);
+            }
 
-            for (const r of seq) {
-                let found = false;
+            // 可用红心级牌
+            const hearts = [...heartCards];
 
-                for (let i = 0; i < cards.length; i++) {
-                    if (usedIndex.has(i)) continue;
+            for (const seq of seqList) {
+                const group: number[] = [];
+                const usedHearts: number[] = [];
+                let valid = true;
 
-                    const card = cards[i];
-                    const rank = getCardRank(card);
-                    const color = getCardColor(card);
-
-                    if (r === 2) {
-                        if (rank === 2 && color === HONGTAO) {
-                            group.push(card);
-                            usedIndex.add(i);
-                            found = true;
-                            break;
-                        }
+                for (const r of seq) {
+                    const pool = rankMap.get(r);
+                    if (pool && pool.length > 0) {
+                        group.push(pool.shift()!);
+                    } else if (usedHearts.length < 2 && hearts.length > usedHearts.length) {
+                        const red = hearts[usedHearts.length];
+                        group.push(red);
+                        usedHearts.push(red);
                     } else {
-                        if (rank === r) {
-                            group.push(card);
-                            usedIndex.add(i);
-                            found = true;
-                            break;
-                        }
+                        valid = false;
+                        break;
                     }
                 }
 
-                if (!found) {
-                    valid = false;
-                    break;
+                if (valid) {
+                    return [group];
                 }
-            }
-
-            if (valid) {
-                return [group]; // ✅ 找到合法顺子（不会污染 cards）
             }
         }
 
@@ -618,6 +623,7 @@ export module GameLogic {
 
 
     function findStraightByCard(cards: number[]): number[][] {
+        if (cards.length > 5) return [];
         const getCardRank = (card: number) => card % 16;
         const getCardColor = (card: number) => Math.floor(card / 16);
         const HONGTAO = 2;
@@ -637,7 +643,7 @@ export module GameLogic {
                 continue;
             }
 
-            if (r < 3 || r > 13) continue; // 排除2、小王、大王
+            if (r == 2 || r > 13) continue; // 排除2、小王、大王
 
             if (!rankToIndexes.has(r)) rankToIndexes.set(r, []);
             rankToIndexes.get(r)!.push(i);
@@ -758,51 +764,50 @@ export module GameLogic {
         const isHeartCard = (card: number) => getCardRank(card) === 2 && getCardColor(card) === 2;
 
         const redCards = cards.filter(isHeartCard);
-        const redCount = redCards.length;
-
         const normalCards = cards.filter(c => !isHeartCard(c));
-        const map = new Map<number, number[]>();
 
-        for (const card of normalCards) {
-            const rank = getCardSize(card);
-            if (rank < 3 || rank > 14) continue; // 排除 2 和王
-            if (!map.has(rank)) map.set(rank, []);
-            map.get(rank)!.push(card);
-        }
+        // 先按牌点排序（从小到大）
+        normalCards.sort((a, b) => getCardRank(a) - getCardRank(b));
 
-        const rankToTriplet: Map<number, number[]> = new Map();
-        let redLeft = redCount;
+        const triplets: number[][] = [];
+        const tripletRanks: number[] = [];
+        let redLeft = [...redCards];
 
-        // 尝试每个 rank 是否能组成三张（原生或拼红心）
-        for (const [rank, list] of map.entries()) {
-            if (list.length === 3) {
-                rankToTriplet.set(rank, [...list]);
-            } else if (list.length === 2 && redLeft >= 1) {
-                rankToTriplet.set(rank, [...list, redCards[redCount - redLeft]]);
-                redLeft--;
+        let i = 0;
+        while (i < normalCards.length) {
+            const currentRank = getCardRank(normalCards[i]);
+            if (currentRank < 3 || currentRank > 14) {
+                i++;
+                continue;
+            }
+
+            const sameRankCards: number[] = [];
+
+            // 收集同点数的普通牌
+            while (i < normalCards.length && getCardRank(normalCards[i]) === currentRank) {
+                sameRankCards.push(normalCards[i]);
+                i++;
+            }
+
+            // 判断是否能组成三张
+            if (sameRankCards.length >= 3) {
+                triplets.push(sameRankCards.slice(0, 3));
+                tripletRanks.push(currentRank);
+            } else if (sameRankCards.length === 2 && redLeft.length >= 1) {
+                triplets.push([...sameRankCards, redLeft.shift()!]);
+                tripletRanks.push(currentRank);
+            } else if (sameRankCards.length === 1 && redLeft.length >= 2) {
+                triplets.push([sameRankCards[0], redLeft.shift()!, redLeft.shift()!]);
+                tripletRanks.push(currentRank);
             }
         }
 
-        if (rankToTriplet.size < 2) return [];
-
-        const sortedRanks = Array.from(rankToTriplet.keys()).sort((a, b) => a - b);
-
-        for (let i = 0; i < sortedRanks.length - 1; i++) {
-            const group: number[][] = [rankToTriplet.get(sortedRanks[i])!];
-
-            for (let j = i + 1; j < sortedRanks.length; j++) {
-                const prev = sortedRanks[j - 1];
-                const curr = sortedRanks[j];
-
-                if (curr === prev + 1) {
-                    group.push(rankToTriplet.get(curr)!);
-
-                    if (group.length >= 2) {
-                        return [group.flat()]; // ✅ 找到第一组飞机
-                    }
-                } else {
-                    break;
-                }
+        // 查找连续两组三张（飞机）
+        for (let i = 0; i < tripletRanks.length - 1; i++) {
+            const curr = tripletRanks[i];
+            const next = tripletRanks[i + 1];
+            if (next === curr + 1) {
+                return [[...triplets[i], ...triplets[i + 1]]]; // ✅ 找到飞机
             }
         }
 
@@ -845,8 +850,16 @@ export module GameLogic {
 
     function checkIfSameColorOrFengRenPei(straight: number[]): boolean {
         // 检查是否为同花顺
-        const firstCardColor = straight[0] % 4;
-        const isSameColor = straight.every(card => card % 4 === firstCardColor);
+        function isSameColorStraight(straight: number[]): boolean {
+            const first = straight.find(c => !isHeartCard(c));
+            if (!first) return false; // 全是红心级牌，不成立
+            const color = getCardColor(first);
+            return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+        }
+        const firstCardColor = getCardColor(straight[0]);
+        const isSameColor = isSameColorStraight(straight);
+        // const firstCardColor = straight[0] % 4;
+        // const isSameColor = straight.every(card => card % 4 === firstCardColor);
 
         // 检查是否为逢人配：即选中的牌是连续的，且任意花色
         const sortedStraight = straight.sort((a, b) => a - b);
@@ -856,41 +869,38 @@ export module GameLogic {
     }
 
     function isFengRenPeiSorted(cards: number[]): boolean {
-        // 判断是否是连续的顺子
+        const getRank = (card: number) => card % 16;
         const heartCount = cards.filter(isHeartCard).length;
+
+        // 去重并排除2，获取普通牌点数
         const ranks = Array.from(new Set(
             cards.filter(c => !isHeartCard(c))
-                .map(c => c % 16)
-                .filter(r => r >= 3 && r <= 13) // 排除 2、大小王
+                .map(getRank)
+                .filter(r => r >= 3 && r <= 13)
         )).sort((a, b) => a - b);
 
-        if (ranks.length + heartCount < 5) return false; // 总长度不足
+        if (ranks.length + heartCount < 5) return false;
 
-        // 尝试从所有起点出发，连续补红心
-        for (let start = 0; start <= ranks.length - 1; start++) {
-            let needHearts = 0;
-            let last = ranks[start];
-            let count = 1;
+        // 特殊顺子 AKQJ10
+        const akqj10 = [10, 11, 12, 13, 1];
+        const countInAKQJ10 = akqj10.filter(r => ranks.includes(r)).length;
+        if (countInAKQJ10 + heartCount >= 5 && heartCount <= 2) return true;
 
-            for (let i = start + 1; i < ranks.length; i++) {
-                const gap = ranks[i] - last;
-                if (gap === 0) continue;      // 重复，跳过
-                if (gap === 1) {
+        for (let start = 3; start <= 13; start++) {
+            let count = 0;
+            let heartsUsed = 0;
+
+            for (let r = start; r <= 13; r++) {
+                if (ranks.includes(r)) {
                     count++;
-                } else if (gap > 1) {
-                    needHearts += gap - 1;
-                    count += gap; // 连续模拟补上缺的
+                } else if (heartsUsed < heartCount && heartsUsed < 2) {
+                    count++;
+                    heartsUsed++;
+                } else {
+                    break;
                 }
-                last = ranks[i];
 
-                if (count >= 5 && needHearts <= heartCount) {
-                    return true;
-                }
-            }
-
-            // 边界情况：所有牌已经连着，但还差红心补尾部
-            if (ranks.length >= 1 && ranks.length + heartCount >= 5) {
-                return true;
+                if (count >= 5) return true;
             }
         }
 
@@ -1082,6 +1092,18 @@ export module GameLogic {
         return result;
     }
 
+    function markUsedByCardValues(cards: number[], group: number[], usedIndex: Set<number>) {
+        const groupCopy = [...group]; // 复制待匹配的牌
+        for (let i = 0; i < cards.length && groupCopy.length > 0; i++) {
+            if (usedIndex.has(i)) continue;
+            const idx = groupCopy.findIndex(c => c === cards[i]);
+            if (idx !== -1) {
+                usedIndex.add(i);
+                groupCopy.splice(idx, 1); // 确保只匹配一次
+            }
+        }
+    }
+
     let selectedHistory: number[] = []
     export function moveSelectedCardsToBack(cards: number[], selected: number[], prevSelected: number[], prevGrouped: number[][]): number[][] {
         const result: number[][] = [];
@@ -1089,12 +1111,43 @@ export module GameLogic {
         const selectedSet = new Set(selected);
         const prevSet = new Set(prevSelected);
         const usedCards = new Set<number>();
+        const usedIndex = new Set<number>();
+
+
+        const selectedIndexSet = new Set<number>();
+        const selectedCardCount = new Map<number, number>();
+        // for (const c of selected) {
+        //     selectedCardCount.set(c, (selectedCardCount.get(c) || 0) + 1);
+        // }
+        // for (let i = 0; i < cards.length; i++) {
+        //     const c = cards[i];
+        //     const count = selectedCardCount.get(c) || 0;
+        //     if (count > 0) {
+        //         selectedIndexSet.add(i);
+        //         selectedCardCount.set(c, count - 1);
+        //     }
+        // }
+
+        // ✅ 步骤1：保留旧分组中未重新选中的牌（保持顺序）
+        // for (const group of prevGrouped) {
+        //     const wasSelected = group.some(c => prevSet.has(c));
+        //     const nowSelected = group.some(c => selectedSet.has(c));
+
+        //     // ✅ 上一轮选中，且这一轮没选中，保留该组
+        //     if (wasSelected && !nowSelected) {
+        //         result.push(group);
+        //         group.forEach(c => usedCards.add(c));
+        //     }
+        // }
 
         // ✅ 步骤1：保留旧分组中未重新选中的牌（保持顺序）
         for (const group of prevGrouped) {
+            // 如果 group 中没有任何牌在这次选中中出现，说明用户没重新选中 → 保留
             if (!group.some(c => selectedSet.has(c))) {
                 result.push(group);
-                group.forEach(c => usedCards.add(c));
+                for (let i = 0; i < cards.length; i++) {
+                    if (group.includes(cards[i])) usedIndex.add(i);
+                }
             }
         }
 
@@ -1102,26 +1155,27 @@ export module GameLogic {
         if (bomsKing.length != 0) {
             for (const rocket of bomsKing) {
                 result.unshift(rocket);                  // 放最前面
-                rocket.forEach(c => usedCards.add(c));   // 标记为已用
+                // rocket.forEach(c => usedIndex.add(c));   // 标记为已用
+                for (let i = 0; i < cards.length; i++) {
+                    if (rocket.includes(cards[i])) usedCards.add(i);
+                }
             }
         }
 
         let triple: number[] = [];
         let pair: number[] = [];
 
-        if (selected.length == 5) {
-            const map = getTripleWithPairPreferBig(selected);
-            if (map && map.length == 5) {
-                moveToBack.push(map);
-                map.forEach(c => usedCards.add(c));
-            }
-        }
+
 
         // ✅ 步骤3：识别飞机
         const triplets = findFeiji(selected.filter(c => !usedCards.has(c)));
         for (let group of triplets) {
             moveToBack.push(group);
-            group.forEach(c => usedCards.add(c));
+            // for (let i = 0; i < cards.length; i++) {
+            //     if (group.includes(cards[i])) usedIndex.add(i);
+            // }
+            markUsedByCardValues(cards, group, usedIndex);
+            // group.forEach(c => usedCards.add(c));
         }
 
         // for (const list of map.values()) {
@@ -1139,7 +1193,23 @@ export module GameLogic {
         const bombs = findBombsWithHeartCard(selected.filter(c => !usedCards.has(c)));
         for (let bomb of bombs) {
             result.unshift(bomb);  // 将炸弹放在最左边
-            bomb.forEach(c => usedCards.add(c));  // 标记炸弹牌已使用
+            // for (let i = 0; i < cards.length; i++) {
+            //     if (bomb.includes(cards[i])) usedIndex.add(i);
+            // }
+            // bomb.forEach(c => usedCards.add(c));  // 标记炸弹牌已使用
+            markUsedByCardValues(cards, bomb, usedIndex);
+        }
+
+        if (selected.length == 5) {
+            const map = getTripleWithPairPreferBig(selected);
+            if (map && map.length == 5) {
+                moveToBack.push(map);
+                // for (let i = 0; i < cards.length; i++) {
+                //     if (map.includes(cards[i])) usedIndex.add(i);
+                // }
+                // map.forEach(c => usedCards.add(c));
+                markUsedByCardValues(cards, map, usedIndex);
+            }
         }
 
 
@@ -1155,77 +1225,104 @@ export module GameLogic {
             // 检查是否是同花顺或逢人配
             const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
             if (isSameColorStraight) {
-                result.unshift(s);  // 将同花顺或逢人配放在最左边
+                // 检查是否为同花顺
+                function isSameColorStraight(straight: number[]): boolean {
+                    const first = straight.find(c => !isHeartCard(c));
+                    if (!first) return false; // 全是红心级牌，不成立
+                    const color = getCardColor(first);
+                    return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+                }
+                if (isSameColorStraight(s)) {
+                    result.unshift(s);
+                }
+                else {
+                    moveToBack.unshift(s);
+                }
             } else {
                 moveToBack.push(s);
             }
-            s.forEach(c => usedCards.add(c));
+            markUsedByCardValues(cards, s, usedIndex);
+            // for (let i = 0; i < cards.length; i++) {
+            //     if (s.includes(cards[i])) usedIndex.add(i);
+            // }
+
+            // s.forEach(c => usedCards.add(c));
         }
 
         // ✅ 步骤6：连对识别
         const lianduiGroups = findLiandui(selected.filter(c => !usedCards.has(c)));
         for (let group of lianduiGroups) {
             moveToBack.push(group);
-            group.forEach(c => usedCards.add(c));
+            // for (let i = 0; i < cards.length; i++) {
+            //     if (group.includes(cards[i])) usedIndex.add(i);
+            // }
+            // group.forEach(c => usedCards.add(c));
+            markUsedByCardValues(cards, group, usedIndex);
         }
 
         // ✅ 步骤7：识别两对
-        const unusedCards = selected.filter(c => !usedCards.has(c));
-        const countMap = getCardCountMap_I(unusedCards);
-        const pairList: number[][] = [];
+        if (selected.length == 2 || selected.length == 3) {
+            const unusedCards = selected.filter(c => !usedCards.has(c));
+            const countMap = getCardCountMap_I(unusedCards);
+            const pairList: number[][] = [];
 
-        for (const [rank, list] of countMap.entries()) {
-            if (list.length === 2) {
-                moveToBack.push(list);
-                list.forEach(c => usedCards.add(c));
-            }
-            else if (list.length === 3) {
-                moveToBack.push(list);
-                list.forEach(c => usedCards.add(c));
-            }
-        }
-
-        // ✅ 步骤8：将剩余未处理的牌按点数分组
-        const remaining = cards.filter(card => !usedCards.has(card));
-        const sortValue = sortCardsBySizeDown(remaining, remaining.length);
-        const uniqueList = getUniqueCard(sortValue);
-        let idx = 0;
-
-        for (let j = 0; j < uniqueList.length; j++) {
-            const d = uniqueList[j];
-            const rank = getCardSize(d);
-            let list1: number[] = [];
-
-            for (let i = idx; i < sortValue.length; i++) {
-                const card = sortValue[i];
-                if (usedCards.has(card)) continue;
-
-                if (getCardSize(card) === rank) {
-                    list1.push(card);
-                    if (i === sortValue.length - 1) {
-                        if (list1.length > 0) {
-                            if (list1.some(c => selectedSet.has(c))) {
-                                moveToBack.push(list1);
-                            } else {
-                                result.push(list1);
-                            }
-                            list1.forEach(c => usedCards.add(c));
-                        }
-                    }
-                } else {
-                    idx = i;
-                    if (list1.length > 0) {
-                        if (list1.some(c => selectedSet.has(c))) {
-                            moveToBack.push(list1);
-                        } else {
-                            result.push(list1);
-                        }
-                        list1.forEach(c => usedCards.add(c));
-                    }
-                    break;
+            for (const [rank, list] of countMap.entries()) {
+                if (list.length === 2) {
+                    moveToBack.push(list);
+                    // list.forEach(c => usedCards.add(c));
+                    // for (let i = 0; i < cards.length; i++) {
+                    //     if (list.includes(cards[i])) usedIndex.add(i);
+                    // }
+                    markUsedByCardValues(cards, list, usedIndex);
+                }
+                else if (list.length === 3) {
+                    moveToBack.push(list);
+                    // list.forEach(c => usedCards.add(c));
+                    // for (let i = 0; i < cards.length; i++) {
+                    //     if (list.includes(cards[i])) usedIndex.add(i);
+                    // }
+                    markUsedByCardValues(cards, list, usedIndex);
                 }
             }
         }
+
+
+        // // ✅ 步骤8：将剩余未处理的牌按点数分组
+        const sortValue = cards.filter((_, idx) => !usedIndex.has(idx));
+        // ✅ 获取未使用的牌并按牌力降序排序
+        const remaining: { c: number; idx: number }[] = cards
+            .map((c, idx) => ({ c, idx }))
+            .filter(({ idx }) => !usedIndex.has(idx))
+            .sort((a, b) => getCardSize(b.c) - getCardSize(a.c));
+
+        // ✅ 对未用牌按点数分组（保留 index）
+        const rankMap = new Map<number, number[]>();
+        for (const { c, idx } of remaining) {
+            const rank = getCardSize(c);
+            if (!rankMap.has(rank)) rankMap.set(rank, []);
+            rankMap.get(rank)!.push(idx);
+        }
+        for (const indexes of rankMap.values()) {
+            const selectedGroup: number[] = [];
+            const unselectedGroup: number[] = [];
+
+            for (const i of indexes) {
+                if (selectedIndexSet.has(i)) {
+                    selectedGroup.push(cards[i]);
+                } else {
+                    unselectedGroup.push(cards[i]);
+                }
+                usedIndex.add(i); // 不管是否选中，都标记已使用
+            }
+
+            if (selectedGroup.length > 0) {
+                moveToBack.push(selectedGroup); // 只移选中的
+            }
+            if (unselectedGroup.length > 0) {
+                result.push(unselectedGroup); // 未选的保留
+            }
+        }
+
 
         // 最后返回结果，炸弹已经在最前面
         return [...result, ...moveToBack];
@@ -1270,7 +1367,7 @@ export module GameLogic {
             }
 
             // 原逻辑：六张及以上直接炸弹
-            if (len >= 6) {
+            if (len >= 4) {
                 bombs.push([...list]);
             }
         }
@@ -1319,29 +1416,34 @@ export module GameLogic {
         const redCount = redCards.length;
 
         const normalCards = cards.filter(c => !isHeartCard(c));
-        const countMap = new Map<number, number[]>();
+
+        // ✅ 改为同时构造数组，避免使用 Map.get 出错
+        const countList: { rank: number; cards: number[] }[] = [];
 
         for (const card of normalCards) {
             const rank = getCardSize(card);
-            if (rank < 3 || rank > 14) return GameDefine.KIND_CARDS_ERROR; // 不允许 2 和王
-            if (!countMap.has(rank)) countMap.set(rank, []);
-            countMap.get(rank)!.push(card);
+            if (rank < 3 || rank > 14) return GameDefine.KIND_CARDS_ERROR;
+
+            let entry = countList.find(e => e.rank === rank);
+            if (!entry) {
+                entry = { rank, cards: [] };
+                countList.push(entry);
+            }
+            entry.cards.push(card);
         }
 
         const tripletRanks: number[] = [];
         let redLeft = redCount;
 
-        // 遍历点数，尝试补出三张
-        const sortedRanks = [...countMap.keys()].sort((a, b) => a - b);
-        for (const rank of sortedRanks) {
-            const list = countMap.get(rank)!;
+        countList.sort((a, b) => a.rank - b.rank);
 
-            if (list.length === 3) {
+        for (const { rank, cards } of countList) {
+            if (cards.length === 3) {
                 tripletRanks.push(rank);
-            } else if (list.length === 2 && redLeft >= 1) {
+            } else if (cards.length === 2 && redLeft >= 1) {
                 tripletRanks.push(rank);
                 redLeft -= 1;
-            } else if (list.length === 1 && redLeft >= 2) {
+            } else if (cards.length === 1 && redLeft >= 2) {
                 tripletRanks.push(rank);
                 redLeft -= 2;
             }
@@ -1349,7 +1451,6 @@ export module GameLogic {
 
         if (tripletRanks.length < 2) return GameDefine.KIND_CARDS_ERROR;
 
-        // 按顺序检查是否连续
         tripletRanks.sort((a, b) => a - b);
         for (let i = 1; i < tripletRanks.length; i++) {
             if (tripletRanks[i] !== tripletRanks[i - 1] + 1) {
@@ -1357,7 +1458,7 @@ export module GameLogic {
             }
         }
 
-        return GameDefine.KIND_CARDS_SHUNZI_3; // ✅ 是合法飞机
+        return GameDefine.KIND_CARDS_SHUNZI_3;
     }
 
     export function getCardTypeByLiandui(cards: number[]): number {
@@ -1442,12 +1543,35 @@ export module GameLogic {
                 return GameDefine.KIND_CARDS_BOMB_45;
             }
         }
-        const straights = findStraightWithHongtao2_Safe(cards);
-        for (let s of straights) { //识别同花顺
+        // const straights = findStraightWithHongtao2_Safe(cards);
+        // for (let s of straights) { //识别同花顺
+        //     // 检查是否是同花顺或逢人配
+        //     const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
+        //     if (isSameColorStraight) {
+        //         return GameDefine.KIND_CARDS_COLOR;
+        //     } else {
+        //         return GameDefine.KIND_CARDS_SHUNZI_1;
+        //     }
+        // }
+        // ✅ 步骤5：识别顺子
+        const straights = findStraightByCard(cards);
+        for (let s of straights) {
             // 检查是否是同花顺或逢人配
             const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
             if (isSameColorStraight) {
-                return GameDefine.KIND_CARDS_COLOR;
+                // 检查是否为同花顺
+                function isSameColorStraight(straight: number[]): boolean {
+                    const first = straight.find(c => !isHeartCard(c));
+                    if (!first) return false; // 全是红心级牌，不成立
+                    const color = getCardColor(first);
+                    return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+                }
+                if (isSameColorStraight(s)) {
+                    return GameDefine.KIND_CARDS_COLOR;
+                }
+                else {
+                    return GameDefine.KIND_CARDS_SHUNZI_1;
+                }
             } else {
                 return GameDefine.KIND_CARDS_SHUNZI_1;
             }
@@ -1820,7 +1944,7 @@ export module GameLogic {
         }
 
         const triples = Array.from(countMap.entries())
-            .filter(([_, list]) => list.length >= 3)
+            .filter(([rank, list]) => list.length >= 3 && rank >= 3 && rank <= 9)
             .sort((a, b) => a[0] - b[0]); // 小点数优先
 
         const pairs = Array.from(countMap.entries())
@@ -1870,7 +1994,7 @@ export module GameLogic {
 
         // 找所有三张
         const triples = Array.from(countMap.entries())
-            .filter(([_, list]) => list.length >= 3)
+            .filter(([rank, list]) => list.length >= 3 && rank >= 3 && rank <= 9)
             .sort((a, b) => a[0] - b[0]); // 最小的三张优先
 
         // 找所有对子（⚠️ 只找那些 list.length === 2，不能从三张拆）
@@ -2286,50 +2410,65 @@ export module GameLogic {
         const normalCards = cards.filter(c => !isHeartCard(c));
         const rankMap = new Map<number, number[]>();
 
-        // 统计原生牌的点数
-        for (const card of normalCards) {
+        // 构建点数映射（非红心）
+        // for (const card of normalCards) {
+        //     const rank = getCardRank_I(card);
+        //     if (!rankMap.has(rank)) rankMap.set(rank, []);
+        //     rankMap.get(rank)!.push(card);
+        // }
+
+        // 构建点数映射（非红心）
+        normalCards.forEach(card => {
             const rank = getCardRank_I(card);
-            if (!rankMap.has(rank)) rankMap.set(rank, []);
+            if (!rankMap.has(rank)) {
+                rankMap.set(rank, []);
+            }
             rankMap.get(rank)!.push(card);
-        }
+        });
 
-        // 从大到小尝试构成最大三张
-        const ranksSorted = [...rankMap.keys()].sort((a, b) => b - a);
-        for (const rank of ranksSorted) {
-            const list = rankMap.get(rank)!;
-            if (!list) continue; // ✅ 防止为 undefined
-            const need = 3 - list.length;
 
-            if (list.length >= 1 && heartCards.length >= need) {
-                // 成功构成三条
-                const triple = [...list, ...heartCards.slice(0, need)];
-                const used = new Set(triple);
+        // 从大到小遍历点数，尝试组成三张（补红心）
+        const ranksSorted = Array.from(rankMap.keys()).sort((a, b) => b - a);
+        // const ranksSorted = [...rankMap.keys()].sort((a, b) => b - a);
+        for (let i = 0; i < ranksSorted.length; i++) {
+            const rank = ranksSorted[i];
+            const base = rankMap.get(rank);
+            console.log('尝试点数：', rank, ' 找到牌组：', base);
+            if (!base) continue;
 
-                // 从剩下的牌中找对子（也可以拼红心）
-                const remain = cards.filter(c => !used.has(c));
+            const need = 3 - base.length;
+            console.log('需要红心补：', need, ' 实际红心：', heartCards.length);
+            if (base.length >= 1 && heartCards.length >= need) {
+                const triple = base.concat(heartCards.slice(0, need));
+                const usedSet = new Set(triple);
+
+                // 找出剩余牌
+                const remain = cards.filter(c => !usedSet.has(c));
                 const redLeft = remain.filter(isHeartCard);
                 const pairMap = new Map<number, number[]>();
 
-                for (const c of remain) {
-                    if (isHeartCard(c)) continue;
-                    const r = getCardRank_I(c);
+                // 构建对子的 map
+                remain.forEach(card => {
+                    if (isHeartCard(card)) return;
+                    const r = getCardRank_I(card);
                     if (!pairMap.has(r)) pairMap.set(r, []);
-                    pairMap.get(r)!.push(c);
-                }
+                    pairMap.get(r)!.push(card);
+                });
 
                 // 红心补对子
-                for (const red of redLeft) {
-                    for (const [r, l] of pairMap.entries()) {
-                        if (l.length === 1) {
-                            l.push(red);
-                            break;
+                redLeft.forEach(red => {
+                    pairMap.forEach((list, r) => {
+                        if (list.length === 1) {
+                            list.push(red);
+                            return; // 补完一个就跳出本次 red
                         }
-                    }
-                }
+                    });
+                });
 
-                for (const pair of pairMap.values()) {
+                // 找一组有效对子
+                for (let pair of pairMap.values()) {
                     if (pair.length >= 2) {
-                        return [...triple, ...pair.slice(0, 2)];
+                        return triple.concat(pair.slice(0, 2));
                     }
                 }
             }
@@ -2929,7 +3068,11 @@ export module GameLogic {
             for (const subRank of sortedRanks) {
                 if (subRank === mainRank) continue;
 
-                const subIdxList = rankMap.get(subRank)!.filter(idx => !usedIndex.has(idx));
+                const subIdxList = rankMap.get(subRank)!.filter(idx => {
+                    const card = unused[idx];
+                    const point = card % 16;
+                    return !usedIndex.has(idx) && point !== 16 && point !== 17; // ❌ 排除大小王
+                });
                 if (subIdxList.length >= 2) {
                     pair = subIdxList.slice(0, 2);
                     break;
@@ -4107,7 +4250,7 @@ export module GameLogic {
 
             // 已经是炸弹
             if (groupLen >= 4) {
-                if(groupLen >= 5) {
+                if (groupLen >= 5) {
                     result.push([...group]);
                 }
                 // result.push([...group]);

@@ -51,9 +51,6 @@
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.plist": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.png"
-    ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\freeMatch\\renwunv.json": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\freeMatch\\renwunv.atlas"
     ],
@@ -62,6 +59,9 @@
     ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\public_res.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\public_res.png"
+    ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.plist": [
+      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.png"
     ]
   },
   "uuid": {
