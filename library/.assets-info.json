@@ -35,12 +35,12 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\resources\\spine": {
-    "time": 1751865064907.7688,
+    "time": 1753283789170.8528,
     "uuid": "86ce1e6a-9006-47d3-bf30-231f3e168a99",
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\resources\\texture": {
-    "time": 1751865065713.6907,
+    "time": 1753283508525.5977,
     "uuid": "fb1cf0fb-789a-4ee8-afda-54503cdfcaf9",
     "missing": false
   },
@@ -560,7 +560,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\scripts\\component\\game\\CardLayer.ts": {
-    "time": 1753196029498.689,
+    "time": 1753287936779.7346,
     "uuid": "00929b0b-fae0-43f2-97c0-5193244ae8a2",
     "missing": false
   },
@@ -570,7 +570,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\scripts\\component\\game\\GameLogic.ts": {
-    "time": 1753184467316.295,
+    "time": 1753251362492.546,
     "uuid": "644aa24f-acd0-4a8d-877c-c0d1525639e6",
     "missing": false
   },
@@ -1375,7 +1375,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\scenes\\Lobby.scene": {
-    "time": 1753074878211.9863,
+    "time": 1753287076340.0977,
     "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a",
     "missing": false
   },
@@ -6998,5 +6998,253 @@
   },
   "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.plist.meta": {
     "time": 1752816580960.9932
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall.meta": {
+    "time": 1753283508534.5981
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall": {
+    "time": 1753287023567.8909,
+    "uuid": "f599ae77-5d1b-4183-a55e-a1ff1c7a09c5",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\hall_BG.jpg.meta": {
+    "time": 1753283699681.753
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\hall_BG.jpg": {
+    "time": 1710151393055.23,
+    "uuid": "bd5fe37f-3b6e-4c28-89bd-87cfa561366d",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni.meta": {
+    "time": 1753283789171.8528
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni": {
+    "time": 1753287010190.4836,
+    "uuid": "bbe77c85-ee04-49b6-918f-c68ade963075",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.atlas.meta": {
+    "time": 1753283789356.9722
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.json.meta": {
+    "time": 1753283789381.9746
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.png.meta": {
+    "time": 1753283789476.3867
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.atlas.meta": {
+    "time": 1753283789306.426
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.json.meta": {
+    "time": 1753283789364.9746
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.png.meta": {
+    "time": 1753283789432.9797
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.atlas": {
+    "time": 1710150110000,
+    "uuid": "286c26b4-da64-48c8-b9da-05786c115a12",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.atlas": {
+    "time": 1710150110000,
+    "uuid": "6a64476c-f4e5-4b91-9d96-5c37879219c0",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.json": {
+    "time": 1710150111000,
+    "uuid": "4563bff9-017f-49da-9c31-83895768fab6",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.json": {
+    "time": 1710150107000,
+    "uuid": "1d5bd134-ed3a-451f-944e-15c7fe7fc2ff",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.png": {
+    "time": 1710151393421.6628,
+    "uuid": "05ed742a-b251-4983-9bc7-860c90a24d57",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.png": {
+    "time": 1710151393419.7205,
+    "uuid": "424549bb-e580-48b4-8f2c-87d20124e1fb",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.plist.meta": {
+    "time": 1753284190230.8762
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.png.meta": {
+    "time": 1753284190207.8792
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.png": {
+    "time": 1709280226000,
+    "uuid": "a0b53e5b-7a6b-4503-8e89-080cce45d6e7",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.plist": {
+    "time": 1710577652359.415,
+    "uuid": "db0d2014-25a8-4aa5-8865-403a6731c421",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.atlas.meta": {
+    "time": 1753284643026.253
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json.meta": {
+    "time": 1753284643019.2532
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.png.meta": {
+    "time": 1753284643086.6108
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json": {
+    "time": 1659926654000,
+    "uuid": "46dca76a-61d6-4e5d-8806-2549878af224",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.atlas": {
+    "time": 1659926654000,
+    "uuid": "be9c68b2-aa92-40a2-862a-9c39789a230c",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.png": {
+    "time": 1710151400382.538,
+    "uuid": "835cc036-e828-4967-8135-b6fd9cd2d9ab",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.atlas.meta": {
+    "time": 1753285243897.2712
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json.meta": {
+    "time": 1753285243898.8386
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.png.meta": {
+    "time": 1753285243954.7644
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.atlas": {
+    "time": 1710577475717.528,
+    "uuid": "b2692c98-83f0-454d-90cd-1bf12eed6254",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json": {
+    "time": 1710577475717.528,
+    "uuid": "f7b16cc4-355d-4238-8625-4639f5878591",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.png": {
+    "time": 1710577475717.528,
+    "uuid": "9ebda669-54f2-428c-a4e1-55d6bf9cb678",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.atlas.meta": {
+    "time": 1753286193357.745
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json.meta": {
+    "time": 1753286193358.744
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.png.meta": {
+    "time": 1753286193366.7432
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.atlas": {
+    "time": 1710577474967.121,
+    "uuid": "7fa174e4-7502-4120-aa99-7afae7fb8738",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json": {
+    "time": 1710577474966.1445,
+    "uuid": "575eecfe-43d4-49ad-8c5d-5c0d79189c05",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.png": {
+    "time": 1710577474967.121,
+    "uuid": "634674e0-afce-4532-a123-5e0abc33849b",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.atlas.meta": {
+    "time": 1753286251154.3105
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json.meta": {
+    "time": 1753286251153.3098
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.png.meta": {
+    "time": 1753286251389.2632
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json": {
+    "time": 1710577474955.343,
+    "uuid": "99b4df9f-5ee1-434d-b951-a67d3b62c58c",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.atlas": {
+    "time": 1710577474956.3232,
+    "uuid": "76b1055d-a846-4872-852f-dbc35ebfc7fa",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.png": {
+    "time": 1710577474957.296,
+    "uuid": "463b76e1-252d-4fc4-9d25-d657c8f05cbd",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.atlas.meta": {
+    "time": 1753286469688.504
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json.meta": {
+    "time": 1753286469687.9792
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.png.meta": {
+    "time": 1753286469772.0393
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json": {
+    "time": 1710577475033.1511,
+    "uuid": "7c959a4c-e601-4b2e-9338-95a51cf8b9ff",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.atlas": {
+    "time": 1710577475033.1511,
+    "uuid": "f38bcc7d-cd6e-4b63-b81a-927760f07986",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.png": {
+    "time": 1710577475033.1511,
+    "uuid": "1fe33baa-48f5-4463-b6a2-766553bb14a9",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.atlas.meta": {
+    "time": 1753286706732.2102
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json.meta": {
+    "time": 1753286706733.7847
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.png.meta": {
+    "time": 1753286706748.8699
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.atlas": {
+    "time": 1710577475039.0698,
+    "uuid": "c9227047-adf0-4819-acf2-fb57c59ac348",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": {
+    "time": 1710577475038.1006,
+    "uuid": "5521d5de-2290-4d1d-ad0f-f5e2be295b24",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.png": {
+    "time": 1710577475039.0698,
+    "uuid": "3a5c5d41-1d28-418d-9ee7-5a3cd2664e5b",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.plist.meta": {
+    "time": 1753287023722.6497
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.png.meta": {
+    "time": 1753287023647.6426
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.png": {
+    "time": 1710151393024.3784,
+    "uuid": "4502b2f3-0d86-493c-a579-b38afca85b18",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.plist": {
+    "time": 1710150114000,
+    "uuid": "b011918d-dc38-468a-974e-a0518cf5a598",
+    "missing": false
   }
 }

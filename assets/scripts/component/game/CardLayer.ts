@@ -659,8 +659,9 @@ export class CardLayer extends Component {
             else {
                 if (GlobalData.cardInfo.sortCard) {
                     if (isAuto) {
-                        sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
-                        GlobalData.cardInfo.sortCard = false;
+                        this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
+                        sameSizeList = this.groupedCards;
+                        // GlobalData.cardInfo.sortCard = false;
                     }
                     else {
                         this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
@@ -1269,8 +1270,17 @@ export class CardLayer extends Component {
             this.picHuifuDir.node.active = true;
         }
         else {
-            this.picCardDir.node.active = !isRecover;
-            this.picHuifuDir.node.active = isRecover;
+            if (GlobalData.cardInfo.sortCard) {
+                if (this.selectCardIndex.length == 0) {
+                    this.picCardDir.node.active = false;
+                    this.picHuifuDir.node.active = true;
+                }
+                else {
+                    this.picCardDir.node.active = !isRecover;
+                    this.picHuifuDir.node.active = isRecover;
+                }
+            }
+
         }
 
         // GlobalData.cardInfo.cardDir = isRecover;
@@ -1739,23 +1749,23 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = false;
         // ✅ 更新手牌
         this.handCardsValue = this.groupedCards.flat();
-        // 👉 保证 handCards 顺序与 handCardsValue 一致
-        const newHandCards: any[] = [];
-        const used: boolean[] = new Array(this.handCards.length).fill(false);
+        // // 👉 保证 handCards 顺序与 handCardsValue 一致
+        // const newHandCards: any[] = [];
+        // const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-        for (let i = 0; i < this.handCardsValue.length; i++) {
-            const value = this.handCardsValue[i];
-            for (let j = 0; j < this.handCards.length; j++) {
-                if (!used[j] && this.handCards[j].getValue() === value) {
-                    used[j] = true;
-                    this.handCards[j].setIndex(i); // 重设 index
-                    newHandCards.push(this.handCards[j]);
-                    break;
-                }
-            }
-        }
+        // for (let i = 0; i < this.handCardsValue.length; i++) {
+        //     const value = this.handCardsValue[i];
+        //     for (let j = 0; j < this.handCards.length; j++) {
+        //         if (!used[j] && this.handCards[j].getValue() === value) {
+        //             used[j] = true;
+        //             this.handCards[j].setIndex(i); // 重设 index
+        //             newHandCards.push(this.handCards[j]);
+        //             break;
+        //         }
+        //     }
+        // }
 
-        this.handCards = newHandCards; // ⚠️ 顺序彻底
+        // this.handCards = newHandCards; // ⚠️ 顺序彻底
         this.setHandCards(this.handCardsValue);
 
         // ✅ 更新 prevSelected 为这次选中的
@@ -1820,22 +1830,22 @@ export class CardLayer extends Component {
             console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
             this.handCardsValue = this.groupedCards.flat();
             // 👉 保证 handCards 顺序与 handCardsValue 一致
-            const newHandCards: any[] = [];
-            const used: boolean[] = new Array(this.handCards.length).fill(false);
+            // const newHandCards: any[] = [];
+            // const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-            for (let i = 0; i < this.handCardsValue.length; i++) {
-                const value = this.handCardsValue[i];
-                for (let j = 0; j < this.handCards.length; j++) {
-                    if (!used[j] && this.handCards[j].getValue() === value) {
-                        used[j] = true;
-                        this.handCards[j].setIndex(i); // 重设 index
-                        newHandCards.push(this.handCards[j]);
-                        break;
-                    }
-                }
-            }
+            // for (let i = 0; i < this.handCardsValue.length; i++) {
+            //     const value = this.handCardsValue[i];
+            //     for (let j = 0; j < this.handCards.length; j++) {
+            //         if (!used[j] && this.handCards[j].getValue() === value) {
+            //             used[j] = true;
+            //             this.handCards[j].setIndex(i); // 重设 index
+            //             newHandCards.push(this.handCards[j]);
+            //             break;
+            //         }
+            //     }
+            // }
 
-            this.handCards = newHandCards; // ⚠️ 顺序彻底同步
+            // this.handCards = newHandCards; // ⚠️ 顺序彻底同步
             this.setHandCards(this.handCardsValue, false, false, true);
         }
 
@@ -2009,9 +2019,16 @@ export class CardLayer extends Component {
                 this.picHuifuDir.node.active = true;
             }
             else {
+                let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
                 if (GlobalData.cardInfo.sortCard) {
-                    this.picCardDir.node.active = false;
-                    this.picHuifuDir.node.active = true;
+                    if (this.selectCardIndex.length == 0) {
+                        this.picCardDir.node.active = false;
+                        this.picHuifuDir.node.active = true;
+                    }
+                    else {
+                        this.picCardDir.node.active = !isRecover;
+                        this.picHuifuDir.node.active = isRecover;
+                    }
                 }
 
             }

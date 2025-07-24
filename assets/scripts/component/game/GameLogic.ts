@@ -3460,7 +3460,7 @@ export module GameLogic {
                     if (group.length === 2) {
                         const card = group[0];
                         if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
-                            hintList.push([card]);
+                            hintList.push(group);
                         }
                     }
                 }
