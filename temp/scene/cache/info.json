@@ -1,6 +1,7 @@
 {
     "systemInfo": {
         "arch": "x64",
+<<<<<<< HEAD
         "cpu": "Intel(R) Core(TM) i5-6200U CPU @ 2.30GHz",
         "version": "Windows 10 Pro"
     },
@@ -8,4 +9,13 @@
         "8cd0fb05-2535-4c33-abbf-584bac560df0": "C:\\xuhang\\guandan\\guandan\\assets\\scenes\\Game.scene"
     },
     "deviceMd5": "5456170dae358cbfc51219d8a01d92bd"
+=======
+        "cpu": "12th Gen Intel(R) Core(TM) i5-12400",
+        "version": "Windows 10 Pro"
+    },
+    "sceneListMap": {
+        "61eb39d8-7561-40f3-a268-06dabc8d192a": "D:\\xuhang\\guan_dan\\assets\\scenes\\Lobby.scene"
+    },
+    "deviceMd5": "6735e8106567caa89dc6206aad3dd28d"
+>>>>>>> a9040b11fb48f4eb73372e3264edef3885decfd2
 }

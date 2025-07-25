@@ -171,7 +171,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 840,
-      "y": 360,
+      "y": 359.99999999999994,
       "z": 0
     },
     "_lrot": {
@@ -252,7 +252,11 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
+<<<<<<< HEAD
     "_orthoHeight": 672.2662440570523,
+=======
+    "_orthoHeight": 576.4319248826291,
+>>>>>>> a9040b11fb48f4eb73372e3264edef3885decfd2
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -19049,8 +19053,8 @@
     "_target": null,
     "_left": -5.684341886080802e-14,
     "_right": -5.684341886080802e-14,
-    "_top": 0,
-    "_bottom": 0,
+    "_top": -5.684341886080802e-14,
+    "_bottom": -5.684341886080802e-14,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,

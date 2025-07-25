@@ -43,8 +43,14 @@
       </div>
     </div>
   
+<script src="./vconsole.min.js"></script>
+<script type="text/javascript">
+    // open web debugger console
+    window.VConsole && (window.vConsole = new VConsole());
+</script>
+
 <!-- Polyfills bundle. -->
-<script src="src/polyfills.bundle.5adbf.js" charset="utf-8"> </script>
+<script src="src/polyfills.bundle.b12d4.js" charset="utf-8"> </script>
 
 <!-- SystemJS support. -->
 <script src="src/system.bundle.692e9.js" charset="utf-8"> </script>
@@ -53,7 +59,7 @@
 <script src="src/import-map.814e6.json" type="systemjs-importmap" charset="utf-8"> </script>
 
 <script>
-    System.import('./index.b6250.js').catch(function(err) { console.error(err); })
+    System.import('./index.3995c.js').catch(function(err) { console.error(err); })
 </script>
 
 </body>

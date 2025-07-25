@@ -659,8 +659,9 @@ export class CardLayer extends Component {
             else {
                 if (GlobalData.cardInfo.sortCard) {
                     if (isAuto) {
-                        sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
-                        GlobalData.cardInfo.sortCard = false;
+                        this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
+                        sameSizeList = this.groupedCards;
+                        // GlobalData.cardInfo.sortCard = false;
                     }
                     else {
                         this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
@@ -1247,7 +1248,7 @@ export class CardLayer extends Component {
             }
         }
         // this.showCardDir(false);
-        let isRecover = false;
+        // let isRecover = false;
         const selectedSet = new Set(this.selectCardValue);
         // for (let group of this.groupedCards) {
         //     if (group.some(card => selectedSet.has(card))) {
@@ -1256,19 +1257,30 @@ export class CardLayer extends Component {
         //         break;
         //     }
         // }
-        for (let card of selectedSet) {
-            if (this.sorthandCardsValue.includes(card)) {
-                isRecover = true;
-                break;
-            }
-        }
+        // for (let card of selectedSet) {
+        //     if (this.sorthandCardsValue.includes(card)) {
+        //         isRecover = true;
+        //         break;
+        //     }
+        // }
+
+        let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
         if (GlobalData.cardInfo.oneCard) {
             this.picCardDir.node.active = false;
             this.picHuifuDir.node.active = true;
         }
         else {
-            this.picCardDir.node.active = !isRecover;
-            this.picHuifuDir.node.active = isRecover;
+            if (GlobalData.cardInfo.sortCard) {
+                if (this.selectCardIndex.length == 0) {
+                    this.picCardDir.node.active = false;
+                    this.picHuifuDir.node.active = true;
+                }
+                else {
+                    this.picCardDir.node.active = !isRecover;
+                    this.picHuifuDir.node.active = isRecover;
+                }
+            }
+
         }
 
         // GlobalData.cardInfo.cardDir = isRecover;
@@ -1276,6 +1288,29 @@ export class CardLayer extends Component {
         // console.log("this.selectCardValue---> ", this.selectCardValue);
         // console.log("this.selectCardIndex---> ", this.selectCardIndex);
     }
+
+
+    private isSelectedRecoverGroup(selectCardIndex: number[], cards: number[], sorthandCardsValue: number[]): boolean {
+        const count = new Map<number, number>();
+        for (const v of sorthandCardsValue) {
+            count.set(v, (count.get(v) || 0) + 1);
+        }
+
+        const groupedIndex = new Set<number>();
+        for (let i = cards.length - 1; i >= 0; i--) {
+            const c = cards[i];
+            if ((count.get(c) || 0) > 0) {
+                groupedIndex.add(i);
+                count.set(c, count.get(c)! - 1);
+            }
+        }
+
+        // 判断当前选中的 index 是否命中 groupedIndex 中的任何一个
+        return selectCardIndex.some(i => groupedIndex.has(i));
+    }
+
+
+
     //连续点击两次 双击
     private checkClickTwo() {
         if (this.isClickTwo) {
@@ -1668,6 +1703,10 @@ export class CardLayer extends Component {
                 const lianduiType = GameLogic.getCardTypeByLiandui(selected);
                 if (lianduiType === GameDefine.KIND_CARDS_ERROR) {
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "不是合法的牌型" });
+                    this.doHandCardPopDown_V();
+                    // this.selectCardValue = [];
+                    // this.selectCardIndex = [];
+                    // this.selectedCardIndexSet.clear();
                     return;
                 }
             }
@@ -1710,23 +1749,23 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = false;
         // ✅ 更新手牌
         this.handCardsValue = this.groupedCards.flat();
-        // 👉 保证 handCards 顺序与 handCardsValue 一致
-        const newHandCards: any[] = [];
-        const used: boolean[] = new Array(this.handCards.length).fill(false);
+        // // 👉 保证 handCards 顺序与 handCardsValue 一致
+        // const newHandCards: any[] = [];
+        // const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-        for (let i = 0; i < this.handCardsValue.length; i++) {
-            const value = this.handCardsValue[i];
-            for (let j = 0; j < this.handCards.length; j++) {
-                if (!used[j] && this.handCards[j].getValue() === value) {
-                    used[j] = true;
-                    this.handCards[j].setIndex(i); // 重设 index
-                    newHandCards.push(this.handCards[j]);
-                    break;
-                }
-            }
-        }
+        // for (let i = 0; i < this.handCardsValue.length; i++) {
+        //     const value = this.handCardsValue[i];
+        //     for (let j = 0; j < this.handCards.length; j++) {
+        //         if (!used[j] && this.handCards[j].getValue() === value) {
+        //             used[j] = true;
+        //             this.handCards[j].setIndex(i); // 重设 index
+        //             newHandCards.push(this.handCards[j]);
+        //             break;
+        //         }
+        //     }
+        // }
 
-        this.handCards = newHandCards; // ⚠️ 顺序彻底
+        // this.handCards = newHandCards; // ⚠️ 顺序彻底
         this.setHandCards(this.handCardsValue);
 
         // ✅ 更新 prevSelected 为这次选中的
@@ -1791,22 +1830,22 @@ export class CardLayer extends Component {
             console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
             this.handCardsValue = this.groupedCards.flat();
             // 👉 保证 handCards 顺序与 handCardsValue 一致
-            const newHandCards: any[] = [];
-            const used: boolean[] = new Array(this.handCards.length).fill(false);
+            // const newHandCards: any[] = [];
+            // const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-            for (let i = 0; i < this.handCardsValue.length; i++) {
-                const value = this.handCardsValue[i];
-                for (let j = 0; j < this.handCards.length; j++) {
-                    if (!used[j] && this.handCards[j].getValue() === value) {
-                        used[j] = true;
-                        this.handCards[j].setIndex(i); // 重设 index
-                        newHandCards.push(this.handCards[j]);
-                        break;
-                    }
-                }
-            }
+            // for (let i = 0; i < this.handCardsValue.length; i++) {
+            //     const value = this.handCardsValue[i];
+            //     for (let j = 0; j < this.handCards.length; j++) {
+            //         if (!used[j] && this.handCards[j].getValue() === value) {
+            //             used[j] = true;
+            //             this.handCards[j].setIndex(i); // 重设 index
+            //             newHandCards.push(this.handCards[j]);
+            //             break;
+            //         }
+            //     }
+            // }
 
-            this.handCards = newHandCards; // ⚠️ 顺序彻底同步
+            // this.handCards = newHandCards; // ⚠️ 顺序彻底同步
             this.setHandCards(this.handCardsValue, false, false, true);
         }
 
@@ -1980,9 +2019,16 @@ export class CardLayer extends Component {
                 this.picHuifuDir.node.active = true;
             }
             else {
+                let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
                 if (GlobalData.cardInfo.sortCard) {
-                    this.picCardDir.node.active = false;
-                    this.picHuifuDir.node.active = true;
+                    if (this.selectCardIndex.length == 0) {
+                        this.picCardDir.node.active = false;
+                        this.picHuifuDir.node.active = true;
+                    }
+                    else {
+                        this.picCardDir.node.active = !isRecover;
+                        this.picHuifuDir.node.active = isRecover;
+                    }
                 }
 
             }
