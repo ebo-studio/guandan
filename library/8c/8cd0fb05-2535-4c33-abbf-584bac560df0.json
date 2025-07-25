@@ -252,11 +252,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-<<<<<<< HEAD
     "_orthoHeight": 672.2662440570523,
-=======
-    "_orthoHeight": 576.4319248826291,
->>>>>>> a9040b11fb48f4eb73372e3264edef3885decfd2
     "_near": 1,
     "_far": 2000,
     "_color": {
