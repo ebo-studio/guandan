@@ -684,16 +684,21 @@
     "value": {
       "depends": [
         "8cd0fb05-2535-4c33-abbf-584bac560df0",
+        "bf980133-4b10-4363-bce7-d281f28816ff@f9941",
         "5e0f95aa-b941-4c82-b60d-9c8b0e8eaa8c",
         "4392ebfd-6d09-4b53-a7e0-45761c83bf3e",
         "10fa3b96-1ab3-4809-bca4-e63dd94ab558@f9941",
         "8f6460a6-f665-4f05-a2f1-50b5646c5c6f@f9941",
         "a02787af-3da2-4d7b-9c23-d2d8640d96e8@f9941",
         "80fea89a-cb0a-4382-b9f4-8f34f1d805a8@f9941",
-        "8a762647-a8b1-40d4-8c05-339504d67f60@54050",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@595d2",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@b2501",
         "8a762647-a8b1-40d4-8c05-339504d67f60@eb060",
         "8a762647-a8b1-40d4-8c05-339504d67f60@8bf21",
+        "8a762647-a8b1-40d4-8c05-339504d67f60@8bf21",
         "8a762647-a8b1-40d4-8c05-339504d67f60@7e0bf",
+        "8a762647-a8b1-40d4-8c05-339504d67f60@7e0bf",
+        "8a762647-a8b1-40d4-8c05-339504d67f60@193ab",
         "8a762647-a8b1-40d4-8c05-339504d67f60@193ab",
         "5158f108-50bd-4502-b4f4-6a692f9eef8d@f9941",
         "5158f108-50bd-4502-b4f4-6a692f9eef8d@f9941",
@@ -783,29 +788,23 @@
         "233d364f-e7dd-4486-b9ee-90d43de7d96f@f9941",
         "5fc498b3-d278-4f9b-b0bf-1ee1831f425a@f9941",
         "10fa3b96-1ab3-4809-bca4-e63dd94ab558@f9941",
-        "8698f9b3-e61e-40f1-b4fa-13fe0b3f5432@f9941",
-        "b8628c3b-d9b8-4efb-9696-02cae1110c5a@f9941",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dc9ad",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@2aeef",
         "af02dfee-b5c3-42b9-8857-c125438bdbaa@f9941",
-        "0fdd0a34-d8a3-486e-805d-7d69bd59d3c2@f9941",
-        "0fdd0a34-d8a3-486e-805d-7d69bd59d3c2@f9941",
-        "9c924f4a-07bf-46f8-90f9-3940c105f80e@f9941",
-        "9c924f4a-07bf-46f8-90f9-3940c105f80e@f9941",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@73476",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f1076",
         "a85f8c78-4576-48c4-bead-f844201d7dd2@f9941",
-        "8698f9b3-e61e-40f1-b4fa-13fe0b3f5432@f9941",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@47f7c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@57b2e",
         "54d24d99-428f-49ed-ae73-d6bf6be983b1",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@47f7c",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@efbea",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5227f",
         "54d24d99-428f-49ed-ae73-d6bf6be983b1",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@efbea",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@ddd25",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@8551c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b0dcb",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a4bb8",
         "54d24d99-428f-49ed-ae73-d6bf6be983b1",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@8551c",
         "a439d634-699a-4525-bb42-ea773d2c57e7@f9941",
         "7f568e30-6680-4616-8702-c9f5aaf10391@f9941",
         "7f568e30-6680-4616-8702-c9f5aaf10391@f9941",
-        "54d24d99-428f-49ed-ae73-d6bf6be983b1@b9216",
+        "99e72203-82ff-46eb-8a7a-d4b377493aa4@f9941",
         "8cd0fb05-2535-4c33-abbf-584bac560df0",
         "d032ac98-05e1-4090-88bb-eb640dcb5fc1@b47c0",
         "d032ac98-05e1-4090-88bb-eb640dcb5fc1@b47c0",
@@ -7445,6 +7444,2725 @@
     "value": {
       "depends": [
         "91bceb5d-1926-4efb-847c-388964fda5b9"
+      ]
+    }
+  },
+  "0591e268-e6b2-4ba2-b1ab-3cfbd86359cc": {
+    "url": "db://assets/resources/texture/gameUI",
+    "value": {}
+  },
+  "99e72203-82ff-46eb-8a7a-d4b377493aa4": {
+    "url": "db://assets/resources/texture/big/GameUI_atlas_h1s045.jpg",
+    "value": {
+      "depends": []
+    }
+  },
+  "bf980133-4b10-4363-bce7-d281f28816ff": {
+    "url": "db://assets/resources/texture/big/微信图片_2025-07-26_022231_815.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@091bf",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7aa39",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ea98f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@60ac2",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b0887",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@79bf5",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@24a85",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dce37",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bacc3",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3d4ca",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa4bb",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@73476",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dc9ad",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f1076",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c8fbd",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a4bb8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f8705",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5b6b0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1789c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5227f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@57b2e",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b0dcb",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c9d64",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@85f47",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2ead7",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9b081",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@27d89",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa609",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9912b",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d040f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1d134",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cb40a",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2775d",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@8034f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3cd79",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5ec81",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@60048",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d9b11",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7c468",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@18428",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5fffa",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@53354",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c2f32",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ddcc2",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@217a0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@375c0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@de6c8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@03a31",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@551a8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@37be8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@29e05",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a09c9",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e414b",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@134b5",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1fbca",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@27368",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@43925",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f12db",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2eac0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@601ed",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@59224",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e3f5f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9c28d",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7a28c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@8b630",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bc1ff",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7d109",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d0253",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a6dbc",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cdf9f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2470a",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4ad0c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ff036",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c00b8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@48b18",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@75661",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@72a00",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@69376",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@98e1d",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ad4fa",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@96aee",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9bef0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dd12e",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4b1c1",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bb964",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a8578",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@12379",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ac267",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1332d",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4bc4c",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@041fd",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@32819",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5dfa6",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@43695",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ece67",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a4e2f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@28d32",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c24e4",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b5ddf",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@64224",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3fc10",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cfdac",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@faea2",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ae9a6",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1fd72",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0a2a9",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa7c4",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cc509",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a1c7b",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0fd76",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@39bb8",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fdb2f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ed043",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e964e",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7dc7f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e0ec0",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@28591",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fabb9",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@82ac5",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9095b",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b63ad",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@58c3a",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ef6cb",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0eeff",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@595d2",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ae2da",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f571f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9d708",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d0e69",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b83a6",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bc852",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e5f77",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2e7aa",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@85de5",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9a2db",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d9e6f",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@11d99",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@17919",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@817d4",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d8f80",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@16d4d",
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@38833"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@12379": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@12379",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "99e72203-82ff-46eb-8a7a-d4b377493aa4@6c48a": {
+    "url": "db://assets/resources/texture/big/GameUI_atlas_h1s045.jpg@6c48a",
+    "value": {
+      "depends": [
+        "99e72203-82ff-46eb-8a7a-d4b377493aa4"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@17919": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@17919",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@18428": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@18428",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "bf980133-4b10-4363-bce7-d281f28816ff@6c48a": {
+    "url": "db://assets/resources/texture/big/微信图片_2025-07-26_022231_815.png@6c48a",
+    "value": {
+      "depends": [
+        "bf980133-4b10-4363-bce7-d281f28816ff"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@27368": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@27368",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@28591": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@28591",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@32819": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@32819",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@38833": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@38833",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@43695": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@43695",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@43925": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@43925",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@53354": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@53354",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.png@6c48a",
+    "value": {
+      "depends": [
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@59224": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@59224",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@60048": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@60048",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@64224": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@64224",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@69376": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@69376",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@73476": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@73476",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@75661": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@75661",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@091bf": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@091bf",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7aa39": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@7aa39",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ea98f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ea98f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@60ac2": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@60ac2",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b0887": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@b0887",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@79bf5": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@79bf5",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@24a85": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@24a85",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dce37": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@dce37",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bacc3": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@bacc3",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3d4ca": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@3d4ca",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa4bb": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@fa4bb",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dc9ad": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@dc9ad",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f1076": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@f1076",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c8fbd": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@c8fbd",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a4bb8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a4bb8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f8705": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@f8705",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5b6b0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@5b6b0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1789c": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@1789c",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5227f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@5227f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@57b2e": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@57b2e",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b0dcb": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@b0dcb",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c9d64": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@c9d64",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@85f47": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@85f47",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2ead7": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@2ead7",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9b081": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9b081",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@27d89": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@27d89",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa609": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@fa609",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9912b": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9912b",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d040f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d040f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1d134": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@1d134",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cb40a": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@cb40a",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2775d": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@2775d",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@8034f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@8034f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3cd79": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@3cd79",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5ec81": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@5ec81",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d9b11": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d9b11",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7c468": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@7c468",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5fffa": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@5fffa",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c2f32": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@c2f32",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ddcc2": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ddcc2",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@217a0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@217a0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@375c0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@375c0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@de6c8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@de6c8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@03a31": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@03a31",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@551a8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@551a8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@37be8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@37be8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@29e05": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@29e05",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a09c9": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a09c9",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e414b": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@e414b",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@134b5": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@134b5",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1fbca": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@1fbca",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f12db": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@f12db",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2eac0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@2eac0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@601ed": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@601ed",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e3f5f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@e3f5f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9c28d": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9c28d",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7a28c": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@7a28c",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@8b630": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@8b630",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bc1ff": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@bc1ff",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7d109": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@7d109",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d0253": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d0253",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a6dbc": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a6dbc",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cdf9f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@cdf9f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2470a": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@2470a",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4ad0c": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@4ad0c",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ff036": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ff036",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c00b8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@c00b8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@48b18": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@48b18",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@72a00": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@72a00",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@98e1d": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@98e1d",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ad4fa": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ad4fa",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@96aee": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@96aee",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9bef0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9bef0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@dd12e": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@dd12e",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4b1c1": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@4b1c1",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bb964": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@bb964",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a8578": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a8578",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ac267": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ac267",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1332d": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@1332d",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@4bc4c": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@4bc4c",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@041fd": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@041fd",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@5dfa6": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@5dfa6",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ece67": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ece67",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a4e2f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a4e2f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@28d32": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@28d32",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@c24e4": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@c24e4",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b5ddf": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@b5ddf",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@3fc10": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@3fc10",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cfdac": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@cfdac",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@faea2": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@faea2",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ae9a6": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ae9a6",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@1fd72": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@1fd72",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0a2a9": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@0a2a9",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fa7c4": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@fa7c4",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@cc509": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@cc509",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@a1c7b": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@a1c7b",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0fd76": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@0fd76",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@39bb8": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@39bb8",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fdb2f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@fdb2f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ed043": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ed043",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e964e": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@e964e",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@7dc7f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@7dc7f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e0ec0": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@e0ec0",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@fabb9": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@fabb9",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@82ac5": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@82ac5",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9095b": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9095b",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b63ad": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@b63ad",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@58c3a": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@58c3a",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ef6cb": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ef6cb",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@0eeff": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@0eeff",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@595d2": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@595d2",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@ae2da": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@ae2da",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@f571f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@f571f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9d708": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9d708",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d0e69": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d0e69",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@b83a6": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@b83a6",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@bc852": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@bc852",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@e5f77": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@e5f77",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@2e7aa": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@2e7aa",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@85de5": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@85de5",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@9a2db": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@9a2db",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d9e6f": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d9e6f",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@11d99": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@11d99",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@817d4": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@817d4",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@d8f80": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@d8f80",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a@16d4d": {
+    "url": "db://assets/resources/texture/gameUI/GameSceneUI_atlas0.plist@16d4d",
+    "value": {
+      "depends": [
+        "062a85a9-a4db-400b-a3d5-3ea1bb5cb17a",
+        "fc6d550e-8b7b-49ec-a9dd-be6599b17ea4@6c48a"
+      ]
+    }
+  },
+  "99e72203-82ff-46eb-8a7a-d4b377493aa4@f9941": {
+    "url": "db://assets/resources/texture/big/GameUI_atlas_h1s045.jpg@f9941",
+    "value": {
+      "depends": [
+        "99e72203-82ff-46eb-8a7a-d4b377493aa4@6c48a"
+      ]
+    }
+  },
+  "bf980133-4b10-4363-bce7-d281f28816ff@f9941": {
+    "url": "db://assets/resources/texture/big/微信图片_2025-07-26_022231_815.png@f9941",
+    "value": {
+      "depends": [
+        "bf980133-4b10-4363-bce7-d281f28816ff@6c48a"
+      ]
+    }
+  },
+  "d550c514-2849-4a4b-9776-4df1d018bac1": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@28b90",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@fb817",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@bacc3",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@1e55b",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@968b7",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@067e6",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@4a554",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@1cf92",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@b2501",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@29105",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@8e647",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@8beef",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@ac77f",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@92421",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@30f36",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@de459",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@6e9ac",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@e6951",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@c3ee4",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@9c210",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@157a9",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@beeea",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@cd7a2",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@0dc04",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@5d27e",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@f3e4b",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@073f7",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@7310f",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@62e7d",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@1fd72",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@60cc5",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@34b74",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@24c6d",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@e7e48",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@fa7c4",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@1ee1f",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@82a6b",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@24529",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@590ea",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@7ff00",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@e9343",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@b5774",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@2cba0",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@68759",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@d514c",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@80270",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@85384",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@c6d2b",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@3a53a",
+        "a41a3481-fe29-40c0-9853-a5179e6e931b@2fb04"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@24529": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@24529",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@29105": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@29105",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@68759": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@68759",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@80270": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@80270",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@85384": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@85384",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@92421": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@92421",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@28b90": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@28b90",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@fb817": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@fb817",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.png@6c48a",
+    "value": {
+      "depends": [
+        "d550c514-2849-4a4b-9776-4df1d018bac1"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@bacc3": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@bacc3",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@1e55b": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@1e55b",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@968b7": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@968b7",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@067e6": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@067e6",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@4a554": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@4a554",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@1cf92": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@1cf92",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@b2501": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@b2501",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@8e647": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@8e647",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@8beef": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@8beef",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@ac77f": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@ac77f",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@30f36": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@30f36",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@de459": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@de459",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@6e9ac": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@6e9ac",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@e6951": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@e6951",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@c3ee4": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@c3ee4",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@9c210": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@9c210",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@157a9": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@157a9",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@beeea": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@beeea",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@cd7a2": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@cd7a2",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@0dc04": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@0dc04",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@5d27e": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@5d27e",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@f3e4b": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@f3e4b",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@073f7": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@073f7",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@7310f": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@7310f",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@62e7d": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@62e7d",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@1fd72": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@1fd72",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@60cc5": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@60cc5",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@34b74": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@34b74",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@24c6d": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@24c6d",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@e7e48": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@e7e48",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@fa7c4": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@fa7c4",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@1ee1f": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@1ee1f",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@82a6b": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@82a6b",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@590ea": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@590ea",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@7ff00": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@7ff00",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@e9343": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@e9343",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@b5774": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@b5774",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@2cba0": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@2cba0",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@d514c": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@d514c",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@c6d2b": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@c6d2b",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@3a53a": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@3a53a",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "a41a3481-fe29-40c0-9853-a5179e6e931b@2fb04": {
+    "url": "db://assets/resources/texture/common/_Common_atlas4.plist@2fb04",
+    "value": {
+      "depends": [
+        "a41a3481-fe29-40c0-9853-a5179e6e931b",
+        "d550c514-2849-4a4b-9776-4df1d018bac1@6c48a"
+      ]
+    }
+  },
+  "5549a0b0-20fe-4068-97ed-e926f4407734": {
+    "url": "db://assets/resources/texture/common/_Common_atlas1.png",
+    "value": {}
+  },
+  "a1a0c77a-160a-43d4-a10c-a43ebdce4663": {
+    "url": "db://assets/resources/texture/common/_Common_atlas3.png",
+    "value": {}
+  },
+  "1abbf6b9-61db-42ac-b591-809255a9232d": {
+    "url": "db://assets/resources/texture/common/_Common_atlas1.plist",
+    "value": {}
+  },
+  "93a1d4d7-6795-45d2-97fe-17342f9f9e01": {
+    "url": "db://assets/resources/texture/common/_Common_atlas3.plist",
+    "value": {}
+  },
+  "93a1d4d7-6795-45d2-97fe-17342f9f9e01@3777e": {
+    "url": "db://assets/resources/texture/common/_Common_atlas3.plist@3777e",
+    "value": {
+      "depends": [
+        "93a1d4d7-6795-45d2-97fe-17342f9f9e01",
+        "a1a0c77a-160a-43d4-a10c-a43ebdce4663@6c48a"
+      ]
+    }
+  },
+  "93a1d4d7-6795-45d2-97fe-17342f9f9e01@d26a7": {
+    "url": "db://assets/resources/texture/common/_Common_atlas3.plist@d26a7",
+    "value": {
+      "depends": [
+        "93a1d4d7-6795-45d2-97fe-17342f9f9e01",
+        "a1a0c77a-160a-43d4-a10c-a43ebdce4663@6c48a"
+      ]
+    }
+  },
+  "1abbf6b9-61db-42ac-b591-809255a9232d@7c3c4": {
+    "url": "db://assets/resources/texture/common/_Common_atlas1.plist@7c3c4",
+    "value": {
+      "depends": [
+        "1abbf6b9-61db-42ac-b591-809255a9232d",
+        "5549a0b0-20fe-4068-97ed-e926f4407734@6c48a"
+      ]
+    }
+  },
+  "1abbf6b9-61db-42ac-b591-809255a9232d@a2c4d": {
+    "url": "db://assets/resources/texture/common/_Common_atlas1.plist@a2c4d",
+    "value": {
+      "depends": [
+        "1abbf6b9-61db-42ac-b591-809255a9232d",
+        "5549a0b0-20fe-4068-97ed-e926f4407734@6c48a"
+      ]
+    }
+  },
+  "a1a0c77a-160a-43d4-a10c-a43ebdce4663@6c48a": {
+    "url": "db://assets/resources/texture/common/_Common_atlas3.png@6c48a",
+    "value": {
+      "depends": [
+        "a1a0c77a-160a-43d4-a10c-a43ebdce4663"
+      ]
+    }
+  },
+  "5549a0b0-20fe-4068-97ed-e926f4407734@6c48a": {
+    "url": "db://assets/resources/texture/common/_Common_atlas1.png@6c48a",
+    "value": {
+      "depends": [
+        "5549a0b0-20fe-4068-97ed-e926f4407734"
+      ]
+    }
+  },
+  "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647@58cb7",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@5f09b",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@ef56e",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@62ec7",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@ff581",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@77c59",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@38ae9",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@c0498",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@02d43",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@64768",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@06f30",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@29e19",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@4d9fb",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@5a4d2",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@b549e",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@2f9e4",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@dc603",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@35790",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@0b868",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@fa609",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@62cfd",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@debc0",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@ad428",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@387c3",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@d1ddd",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@1878b",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@2aeef",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@1272c",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@9ee40",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@e3f5f",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@9c28d",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@5af27",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@13c48",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@5b2be",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@0a459",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@1a24e",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@d1d9c",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@4fdaf",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@72a00",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@69376",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@2535d",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@4cc9f",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@e33a5",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@57cab",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@a7615",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@ae13a",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@b0ba7",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@eef1a",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@a7f9f",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@a8a61",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@b09aa",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@4ff35",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@07ace",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@a0bb4",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@d1709",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@d834e",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@8aa24",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@fb843",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@589c8",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@d0284",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@28109",
+        "706b9d8e-c122-4897-9a59-d2eba1216647@b5d00"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@28109": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@28109",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@35790": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@35790",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@64768": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@64768",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@69376": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@69376",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@58cb7": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@58cb7",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@5f09b": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@5f09b",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@ef56e": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@ef56e",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@62ec7": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@62ec7",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.png@6c48a",
+    "value": {
+      "depends": [
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@ff581": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@ff581",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@77c59": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@77c59",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@38ae9": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@38ae9",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@c0498": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@c0498",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@02d43": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@02d43",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@06f30": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@06f30",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@29e19": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@29e19",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@4d9fb": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@4d9fb",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@5a4d2": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@5a4d2",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@b549e": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@b549e",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@2f9e4": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@2f9e4",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@dc603": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@dc603",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@0b868": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@0b868",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@fa609": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@fa609",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@62cfd": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@62cfd",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@debc0": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@debc0",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@ad428": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@ad428",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@387c3": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@387c3",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@d1ddd": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@d1ddd",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@1878b": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@1878b",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@2aeef": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@2aeef",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@1272c": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@1272c",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@9ee40": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@9ee40",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@e3f5f": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@e3f5f",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@9c28d": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@9c28d",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@5af27": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@5af27",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@13c48": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@13c48",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@5b2be": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@5b2be",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@0a459": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@0a459",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@1a24e": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@1a24e",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@d1d9c": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@d1d9c",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@4fdaf": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@4fdaf",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@72a00": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@72a00",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@2535d": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@2535d",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@4cc9f": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@4cc9f",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@e33a5": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@e33a5",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@57cab": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@57cab",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@a7615": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@a7615",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@ae13a": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@ae13a",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@b0ba7": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@b0ba7",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@eef1a": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@eef1a",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@a7f9f": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@a7f9f",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@a8a61": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@a8a61",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@b09aa": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@b09aa",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@4ff35": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@4ff35",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@07ace": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@07ace",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@a0bb4": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@a0bb4",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@d1709": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@d1709",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@d834e": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@d834e",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@8aa24": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@8aa24",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@fb843": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@fb843",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@589c8": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@589c8",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@d0284": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@d0284",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
+      ]
+    }
+  },
+  "706b9d8e-c122-4897-9a59-d2eba1216647@b5d00": {
+    "url": "db://assets/resources/texture/gameUI/FriendTeamUI_atlas0.plist@b5d00",
+    "value": {
+      "depends": [
+        "706b9d8e-c122-4897-9a59-d2eba1216647",
+        "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a"
       ]
     }
   }

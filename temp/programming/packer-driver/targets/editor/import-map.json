@@ -35,7 +35,9 @@
     "file:///C:/xuhang/guandan/guandan/assets/scripts/testProto/TestProto.ts": "./chunks/90/90c8ac7ee1ac16904f1c7b57f131f4430ac1e8e9.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/cardAction/CardAction.ts": "./chunks/40/40d10caeb6372c22367e86f9510c235f59eebfd8.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardItem.ts": "./chunks/ff/ff71117ab66fc0f8d00affc6b6b480c19dd34265.js",
+    "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardLayer.ts": "./chunks/fd/fdeeaabdf3aa7cd8a96477054df7cc0b2140da68.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameDefine.ts": "./chunks/d1/d163b4157c508e8a4ee6d49131daff73a273b42f.js",
+    "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts": "./chunks/8d/8dc3a94b6ecf1ef5d46382ac8fa9dfe639481641.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameTimer.ts": "./chunks/ab/abba0afd37da033d2be71e66dba047e35fbe10da.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/UserHead.ts": "./chunks/12/1244dc28410897fa5fda9b11ef97e3dec9692176.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts": "./chunks/fd/fd645bea8c5ee73c474aa455b5b0ae1970203dff.js",
@@ -92,9 +94,7 @@
     "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts": "./chunks/88/88c1806ec0c96f92d56bfd67ab673707953736c2.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/jsBridge/PostMessage/PostMessage.ts": "./chunks/3b/3bfa46056a03f772c39cacdf8e63900148752667.js",
     "file:///C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js": "./chunks/76/7665b28602499012a300771fc936d1bd12902f36.js",
-    "file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.js": "./chunks/6f/6ffdfe97e8167ef461eaaa842ddbb38c6e44bcf9.js",
-    "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/CardLayer.ts": "./chunks/fd/fdeeaabdf3aa7cd8a96477054df7cc0b2140da68.js",
-    "file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts": "./chunks/8d/8dc3a94b6ecf1ef5d46382ac8fa9dfe639481641.js"
+    "file:///C:/xuhang/guandan/guandan/assets/scripts/thirdy/long/long.js": "./chunks/6f/6ffdfe97e8167ef461eaaa842ddbb38c6e44bcf9.js"
   },
   "scopes": {
     "./chunks/ca/ca4374a3008ca85000d465787e739a302e4e4ac6.js": {
