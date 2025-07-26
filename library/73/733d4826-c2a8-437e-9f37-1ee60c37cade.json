@@ -1,0 +1,32 @@
+{
+  "__type__": "cc.SpriteAtlas",
+  "content": {
+    "name": "RuleUI_atlas0",
+    "spriteFrames": [
+      "img_paixing",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@5e2fa",
+      "img_tanchuang_guize",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@1bc28",
+      "img_yeqian_guize1",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@a9577",
+      "img_yeqian_guize2",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@74183",
+      "img_yeqian_guoa1",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@3fffd",
+      "img_yeqian_guoa2",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@c6465",
+      "img_yeqian_jiqiao1",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@6ce2b",
+      "img_yeqian_jiqiao2",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@75b18",
+      "img_yeqian_paixing1",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@5f9fe",
+      "img_yeqian_paixing2",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@7affa",
+      "img_yeqian_shuyu1",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@3f47c",
+      "img_yeqian_shuyu2",
+      "733d4826-c2a8-437e-9f37-1ee60c37cade@602f3"
+    ]
+  }
+}

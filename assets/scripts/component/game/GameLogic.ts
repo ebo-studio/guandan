@@ -3471,7 +3471,7 @@ export module GameLogic {
                     if (group.length === 3) {
                         const card = group[0];
                         if (isSingleCardStronger(card, targetCards[0], GlobalData.cardInfo.levelCard)) {
-                            hintList.push([card]);
+                            hintList.push([group[0], group[1]]);
                         }
                     }
                 }
@@ -4449,6 +4449,57 @@ export module GameLogic {
             // 处理点数
             default: return rank.toString(); // 其他数字牌
         }
+    }
+
+    export function findFlushStraightsWithHeartWildcard(cards: number[]): number[] {
+        const getCardRank = (card: number) => card % 16;
+        const getCardColor = (card: number) => Math.floor(card / 16);
+        const isHeart2 = (card: number) => getCardRank(card) === 2 && getCardColor(card) === 2;
+
+        const result: number[] = [];
+
+        const legalRanks = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+        const sequences: number[][] = [];
+
+        // 构造所有合法顺子（顺序不能包含2）
+        for (let i = 0; i <= legalRanks.length - 5; i++) {
+            sequences.push(legalRanks.slice(i, i + 5));
+        }
+        // 添加特殊顺子 A(1)-10-J-Q-K
+        sequences.push([10, 11, 12, 13, 1]);
+
+        // 分类：普通牌按花色归类，红心级牌分离
+        const colorToRanks = new Map<number, Set<number>>();
+        const heart2List: number[] = [];
+
+        for (const card of cards) {
+            if (isHeart2(card)) {
+                heart2List.push(card);
+            } else {
+                const color = getCardColor(card);
+                const rank = getCardRank(card);
+                if (!colorToRanks.has(color)) colorToRanks.set(color, new Set());
+                colorToRanks.get(color)!.add(rank);
+            }
+        }
+
+        // 遍历每种花色，看是否可以构成任意一个顺子
+        for (const [color, ranks] of colorToRanks.entries()) {
+            for (const seq of sequences) {
+                let missing = 0;
+                for (const r of seq) {
+                    if (!ranks.has(r)) {
+                        missing++;
+                    }
+                }
+                if (missing <= heart2List.length) {
+                    result.push(color);
+                    break; // 一个花色只返回一次
+                }
+            }
+        }
+
+        return result;
     }
 }
 

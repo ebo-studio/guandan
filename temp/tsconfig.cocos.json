@@ -5,9 +5,9 @@
     "module": "ES2015",
     "strict": true,
     "types": [
-      "./temp/declarations/jsb",
-      "./temp/declarations/cc",
       "./temp/declarations/cc.custom-macro",
+      "./temp/declarations/cc",
+      "./temp/declarations/jsb",
       "./temp/declarations/cc.env"
     ],
     "paths": {
@@ -15,7 +15,7 @@
         "C:\\ProgramData\\cocos\\editors\\Creator\\3.6.0\\resources\\resources\\3d\\engine\\editor\\assets\\*"
       ],
       "db://assets/*": [
-        "D:\\xuhang\\guan_dan\\assets\\*"
+        "C:\\xuhang\\guandan\\guandan\\assets\\*"
       ]
     },
     "experimentalDecorators": true,

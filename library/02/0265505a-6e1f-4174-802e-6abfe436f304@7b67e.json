@@ -1,0 +1,52 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "GameCardUI_atlas0",
+    "atlas": "0265505a-6e1f-4174-802e-6abfe436f304",
+    "rect": {
+      "x": 523,
+      "y": 369,
+      "width": 39,
+      "height": 47
+    },
+    "offset": {
+      "x": 1,
+      "y": 1
+    },
+    "originalSize": {
+      "width": 41,
+      "height": 49
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [],
+      "indexes": [],
+      "uv": [],
+      "nuv": [],
+      "minPos": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    "texture": "949989db-ff51-4e87-baf1-46d1d3c4b860@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}
