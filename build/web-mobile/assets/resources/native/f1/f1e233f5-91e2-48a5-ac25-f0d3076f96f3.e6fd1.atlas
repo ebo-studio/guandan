@@ -1,0 +1,272 @@
+
+gangban.png
+size: 697,697
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Glow09
+  rotate: false
+  xy: 2, 205
+  size: 89, 490
+  orig: 89, 490
+  offset: 0, 0
+  index: -1
+Glow10
+  rotate: false
+  xy: 93, 267
+  size: 95, 428
+  orig: 95, 428
+  offset: 0, 0
+  index: -1
+dongtaimogu
+  rotate: false
+  xy: 190, 246
+  size: 239, 60
+  orig: 239, 60
+  offset: 0, 0
+  index: -1
+faguang-1
+  rotate: true
+  xy: 118, 21
+  size: 244, 18
+  orig: 244, 18
+  offset: 0, 0
+  index: -1
+fauang-2
+  rotate: false
+  xy: 356, 69
+  size: 82, 62
+  orig: 82, 62
+  offset: 0, 0
+  index: -1
+liuguan0001
+  rotate: true
+  xy: 306, 33
+  size: 103, 48
+  orig: 103, 48
+  offset: 0, 0
+  index: -1
+liuguan0002
+  rotate: false
+  xy: 521, 177
+  size: 135, 62
+  orig: 135, 62
+  offset: 0, 0
+  index: -1
+liuguan0003
+  rotate: false
+  xy: 138, 74
+  size: 166, 62
+  orig: 166, 62
+  offset: 0, 0
+  index: -1
+liuguan0004
+  rotate: true
+  xy: 2, 12
+  size: 191, 60
+  orig: 191, 60
+  offset: 0, 0
+  index: -1
+liuguan0005
+  rotate: false
+  xy: 436, 349
+  size: 213, 60
+  orig: 213, 60
+  offset: 0, 0
+  index: -1
+liuguan0006
+  rotate: false
+  xy: 452, 523
+  size: 230, 60
+  orig: 230, 60
+  offset: 0, 0
+  index: -1
+liuguan0007
+  rotate: false
+  xy: 190, 366
+  size: 244, 60
+  orig: 244, 60
+  offset: 0, 0
+  index: -1
+liuguan0008
+  rotate: false
+  xy: 190, 488
+  size: 253, 58
+  orig: 253, 58
+  offset: 0, 0
+  index: -1
+liuguan0009
+  rotate: false
+  xy: 190, 548
+  size: 260, 58
+  orig: 260, 58
+  offset: 0, 0
+  index: -1
+liuguan0010
+  rotate: false
+  xy: 190, 608
+  size: 261, 59
+  orig: 261, 59
+  offset: 0, 0
+  index: -1
+liuguan0011
+  rotate: false
+  xy: 190, 428
+  size: 253, 58
+  orig: 253, 58
+  offset: 0, 0
+  index: -1
+liuguan0012
+  rotate: false
+  xy: 190, 308
+  size: 244, 56
+  orig: 244, 56
+  offset: 0, 0
+  index: -1
+liuguan0013
+  rotate: false
+  xy: 453, 585
+  size: 237, 56
+  orig: 237, 56
+  offset: 0, 0
+  index: -1
+liuguan0014
+  rotate: false
+  xy: 445, 467
+  size: 228, 54
+  orig: 228, 54
+  offset: 0, 0
+  index: -1
+liuguan0015
+  rotate: false
+  xy: 445, 411
+  size: 218, 54
+  orig: 218, 54
+  offset: 0, 0
+  index: -1
+liuguan0016
+  rotate: false
+  xy: 436, 295
+  size: 210, 52
+  orig: 210, 52
+  offset: 0, 0
+  index: -1
+liuguan0017
+  rotate: false
+  xy: 492, 643
+  size: 202, 52
+  orig: 202, 52
+  offset: 0, 0
+  index: -1
+liuguan0018
+  rotate: false
+  xy: 431, 241
+  size: 193, 52
+  orig: 193, 52
+  offset: 0, 0
+  index: -1
+liuguan0019
+  rotate: true
+  xy: 64, 17
+  size: 186, 52
+  orig: 186, 52
+  offset: 0, 0
+  index: -1
+liuguan0020
+  rotate: false
+  xy: 190, 192
+  size: 177, 52
+  orig: 177, 52
+  offset: 0, 0
+  index: -1
+liuguan0021
+  rotate: false
+  xy: 190, 138
+  size: 169, 52
+  orig: 169, 52
+  offset: 0, 0
+  index: -1
+liuguan0022
+  rotate: false
+  xy: 138, 20
+  size: 159, 52
+  orig: 159, 52
+  offset: 0, 0
+  index: -1
+liuguan0023
+  rotate: false
+  xy: 369, 187
+  size: 150, 52
+  orig: 150, 52
+  offset: 0, 0
+  index: -1
+liuguan0024
+  rotate: false
+  xy: 361, 133
+  size: 144, 52
+  orig: 144, 52
+  offset: 0, 0
+  index: -1
+liuguan0025
+  rotate: false
+  xy: 2, 9
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+liuguan0026
+  rotate: false
+  xy: 2, 9
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+liuguan0027
+  rotate: true
+  xy: 138, 149
+  size: 116, 50
+  orig: 116, 50
+  offset: 0, 0
+  index: -1
+liuguan0028
+  rotate: true
+  xy: 644, 72
+  size: 103, 51
+  orig: 103, 51
+  offset: 0, 0
+  index: -1
+liuguan0029
+  rotate: false
+  xy: 356, 19
+  size: 93, 48
+  orig: 93, 48
+  offset: 0, 0
+  index: -1
+liuguan0030
+  rotate: true
+  xy: 451, 58
+  size: 73, 46
+  orig: 73, 46
+  offset: 0, 0
+  index: -1
+shunzi
+  rotate: false
+  xy: 507, 112
+  size: 135, 63
+  orig: 153, 71
+  offset: 7, 3
+  index: -1
+tuowei-3
+  rotate: false
+  xy: 190, 669
+  size: 300, 26
+  orig: 300, 26
+  offset: 0, 0
+  index: -1
+tuowei-4
+  rotate: true
+  xy: 665, 191
+  size: 274, 30
+  orig: 274, 30
+  offset: 0, 0
+  index: -1

@@ -60,6 +60,21 @@ export class CardLayer extends Component {
     @property(Sprite)
     picOneCard: Sprite = null;
 
+    @property(Node)
+    tonghuashunPic: Node = null;
+
+    @property(Node)
+    heitao: Node = null;
+
+    @property(Node)
+    fangkuai: Node = null;
+
+    @property(Node)
+    meihua: Node = null;
+
+    @property(Node)
+    hongtao: Node = null;
+
     private baseCardWidth: number = 0       //牌面原始宽度
     private baseCardHeight: number = 0      //牌面原始高度
     private handCardsWidth: number = 0      //手牌宽度
@@ -177,7 +192,7 @@ export class CardLayer extends Component {
         this.handCardsHeight = this.baseCardHeight * this.handScale;
         //手牌位置高度 88是底部遮罩高度
         // if (GlobalData.cardInfo.cardDir) {
-        this.cardsPosY = -this.halfWinHight + 88 + this.handCardsHeight * 0.5;
+        this.cardsPosY = -this.halfWinHight + 58 + this.handCardsHeight * 0.5;
         // } else {
         // this.cardsPosY = -this.halfWinHight + this.handCardsHeight * 0.5;
         // }
@@ -311,6 +326,27 @@ export class CardLayer extends Component {
         this.delayShowCardDir();
         this.clearHandCards();
         this.handCardsValue = value;
+        const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
+        this.fangkuai.active = false;
+        this.meihua.active = false;
+        this.heitao.active = false;
+        this.hongtao.active = false;
+        for(let i = 0; i < fushStraights.length; i++) {
+            if(fushStraights[i] == 0) {
+                this.fangkuai.active = true;
+            }
+            else if(fushStraights[i] == 1) {
+                this.meihua.active = true;
+            }
+            else if(fushStraights[i] == 2) {
+                this.hongtao.active = true;
+            }
+            else if(fushStraights[i] == 3) {
+                this.heitao.active = true;
+            }
+            
+        }
+        console.log('有什么同花顺>>', fushStraights);
         if (value.length == 0) {
             return;
         }
@@ -1939,9 +1975,9 @@ export class CardLayer extends Component {
             //贡牌倒计时和贡牌重叠了,贡牌时动态调整位置
             let pos = this.btnLayer.getPosition();
             if (updatePos) {
-                this.btnLayer.setPosition(pos.x, 60);
+                this.btnLayer.setPosition(pos.x, 86);
             } else {
-                this.btnLayer.setPosition(pos.x, -50);
+                this.btnLayer.setPosition(pos.x, 86);
             }
         }
     }
@@ -2008,6 +2044,7 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = show;
         this.picOneCard.node.active = show;
         this.picHuifuDir.node.active = GlobalData.cardInfo.oneCard;
+        this.tonghuashunPic.active = show;
         if (show) {
             // if (GlobalData.cardInfo.sortCard) {
             //     this.picCardDir.node.active = false;

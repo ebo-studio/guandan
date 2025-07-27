@@ -1,0 +1,272 @@
+
+sandaiyidui.png
+size: 712,712
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Glow09
+  rotate: false
+  xy: 2, 220
+  size: 89, 490
+  orig: 89, 490
+  offset: 0, 0
+  index: -1
+Glow10
+  rotate: false
+  xy: 93, 282
+  size: 95, 428
+  orig: 95, 428
+  offset: 0, 0
+  index: -1
+dongtaimogu
+  rotate: false
+  xy: 463, 536
+  size: 239, 60
+  orig: 239, 60
+  offset: 0, 0
+  index: -1
+faguang-1
+  rotate: true
+  xy: 180, 36
+  size: 244, 18
+  orig: 244, 18
+  offset: 0, 0
+  index: -1
+fauang-2
+  rotate: false
+  xy: 592, 242
+  size: 82, 62
+  orig: 82, 62
+  offset: 0, 0
+  index: -1
+liuguan0001
+  rotate: false
+  xy: 426, 33
+  size: 103, 48
+  orig: 103, 48
+  offset: 0, 0
+  index: -1
+liuguan0002
+  rotate: true
+  xy: 200, 18
+  size: 135, 62
+  orig: 135, 62
+  offset: 0, 0
+  index: -1
+liuguan0003
+  rotate: false
+  xy: 424, 242
+  size: 166, 62
+  orig: 166, 62
+  offset: 0, 0
+  index: -1
+liuguan0004
+  rotate: true
+  xy: 254, 158
+  size: 191, 60
+  orig: 191, 60
+  offset: 0, 0
+  index: -1
+liuguan0005
+  rotate: true
+  xy: 2, 5
+  size: 213, 60
+  orig: 213, 60
+  offset: 0, 0
+  index: -1
+liuguan0006
+  rotate: false
+  xy: 463, 416
+  size: 230, 60
+  orig: 230, 60
+  offset: 0, 0
+  index: -1
+liuguan0007
+  rotate: true
+  xy: 118, 36
+  size: 244, 60
+  orig: 244, 60
+  offset: 0, 0
+  index: -1
+liuguan0008
+  rotate: true
+  xy: 311, 358
+  size: 253, 58
+  orig: 253, 58
+  offset: 0, 0
+  index: -1
+liuguan0009
+  rotate: true
+  xy: 251, 351
+  size: 260, 58
+  orig: 260, 58
+  offset: 0, 0
+  index: -1
+liuguan0010
+  rotate: true
+  xy: 190, 350
+  size: 261, 59
+  orig: 261, 59
+  offset: 0, 0
+  index: -1
+liuguan0011
+  rotate: true
+  xy: 371, 358
+  size: 253, 58
+  orig: 253, 58
+  offset: 0, 0
+  index: -1
+liuguan0012
+  rotate: false
+  xy: 463, 598
+  size: 244, 56
+  orig: 244, 56
+  offset: 0, 0
+  index: -1
+liuguan0013
+  rotate: false
+  xy: 463, 478
+  size: 237, 56
+  orig: 237, 56
+  offset: 0, 0
+  index: -1
+liuguan0014
+  rotate: false
+  xy: 463, 360
+  size: 228, 54
+  orig: 228, 54
+  offset: 0, 0
+  index: -1
+liuguan0015
+  rotate: false
+  xy: 492, 656
+  size: 218, 54
+  orig: 218, 54
+  offset: 0, 0
+  index: -1
+liuguan0016
+  rotate: true
+  xy: 64, 8
+  size: 210, 52
+  orig: 210, 52
+  offset: 0, 0
+  index: -1
+liuguan0017
+  rotate: false
+  xy: 463, 306
+  size: 202, 52
+  orig: 202, 52
+  offset: 0, 0
+  index: -1
+liuguan0018
+  rotate: true
+  xy: 200, 155
+  size: 193, 52
+  orig: 193, 52
+  offset: 0, 0
+  index: -1
+liuguan0019
+  rotate: true
+  xy: 316, 170
+  size: 186, 52
+  orig: 186, 52
+  offset: 0, 0
+  index: -1
+liuguan0020
+  rotate: true
+  xy: 370, 179
+  size: 177, 52
+  orig: 177, 52
+  offset: 0, 0
+  index: -1
+liuguan0021
+  rotate: false
+  xy: 424, 188
+  size: 169, 52
+  orig: 169, 52
+  offset: 0, 0
+  index: -1
+liuguan0022
+  rotate: true
+  xy: 318, 9
+  size: 159, 52
+  orig: 159, 52
+  offset: 0, 0
+  index: -1
+liuguan0023
+  rotate: true
+  xy: 264, 6
+  size: 150, 52
+  orig: 150, 52
+  offset: 0, 0
+  index: -1
+liuguan0024
+  rotate: true
+  xy: 372, 33
+  size: 144, 52
+  orig: 144, 52
+  offset: 0, 0
+  index: -1
+liuguan0025
+  rotate: false
+  xy: 254, 155
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+liuguan0026
+  rotate: false
+  xy: 254, 155
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+liuguan0027
+  rotate: false
+  xy: 426, 136
+  size: 116, 50
+  orig: 116, 50
+  offset: 0, 0
+  index: -1
+liuguan0028
+  rotate: false
+  xy: 426, 83
+  size: 103, 51
+  orig: 103, 51
+  offset: 0, 0
+  index: -1
+liuguan0029
+  rotate: false
+  xy: 595, 192
+  size: 93, 48
+  orig: 93, 48
+  offset: 0, 0
+  index: -1
+liuguan0030
+  rotate: true
+  xy: 544, 113
+  size: 73, 46
+  orig: 73, 46
+  offset: 0, 0
+  index: -1
+shunzi
+  rotate: false
+  xy: 190, 613
+  size: 256, 69
+  orig: 279, 71
+  offset: 6, 0
+  index: -1
+tuowei-3
+  rotate: false
+  xy: 190, 684
+  size: 300, 26
+  orig: 300, 26
+  offset: 0, 0
+  index: -1
+tuowei-4
+  rotate: true
+  xy: 431, 337
+  size: 274, 30
+  orig: 274, 30
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,52 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "FriendTeamUI_atlas0",
+    "atlas": "706b9d8e-c122-4897-9a59-d2eba1216647",
+    "rect": {
+      "x": 1977,
+      "y": 628,
+      "width": 13,
+      "height": 13
+    },
+    "offset": {
+      "x": 0,
+      "y": 34
+    },
+    "originalSize": {
+      "width": 13,
+      "height": 47
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [],
+      "indexes": [],
+      "uv": [],
+      "nuv": [],
+      "minPos": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    "texture": "cf9a4b56-6870-4fb1-ae1d-6b7acf5fe69f@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

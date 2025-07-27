@@ -1,0 +1,75 @@
+[
+    1,
+    [
+        "0cOO6eqI1D3qrdJ4wQH/GE@6c48a"
+    ],
+    [
+        "_textureSource"
+    ],
+    [
+        "cc.SpriteFrame"
+    ],
+    0,
+    [
+        {
+            "name": "CreateRoomUI_atlas0",
+            "rect": {
+                "x": 1153,
+                "y": 582,
+                "width": 106,
+                "height": 35
+            },
+            "offset": {
+                "x": 0,
+                "y": 3
+            },
+            "originalSize": {
+                "width": 108,
+                "height": 38
+            },
+            "rotated": false,
+            "capInsets": [
+                0,
+                0,
+                0,
+                0
+            ],
+            "vertices": {
+                "rawPosition": [],
+                "indexes": [],
+                "uv": [],
+                "nuv": [],
+                "minPos": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                },
+                "maxPos": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            },
+            "packable": true,
+            "pixelsToUnit": 100,
+            "pivot": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "meshType": 0
+        }
+    ],
+    [
+        0
+    ],
+    0,
+    [
+        0
+    ],
+    [
+        0
+    ],
+    [
+        0
+    ]
+]

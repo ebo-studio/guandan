@@ -51,6 +51,9 @@
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\card\\a_cards.png"
     ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.plist": [
+      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.png"
+    ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\freeMatch\\renwunv.json": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\freeMatch\\renwunv.atlas"
     ],
@@ -60,44 +63,65 @@
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\public_res.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\public_res.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.plist": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\game\\game.png"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameSceneUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameSceneUI_atlas0.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\_Common_atlas4.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\_Common_atlas4.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\FriendTeamUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\FriendTeamUI_atlas0.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.plist": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\HallUI_atlas0.png"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\ActIcon.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\ActIcon.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\HallUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\HallUI_atlas0.png"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\gd_rukou.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\caisheng.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\caisheng.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\danniu.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\danniu.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.plist": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.png"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\jm_fshl.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.atlas"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json": [
-      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.atlas"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\_Common_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\common\\_Common_atlas0.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameCardUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameCardUI_atlas0.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameGuideUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\gameUI\\GameGuideUI_atlas0.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rule\\RuleUI_atlas0_1.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rule\\RuleUI_atlas0_1.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rule\\RuleUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\rule\\RuleUI_atlas0.png"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_jingdian_ty.json": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_jingdian_ty.atlas"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\CreateRoomUI_atlas0.plist": [
+      "C:\\xuhang\\guandan\\guandan\\assets\\resources\\texture\\hall\\CreateRoomUI_atlas0.png"
     ]
   },
   "uuid": {
@@ -143,35 +167,32 @@
     "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\freeMatch\\renwunv.json": [
       "91bceb5d-1926-4efb-847c-388964fda5b9@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\danniu.json": [
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\danniu.json": [
       "05ed742a-b251-4983-9bc7-860c90a24d57@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\caisheng.json": [
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\caisheng.json": [
       "424549bb-e580-48b4-8f2c-87d20124e1fb@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json": [
-      "835cc036-e828-4967-8135-b6fd9cd2d9ab@6c48a"
-    ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json": [
-      "9ebda669-54f2-428c-a4e1-55d6bf9cb678@6c48a"
-    ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json": [
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_xiaxue.json": [
       "634674e0-afce-4532-a123-5e0abc33849b@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json": [
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\dating_yanhua.json": [
       "463b76e1-252d-4fc4-9d25-d657c8f05cbd@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json": [
-      "1fe33baa-48f5-4463-b6a2-766553bb14a9@6c48a"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\gd_rukou.json": [
+      "835cc036-e828-4967-8135-b6fd9cd2d9ab@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": [
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": [
       "3a5c5d41-1d28-418d-9ee7-5a3cd2664e5b@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json": [
-      "7bfdcd37-99fc-4913-80d2-5dc820892e68@6c48a"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\jm_fshl.json": [
+      "1fe33baa-48f5-4463-b6a2-766553bb14a9@6c48a"
     ],
-    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json": [
-      "f00be3e1-4256-4c58-9fd5-61ae606ec1f0@6c48a"
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_fanbei_ty.json": [
+      "9ebda669-54f2-428c-a4e1-55d6bf9cb678@6c48a"
+    ],
+    "C:\\xuhang\\guandan\\guandan\\assets\\resources\\spine\\RoleAni\\rk_jingdian_ty.json": [
+      "a5b3bbcb-249f-45e8-bdf7-bf0e27456a26@6c48a"
     ]
   }
 }
