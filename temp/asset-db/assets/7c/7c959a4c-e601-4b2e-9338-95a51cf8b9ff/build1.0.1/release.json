@@ -1,0 +1,1616 @@
+[
+    1,
+    [
+        "1f4zuqSPVEY7aidmVTuxSp@6c48a"
+    ],
+    0,
+    [
+        [
+            "sp.SkeletonData",
+            [
+                "_name",
+                "_atlasText",
+                "textureNames",
+                "_skeletonJson",
+                "textures"
+            ],
+            -1,
+            3
+        ]
+    ],
+    [
+        [
+            0,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ]
+    ],
+    [
+        [
+            0,
+            "jm_fshl",
+            "\r\njm_fshl.png\r\nsize:1890,572\r\nformat:RGBA8888\r\nfilter:Linear,Linear\r\nrepeat:none\r\nhgl_15jizai\r\nrotate:false\r\nxy:1506,7\r\nsize:239,252\r\norig:239,252\r\noffset:0,0\r\nindex:-1\r\nhl_bg\r\nrotate:false\r\nxy:2,2\r\nsize:1054,568\r\norig:1055,569\r\noffset:1,0\r\nindex:-1\r\nhl_bt\r\nrotate:false\r\nxy:1058,70\r\nsize:392,107\r\norig:394,110\r\noffset:1,1\r\nindex:-1\r\nhl_bt1\r\nrotate:false\r\nxy:1701,543\r\nsize:24,27\r\norig:26,29\r\noffset:1,1\r\nindex:-1\r\nhl_bt2\r\nrotate:false\r\nxy:1691,378\r\nsize:33,31\r\norig:33,32\r\noffset:0,1\r\nindex:-1\r\nhl_bt3\r\nrotate:false\r\nxy:1824,235\r\nsize:29,29\r\norig:31,31\r\noffset:1,1\r\nindex:-1\r\nhl_bt4\r\nrotate:false\r\nxy:1058,467\r\nsize:641,103\r\norig:647,105\r\noffset:4,1\r\nindex:-1\r\nhl_dhk\r\nrotate:false\r\nxy:1506,261\r\nsize:183,148\r\norig:189,153\r\noffset:3,4\r\nindex:-1\r\nhl_ts\r\nrotate:false\r\nxy:1058,411\r\nsize:671,54\r\norig:671,54\r\noffset:0,0\r\nindex:-1\r\nshang\r\nrotate:true\r\nxy:1731,266\r\nsize:304,157\r\norig:307,157\r\noffset:3,0\r\nindex:-1\r\nstar_d\r\nrotate:true\r\nxy:1058,10\r\nsize:58,77\r\norig:64,81\r\noffset:3,2\r\nindex:-1\r\nstar_x\r\nrotate:false\r\nxy:1452,128\r\nsize:39,49\r\norig:43,53\r\noffset:2,2\r\nindex:-1\r\nxia\r\nrotate:true\r\nxy:1747,16\r\nsize:248,75\r\norig:249,75\r\noffset:0,0\r\nindex:-1\r\nzhong\r\nrotate:false\r\nxy:1058,179\r\nsize:446,230\r\norig:446,230\r\noffset:0,0\r\nindex:-1\r\n",
+            [
+                "jm_fshl.png"
+            ],
+            {
+                "skeleton": {
+                    "hash": "b/Z6bhgiF6eMpdoxWDYV9ADLwG0",
+                    "spine": "3.8.99",
+                    "x": -529,
+                    "y": -269,
+                    "width": 1055,
+                    "height": 585,
+                    "images": "./images/",
+                    "audio": "D:/1掼蛋/01小游戏/039分享获利界面"
+                },
+                "bones": [
+                    {
+                        "name": "root"
+                    },
+                    {
+                        "name": "jm",
+                        "parent": "root",
+                        "y": -80
+                    },
+                    {
+                        "name": "hl_bt",
+                        "parent": "root",
+                        "x": -13,
+                        "y": 250
+                    },
+                    {
+                        "name": "ts",
+                        "parent": "root",
+                        "x": 0.5,
+                        "y": -155
+                    },
+                    {
+                        "name": "hl_bx",
+                        "parent": "jm",
+                        "x": 9.44,
+                        "y": 7.89
+                    },
+                    {
+                        "name": "shang",
+                        "parent": "hl_bx",
+                        "length": 143.89,
+                        "rotation": 122.44,
+                        "x": 109.86,
+                        "y": 80.39
+                    },
+                    {
+                        "name": "star_d",
+                        "parent": "root",
+                        "x": -65.27,
+                        "y": 107.13,
+                        "color": "000000ff"
+                    },
+                    {
+                        "name": "star_x",
+                        "parent": "root",
+                        "x": 80.14,
+                        "y": 96.97,
+                        "color": "000000ff"
+                    },
+                    {
+                        "name": "star_d2",
+                        "parent": "root",
+                        "x": -65.27,
+                        "y": 107.13,
+                        "color": "000000ff"
+                    },
+                    {
+                        "name": "star_d3",
+                        "parent": "root",
+                        "x": -65.27,
+                        "y": 107.13,
+                        "color": "000000ff"
+                    },
+                    {
+                        "name": "Ji_pigu",
+                        "parent": "root",
+                        "length": 101.46,
+                        "rotation": 89,
+                        "x": -317.16,
+                        "y": -139.19,
+                        "scaleX": 0.82,
+                        "scaleY": 0.82
+                    },
+                    {
+                        "name": "Ji_xiong",
+                        "parent": "Ji_pigu",
+                        "length": 54.73,
+                        "rotation": -5.6,
+                        "x": 101.46
+                    },
+                    {
+                        "name": "Ji_tou",
+                        "parent": "Ji_xiong",
+                        "length": 64.22,
+                        "rotation": 1.79,
+                        "x": 54.73
+                    },
+                    {
+                        "name": "Ji_s2",
+                        "parent": "Ji_xiong",
+                        "length": 30.63,
+                        "rotation": -62.6,
+                        "x": 37.14,
+                        "y": -77.11
+                    },
+                    {
+                        "name": "Ji_s1",
+                        "parent": "Ji_xiong",
+                        "length": 34.19,
+                        "rotation": 51.72,
+                        "x": 33.58,
+                        "y": 85.43
+                    },
+                    {
+                        "name": "hl_dhk",
+                        "parent": "jm",
+                        "length": 123.66,
+                        "rotation": 121.26,
+                        "x": -364.04,
+                        "y": 114.57
+                    }
+                ],
+                "slots": [
+                    {
+                        "name": "hl_bg",
+                        "bone": "jm",
+                        "attachment": "hl_bg"
+                    },
+                    {
+                        "name": "xia",
+                        "bone": "shang",
+                        "attachment": "xia"
+                    },
+                    {
+                        "name": "zhong",
+                        "bone": "hl_bx",
+                        "attachment": "zhong"
+                    },
+                    {
+                        "name": "shang",
+                        "bone": "shang",
+                        "attachment": "shang"
+                    },
+                    {
+                        "name": "star_d",
+                        "bone": "star_d",
+                        "attachment": "star_d",
+                        "blend": "additive"
+                    },
+                    {
+                        "name": "star_d2",
+                        "bone": "star_d2",
+                        "attachment": "star_d",
+                        "blend": "additive"
+                    },
+                    {
+                        "name": "star_d3",
+                        "bone": "star_d3",
+                        "attachment": "star_d",
+                        "blend": "additive"
+                    },
+                    {
+                        "name": "star_x",
+                        "bone": "star_x",
+                        "attachment": "star_x"
+                    },
+                    {
+                        "name": "hgl_15jizai",
+                        "bone": "Ji_s1",
+                        "attachment": "hgl_15jizai"
+                    },
+                    {
+                        "name": "hl_dhk",
+                        "bone": "hl_dhk",
+                        "attachment": "hl_dhk"
+                    },
+                    {
+                        "name": "hl_ts",
+                        "bone": "ts",
+                        "attachment": "hl_ts"
+                    },
+                    {
+                        "name": "hl_bt4",
+                        "bone": "jm",
+                        "attachment": "hl_bt4"
+                    },
+                    {
+                        "name": "hl_bt3",
+                        "bone": "hl_bt",
+                        "attachment": "hl_bt3"
+                    },
+                    {
+                        "name": "hl_bt2",
+                        "bone": "hl_bt",
+                        "attachment": "hl_bt2"
+                    },
+                    {
+                        "name": "hl_bt1",
+                        "bone": "hl_bt",
+                        "attachment": "hl_bt1"
+                    },
+                    {
+                        "name": "hl_bt",
+                        "bone": "hl_bt",
+                        "attachment": "hl_bt"
+                    },
+                    {
+                        "name": "hl_bt_g",
+                        "bone": "hl_bt",
+                        "attachment": "hl_bt",
+                        "blend": "additive"
+                    }
+                ],
+                "skins": [
+                    {
+                        "name": "default",
+                        "attachments": {
+                            "hgl_15jizai": {
+                                "hgl_15jizai": {
+                                    "type": "mesh",
+                                    "hull": 12,
+                                    "width": 239,
+                                    "height": 252,
+                                    "uvs": [
+                                        0.83749,
+                                        0.16873,
+                                        0.83388,
+                                        0.33653,
+                                        1,
+                                        0.31598,
+                                        1,
+                                        0.57968,
+                                        1,
+                                        1,
+                                        0,
+                                        1,
+                                        0,
+                                        0.50091,
+                                        0,
+                                        0.1927,
+                                        0.15142,
+                                        0.25777,
+                                        0.2453,
+                                        0.08311,
+                                        0.42946,
+                                        0,
+                                        0.6425,
+                                        0,
+                                        0.47279,
+                                        0.56598,
+                                        0.46918,
+                                        0.79543,
+                                        0.73638,
+                                        0.44612,
+                                        0.75805,
+                                        0.51804,
+                                        0.85214,
+                                        0.57584,
+                                        0.13826,
+                                        0.51994,
+                                        0.22364,
+                                        0.44954,
+                                        0.21281,
+                                        0.33996,
+                                        0.4764,
+                                        0.3605,
+                                        0.49084,
+                                        0.18585,
+                                        0.47279,
+                                        0.47352
+                                    ],
+                                    "triangles": [
+                                        18,
+                                        19,
+                                        20,
+                                        19,
+                                        8,
+                                        9,
+                                        21,
+                                        11,
+                                        0,
+                                        21,
+                                        10,
+                                        11,
+                                        9,
+                                        10,
+                                        21,
+                                        1,
+                                        21,
+                                        0,
+                                        19,
+                                        9,
+                                        21,
+                                        20,
+                                        21,
+                                        1,
+                                        20,
+                                        19,
+                                        21,
+                                        3,
+                                        16,
+                                        1,
+                                        15,
+                                        1,
+                                        16,
+                                        3,
+                                        1,
+                                        2,
+                                        15,
+                                        14,
+                                        1,
+                                        5,
+                                        6,
+                                        17,
+                                        18,
+                                        17,
+                                        19,
+                                        6,
+                                        8,
+                                        19,
+                                        6,
+                                        7,
+                                        8,
+                                        17,
+                                        6,
+                                        19,
+                                        12,
+                                        15,
+                                        16,
+                                        17,
+                                        18,
+                                        12,
+                                        22,
+                                        18,
+                                        20,
+                                        18,
+                                        22,
+                                        12,
+                                        12,
+                                        22,
+                                        14,
+                                        22,
+                                        20,
+                                        14,
+                                        12,
+                                        14,
+                                        15,
+                                        14,
+                                        20,
+                                        1,
+                                        13,
+                                        12,
+                                        16,
+                                        13,
+                                        17,
+                                        12,
+                                        5,
+                                        13,
+                                        4,
+                                        13,
+                                        16,
+                                        4,
+                                        5,
+                                        17,
+                                        13,
+                                        16,
+                                        3,
+                                        4
+                                    ],
+                                    "vertices": [
+                                        1,
+                                        12,
+                                        51.29,
+                                        -79.95,
+                                        1,
+                                        3,
+                                        11,
+                                        66.31,
+                                        -81.59,
+                                        0.15468,
+                                        13,
+                                        17.4,
+                                        23.84,
+                                        0.20942,
+                                        12,
+                                        9.03,
+                                        -81.91,
+                                        0.6359,
+                                        1,
+                                        13,
+                                        56.19,
+                                        13.9,
+                                        1,
+                                        3,
+                                        10,
+                                        98.22,
+                                        -127.37,
+                                        0.46592,
+                                        11,
+                                        9.2,
+                                        -127.08,
+                                        0.104,
+                                        13,
+                                        31.51,
+                                        -47.8,
+                                        0.43008,
+                                        1,
+                                        10,
+                                        -7.7,
+                                        -127.37,
+                                        1,
+                                        1,
+                                        10,
+                                        -7.7,
+                                        111.63,
+                                        1,
+                                        1,
+                                        14,
+                                        4.11,
+                                        38.84,
+                                        1,
+                                        2,
+                                        14,
+                                        57.95,
+                                        -17.14,
+                                        0.776,
+                                        12,
+                                        31.94,
+                                        119.36,
+                                        0.224,
+                                        2,
+                                        14,
+                                        20.49,
+                                        -30.41,
+                                        0.52,
+                                        12,
+                                        17.99,
+                                        82.16,
+                                        0.48,
+                                        1,
+                                        12,
+                                        63.4,
+                                        62.7,
+                                        1,
+                                        1,
+                                        12,
+                                        87.22,
+                                        20.18,
+                                        1,
+                                        1,
+                                        12,
+                                        90.61,
+                                        -30.63,
+                                        1,
+                                        1,
+                                        11,
+                                        0.35,
+                                        -1.34,
+                                        1,
+                                        1,
+                                        10,
+                                        43.85,
+                                        -0.5,
+                                        1,
+                                        2,
+                                        11,
+                                        36.55,
+                                        -61.09,
+                                        0.496,
+                                        13,
+                                        -14.49,
+                                        6.85,
+                                        0.504,
+                                        2,
+                                        11,
+                                        19.02,
+                                        -68.01,
+                                        0.48,
+                                        13,
+                                        -16.41,
+                                        -11.9,
+                                        0.52,
+                                        3,
+                                        10,
+                                        99.19,
+                                        -92.03,
+                                        0.408,
+                                        11,
+                                        6.72,
+                                        -91.81,
+                                        0.22259,
+                                        13,
+                                        -0.94,
+                                        -33.77,
+                                        0.36941,
+                                        1,
+                                        14,
+                                        -23.03,
+                                        19.4,
+                                        1,
+                                        3,
+                                        11,
+                                        23.74,
+                                        60.79,
+                                        0.48,
+                                        14,
+                                        -25.44,
+                                        -7.53,
+                                        0.47424,
+                                        12,
+                                        -29.08,
+                                        61.72,
+                                        0.04576,
+                                        2,
+                                        14,
+                                        -4.44,
+                                        -25.65,
+                                        0.272,
+                                        12,
+                                        -1.7,
+                                        66.14,
+                                        0.728,
+                                        2,
+                                        11,
+                                        51.96,
+                                        2.85,
+                                        0.496,
+                                        12,
+                                        -2.68,
+                                        2.94,
+                                        0.504,
+                                        1,
+                                        12,
+                                        41.47,
+                                        2.42,
+                                        1,
+                                        1,
+                                        11,
+                                        23.54,
+                                        0.93,
+                                        1
+                                    ],
+                                    "edges": [
+                                        8,
+                                        10,
+                                        10,
+                                        12,
+                                        8,
+                                        6,
+                                        12,
+                                        14,
+                                        14,
+                                        16,
+                                        16,
+                                        18,
+                                        18,
+                                        20,
+                                        20,
+                                        22,
+                                        22,
+                                        0,
+                                        0,
+                                        2,
+                                        6,
+                                        4,
+                                        2,
+                                        4,
+                                        2,
+                                        28,
+                                        28,
+                                        30,
+                                        6,
+                                        32,
+                                        32,
+                                        24,
+                                        30,
+                                        32,
+                                        12,
+                                        34,
+                                        34,
+                                        24,
+                                        34,
+                                        36,
+                                        36,
+                                        38,
+                                        38,
+                                        16,
+                                        38,
+                                        40,
+                                        40,
+                                        2
+                                    ]
+                                }
+                            },
+                            "hl_bg": {
+                                "hl_bg": {
+                                    "x": -1.5,
+                                    "y": 95.5,
+                                    "width": 1055,
+                                    "height": 569
+                                }
+                            },
+                            "hl_bt": {
+                                "hl_bt": {
+                                    "x": 5.5,
+                                    "y": 2,
+                                    "width": 394,
+                                    "height": 110
+                                }
+                            },
+                            "hl_bt1": {
+                                "hl_bt1": {
+                                    "x": 222,
+                                    "y": -73.5,
+                                    "width": 26,
+                                    "height": 29
+                                }
+                            },
+                            "hl_bt2": {
+                                "hl_bt2": {
+                                    "x": -216.5,
+                                    "y": -56,
+                                    "width": 33,
+                                    "height": 32
+                                }
+                            },
+                            "hl_bt3": {
+                                "hl_bt3": {
+                                    "x": 116.5,
+                                    "y": 50.5,
+                                    "width": 31,
+                                    "height": 31
+                                }
+                            },
+                            "hl_bt4": {
+                                "hl_bt4": {
+                                    "x": -15.5,
+                                    "y": 293.5,
+                                    "width": 647,
+                                    "height": 105
+                                }
+                            },
+                            "hl_bt_g": {
+                                "hl_bt": {
+                                    "x": 5.5,
+                                    "y": 2,
+                                    "width": 394,
+                                    "height": 110
+                                }
+                            },
+                            "hl_dhk": {
+                                "hl_dhk": {
+                                    "x": 66.94,
+                                    "y": -22.56,
+                                    "rotation": -121.26,
+                                    "width": 189,
+                                    "height": 153
+                                }
+                            },
+                            "hl_ts": {
+                                "hl_ts": {
+                                    "width": 671,
+                                    "height": 54
+                                }
+                            },
+                            "shang": {
+                                "shang": {
+                                    "x": 118.16,
+                                    "y": 47.76,
+                                    "rotation": -122.44,
+                                    "width": 307,
+                                    "height": 157
+                                }
+                            },
+                            "star_d": {
+                                "star_d": {
+                                    "x": 0.38,
+                                    "y": 0.26,
+                                    "width": 64,
+                                    "height": 81
+                                }
+                            },
+                            "star_d2": {
+                                "star_d": {
+                                    "x": 0.38,
+                                    "y": 0.26,
+                                    "width": 64,
+                                    "height": 81
+                                }
+                            },
+                            "star_d3": {
+                                "star_d": {
+                                    "x": 0.38,
+                                    "y": 0.26,
+                                    "width": 64,
+                                    "height": 81
+                                }
+                            },
+                            "star_x": {
+                                "star_x": {
+                                    "x": -0.54,
+                                    "y": -1.58,
+                                    "width": 43,
+                                    "height": 53
+                                }
+                            },
+                            "xia": {
+                                "xia": {
+                                    "x": 87.92,
+                                    "y": 72.9,
+                                    "rotation": -122.44,
+                                    "width": 249,
+                                    "height": 75
+                                }
+                            },
+                            "zhong": {
+                                "zhong": {
+                                    "x": 3.67,
+                                    "y": 31,
+                                    "width": 446,
+                                    "height": 230
+                                }
+                            }
+                        }
+                    }
+                ],
+                "animations": {
+                    "chusheng": {
+                        "slots": {
+                            "hl_bt": {
+                                "color": [
+                                    {
+                                        "color": "ffffff00",
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.1,
+                                        "color": "ffffff52",
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.1667,
+                                        "color": "ffffffff"
+                                    }
+                                ]
+                            },
+                            "hl_bt_g": {
+                                "color": [
+                                    {
+                                        "color": "ffffff00",
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.1667,
+                                        "color": "ffffff00",
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333,
+                                        "color": "ff9718b9",
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4,
+                                        "color": "ffffff00"
+                                    }
+                                ]
+                            },
+                            "hl_ts": {
+                                "color": [
+                                    {
+                                        "color": "ffffff36",
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0667,
+                                        "color": "ffffff36",
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.1333,
+                                        "color": "ffffffff"
+                                    }
+                                ]
+                            }
+                        },
+                        "bones": {
+                            "jm": {
+                                "scale": [
+                                    {
+                                        "x": 0.3,
+                                        "y": 0.3,
+                                        "curve": 0,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.1,
+                                        "x": 1.05,
+                                        "y": 1.05,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333
+                                    }
+                                ]
+                            },
+                            "ts": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0667,
+                                        "x": 0.1,
+                                        "curve": 0,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333
+                                    }
+                                ]
+                            },
+                            "hl_bt": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.1,
+                                        "x": 0.3,
+                                        "y": 0.3,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333,
+                                        "x": 1.03,
+                                        "y": 1.03,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3333
+                                    }
+                                ]
+                            },
+                            "hl_bx": {
+                                "rotate": [
+                                    {
+                                        "angle": 5.97,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0333,
+                                        "angle": 5.97,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333,
+                                        "angle": -3.31,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3667,
+                                        "angle": 2.27,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5
+                                    }
+                                ],
+                                "translate": [
+                                    {
+                                        "x": -2.8,
+                                        "y": -46.34,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0333,
+                                        "x": -2.8,
+                                        "y": -46.34,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333,
+                                        "x": -2.63,
+                                        "y": 38.78,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3667,
+                                        "x": 2.63,
+                                        "y": -5.02,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0.216,
+                                        "y": 0.162,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0333,
+                                        "x": 0.216,
+                                        "y": 0.162,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.2333,
+                                        "x": 0.892,
+                                        "y": 1.09,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3667,
+                                        "x": 1.063,
+                                        "y": 0.894,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5,
+                                        "x": 0.97,
+                                        "y": 1.03,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.6667
+                                    }
+                                ]
+                            },
+                            "shang": {
+                                "rotate": [
+                                    {
+                                        "angle": 8.73,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.1,
+                                        "angle": 8.73,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3,
+                                        "angle": -4.61,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4333,
+                                        "angle": 2.14,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5333,
+                                        "angle": -2.4,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.6333,
+                                        "angle": 1.62,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.7
+                                    }
+                                ]
+                            },
+                            "star_d": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.4333,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.7333,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.1333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_x": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.2667,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5333,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.8667,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_d2": {
+                                "translate": [
+                                    {
+                                        "x": -86.65,
+                                        "y": -158.86
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.7,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.4333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_d3": {
+                                "translate": [
+                                    {
+                                        "x": 64.99,
+                                        "y": -125.16
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.8333,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.1667,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.6333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "Ji_pigu": {
+                                "rotate": [
+                                    {
+                                        "angle": 16.54,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0667,
+                                        "angle": 16.54,
+                                        "curve": 0,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3,
+                                        "angle": -7.26,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4333,
+                                        "angle": -0.22,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5667,
+                                        "angle": -5.23,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.7333,
+                                        "angle": -8.09,
+                                        "curve": 0.256,
+                                        "c3": 0.62,
+                                        "c4": 0.46
+                                    },
+                                    {
+                                        "time": 1.6333,
+                                        "angle": -0.68
+                                    }
+                                ],
+                                "translate": [
+                                    {
+                                        "x": 250.59,
+                                        "y": 31.25,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0667,
+                                        "x": 250.59,
+                                        "y": 31.25,
+                                        "curve": 0,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3,
+                                        "x": 21.75,
+                                        "y": 100.16,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4333,
+                                        "x": -1.29,
+                                        "y": -9.93,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5667
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.0667,
+                                        "x": 0.061,
+                                        "y": 0.061,
+                                        "curve": 0,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.3,
+                                        "x": 1.098,
+                                        "y": 0.902,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4333,
+                                        "x": 0.902,
+                                        "y": 1.098,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5667,
+                                        "x": 1.024,
+                                        "y": 0.951,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.7333
+                                    }
+                                ]
+                            },
+                            "Ji_s1": {
+                                "rotate": [
+                                    {
+                                        "angle": -10.83,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5,
+                                        "angle": -18.96
+                                    },
+                                    {
+                                        "time": 1.6333
+                                    }
+                                ]
+                            },
+                            "hl_dhk": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.1667,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.4333
+                                    }
+                                ]
+                            },
+                            "Ji_xiong": {
+                                "rotate": [
+                                    {
+                                        "angle": 0.9,
+                                        "curve": 0.34,
+                                        "c2": 0.36,
+                                        "c3": 0.757
+                                    },
+                                    {
+                                        "time": 0.8667,
+                                        "angle": 4.17,
+                                        "curve": 0.273,
+                                        "c3": 0.619,
+                                        "c4": 0.41
+                                    },
+                                    {
+                                        "time": 1.6333,
+                                        "angle": 1.03
+                                    }
+                                ]
+                            },
+                            "Ji_s2": {
+                                "rotate": [
+                                    {
+                                        "angle": -10.05,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.5,
+                                        "angle": -17.58
+                                    },
+                                    {
+                                        "time": 1.6333
+                                    }
+                                ]
+                            },
+                            "Ji_tou": {
+                                "rotate": [
+                                    {
+                                        "angle": -0.29,
+                                        "curve": 0.302,
+                                        "c2": 0.22,
+                                        "c3": 0.756
+                                    },
+                                    {
+                                        "time": 1.0333,
+                                        "angle": -3.93,
+                                        "curve": 0.3,
+                                        "c3": 0.636,
+                                        "c4": 0.36
+                                    },
+                                    {
+                                        "time": 1.6333,
+                                        "angle": -1.73
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "loop": {
+                        "slots": {
+                            "hl_bt_g": {
+                                "color": [
+                                    {
+                                        "color": "ffffff00"
+                                    }
+                                ]
+                            }
+                        },
+                        "bones": {
+                            "Ji_s1": {
+                                "rotate": [
+                                    {
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.1667,
+                                        "angle": -18.96,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 2.3
+                                    }
+                                ]
+                            },
+                            "Ji_pigu": {
+                                "rotate": [
+                                    {
+                                        "angle": -0.68,
+                                        "curve": 0.369,
+                                        "c2": 0.63,
+                                        "c3": 0.707
+                                    },
+                                    {
+                                        "time": 0.1667,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.3667,
+                                        "angle": -8.09,
+                                        "curve": 0.256,
+                                        "c3": 0.62,
+                                        "c4": 0.46
+                                    },
+                                    {
+                                        "time": 2.3,
+                                        "angle": -0.68
+                                    }
+                                ]
+                            },
+                            "Ji_xiong": {
+                                "rotate": [
+                                    {
+                                        "angle": 1.03,
+                                        "curve": 0.382,
+                                        "c2": 0.58,
+                                        "c3": 0.732
+                                    },
+                                    {
+                                        "time": 0.3333,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.5333,
+                                        "angle": 4.17,
+                                        "curve": 0.273,
+                                        "c3": 0.619,
+                                        "c4": 0.41
+                                    },
+                                    {
+                                        "time": 2.3,
+                                        "angle": 1.03
+                                    }
+                                ]
+                            },
+                            "Ji_tou": {
+                                "rotate": [
+                                    {
+                                        "angle": -1.73,
+                                        "curve": 0.379,
+                                        "c2": 0.52,
+                                        "c3": 0.747
+                                    },
+                                    {
+                                        "time": 0.5,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.7,
+                                        "angle": -3.93,
+                                        "curve": 0.3,
+                                        "c3": 0.636,
+                                        "c4": 0.36
+                                    },
+                                    {
+                                        "time": 2.3,
+                                        "angle": -1.73
+                                    }
+                                ]
+                            },
+                            "Ji_s2": {
+                                "rotate": [
+                                    {
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.1667,
+                                        "angle": -17.58,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 2.3
+                                    }
+                                ]
+                            },
+                            "star_d": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.7333,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.0333,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.4333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_x": {
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 0.5667,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 0.8333,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.1667,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_d2": {
+                                "translate": [
+                                    {
+                                        "x": -86.65,
+                                        "y": -158.86
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 1,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.3,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.7333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            },
+                            "star_d3": {
+                                "translate": [
+                                    {
+                                        "x": 64.99,
+                                        "y": -125.16
+                                    }
+                                ],
+                                "scale": [
+                                    {
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": "stepped"
+                                    },
+                                    {
+                                        "time": 1.1333,
+                                        "x": 0,
+                                        "y": 0,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.4667,
+                                        "curve": 0.25,
+                                        "c3": 0.75
+                                    },
+                                    {
+                                        "time": 1.9333,
+                                        "x": 0,
+                                        "y": 0
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            [
+                0
+            ]
+        ]
+    ],
+    0,
+    0,
+    [
+        0
+    ],
+    [
+        -1
+    ],
+    [
+        0
+    ]
+]

@@ -344,6 +344,7 @@ export class CardLayer extends Component {
             else if(fushStraights[i] == 3) {
                 this.heitao.active = true;
             }
+            
         }
         console.log('有什么同花顺>>', fushStraights);
         if (value.length == 0) {
