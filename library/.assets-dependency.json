@@ -92,6 +92,12 @@
     ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.plist": [
       "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.png"
+    ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json": [
+      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.atlas"
+    ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json": [
+      "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.atlas"
     ]
   },
   "uuid": {
@@ -160,6 +166,12 @@
     ],
     "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\RoleAni\\icon_mfjl.json": [
       "3a5c5d41-1d28-418d-9ee7-5a3cd2664e5b@6c48a"
+    ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json": [
+      "7bfdcd37-99fc-4913-80d2-5dc820892e68@6c48a"
+    ],
+    "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json": [
+      "f00be3e1-4256-4c58-9fd5-61ae606ec1f0@6c48a"
     ]
   }
 }

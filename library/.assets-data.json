@@ -9399,5 +9399,191 @@
         "4502b2f3-0d86-493c-a579-b38afca85b18@6c48a"
       ]
     }
+  },
+  "d5ff4fd8-289c-4879-ac54-dd86476dfd7c": {
+    "url": "db://assets/scenes/loading.scene",
+    "value": {
+      "depends": [
+        "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+        "10892365-6650-4a2c-9446-36ceb2654626@f9941",
+        "6cacb285-1461-4abd-a79a-3a64efeae18b",
+        "ca556c0e-512a-4b10-a5bb-cc36e096df1d@f9941",
+        "46c9ac93-1c19-4a34-b102-4599d0f432f8@f9941",
+        "078c750e-c97a-4970-a52b-35723e6a0dfb@f9941",
+        "078c750e-c97a-4970-a52b-35723e6a0dfb@f9941",
+        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+        "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
+        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
+        "d032ac98-05e1-4090-88bb-eb640dcb5fc1@b47c0",
+        "d032ac98-05e1-4090-88bb-eb640dcb5fc1@b47c0",
+        "6f01cf7f-81bf-4a7e-bd5d-0afc19696480@b47c0"
+      ]
+    }
+  },
+  "36fe08dc-f569-45e8-a8a3-2a69bcb669b4": {
+    "url": "db://assets/resources/spine/loading",
+    "value": {}
+  },
+  "cea5c20f-8939-4795-9297-d64922589767": {
+    "url": "db://assets/resources/spine/loading.atlas",
+    "value": {
+      "depends": []
+    }
+  },
+  "7bfdcd37-99fc-4913-80d2-5dc820892e68": {
+    "url": "db://assets/resources/spine/loading.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "10892365-6650-4a2c-9446-36ceb2654626": {
+    "url": "db://assets/resources/texture/loading/login_bg.jpg",
+    "value": {
+      "depends": []
+    }
+  },
+  "a9075b32-51c2-4b9b-859d-1f93abda5cd3": {
+    "url": "db://assets/resources/spine/loading.json",
+    "value": {
+      "depends": [
+        "7bfdcd37-99fc-4913-80d2-5dc820892e68@6c48a"
+      ]
+    }
+  },
+  "10892365-6650-4a2c-9446-36ceb2654626@6c48a": {
+    "url": "db://assets/resources/texture/loading/login_bg.jpg@6c48a",
+    "value": {
+      "depends": [
+        "10892365-6650-4a2c-9446-36ceb2654626"
+      ]
+    }
+  },
+  "7bfdcd37-99fc-4913-80d2-5dc820892e68@6c48a": {
+    "url": "db://assets/resources/spine/loading.png@6c48a",
+    "value": {
+      "depends": [
+        "7bfdcd37-99fc-4913-80d2-5dc820892e68"
+      ]
+    }
+  },
+  "10892365-6650-4a2c-9446-36ceb2654626@f9941": {
+    "url": "db://assets/resources/texture/loading/login_bg.jpg@f9941",
+    "value": {
+      "depends": [
+        "10892365-6650-4a2c-9446-36ceb2654626@6c48a"
+      ]
+    }
+  },
+  "9caf2721-b66c-4036-9d9a-6ad2e5fcf110": {
+    "url": "db://assets/resources/spine/loading/loading.atlas",
+    "value": {
+      "depends": []
+    }
+  },
+  "f00be3e1-4256-4c58-9fd5-61ae606ec1f0": {
+    "url": "db://assets/resources/spine/loading/loading.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "6cacb285-1461-4abd-a79a-3a64efeae18b": {
+    "url": "db://assets/resources/spine/loading/loading.json",
+    "value": {
+      "depends": [
+        "f00be3e1-4256-4c58-9fd5-61ae606ec1f0@6c48a"
+      ]
+    }
+  },
+  "f00be3e1-4256-4c58-9fd5-61ae606ec1f0@6c48a": {
+    "url": "db://assets/resources/spine/loading/loading.png@6c48a",
+    "value": {
+      "depends": [
+        "f00be3e1-4256-4c58-9fd5-61ae606ec1f0"
+      ]
+    }
+  },
+  "078c750e-c97a-4970-a52b-35723e6a0dfb": {
+    "url": "db://assets/resources/texture/loading/btn_login_yk.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "587dc154-eed0-41c2-8bd5-d2525911dca1": {
+    "url": "db://assets/resources/texture/loading/img_bottom_bg.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "46c9ac93-1c19-4a34-b102-4599d0f432f8": {
+    "url": "db://assets/resources/texture/loading/lb_0.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "ca556c0e-512a-4b10-a5bb-cc36e096df1d": {
+    "url": "db://assets/resources/texture/loading/lb_1.png",
+    "value": {
+      "depends": []
+    }
+  },
+  "587dc154-eed0-41c2-8bd5-d2525911dca1@6c48a": {
+    "url": "db://assets/resources/texture/loading/img_bottom_bg.png@6c48a",
+    "value": {
+      "depends": [
+        "587dc154-eed0-41c2-8bd5-d2525911dca1"
+      ]
+    }
+  },
+  "46c9ac93-1c19-4a34-b102-4599d0f432f8@6c48a": {
+    "url": "db://assets/resources/texture/loading/lb_0.png@6c48a",
+    "value": {
+      "depends": [
+        "46c9ac93-1c19-4a34-b102-4599d0f432f8"
+      ]
+    }
+  },
+  "078c750e-c97a-4970-a52b-35723e6a0dfb@6c48a": {
+    "url": "db://assets/resources/texture/loading/btn_login_yk.png@6c48a",
+    "value": {
+      "depends": [
+        "078c750e-c97a-4970-a52b-35723e6a0dfb"
+      ]
+    }
+  },
+  "ca556c0e-512a-4b10-a5bb-cc36e096df1d@6c48a": {
+    "url": "db://assets/resources/texture/loading/lb_1.png@6c48a",
+    "value": {
+      "depends": [
+        "ca556c0e-512a-4b10-a5bb-cc36e096df1d"
+      ]
+    }
+  },
+  "46c9ac93-1c19-4a34-b102-4599d0f432f8@f9941": {
+    "url": "db://assets/resources/texture/loading/lb_0.png@f9941",
+    "value": {
+      "depends": [
+        "46c9ac93-1c19-4a34-b102-4599d0f432f8@6c48a"
+      ]
+    }
+  },
+  "ca556c0e-512a-4b10-a5bb-cc36e096df1d@f9941": {
+    "url": "db://assets/resources/texture/loading/lb_1.png@f9941",
+    "value": {
+      "depends": [
+        "ca556c0e-512a-4b10-a5bb-cc36e096df1d@6c48a"
+      ]
+    }
+  },
+  "078c750e-c97a-4970-a52b-35723e6a0dfb@f9941": {
+    "url": "db://assets/resources/texture/loading/btn_login_yk.png@f9941",
+    "value": {
+      "depends": [
+        "078c750e-c97a-4970-a52b-35723e6a0dfb@6c48a"
+      ]
+    }
+  },
+  "6739c5c6-8fdc-4b90-8091-27ce9372565e": {
+    "url": "db://assets/scripts/scene/Loading.ts",
+    "value": {}
   }
 }

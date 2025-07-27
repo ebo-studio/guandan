@@ -1,0 +1,7 @@
+(function (){
+    // 防止使用编辑器自带的package报错
+    const Path = require('path')
+    // @ts-ignore
+    module.paths.push(Path.join(Editor.App.path,'node_modules'));
+})();
+const Path=require("path"),URL=require("url"),Fs=require("fs");function urlToFsPath(e){const a=URL.parse(e);if("packages:"===a.protocol){let e=Path.join(Editor.Project.path,"extensions",a.hostname,a.pathname);if(Fs.existsSync(e))return e;const t=Editor.Package.getPath(a.hostname);return e=Path.join(t,a.pathname),Fs.existsSync(e)?e:null}}function relativeUrlPath(e){const a=urlToFsPath(e);return Path.relative(__dirname,a)}function requireWithUrl(e){const a=urlToFsPath(e);return a?require(a):null}const panel=requireWithUrl("packages://atlas-clipper/panel/main.js");function loadCss(e,a){e&&(Array.isArray(a)||(a=[a]),a.forEach((a=>{const t=CSS.escape(a);if(!e.querySelector(`#${t}`)){const n=document.createElement("link");n.rel="stylesheet",n.href=a,n.id=t,e.appendChild(n)}})))}let panelInstance=panel;panel&&panel.default&&(panelInstance=panel.default);let targetPanel=panelInstance;"function"==typeof panelInstance&&(targetPanel=new panelInstance),exports.template='<div id="app" style="width:100%;height:100%;display:flex;">main</div>',exports.$={app:"#app"},exports.ready=function(...e){loadCss(this.$.app.parentNode,"packages://atlas-clipper/panel/main.css"),loadCss(document.head,"packages://atlas-clipper/panel/main.css"),targetPanel.hasOwnProperty("ready")&&"function"==typeof targetPanel.ready&&targetPanel.ready(this.$.app,e)},exports.close=function(){},exports.methods=panelInstance.messages||{};

@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 11998.689900040627,
+      "mTimestamp": 5413.721100002527,
       "chunkId": "ca4374a3008ca85000d465787e739a302e4e4ac6",
       "imports": [
         {
@@ -535,8 +535,8 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 212960594.81379998,
-      "chunkId": "978b22243191fdd96aabdcebbba296d0810bc72d",
+      "mTimestamp": 6273.087300002575,
+      "chunkId": "ba1aa88e951fb597320122f8d124e5d9638d0285",
       "imports": [
         {
           "value": "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts",
@@ -1785,7 +1785,7 @@
           }
         },
         {
-          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts",
           "resolved": "__unresolved_89",
           "loc": {
             "start": {
@@ -1794,49 +1794,63 @@
             },
             "end": {
               "line": 5,
-              "column": 8302
+              "column": 8304
+            }
+          }
+        },
+        {
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts",
+          "resolved": "__unresolved_90",
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 8320
+            },
+            "end": {
+              "line": 5,
+              "column": 8378
             }
           }
         },
         {
           "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts",
-          "resolved": "__unresolved_90",
+          "resolved": "__unresolved_91",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8318
+              "column": 8394
             },
             "end": {
               "line": 5,
-              "column": 8376
+              "column": 8452
             }
           }
         },
         {
           "value": "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts",
-          "resolved": "__unresolved_91",
+          "resolved": "__unresolved_92",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8392
+              "column": 8468
             },
             "end": {
               "line": 5,
-              "column": 8458
+              "column": 8534
             }
           }
         },
         {
           "value": "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js",
-          "resolved": "__unresolved_92",
+          "resolved": "__unresolved_93",
           "loc": {
             "start": {
               "line": 5,
-              "column": 8474
+              "column": 8550
             },
             "end": {
               "line": 5,
-              "column": 8537
+              "column": 8613
             }
           }
         }
@@ -2469,6 +2483,13 @@
         {
           "resolved": {
             "type": "module",
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
             "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts"
           },
           "messages": []
@@ -2728,7 +2749,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1753074972807,
+      "mTimestamp": 1753620275452,
       "chunkId": "84741ad843cea9a440c5d8c2d379669b6551400d",
       "imports": [],
       "type": "esm",
@@ -14403,7 +14424,7 @@
       ]
     },
     "cce:/internal/ml/cjs-loader.mjs": {
-      "mTimestamp": 1753074972807,
+      "mTimestamp": 1753620275452,
       "chunkId": "e22b6f02adf5d686a7ebd142d6b23614b189f373",
       "imports": [],
       "type": "esm",
@@ -26577,6 +26598,90 @@
           "resolved": {
             "type": "module",
             "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts": {
+      "mTimestamp": {
+        "mtime": 1753617968084.6013,
+        "uuid": "6739c5c6-8fdc-4b90-8091-27ce9372565e"
+      },
+      "chunkId": "6d233d2b229f2c1dcfc9361daa64aa7792c9ba88",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 103
+            },
+            "end": {
+              "line": 1,
+              "column": 107
+            }
+          }
+        },
+        {
+          "value": "../manager/GlobalData",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 27
+            },
+            "end": {
+              "line": 2,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts"
           },
           "messages": []
         }

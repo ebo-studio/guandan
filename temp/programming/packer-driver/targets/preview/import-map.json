@@ -1,7 +1,7 @@
 {
   "imports": {
     "cce:/internal/x/cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js",
-    "cce:/internal/x/prerequisite-imports": "./chunks/9d/9d999d82b9e3bb8747f7a6ec4360727f0d81b557.js",
+    "cce:/internal/x/prerequisite-imports": "./chunks/12/125d6517236f5e129f6af08cf4761510f98262e6.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts": "./chunks/1f/1f74605d5cdf269d38de4a11dcc325c61757d606.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/Test.ts": "./chunks/bc/bc20899fe97061e697d1a6f08903ae737f649ccd.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/common/events.ts": "./chunks/04/0430a400e85d24a70cac04e5afa8e863a1e4ab76.js",
@@ -30,12 +30,15 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/platform/platform.ts": "./chunks/2b/2b5f17e6c2db2f88ad13d7051d5efd9c96bb6e52.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/PbManager.ts": "./chunks/9c/9c27c29b3ace5c4c3286a3cacd85fcbec769dec4.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Game.ts": "./chunks/4f/4f71c8a5cc60d73b98fb27a820f78f021da8d43a.js",
+    "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts": "./chunks/d1/d12c27ffd566ef6ff0db399648e3508bb6a12b46.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts": "./chunks/16/163e8de7b5cd4492555994f051d1f1cb74309386.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts": "./chunks/bd/bd50f89a2ccfdf7da00c94fc9fa84347a3a3ba2c.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts": "./chunks/6e/6ed2336ab55c593acaa32aebfaa23a97699487b9.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/cardAction/CardAction.ts": "./chunks/40/40e7d736fc743c8f157d2e691945068d4e1120e2.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardItem.ts": "./chunks/2d/2d7edc35b1a1f04d5caeebd1342c2b7814c9c6d8.js",
+    "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts": "./chunks/56/56c13f8cddc375990d764c67df57ab25d44d3af2.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameDefine.ts": "./chunks/d2/d2bc5159d5b8806b33fd6ac1b2f8d44387a99fa6.js",
+    "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts": "./chunks/f3/f325c11df1dfe1db2e4b63d479bab02165e01039.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameTimer.ts": "./chunks/72/72e1e067b7c7e3ccec34d00b93315ecd4b2c65ac.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/game/UserHead.ts": "./chunks/d2/d2cd6b21eed7fd32e9af12e80001257072f20c4a.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/component/gameEndAudition/GameEndAuditionHeadItem.ts": "./chunks/a4/a474b7900354dd94cb78b3da615050eb79673d3d.js",
@@ -92,9 +95,7 @@
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/JavascriptBridge/BindJavascriptBridge.ts": "./chunks/d2/d21badd7eef3386ed2ff79bfe522485b17e87630.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/jsBridge/PostMessage/PostMessage.ts": "./chunks/4d/4ddcd61d8234e58d279f283802a54d91ec72e48e.js",
     "file:///D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js": "./chunks/ee/eee131872bda13e8b623ec842ebdc99efc2eb577.js",
-    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js",
-    "file:///D:/xuhang/guan_dan/assets/scripts/component/game/GameLogic.ts": "./chunks/f3/f325c11df1dfe1db2e4b63d479bab02165e01039.js",
-    "file:///D:/xuhang/guan_dan/assets/scripts/component/game/CardLayer.ts": "./chunks/56/56c13f8cddc375990d764c67df57ab25d44d3af2.js"
+    "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js"
   },
   "scopes": {
     "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js": {
@@ -115,7 +116,7 @@
       "__unresolved_8": "cce:/internal/x/cc-fu/particle-2d",
       "__unresolved_9": "cce:/internal/x/cc-fu/physics-2d-builtin"
     },
-    "./chunks/9d/9d999d82b9e3bb8747f7a6ec4360727f0d81b557.js": {
+    "./chunks/12/125d6517236f5e129f6af08cf4761510f98262e6.js": {
       "__unresolved_0": "./chunks/1f/1f74605d5cdf269d38de4a11dcc325c61757d606.js",
       "__unresolved_1": "./chunks/bc/bc20899fe97061e697d1a6f08903ae737f649ccd.js",
       "__unresolved_10": "./chunks/c0/c007099be0a643af48104091ecc144dbfcf6b99d.js",
@@ -204,11 +205,12 @@
       "__unresolved_86": "./chunks/9c/9c27c29b3ace5c4c3286a3cacd85fcbec769dec4.js",
       "__unresolved_87": "./chunks/ee/eee131872bda13e8b623ec842ebdc99efc2eb577.js",
       "__unresolved_88": "./chunks/4f/4f71c8a5cc60d73b98fb27a820f78f021da8d43a.js",
-      "__unresolved_89": "./chunks/16/163e8de7b5cd4492555994f051d1f1cb74309386.js",
+      "__unresolved_89": "./chunks/d1/d12c27ffd566ef6ff0db399648e3508bb6a12b46.js",
       "__unresolved_9": "./chunks/29/29575c7ebf35618d3ffb97479629d08e07317ddf.js",
-      "__unresolved_90": "./chunks/bd/bd50f89a2ccfdf7da00c94fc9fa84347a3a3ba2c.js",
-      "__unresolved_91": "./chunks/6e/6ed2336ab55c593acaa32aebfaa23a97699487b9.js",
-      "__unresolved_92": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js"
+      "__unresolved_90": "./chunks/16/163e8de7b5cd4492555994f051d1f1cb74309386.js",
+      "__unresolved_91": "./chunks/bd/bd50f89a2ccfdf7da00c94fc9fa84347a3a3ba2c.js",
+      "__unresolved_92": "./chunks/6e/6ed2336ab55c593acaa32aebfaa23a97699487b9.js",
+      "__unresolved_93": "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js"
     },
     "./chunks/99/99863e251964de3aea15f8fdbdb7d940d135e5a0.js": {
       "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
@@ -224,14 +226,6 @@
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
     },
     "./chunks/bd/bd50f89a2ccfdf7da00c94fc9fa84347a3a3ba2c.js": {
-      "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
-    },
-    "./chunks/29/29575c7ebf35618d3ffb97479629d08e07317ddf.js": {
-      "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
-      "__unresolved_1": "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js",
-      "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
-    },
-    "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js": {
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
     },
     "./chunks/16/163e8de7b5cd4492555994f051d1f1cb74309386.js": {
@@ -386,6 +380,9 @@
       "__unresolved_4": "./chunks/18/18c5c931afd14a447711a880d97fdfe841811aa4.js",
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
     },
+    "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js": {
+      "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
+    },
     "./chunks/c7/c7a140710912a230f9c6032867317d928603fe86.js": {
       "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
       "__unresolved_1": "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js",
@@ -412,6 +409,11 @@
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
     },
     "./chunks/96/966d15a4566e065ff2565a00415bfcdf671ca6c6.js": {
+      "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
+      "__unresolved_1": "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js",
+      "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
+    },
+    "./chunks/29/29575c7ebf35618d3ffb97479629d08e07317ddf.js": {
       "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
       "__unresolved_1": "./chunks/11/11c83b40f7edeb7cff9c499adb5d4f1f98b706c2.js",
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
@@ -728,6 +730,11 @@
     "./chunks/ba/bae60ca62bb70808b5d9b76eff52db04d48fa668.js": {
       "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
       "__unresolved_1": "./chunks/18/18c5c931afd14a447711a880d97fdfe841811aa4.js",
+      "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
+    },
+    "./chunks/d1/d12c27ffd566ef6ff0db399648e3508bb6a12b46.js": {
+      "__unresolved_0": "./chunks/3a/3a1fd7b13056478820ebedd306d3446d1aa408cc.js",
+      "__unresolved_1": "./chunks/fd/fd31d7d4b7e96e0aff889cbb2694d07b06be737f.js",
       "cc": "./chunks/39/39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e.js"
     },
     "./chunks/4f/4f71c8a5cc60d73b98fb27a820f78f021da8d43a.js": {

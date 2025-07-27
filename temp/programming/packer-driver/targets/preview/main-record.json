@@ -1,7 +1,7 @@
 {
   "modules": {
     "cce:/internal/x/cc": {
-      "mTimestamp": 12009.00319993496,
+      "mTimestamp": 5421.156700000167,
       "chunkId": "39bcbda6753bfcb1a7a85f4cfa14fc56f5021b1e",
       "imports": [
         {
@@ -346,8 +346,8 @@
       ]
     },
     "cce:/internal/x/prerequisite-imports": {
-      "mTimestamp": 212961352.0596,
-      "chunkId": "9d999d82b9e3bb8747f7a6ec4360727f0d81b557",
+      "mTimestamp": 6415.795599997044,
+      "chunkId": "125d6517236f5e129f6af08cf4761510f98262e6",
       "imports": [
         {
           "value": "file:///D:/xuhang/guan_dan/assets/scripts/AppGlobal.ts",
@@ -1596,7 +1596,7 @@
           }
         },
         {
-          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts",
           "resolved": "__unresolved_89",
           "loc": {
             "start": {
@@ -1605,12 +1605,12 @@
             },
             "end": {
               "line": 93,
-              "column": 65
+              "column": 67
             }
           }
         },
         {
-          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts",
           "resolved": "__unresolved_90",
           "loc": {
             "start": {
@@ -1624,7 +1624,7 @@
           }
         },
         {
-          "value": "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Start.ts",
           "resolved": "__unresolved_91",
           "loc": {
             "start": {
@@ -1633,12 +1633,12 @@
             },
             "end": {
               "line": 95,
-              "column": 73
+              "column": 65
             }
           }
         },
         {
-          "value": "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js",
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/testProto/TestProto.ts",
           "resolved": "__unresolved_92",
           "loc": {
             "start": {
@@ -1647,6 +1647,20 @@
             },
             "end": {
               "line": 96,
+              "column": 73
+            }
+          }
+        },
+        {
+          "value": "file:///D:/xuhang/guan_dan/assets/scripts/thirdy/long/long.js",
+          "resolved": "__unresolved_93",
+          "loc": {
+            "start": {
+              "line": 97,
+              "column": 7
+            },
+            "end": {
+              "line": 97,
               "column": 70
             }
           }
@@ -2280,6 +2294,13 @@
         {
           "resolved": {
             "type": "module",
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
             "url": "file:///D:/xuhang/guan_dan/assets/scripts/scene/Lobby.ts"
           },
           "messages": []
@@ -2539,7 +2560,7 @@
       ]
     },
     "cce:/internal/code-quality/cr.mjs": {
-      "mTimestamp": 1753074972807,
+      "mTimestamp": 1753620275452,
       "chunkId": "3a1fd7b13056478820ebedd306d3446d1aa408cc",
       "imports": [],
       "type": "esm",
@@ -14214,7 +14235,7 @@
       ]
     },
     "cce:/internal/ml/cjs-loader.mjs": {
-      "mTimestamp": 1753074972807,
+      "mTimestamp": 1753620275452,
       "chunkId": "bfe72779096c71ed4dc3545a580f7065d44c03f9",
       "imports": [],
       "type": "esm",
@@ -26388,6 +26409,90 @@
           "resolved": {
             "type": "module",
             "url": "cce:/internal/ml/cjs-loader.mjs"
+          },
+          "messages": []
+        }
+      ]
+    },
+    "file:///D:/xuhang/guan_dan/assets/scripts/scene/Loading.ts": {
+      "mTimestamp": {
+        "mtime": 1753617968084.6013,
+        "uuid": "6739c5c6-8fdc-4b90-8091-27ce9372565e"
+      },
+      "chunkId": "d12c27ffd566ef6ff0db399648e3508bb6a12b46",
+      "imports": [
+        {
+          "value": "cce:/internal/code-quality/cr.mjs",
+          "resolved": "__unresolved_0"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc"
+        },
+        {
+          "value": "cc",
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 103
+            },
+            "end": {
+              "line": 1,
+              "column": 107
+            }
+          }
+        },
+        {
+          "value": "../manager/GlobalData",
+          "resolved": "__unresolved_1",
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 27
+            },
+            "end": {
+              "line": 2,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "type": "esm",
+      "resolutions": [
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/code-quality/cr.mjs"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "cce:/internal/x/cc"
+          },
+          "messages": []
+        },
+        {
+          "resolved": {
+            "type": "module",
+            "url": "file:///D:/xuhang/guan_dan/assets/scripts/manager/GlobalData.ts"
           },
           "messages": []
         }

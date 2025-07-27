@@ -10,7 +10,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\scenes": {
-    "time": 1753074878211.9863,
+    "time": 1753612910654.2808,
     "uuid": "f7b4050f-edc1-4b01-96bd-15c45c3df63a",
     "missing": false
   },
@@ -35,7 +35,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\resources\\spine": {
-    "time": 1753283789170.8528,
+    "time": 1753613634543.632,
     "uuid": "86ce1e6a-9006-47d3-bf30-231f3e168a99",
     "missing": false
   },
@@ -75,7 +75,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\scripts\\scene": {
-    "time": 1751865066649.877,
+    "time": 1753615539757.463,
     "uuid": "01edc405-0529-494e-9e56-fa26e4668c4f",
     "missing": false
   },
@@ -240,7 +240,7 @@
     "missing": false
   },
   "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading": {
-    "time": 1751865065571.962,
+    "time": 1753614338729.8984,
     "uuid": "3fbc53b9-faec-43ad-8e48-62c3c646e59c",
     "missing": false
   },
@@ -7245,6 +7245,118 @@
   "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\hall\\ActIcon.plist": {
     "time": 1710150114000,
     "uuid": "b011918d-dc38-468a-974e-a0518cf5a598",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\scenes\\loading.scene.meta": {
+    "time": 1753612910657.2727
+  },
+  "D:\\xuhang\\guan_dan\\assets\\scenes\\loading.scene": {
+    "time": 1753618001000.0945,
+    "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.meta": {
+    "time": 1753613634541.6318
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading": {
+    "time": 1753613757212.1023,
+    "uuid": "36fe08dc-f569-45e8-a8a3-2a69bcb669b4",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.atlas.meta": {
+    "time": 1753613634603.6335
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json.meta": {
+    "time": 1753613634615.6313
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.png.meta": {
+    "time": 1753613635103.9973
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\login_bg.jpg.meta": {
+    "time": 1753613681182.6084
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.atlas": {
+    "time": 1710150100000,
+    "uuid": "cea5c20f-8939-4795-9297-d64922589767",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.json": {
+    "time": 1710150100000,
+    "uuid": "a9075b32-51c2-4b9b-859d-1f93abda5cd3",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\login_bg.jpg": {
+    "time": 1710151398213.473,
+    "uuid": "10892365-6650-4a2c-9446-36ceb2654626",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading.png": {
+    "time": 1710151398240.254,
+    "uuid": "7bfdcd37-99fc-4913-80d2-5dc820892e68",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.atlas.meta": {
+    "time": 1753613757286.3352
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json.meta": {
+    "time": 1753613757304.334
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.png.meta": {
+    "time": 1753613757788.394
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.atlas": {
+    "time": 1710150100000,
+    "uuid": "9caf2721-b66c-4036-9d9a-6ad2e5fcf110",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.json": {
+    "time": 1710150100000,
+    "uuid": "6cacb285-1461-4abd-a79a-3a64efeae18b",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\spine\\loading\\loading.png": {
+    "time": 1710151398240.254,
+    "uuid": "f00be3e1-4256-4c58-9fd5-61ae606ec1f0",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\btn_login_yk.png.meta": {
+    "time": 1753614728176.4575
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\img_bottom_bg.png.meta": {
+    "time": 1753614338757.542
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\lb_0.png.meta": {
+    "time": 1753614499226.1145
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\lb_1.png.meta": {
+    "time": 1753614503241.7588
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\img_bottom_bg.png": {
+    "time": 1753585182000,
+    "uuid": "587dc154-eed0-41c2-8bd5-d2525911dca1",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\lb_0.png": {
+    "time": 1753585182000,
+    "uuid": "46c9ac93-1c19-4a34-b102-4599d0f432f8",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\btn_login_yk.png": {
+    "time": 1753585182000,
+    "uuid": "078c750e-c97a-4970-a52b-35723e6a0dfb",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\resources\\texture\\loading\\lb_1.png": {
+    "time": 1753585182000,
+    "uuid": "ca556c0e-512a-4b10-a5bb-cc36e096df1d",
+    "missing": false
+  },
+  "D:\\xuhang\\guan_dan\\assets\\scripts\\scene\\Loading.ts.meta": {
+    "time": 1753615539758.466
+  },
+  "D:\\xuhang\\guan_dan\\assets\\scripts\\scene\\Loading.ts": {
+    "time": 1753617968084.6013,
+    "uuid": "6739c5c6-8fdc-4b90-8091-27ce9372565e",
     "missing": false
   }
 }
