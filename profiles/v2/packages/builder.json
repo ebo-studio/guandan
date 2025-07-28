@@ -10,7 +10,7 @@
     "outputName": "web-mobile",
     "mainBundleCompressionType": "merge_dep",
     "platform": "web-mobile",
-    "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
+    "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
     "name": "Egglaying",
     "replaceSplashScreen": false,
     "md5Cache": true
@@ -131,13 +131,13 @@
         "time": "2025-7-18 05:19",
         "dirty": false
       },
-      "1753573258074": {
+      "1753690422675": {
         "type": "build",
-        "id": "1753573258074",
+        "id": "1753690422675",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-7-27 07:57 Build success in 996870 ms!",
+        "message": "2025-7-28 16:14 Build success in 52694 ms!",
         "options": {
           "name": "掼蛋",
           "platform": "web-mobile",
@@ -157,12 +157,17 @@
           "replaceSplashScreen": false,
           "compressTexture": true,
           "packAutoAtlas": true,
-          "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
+          "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
           "outputName": "web-mobile",
           "scenes": [
             {
               "url": "db://assets/scenes/Game.scene",
               "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/scenes/loading.scene",
+              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
               "inBundle": false
             },
             {
@@ -186,7 +191,7 @@
           },
           "__version__": "1.3.3"
         },
-        "time": "2025-7-27 07:40",
+        "time": "2025-7-28 16:13",
         "dirty": false
       }
     }

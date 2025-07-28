@@ -1093,13 +1093,27 @@ export module GameLogic {
     }
 
     function markUsedByCardValues(cards: number[], group: number[], usedIndex: Set<number>) {
-        const groupCopy = [...group]; // 复制待匹配的牌
-        for (let i = 0; i < cards.length && groupCopy.length > 0; i++) {
-            if (usedIndex.has(i)) continue;
-            const idx = groupCopy.findIndex(c => c === cards[i]);
-            if (idx !== -1) {
+        // const groupCopy = [...group]; // 复制待匹配的牌
+        // for (let i = 0; i < cards.length && groupCopy.length > 0; i++) {
+        //     if (usedIndex.has(i)) continue;
+        //     const idx = groupCopy.findIndex(c => c === cards[i]);
+        //     if (idx !== -1) {
+        //         usedIndex.add(i);
+        //         groupCopy.splice(idx, 1); // 确保只匹配一次
+        //     }
+        // }
+        
+        const countMap = new Map<number, number>();
+        for (const v of group) {
+            countMap.set(v, (countMap.get(v) || 0) + 1);
+        }
+
+        for (let i = 0; i < cards.length; i++) {
+            const v = cards[i];
+            const count = countMap.get(v) || 0;
+            if (count > 0 && !usedIndex.has(i)) {
                 usedIndex.add(i);
-                groupCopy.splice(idx, 1); // 确保只匹配一次
+                countMap.set(v, count - 1);
             }
         }
     }
@@ -1116,39 +1130,51 @@ export module GameLogic {
 
         const selectedIndexSet = new Set<number>();
         const selectedCardCount = new Map<number, number>();
-        // for (const c of selected) {
-        //     selectedCardCount.set(c, (selectedCardCount.get(c) || 0) + 1);
-        // }
-        // for (let i = 0; i < cards.length; i++) {
-        //     const c = cards[i];
-        //     const count = selectedCardCount.get(c) || 0;
-        //     if (count > 0) {
-        //         selectedIndexSet.add(i);
-        //         selectedCardCount.set(c, count - 1);
-        //     }
-        // }
 
-        // ✅ 步骤1：保留旧分组中未重新选中的牌（保持顺序）
-        // for (const group of prevGrouped) {
-        //     const wasSelected = group.some(c => prevSet.has(c));
-        //     const nowSelected = group.some(c => selectedSet.has(c));
+        for (const c of selected) {
+            selectedCardCount.set(c, (selectedCardCount.get(c) || 0) + 1);
+        }
+        // const selectedIndexSet = new Set<number>();
+        for (let i = 0; i < cards.length; i++) {
+            const c = cards[i];
+            const count = selectedCardCount.get(c) || 0;
+            if (count > 0) {
+                selectedIndexSet.add(i);
+                selectedCardCount.set(c, count - 1);
+            }
+        }
 
-        //     // ✅ 上一轮选中，且这一轮没选中，保留该组
-        //     if (wasSelected && !nowSelected) {
-        //         result.push(group);
-        //         group.forEach(c => usedCards.add(c));
-        //     }
-        // }
-
-        // ✅ 步骤1：保留旧分组中未重新选中的牌（保持顺序）
+        // 2. 判断每个旧 group 是否“完全未被重新选中”（按 index 判断）
         for (const group of prevGrouped) {
-            // 如果 group 中没有任何牌在这次选中中出现，说明用户没重新选中 → 保留
-            if (!group.some(c => selectedSet.has(c))) {
-                result.push(group);
-                for (let i = 0; i < cards.length; i++) {
-                    if (group.includes(cards[i])) usedIndex.add(i);
+            const groupCardCount = new Map<number, number>();
+            for (const c of group) {
+                groupCardCount.set(c, (groupCardCount.get(c) || 0) + 1);
+            }
+
+            // 精确找到 cards 中与 group 匹配的 index（按值+次数）
+            const matchedIndexes: number[] = [];
+            const tempCount = new Map(groupCardCount);
+
+            for (let i = 0; i < cards.length; i++) {
+                const c = cards[i];
+                const count = tempCount.get(c) || 0;
+                if (count > 0 && !usedIndex.has(i)) {
+                    matchedIndexes.push(i);
+                    tempCount.set(c, count - 1);
+                    if (matchedIndexes.length === group.length) break;
                 }
             }
+
+            // console.log("group match index:", matchedIndexes);
+            // console.log("selectedIndexSet:", [...selectedIndexSet]);
+            // 核心判断：这些 index 是否都未被选中
+            const isUntouched = matchedIndexes.every(i => !selectedIndexSet.has(i));
+
+            if (isUntouched) {
+                result.push(group);
+                matchedIndexes.forEach(i => usedIndex.add(i));
+            }
+            console.log(">>> CHECKING prevGrouped group", group, "against cards =", [...cards]);
         }
 
         const bomsKing = findRocket(selected);
