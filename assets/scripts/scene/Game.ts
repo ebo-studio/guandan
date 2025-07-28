@@ -302,7 +302,7 @@ export class Game extends Component {
     }
     //我剩几张
     setSelfCardCnt(show: boolean, cardNum: number = 0) {
-        this.nodeSelfCardCnt.active = show;
+        this.nodeSelfCardCnt.active = false;
         if (show) {
             this.txtSelfCnt.string = cardNum.toString();
         }

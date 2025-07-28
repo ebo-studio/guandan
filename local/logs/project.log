@@ -1,83 +1,45 @@
-<<<<<<< HEAD
-2025-07-27T12:44:32.980Z - log: [Package] menu@1.0.0 enable
-2025-07-27T12:44:32.982Z - log: [Package] profile@1.0.0 enable
-2025-07-27T12:44:32.988Z - log: [Package] project@1.0.2 enable
-2025-07-27T12:44:32.991Z - log: [Package] messages@1.0.0 enable
-2025-07-27T12:44:32.994Z - log: [Package] program@1.0.0 enable
-2025-07-27T12:44:32.998Z - log: [Package] tester@1.0.0 enable
-2025-07-27T12:44:33.001Z - log: [Package] preferences@1.0.0 enable
-2025-07-27T12:44:35.351Z - log: Profile changed: engine (modules.includeModules: 2d,3d,animation,audio,base,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-builtin,primitive,profiler,spine,tween,ui)
-2025-07-27T12:44:35.359Z - log: [Package] engine@1.0.6 enable
-2025-07-27T12:44:36.266Z - log: [Package] programming@1.0.0 enable
-2025-07-27T12:44:36.303Z - warn: 
-2025-07-27T12:44:36.332Z - warn: 
-2025-07-27T12:44:36.591Z - log: [Package] device@1.0.1 enable
-2025-07-27T12:44:36.625Z - log: [Package] ui-kit@1.0.1 enable
-2025-07-27T12:44:36.654Z - log: [Package] engine-extends@1.0.0 enable
-2025-07-27T12:44:36.718Z - log: [Package] asset-db@1.0.0 enable
-2025-07-27T12:44:36.719Z - warn: 
-2025-07-27T12:44:36.751Z - log: [Package] scene@1.0.0 enable
-2025-07-27T12:44:36.859Z - log: [Package] server@1.0.0 enable
-2025-07-27T12:44:36.884Z - log: [Package] utils@1.0.0 enable
-2025-07-27T12:44:37.462Z - warn: Browserslist: caniuse-lite is outdated. Please run:
-=======
-2025-07-26T20:34:31.933Z - log: [Package] menu@1.0.0 enable
-2025-07-26T20:34:31.941Z - log: [Package] profile@1.0.0 enable
-2025-07-26T20:34:31.981Z - log: [Package] project@1.0.2 enable
-2025-07-26T20:34:32.019Z - log: [Package] messages@1.0.0 enable
-2025-07-26T20:34:32.036Z - log: [Package] program@1.0.0 enable
-2025-07-26T20:34:32.057Z - log: [Package] tester@1.0.0 enable
-2025-07-26T20:34:32.079Z - log: [Package] preferences@1.0.0 enable
-2025-07-26T20:34:39.876Z - log: Profile changed: engine (modules.includeModules: 2d,3d,animation,audio,base,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-builtin,primitive,profiler,spine,tween,ui)
-2025-07-26T20:34:39.902Z - log: [Package] engine@1.0.6 enable
-2025-07-26T20:34:42.089Z - log: [Package] programming@1.0.0 enable
-2025-07-26T20:34:42.211Z - warn: 
-2025-07-26T20:34:42.316Z - warn: 
-2025-07-26T20:34:42.451Z - log: [Package] device@1.0.1 enable
-2025-07-26T20:34:42.486Z - log: [Package] ui-kit@1.0.1 enable
-2025-07-26T20:34:42.515Z - log: [Package] engine-extends@1.0.0 enable
-2025-07-26T20:34:42.638Z - log: [Package] asset-db@1.0.0 enable
-2025-07-26T20:34:42.640Z - warn: 
-2025-07-26T20:34:42.708Z - log: [Package] scene@1.0.0 enable
-2025-07-26T20:34:43.113Z - log: [Package] server@1.0.0 enable
-2025-07-26T20:34:43.203Z - log: [Package] utils@1.0.0 enable
-2025-07-26T20:34:45.017Z - warn: Browserslist: caniuse-lite is outdated. Please run:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:49:17.555Z - log: [Package] menu@1.0.0 enable
+2025-07-27T18:49:17.560Z - log: [Package] profile@1.0.0 enable
+2025-07-27T18:49:17.576Z - log: [Package] project@1.0.2 enable
+2025-07-27T18:49:17.587Z - log: [Package] messages@1.0.0 enable
+2025-07-27T18:49:17.592Z - log: [Package] program@1.0.0 enable
+2025-07-27T18:49:17.604Z - log: [Package] tester@1.0.0 enable
+2025-07-27T18:49:17.614Z - log: [Package] preferences@1.0.0 enable
+2025-07-27T18:49:24.579Z - log: Start Quick Compile
+2025-07-27T18:49:25.940Z - warn: Browserslist: caniuse-lite is outdated. Please run:
 npx browserslist@latest --update-db
 
 Why you should do it regularly:
 https://github.com/browserslist/browserslist#browsers-data-updating
-<<<<<<< HEAD
-2025-07-27T12:44:39.739Z - warn: 
-2025-07-27T12:44:39.739Z - warn: 
-2025-07-27T12:44:39.739Z - warn: 
-2025-07-27T12:44:39.777Z - warn: 
-2025-07-27T12:44:39.777Z - warn: 
-2025-07-27T12:44:39.777Z - warn: 
-2025-07-27T12:44:40.812Z - warn: 
-2025-07-27T12:44:40.864Z - log: [Package] preview@1.0.1 enable
-2025-07-27T12:44:40.893Z - log: [Package] animator@1.0.0 enable
-2025-07-27T12:44:40.883Z - warn: [Programming] Browserslist: caniuse-lite is outdated. Please run:
-=======
-2025-07-26T20:34:52.381Z - error: [Asset DB] C:\xuhang\guandan\guandan\library\.internal-info.json: Unexpected token < in JSON at position 152066SyntaxError: C:\xuhang\guandan\guandan\library\.internal-info.json: Unexpected token < in JSON at position 152066
-    at JSON.parse (<anonymous>)
-    at Object.readFileSync (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\jsonfile\index.js:63:17)
-    at InfoManager.setRecordJSON (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\asset-db\libs\info.ccc:1:285)
-    at AssetDB.start (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\asset-db\libs\asset-db.ccc:1:3855)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\asset-db\dist\worker\messages\database.ccc:1:5653
-    at Ipc.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\asset-db\dist\worker\ipc.ccc:1:453)
-2025-07-26T20:35:07.031Z - warn: 
-2025-07-26T20:35:07.031Z - warn: 
-2025-07-26T20:35:07.032Z - warn: 
-2025-07-26T20:35:07.262Z - warn: 
-2025-07-26T20:35:07.263Z - warn: 
-2025-07-26T20:35:07.263Z - warn: 
-2025-07-26T20:35:10.343Z - warn: 
-2025-07-26T20:35:10.564Z - log: [Package] preview@1.0.1 enable
-2025-07-26T20:35:10.617Z - log: [Package] animator@1.0.0 enable
-2025-07-26T20:35:10.695Z - log: pluginManager init: 0.265ms
-2025-07-26T20:35:10.794Z - warn: [Programming] Browserslist: caniuse-lite is outdated. Please run:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:50:59.910Z - log: QuickCompiler:Bundling target 0: 5.627s
+2025-07-27T18:50:59.929Z - log: QuickCompiler:Compile target 0: 1:35.319 (m:ss.mmm)
+2025-07-27T18:53:00.769Z - log: QuickCompiler:Bundling target 1: 4.992s
+2025-07-27T18:53:00.774Z - log: QuickCompiler:Compile target 1: 2:00.844 (m:ss.mmm)
+2025-07-27T18:53:00.827Z - log: Quick Compile: 216248ms
+2025-07-27T18:53:01.611Z - log: Profile changed: engine (modules.includeModules: 2d,3d,animation,audio,base,gfx-webgl,gfx-webgl2,intersection-2d,particle-2d,physics-2d-builtin,primitive,profiler,spine,tween,ui)
+2025-07-27T18:53:01.632Z - log: [Package] engine@1.0.6 enable
+2025-07-27T18:53:03.755Z - log: [Package] programming@1.0.0 enable
+2025-07-27T18:53:03.872Z - warn: 
+2025-07-27T18:53:03.973Z - warn: 
+2025-07-27T18:53:04.104Z - log: [Package] device@1.0.1 enable
+2025-07-27T18:53:04.135Z - log: [Package] ui-kit@1.0.1 enable
+2025-07-27T18:53:04.161Z - log: [Package] engine-extends@1.0.0 enable
+2025-07-27T18:53:04.274Z - log: [Package] asset-db@1.0.0 enable
+2025-07-27T18:53:04.276Z - warn: 
+2025-07-27T18:53:04.358Z - log: [Package] scene@1.0.0 enable
+2025-07-27T18:53:04.749Z - log: [Package] server@1.0.0 enable
+2025-07-27T18:53:04.809Z - log: [Package] utils@1.0.0 enable
+2025-07-27T18:53:12.886Z - warn: 
+2025-07-27T18:53:12.886Z - warn: 
+2025-07-27T18:53:12.886Z - warn: 
+2025-07-27T18:53:13.037Z - warn: 
+2025-07-27T18:53:13.038Z - warn: 
+2025-07-27T18:53:13.038Z - warn: 
+2025-07-27T18:53:15.750Z - warn: 
+2025-07-27T18:53:15.903Z - log: [Package] preview@1.0.1 enable
+2025-07-27T18:53:15.950Z - log: [Package] animator@1.0.0 enable
+2025-07-27T18:53:16.034Z - log: pluginManager init: 2.009ms
+2025-07-27T18:53:16.115Z - warn: [Programming] Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
   Why you should do it regularly: https://github.com/browserslist/update-db#readme[Programming] Browserslist: caniuse-lite is outdated. Please run:
   npx update-browserslist-db@latest
@@ -90,150 +52,77 @@ at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar
 at getTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\helper-compilation-targets\lib\index.js:210:27)  
 at getLocalTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\preset-env\lib\index.js:227:48)  
 at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@cocos\creator-programming-mod-lo\node_modules\@babel\preset-env\lib\index.js:288:15
-<<<<<<< HEAD
-2025-07-27T12:44:40.928Z - log: pluginManager init: 0.14ms
-2025-07-27T12:44:41.665Z - warn: 
-2025-07-27T12:44:41.665Z - warn: 
-2025-07-27T12:44:41.665Z - warn: 
-2025-07-27T12:44:41.880Z - log: [Package] builder@1.3.3 enable
-2025-07-27T12:44:41.920Z - log: [Package] shortcuts@1.0.1 enable
-2025-07-27T12:44:41.951Z - log: [Package] animation-graph@1.0.0 enable
-2025-07-27T12:44:41.976Z - log: [Package] about@1.0.0 enable
-2025-07-27T12:44:42.006Z - log: [Package] assets@1.0.0 enable
-2025-07-27T12:44:42.043Z - log: [Package] console@1.0.0 enable
-2025-07-27T12:44:42.170Z - log: [Package] extension@3.0.16 enable
-2025-07-27T12:44:42.196Z - log: [Package] hierarchy@1.0.0 enable
-2025-07-27T12:44:42.223Z - log: [Package] inspector@1.0.0 enable
-2025-07-27T12:44:42.249Z - log: [Package] lightmap@1.0.4 enable
-2025-07-27T12:44:42.589Z - log: [Package] localization-editor@1.0.0 enable
-2025-07-27T12:44:42.594Z - log: [Build-plugin] register pkg localization-editor: 3.737ms
-2025-07-27T12:44:42.622Z - log: [Package] node-library@1.0.1 enable
-2025-07-27T12:44:42.644Z - log: [Package] package-asset@1.0.0 enable
-2025-07-27T12:44:42.669Z - log: [Package] process@1.0.0 enable
-2025-07-27T12:44:42.706Z - log: [Package] reference-image@1.0.0 enable
-2025-07-27T12:44:42.728Z - log: [Package] alipay-mini-game@1.0.1 enable
-2025-07-27T12:44:42.732Z - log: [Build-plugin] register pkg alipay-mini-game: 4.173ms
-2025-07-27T12:44:42.763Z - log: [Package] android@1.0.1 enable
-2025-07-27T12:44:42.768Z - log: [Build-plugin] register pkg android: 4.704ms
-2025-07-27T12:44:42.794Z - log: [Package] baidu-mini-game@1.0.1 enable
-2025-07-27T12:44:42.795Z - log: [Build-plugin] register pkg baidu-mini-game: 0.717ms
-2025-07-27T12:44:42.855Z - log: [Package] bytedance-mini-game@1.0.2 enable
-2025-07-27T12:44:42.857Z - log: [Build-plugin] register pkg bytedance-mini-game: 2.374ms
-2025-07-27T12:44:42.888Z - log: [Package] certificate@1.0.0 enable
-2025-07-27T12:44:42.918Z - log: [Package] channel-upload-tools@1.0.0 enable
-2025-07-27T12:44:42.949Z - log: [Package] cocos-play@1.0.1 enable
-2025-07-27T12:44:42.953Z - log: [Build-plugin] register pkg cocos-play: 3.651ms
-2025-07-27T12:44:42.982Z - log: [Package] huawei-agc@1.0.0 enable
-2025-07-27T12:44:42.986Z - log: [Build-plugin] register pkg huawei-agc: 3.188ms
-2025-07-27T12:44:43.013Z - log: [Package] huawei-quick-game@1.0.1 enable
-2025-07-27T12:44:43.016Z - log: [Build-plugin] register pkg huawei-quick-game: 3.542ms
-2025-07-27T12:44:43.045Z - log: [Package] ios@1.0.0 enable
-2025-07-27T12:44:43.048Z - log: [Build-plugin] register pkg ios: 3.092ms
-2025-07-27T12:44:43.075Z - log: [Package] linux@1.0.0 enable
-2025-07-27T12:44:43.076Z - log: [Build-plugin] register pkg linux: 0.978ms
-2025-07-27T12:44:43.106Z - log: [Package] mac@1.0.0 enable
-2025-07-27T12:44:43.109Z - log: [Build-plugin] register pkg mac: 3.526ms
-2025-07-27T12:44:43.189Z - log: [Package] native@1.0.2 enable
-2025-07-27T12:44:43.192Z - log: [Build-plugin] register pkg native: 2.86ms
-2025-07-27T12:44:43.215Z - log: [Package] ohos@1.0.0 enable
-2025-07-27T12:44:43.218Z - log: [Build-plugin] register pkg ohos: 3.325ms
-2025-07-27T12:44:43.246Z - log: [Package] open-harmonyos@1.0.0 enable
-2025-07-27T12:44:43.247Z - log: [Build-plugin] register pkg open-harmonyos: 0.713ms
-2025-07-27T12:44:43.278Z - log: [Package] oppo-mini-game@1.0.1 enable
-2025-07-27T12:44:43.282Z - log: [Build-plugin] register pkg oppo-mini-game: 3.534ms
-2025-07-27T12:44:43.310Z - log: [Package] runtime-dev-tools@1.0.0 enable
-2025-07-27T12:44:43.340Z - log: [Package] vivo-mini-game@1.0.1 enable
-2025-07-27T12:44:43.343Z - log: [Build-plugin] register pkg vivo-mini-game: 3.55ms
-2025-07-27T12:44:43.387Z - log: [Package] web-desktop@1.0.1 enable
-2025-07-27T12:44:43.391Z - log: [Build-plugin] register pkg web-desktop: 3.604ms
-2025-07-27T12:44:43.424Z - log: [Package] web-mobile@1.0.1 enable
-2025-07-27T12:44:43.427Z - log: [Build-plugin] register pkg web-mobile: 3.022ms
-2025-07-27T12:44:43.470Z - log: [Package] wechatgame@1.0.2 enable
-2025-07-27T12:44:43.474Z - log: [Build-plugin] register pkg wechatgame: 4.105ms
-2025-07-27T12:44:43.510Z - log: [Package] windows@1.0.1 enable
-2025-07-27T12:44:43.514Z - log: [Build-plugin] register pkg windows: 3.528ms
-2025-07-27T12:44:43.542Z - log: [Package] xiaomi-quick-game@1.0.1 enable
-2025-07-27T12:44:43.547Z - log: [Build-plugin] register pkg xiaomi-quick-game: 4.074ms
-2025-07-27T12:44:43.744Z - log: [Package] cocos-service@3.0.4 enable
-2025-07-27T12:44:43.747Z - log: [Build-plugin] register pkg cocos-service: 1.816ms
-2025-07-27T12:44:43.783Z - log: [Package] importer@1.0.0 enable
-2025-07-27T12:44:43.971Z - log: [Im-plugin] Check im-plugin version.
-2025-07-27T12:44:43.977Z - log: [Package] im-plugin@3.0.9 enable
-2025-07-27T12:44:44.032Z - log: [Package] atlas-clipper@1.0.6 enable
-2025-07-27T12:44:44.035Z - log: [Build-plugin] register pkg atlas-clipper: 2.27ms
-2025-07-27T12:44:44.802Z - log: [Im-plugin] No online info of im-plugin.
-2025-07-27T12:44:46.768Z - log: [Scene] Please specifiy a default value for "cc.EditorExtendable.__editorExtras__" property at its declaration:
-=======
-2025-07-26T20:35:14.537Z - log: [Package] builder@1.3.3 enable
-2025-07-26T20:35:14.659Z - log: [Package] shortcuts@1.0.1 enable
-2025-07-26T20:35:14.725Z - log: [Package] animation-graph@1.0.0 enable
-2025-07-26T20:35:14.787Z - log: [Package] about@1.0.0 enable
-2025-07-26T20:35:14.843Z - log: [Package] assets@1.0.0 enable
-2025-07-26T20:35:14.898Z - log: [Package] console@1.0.0 enable
-2025-07-26T20:35:15.530Z - log: [Package] extension@3.0.16 enable
-2025-07-26T20:35:15.582Z - log: [Package] hierarchy@1.0.0 enable
-2025-07-26T20:35:15.631Z - log: [Package] inspector@1.0.0 enable
-2025-07-26T20:35:15.680Z - log: [Package] lightmap@1.0.4 enable
-2025-07-26T20:35:17.071Z - log: [Package] localization-editor@1.0.0 enable
-2025-07-26T20:35:17.092Z - log: [Build-plugin] register pkg localization-editor: 13.545ms
-2025-07-26T20:35:17.135Z - log: [Package] node-library@1.0.1 enable
-2025-07-26T20:35:17.166Z - log: [Package] package-asset@1.0.0 enable
-2025-07-26T20:35:17.207Z - log: [Package] process@1.0.0 enable
-2025-07-26T20:35:17.256Z - log: [Package] reference-image@1.0.0 enable
-2025-07-26T20:35:17.285Z - log: [Package] alipay-mini-game@1.0.1 enable
-2025-07-26T20:35:17.288Z - log: [Build-plugin] register pkg alipay-mini-game: 2.671ms
-2025-07-26T20:35:17.314Z - log: [Package] android@1.0.1 enable
-2025-07-26T20:35:17.331Z - log: [Build-plugin] register pkg android: 16.892ms
-2025-07-26T20:35:17.357Z - log: [Package] baidu-mini-game@1.0.1 enable
-2025-07-26T20:35:17.366Z - log: [Build-plugin] register pkg baidu-mini-game: 8.994ms
-2025-07-26T20:35:17.510Z - log: [Package] bytedance-mini-game@1.0.2 enable
-2025-07-26T20:35:17.522Z - log: [Build-plugin] register pkg bytedance-mini-game: 11.013ms
-2025-07-26T20:35:17.554Z - log: [Package] certificate@1.0.0 enable
-2025-07-26T20:35:17.579Z - log: [Package] channel-upload-tools@1.0.0 enable
-2025-07-26T20:35:17.606Z - log: [Package] cocos-play@1.0.1 enable
-2025-07-26T20:35:17.619Z - log: [Build-plugin] register pkg cocos-play: 12.337ms
-2025-07-26T20:35:17.644Z - log: [Package] huawei-agc@1.0.0 enable
-2025-07-26T20:35:17.655Z - log: [Build-plugin] register pkg huawei-agc: 10.259ms
-2025-07-26T20:35:17.685Z - log: [Package] huawei-quick-game@1.0.1 enable
-2025-07-26T20:35:17.695Z - log: [Build-plugin] register pkg huawei-quick-game: 10.269ms
-2025-07-26T20:35:17.727Z - log: [Package] ios@1.0.0 enable
-2025-07-26T20:35:17.740Z - log: [Build-plugin] register pkg ios: 12.652ms
-2025-07-26T20:35:17.766Z - log: [Package] linux@1.0.0 enable
-2025-07-26T20:35:17.768Z - log: [Build-plugin] register pkg linux: 1.986ms
-2025-07-26T20:35:17.793Z - log: [Package] mac@1.0.0 enable
-2025-07-26T20:35:17.804Z - log: [Build-plugin] register pkg mac: 10.535ms
-2025-07-26T20:35:18.039Z - log: [Package] native@1.0.2 enable
-2025-07-26T20:35:18.052Z - log: [Build-plugin] register pkg native: 12.59ms
-2025-07-26T20:35:18.078Z - log: [Package] ohos@1.0.0 enable
-2025-07-26T20:35:18.088Z - log: [Build-plugin] register pkg ohos: 9.531ms
-2025-07-26T20:35:18.112Z - log: [Package] open-harmonyos@1.0.0 enable
-2025-07-26T20:35:18.115Z - log: [Build-plugin] register pkg open-harmonyos: 2.267ms
-2025-07-26T20:35:18.142Z - log: [Package] oppo-mini-game@1.0.1 enable
-2025-07-26T20:35:18.151Z - log: [Build-plugin] register pkg oppo-mini-game: 9.245ms
-2025-07-26T20:35:18.176Z - log: [Package] runtime-dev-tools@1.0.0 enable
-2025-07-26T20:35:18.202Z - log: [Package] vivo-mini-game@1.0.1 enable
-2025-07-26T20:35:18.212Z - log: [Build-plugin] register pkg vivo-mini-game: 9.574ms
-2025-07-26T20:35:18.284Z - log: [Package] web-desktop@1.0.1 enable
-2025-07-26T20:35:18.295Z - log: [Build-plugin] register pkg web-desktop: 9.449ms
-2025-07-26T20:35:18.338Z - log: [Package] web-mobile@1.0.1 enable
-2025-07-26T20:35:18.354Z - log: [Build-plugin] register pkg web-mobile: 14.187ms
-2025-07-26T20:35:18.402Z - log: [Package] wechatgame@1.0.2 enable
-2025-07-26T20:35:18.412Z - log: [Build-plugin] register pkg wechatgame: 9.723ms
-2025-07-26T20:35:18.439Z - log: [Package] windows@1.0.1 enable
-2025-07-26T20:35:18.449Z - log: [Build-plugin] register pkg windows: 9.167ms
-2025-07-26T20:35:18.474Z - log: [Package] xiaomi-quick-game@1.0.1 enable
-2025-07-26T20:35:18.486Z - log: [Build-plugin] register pkg xiaomi-quick-game: 11.253ms
-2025-07-26T20:35:19.051Z - log: [Package] cocos-service@3.0.4 enable
-2025-07-26T20:35:19.060Z - log: [Build-plugin] register pkg cocos-service: 4.884ms
-2025-07-26T20:35:19.108Z - log: [Package] importer@1.0.0 enable
-2025-07-26T20:35:19.781Z - log: [Im-plugin] Check im-plugin version.
-2025-07-26T20:35:19.797Z - log: [Package] im-plugin@3.0.9 enable
-2025-07-26T20:35:20.608Z - log: [Im-plugin] No online info of im-plugin.
-2025-07-26T20:35:22.606Z - warn: 
-2025-07-26T20:35:22.607Z - warn: 
-2025-07-26T20:35:22.607Z - warn: 
-2025-07-26T20:35:34.134Z - log: [Scene] Please specifiy a default value for "cc.EditorExtendable.__editorExtras__" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:18.838Z - log: [Package] builder@1.3.3 enable
+2025-07-27T18:53:18.889Z - log: [Package] shortcuts@1.0.1 enable
+2025-07-27T18:53:18.934Z - log: [Package] animation-graph@1.0.0 enable
+2025-07-27T18:53:18.975Z - log: [Package] about@1.0.0 enable
+2025-07-27T18:53:19.017Z - log: [Package] assets@1.0.0 enable
+2025-07-27T18:53:19.059Z - log: [Package] console@1.0.0 enable
+2025-07-27T18:53:19.434Z - log: [Package] extension@3.0.16 enable
+2025-07-27T18:53:19.444Z - warn: 
+2025-07-27T18:53:19.445Z - warn: 
+2025-07-27T18:53:19.445Z - warn: 
+2025-07-27T18:53:19.485Z - log: [Package] hierarchy@1.0.0 enable
+2025-07-27T18:53:19.530Z - log: [Package] inspector@1.0.0 enable
+2025-07-27T18:53:19.570Z - log: [Package] lightmap@1.0.4 enable
+2025-07-27T18:53:20.527Z - log: [Package] localization-editor@1.0.0 enable
+2025-07-27T18:53:20.543Z - log: [Build-plugin] register pkg localization-editor: 12.129ms
+2025-07-27T18:53:20.612Z - log: [Package] node-library@1.0.1 enable
+2025-07-27T18:53:20.639Z - log: [Package] package-asset@1.0.0 enable
+2025-07-27T18:53:20.677Z - log: [Package] process@1.0.0 enable
+2025-07-27T18:53:20.719Z - log: [Package] reference-image@1.0.0 enable
+2025-07-27T18:53:20.746Z - log: [Package] alipay-mini-game@1.0.1 enable
+2025-07-27T18:53:20.748Z - log: [Build-plugin] register pkg alipay-mini-game: 2.332ms
+2025-07-27T18:53:20.773Z - log: [Package] android@1.0.1 enable
+2025-07-27T18:53:20.789Z - log: [Build-plugin] register pkg android: 15.158ms
+2025-07-27T18:53:20.813Z - log: [Package] baidu-mini-game@1.0.1 enable
+2025-07-27T18:53:20.822Z - log: [Build-plugin] register pkg baidu-mini-game: 8.4ms
+2025-07-27T18:53:20.959Z - log: [Package] bytedance-mini-game@1.0.2 enable
+2025-07-27T18:53:20.965Z - log: [Build-plugin] register pkg bytedance-mini-game: 5.341ms
+2025-07-27T18:53:20.989Z - log: [Package] certificate@1.0.0 enable
+2025-07-27T18:53:21.014Z - log: [Package] channel-upload-tools@1.0.0 enable
+2025-07-27T18:53:21.038Z - log: [Package] cocos-play@1.0.1 enable
+2025-07-27T18:53:21.050Z - log: [Build-plugin] register pkg cocos-play: 11.34ms
+2025-07-27T18:53:21.075Z - log: [Package] huawei-agc@1.0.0 enable
+2025-07-27T18:53:21.084Z - log: [Build-plugin] register pkg huawei-agc: 8.785ms
+2025-07-27T18:53:21.109Z - log: [Package] huawei-quick-game@1.0.1 enable
+2025-07-27T18:53:21.118Z - log: [Build-plugin] register pkg huawei-quick-game: 8.808ms
+2025-07-27T18:53:21.149Z - log: [Package] ios@1.0.0 enable
+2025-07-27T18:53:21.158Z - log: [Build-plugin] register pkg ios: 8.688ms
+2025-07-27T18:53:21.182Z - log: [Package] linux@1.0.0 enable
+2025-07-27T18:53:21.184Z - log: [Build-plugin] register pkg linux: 2.024ms
+2025-07-27T18:53:21.209Z - log: [Package] mac@1.0.0 enable
+2025-07-27T18:53:21.220Z - log: [Build-plugin] register pkg mac: 10.683ms
+2025-07-27T18:53:21.434Z - log: [Package] native@1.0.2 enable
+2025-07-27T18:53:21.445Z - log: [Build-plugin] register pkg native: 9.992ms
+2025-07-27T18:53:21.473Z - log: [Package] ohos@1.0.0 enable
+2025-07-27T18:53:21.482Z - log: [Build-plugin] register pkg ohos: 9.174ms
+2025-07-27T18:53:21.506Z - log: [Package] open-harmonyos@1.0.0 enable
+2025-07-27T18:53:21.509Z - log: [Build-plugin] register pkg open-harmonyos: 2.535ms
+2025-07-27T18:53:21.534Z - log: [Package] oppo-mini-game@1.0.1 enable
+2025-07-27T18:53:21.544Z - log: [Build-plugin] register pkg oppo-mini-game: 9.609ms
+2025-07-27T18:53:21.569Z - log: [Package] runtime-dev-tools@1.0.0 enable
+2025-07-27T18:53:21.594Z - log: [Package] vivo-mini-game@1.0.1 enable
+2025-07-27T18:53:21.604Z - log: [Build-plugin] register pkg vivo-mini-game: 10.35ms
+2025-07-27T18:53:21.682Z - log: [Package] web-desktop@1.0.1 enable
+2025-07-27T18:53:21.692Z - log: [Build-plugin] register pkg web-desktop: 8.727ms
+2025-07-27T18:53:21.735Z - log: [Package] web-mobile@1.0.1 enable
+2025-07-27T18:53:21.744Z - log: [Build-plugin] register pkg web-mobile: 8.062ms
+2025-07-27T18:53:21.786Z - log: [Package] wechatgame@1.0.2 enable
+2025-07-27T18:53:21.796Z - log: [Build-plugin] register pkg wechatgame: 9.599ms
+2025-07-27T18:53:21.823Z - log: [Package] windows@1.0.1 enable
+2025-07-27T18:53:21.833Z - log: [Build-plugin] register pkg windows: 9.517ms
+2025-07-27T18:53:21.859Z - log: [Package] xiaomi-quick-game@1.0.1 enable
+2025-07-27T18:53:21.869Z - log: [Build-plugin] register pkg xiaomi-quick-game: 9.293ms
+2025-07-27T18:53:22.354Z - log: [Package] cocos-service@3.0.4 enable
+2025-07-27T18:53:22.361Z - log: [Build-plugin] register pkg cocos-service: 4.301ms
+2025-07-27T18:53:22.399Z - log: [Package] importer@1.0.0 enable
+2025-07-27T18:53:22.883Z - log: [Im-plugin] Check im-plugin version.
+2025-07-27T18:53:22.896Z - log: [Package] im-plugin@3.0.9 enable
+2025-07-27T18:53:22.956Z - log: [Package] atlas-clipper@1.0.6 enable
+2025-07-27T18:53:22.959Z - log: [Build-plugin] register pkg atlas-clipper: 3.366ms
+2025-07-27T18:53:23.707Z - log: [Im-plugin] No online info of im-plugin.
+2025-07-27T18:53:31.386Z - log: [Scene] Please specifiy a default value for "cc.EditorExtendable.__editorExtras__" property at its declaration:
 
  
 // Before:
@@ -242,11 +131,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.783Z - log: [Scene] Please specifiy a default value for "CCPropertyOverrideInfo.value" property at its declaration:
-=======
-2025-07-26T20:35:34.208Z - log: [Scene] Please specifiy a default value for "CCPropertyOverrideInfo.value" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.481Z - log: [Scene] Please specifiy a default value for "CCPropertyOverrideInfo.value" property at its declaration:
 
  
 // Before:
@@ -255,11 +140,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.783Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.asset" property at its declaration:
-=======
-2025-07-26T20:35:34.211Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.asset" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.483Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.asset" property at its declaration:
 
  
 // Before:
@@ -268,11 +149,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.783Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.nestedPrefabInstanceRoots" property at its declaration:
-=======
-2025-07-26T20:35:34.212Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.nestedPrefabInstanceRoots" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.484Z - log: [Scene] Please specifiy a default value for "cc.PrefabInfo.nestedPrefabInstanceRoots" property at its declaration:
 
  
 // Before:
@@ -281,15 +158,9 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.785Z - log: [Scene] The 'default' attribute of 'ColorDesc.beginAccesses' must be an array
-2025-07-27T12:44:46.786Z - log: [Scene] The 'default' attribute of 'ColorDesc.endAccesses' must be an array
-2025-07-27T12:44:46.794Z - log: [Scene] Please specifiy a default value for "cc.animation.TrackBinding.proxy" property at its declaration:
-=======
-2025-07-26T20:35:34.222Z - log: [Scene] The 'default' attribute of 'ColorDesc.beginAccesses' must be an array
-2025-07-26T20:35:34.222Z - log: [Scene] The 'default' attribute of 'ColorDesc.endAccesses' must be an array
-2025-07-26T20:35:34.257Z - log: [Scene] Please specifiy a default value for "cc.animation.TrackBinding.proxy" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.492Z - log: [Scene] The 'default' attribute of 'ColorDesc.beginAccesses' must be an array
+2025-07-27T18:53:31.493Z - log: [Scene] The 'default' attribute of 'ColorDesc.endAccesses' must be an array
+2025-07-27T18:53:31.522Z - log: [Scene] Please specifiy a default value for "cc.animation.TrackBinding.proxy" property at its declaration:
 
  
 // Before:
@@ -298,11 +169,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.794Z - log: [Scene] Please specifiy a default value for "cc.animation.Channel._curve" property at its declaration:
-=======
-2025-07-26T20:35:34.257Z - log: [Scene] Please specifiy a default value for "cc.animation.Channel._curve" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.522Z - log: [Scene] Please specifiy a default value for "cc.animation.Channel._curve" property at its declaration:
 
  
 // Before:
@@ -311,11 +178,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.794Z - log: [Scene] Please specifiy a default value for "cc.animation.SingleChannelTrack._channel" property at its declaration:
-=======
-2025-07-26T20:35:34.257Z - log: [Scene] Please specifiy a default value for "cc.animation.SingleChannelTrack._channel" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.522Z - log: [Scene] Please specifiy a default value for "cc.animation.SingleChannelTrack._channel" property at its declaration:
 
  
 // Before:
@@ -324,11 +187,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.795Z - log: [Scene] Please specifiy a default value for "cc.animation.VectorTrack._channels" property at its declaration:
-=======
-2025-07-26T20:35:34.260Z - log: [Scene] Please specifiy a default value for "cc.animation.VectorTrack._channels" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.525Z - log: [Scene] Please specifiy a default value for "cc.animation.VectorTrack._channels" property at its declaration:
 
  
 // Before:
@@ -337,11 +196,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.795Z - log: [Scene] Please specifiy a default value for "cc.animation.ColorTrack._channels" property at its declaration:
-=======
-2025-07-26T20:35:34.260Z - log: [Scene] Please specifiy a default value for "cc.animation.ColorTrack._channels" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.525Z - log: [Scene] Please specifiy a default value for "cc.animation.ColorTrack._channels" property at its declaration:
 
  
 // Before:
@@ -350,11 +205,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.795Z - log: [Scene] Please specifiy a default value for "cc.animation.SizeTrack._channels" property at its declaration:
-=======
-2025-07-26T20:35:34.261Z - log: [Scene] Please specifiy a default value for "cc.animation.SizeTrack._channels" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.526Z - log: [Scene] Please specifiy a default value for "cc.animation.SizeTrack._channels" property at its declaration:
 
  
 // Before:
@@ -363,11 +214,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.from" property at its declaration:
-=======
-2025-07-26T20:35:34.262Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.from" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.527Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.from" property at its declaration:
 
  
 // Before:
@@ -376,11 +223,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.to" property at its declaration:
-=======
-2025-07-26T20:35:34.262Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.to" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.527Z - log: [Scene] Please specifiy a default value for "cc.animation.Transition.to" property at its declaration:
 
  
 // Before:
@@ -389,11 +232,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._entryState" property at its declaration:
-=======
-2025-07-26T20:35:34.263Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._entryState" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.528Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._entryState" property at its declaration:
 
  
 // Before:
@@ -402,11 +241,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._exitState" property at its declaration:
-=======
-2025-07-26T20:35:34.264Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._exitState" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.528Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._exitState" property at its declaration:
 
  
 // Before:
@@ -415,11 +250,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._anyState" property at its declaration:
-=======
-2025-07-26T20:35:34.264Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._anyState" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.529Z - log: [Scene] Please specifiy a default value for "cc.animation.StateMachine._anyState" property at its declaration:
 
  
 // Before:
@@ -428,11 +259,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.Layer._stateMachine" property at its declaration:
-=======
-2025-07-26T20:35:34.265Z - log: [Scene] Please specifiy a default value for "cc.animation.Layer._stateMachine" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.529Z - log: [Scene] Please specifiy a default value for "cc.animation.Layer._stateMachine" property at its declaration:
 
  
 // Before:
@@ -441,11 +268,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.796Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._values" property at its declaration:
-=======
-2025-07-26T20:35:34.267Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._values" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.531Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._values" property at its declaration:
 
  
 // Before:
@@ -454,11 +277,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._isQuantized" property at its declaration:
-=======
-2025-07-26T20:35:34.268Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._isQuantized" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.531Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticVectorLikeTrackValues._isQuantized" property at its declaration:
 
  
 // Before:
@@ -467,11 +286,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.times" property at its declaration:
-=======
-2025-07-26T20:35:34.269Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.times" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.times" property at its declaration:
 
  
 // Before:
@@ -480,11 +295,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.values" property at its declaration:
-=======
-2025-07-26T20:35:34.269Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.values" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.ExoticTrack.values" property at its declaration:
 
  
 // Before:
@@ -493,11 +304,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.originalPrecision" property at its declaration:
-=======
-2025-07-26T20:35:34.269Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.originalPrecision" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.originalPrecision" property at its declaration:
 
  
 // Before:
@@ -506,11 +313,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.min" property at its declaration:
-=======
-2025-07-26T20:35:34.270Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.min" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.min" property at its declaration:
 
  
 // Before:
@@ -519,11 +322,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.extent" property at its declaration:
-=======
-2025-07-26T20:35:34.270Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.extent" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.extent" property at its declaration:
 
  
 // Before:
@@ -532,11 +331,7 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.797Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.values" property at its declaration:
-=======
-2025-07-26T20:35:34.271Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.values" property at its declaration:
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+2025-07-27T18:53:31.532Z - log: [Scene] Please specifiy a default value for "cc.animation.QuantizedFloatArray.values" property at its declaration:
 
  
 // Before:
@@ -545,45 +340,16 @@ myProp;
 // After:
 @property(...)
 myProp = 0;
-<<<<<<< HEAD
-2025-07-27T12:44:46.821Z - log: [Scene] 'cc.ParticleSystem2D.color' hides inherited property 'cc.UIRenderer.color'. To make the current property override that implementation, add the `override: true` attribute please.
-2025-07-27T12:44:46.851Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._receiveShadow", which its default value is type of Boolean.
-2025-07-27T12:44:46.851Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._useNormalmap", which its default value is type of Boolean.
-2025-07-27T12:44:46.851Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._usePBR", which its default value is type of Boolean.
-2025-07-27T12:44:46.851Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._lodEnable", which its default value is type of Boolean.
-2025-07-27T12:44:46.911Z - info: [Scene] [Physics][Bullet]: Using asmjs Bullet libs.
-2025-07-27T12:44:46.918Z - info: [Scene] [PHYSICS]: using builtin.
-2025-07-27T12:44:47.002Z - log: [Scene] Cocos Creator v3.6.0
-2025-07-27T12:44:47.002Z - info: [Scene] Forward render pipeline initialized.
-2025-07-27T12:44:47.494Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/8a/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ba/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ee/file:/D:/xuhang/guan_dan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///D:/xuhang/guan_dan/temp/programming/packer-driver/targets/editor/chunks/ba/cce:/internal/x/prerequisite-imports:8:13
-=======
-2025-07-26T20:35:34.449Z - log: [Scene] 'cc.ParticleSystem2D.color' hides inherited property 'cc.UIRenderer.color'. To make the current property override that implementation, add the `override: true` attribute please.
-2025-07-26T20:35:34.686Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._receiveShadow", which its default value is type of Boolean.
-2025-07-26T20:35:34.687Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._useNormalmap", which its default value is type of Boolean.
-2025-07-26T20:35:34.687Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._usePBR", which its default value is type of Boolean.
-2025-07-26T20:35:34.687Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._lodEnable", which its default value is type of Boolean.
-2025-07-26T20:35:34.945Z - info: [Scene] [Physics][Bullet]: Using asmjs Bullet libs.
-2025-07-26T20:35:34.976Z - info: [Scene] [PHYSICS]: using builtin.
-2025-07-26T20:35:35.956Z - log: [Scene] Cocos Creator v3.6.0
-2025-07-26T20:35:35.957Z - info: [Scene] Forward render pipeline initialized.
-2025-07-26T20:35:37.926Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
+2025-07-27T18:53:31.606Z - log: [Scene] 'cc.ParticleSystem2D.color' hides inherited property 'cc.UIRenderer.color'. To make the current property override that implementation, add the `override: true` attribute please.
+2025-07-27T18:53:31.716Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._receiveShadow", which its default value is type of Boolean.
+2025-07-27T18:53:31.717Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._useNormalmap", which its default value is type of Boolean.
+2025-07-27T18:53:31.717Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._usePBR", which its default value is type of Boolean.
+2025-07-27T18:53:31.717Z - log: [Scene] No needs to indicate the 'cc.Boolean' attribute for "cc.Terrain._lodEnable", which its default value is type of Boolean.
+2025-07-27T18:53:31.934Z - info: [Scene] [Physics][Bullet]: Using asmjs Bullet libs.
+2025-07-27T18:53:31.956Z - info: [Scene] [PHYSICS]: using builtin.
+2025-07-27T18:53:32.360Z - log: [Scene] Cocos Creator v3.6.0
+2025-07-27T18:53:32.360Z - info: [Scene] Forward render pipeline initialized.
+2025-07-27T18:53:34.017Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
     at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
     at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
     at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
@@ -593,15 +359,14 @@ myProp = 0;
     at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
     at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
     at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
+    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/ba/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
     at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
     at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
     at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
     at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
     at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
     at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8
+    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/ba/cce:/internal/x/prerequisite-imports:8:13
     at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
     at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
     at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
@@ -612,499 +377,3 @@ myProp = 0;
     at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
     at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
     at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-<<<<<<< HEAD
-2025-07-27T12:45:39.012Z - warn: Metrics: no valid info
-2025-07-27T12:45:39.035Z - error: Error occurred in handler for 'GUEST_VIEW_MANAGER_CALL': Error: Invalid guestInstanceId: 6
-    at getGuestForWebContents (electron/js2c/browser_init.js:181:6307)
-    at electron/js2c/browser_init.js:181:5372
-    at electron/js2c/browser_init.js:181:1637
-    at electron/js2c/browser_init.js:197:579
-    at Object.<anonymous> (electron/js2c/browser_init.js:161:9782)
-    at Object.emit (events.js:315:20)
-=======
-2025-07-26T20:35:41.870Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T22:04:37.250Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T22:05:09.486Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T22:30:19.273Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T22:39:05.475Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T22:45:03.189Z - error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13Error: [Scene] {hidden(::SceneExecutorImportExceptionHandler::)} ReferenceError: protobuf is not defined
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-    at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\startup\log.ccc:1:318)
-    at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)
-    at console.error (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1414)
-    at ScriptManager._handleImportException (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:5825)
-    at Executor.importExceptionHandler [as _importExceptionHandler] (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\scene\dist\script\3d\manager\scripts.ccc:1:3509)
-    at Executor._onModuleLoaded (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:312:22)
-    at SystemJS.onload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\src\executor\index.ts:73:18)
-    at triggerOnload (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:270:10)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:538:7)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-2025-07-26T23:40:50.794Z - info: [Window] Download the Vue Devtools extension for a better development experience:
-https://github.com/vuejs/vue-devtools
-2025-07-26T23:40:50.795Z - info: [Window] You are running Vue in development mode.
-Make sure to turn on production mode when deploying for production.
-See more tips at https://vuejs.org/guide/deployment.html
-2025-07-26T23:41:35.197Z - warn: [Build] protobuf is not definedReferenceError: protobuf is not defined
-    at factory (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/cf/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.js:5335:5)
-    at CjsLoader._load (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:78:9)
-    at CjsLoader._tryModuleLoad (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:63:18)
-    at CjsLoader._require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:42:14)
-    at CjsLoader.require (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/e2/cce:/internal/ml/cjs-loader.mjs:27:21)
-    at Object.execute (file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/76/file:/C:/xuhang/guandan/guandan/assets/scripts/proto/gameMsg.mjs?cjs=&original=.js:7:8)
-    at doExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:517:30)
-    at postOrderExec (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:508:21)
-    at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@editor\lib-programming\static\executor\systemjs-bridge\out\index.js:440:12
-    at file:///C:/xuhang/guandan/guandan/temp/programming/packer-driver/targets/editor/chunks/97/cce:/internal/x/prerequisite-imports:8:13
-2025-07-26T23:42:04.489Z - warn: [Build] The SpriteFrame used by component "cc.Sprite" is missing. Detailed information:
-Node path: "Canvas/微信图片_2025-07-23_231309_479"
-Missing uuid: "ff8d3bde-dbb6-4bfd-94d7-2498d2fe4817@f9941"
-[Build] The SpriteFrame used by component "cc.Sprite" is missing. Detailed information:
-Node path: "Canvas/微信图片_2025-07-23_231309_479"
-Missing uuid: "ff8d3bde-dbb6-4bfd-94d7-2498d2fe4817@f9941"
-  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at MissingObjectReporter.doReport (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\missing-object-reporter.ccc:1:1304)  
-at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\missing-object-reporter.ccc:1:2190  
-at ObjectWalkerBehavior.walk (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:2365)  
-at ObjectWalkerBehavior.parseCCClass (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:650)  
-at ObjectWalkerBehavior.parseObject (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:460)
-2025-07-26T23:43:27.328Z - warn: [Build] The SpriteFrame used by component "cc.Sprite" is missing. Detailed information:
-Node path: "Canvas/微信图片_2025-07-23_231309_479"
-Missing uuid: "ff8d3bde-dbb6-4bfd-94d7-2498d2fe4817@f9941"
-[Build] The SpriteFrame used by component "cc.Sprite" is missing. Detailed information:
-Node path: "Canvas/微信图片_2025-07-23_231309_479"
-Missing uuid: "ff8d3bde-dbb6-4bfd-94d7-2498d2fe4817@f9941"
-  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at MissingObjectReporter.doReport (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\missing-object-reporter.ccc:1:1304)  
-at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\missing-object-reporter.ccc:1:2190  
-at ObjectWalkerBehavior.walk (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:2365)  
-at ObjectWalkerBehavior.parseCCClass (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:650)  
-at ObjectWalkerBehavior.parseObject (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\engine\dist\editor-extends\missing-reporter\object-walker.ccc:1:460)
-2025-07-26T23:43:30.379Z - warn: [Build] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db[Build] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Object.oldDataWarning (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\browserslist\node.js:351:15)  
-at browserslist (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\browserslist\index.js:431:7)  
-at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\core-js-compat\targets-parser.js:39:18  
-at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\core-js-compat\compat.js:28:25  
-at Object.default (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\core-js-builder\index.js:35:26)
-2025-07-26T23:44:00.184Z - warn: [Build] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating[Build] Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Object.oldDataWarning (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\node_modules\browserslist\node.js:373:15)  
-at browserslist (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\node_modules\browserslist\index.js:432:7)  
-at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\lib\index.js:174:20)  
-at getTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\helper-compilation-targets\lib\index.js:214:27)  
-at resolveTargets (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@babel\core\lib\config\resolve-targets.js:58:50)
-2025-07-26T23:51:51.495Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts
-  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.516Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/SoundManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/common/utils.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/team/TeamItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIManager.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/KeyBoardItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/room/CreateRoomItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/game/GameLogic.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndFree/GameEndFreeItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GameSocket.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScorePerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScore.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankScoreTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankPerson.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankTeam.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScoreRank/GameEndScoreRankItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndScore/GameEndScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKick/GameEndKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.530Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndKickUp/GameEndKickUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.534Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.540Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/teamUp/TeamUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/AppGlobal.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceScore/RaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickLineItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceKick/RaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameStartNotice/FreeUpItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.546Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceKickItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.548Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKick.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceScoreItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rankRace/RankRaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankKick.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:51:51.553Z - warn: [Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/FreeMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[Build] [build-script][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/raceAudition/RaceAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/rank/RankAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/gameEndAudition/GameEndAuditionItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/FreeMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts
-  
-[warning][[Build.Script.Rollup]] Circular dependency: file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/UIConfig.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/component/match/AuditionMatchItem.ts -> file:///C:/xuhang/guandan/guandan/assets/scripts/manager/GlobalData.ts  
-  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:52:05.129Z - warn: [Build] [build-script]Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating
-[Build] [build-script]Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating
-  
-  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:53:57.933Z - warn: [Build] [build-script]Unexpected: entry chunk name gameMsg.mjs_cjs=&original= is not in list.
-[warning]Unexpected: entry chunk name long.mjs_cjs=&original= is not in list.
-[Build] [build-script]Unexpected: entry chunk name gameMsg.mjs_cjs=&original= is not in list.
-[warning]Unexpected: entry chunk name long.mjs_cjs=&original= is not in list.
-  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-26T23:55:26.464Z - warn: [Build] [build-engine]Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating
-[Build] [build-engine]Browserslist: caniuse-lite is outdated. Please run:
-npx browserslist@latest --update-db
-
-Why you should do it regularly:
-https://github.com/browserslist/browserslist#browsers-data-updating
-  
-  
-at Object.encode (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\node_modules\v-stacks\index.js:14:17)  
-at Logger._logHandler (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-worker\static\script.ccc:1:531)  
-at Logger.record (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:458)  
-at Object.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\node_modules\@base\electron-logger\lib\renderer.ccc:1:1260)  
-at NewConsole.warn (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\console.ccc:1:1306)  
-at Socket.<anonymous> (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\worker-pools\sub-process-manager.ccc:1:2640)  
-at Socket.emit (events.js:315:20)  
-at addChunk (internal/streams/readable.js:309:12)  
-at readableAddChunk (internal/streams/readable.js:284:9)  
-at Socket.Readable.push (internal/streams/readable.js:223:10)
-2025-07-27T00:04:04.603Z - warn: Metrics: no valid info
->>>>>>> 58f549f98dca2bd00c1072e8116054a49fb650a8

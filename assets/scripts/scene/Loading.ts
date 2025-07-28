@@ -36,7 +36,7 @@ export class Loading extends Component {
 
     private async loadAllPrefabs() {
         resources.loadDir('prefab', (completedCount, totalCount, item) => {
-            console.log(completedCount, totalCount)
+            // console.log(completedCount, totalCount)
             let progress = parseFloat(((completedCount) / (totalCount)).toFixed(3));
             this.updateProgress(progress);
         }, (error, assets) => {

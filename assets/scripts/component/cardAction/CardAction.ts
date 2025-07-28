@@ -44,27 +44,35 @@ export class CardAction extends Component {
     playAction(data: { viewId: number, cardType: number, cardNum: number }) {
         this.tmpViewId = data.viewId;
         let spAction: sp.Skeleton = null;
+        let track: TrackEvent
         if (data.cardType == GameDefine.KIND_CARDS_3) { //三不带
             spAction = this.sanBuDai;
+            track = spAction.setAnimation(0, "ani", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_3_2) { //三带对
             spAction = this.sanDaiYiDui;
+            track = spAction.setAnimation(0, "ani2_3dai2", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_SHUNZI_2) { //木板
             spAction = this.muBan;
+            track = spAction.setAnimation(0, "ani3_3ld", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_SHUNZI_3) { //钢板
             spAction = this.gangBan;
+            track = spAction.setAnimation(0, "ani4_gangban", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_SHUNZI_1) { //顺子
             spAction = this.shunZi;
+            track = spAction.setAnimation(0, "ani1_shunzi", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_COLOR) { //同花顺
             spAction = this.tongHuaShun;
+            track = spAction.setAnimation(0, "ani_ths", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_BOMB_45) { //炸弹
             this.getInitPos();
             spAction = this.zhaDan;
+            track = spAction.setAnimation(0, "ani_4zha", false);
             //炸弹有4张~8张,炸弹位置动态调整
             if (data.viewId == GlobalData.viewId.up) {
                 let posX = this.zhaDanInitUpPos.x + 28 * (data.cardNum - 4) * 0.5;
@@ -77,12 +85,14 @@ export class CardAction extends Component {
         }
         else if (data.cardType == GameDefine.KIND_CARDS_KING) { //天王炸
             spAction = this.wanZha;
+            track = spAction.setAnimation(0, "ani_twzha", false);
         }
         else if (data.cardType == GameDefine.KIND_CARDS_Feng) {  //接风
             spAction = this.jiefeng;
+            track = spAction.setAnimation(0, "ani_jiefeng", false);
         }
         spAction.node.active = true;
-        let track: TrackEvent = spAction.setAnimation(0, "ani", false);
+        // track = spAction.setAnimation(0, "ani", false);
         spAction.setTrackCompleteListener(track, (trackEntry) => {
             spAction.node.active = false;
         });

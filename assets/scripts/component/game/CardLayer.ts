@@ -229,6 +229,7 @@ export class CardLayer extends Component {
         this.hideAllCardTypeAction();
         this.clearHandCards();
         this.hintIndex = 0;
+        this.flushStraightHintIndex = 0;
         this.hintCards = [];
         GlobalData.cardInfo.oneCard = false;
         GlobalData.cardInfo.sortCard = false;
@@ -306,7 +307,7 @@ export class CardLayer extends Component {
             // 0x21, 0x22,
             // 0x31, 0x32,
             // 0x31, 0x32,
-            // 0x4e, 0x4f,
+            0x4e, 0x4f,
             0x4e, 0x4f
         ];
         // let cardList1 = [
@@ -320,12 +321,15 @@ export class CardLayer extends Component {
         // this.delayShowCardDir();
         this.hintCards = [[0x01, 0x01], [0x01, 0x02], [0x01, 0x01, 0x11, 0x11], [0x4e, 0x4e]];
     }
+
+    private canFushStrights: number[][] = [];
     //手牌
     private setHandCards(value: number[], ani: boolean = false, isUp: boolean = false, isOneCard: boolean = false) {
         // console.log('初始手牌', value);
         this.delayShowCardDir();
         this.clearHandCards();
         this.handCardsValue = value;
+        this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
         const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
         this.fangkuai.active = false;
         this.meihua.active = false;
@@ -1356,6 +1360,7 @@ export class CardLayer extends Component {
             this.selectCardValue = [];
             this.selectCardIndex = []
             this.hintIndex = 0;
+            this.flushStraightHintIndex = 0;
             this.breakPairIndex = 0;
             this.breakTripleIndex = 0;
             this.breakBombIndex = 0;
@@ -1369,6 +1374,7 @@ export class CardLayer extends Component {
             this.selectCardValue = [];
             this.selectCardIndex = []
             this.hintIndex = 0;
+            this.flushStraightHintIndex = 0;
             this.breakPairIndex = 0;
             this.breakTripleIndex = 0;
             this.breakBombIndex = 0;
@@ -1564,6 +1570,27 @@ export class CardLayer extends Component {
         let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.NoOutCards, null);
         GameSocket.send(sendBuffer);
     }
+
+    //提示同花顺
+    private flushStraightHintIndex:number = 0;
+    onBtnFlushStraightHint() {
+        SoundManager.playClick();
+        this.doHandCardPopDown_V();
+        this.hintIndex = 0;
+        this.selectCardValue = [];
+        this.selectedCardIndexSet.clear();
+        if (this.canFushStrights.length == 0) {
+            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "手牌没有同花顺" });
+            return;
+        }
+        this.selectCardValue = this.canFushStrights[this.flushStraightHintIndex];
+        this.flushStraightHintIndex++;
+        if (this.flushStraightHintIndex == this.canFushStrights.length) {
+            this.flushStraightHintIndex = 0;
+        }
+        this.showChooseCard_V(this.selectCardValue);
+    }
+
     //提示
     onBtnHint() {
         SoundManager.playClick();
@@ -2118,6 +2145,7 @@ export class CardLayer extends Component {
         // console.log("onHandleBtn---> ", data);
         //每次重置提示
         this.hintIndex = 0;
+        this.flushStraightHintIndex = 0;
         this.breakPairIndex = 0;
         this.breakTripleIndex = 0;
         this.breakBombIndex = 0;
@@ -2258,35 +2286,36 @@ export class CardLayer extends Component {
             if (viewId == GlobalData.viewId.self) {
                 if (this.outCardList.length != 0 && this.hintCards.length != 0) { //对方出牌了,并有提示牌
                     if (data.sendType == 2) { //系统出牌
-                        const grouped = this.groupedCards;
-                        let found = false;
+                        // this.onBtnNoOut();
+                        // const grouped = this.groupedCards;
+                        // let found = false;
 
-                        function isSameArray(a: number[], b: number[]): boolean {
-                            if (a.length !== b.length) return false;
-                            for (let i = 0; i < a.length; i++) {
-                                if (a[i] !== b[i]) return false;
-                            }
-                            return true;
-                        }
+                        // function isSameArray(a: number[], b: number[]): boolean {
+                        //     if (a.length !== b.length) return false;
+                        //     for (let i = 0; i < a.length; i++) {
+                        //         if (a[i] !== b[i]) return false;
+                        //     }
+                        //     return true;
+                        // }
 
-                        const totalHints = this.hintCards.length;
+                        // const totalHints = this.hintCards.length;
 
-                        for (let i = 0; i < totalHints; i++) {
-                            // const index = (this.hintIndex + i) % totalHints;
-                            const hint = this.hintCards[i];
+                        // for (let i = 0; i < totalHints; i++) {
+                        //     // const index = (this.hintIndex + i) % totalHints;
+                        //     const hint = this.hintCards[i];
 
-                            for (let group of grouped) {
-                                if (isSameArray(hint, group)) {
-                                    cards = hint
-                                    // this.selectCardValue = hint;
-                                    // this.hintIndex = (index + 1) % totalHints; // 下一次从这里继续
-                                    found = true;
-                                    break;
-                                }
-                            }
+                        //     for (let group of grouped) {
+                        //         if (isSameArray(hint, group)) {
+                        //             cards = hint
+                        //             // this.selectCardValue = hint;
+                        //             // this.hintIndex = (index + 1) % totalHints; // 下一次从这里继续
+                        //             found = true;
+                        //             break;
+                        //         }
+                        //     }
 
-                            if (found) break;
-                        }
+                        //     if (found) break;
+                        // }
                     }
                 }
                 else {
