@@ -211,7 +211,7 @@ export class CardLayer extends Component {
             this.reStart();
         }
         // // 测试
-        this.testSelfHandCard();
+        // this.testSelfHandCard();
         // this.testOtherOuts();
         // this.testAllOtherHandCards();
     }
@@ -290,14 +290,14 @@ export class CardLayer extends Component {
     private testSelfHandCard() {
         this.handCardsValue = [
             //0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a,0x0b,0x0c,0x0d,  //方
-            0x11,0x12,0x13,0x14,0x15,0x16,0x17,0x18,0x19,0x0a,0x1b,0x1c,0x1d,  //梅
-            0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,0x29,0x2a,0x2b,0x2c,0x2d,  //红
-            0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3a,0x3b,0x3c,0x35,  //黑
-            0x4e,0x4f  //  小王,大王
+            0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x0a, 0x1b, 0x1c, 0x1d,  //梅
+            0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d,  //红
+            0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x35,  //黑
+            0x4e, 0x4f  //  小王,大王
         ]
         // let cardList = [0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21];
         let cardList = [
-            0x31,0x32,0x33,0x34,0x35,0x36,0x37,0x38,0x39,0x3a,0x3b,0x3c,0x35,
+            0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x35,
             0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
             0x01, 0x12, 0x13, 0x14, 0x15, 0x26, 0x17, 0x18, 0x19, 0x1a, 0x3b, 0x1c, 0x1d,
             // 0x2a,
@@ -336,22 +336,22 @@ export class CardLayer extends Component {
         this.meihua.active = false;
         this.heitao.active = false;
         this.hongtao.active = false;
-        for(let i = 0; i < fushStraights.length; i++) {
-            if(fushStraights[i] == 0) {
+        for (let i = 0; i < fushStraights.length; i++) {
+            if (fushStraights[i] == 0) {
                 this.fangkuai.active = true;
             }
-            else if(fushStraights[i] == 1) {
+            else if (fushStraights[i] == 1) {
                 this.meihua.active = true;
             }
-            else if(fushStraights[i] == 2) {
+            else if (fushStraights[i] == 2) {
                 this.hongtao.active = true;
             }
-            else if(fushStraights[i] == 3) {
+            else if (fushStraights[i] == 3) {
                 this.heitao.active = true;
             }
-            
+
         }
-        console.log('有什么同花顺>>', fushStraights);
+        // console.log('有什么同花顺>>', fushStraights);
         if (value.length == 0) {
             return;
         }
@@ -753,6 +753,27 @@ export class CardLayer extends Component {
                         }
                     }
                 }
+            }
+            this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
+            const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
+            this.fangkuai.active = false;
+            this.meihua.active = false;
+            this.heitao.active = false;
+            this.hongtao.active = false;
+            for (let i = 0; i < fushStraights.length; i++) {
+                if (fushStraights[i] == 0) {
+                    this.fangkuai.active = true;
+                }
+                else if (fushStraights[i] == 1) {
+                    this.meihua.active = true;
+                }
+                else if (fushStraights[i] == 2) {
+                    this.hongtao.active = true;
+                }
+                else if (fushStraights[i] == 3) {
+                    this.heitao.active = true;
+                }
+
             }
             // }
         } else if (viewid == GlobalData.viewId.opposite) {
@@ -1573,7 +1594,7 @@ export class CardLayer extends Component {
     }
 
     //提示同花顺
-    private flushStraightHintIndex:number = 0;
+    private flushStraightHintIndex: number = 0;
     onBtnFlushStraightHint() {
         SoundManager.playClick();
         this.doHandCardPopDown_V();
