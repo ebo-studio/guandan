@@ -23,8 +23,8 @@ export class MessageBoxCommon extends PopWindow {
     private autoClose: boolean = true;
 
     setData(data: { okName: string, cancleName: string, des: string, okFunc: Function, cancleFunc: Function }, autoClose: boolean = true) {
-        // this.txtOk.string = data.okName;
-        // this.txtCancle.string = data.cancleName;
+        this.txtOk.string = data.okName;
+        this.txtCancle.string = data.cancleName;
         this.texDes.string = data.des;
         this.okFunc = data.okFunc;
         this.cancleFunc = data.cancleFunc;

@@ -1,0 +1,109 @@
+{
+  "ver": "1.0.7",
+  "importer": "sprite-atlas",
+  "imported": true,
+  "uuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b",
+  "files": [
+    ".json"
+  ],
+  "subMetas": {
+    "8ea72": {
+      "importer": "sprite-frame",
+      "uuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b@8ea72",
+      "displayName": "",
+      "id": "8ea72",
+      "name": "fxyj_btn_fxdq",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 122,
+        "width": 266,
+        "height": 57,
+        "rawWidth": 266,
+        "rawHeight": 57,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [],
+          "indexes": [],
+          "uv": [],
+          "nuv": [],
+          "minPos": [],
+          "maxPos": []
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "96048968-2b7f-4143-9ad4-634726ba8143@6c48a",
+        "atlasUuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b"
+      },
+      "ver": "1.0.11",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "02cde": {
+      "importer": "sprite-frame",
+      "uuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b@02cde",
+      "displayName": "",
+      "id": "02cde",
+      "name": "按钮-明天再来",
+      "userData": {
+        "trimType": "auto",
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": 0,
+        "trimX": 0,
+        "trimY": 0,
+        "width": 338,
+        "height": 120,
+        "rawWidth": 338,
+        "rawHeight": 120,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [],
+          "indexes": [],
+          "uv": [],
+          "nuv": [],
+          "minPos": [],
+          "maxPos": []
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "96048968-2b7f-4143-9ad4-634726ba8143@6c48a",
+        "atlasUuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b"
+      },
+      "ver": "1.0.11",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "atlasTextureName": "ActivityShareUI_atlas0.png",
+    "format": 2,
+    "uuid": "d4eb047a-1505-4f1f-85a9-ebba0238d72b",
+    "textureUuid": "96048968-2b7f-4143-9ad4-634726ba8143@6c48a"
+  }
+}

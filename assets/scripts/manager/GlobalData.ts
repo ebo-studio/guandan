@@ -325,7 +325,7 @@ export namespace GlobalData {
     }
     //创建房间
     export const createRoomInfo = {
-        timeList: [15, 30],
+        timeList: [15, 20, 30],
         time: null,  //1->15s 2->30s
     }
     //历史战斗记录

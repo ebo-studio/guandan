@@ -183,6 +183,18 @@ export class Lobby extends Component {
             }
         });
     }
+    //签到
+    onBtnSignInClick() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({ path: UIConfig.signInViewItemKey });
+    }
+
+    onBtnShareClick() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({ path: UIConfig.shareViewItemKey });
+    }
+
+
     onEnable() {
         // let data = GameLogic.convertCardListS2C(
         //     [

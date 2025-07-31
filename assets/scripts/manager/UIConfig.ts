@@ -29,6 +29,9 @@ import { RankAuditionItem } from "../component/rank/RankAuditionItem";
 import { GameEndAuditionItem } from "../component/gameEndAudition/GameEndAuditionItem";
 import { FreeMatchItem } from "../component/match/FreeMatchItem";
 import { AuditionMatchItem } from "../component/match/AuditionMatchItem";
+import { signInViewItem } from "../component/activity/signInViewItem";
+import { shareViewItem } from "../component/activity/shareViewItem";
+import { GetItem } from "../component/GetItem";
 
 export module UIConfig {
 
@@ -66,6 +69,9 @@ export module UIConfig {
         configMap.set(RankAuditionItemKey, { path: "prefab/rank/RankAuditionItem", comp: RankAuditionItem });
         configMap.set(FreeMatchItemKey, { path: "prefab/match/FreeMatchItem", comp: FreeMatchItem });
         configMap.set(AuditionMatchItemKey, { path: "prefab/match/AuditionMatchItem", comp: AuditionMatchItem });
+        configMap.set(signInViewItemKey, {path: "prefab/activity/signInViewItem", comp: signInViewItem });
+        configMap.set(shareViewItemKey, {path: "prefab/activity/shareViewItem", comp: shareViewItem});
+        configMap.set(getItemKey, {path: "prefab/GetItem", comp: GetItem });
     }
 
     export function getUIInfoByName(str: string) {
@@ -75,6 +81,9 @@ export module UIConfig {
         return null;
     }
 
+    export const getItemKey: string = 'GetItem';
+    export const shareViewItemKey: string = 'shareViewItem'
+    export const signInViewItemKey: string = 'signInViewItem';
     export const MessageBoxCommonKey: string = "MessageBoxCommon";         //通用提示框
     export const MessageBoxCommonTestKey: string = "MessageBoxCommonTest"; //通用提示框(测试)
     export const SettingItemKey: string = "SettingItem";                   //设置
