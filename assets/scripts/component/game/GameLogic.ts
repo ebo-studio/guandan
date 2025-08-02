@@ -3,6 +3,7 @@ import { utils } from "../../common/utils";
 import { GlobalData } from "../../manager/GlobalData";
 import { SoundManager } from "../../manager/SoundManager";
 import { GameDefine } from "./GameDefine";
+import { CardItem } from "./CardItem";
 export module GameLogic {
 
     let userSelf: GameMsg.IUser = null;
@@ -1102,7 +1103,7 @@ export module GameLogic {
         //         groupCopy.splice(idx, 1); // 确保只匹配一次
         //     }
         // }
-        
+
         const countMap = new Map<number, number>();
         for (const v of group) {
             countMap.set(v, (countMap.get(v) || 0) + 1);
@@ -1119,242 +1120,454 @@ export module GameLogic {
     }
 
     let selectedHistory: number[] = []
-    export function moveSelectedCardsToBack(cards: number[], selected: number[], prevSelected: number[], prevGrouped: number[][]): number[][] {
+    // export function moveSelectedCardsToBack(cards: number[], selected: number[], prevSelected: number[], prevGrouped: number[][]): number[][] {
+    //     const result: number[][] = [];
+    //     const moveToBack: number[][] = [];
+    //     const selectedSet = new Set(selected);
+    //     const prevSet = new Set(prevSelected);
+    //     const usedCards = new Set<number>();
+    //     const usedIndex = new Set<number>();
+
+
+    //     const selectedIndexSet = new Set<number>();
+    //     const selectedCardCount = new Map<number, number>();
+
+    //     for (const c of selected) {
+    //         selectedCardCount.set(c, (selectedCardCount.get(c) || 0) + 1);
+    //     }
+    //     // const selectedIndexSet = new Set<number>();
+    //     for (let i = 0; i < cards.length; i++) {
+    //         const c = cards[i];
+    //         const count = selectedCardCount.get(c) || 0;
+    //         if (count > 0) {
+    //             selectedIndexSet.add(i);
+    //             selectedCardCount.set(c, count - 1);
+    //         }
+    //     }
+
+    //     // 2. 判断每个旧 group 是否“完全未被重新选中”（按 index 判断）
+    //     for (const group of prevGrouped) {
+    //         const groupCardCount = new Map<number, number>();
+    //         for (const c of group) {
+    //             groupCardCount.set(c, (groupCardCount.get(c) || 0) + 1);
+    //         }
+
+    //         // 精确找到 cards 中与 group 匹配的 index（按值+次数）
+    //         const matchedIndexes: number[] = [];
+    //         const tempCount = new Map(groupCardCount);
+
+    //         for (let i = 0; i < cards.length; i++) {
+    //             const c = cards[i];
+    //             const count = tempCount.get(c) || 0;
+    //             if (count > 0 && !usedIndex.has(i)) {
+    //                 matchedIndexes.push(i);
+    //                 tempCount.set(c, count - 1);
+    //                 if (matchedIndexes.length === group.length) break;
+    //             }
+    //         }
+
+    //         // console.log("group match index:", matchedIndexes);
+    //         // console.log("selectedIndexSet:", [...selectedIndexSet]);
+    //         // 核心判断：这些 index 是否都未被选中
+    //         const isUntouched = matchedIndexes.every(i => !selectedIndexSet.has(i));
+
+    //         if (isUntouched) {
+    //             result.push(group);
+    //             matchedIndexes.forEach(i => usedIndex.add(i));
+    //         }
+    //         console.log(">>> CHECKING prevGrouped group", group, "against cards =", [...cards]);
+    //     }
+
+    //     const bomsKing = findRocket(selected);
+    //     if (bomsKing.length != 0) {
+    //         for (const rocket of bomsKing) {
+    //             result.unshift(rocket);                  // 放最前面
+    //             // rocket.forEach(c => usedIndex.add(c));   // 标记为已用
+    //             // for (let i = 0; i < cards.length; i++) {
+    //             //     if (rocket.includes(cards[i])) usedCards.add(i);
+    //             // }
+    //             markUsedByCardValues(cards, rocket, usedIndex);
+    //         }
+    //     }
+
+    //     let triple: number[] = [];
+    //     let pair: number[] = [];
+
+
+
+    //     // ✅ 步骤3：识别飞机
+    //     const triplets = findFeiji(selected.filter(c => !usedCards.has(c)));
+    //     for (let group of triplets) {
+    //         moveToBack.push(group);
+    //         // for (let i = 0; i < cards.length; i++) {
+    //         //     if (group.includes(cards[i])) usedIndex.add(i);
+    //         // }
+    //         markUsedByCardValues(cards, group, usedIndex);
+    //         // group.forEach(c => usedCards.add(c));
+    //     }
+
+    //     // for (const list of map.values()) {
+    //     //     if (list.length === 3) triple = list;
+    //     //     else if (list.length === 2) pair = list;
+    //     // }
+
+    //     // if (triple.length === 3 && pair.length === 2) {
+    //     //     const group = [...triple, ...pair];
+    //     //     moveToBack.push(group);
+    //     //     group.forEach(c => usedCards.add(c));
+    //     // }
+
+    //     // ✅ 步骤2：识别炸弹（六炸、五炸、四炸等）包括红心级牌
+    //     const bombs = findBombsWithHeartCard(selected.filter(c => !usedCards.has(c)));
+    //     for (let bomb of bombs) {
+    //         result.unshift(bomb);  // 将炸弹放在最左边
+    //         // for (let i = 0; i < cards.length; i++) {
+    //         //     if (bomb.includes(cards[i])) usedIndex.add(i);
+    //         // }
+    //         // bomb.forEach(c => usedCards.add(c));  // 标记炸弹牌已使用
+    //         markUsedByCardValues(cards, bomb, usedIndex);
+    //     }
+
+    //     if (selected.length == 5) {
+    //         const map = getTripleWithPairPreferBig(selected);
+    //         if (map && map.length == 5) {
+    //             moveToBack.push(map);
+    //             // for (let i = 0; i < cards.length; i++) {
+    //             //     if (map.includes(cards[i])) usedIndex.add(i);
+    //             // }
+    //             // map.forEach(c => usedCards.add(c));
+    //             markUsedByCardValues(cards, map, usedIndex);
+    //         }
+    //     }
+
+
+
+    //     // ✅ 步骤4：识别三带二
+
+
+
+
+    //     // ✅ 步骤5：识别顺子
+    //     const straights = findStraightByCard(selected.filter(c => !usedCards.has(c)));
+    //     for (let s of straights) {
+    //         // 检查是否是同花顺或逢人配
+    //         const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
+    //         if (isSameColorStraight) {
+    //             // 检查是否为同花顺
+    //             function isSameColorStraight(straight: number[]): boolean {
+    //                 const first = straight.find(c => !isHeartCard(c));
+    //                 if (!first) return false; // 全是红心级牌，不成立
+    //                 const color = getCardColor(first);
+    //                 return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+    //             }
+    //             if (isSameColorStraight(s)) {
+    //                 result.unshift(s);
+    //             }
+    //             else {
+    //                 moveToBack.unshift(s);
+    //             }
+    //         } else {
+    //             moveToBack.push(s);
+    //         }
+    //         markUsedByCardValues(cards, s, usedIndex);
+    //         // for (let i = 0; i < cards.length; i++) {
+    //         //     if (s.includes(cards[i])) usedIndex.add(i);
+    //         // }
+
+    //         // s.forEach(c => usedCards.add(c));
+    //     }
+
+    //     // ✅ 步骤6：连对识别
+    //     const lianduiGroups = findLiandui(selected.filter(c => !usedCards.has(c)));
+    //     for (let group of lianduiGroups) {
+    //         moveToBack.push(group);
+    //         // for (let i = 0; i < cards.length; i++) {
+    //         //     if (group.includes(cards[i])) usedIndex.add(i);
+    //         // }
+    //         // group.forEach(c => usedCards.add(c));
+    //         markUsedByCardValues(cards, group, usedIndex);
+    //     }
+
+    //     // ✅ 步骤7：识别两对
+    //     if (selected.length == 2 || selected.length == 3) {
+    //         const unusedCards = selected.filter(c => !usedCards.has(c));
+    //         const countMap = getCardCountMap_I(unusedCards);
+    //         const pairList: number[][] = [];
+
+    //         for (const [rank, list] of countMap.entries()) {
+    //             if (list.length === 2) {
+    //                 moveToBack.push(list);
+    //                 // list.forEach(c => usedCards.add(c));
+    //                 // for (let i = 0; i < cards.length; i++) {
+    //                 //     if (list.includes(cards[i])) usedIndex.add(i);
+    //                 // }
+    //                 markUsedByCardValues(cards, list, usedIndex);
+    //             }
+    //             else if (list.length === 3) {
+    //                 moveToBack.push(list);
+    //                 // list.forEach(c => usedCards.add(c));
+    //                 // for (let i = 0; i < cards.length; i++) {
+    //                 //     if (list.includes(cards[i])) usedIndex.add(i);
+    //                 // }
+    //                 markUsedByCardValues(cards, list, usedIndex);
+    //             }
+    //         }
+    //     }
+
+
+    //     // // ✅ 步骤8：将剩余未处理的牌按点数分组
+    //     const sortValue = cards.filter((_, idx) => !usedIndex.has(idx));
+    //     // ✅ 获取未使用的牌并按牌力降序排序
+    //     const remaining: { c: number; idx: number }[] = cards
+    //         .map((c, idx) => ({ c, idx }))
+    //         .filter(({ idx }) => !usedIndex.has(idx))
+    //         .sort((a, b) => getCardSize(b.c) - getCardSize(a.c));
+
+    //     // ✅ 对未用牌按点数分组（保留 index）
+    //     const rankMap = new Map<number, number[]>();
+    //     for (const { c, idx } of remaining) {
+    //         const rank = getCardSize(c);
+    //         if (!rankMap.has(rank)) rankMap.set(rank, []);
+    //         rankMap.get(rank)!.push(idx);
+    //     }
+    //     for (const indexes of rankMap.values()) {
+    //         const selectedGroup: number[] = [];
+    //         const unselectedGroup: number[] = [];
+
+    //         for (const i of indexes) {
+    //             if (selectedIndexSet.has(i)) {
+    //                 selectedGroup.push(cards[i]);
+    //             } else {
+    //                 unselectedGroup.push(cards[i]);
+    //             }
+    //             usedIndex.add(i); // 不管是否选中，都标记已使用
+    //         }
+
+    //         if (selectedGroup.length > 0) {
+    //             moveToBack.push(selectedGroup); // 只移选中的
+    //         }
+    //         if (unselectedGroup.length > 0) {
+    //             result.push(unselectedGroup); // 未选的保留
+    //         }
+    //     }
+
+
+    //     // 最后返回结果，炸弹已经在最前面
+    //     return [...result, ...moveToBack];
+
+    // }
+
+    export function moveSelectedCardsToBack(
+        cardItems: CardItem[],
+        selected: number[], //选中的牌的值
+        selectedIndexes: number[], //选中的牌的索引
+        prevGrouped: number[][], //上次理牌的手牌
+        prevSelected: number[], //上次选中的牌的值
+        //prevSelectedIndexes: number[]
+    ): number[][] {
         const result: number[][] = [];
         const moveToBack: number[][] = [];
-        const selectedSet = new Set(selected);
-        const prevSet = new Set(prevSelected);
-        const usedCards = new Set<number>();
         const usedIndex = new Set<number>();
+        const selectedIndexSet = new Set<number>(selectedIndexes);
+        // const prevSelectedIndexSet = new Set<number>(prevSelectedIndexes);
 
 
-        const selectedIndexSet = new Set<number>();
-        const selectedCardCount = new Map<number, number>();
-
-        for (const c of selected) {
-            selectedCardCount.set(c, (selectedCardCount.get(c) || 0) + 1);
-        }
-        // const selectedIndexSet = new Set<number>();
-        for (let i = 0; i < cards.length; i++) {
-            const c = cards[i];
-            const count = selectedCardCount.get(c) || 0;
-            if (count > 0) {
-                selectedIndexSet.add(i);
-                selectedCardCount.set(c, count - 1);
-            }
-        }
-
-        // 2. 判断每个旧 group 是否“完全未被重新选中”（按 index 判断）
+        // === 1. 保留旧组合中，完全未被重新选中、且出现在 prevSelected 中的组合 ===
         for (const group of prevGrouped) {
-            const groupCardCount = new Map<number, number>();
-            for (const c of group) {
-                groupCardCount.set(c, (groupCardCount.get(c) || 0) + 1);
+            const matched = matchPreservedGroup(group, cardItems, usedIndex, selectedIndexSet, prevSelected);
+            if (matched) {
+                moveToBack.push(group);
+                matched.forEach(i => usedIndex.add(i));
             }
+        }
 
-            // 精确找到 cards 中与 group 匹配的 index（按值+次数）
-            const matchedIndexes: number[] = [];
-            const tempCount = new Map(groupCardCount);
+        // === 2. 识别各种牌型 ===
+        for (const rocket of findRocket(selected)) {
+            const idxs = matchGroupByCardItems(rocket, cardItems, usedIndex, selectedIndexSet);
+            if (idxs) {
+                result.unshift(rocket);
+                idxs.forEach(i => usedIndex.add(i));
+            }
+        }
 
-            for (let i = 0; i < cards.length; i++) {
-                const c = cards[i];
-                const count = tempCount.get(c) || 0;
-                if (count > 0 && !usedIndex.has(i)) {
-                    matchedIndexes.push(i);
-                    tempCount.set(c, count - 1);
-                    if (matchedIndexes.length === group.length) break;
+        for (const plane of findFeiji(selected.filter(c => !isUsed(c)))) {
+            const idxs = matchGroupByCardItems(plane, cardItems, usedIndex, selectedIndexSet);
+            if (idxs) {
+                moveToBack.push(plane);
+                idxs.forEach(i => usedIndex.add(i));
+            }
+        }
+
+        for (const bomb of findBombsWithHeartCard(selected.filter(c => !isUsed(c)))) {
+            const idxs = matchGroupByCardItems(bomb, cardItems, usedIndex, selectedIndexSet);
+            if (idxs) {
+                result.unshift(bomb);
+                idxs.forEach(i => usedIndex.add(i));
+            }
+        }
+
+        if (selected.length === 5) {
+            const group = getTripleWithPairPreferBig(selected.filter(c => !isUsed(c)));
+            if (group?.length === 5) {
+                const idxs = matchGroupByCardItems(group, cardItems, usedIndex, selectedIndexSet);
+                if (idxs) {
+                    moveToBack.push(group);
+                    idxs.forEach(i => usedIndex.add(i));
                 }
             }
-
-            // console.log("group match index:", matchedIndexes);
-            // console.log("selectedIndexSet:", [...selectedIndexSet]);
-            // 核心判断：这些 index 是否都未被选中
-            const isUntouched = matchedIndexes.every(i => !selectedIndexSet.has(i));
-
-            if (isUntouched) {
-                result.push(group);
-                matchedIndexes.forEach(i => usedIndex.add(i));
-            }
-            console.log(">>> CHECKING prevGrouped group", group, "against cards =", [...cards]);
         }
 
-        const bomsKing = findRocket(selected);
-        if (bomsKing.length != 0) {
-            for (const rocket of bomsKing) {
-                result.unshift(rocket);                  // 放最前面
-                // rocket.forEach(c => usedIndex.add(c));   // 标记为已用
-                // for (let i = 0; i < cards.length; i++) {
-                //     if (rocket.includes(cards[i])) usedCards.add(i);
-                // }
-                markUsedByCardValues(cards, rocket, usedIndex);
-            }
-        }
-
-        let triple: number[] = [];
-        let pair: number[] = [];
-
-
-
-        // ✅ 步骤3：识别飞机
-        const triplets = findFeiji(selected.filter(c => !usedCards.has(c)));
-        for (let group of triplets) {
-            moveToBack.push(group);
-            // for (let i = 0; i < cards.length; i++) {
-            //     if (group.includes(cards[i])) usedIndex.add(i);
-            // }
-            markUsedByCardValues(cards, group, usedIndex);
-            // group.forEach(c => usedCards.add(c));
-        }
-
-        // for (const list of map.values()) {
-        //     if (list.length === 3) triple = list;
-        //     else if (list.length === 2) pair = list;
-        // }
-
-        // if (triple.length === 3 && pair.length === 2) {
-        //     const group = [...triple, ...pair];
-        //     moveToBack.push(group);
-        //     group.forEach(c => usedCards.add(c));
-        // }
-
-        // ✅ 步骤2：识别炸弹（六炸、五炸、四炸等）包括红心级牌
-        const bombs = findBombsWithHeartCard(selected.filter(c => !usedCards.has(c)));
-        for (let bomb of bombs) {
-            result.unshift(bomb);  // 将炸弹放在最左边
-            // for (let i = 0; i < cards.length; i++) {
-            //     if (bomb.includes(cards[i])) usedIndex.add(i);
-            // }
-            // bomb.forEach(c => usedCards.add(c));  // 标记炸弹牌已使用
-            markUsedByCardValues(cards, bomb, usedIndex);
-        }
-
-        if (selected.length == 5) {
-            const map = getTripleWithPairPreferBig(selected);
-            if (map && map.length == 5) {
-                moveToBack.push(map);
-                // for (let i = 0; i < cards.length; i++) {
-                //     if (map.includes(cards[i])) usedIndex.add(i);
-                // }
-                // map.forEach(c => usedCards.add(c));
-                markUsedByCardValues(cards, map, usedIndex);
-            }
-        }
-
-
-
-        // ✅ 步骤4：识别三带二
-
-
-
-
-        // ✅ 步骤5：识别顺子
-        const straights = findStraightByCard(selected.filter(c => !usedCards.has(c)));
-        for (let s of straights) {
-            // 检查是否是同花顺或逢人配
-            const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
-            if (isSameColorStraight) {
-                // 检查是否为同花顺
-                function isSameColorStraight(straight: number[]): boolean {
-                    const first = straight.find(c => !isHeartCard(c));
-                    if (!first) return false; // 全是红心级牌，不成立
-                    const color = getCardColor(first);
-                    return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
-                }
+        for (const s of findStraightByCard(selected.filter(c => !isUsed(c)))) {
+            const idxs = matchGroupByCardItems(s, cardItems, usedIndex, selectedIndexSet);
+            if (idxs) {
                 if (isSameColorStraight(s)) {
                     result.unshift(s);
+                } else {
+                    moveToBack.push(s);
                 }
-                else {
-                    moveToBack.unshift(s);
-                }
-            } else {
-                moveToBack.push(s);
+                idxs.forEach(i => usedIndex.add(i));
             }
-            markUsedByCardValues(cards, s, usedIndex);
-            // for (let i = 0; i < cards.length; i++) {
-            //     if (s.includes(cards[i])) usedIndex.add(i);
-            // }
-
-            // s.forEach(c => usedCards.add(c));
         }
 
-        // ✅ 步骤6：连对识别
-        const lianduiGroups = findLiandui(selected.filter(c => !usedCards.has(c)));
-        for (let group of lianduiGroups) {
-            moveToBack.push(group);
-            // for (let i = 0; i < cards.length; i++) {
-            //     if (group.includes(cards[i])) usedIndex.add(i);
-            // }
-            // group.forEach(c => usedCards.add(c));
-            markUsedByCardValues(cards, group, usedIndex);
+        for (const group of findLiandui(selected.filter(c => !isUsed(c)))) {
+            const idxs = matchGroupByCardItems(group, cardItems, usedIndex, selectedIndexSet);
+            if (idxs) {
+                moveToBack.push(group);
+                idxs.forEach(i => usedIndex.add(i));
+            }
         }
 
-        // ✅ 步骤7：识别两对
-        if (selected.length == 2 || selected.length == 3) {
-            const unusedCards = selected.filter(c => !usedCards.has(c));
-            const countMap = getCardCountMap_I(unusedCards);
-            const pairList: number[][] = [];
-
-            for (const [rank, list] of countMap.entries()) {
-                if (list.length === 2) {
-                    moveToBack.push(list);
-                    // list.forEach(c => usedCards.add(c));
-                    // for (let i = 0; i < cards.length; i++) {
-                    //     if (list.includes(cards[i])) usedIndex.add(i);
-                    // }
-                    markUsedByCardValues(cards, list, usedIndex);
-                }
-                else if (list.length === 3) {
-                    moveToBack.push(list);
-                    // list.forEach(c => usedCards.add(c));
-                    // for (let i = 0; i < cards.length; i++) {
-                    //     if (list.includes(cards[i])) usedIndex.add(i);
-                    // }
-                    markUsedByCardValues(cards, list, usedIndex);
+        if (selected.length === 2 || selected.length === 3) {
+            const rest = selected.filter(c => !isUsed(c));
+            const map = getCardCountMap_I(rest);
+            for (const list of map.values()) {
+                if (list.length === 2 || list.length === 3) {
+                    const idxs = matchGroupByCardItems(list, cardItems, usedIndex, selectedIndexSet);
+                    if (idxs) {
+                        moveToBack.push(list);
+                        idxs.forEach(i => usedIndex.add(i));
+                    }
                 }
             }
         }
 
+        // === 3. 剩余牌 ===
+        const remaining = cardItems
+            .filter(item => !usedIndex.has(item.getIndex()))
+            .map(item => ({ idx: item.getIndex(), val: item.getValue() }))
+            .sort((a, b) => getCardSize(b.val) - getCardSize(a.val));
 
-        // // ✅ 步骤8：将剩余未处理的牌按点数分组
-        const sortValue = cards.filter((_, idx) => !usedIndex.has(idx));
-        // ✅ 获取未使用的牌并按牌力降序排序
-        const remaining: { c: number; idx: number }[] = cards
-            .map((c, idx) => ({ c, idx }))
-            .filter(({ idx }) => !usedIndex.has(idx))
-            .sort((a, b) => getCardSize(b.c) - getCardSize(a.c));
-
-        // ✅ 对未用牌按点数分组（保留 index）
         const rankMap = new Map<number, number[]>();
-        for (const { c, idx } of remaining) {
-            const rank = getCardSize(c);
+        for (const { idx, val } of remaining) {
+            const rank = getCardSize(val);
             if (!rankMap.has(rank)) rankMap.set(rank, []);
             rankMap.get(rank)!.push(idx);
         }
-        for (const indexes of rankMap.values()) {
+
+        for (const idxs of rankMap.values()) {
             const selectedGroup: number[] = [];
             const unselectedGroup: number[] = [];
 
-            for (const i of indexes) {
-                if (selectedIndexSet.has(i)) {
-                    selectedGroup.push(cards[i]);
+            for (const i of idxs) {
+                const val = cardItems.find(c => c.getIndex() === i)!.getValue();
+                if (selectedIndexSet.has(i) && !usedIndex.has(i)) {
+                    selectedGroup.push(val);
                 } else {
-                    unselectedGroup.push(cards[i]);
+                    unselectedGroup.push(val);
                 }
-                usedIndex.add(i); // 不管是否选中，都标记已使用
+                usedIndex.add(i);
             }
 
-            if (selectedGroup.length > 0) {
-                moveToBack.push(selectedGroup); // 只移选中的
-            }
-            if (unselectedGroup.length > 0) {
-                result.push(unselectedGroup); // 未选的保留
-            }
+            if (selectedGroup.length > 0) moveToBack.push(selectedGroup);
+            if (unselectedGroup.length > 0) result.push(unselectedGroup);
         }
 
-
-        // 最后返回结果，炸弹已经在最前面
         return [...result, ...moveToBack];
 
+        // --- 工具函数 ---
+
+        function isUsed(card: number): boolean {
+            for (const item of cardItems) {
+                if (item.getValue() === card && usedIndex.has(item.getIndex())) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function isSameColorStraight(straight: number[]): boolean {
+            const first = straight.find(c => !isHeartCard(c));
+            if (!first) return false;
+            const color = getCardColor(first);
+            return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+        }
+
+        function matchGroupByCardItems(
+            group: number[],
+            cardItems: CardItem[],
+            used: Set<number>,
+            candidateIndexes: Set<number>
+        ): number[] | null {
+            const result: number[] = [];
+            const usedLocal = new Set<number>();
+
+            for (const val of group) {
+                let matched = false;
+                for (const item of cardItems) {
+                    const idx = item.getIndex();
+                    if (!candidateIndexes.has(idx)) continue;
+                    if (used.has(idx) || usedLocal.has(idx)) continue;
+                    if (item.getValue() === val) {
+                        result.push(idx);
+                        usedLocal.add(idx);
+                        matched = true;
+                        break;
+                    }
+                }
+                if (!matched) return null;
+            }
+
+            return result.length === group.length ? result : null;
+        }
+
+        function matchPreservedGroup(
+            group: number[],
+            cardItems: CardItem[],
+            used: Set<number>,
+            selectedIndexSet: Set<number>,
+            prevSelected: number[],
+            //prevSelectedIndexSet: Set<number>
+        ): number[] | null {
+            const result: number[] = [];
+            const groupCount = new Map<number, number>();
+            const prevSelectedCount = new Map<number, number>();
+
+            for (const c of group) groupCount.set(c, (groupCount.get(c) || 0) + 1);
+            for (const c of prevSelected) prevSelectedCount.set(c, (prevSelectedCount.get(c) || 0) + 1);
+
+            const tempCount = new Map(groupCount);
+
+            for (const item of cardItems) {
+                const idx = item.getIndex();
+                const val = item.getValue();
+                if (used.has(idx) || selectedIndexSet.has(idx)) continue;
+
+                const need = tempCount.get(val) || 0;
+                const prevCount = prevSelectedCount.get(val) || 0;
+                if (need > 0 && prevCount > 0) {
+                    tempCount.set(val, need - 1);
+                    prevSelectedCount.set(val, prevCount - 1);
+                    result.push(idx);
+                    if (result.length === group.length) break;
+                }
+            }
+
+            return result.length === group.length ? result : null;
+        }
     }
+
+
+
 
     function findBombsWithHeartCard(cards: number[]): number[][] {
         const countMap = getCardCountMap(cards);

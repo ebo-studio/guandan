@@ -89,6 +89,7 @@ export class CardLayer extends Component {
     private sorthandCardsValue: number[] = []   //理牌后手牌值
     private groupedCards: number[][] = [];
     private prevSelected: number[] = []
+    private prevSelectedIndex: number[] = [];
     private handCards: CardItem[] = []      //手牌
     private handScale: number = 1           //手牌缩放
     private startHandPosX: number = 0       //手牌X起始位置(横)
@@ -1810,6 +1811,7 @@ export class CardLayer extends Component {
             }
         }
 
+        // this.handCards
         // ✅ 理牌处理
         console.log("🟡 当前传入 selected 是：", JSON.stringify(this.sorthandCardsValue));
         const selectedPoints = selected.map(card => GameLogic.getCardSize(card));
@@ -1817,10 +1819,12 @@ export class CardLayer extends Component {
         const uniqueSelected = [...new Set(selected)];
         console.log("🟡 当前传入去重后的 selected：", uniqueSelected);
         this.groupedCards = GameLogic.moveSelectedCardsToBack(
-            this.handCardsValue,
+            this.handCards,
             selected,
-            this.prevSelected, // <== 关键：传入前次理牌
-            this.groupedCards
+            this.selectCardIndex, // <== 关键：传入前次理牌
+            this.groupedCards,
+            this.prevSelected,
+            // []
         );
         // this.groupedCards = GameLogic.manualSortCards(
         //     selected,
@@ -1834,9 +1838,9 @@ export class CardLayer extends Component {
         this.picCardDir.node.active = false;
         // ✅ 更新手牌
         this.handCardsValue = this.groupedCards.flat();
-        // // 👉 保证 handCards 顺序与 handCardsValue 一致
-        // const newHandCards: any[] = [];
-        // const used: boolean[] = new Array(this.handCards.length).fill(false);
+        // 👉 保证 handCards 顺序与 handCardsValue 一致
+        const newHandCards: any[] = [];
+        const used: boolean[] = new Array(this.handCards.length).fill(false);
 
         // for (let i = 0; i < this.handCardsValue.length; i++) {
         //     const value = this.handCardsValue[i];
@@ -1855,6 +1859,7 @@ export class CardLayer extends Component {
 
         // ✅ 更新 prevSelected 为这次选中的
         this.prevSelected = utils.deepCopy(selected);
+        this.prevSelectedIndex = utils.deepCopy(this.selectCardIndex);
 
         // ✅ 清除选中状态
         this.selectCardValue = [];
