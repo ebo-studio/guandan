@@ -14,7 +14,7 @@ export default class PopWindow extends Component {
 
     }
 
-    public show() {
+    public show(isTween: boolean = false) {
         this.node.active = true;
         //很奇怪0.1,适配会有问题,0没问题
         let that = this;

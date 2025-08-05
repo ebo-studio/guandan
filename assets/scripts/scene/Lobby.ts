@@ -9,7 +9,11 @@ import { LobbyUserHeadItem } from '../component/LobbyUserHeadItem';
 import { KeyBoardType } from '../component/room/KeyBoardItem';
 import { GameSocket } from '../manager/GameSocket';
 import { PbManager } from '../proto/PbManager';
+import Http from '../proto/Http';
+import { UrlConfig } from '../manager/UrlConfig';
+// import { ethers } from "ethers";
 const { ccclass, property } = _decorator;
+declare const ethers: any;
 
 @ccclass('Lobby')
 export class Lobby extends Component {
@@ -134,7 +138,7 @@ export class Lobby extends Component {
         });
     }
     //加入房间
-    onBtnJoinRoomClick() {
+    async onBtnJoinRoomClick() {
         SoundManager.playClick();
         UIManager.Instace.showUI({
             path: UIConfig.KeyBoardItemKey,
@@ -147,10 +151,20 @@ export class Lobby extends Component {
         });
     }
     //自由嗨完
-    onBtnRaceFreeClick() {
-        GlobalData.cardInfo.gameType = GlobalData.gameType.free;
-        let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
-        GameSocket.send(sendBuffer);
+    async onBtnRaceFreeClick() {
+        // const wallet = ethers.Wallet.createRandom();
+        // console.log(wallet.address);
+        var commonUrl = UrlConfig.getTokenUrl();
+        const timestampMs = Date.now()
+        const test = await Http.post(commonUrl + '/api/address/exchangeToken', {
+            address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
+            integral: '1',
+            time_str: timestampMs
+        })
+         console.log("JSON请求返回:", test);
+        // GlobalData.cardInfo.gameType = GlobalData.gameType.free;
+        // let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
+        // GameSocket.send(sendBuffer);
     
     }
     //积分赛

@@ -14,7 +14,13 @@ export class GameEndFreeHeadItem extends Component {
     @property(SpriteFrame)
     sps: SpriteFrame[] = [];
 
-    setData(data: { head: string, name: string, rank: number, score: number }, force: boolean = false) {
+    @property(Sprite)
+    panel_shengli: Sprite = null;
+
+    @property(Sprite)
+    panel_shibai: Sprite = null;
+
+    setData(data: { head: string, name: string, rank: number, score: number, isWin: boolean}, force: boolean = false) {
         if (data.head) {
             let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
             utils.loadRemoteSpriteframe(sp, data.head);
@@ -36,6 +42,8 @@ export class GameEndFreeHeadItem extends Component {
         else {
             this.txtScore.string = "+" + tmpScore;
         }
+        this.panel_shengli.node.active = data.isWin;
+        this.panel_shibai.node.active = data.isWin;
     }
 }
 

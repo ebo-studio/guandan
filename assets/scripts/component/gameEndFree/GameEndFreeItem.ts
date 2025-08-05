@@ -1,4 +1,4 @@
-import { _decorator, Component, getLoadOpOfClearFlag, Node, Sprite, SpriteFrame, UI } from 'cc';
+import { _decorator, Component, getLoadOpOfClearFlag, Node, sp, Sprite, SpriteFrame, UI } from 'cc';
 import PopWindow from '../PopWindow';
 import { SoundManager } from '../../manager/SoundManager';
 import { GameEndFreeHeadItem } from './GameEndFreeHeadItem';
@@ -14,15 +14,15 @@ const { ccclass, property } = _decorator;
 @ccclass('GameEndFreeItem')
 export class GameEndFreeItem extends PopWindow {
     //光
-    @property(Sprite)
-    picLight: Sprite = null;
-    @property(SpriteFrame)
-    spsLight: SpriteFrame[] = [];
+    // @property(Sprite)
+    // picLight: Sprite = null;
+    // @property(SpriteFrame)
+    // spsLight: SpriteFrame[] = [];
     //背景
-    @property(Sprite)
-    picBg: Sprite = null;
-    @property(SpriteFrame)
-    spsBg: SpriteFrame[] = [];
+    // @property(Sprite)
+    // picBg: Sprite = null;
+    // @property(SpriteFrame)
+    // spsBg: SpriteFrame[] = [];
     //标题
     @property(Sprite)
     picTitle: Sprite = null;
@@ -32,17 +32,37 @@ export class GameEndFreeItem extends PopWindow {
     @property(GameEndFreeHeadItem)
     headItems: GameEndFreeHeadItem[] = [];
 
+    @property(sp.Skeleton)
+    isWin: sp.Skeleton = null;
+
     public setData(obj?: any): void {
         let datas: GameMsg.WinList = obj;
         let list = GameLogic.checkResult(datas);
         let iswin: number = list.isWin ? 0 : 1;
+
+        if(iswin == 0) {
+            this.isWin.setAnimation(0, 'sl_chuxian', false);
+            this.isWin.setCompleteListener(()=>{
+                if(this.isWin.animation == 'sl_chuxian') {
+                    this.isWin.setAnimation(0, 'sl_loop', true);
+                }
+            })
+        }
+        else {
+            this.isWin.setAnimation(0, 'sb_chuxian', false);
+            this.isWin.setCompleteListener(()=>{
+                if(this.isWin.animation == 'sb_chuxian') {
+                    this.isWin.setAnimation(0, 'sb_loop', true);
+                }
+            })
+        }
         for (let i = 0; i < list.list.length; i++) {
             let item = list.list[i];
-            let data = { rank: item.res, head: item.headImg, name: item.name, score: item.score };
+            let data = { rank: item.res, head: item.headImg, name: item.name, score: item.score, isWin: Boolean(iswin) };
             this.headItems[i].setData(data);
         }
-        this.picLight.spriteFrame = this.spsLight[iswin];
-        this.picBg.spriteFrame = this.spsBg[iswin];
+        // this.picLight.spriteFrame = this.spsLight[iswin];
+        // this.picBg.spriteFrame = this.spsBg[iswin];
         this.picTitle.spriteFrame = this.spsTitle[iswin];
     }
     //返回大厅
