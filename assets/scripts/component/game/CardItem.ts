@@ -38,6 +38,18 @@ export class CardItem extends Component {
     @property(Node)
     liandui: Node = null;
 
+    @property(Node)
+    color_1:Node = null; //方块
+
+    @property(Node)
+    color_2: Node = null; //梅花
+
+    @property(Node)
+    color_3: Node = null; //红桃
+
+    @property(Node)
+    color_4: Node = null; //黑桃
+
     boolSelect: boolean = false
     boolMask: boolean = false
     cardValue: number = 0
@@ -84,6 +96,20 @@ export class CardItem extends Component {
     showReplace(type: boolean) {
          this.nodeReplace.active = type;
     }
+
+    showCardColor(color: number) {
+        if(!this.nodeReplace.active) {
+            this.color_1.active = color == 0;
+            this.color_2.active = color == 1;
+            this.color_3.active = color == 2;
+            this.color_4.active = color == 3;
+        }
+        else {
+            this.color_1.active = this.color_2.active = this.color_3.active = this.color_4.active = false;
+        }
+    }
+
+
     //value 0x23
     setValue(value: number, cardFrame: SpriteFrame) {
         this.cardValue = value;
@@ -91,6 +117,7 @@ export class CardItem extends Component {
         let color = GameLogic.getCardColor(value);
         let size = value % 16;
         this.showReplace(color == GlobalData.cardInfo.unitCardColor && size == GlobalData.cardInfo.levelCard);
+        this.showCardColor(color);
         this.setBack(false);
         this.showTonghua(false);
         this.showThreeTwo(false);
@@ -143,6 +170,7 @@ export class CardItem extends Component {
         this.showShunzi(false);
         this.showliandui(false);
         this.showBomb(3);
+        this.color_1.active = this.color_2.active = this.color_3.active = this.color_4.active = false;
     }
 }
 

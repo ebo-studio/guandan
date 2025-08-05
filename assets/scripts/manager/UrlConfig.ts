@@ -9,5 +9,9 @@ export module UrlConfig {
         return "http://18.167.55.115/";
     }
 
+    export function getTokenUrl() {
+        return 'http://16.162.115.137/';
+    }
+
 }
 

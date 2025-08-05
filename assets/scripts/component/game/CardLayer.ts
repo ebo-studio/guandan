@@ -338,16 +338,16 @@ export class CardLayer extends Component {
         this.heitao.active = false;
         this.hongtao.active = false;
         for (let i = 0; i < fushStraights.length; i++) {
-            if (fushStraights[i] == 0) {
+            if (fushStraights[i].color == 0) {
                 this.fangkuai.active = true;
             }
-            else if (fushStraights[i] == 1) {
+            else if (fushStraights[i].color == 1) {
                 this.meihua.active = true;
             }
-            else if (fushStraights[i] == 2) {
+            else if (fushStraights[i].color == 2) {
                 this.hongtao.active = true;
             }
-            else if (fushStraights[i] == 3) {
+            else if (fushStraights[i].color == 3) {
                 this.heitao.active = true;
             }
 
@@ -762,16 +762,16 @@ export class CardLayer extends Component {
             this.heitao.active = false;
             this.hongtao.active = false;
             for (let i = 0; i < fushStraights.length; i++) {
-                if (fushStraights[i] == 0) {
+                if (fushStraights[i].color == 0) {
                     this.fangkuai.active = true;
                 }
-                else if (fushStraights[i] == 1) {
+                else if (fushStraights[i].color == 1) {
                     this.meihua.active = true;
                 }
-                else if (fushStraights[i] == 2) {
+                else if (fushStraights[i].color == 2) {
                     this.hongtao.active = true;
                 }
-                else if (fushStraights[i] == 3) {
+                else if (fushStraights[i].color == 3) {
                     this.heitao.active = true;
                 }
 

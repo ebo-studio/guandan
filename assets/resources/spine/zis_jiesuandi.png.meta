@@ -2,7 +2,7 @@
   "ver": "1.0.24",
   "importer": "image",
   "imported": true,
-  "uuid": "9e7726d3-6212-4b7f-8a60-9addcd3c5109",
+  "uuid": "cbec8ffd-1c19-4919-8391-b78e24aa703c",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "9e7726d3-6212-4b7f-8a60-9addcd3c5109@6c48a",
-      "displayName": "share",
+      "uuid": "cbec8ffd-1c19-4919-8391-b78e24aa703c@6c48a",
+      "displayName": "zis_jiesuandi",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "9e7726d3-6212-4b7f-8a60-9addcd3c5109",
+        "imageUuidOrDatabaseUri": "cbec8ffd-1c19-4919-8391-b78e24aa703c",
         "visible": true
       },
       "ver": "1.0.22",
@@ -37,6 +37,6 @@
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "9e7726d3-6212-4b7f-8a60-9addcd3c5109@6c48a"
+    "redirect": "cbec8ffd-1c19-4919-8391-b78e24aa703c@6c48a"
   }
 }

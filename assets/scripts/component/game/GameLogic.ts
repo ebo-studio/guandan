@@ -1376,7 +1376,7 @@ export module GameLogic {
         for (const group of prevGrouped) {
             const matched = matchPreservedGroup(group, cardItems, usedIndex, selectedIndexSet, prevSelected);
             if (matched) {
-                moveToBack.push(group);
+                result.push(group);
                 matched.forEach(i => usedIndex.add(i));
             }
         }
@@ -4695,74 +4695,65 @@ export module GameLogic {
     export function getFlushStraightCards(cards: number[]): number[][] {
         const getCardRank = (card: number) => card % 16;
         const getCardColor = (card: number) => Math.floor(card / 16);
-        const isHeart2 = (card: number) => getCardRank(card) === 2 && getCardColor(card) === 2;
+        const HONGTAO = 2;
 
-        const legalRanks = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        const sequences: number[][] = [];
+        const redIndexes: number[] = [];
+        const colorRankMap = new Map<number, Map<number, number[]>>();
 
-        for (let i = 0; i <= legalRanks.length - 5; i++) {
-            sequences.push(legalRanks.slice(i, i + 5));
-        }
-        sequences.push([10, 11, 12, 13, 1]); // 特殊顺子 A-10-J-Q-K
+        // 1. 分类卡牌：普通牌 vs 红心级牌
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            const rank = getCardRank(card);
+            const color = getCardColor(card);
 
-        const colorToRankMap = new Map<number, Map<number, number[]>>();
-        const heart2List: number[] = [];
-
-        for (const card of cards) {
-            if (isHeart2(card)) {
-                heart2List.push(card);
-            } else {
-                const color = getCardColor(card);
-                const rank = getCardRank(card);
-                if (!colorToRankMap.has(color)) colorToRankMap.set(color, new Map());
-                const rankMap = colorToRankMap.get(color)!;
-                if (!rankMap.has(rank)) rankMap.set(rank, []);
-                rankMap.get(rank)!.push(card);
+            if (rank === 2 && color === HONGTAO) {
+                redIndexes.push(i);
+                continue;
             }
+
+            if (rank === 2 || rank > 13) continue;
+
+            if (!colorRankMap.has(color)) colorRankMap.set(color, new Map());
+            const rankMap = colorRankMap.get(color)!;
+            if (!rankMap.has(rank)) rankMap.set(rank, []);
+            rankMap.get(rank)!.push(i);
+        }
+
+        // 2. 构建所有合法顺子模板（固定长度 = 5）
+        const legalRanks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
+        const allSeqs: number[][] = [];
+        for (let i = 0; i <= legalRanks.length - 5; i++) {
+            allSeqs.push(legalRanks.slice(i, i + 5));
         }
 
         const result: number[][] = [];
-        const usedCards = new Set<number>();     // 标记已用普通牌
-        const usedHearts = new Set<number>();    // 标记已用红心2
 
-        for (const [color, rankMap] of colorToRankMap.entries()) {
-            for (const seq of sequences) {
+        // 3. 遍历每种花色
+        for (let color = 0; color <= 3; color++) {
+            const rankMap = colorRankMap.get(color);
+            if (!rankMap) continue;
+
+            for (const seq of allSeqs) {
                 const group: number[] = [];
-                const tempUsed: number[] = [];
-                const tempHearts: number[] = [];
-                let heartUsedCount = 0;
-                let valid = true;
+                let redUsed = 0;
 
-                for (const rank of seq) {
-                    const list = rankMap.get(rank);
-                    const card = list?.find(c => !usedCards.has(c));
-
-                    if (card !== undefined) {
-                        group.push(card);
-                        tempUsed.push(card);
+                for (const r of seq) {
+                    const cardIndexList = rankMap.get(r);
+                    if (cardIndexList && cardIndexList.length > 0) {
+                        group.push(cards[cardIndexList[0]]); // 任取一张该点数
                     } else {
-                        if (heartUsedCount >= 2) {
-                            valid = false;
-                            break;
-                        }
-                        // 找一张未用的红心2
-                        const red2 = heart2List.find(c => !usedHearts.has(c) && !tempHearts.includes(c));
-                        if (red2 !== undefined) {
-                            group.push(red2);
-                            tempHearts.push(red2);
-                            heartUsedCount++;
+                        if (redUsed < 2 && redUsed < redIndexes.length) {
+                            group.push(cards[redIndexes[redUsed]]);
+                            redUsed++;
                         } else {
-                            valid = false;
+                            group.length = 0; // 无效，清空
                             break;
                         }
                     }
                 }
 
-                if (valid) {
+                if (group.length === 5) {
                     result.push(group);
-                    tempUsed.forEach(c => usedCards.add(c));
-                    tempHearts.forEach(c => usedHearts.add(c));
-                    //break; // 一个花色只找一组顺子
                 }
             }
         }
@@ -4770,50 +4761,68 @@ export module GameLogic {
         return result;
     }
 
-    export function findFlushStraightsWithHeartWildcard(cards: number[]): number[] {
+    export function findFlushStraightsWithHeartWildcard(cards: number[]): { color: number, cards: number[] }[] {
         const getCardRank = (card: number) => card % 16;
         const getCardColor = (card: number) => Math.floor(card / 16);
-        const isHeart2 = (card: number) => getCardRank(card) === 2 && getCardColor(card) === 2;
+        const HONGTAO = 2;
 
-        const result: number[] = [];
+        const redIndexes: number[] = [];
+        const colorRankMap = new Map<number, Map<number, number[]>>();
 
-        const legalRanks = [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-        const sequences: number[][] = [];
+        for (let i = 0; i < cards.length; i++) {
+            const card = cards[i];
+            const rank = getCardRank(card);
+            const color = getCardColor(card);
 
-        // 构造所有合法顺子（顺序不能包含2）
-        for (let i = 0; i <= legalRanks.length - 5; i++) {
-            sequences.push(legalRanks.slice(i, i + 5));
-        }
-        // 添加特殊顺子 A(1)-10-J-Q-K
-        sequences.push([10, 11, 12, 13, 1]);
-
-        // 分类：普通牌按花色归类，红心级牌分离
-        const colorToRanks = new Map<number, Set<number>>();
-        const heart2List: number[] = [];
-
-        for (const card of cards) {
-            if (isHeart2(card)) {
-                heart2List.push(card);
-            } else {
-                const color = getCardColor(card);
-                const rank = getCardRank(card);
-                if (!colorToRanks.has(color)) colorToRanks.set(color, new Set());
-                colorToRanks.get(color)!.add(rank);
+            if (rank === 2 && color === HONGTAO) {
+                redIndexes.push(i);
+                continue;
             }
+
+            if (rank === 2 || rank > 13) continue;
+
+            if (!colorRankMap.has(color)) colorRankMap.set(color, new Map());
+            const rankMap = colorRankMap.get(color)!;
+            if (!rankMap.has(rank)) rankMap.set(rank, []);
+            rankMap.get(rank)!.push(i);
         }
 
-        // 遍历每种花色，看是否可以构成任意一个顺子
-        for (const [color, ranks] of colorToRanks.entries()) {
-            for (const seq of sequences) {
-                let missing = 0;
+        const legalRanks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
+        const allSeqs: number[][] = [];
+        for (let i = 0; i <= legalRanks.length - 5; i++) {
+            allSeqs.push(legalRanks.slice(i, i + 5));
+        }
+
+        const result: { color: number, cards: number[] }[] = [];
+
+        for (let color = 0; color <= 3; color++) {
+            const rankMap = colorRankMap.get(color);
+            if (!rankMap) continue;
+
+            for (const seq of allSeqs) {
+                const group: number[] = [];
+                let redUsed = 0;
+
                 for (const r of seq) {
-                    if (!ranks.has(r)) {
-                        missing++;
+                    const cardIndexList = rankMap.get(r);
+                    if (cardIndexList && cardIndexList.length > 0) {
+                        // 用原牌（任意取一张即可）
+                        const idx = cardIndexList[0];
+                        group.push(cards[idx]);
+                    } else {
+                        // 用红心级牌补
+                        if (redUsed < 2 && redUsed < redIndexes.length) {
+                            group.push(cards[redIndexes[redUsed]]);
+                            redUsed++;
+                        } else {
+                            group.length = 0; // 无效组合
+                            break;
+                        }
                     }
                 }
-                if (missing <= heart2List.length) {
-                    result.push(color);
-                    break; // 一个花色只返回一次
+
+                if (group.length === 5) {
+                    result.push({ color, cards: group });
                 }
             }
         }
