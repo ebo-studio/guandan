@@ -156,12 +156,15 @@ export class Lobby extends Component {
         // console.log(wallet.address);
         var commonUrl = UrlConfig.getTokenUrl();
         const timestampMs = Date.now()
-        const test = await Http.post(commonUrl + '/api/address/exchangeToken', {
-            address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
-            integral: '1',
-            time_str: timestampMs
+        // const test = await Http.post(commonUrl + '/api/address/exchangeToken', {
+        //     address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
+        //     integral: '1',
+        //     time_str: timestampMs
+        // })
+        const test = await Http.post(commonUrl + '/api/address/searchExchangeOrder', {
+            order_no: 'Ex2025080613535519835',
         })
-         console.log("JSON请求返回:", test);
+        console.log("JSON请求返回:", test);
         // GlobalData.cardInfo.gameType = GlobalData.gameType.free;
         // let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
         // GameSocket.send(sendBuffer);

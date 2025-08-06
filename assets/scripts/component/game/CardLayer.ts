@@ -88,7 +88,9 @@ export class CardLayer extends Component {
     private handCardsValue: number[] = []   //手牌值
     private sorthandCardsValue: number[] = []   //理牌后手牌值
     private groupedCards: number[][] = [];
-    private prevSelected: number[] = []
+    private prevSelected: number[][] = []
+    private leftLocks: number[] = [];
+    private rightLocks: number[] = [];
     private prevSelectedIndex: number[] = [];
     private handCards: CardItem[] = []      //手牌
     private handScale: number = 1           //手牌缩放
@@ -298,9 +300,9 @@ export class CardLayer extends Component {
         ]
         // let cardList = [0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21,0x21];
         let cardList = [
-            0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x35,
-            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
-            0x01, 0x12, 0x13, 0x14, 0x15, 0x26, 0x17, 0x18, 0x19, 0x1a, 0x3b, 0x1c, 0x1d,
+            0x02, 0x01, 0x1d, 0x3d, 0x1c, 0x0b, 0x2b, 0x3a, 0x2a, 0x0a, 0x0a,
+            0x09, 0x09, 0x29, 0x29, 0x39, 0x18, 0x17, 0x26, 0x26, 0x06, 0x35, 0x25, 0x24,
+            0x34, 0x23, 0x33
             // 0x2a,
             // 0x3a,
             // 0x11, 0x12,
@@ -309,8 +311,8 @@ export class CardLayer extends Component {
             // 0x21, 0x22,
             // 0x31, 0x32,
             // 0x31, 0x32,
-            0x4e, 0x4f,
-            0x4e, 0x4f
+            // 0x4e, 0x4f,
+            // 0x4e, 0x4f
         ];
         // let cardList1 = [
         //     22,24,144,93,111,64,63,43,123,122,133,62,114,54,94,114,121,33,165,22,133,41,81,102,124,94,74
@@ -1770,6 +1772,7 @@ export class CardLayer extends Component {
             GameSocket.send(sendBuffer);
         }
     }
+
     //横排/纵排
     onBtnCardDir() {
         //新优化部分
@@ -1818,6 +1821,18 @@ export class CardLayer extends Component {
         console.log("🟡 当前传入的点数：", selectedPoints);
         const uniqueSelected = [...new Set(selected)];
         console.log("🟡 当前传入去重后的 selected：", uniqueSelected);
+        // const { groups, leftLockedIndexes, rightLockedIndexes } = GameLogic.moveSelectedCardsToBack(
+        //     this.handCards,
+        //     selected,
+        //     this.selectCardIndex,
+        //     this.groupedCards,
+        //     this.prevSelected,
+        //     this.leftLocks,
+        //     this.rightLocks
+        // );
+        // this.groupedCards = groups;
+        // this.leftLocks = leftLockedIndexes;
+        // this.rightLocks = rightLockedIndexes;
         this.groupedCards = GameLogic.moveSelectedCardsToBack(
             this.handCards,
             selected,
@@ -1842,23 +1857,23 @@ export class CardLayer extends Component {
         const newHandCards: any[] = [];
         const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-        // for (let i = 0; i < this.handCardsValue.length; i++) {
-        //     const value = this.handCardsValue[i];
-        //     for (let j = 0; j < this.handCards.length; j++) {
-        //         if (!used[j] && this.handCards[j].getValue() === value) {
-        //             used[j] = true;
-        //             this.handCards[j].setIndex(i); // 重设 index
-        //             newHandCards.push(this.handCards[j]);
-        //             break;
-        //         }
-        //     }
-        // }
+        for (let i = 0; i < this.handCardsValue.length; i++) {
+            const value = this.handCardsValue[i];
+            for (let j = 0; j < this.handCards.length; j++) {
+                if (!used[j] && this.handCards[j].getValue() === value) {
+                    used[j] = true;
+                    this.handCards[j].setIndex(i); // 重设 index
+                    newHandCards.push(this.handCards[j]);
+                    break;
+                }
+            }
+        }
 
         // this.handCards = newHandCards; // ⚠️ 顺序彻底
         this.setHandCards(this.handCardsValue);
 
         // ✅ 更新 prevSelected 为这次选中的
-        this.prevSelected = utils.deepCopy(selected);
+        this.prevSelected.push(selected);
         this.prevSelectedIndex = utils.deepCopy(this.selectCardIndex);
 
         // ✅ 清除选中状态

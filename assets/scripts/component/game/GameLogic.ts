@@ -1362,7 +1362,7 @@ export module GameLogic {
         selected: number[], //选中的牌的值
         selectedIndexes: number[], //选中的牌的索引
         prevGrouped: number[][], //上次理牌的手牌
-        prevSelected: number[], //上次选中的牌的值
+        prevSelected: number[][], //上次选中的牌的值
         //prevSelectedIndexes: number[]
     ): number[][] {
         const result: number[][] = [];
@@ -1374,12 +1374,60 @@ export module GameLogic {
 
         // === 1. 保留旧组合中，完全未被重新选中、且出现在 prevSelected 中的组合 ===
         for (const group of prevGrouped) {
-            const matched = matchPreservedGroup(group, cardItems, usedIndex, selectedIndexSet, prevSelected);
-            if (matched) {
-                result.push(group);
-                matched.forEach(i => usedIndex.add(i));
+            for (const prevSelectedGroup of prevSelected) {
+                const matched = matchPreservedGroup(group, cardItems, usedIndex, selectedIndexSet, prevSelectedGroup);
+                if (arraysAreEqual(group, prevSelectedGroup)) {
+                    if (findRocket(group).length != 0) {
+                        result.unshift(group);
+                    }
+                    else if (findBombsWithHeartCard(group).length != 0) {
+                        result.push(group);
+                    }
+                    else if (findStraightByCard(group).length != 0) {
+                        if (isSameColorStraight(group)) {
+                            result.unshift(group);
+                        } else {
+                            moveToBack.push(group);
+                        }
+                    }
+                    else {
+                        moveToBack.push(group);
+                    }
+                    // group.forEach(i => usedIndex.add(i));
+                    // moveToBack.push(group);
+                    matched.forEach(i => usedIndex.add(i));
+                    // const matchedIndexes = matchGroupByCardItems(group, cardItems, usedIndex, selectedIndexSet);
+                    // if (matchedIndexes) {
+                    //     matchedIndexes.forEach(i => usedIndex.add(i));
+                    // }
+                }
             }
+
         }
+
+        function arraysAreEqual(arr1: number[], arr2: number[]): boolean {
+            if (arr1.length !== arr2.length) return false;
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] !== arr2[i]) return false;
+            }
+            return true;
+        }
+
+        // === 1. 先保留上次理牌中未被本次重新选中的组合（锁定逻辑） ===
+        // for (let i = 0; i < prevGrouped.length; i++) {
+        //     const group = prevGrouped[i];
+        //     const matched = matchPreservedGroup(group, cardItems, usedIndex, selectedIndexSet, prevSelected);
+        //     if (matched) {
+        //         // 这里判断原先是否在右边（moveToBack）还是左边（result）
+        //         const wasRightSide = i >= prevGrouped.length - countRightSide(prevGrouped, prevSelected);
+        //         if (wasRightSide) {
+        //             moveToBack.push(group);
+        //         } else {
+        //             result.push(group);
+        //         }
+        //         matched.forEach(i => usedIndex.add(i));
+        //     }
+        // }
 
         // === 2. 识别各种牌型 ===
         for (const rocket of findRocket(selected)) {
@@ -1451,7 +1499,7 @@ export module GameLogic {
             }
         }
 
-        // === 3. 剩余牌 ===
+        // === 3. 剩余散牌 ===
         const remaining = cardItems
             .filter(item => !usedIndex.has(item.getIndex()))
             .map(item => ({ idx: item.getIndex(), val: item.getValue() }))
@@ -1536,7 +1584,6 @@ export module GameLogic {
             used: Set<number>,
             selectedIndexSet: Set<number>,
             prevSelected: number[],
-            //prevSelectedIndexSet: Set<number>
         ): number[] | null {
             const result: number[] = [];
             const groupCount = new Map<number, number>();
