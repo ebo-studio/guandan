@@ -94,6 +94,9 @@ export namespace GlobalData {
         opposite: 3,    //对家
     }
     export const MAXPLAYER = 4;
+
+    export const TOKEN = 'TOKEN_DATA';
+
     //本地消息
     export const localEvent = {
         RaceScoreLine: "RaceScoreLine",

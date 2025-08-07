@@ -22,6 +22,7 @@ export module HttpConfig{
     export const CancelGameZu: number = 113;         //CancelGameZu
     export const QueryAuditionGameList: number = 114;//海选赛列表
     export const AuditionUpList: number = 115;       //海选赛晋级名单
+    export const SendCode: number = 116;
 
 
     var httpMap: Map<number, string> = null;
@@ -30,7 +31,7 @@ export module HttpConfig{
     export function init() {
         httpMap = new Map<number, string>();
         commonUrl = UrlConfig.getHttpUrl();
-        httpMap.set(Login, commonUrl + "api/Login/login");
+        // httpMap.set(Login, commonUrl + "api/Login/login");//之前登陆的接口不要用了
         httpMap.set(QueryOutGameList, commonUrl + "api/Game/queryOutGameList");
         httpMap.set(CreateOutGameZu, commonUrl + "api/Game/createOutGameZu");
         httpMap.set(GetGameUserList, commonUrl + "api/Game/getGameUserList");
@@ -46,6 +47,8 @@ export module HttpConfig{
         httpMap.set(CancelGameZu, commonUrl + "api/Game/cancelGameZu");
         httpMap.set(QueryAuditionGameList, commonUrl + "api/Game/queryMassGameList");
         httpMap.set(AuditionUpList, commonUrl + "api/Game/massUserList");
+        httpMap.set(Login, commonUrl + 'api/Login/loginOrRegister');
+        httpMap.set(SendCode, commonUrl + 'api/Login/sendCode');
     }
     export function getUrl(cmdID: number) {
         if (httpMap.has(cmdID)) {

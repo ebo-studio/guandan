@@ -31,7 +31,7 @@ export class AppGlobal extends Component {
 
     //很奇怪,appglobal 是常驻节点,但是onLoad 和 start 切换场景的时候会再次调用
     onLoad() {
-        if (GlobalData.userInfo.haveToken) return;
+        // if (GlobalData.userInfo.haveToken) return;
         //常驻节点
         director.addPersistRootNode(this.node);
         AppGlobal.instance = this;
@@ -47,56 +47,58 @@ export class AppGlobal extends Component {
         this.removeEvent();
     }
     requestLogin() {
-        if (GlobalData.userInfo.haveToken) return;
-        console.log("请求登录--->");
+        GameSocket.initAndConnect();
+        utils.send(GlobalData.localEvent.FirstUpdate);
+        // if (GlobalData.userInfo.haveToken) return;
+        // console.log("请求登录--->");
 
-        if (GlobalData.userInfo.isOnline) {
-            var ref = window.location.href;
-            // var ref= "http://farm.zhongyigames.com/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzA4MjkyMDksInVzZXJuYW1lIjoiMTU1MTUyNzcwMDMifQ.EZAp5OoAVWSGZY-5VMOgIvugXZ9bkmJhvgtxK1svdSU"
-            // var ref= "http://farm.zhongyigames.com/?code=4rjzbdlqktb8zzklqzyvsj1dw4brw7vo"
-            console.log("ref ", ref);
-            GlobalData.loginInfo.code = utils.queryURLParams(ref, "code");
-            if (GlobalData.loginInfo.code == "") {
-                console.error("code无效 ", GlobalData.loginInfo.code);
-                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "code无效" });
-                return;
-            }
-            GlobalData.requestLogin({
-                success: () => {
-                    GlobalData.requestGetUserInfo({
-                        success: () => {
-                            GlobalData.userInfo.haveToken = true;
-                            GameSocket.initAndConnect();
-                            utils.send(GlobalData.localEvent.FirstUpdate);
-                        }
-                    });
-                }
-            });
-        } else {
-            UIManager.Instace.showUI({
-                path: UIConfig.MessageBoxCommonTestKey,
-                data: {
-                    okName: "确定",
-                    cancleName: "取消",
-                    des: "选择token",
-                    okFunc: (code: string = 'xuhang') => {
-                        GlobalData.loginInfo.code = code;
-                        GlobalData.requestLogin({
-                            success: () => {
-                                GlobalData.requestGetUserInfo({
-                                    success: () => {
-                                        GlobalData.userInfo.haveToken = true;
-                                        GameSocket.initAndConnect();
-                                        utils.send(GlobalData.localEvent.FirstUpdate);
-                                    }
-                                });
-                            }
-                        });
-                    },
-                    cancleFunc: null
-                }
-            });
-        }
+        // if (GlobalData.userInfo.isOnline) {
+        //     var ref = window.location.href;
+        //     // var ref= "http://farm.zhongyigames.com/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NzA4MjkyMDksInVzZXJuYW1lIjoiMTU1MTUyNzcwMDMifQ.EZAp5OoAVWSGZY-5VMOgIvugXZ9bkmJhvgtxK1svdSU"
+        //     // var ref= "http://farm.zhongyigames.com/?code=4rjzbdlqktb8zzklqzyvsj1dw4brw7vo"
+        //     console.log("ref ", ref);
+        //     GlobalData.loginInfo.code = utils.queryURLParams(ref, "code");
+        //     if (GlobalData.loginInfo.code == "") {
+        //         console.error("code无效 ", GlobalData.loginInfo.code);
+        //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "code无效" });
+        //         return;
+        //     }
+        //     GlobalData.requestLogin({
+        //         success: () => {
+        //             GlobalData.requestGetUserInfo({
+        //                 success: () => {
+        //                     GlobalData.userInfo.haveToken = true;
+        //                     GameSocket.initAndConnect();
+        //                     utils.send(GlobalData.localEvent.FirstUpdate);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // } else {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.MessageBoxCommonTestKey,
+        //         data: {
+        //             okName: "确定",
+        //             cancleName: "取消",
+        //             des: "选择token",
+        //             okFunc: (code: string = 'xuhang') => {
+        //                 GlobalData.loginInfo.code = code;
+        //                 GlobalData.requestLogin({
+        //                     success: () => {
+        //                         GlobalData.requestGetUserInfo({
+        //                             success: () => {
+        //                                 GlobalData.userInfo.haveToken = true;
+        //                                 GameSocket.initAndConnect();
+        //                                 utils.send(GlobalData.localEvent.FirstUpdate);
+        //                             }
+        //                         });
+        //                     }
+        //                 });
+        //             },
+        //             cancleFunc: null
+        //         }
+        //     });
+        // }
     }
     bindEvent() {
         utils.on(GlobalData.localEvent.GameError, this, this.onGameError);

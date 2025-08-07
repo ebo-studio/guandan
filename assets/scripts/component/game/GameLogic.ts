@@ -1369,6 +1369,16 @@ export module GameLogic {
         const moveToBack: number[][] = [];
         const usedIndex = new Set<number>();
         const selectedIndexSet = new Set<number>(selectedIndexes);
+        const cardValueIndexMap = new Map<string, number[]>();
+
+        // 初始化 cardValueIndexMap，使用值 + 花色 作为唯一键
+        cardItems.forEach(item => {
+            const key = `${item.getValue()}-${getCardColor(item.getValue())}`; // 使用点数和花色作为组合键
+            if (!cardValueIndexMap.has(key)) {
+                cardValueIndexMap.set(key, []);
+            }
+            cardValueIndexMap.get(key)!.push(item.getIndex()); // 将索引添加到相应的键下
+        });
         // const prevSelectedIndexSet = new Set<number>(prevSelectedIndexes);
 
 
@@ -1535,12 +1545,19 @@ export module GameLogic {
         // --- 工具函数 ---
 
         function isUsed(card: number): boolean {
-            for (const item of cardItems) {
-                if (item.getValue() === card && usedIndex.has(item.getIndex())) {
-                    return true;
-                }
+            const key = `${card}-${getCardColor(card)}`;
+            const indices = cardValueIndexMap.get(key);
+            if (indices) {
+                // 遍历所有相同点数和花色的索引，检查是否都已使用
+                return indices.every(index => usedIndex.has(index)); // 如果所有索引都被使用，返回 true
             }
-            return false;
+            return false; // 如果没有匹配的卡牌，返回 false
+            // for (const item of cardItems) {
+            //     if (item.getValue() === card && usedIndex.has(item.getIndex())) {
+            //         return true;
+            //     }
+            // }
+            // return false;
         }
 
         function isSameColorStraight(straight: number[]): boolean {
