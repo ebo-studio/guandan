@@ -788,7 +788,7 @@
       "__id__": 18
     },
     "_mode": 0,
-    "_totalLength": 1246,
+    "_totalLength": 1240,
     "_progress": 0,
     "_reverse": false,
     "_id": "32iD/uVOlNwoHfk/pUC7bR"
@@ -800,7 +800,7 @@
     "node": {
       "__id__": 15
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": null,
     "_alignFlags": 44,
     "_target": null,

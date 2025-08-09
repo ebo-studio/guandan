@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, director, resources, Prefab, find, __private } from 'cc';
+import { _decorator, Component, Node, director, resources, Prefab, find, __private, path } from 'cc';
 import { utils } from '../common/utils';
 import PopWindow from '../component/PopWindow';
 import { UIConfig } from './UIConfig';
@@ -20,10 +20,22 @@ export class UIManager extends Component {
     //显示
     public showUI(obj: { path: string, data?: any, callBack?: Function }) {
         let com = this.getUI(obj.path);
+        const targetPaths = [
+            UIConfig.MessageHintKey,
+            UIConfig.WaitItemKey,
+            UIConfig.LoadItemKey,
+            UIConfig.GameEndFreeItemKey,
+            UIConfig.getItemKey
+        ];
         if (com) {
             this.setTopSiblingIndex(com.node);
             if (obj.callBack) obj.callBack(com);
-            com.show();
+            if (targetPaths.includes(obj.path)) {
+                com.show(false)
+            }
+            else {
+                com.show();
+            }
             com.setData(obj.data);
             return;
         }
@@ -34,7 +46,12 @@ export class UIManager extends Component {
             if (preCom) {
                 this.setTopSiblingIndex(preCom.node);
                 if (obj.callBack) obj.callBack(preCom);
-                preCom.show();
+                if (targetPaths.includes(obj.path)) {
+                    preCom.show(false)
+                }
+                else {
+                    preCom.show();
+                }
                 preCom.setData(obj.data);
                 return;
             }
@@ -46,7 +63,12 @@ export class UIManager extends Component {
             this.setTopSiblingIndex(com.node);
             //必须放到show前边
             if (obj.callBack) obj.callBack(com);
-            com.show();
+            if (targetPaths.includes(obj.path)) {
+                com.show(false)
+            }
+            else {
+                com.show();
+            }
             com.setData(obj.data);
             this.uiMap.set(obj.path, com);
         });
@@ -86,7 +108,7 @@ export class UIManager extends Component {
                 this.uiMap.delete(key);
             }
         }
-        console.log("ui len--> ",this.uiMap.size);
+        console.log("ui len--> ", this.uiMap.size);
     }
     test() {
         // UIManager.Instace.showUI({

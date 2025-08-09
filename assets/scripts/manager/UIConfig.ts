@@ -32,6 +32,8 @@ import { AuditionMatchItem } from "../component/match/AuditionMatchItem";
 import { signInViewItem } from "../component/activity/signInViewItem";
 import { shareViewItem } from "../component/activity/shareViewItem";
 import { GetItem } from "../component/GetItem";
+import { exchangeViewItem } from "../component/activity/exchangeViewItem";
+import { exchangeRecordViewItem } from "../component/activity/exchangeRecordViewItem";
 
 export module UIConfig {
 
@@ -72,15 +74,19 @@ export module UIConfig {
         configMap.set(signInViewItemKey, {path: "prefab/activity/signInViewItem", comp: signInViewItem });
         configMap.set(shareViewItemKey, {path: "prefab/activity/shareViewItem", comp: shareViewItem});
         configMap.set(getItemKey, {path: "prefab/GetItem", comp: GetItem });
+        configMap.set(exchangeViewItemKey, {path: 'prefab/activity/exchangeViewItem', comp: exchangeViewItem});
+        configMap.set(exchangeRecordViewItemKey, {path: 'prefab/activity/exchangeRecordViewItem', comp: exchangeRecordViewItem})
     }
 
     export function getUIInfoByName(str: string) {
-        if (configMap.has(str)) {
+    if (configMap.has(str)) {
             return configMap.get(str);
         }
         return null;
     }
 
+    export const exchangeRecordViewItemKey: string = 'exchangeRecordViewItem';
+    export const exchangeViewItemKey: string = 'exchangeViewItem';
     export const getItemKey: string = 'GetItem';
     export const shareViewItemKey: string = 'shareViewItem'
     export const signInViewItemKey: string = 'signInViewItem';

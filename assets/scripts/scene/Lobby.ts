@@ -104,15 +104,20 @@ export class Lobby extends Component {
         SoundManager.playClick();
         UIManager.Instace.showUI({ path: UIConfig.RuleItemKey });
     }
-    //团队
-    onBtnTeamClick() {
+
+    onBtnExchageClick() {
         SoundManager.playClick();
-        GlobalData.requestUserGroup({
-            success: () => {
-                UIManager.Instace.showUI({ path: UIConfig.TeamItemKey });
-            }
-        });
+        UIManager.Instace.showUI({ path: UIConfig.exchangeViewItemKey});
     }
+    //团队
+    // onBtnTeamClick() {
+    //     SoundManager.playClick();
+    //     GlobalData.requestUserGroup({
+    //         success: () => {
+    //             UIManager.Instace.showUI({ path: UIConfig.TeamItemKey });
+    //         }
+    //     });
+    // }
     //排名
     onBtnRankClick() {
         SoundManager.playClick();
@@ -152,22 +157,9 @@ export class Lobby extends Component {
     }
     //自由嗨完
     async onBtnRaceFreeClick() {
-        // const wallet = ethers.Wallet.createRandom();
-        // console.log(wallet.address);
-        var commonUrl = UrlConfig.getTokenUrl();
-        const timestampMs = Date.now()
-        // const test = await Http.post(commonUrl + '/api/address/exchangeToken', {
-        //     address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
-        //     integral: '1',
-        //     time_str: timestampMs
-        // })
-        const test = await Http.post(commonUrl + '/api/address/searchExchangeOrder', {
-            order_no: 'Ex2025080613535519835',
-        })
-        console.log("JSON请求返回:", test);
-        // GlobalData.cardInfo.gameType = GlobalData.gameType.free;
-        // let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
-        // GameSocket.send(sendBuffer);
+        GlobalData.cardInfo.gameType = GlobalData.gameType.free;
+        let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
+        GameSocket.send(sendBuffer);
     
     }
     //积分赛

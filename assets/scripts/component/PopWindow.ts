@@ -25,6 +25,15 @@ export default class PopWindow extends Component {
         // if (that.onShow) {
         //     that.onShow();
         // }
+        if (!isTween) {
+            if (that.show_callback) {
+                that.show_callback();
+            }
+            if (that.onShow) {
+                that.onShow();
+            }
+            return;
+        }
         this.node.scale = new Vec3(0, 0, 0);
         tween(this.node)
             .sequence(

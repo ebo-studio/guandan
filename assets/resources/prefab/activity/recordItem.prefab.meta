@@ -2,12 +2,12 @@
   "ver": "1.1.39",
   "importer": "prefab",
   "imported": true,
-  "uuid": "e299986b-3b7a-43cd-8777-60579d5ed16d",
+  "uuid": "659bdc10-6e71-4489-8157-cf77fff007c2",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "CardItem"
+    "syncNodeName": "recordItem"
   }
 }

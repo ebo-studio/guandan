@@ -134,6 +134,11 @@ export class Loading extends Component {
                     success: () => {
                         GlobalData.userInfo.haveToken = true;
                         this.joginGame.node.active = true;
+                    },
+                    fail: () => {
+                        this.joginGame.node.active = false;
+                        this.phoneLoginBtn.node.active = true;
+                        this.emailBtn.node.active = true;
                     }
                 });
             }

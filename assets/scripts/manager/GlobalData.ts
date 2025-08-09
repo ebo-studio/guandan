@@ -386,6 +386,7 @@ export namespace GlobalData {
         group_name: "",
         score: 0,         //积分
         isOnline: true,
+        address: '',
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -1191,5 +1192,11 @@ export class GameResultInfo {
     public score: number;           //1 自由报名 2淘汰赛晋级名单（自动不能手动报名）
     public type: number;            //剩余时间
     public head_img: string;        //0未报名 1已报名
+}
+
+export class recordData {
+    public created_time: number;
+    public integral: number;
+    public status: string;
 }
 
