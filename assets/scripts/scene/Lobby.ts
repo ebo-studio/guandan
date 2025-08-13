@@ -203,6 +203,11 @@ export class Lobby extends Component {
         UIManager.Instace.showUI({ path: UIConfig.shareViewItemKey });
     }
 
+    onBtnAddGoldClick() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({ path: UIConfig.activityViewItemKey});
+    }
+
 
     onEnable() {
         // let data = GameLogic.convertCardListS2C(

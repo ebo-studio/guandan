@@ -387,6 +387,8 @@ export namespace GlobalData {
         score: 0,         //积分
         isOnline: true,
         address: '',
+        isLogin: false,
+        is_vip: 0 //1为合伙人，0为普通玩家
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -443,6 +445,7 @@ export namespace GlobalData {
                 userInfo.head_img = data.head_img;
                 userInfo.score = data.gold;
                 userInfo.name = data.name;
+                userInfo.is_vip = data.is_vip;
                 if (cb.success) cb.success();
             },
             fail: function (data) {

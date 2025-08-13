@@ -47,8 +47,10 @@ export class AppGlobal extends Component {
         this.removeEvent();
     }
     requestLogin() {
+        if(GlobalData.userInfo.isLogin) return;
         GameSocket.initAndConnect();
         utils.send(GlobalData.localEvent.FirstUpdate);
+        GlobalData.userInfo.isLogin = true;
         // if (GlobalData.userInfo.haveToken) return;
         // console.log("请求登录--->");
 

@@ -639,7 +639,7 @@ export module GameLogic {
             const r = getCardRank(cards[i]);
             const color = getCardColor(cards[i]);
 
-            if (r === 2 && color === HONGTAO) {
+            if (r === GlobalData.cardInfo.levelCard && color === HONGTAO) {
                 redIndexes.push(i); // 红心级牌
                 continue;
             }

@@ -34,6 +34,8 @@ import { shareViewItem } from "../component/activity/shareViewItem";
 import { GetItem } from "../component/GetItem";
 import { exchangeViewItem } from "../component/activity/exchangeViewItem";
 import { exchangeRecordViewItem } from "../component/activity/exchangeRecordViewItem";
+import { shareRecordViewItem } from "../component/activity/shareRecordViewItem";
+import { activityViewItem } from "../component/activity/activityViewItem";
 
 export module UIConfig {
 
@@ -75,7 +77,9 @@ export module UIConfig {
         configMap.set(shareViewItemKey, {path: "prefab/activity/shareViewItem", comp: shareViewItem});
         configMap.set(getItemKey, {path: "prefab/GetItem", comp: GetItem });
         configMap.set(exchangeViewItemKey, {path: 'prefab/activity/exchangeViewItem', comp: exchangeViewItem});
-        configMap.set(exchangeRecordViewItemKey, {path: 'prefab/activity/exchangeRecordViewItem', comp: exchangeRecordViewItem})
+        configMap.set(exchangeRecordViewItemKey, {path: 'prefab/activity/exchangeRecordViewItem', comp: exchangeRecordViewItem});
+        configMap.set(shareRecordViewItemKey, {path: 'prefab/activity/shareRecordViewItem', comp: shareRecordViewItem});
+        configMap.set(activityViewItemKey, {path: 'prefab/activity/activityViewItem', comp: activityViewItem});
     }
 
     export function getUIInfoByName(str: string) {
@@ -85,6 +89,8 @@ export module UIConfig {
         return null;
     }
 
+    export const activityViewItemKey:string = 'activityViewItem';
+    export const shareRecordViewItemKey: string = 'shareRecordViewItem';
     export const exchangeRecordViewItemKey: string = 'exchangeRecordViewItem';
     export const exchangeViewItemKey: string = 'exchangeViewItem';
     export const getItemKey: string = 'GetItem';

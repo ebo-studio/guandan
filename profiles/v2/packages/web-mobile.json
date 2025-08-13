@@ -9,14 +9,14 @@
     "platform": "web-mobile",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
     "name": "掼蛋",
-    "replaceSplashScreen": false,
+    "replaceSplashScreen": true,
     "md5Cache": true,
     "debug": false
   },
   "options": {
     "web-mobile": {
       "orientation": "landscape",
-      "embedWebDebugger": true,
+      "embedWebDebugger": false,
       "__version__": "1.0.1"
     }
   }

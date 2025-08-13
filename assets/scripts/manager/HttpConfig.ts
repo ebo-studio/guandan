@@ -23,6 +23,7 @@ export module HttpConfig{
     export const QueryAuditionGameList: number = 114;//海选赛列表
     export const AuditionUpList: number = 115;       //海选赛晋级名单
     export const SendCode: number = 116;
+    export const QueryMyFirstInviter: number = 117; //查询自己所有一级
 
 
     var httpMap: Map<number, string> = null;
@@ -49,6 +50,7 @@ export module HttpConfig{
         httpMap.set(AuditionUpList, commonUrl + "api/Game/massUserList");
         httpMap.set(Login, commonUrl + 'api/Login/loginOrRegister');
         httpMap.set(SendCode, commonUrl + 'api/Login/sendCode');
+        httpMap.set(QueryMyFirstInviter, commonUrl + 'api/User/queryMyFirstInviter');
     }
     export function getUrl(cmdID: number) {
         if (httpMap.has(cmdID)) {

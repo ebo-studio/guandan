@@ -43,6 +43,9 @@ export class Loading extends Component {
     @property(EditBox)
     phoneCodeEditBox: EditBox = null;
 
+    @property(EditBox)
+    phoneinviterEditBox: EditBox = null;
+
     @property(Button)
     phoneGetCodeBtn: Button = null;
 
@@ -59,6 +62,9 @@ export class Loading extends Component {
 
     @property(EditBox)
     emailCodeEditBox: EditBox = null;
+
+    @property(EditBox)
+    emailinviterEditBox: EditBox = null;
 
     @property(Button)
     emailGetCodeBtn: Button = null;
@@ -182,6 +188,7 @@ export class Loading extends Component {
     onPhoneLogin() {
         const phone = this.phoneEditBox.string.trim();
         const code = this.phoneCodeEditBox.string.trim();
+        const inviter = this.phoneinviterEditBox.string.trim();
 
         if (!this.validdatePhone(phone)) {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入有效的手机号码" });
@@ -191,7 +198,7 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        let data = { account: phone, type: 1, code: code, inviterId: '' };
+        let data = { account: phone, type: 1, code: code, inviterId: inviter };
         LoginGlobal.instance.requestLogin(data, {
             success: (data) => {
                 console.log('登录成功:', data);
@@ -237,6 +244,7 @@ export class Loading extends Component {
     onEmailLogin() {
         const email = this.emaiEditBox.string.trim();
         const code = this.emailCodeEditBox.string.trim();
+        const inviter = this.emailinviterEditBox.string.trim();
 
         if (!this.validdateEmail(email)) {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入有效的邮箱地址" });
@@ -247,7 +255,7 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        let data = { account: email, type: 2, code: code, inviterId: '' };
+        let data = { account: email, type: 2, code: code, inviterId: inviter };
         LoginGlobal.instance.requestLogin(data, {
             success: (data) => {
                 console.log('登录成功:', data);

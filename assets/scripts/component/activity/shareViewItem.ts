@@ -4,6 +4,10 @@ import { SoundManager } from '../../manager/SoundManager';
 import { PbManager } from '../../proto/PbManager';
 import { GameSocket } from '../../manager/GameSocket';
 import { GlobalData } from '../../manager/GlobalData';
+import { HttpConfig } from '../../manager/HttpConfig';
+import { utils } from '../../common/utils';
+import { UIManager } from '../../manager/UIManager';
+import { UIConfig } from '../../manager/UIConfig';
 const { ccclass, property } = _decorator;
 
 @ccclass('shareViewItem')
@@ -15,12 +19,16 @@ export class shareViewItem extends PopWindow {
     public setData(obj?: any): void {
         this.ani.node.active = true;
         this.ani.setAnimation(0, 'chusheng', false);
-        this.ani.setCompleteListener(()=>{
-            if(this.ani.animation == 'chusheng') {
+        this.ani.setCompleteListener(() => {
+            if (this.ani.animation == 'chusheng') {
                 this.ani.setAnimation(0, 'loop', true);
             }
-            
+
         })
+    }
+
+    onShowRecordView() {
+        UIManager.Instace.showUI({path: UIConfig.shareRecordViewItemKey});
     }
 
     public start(): void {
@@ -30,7 +38,7 @@ export class shareViewItem extends PopWindow {
         //     if(this.ani.animation == 'chusheng') {
         //         this.ani.setAnimation(0, 'loop', true);
         //     }
-            
+
         // })
     }
     //关闭
