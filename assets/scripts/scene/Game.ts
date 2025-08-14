@@ -1,4 +1,4 @@
-import { _decorator, Component, director, isValid, Label, Node, UITransform, Vec3, Widget } from 'cc';
+import { _decorator, Component, director, isValid, Label, Node, Sprite, SpriteFrame, UITransform, Vec3, Widget } from 'cc';
 import { SoundManager } from '../manager/SoundManager';
 import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
@@ -13,6 +13,11 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Game')
 export class Game extends Component {
+
+    @property(Node)
+    gameBg: Node = null;
+    @property(SpriteFrame)
+    gameBgType: SpriteFrame[] = [];
     //复制
     @property(Node)
     btnCopy: Node = null;
@@ -60,7 +65,7 @@ export class Game extends Component {
 
     private viewList: number[] = [0, 1, 2, 3];
 
-    preLoad(){
+    preLoad() {
         console.log("销毁所有 4--->");
         UIManager.Instace?.clearAllUI();
         // GlobalData.cardInfo.cardDir = false;
@@ -78,6 +83,7 @@ export class Game extends Component {
         utils.on(GlobalData.localEvent.LeftCardCnt, this, this.onLeftCardCnt);
         utils.on(GlobalData.localEvent.ReEnterGame, this, this.onReEnterGame);
         utils.on(GlobalData.localEvent.KangGong, this, this.onKangGong);
+        utils.on(GlobalData.localEvent.UpdateGameBg, this, this.onUpdateGameBg);
 
         this.init();
     }
@@ -90,7 +96,17 @@ export class Game extends Component {
         utils.off(GlobalData.localEvent.LeftCardCnt, this, this.onLeftCardCnt);
         utils.off(GlobalData.localEvent.ReEnterGame, this, this.onReEnterGame);
         utils.off(GlobalData.localEvent.KangGong, this, this.onKangGong);
+        utils.off(GlobalData.localEvent.UpdateGameBg, this, this.onUpdateGameBg);
     }
+
+    onUpdateGameBg() {
+        let gameBgStr = utils.getLocalStorage('gameBg');
+        if (!gameBgStr) {
+            gameBgStr = '0';
+        }
+        this.gameBg.getComponent(Sprite).spriteFrame = this.gameBgType[Number(gameBgStr)];
+    }
+
     onKangGong(init: boolean, id1: number, id2: number) {
         if (init) {
             for (let i = 0; i < this.nodeNoCards.length; i++) {
@@ -149,6 +165,11 @@ export class Game extends Component {
     }
     //初始化
     init() {
+        let gameBgStr = utils.getLocalStorage('gameBg');
+        if (!gameBgStr) {
+            gameBgStr = '0';
+        }
+        this.gameBg.getComponent(Sprite).spriteFrame = this.gameBgType[Number(gameBgStr)];
         this.setCardLevel(false);
         this.setGameRate(false);
         this.setCardTime(false);
@@ -181,13 +202,13 @@ export class Game extends Component {
     updateSetDown(numList: number[]) {
         if (GlobalData.cardInfo.gameType == GlobalData.gameType.free) {
             for (let i = 0; i < numList.length; i++) {
-                this.showSetDown(numList[i],true);
+                this.showSetDown(numList[i], true);
             }
         }
     }
     //显示下坐
     showSetDown(viewId: number, type: boolean) {
-        if(this.nodeSetDowns[viewId]){
+        if (this.nodeSetDowns[viewId]) {
             this.nodeSetDowns[viewId].active = type;
         }
     }
@@ -433,7 +454,7 @@ export class Game extends Component {
         }
     }
     //轮空
-    onHideUpDownUserHead(){
+    onHideUpDownUserHead() {
         this.hideUpDownUserHead();
         this.userHeads[GlobalData.viewId.opposite].setLeftCnt(-1);
         this.setSelfCardCnt(false);

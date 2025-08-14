@@ -171,7 +171,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "99e72203-82ff-46eb-8a7a-d4b377493aa4@f9941",
+      "__uuid__": "0afe8bbf-a3ac-4d4e-b985-0ffa92e081b8@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 0,
@@ -925,6 +925,23 @@
     "proBar": {
       "__id__": 35
     },
+    "gameBg": {
+      "__id__": 2
+    },
+    "gameBgType": [
+      {
+        "__uuid__": "0afe8bbf-a3ac-4d4e-b985-0ffa92e081b8@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "c02474c3-6a23-47e4-b2ac-33faf55497d8@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "da274aef-74e0-46dc-b6d2-dfbbb95d1ca2@f9941",
+        "__expectedType__": "cc.SpriteFrame"
+      }
+    ],
     "_id": ""
   },
   {

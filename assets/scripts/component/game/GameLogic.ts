@@ -4770,12 +4770,12 @@ export module GameLogic {
             const rank = getCardRank(card);
             const color = getCardColor(card);
 
-            if (rank === 2 && color === HONGTAO) {
+            if (rank === GlobalData.cardInfo.levelCard && color === HONGTAO) {
                 redIndexes.push(i);
                 continue;
             }
 
-            if (rank === 2 || rank > 13) continue;
+            if (rank > 13) continue;
 
             if (!colorRankMap.has(color)) colorRankMap.set(color, new Map());
             const rankMap = colorRankMap.get(color)!;
@@ -4784,7 +4784,7 @@ export module GameLogic {
         }
 
         // 2. 构建所有合法顺子模板（固定长度 = 5）
-        const legalRanks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
+        const legalRanks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
         const allSeqs: number[][] = [];
         for (let i = 0; i <= legalRanks.length - 5; i++) {
             allSeqs.push(legalRanks.slice(i, i + 5));
@@ -4838,12 +4838,12 @@ export module GameLogic {
             const rank = getCardRank(card);
             const color = getCardColor(card);
 
-            if (rank === 2 && color === HONGTAO) {
+            if (rank === GlobalData.cardInfo.levelCard && color === HONGTAO) {
                 redIndexes.push(i);
                 continue;
             }
 
-            if (rank === 2 || rank > 13) continue;
+            if (rank > 13) continue;
 
             if (!colorRankMap.has(color)) colorRankMap.set(color, new Map());
             const rankMap = colorRankMap.get(color)!;
@@ -4851,7 +4851,7 @@ export module GameLogic {
             rankMap.get(rank)!.push(i);
         }
 
-        const legalRanks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
+        const legalRanks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
         const allSeqs: number[][] = [];
         for (let i = 0; i <= legalRanks.length - 5; i++) {
             allSeqs.push(legalRanks.slice(i, i + 5));

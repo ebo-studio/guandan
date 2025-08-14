@@ -3,6 +3,7 @@ import { md5 as _md5 } from "./md5";
 import { assetManager, Button, Component, director, ImageAsset, instantiate, isValid, JsonAsset, Node, NodePool, Prefab, resources, size, Slider, sp, Sprite, SpriteAtlas, SpriteFrame, sys, Texture2D, Toggle, UITransform, v2, Vec2, Vec3, view, Widget, __private, AudioClip } from "cc";
 import { httprequest } from "./httprequest";
 import { SoundManager } from "../manager/SoundManager";
+import { GlobalData } from "../manager/GlobalData";
 
 export namespace utils {
     export function on(name: string, target: object, func: Function) {
@@ -648,6 +649,19 @@ export namespace utils {
             SoundManager.enableSound(false);
             setLocalStorage("Sound", "off");
         }
+    }
+
+    export function setGameBg(bgNum: string) {
+        setLocalStorage('gameBg', bgNum);
+        utils.send(GlobalData.localEvent.UpdateGameBg);
+    }
+
+    export function getGameBg(): string {
+        let s = getLocalStorage('gameBg');
+        if(!s) {
+            s = '0';
+        }
+        return s;
     }
 
     // instantiate一个prefab，将其绑定在给定的root节点下

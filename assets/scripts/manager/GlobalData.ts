@@ -156,6 +156,7 @@ export namespace GlobalData {
         AuditionMatchStart: "AuditionMatchStart",    //海选赛开始匹配
         AuditionMatchTimeOut: "AuditionMatchTimeOut",//海选赛匹配超时
         AuditionRoomId: "AuditionRoomId",            //海选赛房间号
+        UpdateGameBg: 'UpdateGameBg'
     }
     export const C2S_Event = {
         Ping: 1,                          //心跳（每秒钟一次，3秒无心跳自动断线)

@@ -94,9 +94,9 @@ export class Loading extends Component {
         this.loadAllPrefabs().then(() => {
             // this.loadMainScene();
         });
-        this.emailToggle.isChecked = false;
-        this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
-        this.phoneToggle.isChecked = true;
+        // this.emailToggle.isChecked = false;
+        // this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
+        // this.phoneToggle.isChecked = true;
         this.onToggleChanged(this.phoneToggle);
         // this.onToggleChanged(this.emailToggle)
         // this.phoneToggle.node.on('toggle', this.onToggleChanged, this);
@@ -122,8 +122,8 @@ export class Loading extends Component {
             this.phoneNode.active = true;
             this.emailNode.active = false;
         } else if (toggle === this.emailToggle && toggle.isChecked) {
-            this.phoneNode.active = false;
             this.emailNode.active = true;
+            this.phoneNode.active = false;
         }
     }
 
@@ -164,17 +164,18 @@ export class Loading extends Component {
     }
 
     showPhoneNode() {
-        this.emailToggle.isChecked = false;
-        this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
         this.phoneToggle.isChecked = true;
+        this.emailToggle.isChecked = false;
+        // this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
         this.onToggleChanged(this.phoneToggle);
         this.loginNode.active = true;
     }
 
     showEmailNode() {
-        this.phoneToggle.isChecked = false;
-        this.emailToggle.isChecked = false;
         this.emailToggle.isChecked = true;
+        this.phoneToggle.isChecked = false;
+        // this.emailToggle.isChecked = false;
+        
 
         // this.phoneToggle['_updateCheckMark'](); // ✅ 强制刷新勾选状态
         // this.emailToggle['_updateCheckMark']();

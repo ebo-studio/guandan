@@ -4987,7 +4987,7 @@
       "b": 255,
       "a": 255
     },
-    "loop": true,
+    "loop": false,
     "_timeScale": 1,
     "_useTint": false,
     "_preCacheMode": 0,
@@ -5001,7 +5001,7 @@
     },
     "_premultipliedAlpha": false,
     "defaultSkin": "default",
-    "defaultAnimation": "animation1",
+    "defaultAnimation": "animation2",
     "_sockets": [],
     "_debugMesh": false,
     "_id": "49GvQJUgpIDoYfsZZFfISo"
@@ -6888,6 +6888,9 @@
     },
     "txtScore": {
       "__id__": 68
+    },
+    "caishen": {
+      "__id__": 147
     },
     "_id": "1boz7Z4qZFibRzX8t0YTxx"
   },

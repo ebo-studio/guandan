@@ -1,6 +1,7 @@
-import { _decorator, Label, ProgressBar, director, SceneAsset } from 'cc';
+import { _decorator, Label, ProgressBar, director, SceneAsset, SpriteFrame, Node, Sprite } from 'cc';
 import PopWindow from './PopWindow';
 import { UIManager } from '../manager/UIManager';
+import { utils } from '../common/utils';
 const { ccclass, property } = _decorator;
 
 @ccclass('LoadItem')
@@ -11,6 +12,19 @@ export class LoadItem extends PopWindow {
     //进度条
     @property(ProgressBar)
     proBar: ProgressBar = null!;
+
+    @property(Node)
+    gameBg: Node = null;
+    @property(SpriteFrame)
+    gameBgType: SpriteFrame[] = [];
+
+    protected start(): void {
+        let gameBgStr = utils.getLocalStorage('gameBg');
+        if (!gameBgStr) {
+            gameBgStr = '0';
+        }
+        this.gameBg.getComponent(Sprite).spriteFrame = this.gameBgType[Number(gameBgStr)];
+    }
 
 
     setData(secneName: string) {

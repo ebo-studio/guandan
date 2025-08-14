@@ -1,5 +1,6 @@
-import { _decorator, Component, Label, Sprite, SpriteFrame } from 'cc';
+import { _decorator, Color, ColorKey, Component, Label, Sprite, SpriteFrame } from 'cc';
 import { utils } from '../../common/utils';
+import { GlobalData } from '../../manager/GlobalData';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameEndFreeHeadItem')
@@ -15,16 +16,16 @@ export class GameEndFreeHeadItem extends Component {
     sps: SpriteFrame[] = [];
 
     @property(Sprite)
-    panel_shengli: Sprite = null;
+    self_shengli: Sprite = null;
 
     @property(Sprite)
-    panel_shibai: Sprite = null;
+    self_shibai: Sprite = null;
 
     setData(data: { head: string, name: string, rank: number, score: number, isWin: boolean}, force: boolean = false) {
-        if (data.head) {
-            let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
-            utils.loadRemoteSpriteframe(sp, data.head);
-        }
+        // if (data.head) {
+        //     let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
+        //     utils.loadRemoteSpriteframe(sp, data.head);
+        // }
         let txtName = this.node.getChildByName("txtName").getComponent(Label)
         if (data.name) {
             txtName.string = utils.clampNickname(data.name, 6);
@@ -42,8 +43,24 @@ export class GameEndFreeHeadItem extends Component {
         else {
             this.txtScore.string = "+" + tmpScore;
         }
-        this.panel_shengli.node.active = data.isWin;
-        this.panel_shibai.node.active = data.isWin;
+        if(data.isWin) {
+            if(data.name === GlobalData.userInfo.name) {
+                this.self_shengli.node.active = true;
+                this.self_shibai.node.active = false;
+            }
+            txtName.getComponent(Label).color = new Color(179, 92, 35, 255);
+            this.txtScore.getComponent(Label).color = new Color(179, 92, 35, 255);
+        }
+        else {
+            if(data.name === GlobalData.userInfo.name) {
+                this.self_shengli.node.active = false;
+                this.self_shibai.node.active = true;
+            }
+            txtName.getComponent(Label).color = new Color(47, 82, 164, 255);
+            this.txtScore.getComponent(Label).color = new Color(47, 82, 164, 255);
+        }
+        // this.panel_shengli.node.active = data.isWin;
+        // this.panel_shibai.node.active = data.isWin;
     }
 }
 

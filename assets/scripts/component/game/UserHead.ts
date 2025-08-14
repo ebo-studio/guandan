@@ -20,8 +20,8 @@ export class UserHead extends Component {
     
     setData(data: { head: string, name: string, score: number }) {
         if (data.head) {
-            let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
-            utils.loadRemoteSpriteframe(sp, data.head);
+            // let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
+            // utils.loadRemoteSpriteframe(sp, data.head);
         }
         let txtName = this.node.getChildByName("txtName").getComponent(Label)
         if (data.name) {

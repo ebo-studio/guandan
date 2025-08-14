@@ -2,7 +2,7 @@
   "ver": "1.0.24",
   "importer": "image",
   "imported": true,
-  "uuid": "e4208259-f5e6-4475-b14d-f24e007e2dd7",
+  "uuid": "5544091e-1375-401e-8a3a-20995b9bf5c0",
   "files": [
     ".json",
     ".png"
@@ -10,8 +10,8 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "e4208259-f5e6-4475-b14d-f24e007e2dd7@6c48a",
-      "displayName": "bisai_jiesuantitle",
+      "uuid": "5544091e-1375-401e-8a3a-20995b9bf5c0@6c48a",
+      "displayName": "gameSet",
       "id": "6c48a",
       "name": "texture",
       "userData": {
@@ -22,7 +22,7 @@
         "mipfilter": "none",
         "anisotropy": 0,
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "e4208259-f5e6-4475-b14d-f24e007e2dd7",
+        "imageUuidOrDatabaseUri": "5544091e-1375-401e-8a3a-20995b9bf5c0",
         "visible": true
       },
       "ver": "1.0.22",
@@ -37,6 +37,6 @@
     "type": "texture",
     "fixAlphaTransparencyArtifacts": true,
     "hasAlpha": true,
-    "redirect": "e4208259-f5e6-4475-b14d-f24e007e2dd7@6c48a"
+    "redirect": "5544091e-1375-401e-8a3a-20995b9bf5c0@6c48a"
   }
 }

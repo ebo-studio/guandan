@@ -1,4 +1,4 @@
-import { _decorator, Component, Label } from 'cc';
+import { _decorator, Component, Label, sp } from 'cc';
 import { AppGlobal } from '../AppGlobal';
 import { utils } from '../common/utils';
 import { GlobalData } from '../manager/GlobalData';
@@ -24,6 +24,10 @@ export class Lobby extends Component {
     //昵称
     @property(Label)
     txtScore: Label = null!;
+
+    @property(sp.Skeleton)
+    caishen: sp.Skeleton = null;
+
 
 
     public static Instance: Lobby = null;
@@ -57,6 +61,14 @@ export class Lobby extends Component {
                 }
             });
         }
+
+        this.caishen.setAnimation(0, 'animation2', false);
+        this.caishen.setCompleteListener(() => {
+            if (this.caishen.animation == 'animation2') {
+                this.caishen.setAnimation(0, 'animation1', true);
+            }
+
+        })
     }
     onDestroy() {
         utils.off(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);

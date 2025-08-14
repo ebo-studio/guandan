@@ -25,9 +25,24 @@ export class GameEndFreeItem extends PopWindow {
     // spsBg: SpriteFrame[] = [];
     //标题
     @property(Sprite)
-    picTitle: Sprite = null;
-    @property(SpriteFrame)
-    spsTitle: SpriteFrame[] = [];
+    sl_picTitle: Sprite = null;
+    @property(Sprite)
+    sb_picTitle: Sprite = null;
+
+    @property(Sprite)
+    yellow_line_top: Sprite = null;
+
+    @property(Sprite)
+    bule_line_top: Sprite = null;
+
+    @property(Sprite)
+    yellow_line_bottom: Sprite = null;
+
+    @property(Sprite)
+    blue_line_bottom: Sprite = null;
+
+    // @property(SpriteFrame)
+    // spsTitle: SpriteFrame[] = [];
     //头像
     @property(GameEndFreeHeadItem)
     headItems: GameEndFreeHeadItem[] = [];
@@ -41,18 +56,30 @@ export class GameEndFreeItem extends PopWindow {
         let iswin: number = list.isWin ? 0 : 1;
 
         if(iswin == 0) {
-            this.isWin.setAnimation(0, 'sl_chuxian', false);
+            this.sl_picTitle.node.active = true;
+            this.sb_picTitle.node.active = false;
+            this.yellow_line_top.node.active = true;
+            this.bule_line_top.node.active = false;
+            this.blue_line_bottom.node.active = true;
+            this.yellow_line_bottom.node.active = false;
+            this.isWin.setAnimation(0, 'h5sl_chuxian', false);
             this.isWin.setCompleteListener(()=>{
-                if(this.isWin.animation == 'sl_chuxian') {
-                    this.isWin.setAnimation(0, 'sl_loop', true);
+                if(this.isWin.animation == 'h5sl_chuxian') {
+                    this.isWin.setAnimation(0, 'h5sl_loop', true);
                 }
             })
         }
         else {
-            this.isWin.setAnimation(0, 'sb_chuxian', false);
+            this.sl_picTitle.node.active = false
+            this.sb_picTitle.node.active = true;
+            this.yellow_line_top.node.active = false;
+            this.bule_line_top.node.active = true;
+            this.blue_line_bottom.node.active = false;
+            this.yellow_line_bottom.node.active = true;
+            this.isWin.setAnimation(0, 'h5sb_chuxian', false);
             this.isWin.setCompleteListener(()=>{
-                if(this.isWin.animation == 'sb_chuxian') {
-                    this.isWin.setAnimation(0, 'sb_loop', true);
+                if(this.isWin.animation == 'h5sb_chuxian') {
+                    this.isWin.setAnimation(0, 'h5sb_loop', true);
                 }
             })
         }
@@ -63,7 +90,8 @@ export class GameEndFreeItem extends PopWindow {
         }
         // this.picLight.spriteFrame = this.spsLight[iswin];
         // this.picBg.spriteFrame = this.spsBg[iswin];
-        this.picTitle.spriteFrame = this.spsTitle[iswin];
+
+        // this.sl_picTitle.node.active = true;
     }
     //返回大厅
     onBackBtnClick() {
