@@ -15,18 +15,21 @@ export class GetItem extends PopWindow {
     @property(Label)
     public propCount: Label = null;
 
+    private count: number;
+
     public setData(obj?: any): void {
         // console.log('奖励', obj);
+        this.count = obj.count;
         this.propCount.string = 'x' + obj.count;
         this.ani.node.active = true;
         this.ani.setAnimation(0, 'chusheng', false);
         this.ani.setCompleteListener(() => {
             if (this.ani.animation == 'chusheng') {
                 this.ani.setAnimation(0, 'loop', true);
-                this.updateScore();
+                
             }
         });
-
+        this.updateScore();
     }
 
     async updateScore() {
@@ -34,7 +37,7 @@ export class GetItem extends PopWindow {
         const test = await Http.post(commonUrl + '/api/Open/changeScore', {
             user_id: GlobalData.userInfo.user_id,
             score_type: '1',
-            score: '1'
+            score: this.count.toString()
         })
         if(test.code == 200) {
             GlobalData.userInfo.score = test.data;

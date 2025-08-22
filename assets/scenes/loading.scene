@@ -331,7 +331,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 548.0167014613779,
+    "_orthoHeight": 491.02296450939457,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -1548,7 +1548,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 164.98900000000003,
+      "x": 0,
       "y": -198,
       "z": 0
     },
@@ -2822,7 +2822,7 @@
         "__id__": 83
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 86
@@ -2871,7 +2871,7 @@
       "__id__": 79
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 81
@@ -3183,7 +3183,7 @@
         "__id__": 89
       }
     ],
-    "_isChecked": true,
+    "_isChecked": false,
     "_checkMark": {
       "__id__": 82
     },
@@ -3230,7 +3230,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -124,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -3263,7 +3263,7 @@
       "__id__": 90
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 92
@@ -3575,7 +3575,7 @@
         "__id__": 100
       }
     ],
-    "_isChecked": false,
+    "_isChecked": true,
     "_checkMark": {
       "__id__": 93
     },
@@ -3658,7 +3658,7 @@
         "__id__": 167
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 170
@@ -6053,7 +6053,7 @@
         "__id__": 235
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 238
@@ -6695,7 +6695,7 @@
     "_backgroundImage": null,
     "_inputFlag": 5,
     "_inputMode": 6,
-    "_maxLength": 18,
+    "_maxLength": 50,
     "_id": "87eBPRZFpGG79jdqjlHVDm"
   },
   {
@@ -8726,9 +8726,6 @@
     "__prefab": null,
     "progressBar": {
       "__id__": 25
-    },
-    "phoneLoginBtn": {
-      "__id__": 40
     },
     "emailBtn": {
       "__id__": 50

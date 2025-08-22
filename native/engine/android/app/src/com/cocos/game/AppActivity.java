@@ -27,7 +27,10 @@ package com.cocos.game;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.util.Log;
 
+import com.bytedance.sdk.openadsdk.TTAdConfig;
+import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
 
@@ -36,8 +39,47 @@ public class AppActivity extends CocosActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        PangleAdAdapter.initialize(this);
+//        TTAdConfig config = new TTAdConfig.Builder()
+//                .appId("5732877")
+//                .appName("金蚂蚁")
+//                .supportMultiProcess(false)
+////                .useTextureView(true)
+//                .debug(true)
+//                .build();
+//        TTAdSdk.init(this.getApplicationContext(), config);
+//        TTAdSdk.start(new TTAdSdk.Callback() {
+//            @Override
+//            public void success() {
+//                Log.d("CSJ", "初始化成功");
+//                // 可以派发到 JS 层
+//            }
+//
+//            @Override
+//            public void fail(int code, String msg) {
+//                Log.e("CSJ", "初始化失败: " + code + ", " + msg);
+//            }
+//        });
+
+//        PAGC
+////        PAGC
+//        PAGConfig config = new PAGConfig.Builder()
+//                .appId("8701814")      // 必填
+//                .debugLog(true)                 // 调试期间建议开
+//                // .setPAConsent(PAGConstant.PAGPAConsentType.PAG_CONSENT_ACCEPT) // 如需
+//                // .setGDPRConsent(1)  // 欧盟合规示例：1 允许 / 0 拒绝
+//                .build();
+//
+//        PAGSdk.init(this, config, new PAGSdk.PAGInitCallback() {
+//            @Override public void success() { /* 可以开始加载广告 */ }
+//            @Override public void fail(int code, String msg) { /* 打印日志 */ }
+//        });
+
+
         // DO OTHER INITIALIZATION BELOW
         SDKWrapper.shared().init(this);
+
+//        com.cocos.game.AdManager.get().setup(this);
 
     }
 
@@ -117,12 +159,12 @@ public class AppActivity extends CocosActivity {
         super.onStart();
     }
 
-    @Override
+//    @Override
     public void onADTick(Long millisUntilFinished) {
 
     }
 
-    @Override
+//    @Override
     public void onADLoaded(Long expireTimestamp) {
 
     }

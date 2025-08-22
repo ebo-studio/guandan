@@ -14,8 +14,8 @@ export class Loading extends Component {
     @property(ProgressBar)
     progressBar: ProgressBar = null;
 
-    @property(Button)
-    phoneLoginBtn: Button = null;
+    // @property(Button)
+    // phoneLoginBtn: Button = null;
 
     @property(Button)
     emailBtn: Button = null;
@@ -143,14 +143,14 @@ export class Loading extends Component {
                     },
                     fail: () => {
                         this.joginGame.node.active = false;
-                        this.phoneLoginBtn.node.active = true;
+                        // this.phoneLoginBtn.node.active = true;
                         this.emailBtn.node.active = true;
                     }
                 });
             }
             else {
                 this.joginGame.node.active = false;
-                this.phoneLoginBtn.node.active = true;
+                // this.phoneLoginBtn.node.active = true;
                 this.emailBtn.node.active = true;
             }
 
@@ -213,7 +213,7 @@ export class Loading extends Component {
                         clearInterval(this.timer);
                         GlobalData.userInfo.haveToken = true;
                         this.loginNode.active = false;
-                        this.phoneLoginBtn.node.active = false;
+                        // this.phoneLoginBtn.node.active = false;
                         this.emailBtn.node.active = false;
                         this.joginGame.node.active = true;
                     }
@@ -270,7 +270,7 @@ export class Loading extends Component {
                         clearInterval(this.timer);
                         GlobalData.userInfo.haveToken = true;
                         this.loginNode.active = false;
-                        this.phoneLoginBtn.node.active = false;
+                        // this.phoneLoginBtn.node.active = false;
                         this.emailBtn.node.active = false;
                         this.joginGame.node.active = true;
                     }

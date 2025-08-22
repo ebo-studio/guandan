@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, EventTouch, instantiate, Node, Prefab, Rect, sp, Sprite, SpriteAtlas, SpriteFrame, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
+import { _decorator, Animation, AnimationState, Button, Component, EventTouch, instantiate, Node, Prefab, Rect, ScrollView, sp, Sprite, SpriteAtlas, SpriteFrame, tween, UITransform, v3, Vec2, Vec3 } from 'cc';
 import { CardItem } from './CardItem';
 import { GameTimer } from './GameTimer';
 import { utils } from '../../common/utils';
@@ -11,6 +11,7 @@ import { UIManager } from '../../manager/UIManager';
 import { UIConfig } from '../../manager/UIConfig';
 import { CardAction } from '../cardAction/CardAction';
 import { GameDefine } from './GameDefine';
+import { ChatItem } from './ChatItem';
 const { ccclass, property } = _decorator;
 
 @ccclass('CardLayer')
@@ -55,6 +56,8 @@ export class CardLayer extends Component {
     picCardDir: Sprite = null;
     @property(Sprite)
     picHuifuDir: Sprite = null;
+    @property(Sprite)
+    chatBtn: Sprite = null;
     // @property(SpriteFrame)
     // spCardDirs: SpriteFrame[] = [];
     @property(Sprite)
@@ -74,6 +77,21 @@ export class CardLayer extends Component {
 
     @property(Node)
     hongtao: Node = null;
+
+    @property(Node)
+    chatNode: Node = null;
+
+    @property(ScrollView)
+    chatList: ScrollView;
+
+    @property(Prefab)
+    chatItemPrefab: Prefab = null;
+
+    @property(Node)
+    chatAniNode: Node = null;
+
+    
+    private chatAni: Animation = null;
 
     private baseCardWidth: number = 0       //牌面原始宽度
     private baseCardHeight: number = 0      //牌面原始高度
@@ -149,6 +167,7 @@ export class CardLayer extends Component {
         utils.on(GlobalData.localEvent.KickFreeUp, this, this.onKickFreeUp);
         utils.on(GlobalData.localEvent.HaveWindy, this, this.onHaveWindy);
         utils.on(GlobalData.localEvent.ReviceBtn, this, this.onReviceBtn);
+        utils.on(GlobalData.localEvent.SendChatAni, this, this.sendChatAni);
 
     }
     onDestroy() {
@@ -172,6 +191,7 @@ export class CardLayer extends Component {
         utils.off(GlobalData.localEvent.KickFreeUp, this, this.onKickFreeUp);
         utils.off(GlobalData.localEvent.HaveWindy, this, this.onHaveWindy);
         utils.off(GlobalData.localEvent.ReviceBtn, this, this.onReviceBtn);
+        utils.off(GlobalData.localEvent.SendChatAni, this, this.sendChatAni);
     }
     //初始化配置
     init(reset: Boolean = true) {
@@ -213,10 +233,46 @@ export class CardLayer extends Component {
         if (reset) {
             this.reStart();
         }
+
+        this.updateChatListView();
         // // 测试
         // this.testSelfHandCard();
         // this.testOtherOuts();
         // this.testAllOtherHandCards();
+    }
+
+    sendChatAni(data: any) {
+        let a = this;
+        this.chatAniNode.active = true;
+        this.chatAni = this.chatAniNode.getComponent(Animation);
+        const state = this.chatAni.getState('chat_' + data);
+        state.repeatCount = 3;
+        this.chatAni.once(Animation.EventType.FINISHED, () => {
+            a.chatAniNode.active = false;
+        }, this);
+        this.chatAni.play('chat_' + data);
+    }
+
+    private isShowChatView:boolean = false;
+
+    showChatView() {
+        if(!this.isShowChatView) {
+            this.chatNode.active = true;
+            this.isShowChatView = true;
+        }
+        else {
+            this.chatNode.active = false;
+            this.isShowChatView = false;
+        }
+    }
+
+    updateChatListView() {
+        for(let i = 0; i < 31; i++) {
+            const nodeItem = instantiate(this.chatItemPrefab);
+            const item = nodeItem.getComponent(ChatItem);
+            item.setValue(i+1);
+            this.chatList.content.addChild(nodeItem);
+        }
     }
 
     private reStart() {
@@ -2113,6 +2169,7 @@ export class CardLayer extends Component {
         this.picOneCard.node.active = show;
         this.picHuifuDir.node.active = GlobalData.cardInfo.oneCard;
         this.tonghuashunPic.active = show;
+        this.chatBtn.node.active = show;
         if (show) {
             // if (GlobalData.cardInfo.sortCard) {
             //     this.picCardDir.node.active = false;

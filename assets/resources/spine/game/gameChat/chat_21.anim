@@ -1,0 +1,138 @@
+[
+  {
+    "__type__": "cc.AnimationClip",
+    "_name": "chat_21",
+    "_objFlags": 0,
+    "__editorExtras__": {
+      "embeddedPlayerGroups": []
+    },
+    "_native": "",
+    "sample": 10,
+    "speed": 0.5,
+    "wrapMode": 1,
+    "enableTrsBlending": false,
+    "_duration": 1.5,
+    "_hash": 500763545,
+    "_tracks": [
+      {
+        "__id__": 1
+      }
+    ],
+    "_exoticAnimation": null,
+    "_events": [],
+    "_embeddedPlayers": []
+  },
+  {
+    "__type__": "cc.animation.ObjectTrack",
+    "_binding": {
+      "__type__": "cc.animation.TrackBinding",
+      "path": {
+        "__id__": 2
+      }
+    },
+    "_channel": {
+      "__id__": 4
+    }
+  },
+  {
+    "__type__": "cc.animation.TrackPath",
+    "_paths": [
+      {
+        "__id__": 3
+      },
+      "spriteFrame"
+    ]
+  },
+  {
+    "__type__": "cc.animation.ComponentPath",
+    "component": "cc.Sprite"
+  },
+  {
+    "__type__": "cc.animation.Channel",
+    "_curve": {
+      "__id__": 5
+    }
+  },
+  {
+    "__type__": "cc.ObjectCurve",
+    "_times": [
+      0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1,
+      1.1,
+      1.2,
+      1.3,
+      1.4
+    ],
+    "_values": [
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@f9048",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@0fe29",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@a6c17",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@08972",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@85e45",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@1377d",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@e6cd4",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@25780",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@608e0",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@4b646",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@a959f",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@bf7d3",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@f085d",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@bcfad",
+        "__expectedType__": "cc.SpriteFrame"
+      },
+      {
+        "__uuid__": "bedade29-ff3f-4150-8fa4-bd1ea1d48f2f@1eb21",
+        "__expectedType__": "cc.SpriteFrame"
+      }
+    ]
+  }
+]

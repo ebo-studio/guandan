@@ -89,6 +89,12 @@ export module GameSocket {
             let user = GameMsg.User.decode(recData.msg);
             utils.send(GlobalData.localEvent.UserLogin, user);
         }
+        else if(recData.id == GlobalData.S2C_Event.User) {
+            let data = GameMsg.User.decode(recData.msg); 
+            if(data.gold != null) {
+                GlobalData.userInfo.score = data.gold;
+            }
+        }
         else if (recData.id == GlobalData.S2C_Event.CreateRoom) {
             let room = GameMsg.Room.decode(recData.msg);
             utils.send(GlobalData.localEvent.CreateRoom, room);

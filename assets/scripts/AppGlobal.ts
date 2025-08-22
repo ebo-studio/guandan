@@ -35,7 +35,6 @@ export class AppGlobal extends Component {
         //常驻节点
         director.addPersistRootNode(this.node);
         AppGlobal.instance = this;
-        platform.init();
         HttpConfig.init();
 
         this.bindEvent();
@@ -48,6 +47,7 @@ export class AppGlobal extends Component {
     }
     requestLogin() {
         if(GlobalData.userInfo.isLogin) return;
+        platform.init();
         GameSocket.initAndConnect();
         utils.send(GlobalData.localEvent.FirstUpdate);
         GlobalData.userInfo.isLogin = true;

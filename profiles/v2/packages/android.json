@@ -3,12 +3,14 @@
     "outputName": "android",
     "mainBundleCompressionType": "merge_dep",
     "platform": "android",
-    "startScene": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-    "name": "Egglaying"
+    "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+    "name": "goldenAnt",
+    "replaceSplashScreen": true,
+    "debug": false
   },
   "options": {
     "android": {
-      "packageName": "com.niu.id",
+      "packageName": "com.goldenant.id",
       "orientation": {
         "portrait": false,
         "upsideDown": false,

@@ -44,10 +44,10 @@ export class signInViewItem extends PopWindow {
     // }
 
     public OnCloseClicked() {
+        UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 10}});
         SignInManager.signToday();
         // this.statusLabel.string = "签到成功 🎉";
         this.signInBtn.interactable = false;
-        UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 1} });
         // SoundManager.playClick();
         this.hide();
     }

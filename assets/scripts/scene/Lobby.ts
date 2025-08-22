@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, sp } from 'cc';
+import { _decorator, Component, Label, native, sp } from 'cc';
 import { AppGlobal } from '../AppGlobal';
 import { utils } from '../common/utils';
 import { GlobalData } from '../manager/GlobalData';
@@ -11,6 +11,8 @@ import { GameSocket } from '../manager/GameSocket';
 import { PbManager } from '../proto/PbManager';
 import Http from '../proto/Http';
 import { UrlConfig } from '../manager/UrlConfig';
+import { PangleAdManager } from '../common/PangleAdManager';
+// import { PangleBridge } from '../common/PangleBridge';
 // import { ethers } from "ethers";
 const { ccclass, property } = _decorator;
 declare const ethers: any;
@@ -28,11 +30,21 @@ export class Lobby extends Component {
     @property(sp.Skeleton)
     caishen: sp.Skeleton = null;
 
-
+    // private pangleBridge: PangleBridge;
 
     public static Instance: Lobby = null;
     onLoad() {
         Lobby.Instance = this;
+        PangleAdManager.instance.initialize('5732877');
+        PangleAdManager.instance.loadRewardedVideo('969623348');
+    }
+
+    onClickShowAd() {
+        // sendToNative('csj:reward:show');
+        PangleAdManager.instance.showRewardedVideo('969623348', () =>{
+            UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 10}});
+        });
+        
     }
     //首次登录更新
     onFirstUpdate() {
@@ -98,16 +110,16 @@ export class Lobby extends Component {
         UIManager.Instace.showUI({ path: UIConfig.FreeMatchItemKey, data: data });
     }
     //自由玩匹配超时
-    onFreeMatchTimeOut(){
+    onFreeMatchTimeOut() {
         UIManager.Instace.hideUI(UIConfig.FreeMatchItemKey);
         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "匹配超时!" });
     }
     //海选赛开始匹配
-    onAuditionMatchStart(data: GameMsg.Match){
+    onAuditionMatchStart(data: GameMsg.Match) {
         UIManager.Instace.showUI({ path: UIConfig.AuditionMatchItemKey, data: data });
     }
     //海选赛匹配超时
-    onAuditionMatchTimeOut(){
+    onAuditionMatchTimeOut() {
         UIManager.Instace.hideUI(UIConfig.AuditionMatchItemKey);
         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "匹配超时!" });
     }
@@ -119,7 +131,7 @@ export class Lobby extends Component {
 
     onBtnExchageClick() {
         SoundManager.playClick();
-        UIManager.Instace.showUI({ path: UIConfig.exchangeViewItemKey});
+        UIManager.Instace.showUI({ path: UIConfig.exchangeViewItemKey });
     }
     //团队
     // onBtnTeamClick() {
@@ -172,7 +184,7 @@ export class Lobby extends Component {
         GlobalData.cardInfo.gameType = GlobalData.gameType.free;
         let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
         GameSocket.send(sendBuffer);
-    
+
     }
     //积分赛
     onBtnRaceScoreClick() {
@@ -217,7 +229,7 @@ export class Lobby extends Component {
 
     onBtnAddGoldClick() {
         SoundManager.playClick();
-        UIManager.Instace.showUI({ path: UIConfig.activityViewItemKey});
+        UIManager.Instace.showUI({ path: UIConfig.activityViewItemKey });
     }
 
 
@@ -247,7 +259,7 @@ export class Lobby extends Component {
         list.type = 5;
         list.time = 10;
 
-       
+
 
         let item2 = new GameMsg.ResUser();
         item2.headImg = "";

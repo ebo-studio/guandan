@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>games/common/gameChat/imge/Bg_chat.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,2},{647,520}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{647,520}</string>
+			</dict>
+			<key>games/common/gameChat/imge/btn_chooseit.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{653,2},{372,70}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{372,70}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_expreesion1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{653,378},{96,257}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,257}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_expreesion2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{727,2},{96,257}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,257}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_send.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{727,302},{126,68}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{126,68}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_speech.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{800,478},{84,84}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{84,84}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_speech2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{888,478},{84,84}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{84,84}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_statement1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{727,102},{96,257}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,257}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Btn_statement2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{727,202},{96,257}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,257}</string>
+			</dict>
+			<key>games/common/gameChat/imge/Img_paopao.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{653,478},{143,77}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{143,77}</string>
+			</dict>
+			<key>games/common/gameChat/imge/pnlline.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{988,2},{503,3}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{503,3}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>Plist.png</string>
+			<key>realTextureFileName</key>
+			<string>Plist.png</string>
+			<key>size</key>
+			<string>{1024,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

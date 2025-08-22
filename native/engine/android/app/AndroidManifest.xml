@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.niu.id"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<!--    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>-->
 
     <application
         android:allowBackup="true"
@@ -37,6 +39,59 @@
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+
+        <!-- 删除 Pangle AAR 注入的 <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY"> -->
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTCeilingLandingPageActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTLandingPageActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTPlayableLandingPageActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTVideoLandingPageLink2Activity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTDelegateActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTWebsiteActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTAppOpenAdActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTRewardExpressVideoActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenVideoActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenExpressVideoActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTInterstitialActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTInterstitialExpressActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+        <activity android:name="com.bytedance.sdk.openadsdk.activity.TTAdActivity">
+            <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
+        </activity>
+<!--        <provider-->
+<!--            android:name="androidx.core.content.FileProvider"-->
+<!--            android:authorities="${applicationId}.fileprovider"-->
+<!--            android:exported="false"-->
+<!--            android:grantUriPermissions="true">-->
+<!--            <meta-data-->
+<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--                android:resource="@xml/file_paths" />-->
+<!--        </provider>-->
     </application>
 
 </manifest>

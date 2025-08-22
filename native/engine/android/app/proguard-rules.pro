@@ -37,6 +37,14 @@
 
 -keep public class com.google.** { *; }
 
+# Pangle SDK keep
+-keep class com.bytedance.sdk.** { *; }
+-keep class com.pgl.sys.ces.* { *; }
+
+# 可能需要的额外保留（根据集成文档）
+-keep class com.bytedance.embed_dr.** { *; }
+-keep class com.bytedance.embedapplog.** { *; }
+
 -dontwarn android.webkit.WebView
 -dontwarn android.net.http.SslError
 -dontwarn android.webkit.WebViewClient
