@@ -14928,3 +14928,4 @@ at C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder
 at Array.forEach (<anonymous>)  
 at BuildTask.handle (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\builder\setting-task\group.ccc:1:618)  
 at BuildTask.runBuildTask (C:\ProgramData\cocos\editors\Creator\3.6.0\resources\app.asar\builtin\builder\dist\worker\builder\index.ccc:1:7308)
+2025-08-22T17:49:22.504Z - warn: Metrics: no valid info
