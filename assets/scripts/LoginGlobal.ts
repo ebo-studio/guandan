@@ -1,4 +1,4 @@
-import { _decorator, Component } from "cc";
+import { _decorator, Component, director } from "cc";
 import { platform } from "./platform/platform";
 import { HttpConfig } from "./manager/HttpConfig";
 import { UIManager } from "./manager/UIManager";
@@ -13,6 +13,7 @@ export class LoginGlobal extends Component {
     public static instance: LoginGlobal = null;
 
     onLoad(): void {
+        director.addPersistRootNode(this.node);
         LoginGlobal.instance = this;
         platform.init();
         HttpConfig.init();

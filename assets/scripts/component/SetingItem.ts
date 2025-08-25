@@ -1,7 +1,10 @@
-import { _decorator, Node, Toggle } from 'cc';
+import { _decorator, director, native, Node, sys, Toggle } from 'cc';
 import { utils } from '../common/utils';
 import { SoundManager } from '../manager/SoundManager';
 import PopWindow from './PopWindow';
+import { UIManager } from '../manager/UIManager';
+import { UIConfig } from '../manager/UIConfig';
+import { GlobalData } from '../manager/GlobalData';
 const { ccclass, property } = _decorator;
 
 @ccclass('SetingItem')
@@ -76,12 +79,12 @@ export class SetingItem extends PopWindow {
             this.soundToggle.isChecked = false;
         }
         let gameBgToggle = utils.getGameBg();
-        if(gameBgToggle == '0') {
+        if (gameBgToggle == '0') {
             this.gameBgToggle1.isChecked = true;
             this.gameBgToggle2.isChecked = false;
             this.gameBgToggle3.isChecked = false;
         }
-        else if(gameBgToggle == '1') {
+        else if (gameBgToggle == '1') {
             this.gameBgToggle2.isChecked = true;
             this.gameBgToggle1.isChecked = false;
             this.gameBgToggle3.isChecked = false;
@@ -109,6 +112,71 @@ export class SetingItem extends PopWindow {
     public OnCloseClicked() {
         SoundManager.playClick();
         this.hide();
+    }
+
+    openAgreementUrl() {
+        var url = 'https://lm6789.com/agreement.html';
+        if (!sys.isNative) {
+            // Web 环境：用 window.open 打开
+            window.open(url, "_blank");
+            return;
+        }
+        if (sys.os === sys.OS.ANDROID) {
+
+        }
+        else if (sys.os == sys.OS.IOS) {
+
+        }
+        else {
+            window.open()
+        }
+    }
+
+    openPrivacypolicyUrl() {
+        var url = 'https://lm6789.com/privacypolicy.html';
+        if (!sys.isNative) {
+            // Web 环境：用 window.open 打开
+            window.open(url, "_blank");
+            return;
+        }
+        if (sys.os === sys.OS.ANDROID) {
+
+        }
+        else if (sys.os == sys.OS.IOS) {
+
+        }
+        else {
+            window.open(url, '_blank');
+        }
+    }
+
+    onLoginOut() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({
+            path: UIConfig.MessageBoxCommonKey,
+            data: {
+                okName: "确定",
+                cancleName: "取消",
+                des: "是否退出登录",
+                okFunc: () => {
+                    localStorage.removeItem(GlobalData.TOKEN);
+
+                    // UIManager.Instace.clearAllUI();
+                    // director.loadScene(GlobalData.sceneName.loading);
+                    // GlobalData.cardInfo.oneCard = false;
+                    // GlobalData.cardInfo.sortCard = false;
+                    // //逻辑退出
+                    // let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.ExitGame, null);
+                    // GameSocket.send(sendBuffer);
+                    // //UI退出
+                    // console.log("nzp add 返回大厅 1");
+                    UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
+                },
+                cancleFunc: () => {
+
+                }
+            }
+        });
     }
 }
 

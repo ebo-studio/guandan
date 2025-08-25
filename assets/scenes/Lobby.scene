@@ -497,7 +497,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 491.02296450939457,
+    "_orthoHeight": 725.9530026109661,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -6398,7 +6398,7 @@
       }
     ],
     "_interactable": true,
-    "_transition": 0,
+    "_transition": 3,
     "_normalColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -6435,7 +6435,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 1.2,
+    "_zoomScale": 0.98,
     "_target": null,
     "_id": "471MqAF2VGr7n9lfDca1RM"
   },
@@ -6609,7 +6609,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 0.9,
+    "_zoomScale": 0.98,
     "_target": null,
     "_id": "6b5l7UftFFgLaYdBMgBZW8"
   },
@@ -6783,7 +6783,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 0.9,
+    "_zoomScale": 0.98,
     "_target": null,
     "_id": "edqQHAsfdLO7No7bkfg6So"
   },

@@ -13,17 +13,17 @@ export class LoadItem extends PopWindow {
     @property(ProgressBar)
     proBar: ProgressBar = null!;
 
-    @property(Node)
-    gameBg: Node = null;
-    @property(SpriteFrame)
-    gameBgType: SpriteFrame[] = [];
+    // @property(Node)
+    // gameBg: Node = null;
+    // @property(SpriteFrame)
+    // gameBgType: SpriteFrame[] = [];
 
     protected start(): void {
-        let gameBgStr = utils.getLocalStorage('gameBg');
-        if (!gameBgStr) {
-            gameBgStr = '0';
-        }
-        this.gameBg.getComponent(Sprite).spriteFrame = this.gameBgType[Number(gameBgStr)];
+        // let gameBgStr = utils.getLocalStorage('gameBg');
+        // if (!gameBgStr) {
+        //     gameBgStr = '0';
+        // }
+        // this.gameBg.getComponent(Sprite).spriteFrame = this.gameBgType[Number(gameBgStr)];
     }
 
 

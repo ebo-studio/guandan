@@ -29,9 +29,15 @@ export class WaitItem extends PopWindow {
         }
     }
     show() {
+        if(this.node == null) {
+            return;
+        }
         this.node.active = true;
     }
     hide() {
+        if(this.node == null) {
+            return;
+        }
         this.node.active = false;
     }
 }

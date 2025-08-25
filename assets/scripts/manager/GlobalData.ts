@@ -42,6 +42,7 @@ export namespace GlobalData {
         start: "Start",
         lobby: "Lobby",
         game: "Game",
+        loading: 'loading'
     }
     //比赛类型
     export const gameType = {

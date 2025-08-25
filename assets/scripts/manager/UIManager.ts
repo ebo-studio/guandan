@@ -125,6 +125,10 @@ export class UIManager extends Component {
         //UIManager.Instace.hideUI(UIConfig.User);
     }
     public setTopSiblingIndex(node: Node) {
+        if(node == null)
+        {
+            return;
+        }
         node.setSiblingIndex(node.getParent().children.length + 1);
     }
 }

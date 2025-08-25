@@ -642,7 +642,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 124,
+      "width": 184,
       "height": 54.4
     },
     "_anchorPoint": {
@@ -677,7 +677,7 @@
       "b": 249,
       "a": 255
     },
-    "_string": "邀请用户",
+    "_string": "复制邀请链接",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 30,
@@ -963,7 +963,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 291.12,
+      "width": 302.25,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -998,7 +998,7 @@
       "b": 73,
       "a": 255
     },
-    "_string": "每邀请一名用户，会获得1个金币",
+    "_string": "每邀请一名用户，会获得10个金币",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 20,

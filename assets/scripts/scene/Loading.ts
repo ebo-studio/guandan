@@ -86,6 +86,13 @@ export class Loading extends Component {
     private total = 0;
     private finished = 0;
 
+    public static Instance: Loading = null;
+
+    protected onLoad(): void {
+        Loading.Instance = this;
+    }
+    
+
     start() {
 
         director.preloadScene(GlobalData.sceneName.lobby, function () {
@@ -160,6 +167,7 @@ export class Loading extends Component {
     }
 
     private startGame() {
+        // UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.lobby });
         director.loadScene(GlobalData.sceneName.lobby);
     }
 
