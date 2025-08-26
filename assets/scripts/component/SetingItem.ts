@@ -122,10 +122,19 @@ export class SetingItem extends PopWindow {
             return;
         }
         if (sys.os === sys.OS.ANDROID) {
-
+            native.reflection.callStaticMethod(
+                "com/cocos/game/AppActivity", // Java 类路径（包名+类名）
+                "openURL",                             // 方法名
+                "(Ljava/lang/String;)V",               // 方法签名
+                url
+            );
         }
         else if (sys.os == sys.OS.IOS) {
-
+            native.reflection.callStaticMethod(
+                "AppController",   // Objective-C 类名
+                "openURL:",        // 方法名（冒号必须带）
+                url
+            );
         }
         else {
             window.open()
@@ -140,10 +149,19 @@ export class SetingItem extends PopWindow {
             return;
         }
         if (sys.os === sys.OS.ANDROID) {
-
+            native.reflection.callStaticMethod(
+                "com/cocos/game/AppActivity", // Java 类路径（包名+类名）
+                "openURL",                             // 方法名
+                "(Ljava/lang/String;)V",               // 方法签名
+                url
+            );
         }
         else if (sys.os == sys.OS.IOS) {
-
+            native.reflection.callStaticMethod(
+                "AppController",   // Objective-C 类名
+                "openURL:",        // 方法名（冒号必须带）
+                url
+            );
         }
         else {
             window.open(url, '_blank');
@@ -151,6 +169,7 @@ export class SetingItem extends PopWindow {
     }
 
     onLoginOut() {
+        this.hide();
         SoundManager.playClick();
         UIManager.Instace.showUI({
             path: UIConfig.MessageBoxCommonKey,
@@ -160,7 +179,7 @@ export class SetingItem extends PopWindow {
                 des: "是否退出登录",
                 okFunc: () => {
                     localStorage.removeItem(GlobalData.TOKEN);
-
+                    utils.send(GlobalData.localEvent.LoginOut);
                     // UIManager.Instace.clearAllUI();
                     // director.loadScene(GlobalData.sceneName.loading);
                     // GlobalData.cardInfo.oneCard = false;
@@ -170,7 +189,7 @@ export class SetingItem extends PopWindow {
                     // GameSocket.send(sendBuffer);
                     // //UI退出
                     // console.log("nzp add 返回大厅 1");
-                    UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
+                    // UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
                 },
                 cancleFunc: () => {
 

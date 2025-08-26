@@ -90,25 +90,33 @@ export class Loading extends Component {
 
     protected onLoad(): void {
         Loading.Instance = this;
-    }
-    
-
-    start() {
-
         director.preloadScene(GlobalData.sceneName.lobby, function () {
             //cc.log("Next scene preloaded");
         });
         this.loadAllPrefabs().then(() => {
             // this.loadMainScene();
         });
-        // this.emailToggle.isChecked = false;
-        // this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
-        // this.phoneToggle.isChecked = true;
         this.onToggleChanged(this.phoneToggle);
-        // this.onToggleChanged(this.emailToggle)
-        // this.phoneToggle.node.on('toggle', this.onToggleChanged, this);
-        // this.emailToggle.node.on('toggle', this.onToggleChanged, this);
+        // Loading.Instance = this;
     }
+    
+
+    // start() {
+
+    //     director.preloadScene(GlobalData.sceneName.lobby, function () {
+    //         //cc.log("Next scene preloaded");
+    //     });
+    //     this.loadAllPrefabs().then(() => {
+    //         // this.loadMainScene();
+    //     });
+    //     // this.emailToggle.isChecked = false;
+    //     // this.phoneToggle.isChecked = false; // 必须先置 false 再置 true
+    //     // this.phoneToggle.isChecked = true;
+    //     this.onToggleChanged(this.phoneToggle);
+    //     // this.onToggleChanged(this.emailToggle)
+    //     // this.phoneToggle.node.on('toggle', this.onToggleChanged, this);
+    //     // this.emailToggle.node.on('toggle', this.onToggleChanged, this);
+    // }
 
     private async loadAllPrefabs() {
         resources.loadDir('prefab', (completedCount, totalCount, item) => {

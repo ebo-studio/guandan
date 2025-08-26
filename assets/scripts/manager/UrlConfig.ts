@@ -6,7 +6,7 @@ export module UrlConfig {
 
     export function getHttpUrl() {
         // return "http://localhost:8000/";
-        return "http://18.167.55.115/";
+        return "https://gdclient.7919.cn/";
     }
 
     export function getTokenUrl() {

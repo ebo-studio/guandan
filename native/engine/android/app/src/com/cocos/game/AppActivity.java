@@ -24,6 +24,10 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.cocos.game;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -39,6 +43,7 @@ public class AppActivity extends CocosActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        instance = this;
 //        PangleAdAdapter.initialize(this);
 //        TTAdConfig config = new TTAdConfig.Builder()
 //                .appId("5732877")
@@ -82,6 +87,54 @@ public class AppActivity extends CocosActivity {
 //        com.cocos.game.AdManager.get().setup(this);
 
     }
+
+    public static void copyToClipboard(final String text) {
+        AppActivity app = getInstance();
+        if (app == null) {
+            Log.e("CopyText", "Activity 未初始化");
+            return;
+        }
+
+        app.runOnUiThread(() -> {
+            try {
+                ClipboardManager clipboard = (ClipboardManager) app.getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("label", text);
+                clipboard.setPrimaryClip(clip);
+                Log.i("CopyText", "复制成功: " + text);
+            } catch (Exception e) {
+                Log.e("CopyText", "复制失败: " + e.getMessage());
+            }
+        });
+    }
+
+    public static AppActivity getInstance() {
+        return instance;
+    }
+
+
+    public static void openURL(final String url) {
+        // 通过 runOnUiThread 确保在主线程执行
+        AppActivity app = AppActivity.getInstance(); // 替代 getAppContext()
+        if (app == null) {
+            Log.e("AppActivity", "Activity is null, cannot open URL");
+            return;
+        }
+
+        app.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    app.startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("AppActivity", "打开链接失败: " + e.getMessage());
+                }
+            }
+        });
+    }
+
+    private static AppActivity instance;
+
 
     @Override
     protected void onResume() {

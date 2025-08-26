@@ -61,7 +61,7 @@ export class Lobby extends Component {
         utils.on(GlobalData.localEvent.FreeMatchTimeOut, this, this.onFreeMatchTimeOut);
         utils.on(GlobalData.localEvent.AuditionMatchStart, this, this.onAuditionMatchStart);
         utils.on(GlobalData.localEvent.AuditionMatchTimeOut, this, this.onAuditionMatchTimeOut);
-
+        utils.on(GlobalData.localEvent.LoginOut, this, this.loginOutGameHandler);
         AppGlobal.instance.errorCallBack = () => {
 
         }
@@ -91,6 +91,11 @@ export class Lobby extends Component {
         utils.off(GlobalData.localEvent.FreeMatchTimeOut, this, this.onFreeMatchTimeOut);
         utils.off(GlobalData.localEvent.AuditionMatchStart, this, this.onAuditionMatchStart);
         utils.off(GlobalData.localEvent.AuditionMatchTimeOut, this, this.onAuditionMatchStart);
+        utils.off(GlobalData.localEvent.LoginOut, this, this.loginOutGameHandler);
+    }
+
+    loginOutGameHandler() {
+        UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
     }
     //金币
     onUpdateScore() {

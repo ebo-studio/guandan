@@ -14,7 +14,7 @@ export class UIManager extends Component {
     onLoad() {
         UIConfig.init();
         //常驻节点,播放音效
-        director.addPersistRootNode(this.node);
+        // director.addPersistRootNode(this.node);
         UIManager.Instace = this;
     }
     //显示
