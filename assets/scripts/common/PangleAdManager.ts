@@ -46,7 +46,7 @@ export class PangleAdManager extends Component {
         // 统一类名，并把签名改成只传一个字符串参数
         // @ts-ignore
         jsb.reflection.callStaticMethod(
-          'com/cocos/game/PangleAdAdapter',
+          'com/cocos/game/PAGRewardedAdManger',
           'initialize',
           '(Ljava/lang/String;)V',
           appId
@@ -79,7 +79,7 @@ export class PangleAdManager extends Component {
       if (sys.os === sys.OS.ANDROID) {
         // @ts-ignore
         jsb.reflection.callStaticMethod(
-          'com/cocos/game/PangleAdAdapter',
+          'com/cocos/game/PAGRewardedAdManger',
           'loadRewardedVideo',
           '(Ljava/lang/String;)V',
           adUnitId
@@ -112,7 +112,7 @@ export class PangleAdManager extends Component {
       if (sys.os === sys.OS.ANDROID) {
         // @ts-ignore
         jsb.reflection.callStaticMethod(
-          'com/cocos/game/PangleAdAdapter',
+          'com/cocos/game/PAGRewardedAdManger',
           'showRewardedVideo',
           '(Ljava/lang/String;)V',
           adUnitId

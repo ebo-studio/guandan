@@ -1,4 +1,4 @@
-import { _decorator, Component, director, AudioSource, AudioClip } from 'cc';
+import { _decorator, Component, director, AudioSource, AudioClip, tween, sys } from 'cc';
 import { utils } from './common/utils';
 import { GlobalData, ReconnectType } from './manager/GlobalData';
 import { HttpConfig } from './manager/HttpConfig';
@@ -23,8 +23,12 @@ export class AppGlobal extends Component {
     //音效播放器
     @property(AudioSource)
     musicAuido: AudioSource = null;
-   
-    
+
+    private _wantPlay = false;                 // Web 自动播放解锁前的意愿
+    private _unlocked = !sys.isBrowser;        // 浏览器里默认未解锁
+    private _currentClip: AudioClip | null = null;
+
+
     public static instance: AppGlobal = null;
 
     public errorCallBack: Function = null; //全局回调
@@ -38,15 +42,28 @@ export class AppGlobal extends Component {
         HttpConfig.init();
 
         this.bindEvent();
+
+        if (sys.isBrowser) {
+            const unlockOnce = () => {
+                this._unlocked = true;
+                if (this._wantPlay && this.musicAuido?.clip) this.musicAuido.play();
+                window.removeEventListener('pointerdown', unlockOnce);
+                window.removeEventListener('keydown', unlockOnce);
+                window.removeEventListener('touchstart', unlockOnce);
+            };
+            window.addEventListener('pointerdown', unlockOnce, { once: true });
+            window.addEventListener('keydown', unlockOnce, { once: true });
+            window.addEventListener('touchstart', unlockOnce, { once: true });
+        }
     }
     start() {
         this.requestLogin();
     }
-    onDestroy(){
+    onDestroy() {
         this.removeEvent();
     }
     requestLogin() {
-        if(GlobalData.userInfo.isLogin) return;
+        if (GlobalData.userInfo.isLogin) return;
         platform.init();
         GameSocket.initAndConnect();
         utils.send(GlobalData.localEvent.FirstUpdate);
@@ -344,18 +361,57 @@ export class AppGlobal extends Component {
         this.soundClockAuido.play();
     }
     //播放音乐
-    playMusic(clip: AudioClip, loop: boolean = false) {
-        if (this.musicAuido.playing) {
-            this.musicAuido.stop();
+    async playMusic(clip: AudioClip, opts: { loop?: boolean; volume?: number; fade?: number } = {}) {
+        // if (this.musicAuido.playing) {
+        //     this.musicAuido.stop();
+        // }
+        // // console.log("music ",clip);
+        // this.musicAuido.clip = clip;
+        // this.musicAuido.loop = loop;
+        // this.musicAuido.volume = 1;
+        // this.musicAuido.play();
+
+        const loop = opts.loop ?? false;
+        const targetVol = opts.volume ?? 1;
+        const fade = Math.max(0, opts.fade ?? 0); // 秒
+
+        if (!clip || !this.musicAuido) return;
+
+        const a = this.musicAuido;
+
+        // 如果是同一首且已在播，只调参数即可，避免“停-播”产生的卡顿/空隙
+        if (a.playing && a.clip === clip) {
+            a.loop = loop;
+            if (fade > 0 && a.volume !== targetVol) {
+                tween(a).to(fade, { volume: targetVol }).start();
+            } else {
+                a.volume = targetVol;
+            }
+            return;
         }
-        // console.log("music ",clip);
-        this.musicAuido.clip = clip;
-        this.musicAuido.loop = loop;
-        this.musicAuido.volume = 0.5;
-        this.musicAuido.play();
+
+        // 正在放别的歌 → 先淡出再切换
+        if (a.playing && fade > 0) {
+            await new Promise<void>((res) => tween(a).to(fade * 0.5, { volume: 0 }).call(res).start());
+        }
+        a.stop();
+
+        a.clip = clip;
+        a.loop = loop;
+        a.volume = fade > 0 ? 0 : targetVol;
+
+        // Web 端未解锁前先记录意愿，不强行调用 play()（会被浏览器拒绝）
+        this._wantPlay = true;
+        if (this._unlocked) a.play();
+
+        if (fade > 0) tween(a).to(fade * 0.5, { volume: targetVol }).start();
+
+        this._currentClip = clip;
+
+
     }
     //停止播放音乐
-    stopMusic(){
+    stopMusic() {
         if (this.musicAuido.playing) {
             this.musicAuido.stop();
         }

@@ -28,7 +28,7 @@ export class shareTreeItem extends Component {
             `<color=${base}>邀请了</color>` +
             // 用 <on click="onNameClick" param="..."> 绑定点击
             `<color=${red}><u><on click="onNameClick" param="${data.user_id}">${nameStr}</on></u></color>` +
-            `<color=${base}>注册游戏, 获得了1积分</color>`;
+            `<color=${base}>注册游戏, 获得了10积分</color>`;
         //this.title.string = '<color=#745A49>我于<color=#745A49>' + data.create_time + '</color>邀请了' + data.name + '注册游戏,' + '获得了1积分</color>';
     }
 

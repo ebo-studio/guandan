@@ -60,7 +60,7 @@ export module SoundManager {
             if (!musicEnabled) {
                 return;
             }
-            AppGlobal.instance?.playMusic(clip, loop);
+            AppGlobal.instance?.playMusic(clip, { loop: true, volume: 1, fade: 0.3 });
         });
     }
 

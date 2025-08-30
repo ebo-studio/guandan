@@ -90,7 +90,7 @@ export class CardLayer extends Component {
     @property(Node)
     chatAniNode: Node = null;
 
-    
+
     private chatAni: Animation = null;
 
     private baseCardWidth: number = 0       //牌面原始宽度
@@ -253,10 +253,10 @@ export class CardLayer extends Component {
         this.chatAni.play('chat_' + data);
     }
 
-    private isShowChatView:boolean = false;
+    private isShowChatView: boolean = false;
 
     showChatView() {
-        if(!this.isShowChatView) {
+        if (!this.isShowChatView) {
             this.chatNode.active = true;
             this.isShowChatView = true;
         }
@@ -267,10 +267,10 @@ export class CardLayer extends Component {
     }
 
     updateChatListView() {
-        for(let i = 0; i < 31; i++) {
+        for (let i = 0; i < 31; i++) {
             const nodeItem = instantiate(this.chatItemPrefab);
             const item = nodeItem.getComponent(ChatItem);
-            item.setValue(i+1);
+            item.setValue(i + 1);
             this.chatList.content.addChild(nodeItem);
         }
     }
@@ -1068,48 +1068,172 @@ export class CardLayer extends Component {
     }
 
     //触摸开始
+    private lastClickTime: number = 0;  // 上一次点击时间
+    private doubleClickThreshold: number = 300;  // 双击间隔时间阈值（单位：毫秒）
     private onScreenTouchStart(event: EventTouch) {
-        if (!this.getCanTouch()) {
-            return;
-        }
-        if (this.handCards.length == 0) {
-            return;
-        }
-        // this.dragMode = 'none';
-        // this.draggedSet.clear();
+        // if (!this.getCanTouch()) {
+        //     return;
+        // }
+        // if (this.handCards.length == 0) {
+        //     return;
+        // }
+        // // this.dragMode = 'none';
+        // // this.draggedSet.clear();
 
-        // this.startPos = this.getLocalPos(event);
+        // // this.startPos = this.getLocalPos(event);
 
-        // ✅ 判断当前点击区域是否是“旧区域”（选中过的）
-        // const pos = this.getLocalPos(event);
-        // for (let i = 0; i < this.handCards.length; i++) {
-        //     const card = this.handCards[i];
-        //     const rect = this.getCardRect(card);
-        //     if (this.selectedIndexSet.has(i) && this.isPointInRect(pos, rect)) {
-        //         this.selectedCardIndexSet.delete(i);
+        // // ✅ 判断当前点击区域是否是“旧区域”（选中过的）
+        // // const pos = this.getLocalPos(event);
+        // // for (let i = 0; i < this.handCards.length; i++) {
+        // //     const card = this.handCards[i];
+        // //     const rect = this.getCardRect(card);
+        // //     if (this.selectedIndexSet.has(i) && this.isPointInRect(pos, rect)) {
+        // //         this.selectedCardIndexSet.delete(i);
+        // //         break;
+        // //     }
+        // // }
+        // let touchPos = event.getUILocation();
+        // let isTouchCard = false;
+
+        // for (let i = this.handCards.length - 1; i >= 0; i--) {
+        //     const card: CardItem = this.handCards[i];
+        //     if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(touchPos)) {
+        //         // if (GlobalData.cardInfo.cardDir) {
+        //         //     card.setMask(true);
+        //         // } else {
+        //         if (card.isMask()) {
+        //             card.setMask(false);
+        //             this.selectedCardIndexSet.delete(i);
+        //         } else {
+        //             // if(GlobalData.cardInfo.sortCard || GlobalData.cardInfo.oneCard) {
+
+        //             // }
+        //             card.setMask(true);
+        //         }
+        //         // }
+        //         isTouchCard = true;
         //         break;
         //     }
         // }
-        let touchPos = event.getUILocation();
+
+        if (!this.getCanTouch()) return;
+        if (this.handCards.length === 0) return;
+
+        const touchPos = event.getUILocation();
         let isTouchCard = false;
 
-        for (let i = this.handCards.length - 1; i >= 0; i--) {
-            const card: CardItem = this.handCards[i];
-            if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(touchPos)) {
-                // if (GlobalData.cardInfo.cardDir) {
-                //     card.setMask(true);
-                // } else {
-                if (card.isMask()) {
-                    card.setMask(false);
-                    this.selectedCardIndexSet.delete(i);
-                } else {
-                    card.setMask(true);
+        // 命中参数
+        const xTolerance = 12; // 同列命中的水平容差（像素）
+        // const yMax = 99999; // 如需限制纵向距离，可打开并在同列命中时附加判断
+
+        const currentTime = Date.now();
+        const timeDiff = currentTime - this.lastClickTime;
+
+        if (timeDiff < this.doubleClickThreshold) {
+            // 从上往下找最上层命中的那张牌
+            for (let i = this.handCards.length - 1; i >= 0; i--) {
+                const card: CardItem = this.handCards[i];
+                if (!card?.node) continue;
+
+                const trans = card.node.getComponent(UITransform);
+                if (!trans) continue;
+
+                const worldBB = trans.getBoundingBoxToWorld();
+
+                // 盒内命中
+                const boxHit = worldBB.contains(touchPos);
+
+                // 同列命中（只比较 X 是否落入该牌水平范围，带容差）
+                const inSameColumn =
+                    touchPos.x >= (worldBB.x - xTolerance) &&
+                    touchPos.x <= (worldBB.x + worldBB.width + xTolerance);
+
+                const hit = boxHit || inSameColumn;
+                if (!hit) continue;
+
+                // —— 命中第 i 张牌 ——
+
+                // 判断“是否已完整选中了 0..i 段，且 i+1..end 都未选”
+                const hitBB = trans.getBoundingBoxToWorld();
+                const cx = hitBB.x + hitBB.width * 0.5;
+                const cy = hitBB.y + hitBB.height * 0.5;
+
+                // 同列容差（按需调大/调小）：12px 或 牌宽的 25% 取更大
+                const columnTolerance = Math.max(12, hitBB.width * 0.25);
+                // 如果“上面”的方向与你布局相反，把 jcy >= cy 改为 jcy <= cy
+                const sameColumnUpper: number[] = [];
+
+                for (let j = 0; j < this.handCards.length; j++) {
+                    const c = this.handCards[j];
+                    if (!c?.node) continue;
+                    const tr = c.node.getComponent(UITransform);
+                    if (!tr) continue;
+
+                    const bb = tr.getBoundingBoxToWorld();
+                    const jcx = bb.x + bb.width * 0.5;
+                    const jcy = bb.y + bb.height * 0.5;
+
+                    const sameCol = Math.abs(jcx - cx) <= columnTolerance;
+                    const isUpperOrSelf = jcy >= cy; // 若不想包含自己，改为 jcy > cy
+                    if (sameCol && isUpperOrSelf) sameColumnUpper.push(j);
                 }
-                // }
+
+                // 判断这批是否已全部选中（仅切换这一批，不动其他列）
+                let allSelected = sameColumnUpper.length > 0;
+                for (const j of sameColumnUpper) {
+                    const c = this.handCards[j];
+                    if (!c?.isMask?.()) { allSelected = false; break; }
+                }
+
+                // 如果已全选 -> 批量取消；否则 -> 批量选中
+                if (allSelected) {
+                    for (const j of sameColumnUpper) {
+                        const c = this.handCards[j];
+                        c.setMask(false);
+                        this.selectedCardIndexSet.delete(j);
+                    }
+                } else {
+                    // 如果你希望“本次选择会清空旧选择”，取消注释下面两行
+                    // for (let k = 0; k < this.handCards.length; k++) this.handCards[k]?.setMask(false);
+                    // this.selectedCardIndexSet.clear();
+
+                    for (const j of sameColumnUpper) {
+                        const c = this.handCards[j];
+                        c.setMask(true);
+                        this.selectedCardIndexSet.add(j);
+                    }
+                }
+
                 isTouchCard = true;
                 break;
             }
         }
+        else {
+            // 单击处理：记录当前点击时间，等待下一次点击
+            this.lastClickTime = currentTime;
+            for (let i = this.handCards.length - 1; i >= 0; i--) {
+                const card: CardItem = this.handCards[i];
+                if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(touchPos)) {
+                    // if (GlobalData.cardInfo.cardDir) {
+                    //     card.setMask(true);
+                    // } else {
+                    if (card.isMask()) {
+                        card.setMask(false);
+                        this.selectedCardIndexSet.delete(i);
+                    } else {
+                        // if(GlobalData.cardInfo.sortCard || GlobalData.cardInfo.oneCard) {
+
+                        // }
+                        card.setMask(true);
+                    }
+                    // }
+                    isTouchCard = true;
+                    break;
+                }
+            }
+        }
+
+
         //连续点击
         if (!this.isClickTwo && !isTouchCard) {
             this.currentClickTime = Date.now()

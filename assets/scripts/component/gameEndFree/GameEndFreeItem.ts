@@ -85,7 +85,11 @@ export class GameEndFreeItem extends PopWindow {
         }
         for (let i = 0; i < list.list.length; i++) {
             let item = list.list[i];
-            let data = { rank: item.res, head: item.headImg, name: item.name, score: item.score, isWin: Boolean(iswin) };
+            let isWin: boolean = false;
+            // if(item.id == 1 || item.id == 3) {
+            //     if(item.res == 1 || item.res == )
+            // }
+            let data = { rank: item.res, head: item.headImg, name: item.name, score: item.score, isWin: list.isWin, id: item.id };
             this.headItems[i].setData(data);
         }
         // this.picLight.spriteFrame = this.spsLight[iswin];

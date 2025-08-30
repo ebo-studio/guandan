@@ -1,6 +1,7 @@
 import { _decorator, Color, ColorKey, Component, Label, Sprite, SpriteFrame } from 'cc';
 import { utils } from '../../common/utils';
 import { GlobalData } from '../../manager/GlobalData';
+import { GameLogic } from '../game/GameLogic';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameEndFreeHeadItem')
@@ -21,7 +22,7 @@ export class GameEndFreeHeadItem extends Component {
     @property(Sprite)
     self_shibai: Sprite = null;
 
-    setData(data: { head: string, name: string, rank: number, score: number, isWin: boolean}, force: boolean = false) {
+    setData(data: { head: string, name: string, rank: number, score: number, isWin: boolean, id: number}, force: boolean = false) {
         // if (data.head) {
         //     let sp = this.node.getChildByName("headMask").getChildByName("picHead").getComponent(Sprite);
         //     utils.loadRemoteSpriteframe(sp, data.head);
@@ -43,7 +44,9 @@ export class GameEndFreeHeadItem extends Component {
         else {
             this.txtScore.string = "+" + tmpScore;
         }
-        if(data.isWin) {
+        // let viewId = GameLogi?
+        // console.log('data.isWin', data.isWin);
+        if(data.rank == 1 || data.rank == 2) {
             if(data.name === GlobalData.userInfo.name) {
                 this.self_shengli.node.active = true;
                 this.self_shibai.node.active = false;

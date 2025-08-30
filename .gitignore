@@ -9,7 +9,8 @@ build/
 dist/
 library/
 temp/
-native/
+*.apk
+# native/
 
 # 忽略 .env 文件（环境变量）
 .env

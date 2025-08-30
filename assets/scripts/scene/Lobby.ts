@@ -35,13 +35,13 @@ export class Lobby extends Component {
     public static Instance: Lobby = null;
     onLoad() {
         Lobby.Instance = this;
-        PangleAdManager.instance.initialize('5732877');
-        PangleAdManager.instance.loadRewardedVideo('969623348');
+        PangleAdManager.instance.initialize('8701814');
+        // PangleAdManager.instance.loadRewardedVideo('982283195');
     }
 
     onClickShowAd() {
         // sendToNative('csj:reward:show');
-        PangleAdManager.instance.showRewardedVideo('969623348', () =>{
+        PangleAdManager.instance.showRewardedVideo('982283193', () =>{
             UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 10}});
         });
         

@@ -644,7 +644,7 @@ export module GameLogic {
                 continue;
             }
 
-            if (r == 2 || r > 13) continue; // 排除2、小王、大王
+            if (r > 13) continue; // 小王、大王
 
             if (!rankToIndexes.has(r)) rankToIndexes.set(r, []);
             rankToIndexes.get(r)!.push(i);
@@ -652,7 +652,7 @@ export module GameLogic {
 
         // 构建所有合法顺子点数模板（含特殊A结尾）
         const allSeqs: number[][] = [];
-        const legalRanks = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
+        const legalRanks = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 1];
 
         for (let i = 0; i <= legalRanks.length - 5; i++) {
             for (let len = legalRanks.length - i; len >= 5; len--) {
@@ -711,7 +711,7 @@ export module GameLogic {
 
         for (const card of normalCards) {
             const rank = getCardSize(card);
-            if (rank < 3 || rank > 14) continue; // 排除2和王
+            if (rank > 13) continue; // 排除2和王
             if (!map.has(rank)) map.set(rank, []);
             map.get(rank)!.push(card);
         }
@@ -877,7 +877,7 @@ export module GameLogic {
         const ranks = Array.from(new Set(
             cards.filter(c => !isHeartCard(c))
                 .map(getRank)
-                .filter(r => r >= 3 && r <= 13)
+                .filter(r => r <= 13)
         )).sort((a, b) => a - b);
 
         if (ranks.length + heartCount < 5) return false;
@@ -887,7 +887,7 @@ export module GameLogic {
         const countInAKQJ10 = akqj10.filter(r => ranks.includes(r)).length;
         if (countInAKQJ10 + heartCount >= 5 && heartCount <= 2) return true;
 
-        for (let start = 3; start <= 13; start++) {
+        for (let start = 2; start <= 13; start++) {
             let count = 0;
             let heartsUsed = 0;
 
@@ -1405,7 +1405,10 @@ export module GameLogic {
                     }
                     // group.forEach(i => usedIndex.add(i));
                     // moveToBack.push(group);
-                    matched.forEach(i => usedIndex.add(i));
+                    if(matched) {
+                        matched.forEach(i => usedIndex.add(i));
+                    }
+                    
                     // const matchedIndexes = matchGroupByCardItems(group, cardItems, usedIndex, selectedIndexSet);
                     // if (matchedIndexes) {
                     //     matchedIndexes.forEach(i => usedIndex.add(i));
@@ -1858,18 +1861,20 @@ export module GameLogic {
         //     }
         // }
         // ✅ 步骤5：识别顺子
+        function isSameColorStraight(straight: number[]): boolean {
+            const first = straight.find(c => !isHeartCard(c));
+            if (!first) return false; // 全是红心级牌，不成立
+            const color = getCardColor(first);
+            return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
+        }
+        // console.log('测试顺子')
         const straights = findStraightByCard(cards);
         for (let s of straights) {
             // 检查是否是同花顺或逢人配
-            const isSameColorStraight = checkIfSameColorOrFengRenPei(s);
-            if (isSameColorStraight) {
+            const isSameColorStraight_1 = checkIfSameColorOrFengRenPei(s);
+            if (isSameColorStraight_1) {
                 // 检查是否为同花顺
-                function isSameColorStraight(straight: number[]): boolean {
-                    const first = straight.find(c => !isHeartCard(c));
-                    if (!first) return false; // 全是红心级牌，不成立
-                    const color = getCardColor(first);
-                    return straight.every(c => isHeartCard(c) || getCardColor(c) === color);
-                }
+
                 if (isSameColorStraight(s)) {
                     return GameDefine.KIND_CARDS_COLOR;
                 }
@@ -2242,7 +2247,7 @@ export module GameLogic {
             const rank = getCardSize(card);
             const color = Math.floor(card / 16);
             // 排除大小王、参谋、非红心级牌2
-            if ((rank === GlobalData.cardInfo.levelCard && color !== 0) || rank <= 1 || rank > 14) continue;
+            if (rank > 14) continue;
             if (!countMap.has(rank)) countMap.set(rank, []);
             countMap.get(rank)!.push(card);
         }
@@ -2291,7 +2296,7 @@ export module GameLogic {
         // 分组：按点数归类（排除特殊点数：大小王、参谋、级牌 2）
         for (const card of cards) {
             const rank = card % 16;
-            if (rank <= GlobalData.cardInfo.levelCard || rank > 14) continue;  // 排除大小王/参谋/级牌
+            if (rank > 14) continue;  // 排除大小王/参谋/级牌
             if (!countMap.has(rank)) countMap.set(rank, []);
             countMap.get(rank)!.push(card);
         }
@@ -3069,7 +3074,7 @@ export module GameLogic {
             const rank = card % 16;
             const color = Math.floor(card / 16);
 
-            if (rank < 3 || rank > 14) continue;
+            if (rank > 14) continue;
 
             if (color === 2 && rank === GlobalData.cardInfo.levelCard) {
                 redTrumpCards.push(card); // 红桃级牌
@@ -3089,7 +3094,7 @@ export module GameLogic {
 
             const sortedRanks = Array.from(rankMap.keys()).sort((a, b) => a - b);
 
-            for (let start = 3; start <= 10; start++) {
+            for (let start = 2; start <= 13; start++) {
                 const sequence = [start, start + 1, start + 2, start + 3, start + 4];
                 const straight: number[] = [];
                 const tempPopped: [number, number][] = []; // [rank, card]
@@ -3148,7 +3153,7 @@ export module GameLogic {
             const color = Math.floor(card / 16);
 
             // 排除大小王
-            if (rank >= 14 || rank <= 1) continue;
+            if (rank >= 14) continue;
 
             // 排除非红桃的级牌（2）
             if (rank === GlobalData.cardInfo.levelCard && color !== 0) continue;

@@ -1,4 +1,4 @@
-import { _decorator, assert, Button, Component, director, EditBox, error, Label, Node, Prefab, ProgressBar, resources, Toggle } from "cc";
+import { _decorator, Animation, assert, Button, Component, director, EditBox, error, Label, Node, Prefab, ProgressBar, resources, Toggle, VideoClip, VideoPlayer } from "cc";
 import { GlobalData } from "../manager/GlobalData";
 import { UIManager } from "../manager/UIManager";
 import { UIConfig } from "../manager/UIConfig";
@@ -72,6 +72,12 @@ export class Loading extends Component {
     @property(Label)
     emailGetLabel: Label = null;
 
+    // @property(Node)
+    // startNode: Node = null;
+
+    @property(Animation)
+    startAni: Animation = null;
+
     private timer: number = null;
 
     private preloadList: string[] = [
@@ -88,18 +94,69 @@ export class Loading extends Component {
 
     public static Instance: Loading = null;
 
+    // private startAni: Animation = null;
+
     protected onLoad(): void {
         Loading.Instance = this;
-        director.preloadScene(GlobalData.sceneName.lobby, function () {
-            //cc.log("Next scene preloaded");
-        });
-        this.loadAllPrefabs().then(() => {
-            // this.loadMainScene();
-        });
-        this.onToggleChanged(this.phoneToggle);
+
+        if (!GlobalData.userInfo.isLogin) {
+            this.startAni.on(Animation.EventType.FINISHED, () => {
+                // this.startNode.active = false;
+                this.startAni.node.active = false;
+                director.preloadScene(GlobalData.sceneName.lobby, function () {
+                    //cc.log("Next scene preloaded");
+                });
+                this.loadAllPrefabs().then(() => {
+                    // this.loadMainScene();
+                });
+                this.onToggleChanged(this.phoneToggle);
+            }, this)
+
+        }
+        else {
+            director.preloadScene(GlobalData.sceneName.lobby, function () {
+                //cc.log("Next scene preloaded");
+            });
+            this.loadAllPrefabs().then(() => {
+                // this.loadMainScene();
+            });
+            this.onToggleChanged(this.phoneToggle);
+        }
+        // let videoElement = document.createElement('video');
+        // videoElement.src = cc.url.raw('resources/audio/start.mp4'); // 指定视频路径
+        // videoElement.autoplay = true;
+        // videoElement.loop = true;
+        // videoElement.style.position = 'absolute';
+        // videoElement.style.left = '0';
+        // videoElement.style.top = '0';
+        // videoElement.style.zIndex = '1000'; // 保证视频在最上层
+
+        // document.body.appendChild(videoElement);
+
+
+        // resources.load('audio/start', VideoClip, (err, clip) => {
+        //     if (err) {
+        //         console.error("加载视频失败：", err);
+        //         return;
+        //     }
+
+        //     // 创建 VideoPlayer 节点
+        //     let videoNode = new Node("VideoPlayer");
+        //     let videoPlayer = videoNode.addComponent(VideoPlayer);
+
+        //     // 设置视频播放
+        //     videoPlayer.clip = clip;
+        //     videoPlayer.play();
+
+        //     // 设置视频播放参数
+        //      director.getScene().addChild(videoPlayer.node.parent);
+        //     // videoPlayer.node.setPosition(cc.v2(0, 0));
+        //     // this.add
+        // });
+
         // Loading.Instance = this;
     }
-    
+
 
     // start() {
 
@@ -191,7 +248,7 @@ export class Loading extends Component {
         this.emailToggle.isChecked = true;
         this.phoneToggle.isChecked = false;
         // this.emailToggle.isChecked = false;
-        
+
 
         // this.phoneToggle['_updateCheckMark'](); // ✅ 强制刷新勾选状态
         // this.emailToggle['_updateCheckMark']();

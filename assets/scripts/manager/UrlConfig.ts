@@ -1,7 +1,7 @@
 export module UrlConfig {
     export function getSocketUrl() {
         // return "http://localhost:8000/ws";
-        return "ws://18.167.55.115:8001/ws";
+        return "wss://gdclient.7919.cn/ws/";
     }
 
     export function getHttpUrl() {

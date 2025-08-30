@@ -33,8 +33,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 
-import com.bytedance.sdk.openadsdk.TTAdConfig;
-import com.bytedance.sdk.openadsdk.TTAdSdk;
+//import com.bytedance.sdk.openadsdk.TTAdConfig;
+//import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
 
@@ -44,6 +44,8 @@ public class AppActivity extends CocosActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
+        RegionDebug.logRegion(getApplicationContext());
 //        PangleAdAdapter.initialize(this);
 //        TTAdConfig config = new TTAdConfig.Builder()
 //                .appId("5732877")
