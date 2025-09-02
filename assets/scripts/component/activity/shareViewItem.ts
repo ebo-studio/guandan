@@ -86,7 +86,7 @@ export class shareViewItem extends PopWindow {
     // }
 
     public OnCloseClicked() {
-        this.copyText();
+        // this.copyText();
         this.ani.loop = false;
         // this.ani.node.active = false;
         // this.ani.setAnimation(0, 'chusheng', false);

@@ -251,6 +251,7 @@ export class CardLayer extends Component {
             a.chatAniNode.active = false;
         }, this);
         this.chatAni.play('chat_' + data);
+        this.showChatView();
     }
 
     private isShowChatView: boolean = false;
@@ -2048,7 +2049,7 @@ export class CardLayer extends Component {
             }
         }
 
-        // this.handCards = newHandCards; // ⚠️ 顺序彻底
+        this.handCards = newHandCards; // ⚠️ 顺序彻底
         this.setHandCards(this.handCardsValue);
 
         // ✅ 更新 prevSelected 为这次选中的
@@ -2114,22 +2115,22 @@ export class CardLayer extends Component {
             console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
             this.handCardsValue = this.groupedCards.flat();
             // 👉 保证 handCards 顺序与 handCardsValue 一致
-            // const newHandCards: any[] = [];
-            // const used: boolean[] = new Array(this.handCards.length).fill(false);
+            const newHandCards: any[] = [];
+            const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-            // for (let i = 0; i < this.handCardsValue.length; i++) {
-            //     const value = this.handCardsValue[i];
-            //     for (let j = 0; j < this.handCards.length; j++) {
-            //         if (!used[j] && this.handCards[j].getValue() === value) {
-            //             used[j] = true;
-            //             this.handCards[j].setIndex(i); // 重设 index
-            //             newHandCards.push(this.handCards[j]);
-            //             break;
-            //         }
-            //     }
-            // }
+            for (let i = 0; i < this.handCardsValue.length; i++) {
+                const value = this.handCardsValue[i];
+                for (let j = 0; j < this.handCards.length; j++) {
+                    if (!used[j] && this.handCards[j].getValue() === value) {
+                        used[j] = true;
+                        this.handCards[j].setIndex(i); // 重设 index
+                        newHandCards.push(this.handCards[j]);
+                        break;
+                    }
+                }
+            }
 
-            // this.handCards = newHandCards; // ⚠️ 顺序彻底同步
+            this.handCards = newHandCards; // ⚠️ 顺序彻底同步
             this.setHandCards(this.handCardsValue, false, false, true);
         }
 

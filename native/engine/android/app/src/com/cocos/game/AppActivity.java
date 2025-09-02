@@ -32,6 +32,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.view.WindowManager;
 
 //import com.bytedance.sdk.openadsdk.TTAdConfig;
 //import com.bytedance.sdk.openadsdk.TTAdSdk;
@@ -43,6 +44,8 @@ public class AppActivity extends CocosActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 整个 Activity 常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         instance = this;
 
         RegionDebug.logRegion(getApplicationContext());

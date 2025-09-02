@@ -28,17 +28,17 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 63
+        "__id__": 69
       },
       {
-        "__id__": 65
+        "__id__": 71
       },
       {
-        "__id__": 67
+        "__id__": 73
       }
     ],
     "_prefab": {
-      "__id__": 69
+      "__id__": 75
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -349,22 +349,25 @@
       },
       {
         "__id__": 45
+      },
+      {
+        "__id__": 56
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 56
+        "__id__": 62
       },
       {
-        "__id__": 58
+        "__id__": 64
       },
       {
-        "__id__": 60
+        "__id__": 66
       }
     ],
     "_prefab": {
-      "__id__": 62
+      "__id__": 68
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -963,7 +966,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 302.25,
+      "width": 297.73,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -993,9 +996,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 116,
-      "g": 90,
-      "b": 73,
+      "r": 98,
+      "g": 89,
+      "b": 150,
       "a": 255
     },
     "_string": "每邀请一名用户，会获得10个金币",
@@ -1007,8 +1010,11 @@
     "_lineHeight": 40,
     "_overflow": 0,
     "_enableWrapText": true,
-    "_font": null,
-    "_isSystemFontUsed": true,
+    "_font": {
+      "__uuid__": "b69a866f-058e-44a7-b940-67b55e7e75c0",
+      "__expectedType__": "cc.TTFFont"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_isItalic": false,
     "_isBold": true,
@@ -1098,8 +1104,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 84,
-      "height": 54.4
+      "width": 80,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1128,9 +1134,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 240,
-      "g": 250,
-      "b": 249,
+      "r": 215,
+      "g": 32,
+      "b": 29,
       "a": 255
     },
     "_string": "邀请记录",
@@ -1142,11 +1148,14 @@
     "_lineHeight": 40,
     "_overflow": 0,
     "_enableWrapText": false,
-    "_font": null,
-    "_isSystemFontUsed": true,
+    "_font": {
+      "__uuid__": "b69a866f-058e-44a7-b940-67b55e7e75c0",
+      "__expectedType__": "cc.TTFFont"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_isItalic": false,
-    "_isBold": false,
+    "_isBold": true,
     "_isUnderline": true,
     "_underlineHeight": 2,
     "_cacheMode": 0,
@@ -1163,15 +1172,15 @@
     "node": {
       "__id__": 45
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 51
     },
     "_color": {
       "__type__": "cc.Color",
-      "r": 185,
-      "g": 87,
-      "b": 60,
+      "r": 229,
+      "g": 158,
+      "b": 158,
       "a": 255
     },
     "_width": 2,
@@ -1261,6 +1270,138 @@
     "fileId": "9eLZMxJQVEHo7MMaZpzmd/"
   },
   {
+    "__type__": "cc.Node",
+    "_name": "Label-002",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 15
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 57
+      },
+      {
+        "__id__": 59
+      }
+    ],
+    "_prefab": {
+      "__id__": 61
+    },
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": -365.686,
+      "y": 119.616,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0.17364817766693033,
+      "w": 0.984807753012208
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 33554432,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 20
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.UITransform",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 56
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 58
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 120,
+      "height": 50.4
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "92R50B5m5NmoLAsPPAc1sC"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 56
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 60
+    },
+    "_customMaterial": null,
+    "_srcBlendFactor": 2,
+    "_dstBlendFactor": 4,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_string": "可无限制邀请",
+    "_horizontalAlign": 1,
+    "_verticalAlign": 1,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
+    "_fontFamily": "Arial",
+    "_lineHeight": 40,
+    "_overflow": 0,
+    "_enableWrapText": true,
+    "_font": {
+      "__uuid__": "b69a866f-058e-44a7-b940-67b55e7e75c0",
+      "__expectedType__": "cc.TTFFont"
+    },
+    "_isSystemFontUsed": false,
+    "_spacingX": 0,
+    "_isItalic": false,
+    "_isBold": false,
+    "_isUnderline": false,
+    "_underlineHeight": 2,
+    "_cacheMode": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "ffouf7gGVDmp0kglxmSdwR"
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__id__": 0
+    },
+    "fileId": "504v0WiZNDm58oV1DlnA8T"
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -1269,7 +1410,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 57
+      "__id__": 63
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -1296,7 +1437,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 59
+      "__id__": 65
     },
     "_customMaterial": null,
     "_srcBlendFactor": 2,
@@ -1337,7 +1478,7 @@
     },
     "_enabled": false,
     "__prefab": {
-      "__id__": 61
+      "__id__": 67
     },
     "_id": ""
   },
@@ -1364,7 +1505,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 64
+      "__id__": 70
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -1391,7 +1532,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 66
+      "__id__": 72
     },
     "_alignFlags": 45,
     "_target": null,
@@ -1426,7 +1567,7 @@
     },
     "_enabled": true,
     "__prefab": {
-      "__id__": 68
+      "__id__": 74
     },
     "ani": {
       "__id__": 19
