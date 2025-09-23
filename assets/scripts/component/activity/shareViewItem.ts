@@ -64,7 +64,7 @@ export class shareViewItem extends PopWindow {
                 textToCopy
             );
         }
-
+        this.OnCloseClicked();
     }
 
     public start(): void {

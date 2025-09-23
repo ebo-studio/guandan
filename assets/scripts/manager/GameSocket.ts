@@ -279,11 +279,15 @@ export module GameSocket {
         }
         else if (recData.id == GlobalData.S2C_Event.UserCardsList) {
             let msg = GameMsg.UserCardsList.decode(recData.msg);
-            console.log("所有玩家剩余的牌 ", msg);
+            // console.log("所有玩家剩余的牌 ", msg);
             utils.send(GlobalData.localEvent.GameFinishCards, msg);
         }
         else if (recData.id == GlobalData.S2C_Event.ReconnectError) {
             GlobalData.loginInfo.token = null;
+        }
+        else if(recData.id == GlobalData.S2C_Event.Organize) {
+            let msg = GameMsg.Organize.decode(recData.msg);
+            utils.send(GlobalData.localEvent.Organize, msg);
         }
     }
     //错误

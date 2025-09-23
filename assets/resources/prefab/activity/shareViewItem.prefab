@@ -892,7 +892,7 @@
     },
     "component": "",
     "_componentId": "59884tODyZEQq32evdwb+Eb",
-    "handler": "OnCloseClicked",
+    "handler": "copyText",
     "customEventData": ""
   },
   {

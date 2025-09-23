@@ -100,6 +100,7 @@ export class Loading extends Component {
         Loading.Instance = this;
 
         if (!GlobalData.userInfo.isLogin) {
+            this.startAni.node.active = true;
             this.startAni.on(Animation.EventType.FINISHED, () => {
                 // this.startNode.active = false;
                 this.startAni.node.active = false;
@@ -114,6 +115,7 @@ export class Loading extends Component {
 
         }
         else {
+            this.startAni.node.active = false;
             director.preloadScene(GlobalData.sceneName.lobby, function () {
                 //cc.log("Next scene preloaded");
             });

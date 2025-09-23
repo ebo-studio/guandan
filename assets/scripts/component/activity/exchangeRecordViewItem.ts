@@ -1,10 +1,11 @@
-import { _decorator, instantiate, Node, Prefab, ScrollView, Vec3 } from "cc";
+import { _decorator, instantiate, Node, Prefab, ScrollView, sys, Vec3 } from "cc";
 import PopWindow from "../PopWindow";
 import { UrlConfig } from "../../manager/UrlConfig";
 import Http from "../../proto/Http";
 import AVirtualScrollView from "../virtualScroll/AVirtualScrollView";
 import { GlobalData, recordData } from "../../manager/GlobalData";
 import { recordItem } from "./recordItem";
+import { utils } from "../../common/utils";
 
 const { ccclass, property } = _decorator;
 
@@ -28,7 +29,38 @@ export class exchangeRecordViewItem extends PopWindow {
     public setData(obj?: any): void {
         this.nodataNode.active = true;
         this.recordNode.active = false;
-        this.updateRecord();
+        if (!sys.isNative) {
+            this.updateRecord();
+        }
+        else {
+            const url = `${UrlConfig.getTokenUrl()}api/address/getAddressRecord`;
+            this.postWithXHR(url, {
+                user_id: GlobalData.userInfo.user_id,
+                page: 1,
+                pageSize: 10
+            })
+                .then(data => {
+                    if (Number(data?.code) === 1) {
+                        var recordData = data.data.data;
+                        this.nodataNode.active = recordData.length == 0;
+                        this.recordNode.active = !this.nodataNode.active;
+                        if (this.recordNode.active) {
+                            for (let i = 0; i < recordData.length; i++) {
+                                const recordinfo: recordData = { integral: recordData[i].integral, created_time: recordData[i].created_time, status: recordData[i].status };
+                                const nodeItem = instantiate(this.itemPrefab);
+                                // nodeItem.setPosition(new Vec3(0, 26, 0))
+                                const item = nodeItem.getComponent(recordItem);
+                                item.setValue(recordinfo);
+                                this.scrollView.content.addChild(nodeItem);
+                            }
+                        }
+                    } else {
+                        console.error('接口非 200：', data);
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+
     }
 
     async updateRecord() {
@@ -37,18 +69,18 @@ export class exchangeRecordViewItem extends PopWindow {
         var commonUrl = UrlConfig.getTokenUrl();
         const record = await Http.post(commonUrl + '/api/address/getAddressRecord', {
             // address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
-            address: GlobalData.userInfo.address,
+            user_id: GlobalData.userInfo.user_id,
             page: 1,
             pageSize: 10
         })
         console.log("JSON请求返回:", record);
-        if(record.code == 1) {
+        if (record.code == 1) {
             var recordData = record.data.data;
             this.nodataNode.active = recordData.length == 0;
             this.recordNode.active = !this.nodataNode.active;
-            if(this.recordNode.active) {
-                for(let i = 0; i < recordData.length; i++) {
-                    const recordinfo: recordData = {integral: recordData[i].integral, created_time: recordData[i].created_time, status: recordData[i].status};
+            if (this.recordNode.active) {
+                for (let i = 0; i < recordData.length; i++) {
+                    const recordinfo: recordData = { integral: recordData[i].integral, created_time: recordData[i].created_time, status: recordData[i].status };
                     const nodeItem = instantiate(this.itemPrefab);
                     // nodeItem.setPosition(new Vec3(0, 26, 0))
                     const item = nodeItem.getComponent(recordItem);
@@ -57,6 +89,33 @@ export class exchangeRecordViewItem extends PopWindow {
                 }
             }
         }
+    }
+
+    postWithXHR(url: string, data: any): Promise<any> {
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.withCredentials = true; // ☆ 关键：带 Cookie
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.setRequestHeader('Accept', 'application/json');
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState !== 4) return;
+                const ct = xhr.getResponseHeader('content-type') || '';
+                const body = xhr.responseText || '';
+                console.log('status:', xhr.status, 'ct:', ct, 'body[0..200]:', body.slice(0, 200));
+                if (/<!doctype|<html/i.test(body)) return reject(new Error('收到 HTML（登录/错误页）'));
+                try {
+                    const json = JSON.parse(body.replace(/^\uFEFF/, ''));
+                    resolve(json);
+                } catch (e) {
+                    reject(new Error('非 JSON 响应：' + e));
+                }
+            };
+
+            xhr.onerror = () => reject(new Error('网络错误'));
+            xhr.send(JSON.stringify(data));
+        });
     }
 
     onClose() {

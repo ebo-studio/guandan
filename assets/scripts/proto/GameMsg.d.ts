@@ -2247,6 +2247,96 @@ export namespace GameMsg {
          */
         public toJSON(): { [k: string]: any };
     }
+
+    /** Properties of an Organize. */
+    interface IOrganize {
+
+        /** Organize cards */
+        cards?: (GameMsg.ICards[]|null);
+    }
+
+    /** Represents an Organize. */
+    class Organize implements IOrganize {
+
+        /**
+         * Constructs a new Organize.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: GameMsg.IOrganize);
+
+        /** Organize cards. */
+        public cards: GameMsg.ICards[];
+
+        /**
+         * Creates a new Organize instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Organize instance
+         */
+        public static create(properties?: GameMsg.IOrganize): GameMsg.Organize;
+
+        /**
+         * Encodes the specified Organize message. Does not implicitly {@link GameMsg.Organize.verify|verify} messages.
+         * @param message Organize message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: GameMsg.IOrganize, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified Organize message, length delimited. Does not implicitly {@link GameMsg.Organize.verify|verify} messages.
+         * @param message Organize message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: GameMsg.IOrganize, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes an Organize message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Organize
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): GameMsg.Organize;
+
+        /**
+         * Decodes an Organize message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Organize
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): GameMsg.Organize;
+
+        /**
+         * Verifies an Organize message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates an Organize message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Organize
+         */
+        public static fromObject(object: { [k: string]: any }): GameMsg.Organize;
+
+        /**
+         * Creates a plain object from an Organize message. Also converts values to other types if specified.
+         * @param message Organize
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: GameMsg.Organize, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this Organize to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 }
  
 } 

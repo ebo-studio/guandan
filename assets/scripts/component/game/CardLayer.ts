@@ -12,6 +12,7 @@ import { UIConfig } from '../../manager/UIConfig';
 import { CardAction } from '../cardAction/CardAction';
 import { GameDefine } from './GameDefine';
 import { ChatItem } from './ChatItem';
+import { PokerLogic } from './PokerLogic';
 const { ccclass, property } = _decorator;
 
 @ccclass('CardLayer')
@@ -117,6 +118,7 @@ export class CardLayer extends Component {
     private startOutPosX: number = 0        //出牌X起始位置
     private startOutPosXOppiste: number = 0 //对家出牌X起始位置
     private outScaleSelf: number = 1        //自己出牌缩放
+    private allSmallCardScale: number = 0.85   //小牌缩放
     private outDistanceSelf: number = 0     //出牌间距
     private cardsPosY: number = 0           //只有一行居中
     private cardPopUpHight: number = 0      //弹起高度
@@ -144,6 +146,9 @@ export class CardLayer extends Component {
     /////////手牌高度/////////
     private cardPosY: number = 0;
 
+    //理牌数据
+    private collect_cards: object[][] = []       //理牌列表
+
     start() {
         this.addEventListeners();
 
@@ -168,6 +173,7 @@ export class CardLayer extends Component {
         utils.on(GlobalData.localEvent.HaveWindy, this, this.onHaveWindy);
         utils.on(GlobalData.localEvent.ReviceBtn, this, this.onReviceBtn);
         utils.on(GlobalData.localEvent.SendChatAni, this, this.sendChatAni);
+        utils.on(GlobalData.localEvent.Organize, this, this.onOrganize);
 
     }
     onDestroy() {
@@ -291,6 +297,10 @@ export class CardLayer extends Component {
         this.hintIndex = 0;
         this.flushStraightHintIndex = 0;
         this.hintCards = [];
+        this.collect_cards = [];
+        for (let i: number = 0; i < 15; i++) {
+            this.collect_cards.push([]);
+        }
         GlobalData.cardInfo.oneCard = false;
         GlobalData.cardInfo.sortCard = false;
     }
@@ -389,29 +399,37 @@ export class CardLayer extends Component {
         this.delayShowCardDir();
         this.clearHandCards();
         this.handCardsValue = value;
-        this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
-        const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
-        this.fangkuai.active = false;
-        this.meihua.active = false;
-        this.heitao.active = false;
-        this.hongtao.active = false;
-        for (let i = 0; i < fushStraights.length; i++) {
-            if (fushStraights[i].color == 0) {
-                this.fangkuai.active = true;
-            }
-            else if (fushStraights[i].color == 1) {
-                this.meihua.active = true;
-            }
-            else if (fushStraights[i].color == 2) {
-                this.hongtao.active = true;
-            }
-            else if (fushStraights[i].color == 3) {
-                this.heitao.active = true;
-            }
+        // this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
+        // const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
+        // this.fangkuai.active = false;
+        // this.meihua.active = false;
+        // this.heitao.active = false;
+        // this.hongtao.active = false;
+        // for (let i = 0; i < fushStraights.length; i++) {
+        //     if (fushStraights[i].color == 0) {
+        //         this.fangkuai.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 1) {
+        //         this.meihua.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 2) {
+        //         this.hongtao.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 3) {
+        //         this.heitao.active = true;
+        //     }
 
+        // }
+
+        let is_exist_collects: boolean = false;
+        for (let i: number = 14; i >= 0; i--) {
+            if (this.collect_cards[i].length > 0) {
+                is_exist_collects = true;
+                break;
+            }
         }
         // console.log('有什么同花顺>>', fushStraights);
-        if (value.length == 0) {
+        if (value.length == 0 && !is_exist_collects) {
             return;
         }
         let delayTime = 0.06;
@@ -421,43 +439,163 @@ export class CardLayer extends Component {
             this.setCanTouch(false);
         }
         // console.log("len---> ",value.length);
-        let sameSizeList;
+        let sameSizeList = GameLogic.getSameCardSizeList(value);
+        let len0: number = sameSizeList.length;
+        let comb_list1: object[] = [];
+        let comb_list2: object[] = [];
         if (isOneCard) {
             sameSizeList = this.groupedCards;
+            // sameSizeList = this.handCardsValue;
         }
         else {
             // sameSizeList = this.groupedCards;
-            if (GlobalData.cardInfo.sortCard) {
-                sameSizeList = this.groupedCards;
+            // if (GlobalData.cardInfo.sortCard) {
+            this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+            // console.log("len---> ",value.length);
+
+            for (let i: number = 14; i >= 7; i--) {
+                if (this.collect_cards[i].length > 0) {
+                    for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                        let comb_cards = this.collect_cards[i][j];
+                        comb_list1.push(comb_cards);
+                    }
+                }
             }
-            else {
-                this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
-                sameSizeList = GameLogic.getSameCardSizeList(value, GlobalData.cardInfo.sortCard);
+
+
+            for (let i: number = 6; i >= 0; i--) {
+                if (this.collect_cards[i].length > 0) {
+                    for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                        let comb_cards = this.collect_cards[i][j];
+                        comb_list2.push(comb_cards);
+                    }
+                }
             }
+
+
+            sameSizeList = GameLogic.getSameCardSizeList(value);
+            let len0: number = sameSizeList.length;
+
+            let combs_cards_lists1: number[][] = [];
+            for (let i: number = 0; i < comb_list1.length; i++) {
+                combs_cards_lists1.push(comb_list1[i]["cards"]);
+            }
+
+            let combs_cards_lists2: number[][] = [];
+            for (let i: number = 0; i < comb_list2.length; i++) {
+                combs_cards_lists2.push(comb_list2[i]["cards"]);
+            }
+
+
+            sameSizeList = combs_cards_lists1.concat(sameSizeList);
+            sameSizeList = sameSizeList.concat(combs_cards_lists2);
+            // sameSizeList = this.groupedCards;
+            // }
+            // else {
+            // this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+            // sameSizeList = GameLogic.getSameCardSizeList(value, GlobalData.cardInfo.sortCard);
+            // }
 
         }
 
         // console.log("sameSizeList--> ",sameSizeList.length);
         this.initHandStartPosX_V(sameSizeList.length);
 
+        let len1: number = comb_list1.length;
+        let len2: number = comb_list2.length;
+
         let idx: number = 0;
         let tmpIdx: number = 0;
         // console.log("---> ",sameSizeList[0][0]);
+        // for (let i = 0; i < sameSizeList.length; i++) {
+        //     const list = sameSizeList[i];
+        //     if (GlobalData.cardInfo.sortCard || GlobalData.cardInfo.oneCard) {
+        //         list.sort((a, b) => GameLogic.getCardSize(b) - GameLogic.getCardSize(a));  // 🔧 加这一行，组内升序排列（7在前）
+        //         console.log("🧩 sameSizeList", JSON.stringify(sameSizeList));
+        //     }
+        //     let posX = this.getHandCardPosX_V(i);
+        //     let isliuBomb: boolean = GameLogic.isNBomb(list, 6)
+        //     let iswuBomb: boolean = GameLogic.isNBomb(list, 5)
+        //     let isSameSuitStraight: boolean = GameLogic.isSameSuitStraight(list);
+        //     let issiBomb: boolean = GameLogic.isNBomb(list, 4)
+        //     let isThreeWithTwo: boolean = GameLogic.isThreeWithTwo(list);
+        //     let isStraight: boolean = GameLogic.isStraight(list);
+        //     let isliandui: boolean = GameLogic.isLiandui(list);
+        //     let isWangzha: boolean = GameLogic.isWangzha(list);
+        //     for (let j = list.length - 1; j >= 0; j--) {
+        //         let valueSize = list[j];
+        //         // console.log("i----> ", i, valueSize);
+        //         let card = this.getOneCard()
+        //         card.node.setSiblingIndex(idx);
+        //         let posY = this.getHandCardPosY_V(j);
+        //         card.node.scale = new Vec3(this.handScale, this.handScale, this.handScale);
+        //         //手牌位置
+        //         let cardSps = this.getCardsSprite(valueSize);
+        //         if (cardSps) {
+        //             card.setValue(valueSize, cardSps);
+        //             if (isliuBomb) {
+        //                 card.showBomb(6);
+        //             }
+        //             else if (iswuBomb) {
+        //                 card.showBomb(5);
+        //             }
+        //             else if (isSameSuitStraight) {
+        //                 card.showTonghua(true);
+        //             }
+        //             else if (issiBomb) {
+        //                 card.showBomb(4);
+        //             }
+        //             else if (isThreeWithTwo) {
+        //                 card.showThreeTwo(true);
+        //             }
+        //             else if (isStraight) {
+        //                 card.showShunzi(true);
+        //             }
+        //             else if (isliandui) {
+        //                 card.showliandui(true);
+        //             }
+        //             else if (isWangzha) {
+        //                 card.showWangza(true);
+        //             }
+        //         }
+        //         if (ani) {
+        //             if (i == sameSizeList.length - 1 && j == 0) {
+        //                 card.setBack(true);
+        //                 tmpIdx = idx;
+        //             }
+        //         }
+        //         let moveFunc = function (posX: number, posY: number, tmpIdx: number) {
+        //             if (ani) {
+        //                 card.node.setPosition(v3(0, 0, 0))
+        //                 tween(card.node)
+        //                     .delay(i * delayTime)
+        //                     .call(() => {
+        //                         if (tmpIdx == idx - 1) {
+        //                             card.setBack(false);
+        //                             that.setCanTouch(true);
+        //                         }
+        //                     })
+        //                     .to(0.1, { position: v3(posX, posY, 0) })
+        //                     .start();
+        //             } else {
+        //                 card.node.setPosition(v3(posX, posY));
+        //             }
+        //         }
+        //         moveFunc(posX, posY, idx);
+        //         card.setIndex(idx);
+        //         card.setBottom(j == 0);
+        //         card.setLastLine(i == sameSizeList.length - 1);
+        //         idx++;
+        //         this.handCards.push(card);
+        //     }
+        // }
+        // }
+
+
         for (let i = 0; i < sameSizeList.length; i++) {
+
             const list = sameSizeList[i];
-            if (GlobalData.cardInfo.sortCard || GlobalData.cardInfo.oneCard) {
-                list.sort((a, b) => GameLogic.getCardSize(b) - GameLogic.getCardSize(a));  // 🔧 加这一行，组内升序排列（7在前）
-                console.log("🧩 sameSizeList", JSON.stringify(sameSizeList));
-            }
             let posX = this.getHandCardPosX_V(i);
-            let isliuBomb: boolean = GameLogic.isNBomb(list, 6)
-            let iswuBomb: boolean = GameLogic.isNBomb(list, 5)
-            let isSameSuitStraight: boolean = GameLogic.isSameSuitStraight(list);
-            let issiBomb: boolean = GameLogic.isNBomb(list, 4)
-            let isThreeWithTwo: boolean = GameLogic.isThreeWithTwo(list);
-            let isStraight: boolean = GameLogic.isStraight(list);
-            let isliandui: boolean = GameLogic.isLiandui(list);
-            let isWangzha: boolean = GameLogic.isWangzha(list);
             for (let j = list.length - 1; j >= 0; j--) {
                 let valueSize = list[j];
                 // console.log("i----> ", i, valueSize);
@@ -469,30 +607,6 @@ export class CardLayer extends Component {
                 let cardSps = this.getCardsSprite(valueSize);
                 if (cardSps) {
                     card.setValue(valueSize, cardSps);
-                    if (isliuBomb) {
-                        card.showBomb(6);
-                    }
-                    else if (iswuBomb) {
-                        card.showBomb(5);
-                    }
-                    else if (isSameSuitStraight) {
-                        card.showTonghua(true);
-                    }
-                    else if (issiBomb) {
-                        card.showBomb(4);
-                    }
-                    else if (isThreeWithTwo) {
-                        card.showThreeTwo(true);
-                    }
-                    else if (isStraight) {
-                        card.showShunzi(true);
-                    }
-                    else if (isliandui) {
-                        card.showliandui(true);
-                    }
-                    else if (isWangzha) {
-                        card.showWangza(true);
-                    }
                 }
                 if (ani) {
                     if (i == sameSizeList.length - 1 && j == 0) {
@@ -521,11 +635,86 @@ export class CardLayer extends Component {
                 card.setIndex(idx);
                 card.setBottom(j == 0);
                 card.setLastLine(i == sameSizeList.length - 1);
+
+
+                //card.showNodeCollect(i < len1 || i > sameSizeList.length - len2);
+
+                if (j == 0 && (i < len1 || i >= sameSizeList.length - len2)) {
+                    // card.showNodeCollect(true);
+                    if (i < len1) {
+                        let typeName = PokerLogic.comb_type_name[Number(comb_list1[i]["type"])];
+                        if (typeName == '六炸') {
+                            card.showBomb(6);
+                        }
+                        else if (typeName == '五炸') {
+                            card.showBomb(5);
+                        }
+                        else if (typeName == '同花顺') {
+                            card.showTonghua(true);
+                        }
+                        else if (typeName == '四炸') {
+                            card.showBomb(4);
+                        }
+                        else if (typeName == '三带对') {
+                            card.showThreeTwo(true);
+                        }
+                        else if (typeName == '顺子') {
+                            card.showShunzi(true);
+                        }
+                        else if (typeName == '三连对') {
+                            card.showliandui(true);
+                        }
+                        else if (typeName == '天王炸') {
+                            card.showWangza(true);
+                        }
+                        // card.combTypeLable.string = PokerLogic.comb_type_name[Number(comb_list1[i]["type"])];
+                        // card.bgSprite.spriteFrame = card.bgSpriteFrames[1];
+                    }
+
+                    if (i >= sameSizeList.length - len2) {
+                        let comb_type: number = Number(comb_list2[i - len0 - len1]["type"]);
+                        if (comb_type == PokerLogic.TYPE.dan_zhang) {
+                            // card.combTypeLable.string = "理";
+                        } else {
+                            let typeName = PokerLogic.comb_type_name[comb_type];
+                            if (typeName == '六炸') {
+                                card.showBomb(6);
+                            }
+                            else if (typeName == '五炸') {
+                                card.showBomb(5);
+                            }
+                            else if (typeName == '同花顺') {
+                                card.showTonghua(true);
+                            }
+                            else if (typeName == '四炸') {
+                                card.showBomb(4);
+                            }
+                            else if (typeName == '三带对') {
+                                card.showThreeTwo(true);
+                            }
+                            else if (typeName == '顺子') {
+                                card.showShunzi(true);
+                            }
+                            else if (typeName == '三连对') {
+                                card.showliandui(true);
+                            }
+                            else if (typeName == '天王炸') {
+                                card.showWangza(true);
+                            }
+                            // card.combTypeLable.string = PokerLogic.comb_type_name[comb_type];
+                        }
+                        // card.bgSprite.spriteFrame = card.bgSpriteFrames[0];
+                    }
+                } else {
+                    // card.showNodeCollect(false);
+                }
+
+
+
                 idx++;
                 this.handCards.push(card);
             }
         }
-        // }
     }
     //贡牌位置
     getOutCardByViewId(viewId: number) {
@@ -706,10 +895,31 @@ export class CardLayer extends Component {
                 card.setMask(false);
                 card.node.setSiblingIndex(k);
                 card.node.setScale(this.outScaleSelf, this.outScaleSelf, this.outScaleSelf);
+                let moveTime = 0.15;
                 tween(card.node)
-                    .to(.15, { position: v3(posX, 80, 0) })
+                    .parallel(
+                        tween().to(moveTime, { position: v3(posX, 80, 0) }),
+                        // tween().to(moveTime, { scale: v3(this.allSmallCardScale, this.allSmallCardScale, this.allSmallCardScale) })
+                    )
+                    // .to(moveTime, { position: v3(posX, -45, 0) })
+                    .call(() => {
+                        let cardSps = this.getCardsSprite(card.cardValue);
+                        if (cardSps) {
+                            card.setValue(card.cardValue, cardSps);
+                        }
+                    })
                     .start();
             }
+            // for (let k = 0; k < this.outCards[viewid].length; k++) {
+            //     let posX = this.getOutPosX(k);
+            //     let card = this.outCards[viewid][k];
+            //     card.setMask(false);
+            //     card.node.setSiblingIndex(k);
+            //     card.node.setScale(this.outScaleSelf, this.outScaleSelf, this.outScaleSelf);
+            //     tween(card.node)
+            //         .to(.15, { position: v3(posX, 80, 0) })
+            //         .start();
+            // }
             this.setCanTouch(false);
             // if (GlobalData.cardInfo.cardDir) {
             //     //整理手牌
@@ -740,9 +950,15 @@ export class CardLayer extends Component {
             if (!GlobalData.cardInfo.sortCard && !GlobalData.cardInfo.oneCard) {
 
             }
-            let sameSizeList;
-            console.log("出牌前 groupedCards: ", utils.deepCopy(this.groupedCards));
-            console.log("出牌牌值: ", tempCards);
+            let sameSizeList: number[][] = [];
+            let comb_list1: object[] = [];
+            let comb_list2: object[] = [];
+
+            let len0: number = 0;
+            let len1: number = 0;
+            let len2: number = 0;
+            // console.log("出牌前 groupedCards: ", utils.deepCopy(this.groupedCards));
+            // console.log("出牌牌值: ", tempCards);
 
             if (GlobalData.cardInfo.oneCard) {
                 if (isAuto) {
@@ -757,84 +973,321 @@ export class CardLayer extends Component {
                 sameSizeList = this.groupedCards;
             }
             else {
-                if (GlobalData.cardInfo.sortCard) {
-                    if (isAuto) {
-                        this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
-                        sameSizeList = this.groupedCards;
-                        // GlobalData.cardInfo.sortCard = false;
+                this.init(false);
+
+                // let sameSizeList: number[][] = [];
+                // let comb_list1: object[] = [];
+                // let comb_list2: object[] = [];
+
+                // let len0: number = 0;
+                // let len1: number = 0;
+                // let len2: number = 0;
+
+                if (isAuto) {
+                    this.collect_cards = [];
+                    for (let i: number = 0; i < 15; i++) {
+                        this.collect_cards.push([]);
                     }
-                    else {
-                        this.groupedCards = GameLogic.removeOutCardsFromGrouped(this.groupedCards, tempCards);
-                        sameSizeList = this.groupedCards;
+                    this.handCardsValue = [];
+                    for (let i: number = 0; i < this.handCards.length; i++) {
+                        this.handCardsValue.push(this.handCards[i].getValue());
                     }
 
-                }
-                else {
                     this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
-                    sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
+                    this.clearHandCards();
+                    sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
+
+                } else {
+                    this.handCardsValue = this.delete_collect_cards(this.handCardsValue, cardList.length);
+
+                    this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+
+                    this.clearHandCards();
+
+
+                    for (let i: number = 14; i >= 7; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                                let comb_cards = this.collect_cards[i][j];
+                                comb_list1.push(comb_cards);
+                            }
+                        }
+                    }
+
+
+                    for (let i: number = 6; i >= 0; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                                let comb_cards = this.collect_cards[i][j];
+                                comb_list2.push(comb_cards);
+                            }
+                        }
+                    }
+
+
+                    sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
+                    len0 = sameSizeList.length;
+
+                    let combs_cards_lists1: number[][] = [];
+                    for (let i: number = 0; i < comb_list1.length; i++) {
+                        combs_cards_lists1.push(comb_list1[i]["cards"]);
+                    }
+
+                    let combs_cards_lists2: number[][] = [];
+                    for (let i: number = 0; i < comb_list2.length; i++) {
+                        combs_cards_lists2.push(comb_list2[i]["cards"]);
+                    }
+
+                    len1 = comb_list1.length;
+                    len2 = comb_list2.length;
+
+                    sameSizeList = combs_cards_lists1.concat(sameSizeList);
+                    sameSizeList = sameSizeList.concat(combs_cards_lists2);
                 }
+                // if (GlobalData.cardInfo.sortCard) {
+                //     let sameSizeList: number[][] = [];
+                //     let comb_list1: object[] = [];
+                //     let comb_list2: object[] = [];
+
+                //     let len0: number = 0;
+                //     let len1: number = 0;
+                //     let len2: number = 0;
+
+                //     if (isAuto) {
+                //         this.collect_cards = [];
+                //         for (let i: number = 0; i < 15; i++) {
+                //             this.collect_cards.push([]);
+                //         }
+                //         this.handCardsValue = [];
+                //         for (let i: number = 0; i < this.handCards.length; i++) {
+                //             this.handCardsValue.push(this.handCards[i].getValue());
+                //         }
+
+                //         this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+                //         this.clearHandCards();
+                //         sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
+
+                //     } else {
+                //         this.handCardsValue = this.delete_collect_cards(this.handCardsValue, cardList.length);
+
+                //         this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+
+                //         this.clearHandCards();
+
+
+                //         for (let i: number = 14; i >= 7; i--) {
+                //             if (this.collect_cards[i].length > 0) {
+                //                 for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                //                     let comb_cards = this.collect_cards[i][j];
+                //                     comb_list1.push(comb_cards);
+                //                 }
+                //             }
+                //         }
+
+
+                //         for (let i: number = 6; i >= 0; i--) {
+                //             if (this.collect_cards[i].length > 0) {
+                //                 for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                //                     let comb_cards = this.collect_cards[i][j];
+                //                     comb_list2.push(comb_cards);
+                //                 }
+                //             }
+                //         }
+
+
+                //         sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue);
+                //         len0 = sameSizeList.length;
+
+                //         let combs_cards_lists1: number[][] = [];
+                //         for (let i: number = 0; i < comb_list1.length; i++) {
+                //             combs_cards_lists1.push(comb_list1[i]["cards"]);
+                //         }
+
+                //         let combs_cards_lists2: number[][] = [];
+                //         for (let i: number = 0; i < comb_list2.length; i++) {
+                //             combs_cards_lists2.push(comb_list2[i]["cards"]);
+                //         }
+
+                //         len1 = comb_list1.length;
+                //         len2 = comb_list2.length;
+
+                //         sameSizeList = combs_cards_lists1.concat(sameSizeList);
+                //         sameSizeList = sameSizeList.concat(combs_cards_lists2);
+                //     }
+
+                // }
+                // else {
+                //     this.handCardsValue = GameLogic.sortCardsBySizeDown(this.handCardsValue, this.handCardsValue.length);
+                //     sameSizeList = GameLogic.getSameCardSizeList(this.handCardsValue, GlobalData.cardInfo.sortCard);
+                // }
             }
+            // this.initHandStartPosX_V(sameSizeList.length);
+            // let idx: number = 0;
+            // let useIdxList: number[] = [];
+            // this.setCanTouch(false);
+            // for (let i = 0; i < sameSizeList.length; i++) {
+            //     const list = sameSizeList[i];
+            //     let posX = this.getHandCardPosX_V(i);
+            //     for (let j = list.length - 1; j >= 0; j--) {
+            //         let valueSize = list[j];
+            //         for (let n = 0; n < this.handCards.length; n++) {
+            //             let card = this.handCards[n];
+            //             if (card && card.getValue() == valueSize && useIdxList.indexOf(card.getIndex()) == -1) {
+            //                 useIdxList.push(card.getIndex());
+            //                 card.node.setSiblingIndex(idx);
+            //                 let posY = this.getHandCardPosY_V(j);
+            //                 card.node.scale = new Vec3(this.handScale, this.handScale, this.handScale);
+            //                 card.setBottom(j == 0);
+            //                 card.setLastLine(i == sameSizeList.length - 1);
+            //                 let moveFunc = function (posX: number, posY: number, idx: number) {
+            //                     tween(card.node)
+            //                         .delay(0.2)
+            //                         .to(0.1, { position: v3(posX, posY, 0) })
+            //                         .delay(0.2)
+            //                         .call(() => {
+            //                             //必须延迟执行,否则idx重复
+            //                             card.setIndex(idx);
+            //                             if (i == sameSizeList.length - 1 && j == 0) {
+            //                                 that.setCanTouch(true);
+            //                             }
+            //                         })
+            //                         .start();
+            //                 }
+            //                 moveFunc(posX, posY, idx);
+            //                 idx++;
+            //                 break;
+            //             }
+            //         }
+            //     }
+            // }
+            // this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
+            // const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
+            // this.fangkuai.active = false;
+            // this.meihua.active = false;
+            // this.heitao.active = false;
+            // this.hongtao.active = false;
+            // for (let i = 0; i < fushStraights.length; i++) {
+            //     if (fushStraights[i].color == 0) {
+            //         this.fangkuai.active = true;
+            //     }
+            //     else if (fushStraights[i].color == 1) {
+            //         this.meihua.active = true;
+            //     }
+            //     else if (fushStraights[i].color == 2) {
+            //         this.hongtao.active = true;
+            //     }
+            //     else if (fushStraights[i].color == 3) {
+            //         this.heitao.active = true;
+            //     }
+
+            // }
+            // }
+
+
             this.initHandStartPosX_V(sameSizeList.length);
+
             let idx: number = 0;
-            let useIdxList: number[] = [];
-            this.setCanTouch(false);
+            let tmpIdx: number = 0;
+            // console.log("---> ",sameSizeList[0][0]);
             for (let i = 0; i < sameSizeList.length; i++) {
                 const list = sameSizeList[i];
                 let posX = this.getHandCardPosX_V(i);
                 for (let j = list.length - 1; j >= 0; j--) {
                     let valueSize = list[j];
-                    for (let n = 0; n < this.handCards.length; n++) {
-                        let card = this.handCards[n];
-                        if (card.getValue() == valueSize && useIdxList.indexOf(card.getIndex()) == -1) {
-                            useIdxList.push(card.getIndex());
-                            card.node.setSiblingIndex(idx);
-                            let posY = this.getHandCardPosY_V(j);
-                            card.node.scale = new Vec3(this.handScale, this.handScale, this.handScale);
-                            card.setBottom(j == 0);
-                            card.setLastLine(i == sameSizeList.length - 1);
-                            let moveFunc = function (posX: number, posY: number, idx: number) {
-                                tween(card.node)
-                                    .delay(0.2)
-                                    .to(0.1, { position: v3(posX, posY, 0) })
-                                    .delay(0.2)
-                                    .call(() => {
-                                        //必须延迟执行,否则idx重复
-                                        card.setIndex(idx);
-                                        if (i == sameSizeList.length - 1 && j == 0) {
-                                            that.setCanTouch(true);
-                                        }
-                                    })
-                                    .start();
-                            }
-                            moveFunc(posX, posY, idx);
-                            idx++;
-                            break;
-                        }
+                    // console.log("i----> ", i, valueSize);
+                    let card = this.getOneCard()
+                    card.node.setSiblingIndex(idx);
+                    let posY = this.getHandCardPosY_V(j);
+                    card.node.scale = new Vec3(this.handScale, this.handScale, this.handScale);
+                    //手牌位置
+                    let cardSps = this.getCardsSprite(valueSize);
+                    if (cardSps) {
+                        card.setValue(valueSize, cardSps);
                     }
-                }
-            }
-            this.canFushStrights = GameLogic.getFlushStraightCards(this.handCardsValue);
-            const fushStraights = GameLogic.findFlushStraightsWithHeartWildcard(this.handCardsValue);
-            this.fangkuai.active = false;
-            this.meihua.active = false;
-            this.heitao.active = false;
-            this.hongtao.active = false;
-            for (let i = 0; i < fushStraights.length; i++) {
-                if (fushStraights[i].color == 0) {
-                    this.fangkuai.active = true;
-                }
-                else if (fushStraights[i].color == 1) {
-                    this.meihua.active = true;
-                }
-                else if (fushStraights[i].color == 2) {
-                    this.hongtao.active = true;
-                }
-                else if (fushStraights[i].color == 3) {
-                    this.heitao.active = true;
-                }
+                    let moveFunc = function (posX: number, posY: number, tmpIdx: number) {
+                        card.node.setPosition(v3(posX, posY));
+                        that.setCanTouch(true);
+                    }
+                    moveFunc(posX, posY, idx);
+                    card.setIndex(idx);
+                    card.setBottom(j == 0);
+                    card.setLastLine(i == sameSizeList.length - 1);
 
+                    if (j == 0 && (i < len1 || i >= sameSizeList.length - len2)) {
+                        // card.showNodeCollect(true);
+                        if (i < len1) {
+                            // card.combTypeLable.string = PokerLogic.comb_type_name[Number(comb_list1[i]["type"])];
+                            // card.bgSprite.spriteFrame = card.bgSpriteFrames[1];
+                            let typeName = PokerLogic.comb_type_name[Number(comb_list1[i]["type"])];
+                            if (typeName == '六炸') {
+                                card.showBomb(6);
+                            }
+                            else if (typeName == '五炸') {
+                                card.showBomb(5);
+                            }
+                            else if (typeName == '同花顺') {
+                                card.showTonghua(true);
+                            }
+                            else if (typeName == '四炸') {
+                                card.showBomb(4);
+                            }
+                            else if (typeName == '三带对') {
+                                card.showThreeTwo(true);
+                            }
+                            else if (typeName == '顺子') {
+                                card.showShunzi(true);
+                            }
+                            else if (typeName == '三连对') {
+                                card.showliandui(true);
+                            }
+                            else if (typeName == '天王炸') {
+                                card.showWangza(true);
+                            }
+                        }
+
+                        if (i >= sameSizeList.length - len2) {
+                            let comb_type: number = Number(comb_list2[i - len0 - len1]["type"]);
+                            if (comb_type == PokerLogic.TYPE.dan_zhang || comb_type == PokerLogic.TYPE.shun_zi) {
+                                // card.combTypeLable.string = "理";
+                            } else {
+                                let typeName = PokerLogic.comb_type_name[comb_type];
+                                if (typeName == '六炸') {
+                                    card.showBomb(6);
+                                }
+                                else if (typeName == '五炸') {
+                                    card.showBomb(5);
+                                }
+                                else if (typeName == '同花顺') {
+                                    card.showTonghua(true);
+                                }
+                                else if (typeName == '四炸') {
+                                    card.showBomb(4);
+                                }
+                                else if (typeName == '三带对') {
+                                    card.showThreeTwo(true);
+                                }
+                                else if (typeName == '顺子') {
+                                    card.showShunzi(true);
+                                }
+                                else if (typeName == '三连对') {
+                                    card.showliandui(true);
+                                }
+                                else if (typeName == '天王炸') {
+                                    card.showWangza(true);
+                                }
+                                // card.combTypeLable.string = PokerLogic.comb_type_name[comb_type];
+                            }
+                            // card.bgSprite.spriteFrame = card.bgSpriteFrames[0];
+                        }
+                    } else {
+                        // card.showNodeCollect(false);
+                    }
+
+                    idx++;
+                    card.setMask(false);
+                    this.handCards.push(card);
+                }
             }
-            // }
         } else if (viewid == GlobalData.viewId.opposite) {
             this.outCardList = [];
             this.outCardList = cardList;
@@ -855,21 +1308,24 @@ export class CardLayer extends Component {
             for (let k = 0; k < tempCards.length; k++) {
                 let card = this.getOneCard();
                 let posX = this.getOutPosX(k, true);
-                card.node.setSiblingIndex(k);
-                card.node.setScale(0, 0, 0);
-                card.node.setPosition(pos_X, pos_Y, 0);
-                let cardSps = this.getCardsSprite(tempCards[k]);
-                if (cardSps) {
-                    card.setValue(tempCards[k], cardSps);
-                    this.outCards[viewid].push(card);
+                if (card && card.node) {
+                    card.node.setSiblingIndex(k);
+                    card.node.setScale(0, 0, 0);
+                    card.node.setPosition(pos_X, pos_Y, 0);
+                    let cardSps = this.getCardsSprite(tempCards[k]);
+                    if (cardSps) {
+                        card.setValue(tempCards[k], cardSps);
+                        this.outCards[viewid].push(card);
+                    }
+                    let moveTime = 0.15;
+                    tween(card.node)
+                        .parallel(
+                            tween().to(moveTime, { position: v3(posX, pos_Y - 20, 0) }),
+                            tween().to(moveTime, { scale: v3(this.outScaleOther, this.outScaleOther, this.outScaleOther) })
+                        )
+                        .start();
                 }
-                let moveTime = 0.15;
-                tween(card.node)
-                    .parallel(
-                        tween().to(moveTime, { position: v3(posX, pos_Y - 20, 0) }),
-                        tween().to(moveTime, { scale: v3(this.outScaleOther, this.outScaleOther, this.outScaleOther) })
-                    )
-                    .start();
+
             }
         }
         else {
@@ -911,6 +1367,7 @@ export class CardLayer extends Component {
                 }
             }
         }
+        this.check_tonghua();
     }
 
     //游戏结束后,显示所有玩家手牌(左右两家,一排最多显示9张)
@@ -1252,8 +1709,148 @@ export class CardLayer extends Component {
     private draggedSet: Set<number> = new Set();
 
     //触摸滑动
+    private sendCardGuide = [];
     private selectedCardIndexSet: Set<number> = new Set(); // 在类上维护
     private onScreenTouchMove(event: EventTouch) {
+        // if (!this.getCanTouch()) {
+        //     return;
+        // }
+        // let movePos = event.getUILocation();
+        // let startPos = event.getUIStartLocation();
+
+        // let localStartPos = this.worldPos2LocationPos(startPos);
+        // let localMovePos = this.worldPos2LocationPos(movePos);
+        // let dis = Vec2.distance(localStartPos, localMovePos);
+        // if (dis < 6) return;
+        // // console.log("移动---------------------> ", dis);
+        // // if (GlobalData.cardInfo.cardDir) {
+        // //     for (let i = this.handCards.length - 1; i >= 0; i--) {
+        // //         const item = this.handCards[i].node;
+        // //         if (item != null) {
+        // //             let posX = item.position.x - item.getComponent(UITransform).contentSize.width / 2 * this.handScale;  //左边界点
+        // //             let posY = item.position.y + item.getComponent(UITransform).contentSize.height / 2 * this.handScale; //上边界点
+        // //             let posyYB = item.position.y - item.getComponent(UITransform).contentSize.height / 2 * this.handScale //下边界点
+        // //             if (((posX >= localStartPos.x && posX <= localMovePos.x && startPos.x < movePos.x) //从左向右
+        // //                 || (posX <= localStartPos.x && posX >= localMovePos.x && startPos.x > movePos.x)) //从右向左
+        // //                 && (posyYB <= localStartPos.y && localStartPos.y <= posY && posyYB <= localMovePos.y && localMovePos.y <= posY)
+        // //             ) {//起点和终点 位置在上边界和下边界之间
+        // //                 this.handCards[i].setMask(true);
+        // //             }
+        // //             else {
+        // //                 this.handCards[i].setMask(false);
+        // //             }
+        // //         }
+        // //     }
+        // //     //第一张
+        // //     for (let i = this.handCards.length - 1; i >= 0; i--) {
+        // //         const card = this.handCards[i];
+        // //         if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(startPos)) {
+        // //             card.setMask(true);
+        // //             break;
+        // //         }
+        // //     }
+        // //     //最后一张
+        // //     for (let i = this.handCards.length - 1; i >= 0; i--) {
+        // //         const card = this.handCards[i];
+        // //         if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(movePos)) {
+        // //             card.setMask(true);
+        // //             break;
+        // //         }
+        // //     }
+        // // } else {
+        // // console.log("value--> ",this.handCards[this.handCards.length - 1].getValue());
+        // //点击时,也会触发移动
+        // // const selectedSet = new Set<number>();
+        // for (let i = this.handCards.length - 1; i >= 0; i--) {
+        //     const item = this.handCards[i].node;
+        //     if (item != null) {
+        //         let posXL = item.position.x - item.getComponent(UITransform).contentSize.width / 2 * this.handScale;   //左边界点
+        //         let posXR = item.position.x + item.getComponent(UITransform).contentSize.width / 2 * this.handScale;  //右边界点
+        //         let posY = item.position.y + item.getComponent(UITransform).contentSize.height / 2 * this.handScale;  //上边界点
+        //         let posyYB = item.position.y - item.getComponent(UITransform).contentSize.height / 2 * this.handScale //下边界点
+
+        //         let tmpPosXR = this.handCards[i].getLastLine() ? posXR : posXL + this.handDistance_V;  //右边界点
+        //         let tmpPosY = this.handCards[i].getBottom() ? posyYB : posY - this.cardDistance_V;     //下边界点
+
+        //         //向左 向上  当前点纵坐标>下边界点  当前点横坐标>右边界点   牌的上边界点>起始点纵坐标    牌的左边界点<起始点横坐标  
+        //         let leftUp = (localStartPos.x >= localMovePos.x) && (localMovePos.y >= localStartPos.y) && (localMovePos.y >= tmpPosY) && (localMovePos.x <= tmpPosXR) && (posY >= localStartPos.y) && (posXL <= localStartPos.x);
+        //         //向左向下
+        //         let leftDown = (localStartPos.x >= localMovePos.x) && (localMovePos.y <= localStartPos.y) && (localMovePos.y <= posY) && (localMovePos.x <= tmpPosXR) && (tmpPosY <= localStartPos.y) && (posXL <= localStartPos.x);
+        //         //向右向上
+        //         let rightUp = (localStartPos.x <= localMovePos.x) && (localMovePos.y >= localStartPos.y) && (localMovePos.y >= tmpPosY) && (localMovePos.x >= posXL) && (posY >= localStartPos.y) && (tmpPosXR >= localStartPos.x);
+        //         //向右向下
+        //         let rightDown = (localStartPos.x <= localMovePos.x) && (localMovePos.y <= localStartPos.y) && (localMovePos.y <= posY) && (localMovePos.x >= posXL) && (tmpPosY <= localStartPos.y) && (tmpPosXR >= localStartPos.x);
+
+        //         if (leftUp || leftDown || rightUp || rightDown) {
+        //             // this.draggedSet.add(i);
+        //             this.handCards[i].setMask(true);
+        //             // // ✅ 确定拖动模式（第一次触碰时）
+        //             // if (this.dragMode === 'none') {
+        //             //     this.dragMode = this.selectedIndexSet.has(i) ? 'remove' : 'add';
+        //             // }
+
+        //             // // ✅ 执行选中/取消逻辑
+        //             // if (this.dragMode === 'add') {
+        //             //     this.handCards[i].setMask(true);
+        //             //     this.selectedIndexSet.add(i);
+        //             // } else if (this.dragMode === 'remove') {
+        //             //     this.handCards[i].setMask(false);
+        //             //     this.selectedIndexSet.delete(i);
+        //             // }
+        //             // this.handCards[i].setMask(true);
+        //             // this.selectedCardIndexSet.add(i);
+        //         } else {
+        //             const card = this.handCards[i];
+        //             // const rect = this.getCardRect(card);
+        //             if (this.isPointInRect(localMovePos, card.node)) {
+        //                 this.selectedCardIndexSet.delete(i);
+        //                 this.handCards[i].setMask(false);
+        //                 // console.log('在点上');
+        //             }
+        //             else {
+        //                 if (this.selectedCardIndexSet.has(i)) {
+        //                     this.handCards[i].setMask(true);
+        //                 }
+        //                 else {
+        //                     this.handCards[i].setMask(false);
+        //                 }
+        //             }
+
+        //             // if(!this.handCards[i].isSelect) {
+        //             // this.handCards[i].setMask(false);
+        //             // }
+        //             // else {
+
+        //             // }
+        //             // this.selectedCardIndexSet.delete(i);
+        //             // this.handCards[i].setMask(false);
+        //         }
+        //     }
+        // }
+        // // this.selectedCardIndexSet.forEach(i => {
+        // //     this.handCards[i].setMask(true);
+        // // });
+        // //第一张
+        // for (let i = this.handCards.length - 1; i >= 0; i--) {
+        //     const card = this.handCards[i];
+        //     if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(startPos)) {
+        //         card.setMask(true);
+        //         break;
+        //     }
+        // }
+        // //最后一张
+        // for (let i = this.handCards.length - 1; i >= 0; i--) {
+        //     const card = this.handCards[i];
+        //     if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(movePos)) {
+        //         card.setMask(true);
+        //         break;
+        //     }
+        // }
+        // }
+
+        // if (this.btnDownCard.node.active || this.btnUpCard.node.active) {
+        //     return;
+        // }
         if (!this.getCanTouch()) {
             return;
         }
@@ -1264,45 +1861,7 @@ export class CardLayer extends Component {
         let localMovePos = this.worldPos2LocationPos(movePos);
         let dis = Vec2.distance(localStartPos, localMovePos);
         if (dis < 6) return;
-        // console.log("移动---------------------> ", dis);
-        // if (GlobalData.cardInfo.cardDir) {
-        //     for (let i = this.handCards.length - 1; i >= 0; i--) {
-        //         const item = this.handCards[i].node;
-        //         if (item != null) {
-        //             let posX = item.position.x - item.getComponent(UITransform).contentSize.width / 2 * this.handScale;  //左边界点
-        //             let posY = item.position.y + item.getComponent(UITransform).contentSize.height / 2 * this.handScale; //上边界点
-        //             let posyYB = item.position.y - item.getComponent(UITransform).contentSize.height / 2 * this.handScale //下边界点
-        //             if (((posX >= localStartPos.x && posX <= localMovePos.x && startPos.x < movePos.x) //从左向右
-        //                 || (posX <= localStartPos.x && posX >= localMovePos.x && startPos.x > movePos.x)) //从右向左
-        //                 && (posyYB <= localStartPos.y && localStartPos.y <= posY && posyYB <= localMovePos.y && localMovePos.y <= posY)
-        //             ) {//起点和终点 位置在上边界和下边界之间
-        //                 this.handCards[i].setMask(true);
-        //             }
-        //             else {
-        //                 this.handCards[i].setMask(false);
-        //             }
-        //         }
-        //     }
-        //     //第一张
-        //     for (let i = this.handCards.length - 1; i >= 0; i--) {
-        //         const card = this.handCards[i];
-        //         if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(startPos)) {
-        //             card.setMask(true);
-        //             break;
-        //         }
-        //     }
-        //     //最后一张
-        //     for (let i = this.handCards.length - 1; i >= 0; i--) {
-        //         const card = this.handCards[i];
-        //         if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(movePos)) {
-        //             card.setMask(true);
-        //             break;
-        //         }
-        //     }
-        // } else {
-        // console.log("value--> ",this.handCards[this.handCards.length - 1].getValue());
-        //点击时,也会触发移动
-        // const selectedSet = new Set<number>();
+
         for (let i = this.handCards.length - 1; i >= 0; i--) {
             const item = this.handCards[i].node;
             if (item != null) {
@@ -1314,7 +1873,7 @@ export class CardLayer extends Component {
                 let tmpPosXR = this.handCards[i].getLastLine() ? posXR : posXL + this.handDistance_V;  //右边界点
                 let tmpPosY = this.handCards[i].getBottom() ? posyYB : posY - this.cardDistance_V;     //下边界点
 
-                //向左 向上  当前点纵坐标>下边界点  当前点横坐标>右边界点   牌的上边界点>起始点纵坐标    牌的左边界点<起始点横坐标  
+                //向左 向上  当前点纵坐标>下边界点  当前点横坐标>右边界点   牌的上边界点>起始点纵坐标    牌的左边界点<起始点横坐标
                 let leftUp = (localStartPos.x >= localMovePos.x) && (localMovePos.y >= localStartPos.y) && (localMovePos.y >= tmpPosY) && (localMovePos.x <= tmpPosXR) && (posY >= localStartPos.y) && (posXL <= localStartPos.x);
                 //向左向下
                 let leftDown = (localStartPos.x >= localMovePos.x) && (localMovePos.y <= localStartPos.y) && (localMovePos.y <= posY) && (localMovePos.x <= tmpPosXR) && (tmpPosY <= localStartPos.y) && (posXL <= localStartPos.x);
@@ -1324,59 +1883,42 @@ export class CardLayer extends Component {
                 let rightDown = (localStartPos.x <= localMovePos.x) && (localMovePos.y <= localStartPos.y) && (localMovePos.y <= posY) && (localMovePos.x >= posXL) && (tmpPosY <= localStartPos.y) && (tmpPosXR >= localStartPos.x);
 
                 if (leftUp || leftDown || rightUp || rightDown) {
-                    // this.draggedSet.add(i);
-                    this.handCards[i].setMask(true);
-                    // // ✅ 确定拖动模式（第一次触碰时）
-                    // if (this.dragMode === 'none') {
-                    //     this.dragMode = this.selectedIndexSet.has(i) ? 'remove' : 'add';
-                    // }
-
-                    // // ✅ 执行选中/取消逻辑
-                    // if (this.dragMode === 'add') {
+                    if (GlobalData.cardInfo.gameType != 97) {
+                        this.handCards[i].setMask(true);
+                    }
+                    // if (GlobalData.cardInfo.gameType == 97) {
+                    //   if (this.sendCardGuide.indexOf(this.handCards[i].getValue()) >= 0
+                    //     || [34, 17, 33, 49].indexOf(this.handCards[i].getValue()) >= 0
+                    //     || [12, 28, 60, 5, 21].indexOf(this.handCards[i].getValue()) >= 0) {
                     //     this.handCards[i].setMask(true);
-                    //     this.selectedIndexSet.add(i);
-                    // } else if (this.dragMode === 'remove') {
-                    //     this.handCards[i].setMask(false);
-                    //     this.selectedIndexSet.delete(i);
+                    //   }
                     // }
-                    // this.handCards[i].setMask(true);
-                    // this.selectedCardIndexSet.add(i);
                 } else {
-                    const card = this.handCards[i];
-                    // const rect = this.getCardRect(card);
-                    if (this.isPointInRect(localMovePos, card.node)) {
-                        this.selectedCardIndexSet.delete(i);
+                    if (GlobalData.cardInfo.gameType != 97) {
                         this.handCards[i].setMask(false);
-                        // console.log('在点上');
                     }
-                    else {
-                        if (this.selectedCardIndexSet.has(i)) {
-                            this.handCards[i].setMask(true);
-                        }
-                        else {
-                            this.handCards[i].setMask(false);
-                        }
-                    }
-
-                    // if(!this.handCards[i].isSelect) {
-                    // this.handCards[i].setMask(false);
+                    // if (GlobalData.cardInfo.gameType == 97) {
+                    //   if (this.sendCardGuide.indexOf(this.handCards[i].getValue()) >= 0
+                    //     || [34, 17, 33, 49].indexOf(this.handCards[i].getValue()) >= 0
+                    //     || [12, 28, 60, 5, 21].indexOf(this.handCards[i].getValue()) >= 0) {
+                    //     this.handCards[i].setMask(false);
+                    //   }
                     // }
-                    // else {
-
-                    // }
-                    // this.selectedCardIndexSet.delete(i);
-                    // this.handCards[i].setMask(false);
                 }
             }
         }
-        // this.selectedCardIndexSet.forEach(i => {
-        //     this.handCards[i].setMask(true);
-        // });
         //第一张
         for (let i = this.handCards.length - 1; i >= 0; i--) {
             const card = this.handCards[i];
             if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(startPos)) {
-                card.setMask(true);
+                if (GlobalData.cardInfo.gameType == 97) {
+                    if (this.sendCardGuide.indexOf(card.getValue()) >= 0) {
+                        card.setMask(true);
+                    }
+                } else {
+                    card.setMask(true);
+                }
+                // card.setMask(true);
                 break;
             }
         }
@@ -1384,11 +1926,76 @@ export class CardLayer extends Component {
         for (let i = this.handCards.length - 1; i >= 0; i--) {
             const card = this.handCards[i];
             if (card.node && card.node.getComponent(UITransform).getBoundingBoxToWorld().contains(movePos)) {
-                card.setMask(true);
+                if (GlobalData.cardInfo.gameType == 97) {
+                    if (this.sendCardGuide.indexOf(card.getValue()) >= 0) {
+                        card.setMask(true);
+                    }
+                } else {
+                    card.setMask(true);
+                }
+                // card.setMask(true);
                 break;
             }
         }
+
+        if (this.cur_select_cards.length > 0 && GlobalData.cardInfo.gameType != 97) {
+            let new_select_cards: CardItem[] = [];
+            for (const key in this.handCards) {
+                const item = this.handCards[key];
+                if (item && item.isMask()) {
+                    new_select_cards.push(item);
+                }
+            }
+
+            let overlap_cards: CardItem[] = [];
+            for (let i: number = 0; i < new_select_cards.length; i++) {
+                for (let j: number = 0; j < this.cur_select_cards.length; j++) {
+                    if (new_select_cards[i] === this.cur_select_cards[j]) {
+                        overlap_cards.push(this.cur_select_cards[j]);
+                    }
+                }
+            }
+
+
+            new_select_cards = new_select_cards.filter((v, ii, array) => {
+                let is_exist: boolean = false;
+                for (let i: number = 0; i < overlap_cards.length; i++) {
+                    if (overlap_cards[i] === v) {
+                        is_exist = true;
+                        break;
+                    }
+                }
+                return is_exist == false;
+            });
+
+
+            for (let i: number = 0; i < this.cur_select_cards.length; i++) {
+                let is_exist: boolean = false;
+                for (let j: number = 0; j < overlap_cards.length; j++) {
+                    if (overlap_cards[j] === this.cur_select_cards[i]) {
+                        is_exist = true;
+                        break;
+                    }
+                }
+                if (!is_exist) {
+                    new_select_cards.push(this.cur_select_cards[i]);
+                }
+            }
+
+
+            for (let i: number = 0; i < new_select_cards.length; i++) {
+                new_select_cards[i].setMask(true);
+            }
+
+            for (let i: number = 0; i < overlap_cards.length; i++) {
+                overlap_cards[i].setMask(false);
+            }
+        }
+
+        // for (let i = this.cur_select_cards.length - 1; i >= 0; i--) {
+        //     this.cur_select_cards[i].setMask(true);
         // }
+
     }
 
     private getCardRect(card): { left: number, right: number, top: number, bottom: number } {
@@ -1427,44 +2034,182 @@ export class CardLayer extends Component {
 
     //触摸结束
     private onScreenTouchEnd(event: EventTouch) {
+        // if (!this.getCanTouch()) {
+        //     return;
+        // }
+        // if (this.handCards.length == 0) {
+        //     return;
+        // }
+        // for (let i = 0; i < this.handCards.length; i++) {
+        //     let card = this.handCards[i];
+        //     if (card.isMask()) {
+        //         this.selectedCardIndexSet.add(i);
+        //     }
+        // }
+        // this.dragMode = 'none';
+        // this.draggedSet.clear();
+        // let selectCards: CardItem[] = [];
+        // // if (GlobalData.cardInfo.cardDir) {
+        // //     for (let i = 0; i < this.handCards.length; i++) {
+        // //         const item = this.handCards[i];
+        // //         if (item && item.isMask()) {
+        // //             selectCards.push(item);
+        // //             item.setMask(false);
+        // //         }
+        // //     }
+        // //     this.doSelectCards(selectCards);
+        // //     //双击重置,不出牌
+        // //     if (this.isClickTwo) {
+        // //         this.checkClickTwo();
+        // //     } else {
+        // //         this.updateSelectedCards();
+        // //     }
+        // // } else {
+        // //双击重置,不出牌
+        // if (this.isClickTwo) {
+        //     this.checkClickTwo_V();
+        // } else {
+        //     this.updateSelectedCards_V();
+        // }
+        // }
+
         if (!this.getCanTouch()) {
             return;
         }
         if (this.handCards.length == 0) {
             return;
         }
-        for (let i = 0; i < this.handCards.length; i++) {
-            let card = this.handCards[i];
-            if (card.isMask()) {
-                this.selectedCardIndexSet.add(i);
+
+        let selectCards: CardItem[] = [];
+        if (GlobalData.cardInfo.cardDir) {
+            for (let i = 0; i < this.handCards.length; i++) {
+                const item = this.handCards[i];
+                if (item && item.isMask()) {
+                    selectCards.push(item);
+                    item.setMask(false);
+                }
+            }
+            this.doSelectCards(selectCards);
+            //双击重置,不出牌
+            if (this.isClickTwo) {
+                this.checkClickTwo();
+            } else {
+                this.updateSelectedCards();
+            }
+        } else {
+            //双击重置,不出牌
+            if (this.isClickTwo) {
+                this.checkClickTwo_V();
+            } else {
+                this.updateSelectedCards_V();
             }
         }
-        this.dragMode = 'none';
-        this.draggedSet.clear();
-        let selectCards: CardItem[] = [];
-        // if (GlobalData.cardInfo.cardDir) {
-        //     for (let i = 0; i < this.handCards.length; i++) {
-        //         const item = this.handCards[i];
-        //         if (item && item.isMask()) {
-        //             selectCards.push(item);
-        //             item.setMask(false);
-        //         }
-        //     }
-        //     this.doSelectCards(selectCards);
-        //     //双击重置,不出牌
-        //     if (this.isClickTwo) {
-        //         this.checkClickTwo();
-        //     } else {
-        //         this.updateSelectedCards();
-        //     }
-        // } else {
-        //双击重置,不出牌
-        if (this.isClickTwo) {
-            this.checkClickTwo_V();
-        } else {
-            this.updateSelectedCards_V();
+
+        this.cur_select_cards = [];
+        for (const key in this.handCards) {
+            const item = this.handCards[key];
+            if (item && item.isMask()) {
+                this.cur_select_cards.push(item);
+            }
         }
-        // }
+
+        if (this.collect_cards.length > 0) {
+            // let card_datas:number[] = [];
+            // for (let i = this.handCards.length - 1; i >= 0; i--) {
+            //     if (this.handCards[i].isMask()) {
+            //         card_datas.push(this.handCards[i].cardValue);
+            //     }
+            // }
+
+            // let comb_list:object[] = [];
+            // if (card_datas.length > 0) {
+            //     comb_list = PokerLogic.get_card_type(card_datas);
+            // }
+
+            // if (comb_list.length > 0) {
+            //     this.btnLabel.string = "理牌";
+            // } else {
+            let exist_hand_idxs: number[] = [];
+            for (let i: number = 0; i < this.handCards.length; i++) {
+                if (!this.handCards[i].isMask()) {
+                    exist_hand_idxs.push(this.handCards[i].getIndex());
+                }
+            }
+
+            //let is_select_collect_card:boolean = false;
+
+            let count_select: number = 0;
+
+            let idx: number = 0;
+            for (let i: number = 14; i >= 7; i--) {
+                if (this.collect_cards[i].length > 0) {
+                    for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                        let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                        let len = comb_cards.length;
+                        let start_idx = idx;
+                        for (let k: number = 0; k < len; k++) {
+                            if (exist_hand_idxs.indexOf(start_idx + k) == -1) {
+                                //this.collect_cards[i][j] = [];
+                                // is_select_collect_card = true;
+                                // break;
+                                count_select++;
+                            }
+                        }
+                        // if (is_select_collect_card) {
+                        //     break;
+                        // }
+
+                        idx = idx + len;
+                    }
+                }
+                // if (is_select_collect_card) {
+                //     break;
+                // }
+            }
+
+            //if (!is_select_collect_card) {
+            idx = this.handCards.length - 1;
+            for (let i: number = 0; i <= 6; i++) {
+                if (this.collect_cards[i].length > 0) {
+                    for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                        let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                        let len = comb_cards.length;
+                        let start_idx = idx;
+                        for (let k: number = len - 1; k >= 0; k--) {
+                            if (exist_hand_idxs.indexOf(start_idx - k) == -1) {
+                                // is_select_collect_card = true;
+                                // break;
+                                count_select++
+                            }
+                        }
+                        // if (is_select_collect_card) {
+                        //     break;
+                        // }
+
+                        idx = idx - len;
+                    }
+                }
+                // if (is_select_collect_card) {
+                //     break;
+                // }
+            }
+            //}
+
+            //console.log("claudis=======count_select========exist_hand_idxs=========>",{count_select:count_select,idx_count:this.cur_select_cards.length})
+
+            if (count_select == this.cur_select_cards.length) {
+                this.picHuifuDir.node.active = true;
+                this.picCardDir.node.active = false;
+            } else {
+                if (this.cur_select_cards.length > 0) {
+                    this.picHuifuDir.node.active = false;
+                    this.picCardDir.node.active = true;
+                }
+            }
+            // }
+        }
+
+
     }
     //更新所有选中的牌
     private updateSelectedCards() {
@@ -1509,24 +2254,24 @@ export class CardLayer extends Component {
         //     }
         // }
 
-        let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
-        if (GlobalData.cardInfo.oneCard) {
-            this.picCardDir.node.active = false;
-            this.picHuifuDir.node.active = true;
-        }
-        else {
-            if (GlobalData.cardInfo.sortCard) {
-                if (this.selectCardIndex.length == 0) {
-                    this.picCardDir.node.active = false;
-                    this.picHuifuDir.node.active = true;
-                }
-                else {
-                    this.picCardDir.node.active = !isRecover;
-                    this.picHuifuDir.node.active = isRecover;
-                }
-            }
+        // let isRecover = this.isSelectedRecoverGroup(this.selectCardIndex, this.handCardsValue, this.sorthandCardsValue);
+        // if (GlobalData.cardInfo.oneCard) {
+        //     this.picCardDir.node.active = false;
+        //     this.picHuifuDir.node.active = true;
+        // }
+        // else {
+        //     if (GlobalData.cardInfo.sortCard) {
+        //         if (this.selectCardIndex.length == 0) {
+        //             this.picCardDir.node.active = false;
+        //             this.picHuifuDir.node.active = true;
+        //         }
+        //         else {
+        //             this.picCardDir.node.active = !isRecover;
+        //             this.picHuifuDir.node.active = isRecover;
+        //         }
+        //     }
 
-        }
+        // }
 
         // GlobalData.cardInfo.cardDir = isRecover;
         // this.showCardDir(true);
@@ -1778,22 +2523,46 @@ export class CardLayer extends Component {
 
     //提示同花顺
     private flushStraightHintIndex: number = 0;
-    onBtnFlushStraightHint() {
-        SoundManager.playClick();
-        this.doHandCardPopDown_V();
-        this.hintIndex = 0;
-        this.selectCardValue = [];
-        this.selectedCardIndexSet.clear();
-        if (this.canFushStrights.length == 0) {
-            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "手牌没有同花顺" });
-            return;
+    onBtnFlushStraightHint(event: Event, customEventData: string) {
+        // SoundManager.playClick();
+        // this.doHandCardPopDown_V();
+        // this.hintIndex = 0;
+        // this.selectCardValue = [];
+        // this.selectedCardIndexSet.clear();
+        // if (this.canFushStrights.length == 0) {
+        //     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "手牌没有同花顺" });
+        //     return;
+        // }
+        // this.selectCardValue = this.canFushStrights[this.flushStraightHintIndex];
+        // this.flushStraightHintIndex++;
+        // if (this.flushStraightHintIndex == this.canFushStrights.length) {
+        //     this.flushStraightHintIndex = 0;
+        // }
+        // this.showChooseCard_V(this.selectCardValue);
+
+        let idx: number = Number(customEventData);
+        if (this.tong_suit_combs[idx].length > 0) {
+            // if (GlobalData.cardInfo.cardDir) {
+            //     this.doHandCardPopDown();
+            // } else {
+            this.doHandCardPopDown_V();
+            // }
+
+            if (this.tong_hua_select_idx[idx] >= this.tong_suit_combs[idx].length) {
+                this.tong_hua_select_idx[idx] = 0;
+            }
+
+            let cards: number[] = this.tong_suit_combs[idx][this.tong_hua_select_idx[idx]]["cards"]
+            this.selectCardValue = cards;
+
+            this.tong_hua_select_idx[idx] = this.tong_hua_select_idx[idx] + 1;
+
+            // if (GlobalData.cardInfo.cardDir) {
+            //     this.showChooseCard(cards);
+            // } else {
+            this.showChooseCard_V(cards);
+            // }
         }
-        this.selectCardValue = this.canFushStrights[this.flushStraightHintIndex];
-        this.flushStraightHintIndex++;
-        if (this.flushStraightHintIndex == this.canFushStrights.length) {
-            this.flushStraightHintIndex = 0;
-        }
-        this.showChooseCard_V(this.selectCardValue);
     }
 
     //提示
@@ -2060,6 +2829,9 @@ export class CardLayer extends Component {
         this.selectCardValue = [];
         this.selectCardIndex = [];
         this.selectedCardIndexSet.clear();
+
+
+
     }
 
     onBtnHuiFu() {
@@ -2080,14 +2852,105 @@ export class CardLayer extends Component {
 
     onBtnOneCardDir() {
         SoundManager.playClick();
-        this.selectedCardIndexSet.clear();
+        // this.selectedCardIndexSet.clear();
+
+        // // let cards = GameLogic.convertCardListC2S(this.handCardsValue);
+        // // let baseInfo = GameMsg.Organize.create({cards: null});
+        // // let baseBuffer = GameMsg.Organize.encode
+        // let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.Organize, null);
+        // GameSocket.send(sendBuffer);
+
+        // return;
         if (GlobalData.cardInfo.oneCard) {
             // 清除理牌记录
             GlobalData.cardInfo.oneCard = false;
             this.sorthandCardsValue = [];
             this.groupedCards = [];
-            GlobalData.cardInfo.sortCard = false;
-            this.setHandCards(this.handCardsValue);
+            let card_datas: number[] = [];
+            let all_datas: number[] = [];
+            for (let i = this.handCards.length - 1; i >= 0; i--) {
+                if (this.handCards[i].isMask()) {
+                    card_datas.push(this.handCards[i].cardValue);
+                }
+                all_datas.push(this.handCards[i].cardValue);
+            }
+
+
+            if (card_datas.length == 0) {
+                this.collect_cards = [];
+                for (let i: number = 0; i < 15; i++) {
+                    this.collect_cards.push([]);
+                }
+
+                let all_datas: number[] = [];
+                for (let i = this.handCards.length - 1; i >= 0; i--) {
+                    all_datas.push(this.handCards[i].cardValue);
+                }
+
+                this.init(false);
+                // GlobalData.cardInfo.sortCard = true;
+                this.setHandCards(all_datas);
+
+                this.picHuifuDir.node.active = false;
+                this.picCardDir.node.active = true;
+
+                // this.btnLabel.string = "理牌";
+            } else {
+                this.delete_collect_cards(utils.deepCopy(all_datas), 0, true);
+
+                let collect_all_cards: number[] = [];
+                if (this.collect_cards.length > 0) {
+                    for (let i: number = 14; i >= 0; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                                let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                                for (let k: number = 0; k < comb_cards.length; k++) {
+                                    collect_all_cards.push(comb_cards[k]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                collect_all_cards.forEach((v, ii, array) => {
+                    for (let i: number = 0; i < all_datas.length; i++) {
+                        if (all_datas[i] == v) {
+                            all_datas[i] = -1;
+                            break;
+                        }
+                    }
+                });
+
+
+                all_datas = all_datas.filter((v, ii, array) => {
+                    return v != -1;
+                });
+
+                this.init(false);
+                this.setHandCards(all_datas);
+
+                let exist_collects: boolean = false;
+                if (this.collect_cards.length > 0) {
+                    for (let i: number = 14; i >= 0; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            exist_collects = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (exist_collects) {
+                    // this.btnLabel.string = "恢复";
+                    this.picHuifuDir.node.active = true;
+                    this.picCardDir.node.active = false;
+                    // GlobalData.cardInfo.sortCard = true;
+                } else {
+                    this.picHuifuDir.node.active = false;
+                    this.picCardDir.node.active = true;
+                    // GlobalData.cardInfo.sortCard = false
+                    // this.btnLabel.string = "理牌";
+                }
+            }
             // 清除选中
             this.selectCardValue = [];
             this.selectCardIndex = [];
@@ -2106,32 +2969,34 @@ export class CardLayer extends Component {
                 const hintList = GameLogic.getHintCards(this.outCardList, this.groupedCards);
                 // this.hintCards = hintList;
             }
-            GlobalData.cardInfo.oneCard = true;
-            this.picHuifuDir.node.active = true;
-            this.picCardDir.node.active = false;
-            console.log("🟡 当前传入 handCardsValue 是：", JSON.stringify(this.handCardsValue));
-            // this.groupedCards = GameLogic.autoSortCards(this.handCardsValue);
-            this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
-            console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
-            this.handCardsValue = this.groupedCards.flat();
-            // 👉 保证 handCards 顺序与 handCardsValue 一致
-            const newHandCards: any[] = [];
-            const used: boolean[] = new Array(this.handCards.length).fill(false);
+            let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.Organize, null);
+            GameSocket.send(sendBuffer);
+            // GlobalData.cardInfo.oneCard = true;
+            // this.picHuifuDir.node.active = true;
+            // this.picCardDir.node.active = false;
+            // console.log("🟡 当前传入 handCardsValue 是：", JSON.stringify(this.handCardsValue));
+            // // this.groupedCards = GameLogic.autoSortCards(this.handCardsValue);
+            // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
+            // console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
+            // this.handCardsValue = this.groupedCards.flat();
+            // // 👉 保证 handCards 顺序与 handCardsValue 一致
+            // const newHandCards: any[] = [];
+            // const used: boolean[] = new Array(this.handCards.length).fill(false);
 
-            for (let i = 0; i < this.handCardsValue.length; i++) {
-                const value = this.handCardsValue[i];
-                for (let j = 0; j < this.handCards.length; j++) {
-                    if (!used[j] && this.handCards[j].getValue() === value) {
-                        used[j] = true;
-                        this.handCards[j].setIndex(i); // 重设 index
-                        newHandCards.push(this.handCards[j]);
-                        break;
-                    }
-                }
-            }
+            // for (let i = 0; i < this.handCardsValue.length; i++) {
+            //     const value = this.handCardsValue[i];
+            //     for (let j = 0; j < this.handCards.length; j++) {
+            //         if (!used[j] && this.handCards[j].getValue() === value) {
+            //             used[j] = true;
+            //             this.handCards[j].setIndex(i); // 重设 index
+            //             newHandCards.push(this.handCards[j]);
+            //             break;
+            //         }
+            //     }
+            // }
 
-            this.handCards = newHandCards; // ⚠️ 顺序彻底同步
-            this.setHandCards(this.handCardsValue, false, false, true);
+            // this.handCards = newHandCards; // ⚠️ 顺序彻底同步
+            // this.setHandCards(this.handCardsValue, false, false, true);
         }
 
     }
@@ -2188,6 +3053,276 @@ export class CardLayer extends Component {
                 idx++;
             }
         }
+    }
+
+    onBtnCardCollect() {
+        // if (!GlobalData.cardInfo.cardDir) {
+
+        if (this.picHuifuDir.node.active) {
+            let card_datas: number[] = [];
+            let all_datas: number[] = [];
+            for (let i = this.handCards.length - 1; i >= 0; i--) {
+                if (this.handCards[i].isMask()) {
+                    card_datas.push(this.handCards[i].cardValue);
+                }
+                all_datas.push(this.handCards[i].cardValue);
+            }
+
+
+            if (card_datas.length == 0) {
+                this.collect_cards = [];
+                for (let i: number = 0; i < 15; i++) {
+                    this.collect_cards.push([]);
+                }
+
+                let all_datas: number[] = [];
+                for (let i = this.handCards.length - 1; i >= 0; i--) {
+                    all_datas.push(this.handCards[i].cardValue);
+                }
+
+                this.init(false);
+                // GlobalData.cardInfo.sortCard = true;
+                this.setHandCards(all_datas);
+
+                this.picHuifuDir.node.active = false;
+                this.picCardDir.node.active = true;
+
+                // this.btnLabel.string = "理牌";
+            } else {
+                this.delete_collect_cards(utils.deepCopy(all_datas), 0, true);
+
+                let collect_all_cards: number[] = [];
+                if (this.collect_cards.length > 0) {
+                    for (let i: number = 14; i >= 0; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                                let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                                for (let k: number = 0; k < comb_cards.length; k++) {
+                                    collect_all_cards.push(comb_cards[k]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                collect_all_cards.forEach((v, ii, array) => {
+                    for (let i: number = 0; i < all_datas.length; i++) {
+                        if (all_datas[i] == v) {
+                            all_datas[i] = -1;
+                            break;
+                        }
+                    }
+                });
+
+
+                all_datas = all_datas.filter((v, ii, array) => {
+                    return v != -1;
+                });
+
+                this.init(false);
+                this.setHandCards(all_datas);
+
+                let exist_collects: boolean = false;
+                if (this.collect_cards.length > 0) {
+                    for (let i: number = 14; i >= 0; i--) {
+                        if (this.collect_cards[i].length > 0) {
+                            exist_collects = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (exist_collects) {
+                    // this.btnLabel.string = "恢复";
+                    this.picHuifuDir.node.active = true;
+                    this.picCardDir.node.active = false;
+                    // GlobalData.cardInfo.sortCard = true;
+                } else {
+                    this.picHuifuDir.node.active = false;
+                    this.picCardDir.node.active = true;
+                    // GlobalData.cardInfo.sortCard = false
+                    // this.btnLabel.string = "理牌";
+                }
+            }
+
+        } else {
+            SoundManager.playClick();
+            let card_datas: number[] = [];
+            let all_datas: number[] = [];
+            for (let i = this.handCards.length - 1; i >= 0; i--) {
+                if (this.handCards[i].isMask()) {
+                    card_datas.push(this.handCards[i].cardValue);
+                }
+                all_datas.push(this.handCards[i].cardValue);
+            }
+
+            if (card_datas.length > 0) {
+                let comb_list: object[] = PokerLogic.get_card_type(card_datas);
+                if (comb_list.length > 0) {
+                    this.delete_collect_cards(utils.deepCopy(all_datas), 0, true);
+                    let idx: number = comb_list[comb_list.length - 1]["type"];
+                    this.collect_cards[idx].push(comb_list[comb_list.length - 1]);
+
+                    PokerLogic.sort_combs(this.collect_cards[idx]);
+                } else {
+                    return UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "牌型错误！" });
+                }
+            }
+
+
+            let collect_all_cards: number[] = [];
+            if (this.collect_cards.length > 0) {
+                for (let i: number = 14; i >= 0; i--) {
+                    if (this.collect_cards[i].length > 0) {
+                        for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                            let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                            for (let k: number = 0; k < comb_cards.length; k++) {
+                                collect_all_cards.push(comb_cards[k]);
+                            }
+                        }
+                    }
+                }
+            }
+
+            collect_all_cards.forEach((v, ii, array) => {
+                for (let i: number = 0; i < all_datas.length; i++) {
+                    if (all_datas[i] == v) {
+                        all_datas[i] = -1;
+                        break;
+                    }
+                }
+            });
+
+
+            all_datas = all_datas.filter((v, ii, array) => {
+                return v != -1;
+            });
+
+            // this.init(false);
+            // GlobalData.cardInfo.sortCard = true;
+            this.setHandCards(all_datas);
+
+            // this.btnLabel.string = "恢复";
+            this.picHuifuDir.node.active = true;
+            this.picCardDir.node.active = false;
+
+        }
+        // }
+
+        this.cur_select_cards = [];
+    }
+
+    private cur_select_cards: CardItem[] = [];
+
+    delete_collect_cards(card_datas: number[], out_count: number, is_mask: boolean = false) {
+        if (this.collect_cards.length == 0) {
+            return card_datas;
+        }
+        card_datas = [];
+        let exist_hand_idxs: number[] = [];
+        for (let i: number = 0; i < this.handCards.length; i++) {
+            if (is_mask) {
+                if (!this.handCards[i].isMask()) {
+                    exist_hand_idxs.push(this.handCards[i].getIndex());
+                }
+            } else {
+                exist_hand_idxs.push(this.handCards[i].getIndex());
+            }
+
+            card_datas.push(this.handCards[i].getValue());
+        }
+
+        //console.log("claudis----------this.collect_cards--1-->",this.collect_cards);
+        //console.log("claudis--------exist_hand_idxs----------->",exist_hand_idxs);
+
+
+        let idx: number = this.handCards.length + out_count - 1;
+
+        //console.log("claudis---------------idx--------->",idx);
+
+        for (let i: number = 0; i <= 6; i++) {
+            if (this.collect_cards[i].length > 0) {
+                for (let j: number = this.collect_cards[i].length - 1; j >= 0; j--) {
+                    let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                    let len = comb_cards.length;
+                    let start_idx = idx;
+                    for (let k: number = 0; k < len; k++) {
+                        if (exist_hand_idxs.indexOf(start_idx - k) == -1) {
+                            this.collect_cards[i][j] = [];
+                            //console.log("claudis-----------小牌型删除--------->",{a:i,b:j,len:this.collect_cards[i].length});
+                            break;
+                        }
+                    }
+
+                    idx = idx - len;
+                }
+            }
+        }
+
+
+        idx = 0;
+        for (let i: number = 14; i >= 7; i--) {
+            if (this.collect_cards[i].length > 0) {
+                for (let j: number = 0; j < this.collect_cards[i].length; j++) {
+                    let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                    let len = comb_cards.length;
+                    let start_idx = idx;
+                    for (let k: number = 0; k < len; k++) {
+                        if (exist_hand_idxs.indexOf(start_idx + k) == -1) {
+                            this.collect_cards[i][j] = [];
+                            //console.log("claudis-----------大牌型删除--------->",{a:i,b:j});
+                            break;
+                        }
+                    }
+
+                    idx = idx + len;
+                }
+            }
+        }
+
+        for (let i: number = 14; i >= 0; i--) {
+            if (this.collect_cards[i].length > 0) {
+                this.collect_cards[i] = this.collect_cards[i].filter((item, index, array) => {
+                    return item["cards"] !== undefined;
+                });
+            }
+        }
+
+        //console.log("claudis----------this.collect_cards--2-->",this.collect_cards);
+
+        let collect_all_cards: number[] = [];
+        let i: number;
+        for (i = 14; i >= 0; i--) {
+            if (this.collect_cards[i].length > 0) {
+                let j: number;
+                for (j = 0; j < this.collect_cards[i].length; j++) {
+                    let comb_cards: number[] = this.collect_cards[i][j]["cards"];
+                    let k: number;
+                    for (k = 0; k < comb_cards.length; k++) {
+                        collect_all_cards.push(comb_cards[k]);
+                    }
+                }
+            }
+        }
+
+        collect_all_cards.forEach((v, ii, array) => {
+            let i: number;
+            for (i = 0; i < card_datas.length; i++) {
+                if (card_datas[i] == v) {
+                    card_datas[i] = -1;
+                    break;
+                }
+            }
+        });
+
+
+        card_datas = card_datas.filter((v, ii, array) => {
+            return v != -1;
+        });
+
+        //console.log("claudis----------card_datas---->",card_datas);
+
+        return card_datas
     }
 
 
@@ -2328,7 +3463,7 @@ export class CardLayer extends Component {
         // }
     }
     private delayShowCardDir() {
-        tween(this.picCardDir.node)
+        tween(this.picCardDir)
             .delay(2)
             .call(() => {
                 this.showCardDir(true);
@@ -2352,6 +3487,7 @@ export class CardLayer extends Component {
         this.setHandCards(GameLogic.convertCardListS2C(data.cards), data.isOut >= 0, false, GlobalData.cardInfo.oneCard);
         utils.send(GlobalData.localEvent.LeftCardsBg, { showOther: true, showSelf: true, selfCnt: this.handCardsValue.length });
         utils.send(GlobalData.localEvent.KangGong, true, 0, 0);
+        this.check_tonghua();
     }
     //出牌时间
     onOutCardTime(data: GameMsg.SendCard) {
@@ -2367,6 +3503,8 @@ export class CardLayer extends Component {
     onHandleBtn(data: GameMsg.NextUser) {
         // console.log("onHandleBtn---> ", data);
         //每次重置提示
+        this.tong_hua_select_idx = [0, 0, 0, 0];
+        this.check_tonghua();
         this.hintIndex = 0;
         this.flushStraightHintIndex = 0;
         this.breakPairIndex = 0;
@@ -2786,5 +3924,113 @@ export class CardLayer extends Component {
         for (let i = 0; i < this.picWinTypes.length; i++) {
             this.picWinTypes[i].active = false;
         }
+    }
+
+    onOrganize(data: GameMsg.Organize) {
+        console.log("一键理牌", data);
+        this.groupedCards = [];
+        let cards = [];
+        for (let i = 0; i < data.cards.length; i++) {
+            var sameSizeList = GameLogic.convertCardListS2C(data.cards[i].card);
+            this.groupedCards.push(sameSizeList);
+        }
+        GlobalData.cardInfo.oneCard = true;
+        // this.setHandCards(cards, false, false, true);
+
+        GlobalData.cardInfo.oneCard = true;
+        this.picHuifuDir.node.active = true;
+        this.picCardDir.node.active = false;
+        console.log("🟡 当前传入 handCardsValue 是：", JSON.stringify(this.handCardsValue));
+        // this.groupedCards = GameLogic.autoSortCards(this.handCardsValue);
+        // this.groupedCards = GameLogic.smartSortCards(this.handCardsValue);
+        console.log("✅ groupedCards", JSON.stringify(this.groupedCards));
+        this.handCardsValue = this.groupedCards.flat();
+        this.setHandCards(this.handCardsValue, false, false, true);
+    }
+
+    private tong_suit_combs: object[][] = [[], [], [], []];
+    private tong_hua_select_idx: number[] = [0, 0, 0, 0];
+    public laizi_value: number;
+
+    check_tonghua() {
+        let card_datas: number[] = [];
+        for (let i = this.handCards.length - 1; i >= 0; i--) {
+            card_datas.push(this.handCards[i].cardValue);
+        }
+
+        // card_datas = [52,36,4,53,54,22,22,23,23,7,56,40,58,58,59,27,11,44,29,13,33,17,17,34,18,78,79];
+        // PokerLogic.set_laizi([2*16 + 2]);
+
+        //card_datas = [35,20,53,21,54,54,22,39,39,56,24,24,26,10,59,27,44,28,49,17,50,34,18,2,78,79]
+        //card_datas = [3,36,37,37,21,21,55,7,7,56,26,10,43,43,27,44,44,28,61,45,49,49,33,1,34,2,79]
+        //PokerLogic.set_laizi([2*16 + 2]);
+
+        //card_datas = [50,51,18,52,4,53,54,55,55,39,23,7,41,58,42,42,60,28,12,45,45,29,49,33,59,59,79];
+        //card_datas = [18, 2, 35, 19, 37, 21, 5, 5, 39, 23, 56, 56, 8, 57, 57, 27, 60, 28, 61, 29, 49, 33, 33, 36, 20, 4, 4];
+
+        PokerLogic.set_laizi([this.laizi_value]);
+
+        let combs = PokerLogic.get_card_type(card_datas, PokerLogic.TYPE.tong_hua_shun);
+
+
+        this.tong_suit_combs = [[], [], [], []];
+        if (combs.length > 0) {
+            combs.forEach((v, idx, array) => {
+                let cards: number[] = v["cards"];
+                let card_value: number;
+                for (let i: number = 0; i < cards.length; i++) {
+                    if (!PokerLogic.check_is_laizi(cards[i])) {
+                        card_value = cards[i];
+                        break;
+                    }
+                }
+
+                this.tong_suit_combs[PokerLogic.get_suit(card_value)].push(v);
+            });
+        }
+
+        for (let i: number = 0; i < 4; i++) {
+            if (this.tong_suit_combs[i].length == 0) {
+                if (i == 0) {
+                    this.fangkuai.active = false;
+                }
+                else if (i == 1) {
+                    this.meihua.active = false;
+                }
+                else if (i == 2) {
+                    this.hongtao.active = false;
+                }
+                else if (i == 3) {
+                    this.heitao.active = false;
+                }
+                // this.spriteSuits[i].spriteFrame = this.spsGraySuits[i];
+            } else {
+                if (i == 0) {
+                    this.fangkuai.active = true;
+                }
+                else if (i == 1) {
+                    this.meihua.active = true;
+                }
+                else if (i == 2) {
+                    this.hongtao.active = true;
+                }
+                else if (i == 3) {
+                    this.heitao.active = true;
+                }
+                // this.spriteSuits[i].spriteFrame = this.spsNormalSuits[i];
+            }
+        }
+        // if (fushStraights[i].color == 0) {
+        //         this.fangkuai.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 1) {
+        //         this.meihua.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 2) {
+        //         this.hongtao.active = true;
+        //     }
+        //     else if (fushStraights[i].color == 3) {
+        //         this.heitao.active = true;
+        //     }
     }
 }

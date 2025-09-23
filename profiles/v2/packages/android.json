@@ -1,6 +1,6 @@
 {
   "common": {
-    "outputName": "android",
+    "outputName": "android-005",
     "mainBundleCompressionType": "merge_dep",
     "platform": "android",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
@@ -17,15 +17,15 @@
         "landscapeRight": true,
         "landscapeLeft": true
       },
-      "apiLevel": 30,
+      "apiLevel": 35,
       "appABIs": [
         "arm64-v8a"
       ],
-      "useDebugKeystore": true,
-      "keystorePath": "",
-      "keystorePassword": "",
-      "keystoreAlias": "",
-      "keystoreAliasPassword": "",
+      "useDebugKeystore": false,
+      "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+      "keystorePassword": "xuhang518",
+      "keystoreAlias": "release",
+      "keystoreAliasPassword": "xuhang518",
       "appBundle": false,
       "androidInstant": false,
       "remoteUrl": "",

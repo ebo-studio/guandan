@@ -9,6 +9,7 @@ import { utils } from '../common/utils';
 import { GameLogic } from '../component/game/GameLogic';
 import { PbManager } from '../proto/PbManager';
 import { GameSocket } from '../manager/GameSocket';
+import { PokerLogic } from '../component/game/PokerLogic';
 const { ccclass, property } = _decorator;
 
 @ccclass('Game')
@@ -268,6 +269,8 @@ export class Game extends Component {
         if (show) {
             let cardNum = GlobalData.cardInfo.levelCard;
             let key = GlobalData.keyCards[cardNum];
+            PokerLogic.set_laizi([2 * 16 + Number(key)]);
+            this.cardLayer.laizi_value = 2 * 16 + Number(key);
             this.txtCardLevel.string = key.toString();
             this.txtWhoPlay.string = GlobalData.cardInfo.isMy ? "我方打" : "对方打";
         }

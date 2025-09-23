@@ -9,7 +9,7 @@ message Login {
 
 // 错误提示
 message Error {
-    int32 type = 1;   //1:提示 2:自己看,不提示
+    int32 type = 1;
     string msg = 2;
 }
 
@@ -34,6 +34,7 @@ message Time {
 
 message Room {
     int32 room_id = 1;
+    int32 type = 2;
 }
 
 message Cards {
@@ -46,6 +47,8 @@ message Start {
     int32 level = 3; // 当前等级
     int32 maxnum = 4; // 最大局数
     int32 num = 5; // 当前局数
+    int32 is_my = 6; // 是不是打自己的等级
+    int32 is_out = 7; // 需要发牌动画
 }
 
 message NextUser {
@@ -64,8 +67,12 @@ message SendCard {
     repeated int32 cards= 4; // 出的牌
     int32 next_id = 5; // 下标
     int32 time = 6; // 时间
+    int32 send_type = 7; // 1 手动出牌 2 系统代出
 }
 
+message UserSendCard {
+    string cards = 1;
+}
 
 message UserWin {
     int32 id = 1;
@@ -77,11 +84,14 @@ message ResUser{
     string name = 2;
     string headImg = 3;
     int32 res = 4;
-    int32 type = 5;
+    int32 score = 5;
+    int32 time = 6; // 每个人时间
 }
 
 message WinList {
     repeated ResUser list = 1;
+    int32 type = 2; // 1 自由玩 2 淘汰 3 团队积分
+    int32 time = 3;
 }
 
 message Gong {
@@ -96,8 +106,41 @@ message GongList {
 }
 
 
+message ScoreGame {
+    int32 room_id = 1;
+    int32 zu = 2;
+    string headImg = 3;
+}
+
+message OutGame {
+    int32 game_id = 1;
+    int32 lun = 2;
+    int32 game = 3;
+}
+
+message KongGong {
+    int32 one = 1;
+    int32 two = 2;
+}
+
+message Match {
+    int32 time = 1;
+    int32 num = 2;
+    int32 match = 3;
+}
 
 
+message UserCards {
+    int32 id = 1;
+    int32 index = 2;
+    repeated int32 cards= 3;
+}
 
+message UserCardsList {
+    repeated UserCards list = 1;
+}
 
-
+//一键理牌
+message Organize {
+    repeated Cards cards = 1;
+}

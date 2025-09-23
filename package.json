@@ -7,6 +7,9 @@
   },
   "dependencies": {
     "ethers": "^6.15.0",
-    "protobufjs": "^7.2.0"
+    "protobufjs": "^7.5.4"
+  },
+  "devDependencies": {
+    "protobufjs-cli": "^1.1.3"
   }
 }

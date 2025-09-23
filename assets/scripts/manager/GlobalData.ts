@@ -1,3 +1,4 @@
+import { sys } from "cc"
 import { utils } from "../common/utils"
 import { RaceAuditionState } from "../component/raceAudition/RaceAuditionLineItem"
 import { RaceJoinState } from "../component/raceScore/RaceScoreLineItem"
@@ -140,7 +141,7 @@ export namespace GlobalData {
         LeftCardCnt: "LeftCardCnt",                 //剩余牌张数(只在手牌,断线存在)
         ReconnectOutCard: "ReconnectOutCard",       //断线重连已出的牌
         Reconnect: "Reconnect",                     //断线重连
-     
+
         AgainGame: "AgainGame",                     //再来一局
         KickGameStart: "KickGameStart",             //淘汰赛开赛通知
         KickRoomId: "KickRoomId",                   //淘汰赛房间号
@@ -149,7 +150,7 @@ export namespace GlobalData {
         KickFinish: "KickFinish",                   //淘汰赛结束
         ScoreFinish: "ScoreFinish",                 //积分赛结束
         ScoreMatchSucces: "ScoreMatchSucces",       //积分赛(匹配队友成功)
-     
+
         FreeMatchStart: "FreeMatchStart",           //自由玩开始匹配
         FreeMatchTimeOut: "FreeMatchTimeOut",       //自由玩匹配超时
         ReEnterGame: "ReEnterGame",                 //重连进入游戏
@@ -159,7 +160,8 @@ export namespace GlobalData {
         AuditionRoomId: "AuditionRoomId",            //海选赛房间号
         UpdateGameBg: 'UpdateGameBg',
         SendChatAni: 'SendChatAni',
-        LoginOut: 'LogoOut'
+        LoginOut: 'LogoOut',
+        Organize: 'Organize' //一键理牌
     }
     export const C2S_Event = {
         Ping: 1,                          //心跳（每秒钟一次，3秒无心跳自动断线)
@@ -181,10 +183,12 @@ export namespace GlobalData {
         AuditionMatch: 30,                //海选赛匹配
         JoinAuditionRoom: 31,             //海选赛加入房间
         CancelAuditionMatch: 32,          //海选赛取消匹配
-    
+
         ///////////////淘汰赛///////////////
         KickJoinRoom: 100,                 //加入淘汰赛房间
         ScoreJoinRoom: 101,                //加入积分赛房间
+
+        Organize: 153, //一键理牌
     }
     export const S2C_Event = {
         /**1  心跳*/
@@ -281,6 +285,8 @@ export namespace GlobalData {
         ScoreFinish: 107,
         /**110 新一轮游戏开始*/
         GameRestart: 110,
+        //一键理牌
+        Organize: 156, 
         /**400 出错*/
         Error: 400,
     }
@@ -439,6 +445,7 @@ export namespace GlobalData {
             token: GlobalData.loginInfo.token
         }
         UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        // if (!sys.isNative) {
         utils.sendHttpRequest({
             url: url,
             method: "POST",
@@ -464,6 +471,33 @@ export namespace GlobalData {
                 UIManager.Instace.hideUI(UIConfig.WaitItemKey);
             }
         });
+        // }
+        // else {
+        //     utils.postWithXHR(url, {
+        //         token: GlobalData.loginInfo.token
+        //     })
+        //         .then(data => {
+        //             console.log("GetUserInfo success ", data);
+        //             if (Number(data?.code) === 200) {
+        //                 userInfo.group_id = data.data.group_id;
+        //                 userInfo.group_name = data.data.group_name;
+        //                 userInfo.user_id = data.data.user_id;
+        //                 userInfo.head_img = data.data.head_img;
+        //                 userInfo.score = data.data.gold;
+        //                 userInfo.name = data.data.name;
+        //                 userInfo.is_vip = data.data.is_vip;
+        //                 if (cb.success) cb.success();
+        //                 UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+        //             }
+        //             else {
+        //                 console.log("GetUserInfo fail ", data);
+        //                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data });
+        //                 if (cb.fail) cb.fail();
+        //             }
+        //         })
+        //         .catch(err => console.error(err));
+        // }
+
     }
     //查询用户信息
     export function requestDismass(game_id: number, zu_id: number, cb: { success: Function, fail?: Function }) {

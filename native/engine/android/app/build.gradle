@@ -5,6 +5,7 @@ COCOS_ENGINE_PATH = COCOS_ENGINE_PATH.replace("\\", "/")
 
 buildDir = "${RES_PATH}/proj/build/$project.name"
 android {
+    namespace "com.company.goldenant"
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
     //buildToolsVersion PROP_BUILD_TOOLS_VERSION
     ndkPath PROP_NDK_PATH
@@ -16,10 +17,10 @@ android {
 
     defaultConfig {
         applicationId APPLICATION_ID
-        minSdkVersion PROP_MIN_SDK_VERSION
-        targetSdkVersion PROP_TARGET_SDK_VERSION
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion PROP_MIN_SDK_VERSION.toInteger()
+        targetSdkVersion PROP_TARGET_SDK_VERSION.toInteger()
+        versionCode 2
+        versionName "1.0.1"
 
         externalNativeBuild {
             cmake {
@@ -87,6 +88,8 @@ android {
 }
 
 dependencies {
+    implementation "androidx.appcompat:appcompat:1.6.1"
+    implementation "com.google.android.material:material:1.9.0"
 //    implementation 'com.bytedance.sdk:openadsdk:7.1.0.5'
 //    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 //    implementation files('libs/open_ad_sdk_7.1.0.5.aar')

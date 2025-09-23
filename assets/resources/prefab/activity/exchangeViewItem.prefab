@@ -1898,9 +1898,9 @@
     "_transition": 3,
     "_normalColor": {
       "__type__": "cc.Color",
-      "r": 214,
-      "g": 214,
-      "b": 214,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_hoverColor": {
@@ -2565,6 +2565,12 @@
     },
     "codeEditBox": {
       "__id__": 62
+    },
+    "btnExchange": {
+      "__id__": 83
+    },
+    "exchangeLabel": {
+      "__id__": 74
     },
     "_id": ""
   },

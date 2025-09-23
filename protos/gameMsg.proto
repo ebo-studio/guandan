@@ -136,3 +136,8 @@ message UserCards {
 message UserCardsList {
     repeated UserCards list = 1;
 }
+
+//一键理牌
+message Organize {
+    repeated Cards cards = 1;
+}

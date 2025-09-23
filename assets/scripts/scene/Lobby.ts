@@ -65,6 +65,14 @@ export class Lobby extends Component {
         AppGlobal.instance.errorCallBack = () => {
 
         }
+
+        this.caishen.setAnimation(0, 'animation2', false);
+        this.caishen.setCompleteListener(() => {
+            if (this.caishen.animation == 'animation2') {
+                this.caishen.setAnimation(0, 'animation1', true);
+            }
+
+        })
         //第一次进大厅,拿到code后再请求
         if (GlobalData.userInfo.haveToken) {
             GlobalData.requestGetUserInfo({
@@ -74,13 +82,7 @@ export class Lobby extends Component {
             });
         }
 
-        this.caishen.setAnimation(0, 'animation2', false);
-        this.caishen.setCompleteListener(() => {
-            if (this.caishen.animation == 'animation2') {
-                this.caishen.setAnimation(0, 'animation1', true);
-            }
-
-        })
+        
     }
     onDestroy() {
         utils.off(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);

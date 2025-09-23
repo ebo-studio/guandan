@@ -7,7 +7,7 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "android",
+    "outputName": "android-005",
     "mainBundleCompressionType": "merge_dep",
     "platform": "android",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
@@ -18,13 +18,13 @@
   },
   "BuildTaskManager": {
     "taskMap": {
-      "1755761868890": {
+      "1757912159054": {
         "type": "build",
-        "id": "1755761868890",
+        "id": "1757912159054",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-8-21 15:38 Build success in 20956 ms!",
+        "message": "2025-9-15 12:56 Build success in 51589 ms!",
         "options": {
           "name": "GoldenAnt",
           "platform": "web-mobile",
@@ -63,7 +63,7 @@
               "inBundle": false
             }
           ],
-          "web-mobile": [],
+          "android": [],
           "packages": {
             "web-mobile": {
               "orientation": "landscape",
@@ -76,18 +76,19 @@
               "__version__": "3.0.4"
             }
           },
-          "__version__": "1.3.3"
+          "__version__": "1.3.3",
+          "web-mobile": []
         },
-        "time": "2025-8-21 15:37",
+        "time": "2025-9-15 12:55",
         "dirty": false
       },
-      "1756714723855": {
+      "1757913880481": {
         "type": "build",
-        "id": "1756714723855",
+        "id": "1757913880481",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-9-1 16:19 Build success in 25749 ms!",
+        "message": "2025-9-15 13:25 Build success in 55441 ms!",
         "options": {
           "name": "goldenAnt",
           "platform": "android",
@@ -107,7 +108,7 @@
           "compressTexture": true,
           "packAutoAtlas": true,
           "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-          "outputName": "android",
+          "outputName": "android-005",
           "scenes": [
             {
               "url": "db://assets/scenes/Game.scene",
@@ -135,15 +136,15 @@
                 "landscapeRight": true,
                 "landscapeLeft": true
               },
-              "apiLevel": 30,
+              "apiLevel": 35,
               "appABIs": [
                 "arm64-v8a"
               ],
-              "useDebugKeystore": true,
-              "keystorePath": "",
-              "keystorePassword": "",
-              "keystoreAlias": "",
-              "keystoreAliasPassword": "",
+              "useDebugKeystore": false,
+              "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+              "keystorePassword": "xuhang518",
+              "keystoreAlias": "release",
+              "keystoreAliasPassword": "xuhang518",
               "appBundle": false,
               "androidInstant": false,
               "remoteUrl": "",
@@ -170,9 +171,10 @@
               "__version__": "1.0.2"
             }
           },
+          "web-mobile": [],
           "__version__": "1.3.3"
         },
-        "time": "2025-9-1 16:18",
+        "time": "2025-9-15 13:24",
         "dirty": false
       }
     }
