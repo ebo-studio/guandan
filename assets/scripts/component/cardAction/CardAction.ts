@@ -26,9 +26,9 @@ export class CardAction extends Component {
     //同花顺
     @property(sp.Skeleton)
     tongHuaShun: sp.Skeleton = null;
-     //王炸
-     @property(sp.Skeleton)
-     wanZha: sp.Skeleton = null;
+    //王炸
+    @property(sp.Skeleton)
+    wanZha: sp.Skeleton = null;
     //接风
     @property(sp.Skeleton)
     jiefeng: sp.Skeleton = null;
@@ -74,14 +74,17 @@ export class CardAction extends Component {
             spAction = this.zhaDan;
             spAction.setAnimation(0, "ani_4zha", false);
             //炸弹有4张~8张,炸弹位置动态调整
-            if (data.viewId == GlobalData.viewId.up) {
-                let posX = this.zhaDanInitUpPos.x + 28 * (data.cardNum - 4) * 0.5;
-                spAction.node.setPosition(posX, this.zhaDanInitUpPos.y, this.zhaDanInitUpPos.z);
+            if (spAction) {
+                if (data.viewId == GlobalData.viewId.up) {
+                    let posX = this.zhaDanInitUpPos.x + 28 * (data.cardNum - 4) * 0.5;
+                    spAction.node.setPosition(posX, this.zhaDanInitUpPos.y, this.zhaDanInitUpPos.z);
+                }
+                else if (data.viewId == GlobalData.viewId.down) {
+                    let posX = this.zhaDanInitDownPos.x - 28 * (data.cardNum - 4) * 0.5;
+                    spAction.node.setPosition(posX, this.zhaDanInitDownPos.y, this.zhaDanInitDownPos.z);
+                }
             }
-            else if (data.viewId == GlobalData.viewId.down) {
-                let posX = this.zhaDanInitDownPos.x - 28 * (data.cardNum - 4) * 0.5;
-                spAction.node.setPosition(posX, this.zhaDanInitDownPos.y, this.zhaDanInitDownPos.z);
-            }
+
         }
         else if (data.cardType == GameDefine.KIND_CARDS_KING) { //天王炸
             spAction = this.wanZha;
@@ -91,14 +94,17 @@ export class CardAction extends Component {
             spAction = this.jiefeng;
             spAction.setAnimation(0, "ani_jiefeng", false);
         }
-        spAction.node.active = true;
-        // track = spAction.setAnimation(0, "ani", false);
-        // spAction.setTrackCompleteListener(track, (trackEntry) => {
-        //     spAction.node.active = false;
-        // });
-        spAction.setCompleteListener(()=>{
-            spAction.node.active = false;
-        })
+        if (spAction) {
+            spAction.node.active = true;
+            // track = spAction.setAnimation(0, "ani", false);
+            // spAction.setTrackCompleteListener(track, (trackEntry) => {
+            //     spAction.node.active = false;
+            // });
+            spAction.setCompleteListener(() => {
+                spAction.node.active = false;
+            })
+        }
+
     }
     private getInitPos() {
         if (this.tmpViewId == GlobalData.viewId.up) {

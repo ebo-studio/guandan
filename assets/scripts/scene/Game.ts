@@ -10,6 +10,7 @@ import { GameLogic } from '../component/game/GameLogic';
 import { PbManager } from '../proto/PbManager';
 import { GameSocket } from '../manager/GameSocket';
 import { PokerLogic } from '../component/game/PokerLogic';
+import { DebugHook } from '../debug/DebugHook';
 const { ccclass, property } = _decorator;
 
 @ccclass('Game')
@@ -74,6 +75,7 @@ export class Game extends Component {
     onLoad() {
         Game.Instance = this;
         this.preLoad();
+        // DebugHook.enableAllHooks();
     }
     start() {
         utils.on(GlobalData.localEvent.UserList, this, this.onUserList);
@@ -89,6 +91,7 @@ export class Game extends Component {
         this.init();
     }
     onDestroy() {
+        console.log('游戏场景销毁');
         utils.off(GlobalData.localEvent.UserList, this, this.onUserList);
         utils.off(GlobalData.localEvent.UpdateLevelCard, this, this.setCardLevel);
         utils.off(GlobalData.localEvent.LeftCards, this, this.onLeftCards);

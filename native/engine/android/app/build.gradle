@@ -99,4 +99,8 @@ dependencies {
     implementation fileTree(dir: "${COCOS_ENGINE_PATH}/cocos/platform/android/java/libs", include: ['*.jar'])
     implementation project(':libservice')
     implementation project(':libcocos')
+    implementation ('com.appodeal.ads:sdk:3.10.0.0') {
+        exclude group: 'com.pangle.global', module: 'pag-sdk'
+        exclude group: 'com.pangle.global', module: 'pag-sdk-ad'
+    }
 }

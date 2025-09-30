@@ -39,7 +39,7 @@ export class CardItem extends Component {
     liandui: Node = null;
 
     @property(Node)
-    color_1:Node = null; //方块
+    color_1: Node = null; //方块
 
     @property(Node)
     color_2: Node = null; //梅花
@@ -72,7 +72,7 @@ export class CardItem extends Component {
     isSelect() {
         return this.boolSelect;
     }
-    showTonghua(isShow:boolean) {
+    showTonghua(isShow: boolean) {
         this.tonghua.active = isShow;
     }
     showBomb(bombNumber: number) {
@@ -86,19 +86,19 @@ export class CardItem extends Component {
     showShunzi(isShow: boolean) {
         this.shunzi.active = isShow;
     }
-    showWangza(isShow: boolean){
+    showWangza(isShow: boolean) {
         this.wanzha.active = isShow;
     }
-    showliandui(isShow: boolean){
+    showliandui(isShow: boolean) {
         this.liandui.active = isShow;
     }
     //逢人配
     showReplace(type: boolean) {
-         this.nodeReplace.active = type;
+        this.nodeReplace.active = type;
     }
 
     showCardColor(color: number) {
-        if(!this.nodeReplace.active) {
+        if (!this.nodeReplace.active) {
             this.color_1.active = color == 0;
             this.color_2.active = color == 1;
             this.color_3.active = color == 2;
@@ -153,7 +153,18 @@ export class CardItem extends Component {
         this.picBack.active = type;
     }
 
-    
+    boolDisableMask: boolean = false
+
+    setDisabel(disable: boolean) {
+        this.boolDisableMask = disable;
+        // this.nodeDisableMask.active = disable;
+    }
+
+    isDisable() {
+        return this.boolDisableMask;
+    }
+
+
     clear() {
         this.showReplace(false);
         this.setMask(false);

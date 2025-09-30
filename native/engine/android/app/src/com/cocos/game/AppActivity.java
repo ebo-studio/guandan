@@ -38,8 +38,15 @@ import android.view.WindowManager;
 //import com.bytedance.sdk.openadsdk.TTAdSdk;
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
+import com.appodeal.ads.Appodeal;
+import com.appodeal.ads.initializing.ApdInitializationCallback;
+import com.appodeal.ads.initializing.ApdInitializationError;
+
+import java.util.List;
 
 public class AppActivity extends CocosActivity {
+
+    private static final String APP_KEY = "0a79aed0f6a13ba4a25bcdaae33bfd844730730d8288e8c1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +54,28 @@ public class AppActivity extends CocosActivity {
         // 整个 Activity 常亮
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         instance = this;
-
         RegionDebug.logRegion(getApplicationContext());
+        int adTypes = Appodeal.REWARDED_VIDEO;
+        Appodeal.initialize(
+                this,
+                APP_KEY,
+                adTypes,
+                new ApdInitializationCallback() {
+                    @Override
+                    public void onInitializationFinished(List<ApdInitializationError> errors) {
+                        if (errors == null || errors.isEmpty()) {
+                            // ✅ 初始化成功
+                            Log.d("Appodeal", "Appodeal SDK initialized successfully");
+                        } else {
+                            // ⚠️ 初始化有问题
+                            for (ApdInitializationError error : errors) {
+                                Log.e("Appodeal", "Init error: ");
+                            }
+                        }
+                    }
+                }
+        );
+
 //        PangleAdAdapter.initialize(this);
 //        TTAdConfig config = new TTAdConfig.Builder()
 //                .appId("5732877")

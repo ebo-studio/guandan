@@ -3,12 +3,12 @@ import PopWindow from './PopWindow';
 const { ccclass, property } = _decorator;
 
 @ccclass('MessageHint')
-export default class MessageHint extends PopWindow {
+export class MessageHint extends PopWindow {
 
     @property(Label)
     labelText: Label = null;
-    @property(Vec3)
-    startPosition: Vec3 = null;
+    @property({ type: Vec3 })
+    startPosition: Vec3 = new Vec3(0, -50, 0);
     @property
     fadeInTime: number = 0.5;
     @property
@@ -20,7 +20,12 @@ export default class MessageHint extends PopWindow {
     public setData(text: string) {
         // Tween.stopAll();
         this.labelText.string = text;
-        this.node.setPosition(this.startPosition);
+        if (this.startPosition) {
+            this.node.setPosition(this.startPosition);
+        } else {
+            console.log("MessageHint.startPosition 未赋值，使用默认 (0,0,0)");
+            this.node.setPosition(new Vec3(0, 0, 0));
+        }
         this.node.getComponent(UIOpacity).opacity = 0;
 
         //3.0 UIOpacity 必须单独使用, 不能放到sequence中(类型不同)

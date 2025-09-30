@@ -2,7 +2,7 @@ import { Component, __private } from "cc";
 import PopWindow from "../component/PopWindow";
 import { MessageBoxCommon } from "../component/MessageBoxCommon";
 import { SetingItem } from "../component/SetingItem";
-import MessageHint from "../component/MessageHint";
+import { MessageHint } from "../component/MessageHint";
 import { LoadItem } from "../component/LoadItem";
 import { WaitItem } from "../component/WaitItem";
 import { RuleItem } from "../component/RuleItem";

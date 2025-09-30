@@ -32,16 +32,24 @@ export class AppGlobal extends Component {
     public static instance: AppGlobal = null;
 
     public errorCallBack: Function = null; //全局回调
+    private static _eventBound = false;
 
     //很奇怪,appglobal 是常驻节点,但是onLoad 和 start 切换场景的时候会再次调用
     onLoad() {
         // if (GlobalData.userInfo.haveToken) return;
         //常驻节点
+        if (AppGlobal.instance) {
+            this.node.destroy(); // 避免场景里重复生成
+            return;
+        }
         director.addPersistRootNode(this.node);
         AppGlobal.instance = this;
         HttpConfig.init();
 
-        this.bindEvent();
+        if (!AppGlobal._eventBound) {
+            this.bindEvent();
+            AppGlobal._eventBound = true;
+        }
 
         if (sys.isBrowser) {
             const unlockOnce = () => {
@@ -120,6 +128,8 @@ export class AppGlobal extends Component {
         // }
     }
     bindEvent() {
+        console.log('我看看几次');
+        this.removeEvent();
         utils.on(GlobalData.localEvent.GameError, this, this.onGameError);
         utils.on(GlobalData.localEvent.SocketError, this, this.onSocketError);
         utils.on(GlobalData.localEvent.KickGameStart, this, this.onKickGameStart);
@@ -134,6 +144,7 @@ export class AppGlobal extends Component {
         utils.on(GlobalData.localEvent.ForceExitGame, this, this.onForceExitGame);
     }
     removeEvent() {
+        console.log('移除');
         utils.off(GlobalData.localEvent.GameError, this, this.onGameError);
         utils.off(GlobalData.localEvent.SocketError, this, this.onSocketError);
         utils.off(GlobalData.localEvent.KickGameStart, this, this.onKickGameStart);
@@ -295,7 +306,7 @@ export class AppGlobal extends Component {
     }
     //断线重连
     onReconnect(data: GameMsg.Room) {
-        console.log("断线重连 ", data);
+        console.log("断线重连,房间类型 ", data.type);
         if (data.type == ReconnectType.none) {
             this.checkReconnectSceneState();
         }

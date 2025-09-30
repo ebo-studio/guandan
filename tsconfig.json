@@ -6,6 +6,7 @@
   "compilerOptions": {
     "strict": false,
     "target": "es2019",
-    "lib": ["ES2019", "dom"]  // ✅ 添加 es2016（或更高），确保支持 includes
+    "lib": ["ES2019", "dom"], // ✅ 添加 es2016（或更高），确保支持 includes
+    "sourceMap": true
   }
 }
