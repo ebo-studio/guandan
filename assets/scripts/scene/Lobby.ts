@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, native, sp } from 'cc';
+import { _decorator, Component, Label, native, sp, sys } from 'cc';
 import { AppGlobal } from '../AppGlobal';
 import { utils } from '../common/utils';
 import { GlobalData } from '../manager/GlobalData';
@@ -35,16 +35,59 @@ export class Lobby extends Component {
     public static Instance: Lobby = null;
     onLoad() {
         Lobby.Instance = this;
-        PangleAdManager.instance.initialize('8701814');
+        PangleAdManager.instance.initialize('8719972');
         // PangleAdManager.instance.loadRewardedVideo('982283195');
     }
 
     onClickShowAd() {
         // sendToNative('csj:reward:show');
-        PangleAdManager.instance.showRewardedVideo('982283193', () =>{
+        console.log('PangleAdAdapter -->播放视频');
+        PangleAdManager.instance.showRewardedVideo('982396404', () =>{
             UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 10}});
         });
-        
+        // if (sys.os === sys.OS.ANDROID) {
+        //     native.reflection.callStaticMethod(
+        //         "com/cocos/game/AppActivity", // Java 类路径（包名+类名）
+        //         "showAppodealVideo",                             // 方法名
+        //         "(Ljava/lang/String;)V",               // 方法签名
+
+        //     );
+        //     // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "复制成功,赶紧去邀请好友获取积分吧" });
+        // }
+        // else if (sys.os === sys.OS.IOS) {
+        //     native.reflection.callStaticMethod(
+        //         "AppController",
+        //         "copyToClipboard:",
+        //         '123'
+        //     );
+        // }
+
+        // if (!this._initialized) {
+        //     console.error('[Pangle] SDK not initialized');
+        //     return;
+        // }
+        // if (!sys.isNative) return;
+
+        // // 将回调挂到 globalThis，原生侧 evalString 再去调用
+        // // (globalThis as any).pangleRewardCallback = onReward;
+        // // (globalThis as any).pangleCloseCallback = onClose;
+
+        // try {
+        //     if (sys.os === sys.OS.ANDROID) {
+        //         // @ts-ignore
+        //         jsb.reflection.callStaticMethod(
+        //             'com/cocos/game/AppActivity',
+        //             'showAppodealVideo',
+        //             '()V',
+        //         );
+        //     } else if (sys.os === sys.OS.IOS) {
+        //         // @ts-ignore
+        //         jsb.reflection.callStaticMethod('PangleAdapter', 'showRewardedVideoWithAdUnitId:', adUnitId);
+        //     }
+        // } catch (e) {
+        //     console.error('[Pangle] show rewarded failed:', e);
+        // }
+
     }
     //首次登录更新
     onFirstUpdate() {
@@ -82,7 +125,7 @@ export class Lobby extends Component {
             });
         }
 
-        
+
     }
     onDestroy() {
         utils.off(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);

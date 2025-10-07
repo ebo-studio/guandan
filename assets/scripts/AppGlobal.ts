@@ -38,10 +38,10 @@ export class AppGlobal extends Component {
     onLoad() {
         // if (GlobalData.userInfo.haveToken) return;
         //常驻节点
-        if (AppGlobal.instance) {
-            this.node.destroy(); // 避免场景里重复生成
-            return;
-        }
+        // if (AppGlobal.instance) {
+        //     this.node.destroy(); // 避免场景里重复生成
+        //     return;
+        // }
         director.addPersistRootNode(this.node);
         AppGlobal.instance = this;
         HttpConfig.init();
@@ -129,7 +129,7 @@ export class AppGlobal extends Component {
     }
     bindEvent() {
         console.log('我看看几次');
-        this.removeEvent();
+        // this.removeEvent();
         utils.on(GlobalData.localEvent.GameError, this, this.onGameError);
         utils.on(GlobalData.localEvent.SocketError, this, this.onSocketError);
         utils.on(GlobalData.localEvent.KickGameStart, this, this.onKickGameStart);
@@ -220,19 +220,22 @@ export class AppGlobal extends Component {
     }
     //socket 断开
     onSocketError() {
-        UIManager.Instace.showUI({
-            path: UIConfig.MessageBoxCommonKey,
-            data: {
-                okName: "确定",
-                cancleName: "取消",
-                des: "网络出现了问题,请稍后再试!",
-                okFunc: () => {
-                    UIManager.Instace.clearAllUI();
-                    GameSocket.initAndConnect();
-                },
-                cancleFunc: null
-            }
-        });
+        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        UIManager.Instace.clearAllUI();
+        GameSocket.initAndConnect();
+        // UIManager.Instace.showUI({
+        //     path: UIConfig.MessageBoxCommonKey,
+        //     data: {
+        //         okName: "确定",
+        //         cancleName: "取消",
+        //         des: "网络出现了问题,请稍后再试!",
+        //         okFunc: () => {
+        //             UIManager.Instace.clearAllUI();
+        //             GameSocket.initAndConnect();
+        //         },
+        //         cancleFunc: null
+        //     }
+        // });
     }
     //开赛通知
     onKickGameStart(time: number) {

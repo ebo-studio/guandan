@@ -24,6 +24,7 @@ THE SOFTWARE.
 ****************************************************************************/
 package com.cocos.game;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -36,13 +37,25 @@ import android.view.WindowManager;
 
 //import com.bytedance.sdk.openadsdk.TTAdConfig;
 //import com.bytedance.sdk.openadsdk.TTAdSdk;
+//import com.appodeal.ads.RewardedVideoCallbacks;
+import androidx.annotation.NonNull;
+
+import com.cocos.lib.CocosHelper;
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
-import com.appodeal.ads.Appodeal;
-import com.appodeal.ads.initializing.ApdInitializationCallback;
-import com.appodeal.ads.initializing.ApdInitializationError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.AdapterStatus;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+//import com.appodeal.ads.Appodeal;
+//import com.appodeal.ads.initializing.ApdInitializationCallback;
+//import com.appodeal.ads.initializing.ApdInitializationError;
 
 import java.util.List;
+import java.util.Map;
 
 public class AppActivity extends CocosActivity {
 
@@ -53,28 +66,115 @@ public class AppActivity extends CocosActivity {
         super.onCreate(savedInstanceState);
         // 整个 Activity 常亮
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        instance = this;
+//        instance = this;
         RegionDebug.logRegion(getApplicationContext());
-        int adTypes = Appodeal.REWARDED_VIDEO;
-        Appodeal.initialize(
-                this,
-                APP_KEY,
-                adTypes,
-                new ApdInitializationCallback() {
-                    @Override
-                    public void onInitializationFinished(List<ApdInitializationError> errors) {
-                        if (errors == null || errors.isEmpty()) {
-                            // ✅ 初始化成功
-                            Log.d("Appodeal", "Appodeal SDK initialized successfully");
-                        } else {
-                            // ⚠️ 初始化有问题
-                            for (ApdInitializationError error : errors) {
-                                Log.e("Appodeal", "Init error: ");
-                            }
-                        }
-                    }
+
+        MobileAds.initialize(this, initializationStatus -> {
+            // initializationStatus 表示 SDK 各个 Adapter 的初始化状态
+            Map<String, AdapterStatus> statusMap = initializationStatus.getAdapterStatusMap();
+
+            for (String adapterClass : statusMap.keySet()) {
+                AdapterStatus status = statusMap.get(adapterClass);
+                if (status != null) {
+                    Log.d("AdMobInit", String.format(
+                            "Adapter: %s, 状态: %s, 描述: %s, 延迟: %dms",
+                            adapterClass,
+                            status.getInitializationState(),  // READY 或 NOT_READY
+                            status.getDescription(),
+                            status.getLatency()
+                    ));
                 }
-        );
+            }
+
+            // 可以判断是否全部 READY
+            boolean allReady = true;
+            for (AdapterStatus s : statusMap.values()) {
+                if (s.getInitializationState() != AdapterStatus.State.READY) {
+                    allReady = false;
+                    break;
+                }
+            }
+
+            if (allReady) {
+                Log.d("AdMobInit", "✅ AdMob 初始化完成，可以加载广告");
+                loadRewarded();
+            } else {
+                Log.w("AdMobInit", "⚠️ 有些 Adapter 还没准备好");
+            }
+        });
+
+//        int adTypes = Appodeal.REWARDED_VIDEO;
+//        final Activity act = CocosHelper.getActivity();
+//        Appodeal.setTesting(true);
+//        Appodeal.initialize(
+//                this,
+//                APP_KEY,
+//                adTypes,
+//                new ApdInitializationCallback() {
+//                    @Override
+//                    public void onInitializationFinished(List<ApdInitializationError> errors) {
+//                        if (errors == null || errors.isEmpty()) {
+//                            // ✅ 初始化成功
+//                            Log.d("Appodeal", "Appodeal SDK initialized successfully");
+//                            Appodeal.cache(AppActivity.this, Appodeal.REWARDED_VIDEO);
+//                        } else {
+//                            // ⚠️ 初始化有问题
+//                            for (ApdInitializationError error : errors) {
+//                                Log.e("Appodeal", "Init error: ");
+//                            }
+//                        }
+//                    }
+//                }
+//        );
+//
+//        Appodeal.setRewardedVideoCallbacks(new RewardedVideoCallbacks() {
+//            @Override
+//            public void onRewardedVideoLoaded(boolean isPrecache) {
+//                Log.d("Appodeal", "Rewarded video loaded");
+//            }
+//
+//            @Override
+//            public void onRewardedVideoFailedToLoad() {
+//                Log.e("Appodeal", "Rewarded video failed to load");
+//            }
+//
+//            @Override
+//            public void onRewardedVideoShowFailed() {   // ✅ 必须加这个，否则报错
+//                Log.e("Appodeal", "Rewarded video show failed");
+//            }
+//
+//            @Override
+//            public void onRewardedVideoShown() {
+//                Log.d("Appodeal", "Rewarded video shown");
+//            }
+//
+//            @Override
+//            public void onRewardedVideoFinished(double amount, String currency) {
+//                Log.d("Appodeal", "Rewarded video finished, reward: " + amount + " " + currency);
+////                runOnGLThread(() ->
+////                        org.cocos2dx.lib.CocosJavascriptJavaBridge.evalString("globalThis.onRewarded('success')")
+////                );
+//            }
+//
+//            @Override
+//            public void onRewardedVideoClosed(boolean finished) {
+//                Log.d("Appodeal", "Rewarded video closed, finished=" + finished);
+////                runOnGLThread(() ->
+////                        org.cocos2dx.lib.CocosJavascriptJavaBridge.evalString("globalThis.onRewarded('closed')")
+////                );
+//            }
+//
+//            @Override
+//            public void onRewardedVideoExpired() {
+//                Log.w("Appodeal", "Rewarded video expired");
+//            }
+//
+//            @Override
+//            public void onRewardedVideoClicked() {
+//                Log.d("Appodeal", "Rewarded video clicked");
+//            }
+//        });
+
 
 //        PangleAdAdapter.initialize(this);
 //        TTAdConfig config = new TTAdConfig.Builder()
@@ -118,6 +218,64 @@ public class AppActivity extends CocosActivity {
 
 //        com.cocos.game.AdManager.get().setup(this);
 
+    }
+
+    private static RewardedAd mRewardedAd;
+    public static void loadRewarded() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        final Activity act = CocosHelper.getActivity();
+
+        RewardedAd.load(act,
+                "ca-app-pub-3940256099942544/5224354917", // 测试ID
+                adRequest,
+                new RewardedAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        mRewardedAd = rewardedAd;
+                        Log.d("AdMobInit", "✅ 加载广告成功");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        Log.e("AdMobInit", "激励广告加载失败: " +
+                                "code=" + loadAdError.getCode() +
+                                ", message=" + loadAdError.getMessage() +
+                                ", domain=" + loadAdError.getDomain());
+                        mRewardedAd = null;
+                    }
+                });
+    }
+
+    public static void showAppodealVideo() {
+        final Activity act = CocosHelper.getActivity();
+        if (act == null) {
+            Log.e("AdMobInit", "❌ Activity is null, 无法展示广告");
+            return;
+        }
+
+        act.runOnUiThread(() -> {
+            if (mRewardedAd != null) {
+                Log.d("AdMobInit", "✅ 播放广告");
+                mRewardedAd.show(act, rewardItem -> {
+                    int rewardAmount = rewardItem.getAmount();
+                    String rewardType = rewardItem.getType();
+                    Log.d("AdMobInit", "用户获得奖励: " + rewardAmount + " " + rewardType);
+                    // TODO: 给用户发放奖励
+                });
+
+                // 注册全屏回调，播放完毕后置空并重新加载
+                mRewardedAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        Log.d("AdMobInit", "广告关闭");
+                        mRewardedAd = null;
+                        loadRewarded();
+                    }
+                });
+            } else {
+                Log.w("AdMobInit", "❌ mRewardedAd == null，广告未加载");
+            }
+        });
     }
 
     public static void copyToClipboard(final String text) {

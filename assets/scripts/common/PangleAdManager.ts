@@ -202,4 +202,33 @@ export class PangleAdManager extends Component {
   public isSupportAdType(_adType: AdType): boolean {
     return sys.isNative;
   }
+
+  /** 展示激励视频（通过全局回调接收奖励/关闭） */
+  public showAppodealVideo(onReward?: () => void, onClose?: () => void) {
+    if (!this._initialized) {
+      console.error('[Pangle] SDK not initialized');
+      return;
+    }
+    if (!sys.isNative) return;
+
+    // 将回调挂到 globalThis，原生侧 evalString 再去调用
+    (globalThis as any).pangleRewardCallback = onReward;
+    (globalThis as any).pangleCloseCallback = onClose;
+
+    try {
+      if (sys.os === sys.OS.ANDROID) {
+        // @ts-ignore
+        jsb.reflection.callStaticMethod(
+          'com/cocos/game/PAGRewardedAdManger',
+          'showAppodealVideo',
+          '(Ljava/lang/String;)V',
+        );
+      } else if (sys.os === sys.OS.IOS) {
+        // @ts-ignore
+        jsb.reflection.callStaticMethod('PangleAdapter', 'showRewardedVideoWithAdUnitId:', adUnitId);
+      }
+    } catch (e) {
+      console.error('[Pangle] show rewarded failed:', e);
+    }
+  }
 }

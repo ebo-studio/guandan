@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
+//import com.appodeal.ads.Appodeal;
+//import com.appodeal.ads.initializing.ApdInitializationCallback;
+//import com.appodeal.ads.initializing.ApdInitializationError;
 import com.bytedance.sdk.openadsdk.api.init.PAGConfig;
 import com.bytedance.sdk.openadsdk.api.init.PAGSdk;
 import com.bytedance.sdk.openadsdk.api.reward.PAGRewardItem;
@@ -14,11 +17,14 @@ import com.bytedance.sdk.openadsdk.api.reward.PAGRewardedRequest;
 import com.cocos.lib.CocosHelper;
 import com.cocos.lib.CocosJavascriptJavaBridge;
 
+import java.util.List;
+
 public class PAGRewardedAdManger {
     private static Activity activity;
     private static final String TAG = "PangleAdAdapter";
     private static volatile boolean sInited = false;
     private static PAGRewardedAd rewardedAd;
+    private static final String APP_KEY = "0a79aed0f6a13ba4a25bcdaae33bfd844730730d8288e8c1";
 
     public static void initialize(String appId) {
         final Activity act = CocosHelper.getActivity();
@@ -35,7 +41,7 @@ public class PAGRewardedAdManger {
         act.runOnUiThread(() -> {
             Context appCtx = act.getApplicationContext();
             PAGConfig config = new PAGConfig.Builder()
-                .appId("8701814")
+                .appId("8719972")
                 .debugLog(true)                  // 调试阶段可开日志，上线请关
                 // .setGDPRConsent(0/1)           // GDPR 同意状态（需要时设置）
                 // .setPAConsent(0/1)             // 个性化广告同意（7.1.0.4+）
@@ -45,10 +51,11 @@ public class PAGRewardedAdManger {
         PAGSdk.init(act.getApplicationContext(), config, new PAGSdk.PAGInitCallback() {
             @Override public void success() {
                 Log.i(TAG, "Pangle init success, v=" + PAGSdk.getSDKVersion());
-                loadRewardedVideo("982283193");
+                loadRewardedVideo("982396422");
                 // 已初始化，可以请求广告或拿 bidding token（建议放后台线程）
             }
             @Override public void fail(int code, String msg) {
+                callJsCallback("pangleRewardCallback");
                 // 记录初始化失败原因
             }
         });
@@ -114,7 +121,12 @@ public class PAGRewardedAdManger {
                 rewardedAd.setAdInteractionListener(new PAGRewardedAdInteractionListener() {
                     @Override public void onAdShowed()    { }
                     @Override public void onAdClicked()   { }
-                    @Override public void onAdDismissed() { }
+                    @Override public void onAdDismissed() {
+                        Log.d("PangleAdAdapter", "广告关闭");
+                        // ⚡ 播放结束后清空，准备下次 load
+                        rewardedAd = null;
+                        loadRewardedVideo(adUnitId); // 自动预加载下一条
+                    }
                     @Override public void onUserEarnedReward(PAGRewardItem item) {
                         callJsCallback("pangleRewardCallback");
 //                        String payload = (item==null) ? "null" :
@@ -142,7 +154,7 @@ public class PAGRewardedAdManger {
         }
         if (rewardedAd == null) {
             Log.e("PangleAdAdapter", "showRewardedVideo: rewardVideoAd == null (call loadRewardedVideo() first)");
-            loadRewardedVideo("982283193");
+            loadRewardedVideo("982396422");
             return;
         }
 //
