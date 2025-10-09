@@ -12,7 +12,11 @@
     ],
     "isIconGizmo3D": false,
     "iconGizmoSize": 2,
-    "isGridVisible": true
+    "isGridVisible": true,
+    "transformToolName": "position",
+    "pivot": "pivot",
+    "coordinate": "local",
+    "toolsVisibility3d": true
   },
   "camera": {
     "fov": 45,
@@ -34,8 +38,8 @@
   "camera-infos": {
     "8cd0fb05-2535-4c33-abbf-584bac560df0": {
       "position": {
-        "x": 790.6478830022961,
-        "y": 369.550935275534,
+        "x": 840,
+        "y": 360,
         "z": 5000
       },
       "rotation": {
@@ -120,5 +124,26 @@
         }
       }
     }
+  },
+  "__version__": "1.0.0",
+  "builder": {
+    "taskOptionsMap": {},
+    "__version__": "1.3.7"
+  },
+  "snap-configs": {
+    "position": {
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "rotation": 1,
+    "scale": 1,
+    "isPositionSnapEnabled": false,
+    "isRotationSnapEnabled": false,
+    "isScaleSnapEnabled": false
+  },
+  "rect-snap-configs": {
+    "enableSnapping": true,
+    "snapThreshold": 4
   }
 }

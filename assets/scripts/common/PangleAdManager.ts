@@ -1,5 +1,7 @@
 // PangleAdManager.ts
 import { _decorator, Component, sys, game, Node } from 'cc';
+import { UIConfig } from '../manager/UIConfig';
+import { UIManager } from '../manager/UIManager';
 const { ccclass, property } = _decorator;
 
 enum AdType {
@@ -107,6 +109,25 @@ export class PangleAdManager extends Component {
     // 将回调挂到 globalThis，原生侧 evalString 再去调用
     (globalThis as any).pangleRewardCallback = onReward;
     (globalThis as any).pangleCloseCallback = onClose;
+    (globalThis as any).pangleRewardErrorCallback = function (code, msg) {
+      console.log("🧩 Pangle Error:", code, msg);
+      try {
+        if (sys.os === sys.OS.ANDROID) {
+          // @ts-ignore
+          jsb.reflection.callStaticMethod(
+            'com/cocos/game/AppActivity',
+            'showAppodealVideo',
+            '()V',
+          );
+        } else if (sys.os === sys.OS.IOS) {
+          // @ts-ignore
+          jsb.reflection.callStaticMethod('PangleAdapter', 'showRewardedVideoWithAdUnitId:', adUnitId);
+        }
+      } catch (e) {
+        console.error('[Pangle] show rewarded failed:', e);
+      }
+      // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: code + ',' +  msg});
+    };
 
     try {
       if (sys.os === sys.OS.ANDROID) {

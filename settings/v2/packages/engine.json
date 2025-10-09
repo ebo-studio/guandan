@@ -120,13 +120,15 @@
       "gfx-webgl",
       "gfx-webgl2",
       "intersection-2d",
+      "light-probe",
       "particle-2d",
       "physics-2d-builtin",
       "primitive",
       "profiler",
       "spine",
       "tween",
-      "ui"
+      "ui",
+      "websocket"
     ],
     "noDeprecatedFeatures": {
       "value": false,
@@ -135,5 +137,6 @@
   },
   "macroConfig": {
     "ENABLE_MULTI_TOUCH": false
-  }
+  },
+  "__version__": "1.0.8"
 }

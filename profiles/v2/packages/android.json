@@ -1,43 +1,324 @@
 {
-  "common": {
-    "outputName": "android-005",
-    "mainBundleCompressionType": "merge_dep",
-    "platform": "android",
-    "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-    "name": "goldenAnt",
-    "replaceSplashScreen": true,
-    "debug": false
-  },
-  "options": {
-    "android": {
-      "packageName": "com.goldenant.id",
-      "orientation": {
-        "portrait": false,
-        "upsideDown": false,
-        "landscapeRight": true,
-        "landscapeLeft": true
+  "builder": {
+    "taskOptionsMap": {
+      "1760006907640": {
+        "packageName": "com.goldenant.id",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.0"
       },
-      "apiLevel": 35,
-      "appABIs": [
-        "arm64-v8a"
-      ],
-      "useDebugKeystore": false,
-      "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
-      "keystorePassword": "xuhang518",
-      "keystoreAlias": "release",
-      "keystoreAliasPassword": "xuhang518",
-      "appBundle": false,
-      "androidInstant": false,
-      "remoteUrl": "",
-      "sdkPath": "",
-      "ndkPath": "",
-      "renderBackEnd": {
-        "vulkan": false,
-        "gles3": true,
-        "gles2": true
+      "1760007976572": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
       },
-      "swappy": false,
-      "__version__": "1.0.1"
+      "1760008057754": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1760008108991": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1760009670661": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1760011356608": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1760011467683": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1760011663258": {
+        "packageName": "com.goldenant.id",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      }
+    },
+    "__version__": "1.3.7",
+    "common": {
+      "outputName": "android-005",
+      "mainBundleCompressionType": "merge_dep",
+      "platform": "android",
+      "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+      "name": "goldenAnt",
+      "replaceSplashScreen": true,
+      "debug": false
+    },
+    "options": {
+      "android": {
+        "packageName": "com.goldenant.id",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      }
     }
-  }
+  },
+  "__version__": "1.0.1"
 }

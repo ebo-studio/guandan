@@ -1830,7 +1830,6 @@
     "_type": 2,
     "_inverted": false,
     "_segments": 8,
-    "_spriteFrame": null,
     "_alphaThreshold": 0.1,
     "_id": ""
   },
@@ -3308,7 +3307,6 @@
     "_type": 2,
     "_inverted": false,
     "_segments": 8,
-    "_spriteFrame": null,
     "_alphaThreshold": 0.1,
     "_id": ""
   },
@@ -4915,7 +4913,6 @@
     "_type": 2,
     "_inverted": false,
     "_segments": 8,
-    "_spriteFrame": null,
     "_alphaThreshold": 0.1,
     "_id": ""
   },
@@ -6393,7 +6390,6 @@
     "_type": 2,
     "_inverted": false,
     "_segments": 8,
-    "_spriteFrame": null,
     "_alphaThreshold": 0.1,
     "_id": ""
   },

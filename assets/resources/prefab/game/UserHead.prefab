@@ -312,7 +312,6 @@
     "_type": 2,
     "_inverted": false,
     "_segments": 8,
-    "_spriteFrame": null,
     "_alphaThreshold": 0.1,
     "_id": ""
   },
@@ -1297,7 +1296,16 @@
     "_isUnderline": false,
     "_underlineHeight": 2,
     "_cacheMode": 0,
-    "_id": ""
+    "_id": "",
+    "_enableOutline": true,
+    "_outlineWidth": 2,
+    "_outlineColor": {
+      "__type__": "cc.Color",
+      "r": 33,
+      "g": 58,
+      "b": 108,
+      "a": 255
+    }
   },
   {
     "__type__": "cc.CompPrefabInfo",
@@ -1314,14 +1322,6 @@
     "__prefab": {
       "__id__": 59
     },
-    "_color": {
-      "__type__": "cc.Color",
-      "r": 33,
-      "g": 58,
-      "b": 108,
-      "a": 255
-    },
-    "_width": 2,
     "_id": ""
   },
   {

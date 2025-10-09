@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.7",
+  "ver": "1.0.8",
   "importer": "sprite-atlas",
   "imported": true,
   "uuid": "2ad78097-ecca-471c-b368-d93dd1252e40",
@@ -46,7 +46,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -92,7 +92,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -138,7 +138,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -184,7 +184,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -230,7 +230,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -276,7 +276,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -322,7 +322,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -368,7 +368,7 @@
         "imageUuidOrDatabaseUri": "f0cb4e22-c32d-425d-b959-30ae3ebeb056@6c48a",
         "atlasUuid": "2ad78097-ecca-471c-b368-d93dd1252e40"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"

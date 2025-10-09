@@ -1,21 +1,72 @@
 {
-  "options": {
-    "web-desktop": {
-      "configID": "944002",
-      "services": []
-    },
-    "web-mobile": {
-      "configID": "944002",
-      "services": []
-    },
-    "android": {
-      "configID": "944002",
-      "services": []
-    }
-  },
   "builder-options": {
     "configID": "944002",
     "services": [],
-    "__version__": "3.0.4"
-  }
+    "__version__": "3.0.7"
+  },
+  "builder": {
+    "taskOptionsMap": {
+      "1757912159054": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "1.0.0"
+      },
+      "1760006907640": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "1.0.0"
+      },
+      "1760007976572": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760008057754": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760008108991": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760009670661": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760011356608": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760011467683": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1760011663258": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      }
+    },
+    "__version__": "1.3.7",
+    "options": {
+      "web-desktop": {
+        "configID": "944002",
+        "services": []
+      },
+      "web-mobile": {
+        "configID": "944002",
+        "services": []
+      },
+      "android": {
+        "configID": "944002",
+        "services": []
+      }
+    }
+  },
+  "__version__": "3.0.7"
 }

@@ -8,8 +8,8 @@ android {
     namespace "com.company.goldenant"
     compileSdkVersion PROP_COMPILE_SDK_VERSION.toInteger()
     //buildToolsVersion PROP_BUILD_TOOLS_VERSION
-    ndkPath PROP_NDK_PATH
-
+//    ndkPath PROP_NDK_PATH
+    ndkVersion "26.3.11579264"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -53,7 +53,7 @@ android {
 
     signingConfigs {
 
-       release {
+        release {
             if (project.hasProperty("RELEASE_STORE_FILE") && !RELEASE_STORE_FILE.isEmpty()) {
                 storeFile file(RELEASE_STORE_FILE)
                 storePassword RELEASE_STORE_PASSWORD

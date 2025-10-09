@@ -3,7 +3,7 @@
   "uuid": "96ec38bc-d888-44dd-a0cc-d1972c872bce",
   "version": "3.6.0",
   "creator": {
-    "version": "3.6.0"
+    "version": "3.8.2"
   },
   "dependencies": {
     "ethers": "^6.15.0",

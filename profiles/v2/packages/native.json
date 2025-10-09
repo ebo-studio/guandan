@@ -1,11 +1,73 @@
 {
-  "options": {
-    "android": {
-      "encrypted": false,
-      "xxteaKey": "acxbHrJq9JDobw+s",
-      "compressZip": false,
-      "JobSystem": "none",
-      "__version__": "1.0.2"
+  "builder": {
+    "taskOptionsMap": {
+      "1760006907640": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.0"
+      },
+      "1760007976572": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760008057754": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760008108991": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760009670661": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760011356608": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760011467683": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      },
+      "1760011663258": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      }
+    },
+    "__version__": "1.3.7",
+    "options": {
+      "android": {
+        "encrypted": false,
+        "xxteaKey": "acxbHrJq9JDobw+s",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
+      }
     }
-  }
+  },
+  "__version__": "1.0.2"
 }

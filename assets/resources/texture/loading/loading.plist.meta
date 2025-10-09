@@ -1,5 +1,5 @@
 {
-  "ver": "1.0.7",
+  "ver": "1.0.8",
   "importer": "sprite-atlas",
   "imported": true,
   "uuid": "129470ee-d896-4045-a775-a0390a2241c7",
@@ -46,7 +46,7 @@
         "imageUuidOrDatabaseUri": "60d10988-1861-4cb2-a91d-1b2c600c5281@6c48a",
         "atlasUuid": "129470ee-d896-4045-a775-a0390a2241c7"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -92,7 +92,7 @@
         "imageUuidOrDatabaseUri": "60d10988-1861-4cb2-a91d-1b2c600c5281@6c48a",
         "atlasUuid": "129470ee-d896-4045-a775-a0390a2241c7"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"
@@ -138,7 +138,7 @@
         "imageUuidOrDatabaseUri": "60d10988-1861-4cb2-a91d-1b2c600c5281@6c48a",
         "atlasUuid": "129470ee-d896-4045-a775-a0390a2241c7"
       },
-      "ver": "1.0.11",
+      "ver": "1.0.12",
       "imported": true,
       "files": [
         ".json"

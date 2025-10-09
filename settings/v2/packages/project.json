@@ -3,7 +3,7 @@
     "designResolution": {
       "width": 1680,
       "height": 720,
-      "fitHeight": true,
+      "fitHeight": false,
       "fitWidth": false
     }
   },
@@ -23,5 +23,15 @@
       "1": 4,
       "2": 2
     }
-  }
+  },
+  "__version__": "1.0.6",
+  "fbx": {
+    "legacyFbxImporter": {
+      "visible": true
+    }
+  },
+  "script": {
+    "preserveSymlinks": true
+  },
+  "custom_joint_texture_layouts": []
 }
