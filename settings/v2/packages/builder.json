@@ -83,11 +83,18 @@
   },
   "splash-setting": {
     "logo": {
-      "type": "none"
+      "type": "custom",
+      "image": "project://settings/1680x720.png"
     },
     "background": {
-      "image": "project://settings/1680x720.png",
-      "type": "custom"
-    }
+      "type": "color",
+      "color": {
+        "x": 1,
+        "y": 1,
+        "z": 1,
+        "w": 1
+      }
+    },
+    "displayRatio": 3
   }
 }

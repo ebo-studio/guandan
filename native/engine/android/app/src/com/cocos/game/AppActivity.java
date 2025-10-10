@@ -7,10 +7,12 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.WindowManager;
 
@@ -25,6 +27,8 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
+import java.util.Locale;
+
 public class AppActivity extends CocosActivity {
 
     private static final String TAG = "AppActivity";
@@ -36,6 +40,17 @@ public class AppActivity extends CocosActivity {
         super.onCreate(savedInstanceState);
         instance = this;
 
+//        Locale locale = new Locale("en", "US");
+//        Locale.setDefault(locale);
+//        Configuration config = this.getResources().getConfiguration();
+//        config.setLocale(locale);
+//        this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
+        TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        Log.d("UnityAds", "Network Country ISO = " + tm.getNetworkCountryIso());
+        Log.d("UnityAds", "SIM Country ISO = " + tm.getSimCountryIso());
+        Log.d("UnityAds", "Locale = " + Locale.getDefault().getCountry());
+
+
         // 保持屏幕常亮
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -44,8 +59,10 @@ public class AppActivity extends CocosActivity {
         // 初始化 SDKWrapper（必要）
         SDKWrapper.shared().init(this);
 
+
+
         // 初始化广告
-        loadRewarded();
+//        loadRewarded();
     }
 
     /** ✅ 获取当前实例 */
