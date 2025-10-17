@@ -10,6 +10,9 @@ dist/
 library/
 temp/
 *.apk
+*.rar
+*.zip
+*.exe
 # native/
 
 # 忽略 .env 文件（环境变量）
