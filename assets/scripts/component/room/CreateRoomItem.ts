@@ -2,6 +2,10 @@ import { ToggleContainer, _decorator } from 'cc';
 import PopWindow from '../PopWindow';
 import { SoundManager } from '../../manager/SoundManager';
 import { GlobalData } from '../../manager/GlobalData';
+import { UIManager } from '../../manager/UIManager';
+import { KeyBoardType } from './KeyBoardItem';
+import { AppGlobal } from '../../AppGlobal';
+import { UIConfig } from '../../manager/UIConfig';
 const { ccclass, property } = _decorator;
 
 @ccclass('CreateRoomItem')
@@ -28,6 +32,19 @@ export class CreateRoomItem extends PopWindow {
         this.callBack && this.callBack();
         this.hide();
         this.clearFunc();
+    }
+
+    async onBtnJoinRoomClick() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({
+            path: UIConfig.KeyBoardItemKey,
+            data: {
+                type: KeyBoardType.joinRoom,
+                cb: (roomId) => {
+                    AppGlobal.instance.onFreeRoomId(roomId);
+                }
+            }
+        });
     }
 
     onBtnCloseClick() {

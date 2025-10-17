@@ -12,6 +12,9 @@ import { PbManager } from '../proto/PbManager';
 import Http from '../proto/Http';
 import { UrlConfig } from '../manager/UrlConfig';
 import { PangleAdManager } from '../common/PangleAdManager';
+import { ZJSdk } from '../ZJSdk/ZJSdk';
+import { SignInManager } from '../manager/SignInManager';
+import { checkForUpdate } from '../common/UpdateChecker';
 // import { PangleBridge } from '../common/PangleBridge';
 // import { ethers } from "ethers";
 const { ccclass, property } = _decorator;
@@ -32,19 +35,90 @@ export class Lobby extends Component {
 
     // private pangleBridge: PangleBridge;
 
+    inChina: boolean = true;
+
     public static Instance: Lobby = null;
     onLoad() {
         Lobby.Instance = this;
         PangleAdManager.instance.initialize('8719972');
         // PangleAdManager.instance.loadRewardedVideo('982283195');
+
+        (async () => {
+            const inChina = await utils.isUserInChina();
+            this.inChina = inChina;
+            if (inChina) {
+                console.log("🇨🇳 用户在中国境内");
+                // 国内逻辑（比如用字节广告）
+            } else {
+                console.log("🌎 用户在海外");
+                // 海外逻辑（比如用 Unity Ads、Google Ads）
+            }
+        })();
     }
 
     onClickShowAd() {
+        if (this.inChina) {
+            if (!SignInManager.canWatchAd()) {
+                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
+            }
+            else {
+                ZJSdk.showRewardedAd({
+                    onError(errCode: Number, errMsg: string) {
+                        console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                        ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
+                            onAdLoaded(msg) {
+                                // onRequestFinish()
+                                let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                                console.log(`激励广告加载成功, 价格为${ecpm}`);
+                            }, onError(errCode, errMsg) {
+                                // onRequestFinish()
+                                console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+                            }
+                        });
+                    },
+                    onAdShow() {
+                        console.log("激励广告展示");
+                    },
+                    onAdClick() {
+                        console.log("激励广告点击");
+                    },
+                    onAdClose() {
+                        console.log("激励广告关闭");
+                    }
+                }, {
+                    onAdReward(extra) {
+                        ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
+                            onAdLoaded(msg) {
+                                // onRequestFinish()
+                                let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                                console.log(`激励广告加载成功, 价格为${ecpm}`);
+                            }, onError(errCode, errMsg) {
+                                // onRequestFinish()
+                                console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+                            }
+                        });
+                        SignInManager.addAdWatch();
+                        console.log(`今日已观看 ${SignInManager.getWatchedCount()} / 30 次`);
+                        // console.log(`激励广告发奖`);
+                        UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+
+                    },
+                })
+            }
+
+        }
+        else {
+            PangleAdManager.instance.showRewardedVideo('982396404', () => {
+                UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+            });
+        }
+
         // sendToNative('csj:reward:show');
-        console.log('PangleAdAdapter -->播放视频');
-        PangleAdManager.instance.showRewardedVideo('982396404', () =>{
-            UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: {"count": 10}});
-        });
+        // console.log('PangleAdAdapter -->播放视频');
+        // PangleAdManager.instance.showRewardedVideo('982396404', () => {
+        //     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+        // });
         // if (sys.os === sys.OS.ANDROID) {
         //     native.reflection.callStaticMethod(
         //         "com/cocos/game/AppActivity", // Java 类路径（包名+类名）
@@ -125,7 +199,6 @@ export class Lobby extends Component {
             });
         }
 
-
     }
     onDestroy() {
         utils.off(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);
@@ -144,6 +217,7 @@ export class Lobby extends Component {
     }
     //金币
     onUpdateScore() {
+        console.log('更新积分>>>', GlobalData.userInfo.score);
         this.txtScore.string = GlobalData.userInfo.score + "";
     }
     //登录
@@ -207,14 +281,33 @@ export class Lobby extends Component {
     //创建房间
     onBtnCreateRoomClick() {
         SoundManager.playClick();
-        UIManager.Instace.showUI({
-            path: UIConfig.CreateRoomItemKey, data: () => {
-                let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
-                let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
-                let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
-                GameSocket.send(sendBuffer);
-            }
-        });
+        if (GlobalData.userInfo.score < 30) {
+            UIManager.Instace.showUI({
+                path: UIConfig.MessageBoxCommonKey,
+                data: {
+                    okName: "观看",
+                    cancleName: "取消",
+                    des: "您的积分不足30,是否观看视频获得积分",
+                    okFunc: () => {
+                        this.onClickShowAd();
+                    },
+                    cancleFunc: () => {
+
+                    }
+                }
+            });
+        }
+        else {
+            UIManager.Instace.showUI({
+                path: UIConfig.CreateRoomItemKey, data: () => {
+                    let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
+                    let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
+                    let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
+                    GameSocket.send(sendBuffer);
+                }
+            });
+        }
+
     }
     //加入房间
     async onBtnJoinRoomClick() {
@@ -231,9 +324,28 @@ export class Lobby extends Component {
     }
     //自由嗨完
     async onBtnRaceFreeClick() {
-        GlobalData.cardInfo.gameType = GlobalData.gameType.free;
-        let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
-        GameSocket.send(sendBuffer);
+        if (GlobalData.userInfo.score < 30) {
+            UIManager.Instace.showUI({
+                path: UIConfig.MessageBoxCommonKey,
+                data: {
+                    okName: "观看",
+                    cancleName: "取消",
+                    des: "您的积分不足30,是否观看视频获得积分",
+                    okFunc: () => {
+                        this.onClickShowAd();
+                    },
+                    cancleFunc: () => {
+
+                    }
+                }
+            });
+        }
+        else {
+            GlobalData.cardInfo.gameType = GlobalData.gameType.free;
+            let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
+            GameSocket.send(sendBuffer);
+        }
+
 
     }
     //积分赛

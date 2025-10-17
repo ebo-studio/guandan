@@ -204,9 +204,9 @@ export namespace utils {
         }
         return str;
     }
-     /**
-     *  00:00  (时/分)  (分/秒)
-     */
+    /**
+    *  00:00  (时/分)  (分/秒)
+    */
     export function getTimeDesc2(count: number): string {
         let str = "";
         if (count < 60) {
@@ -365,7 +365,7 @@ export namespace utils {
         return name;
     }
 
-   export function postWithXHR(url: string, data: any): Promise<any> {
+    export function postWithXHR(url: string, data: any): Promise<any> {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open('POST', url, true);
@@ -685,7 +685,7 @@ export namespace utils {
 
     export function getGameBg(): string {
         let s = getLocalStorage('gameBg');
-        if(!s) {
+        if (!s) {
             s = '0';
         }
         return s;
@@ -820,5 +820,22 @@ export namespace utils {
     //浏览器
     export function is_browser(): boolean {
         return sys.platform === sys.Platform.DESKTOP_BROWSER;
+    }
+
+    export async function isUserInChina(): Promise<boolean> {
+        try {
+            // 使用可靠、速度快的 IP API（返回 JSON）
+            const response = await fetch("https://ipapi.co/json/");
+            const data = await response.json();
+
+            console.log("🌍 IP Info:", data);
+
+            // data.country_code === 'CN' 表示中国
+            return data.country_code === "CN";
+        } catch (err) {
+            console.warn("获取 IP 失败:", err);
+            // 默认返回 true，防止国外 API 访问失败时误判
+            return true;
+        }
     }
 }

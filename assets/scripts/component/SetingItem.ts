@@ -5,6 +5,7 @@ import PopWindow from './PopWindow';
 import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
 import { GlobalData } from '../manager/GlobalData';
+import { checkForUpdate } from '../common/UpdateChecker';
 const { ccclass, property } = _decorator;
 
 @ccclass('SetingItem')
@@ -112,6 +113,10 @@ export class SetingItem extends PopWindow {
     public OnCloseClicked() {
         SoundManager.playClick();
         this.hide();
+    }
+
+    public checkUpdate() {
+        checkForUpdate(true);
     }
 
     openAgreementUrl() {

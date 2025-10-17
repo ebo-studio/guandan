@@ -171,6 +171,20 @@ public class AppActivity extends CocosActivity {
         });
     }
 
+    public static void openUpdateUrl(String url) {
+        Activity activity = AppActivity.getInstance();
+        activity.runOnUiThread(() -> {
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(intent);
+//                Log.i(TAG, "已打开下载页面: " + url);
+            } catch (Exception e) {
+//                Log.e(TAG, "打开浏览器失败: " + e.getMessage());
+            }
+        });
+    }
+
     // ---------- SDKWrapper 生命周期同步 ----------
     @Override
     protected void onResume() {

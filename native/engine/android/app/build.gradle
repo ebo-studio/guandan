@@ -19,8 +19,8 @@ android {
         applicationId APPLICATION_ID
         minSdkVersion PROP_MIN_SDK_VERSION.toInteger()
         targetSdkVersion PROP_TARGET_SDK_VERSION.toInteger()
-        versionCode 3
-        versionName "1.0.1"
+        versionCode 7
+        versionName "1.0.0"
 
         externalNativeBuild {
             cmake {
@@ -101,6 +101,28 @@ dependencies {
     implementation project(':libservice')
     implementation project(':libcocos')
     implementation("com.google.android.gms:play-services-ads:24.6.0")
+
+    /// 设备OAID，如已引入，可忽略
+    implementation 'com.zj.zjsdk:oaid_sdk:1.0.25'
+
+    // SDK包
+    implementation 'com.zj.zjsdk:zjsdk-cocos-bridge:2.5.5.60'
+    implementation 'com.zj.zjsdk:kssdk-ct:4.9.20.1'
+    // implementation 'com.pangle.cn:mediation-sdk:7.0.1.2'  // 融合SDK
+    implementation 'com.zj.zjsdk:beizi_fusion_sdk:5.2.2.0'
+    implementation 'com.zj.zjsdk:octopus_ad_sdk:2.5.10.5'
+    implementation 'com.zj.zjsdk:jy:2.0.125'
+
+    def takuVersion = "6.5.36"
+    implementation "com.anythink.sdk:core-taku:$takuVersion"
+    implementation "com.anythink.sdk:core-china-taku:$takuVersion"
+    implementation "com.anythink.sdk:nativead-taku:$takuVersion"
+    implementation "com.anythink.sdk:banner-taku:$takuVersion"
+    implementation "com.anythink.sdk:interstitial-taku:$takuVersion"
+    implementation "com.anythink.sdk:rewardedvideo-taku:$takuVersion"
+    implementation "com.anythink.sdk:splash-taku:$takuVersion"
+    implementation "com.anythink.sdk:adapter-taku-sdm:6.5.36.1"
+    implementation "com.smartdigimkttech.sdk:sdm-sdk-cn:6.5.37"
 //    implementation ('com.appodeal.ads:sdk:3.10.0.0') {
 //        exclude group: 'com.pangle.global', module: 'pag-sdk'
 //        exclude group: 'com.pangle.global', module: 'pag-sdk-ad'

@@ -37,10 +37,10 @@ export class exchangeViewItem extends PopWindow {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入兑换码" });
             return;
         }
-        if (code == '0000') {
-            UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 1000 } });
-            return
-        }
+        // if (code == '0000') {
+        //     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 1000 } });
+        //     return
+        // }
         else if (GlobalData.userInfo.score <= 0) {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "兑换失败" });
             return;
@@ -79,7 +79,7 @@ export class exchangeViewItem extends PopWindow {
         }
         else {
             const url = `${UrlConfig.getTokenUrl()}api/address/exchangeToken`;
-            this.postWithXHR(url, {
+            this.postWithFetch(url, {
                 sign: this.generateSignature({
                     address: code,
                     integral: GlobalData.userInfo.score,
@@ -118,32 +118,56 @@ export class exchangeViewItem extends PopWindow {
         return md5(paramString); // 使用 MD5 对拼接字符串进行哈希
     }
 
-    postWithXHR(url: string, data: any): Promise<any> {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.withCredentials = true; // ☆ 关键：带 Cookie
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Accept', 'application/json');
+    async postWithFetch(url: string, data: any): Promise<any> {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState !== 4) return;
-                const ct = xhr.getResponseHeader('content-type') || '';
-                const body = xhr.responseText || '';
-                console.log('status:', xhr.status, 'ct:', ct, 'body[0..200]:', body.slice(0, 200));
-                if (/<!doctype|<html/i.test(body)) return reject(new Error('收到 HTML（登录/错误页）'));
-                try {
-                    const json = JSON.parse(body.replace(/^\uFEFF/, ''));
-                    resolve(json);
-                } catch (e) {
-                    reject(new Error('非 JSON 响应：' + e));
-                }
-            };
+            const text = await response.text();
+            console.log('status:', response.status, 'body:', text.slice(0, 200));
 
-            xhr.onerror = () => reject(new Error('网络错误'));
-            xhr.send(JSON.stringify(data));
-        });
+            if (/<!doctype|<html/i.test(text))
+                throw new Error('收到 HTML（登录/错误页）');
+
+            return JSON.parse(text.replace(/^\uFEFF/, ''));
+        } catch (err) {
+            console.error('postWithFetch error:', err);
+            throw err;
+        }
     }
+
+    // postWithXHR(url: string, data: any): Promise<any> {
+    //     return new Promise((resolve, reject) => {
+    //         const xhr = new XMLHttpRequest();
+    //         xhr.open('POST', url, true);
+    //         xhr.withCredentials = true; // ☆ 关键：带 Cookie
+    //         xhr.setRequestHeader('Content-Type', 'application/json');
+    //         xhr.setRequestHeader('Accept', 'application/json');
+
+    //         xhr.onreadystatechange = () => {
+    //             if (xhr.readyState !== 4) return;
+    //             const ct = xhr.getResponseHeader('content-type') || '';
+    //             const body = xhr.responseText || '';
+    //             console.log('status:', xhr.status, 'ct:', ct, 'body[0..200]:', body.slice(0, 200));
+    //             if (/<!doctype|<html/i.test(body)) return reject(new Error('收到 HTML（登录/错误页）'));
+    //             try {
+    //                 const json = JSON.parse(body.replace(/^\uFEFF/, ''));
+    //                 resolve(json);
+    //             } catch (e) {
+    //                 reject(new Error('非 JSON 响应：' + e));
+    //             }
+    //         };
+
+    //         xhr.onerror = () => reject(new Error('网络错误'));
+    //         xhr.send(JSON.stringify(data));
+    //     });
+    // }
 
     async updateScore(socre: number) {
         if (!sys.isNative) {
@@ -160,7 +184,7 @@ export class exchangeViewItem extends PopWindow {
         }
         else {
             const url = `${UrlConfig.getHttpUrl()}api/Open/changeScore`;
-            this.postWithXHR(url, {
+            this.postWithFetch(url, {
                 user_id: GlobalData.userInfo.user_id,
                 score_type: '2',
                 score: socre,

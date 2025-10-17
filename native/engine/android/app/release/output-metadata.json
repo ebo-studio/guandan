@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.goldenant.id",
+  "applicationId": "com.skyland.flysdtpchat.my",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
       "attributes": [],
-      "versionCode": 3,
-      "versionName": "1.0.1",
+      "versionCode": 7,
+      "versionName": "1.0.0",
       "outputFile": "goldenAnt-release.apk"
     }
   ],

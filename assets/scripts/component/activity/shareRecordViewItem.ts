@@ -38,7 +38,7 @@ export class shareRecordViewItem extends PopWindow {
         else {
             this.scrollView.content.removeAllChildren();
             const url = HttpConfig.getUrl(HttpConfig.QueryMyFirstInviter);
-            this.postWithXHR(url, {
+            this.postWithFetch(url, {
                 token: GlobalData.loginInfo.token
             })
                 .then(data => {
@@ -105,33 +105,58 @@ export class shareRecordViewItem extends PopWindow {
             }
         })
     }
+    
+    async postWithFetch(url: string, data: any): Promise<any> {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
 
-    postWithXHR(url: string, data: any): Promise<any> {
-        return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', url, true);
-            xhr.withCredentials = true; // ☆ 关键：带 Cookie
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('Accept', 'application/json');
+            const text = await response.text();
+            console.log('status:', response.status, 'body:', text.slice(0, 200));
 
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState !== 4) return;
-                const ct = xhr.getResponseHeader('content-type') || '';
-                const body = xhr.responseText || '';
-                console.log('status:', xhr.status, 'ct:', ct, 'body[0..200]:', body.slice(0, 200));
-                if (/<!doctype|<html/i.test(body)) return reject(new Error('收到 HTML（登录/错误页）'));
-                try {
-                    const json = JSON.parse(body.replace(/^\uFEFF/, ''));
-                    resolve(json);
-                } catch (e) {
-                    reject(new Error('非 JSON 响应：' + e));
-                }
-            };
+            if (/<!doctype|<html/i.test(text))
+                throw new Error('收到 HTML（登录/错误页）');
 
-            xhr.onerror = () => reject(new Error('网络错误'));
-            xhr.send(JSON.stringify(data));
-        });
+            return JSON.parse(text.replace(/^\uFEFF/, ''));
+        } catch (err) {
+            console.error('postWithFetch error:', err);
+            throw err;
+        }
     }
+
+
+    // postWithXHR(url: string, data: any): Promise<any> {
+    //     return new Promise((resolve, reject) => {
+    //         const xhr = new XMLHttpRequest();
+    //         xhr.open('POST', url, true);
+    //         xhr.withCredentials = true; // ☆ 关键：带 Cookie
+    //         xhr.setRequestHeader('Content-Type', 'application/json');
+    //         xhr.setRequestHeader('Accept', 'application/json');
+
+    //         xhr.onreadystatechange = () => {
+    //             if (xhr.readyState !== 4) return;
+    //             const ct = xhr.getResponseHeader('content-type') || '';
+    //             const body = xhr.responseText || '';
+    //             console.log('status:', xhr.status, 'ct:', ct, 'body[0..200]:', body.slice(0, 200));
+    //             if (/<!doctype|<html/i.test(body)) return reject(new Error('收到 HTML（登录/错误页）'));
+    //             try {
+    //                 const json = JSON.parse(body.replace(/^\uFEFF/, ''));
+    //                 resolve(json);
+    //             } catch (e) {
+    //                 reject(new Error('非 JSON 响应：' + e));
+    //             }
+    //         };
+
+    //         xhr.onerror = () => reject(new Error('网络错误'));
+    //         xhr.send(JSON.stringify(data));
+    //     });
+    // }
 
     onClose() {
         this.hide();

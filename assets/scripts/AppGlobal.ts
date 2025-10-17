@@ -7,6 +7,8 @@ import { UIManager } from './manager/UIManager';
 import { UIConfig } from './manager/UIConfig';
 import { PbManager } from './proto/PbManager';
 import { GameSocket } from './manager/GameSocket';
+import { ZJSdk } from './ZJSdk/ZJSdk';
+import { checkForUpdate } from './common/UpdateChecker';
 const { ccclass, property } = _decorator;
 
 @ccclass('AppGlobal')
@@ -49,6 +51,21 @@ export class AppGlobal extends Component {
         if (!AppGlobal._eventBound) {
             this.bindEvent();
             AppGlobal._eventBound = true;
+            ZJSdk.showSplashAd({
+                onError(errCode: Number, errMsg: string) {
+                    console.log(`开屏广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+                },
+                onAdShow() {
+                    console.log("开屏广告展示");
+                },
+                onAdClick() {
+                    console.log("开屏广告点击");
+                },
+                onAdClose() {
+                    console.log("开屏广告关闭");
+                }
+            });
+            checkForUpdate();
         }
 
         if (sys.isBrowser) {

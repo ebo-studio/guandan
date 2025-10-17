@@ -160,7 +160,7 @@ export class Game extends Component {
             if (GameLogic.getAllUsers().length >= 4) {
                 this.btnAdd.active = false;
             } else {
-                this.btnAdd.active = true;
+                this.btnAdd.active = false;
             }
         }
         else {
@@ -379,6 +379,17 @@ export class Game extends Component {
     onBtnRuleClick() {
         SoundManager.playClick();
         UIManager.Instace.showUI({ path: UIConfig.RuleItemKey });
+    }
+    onBtnXiufuClick() {
+        if (GameSocket.getIsConnect()) {
+            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "当前网络正常,无需修复" });
+        }
+        else {
+            UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+            UIManager.Instace.clearAllUI();
+            GameSocket.initAndConnect();
+        }
+
     }
     //分享
     onBtCopyClick() {

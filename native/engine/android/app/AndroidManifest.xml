@@ -5,12 +5,20 @@
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_CLIPBOARD" />
     <uses-permission android:name="android.permission.WRITE_CLIPBOARD" />
-  <application android:allowBackup="true" android:label="@string/app_name" android:usesCleartextTraffic="true" android:icon="@mipmap/ic_launcher" android:resizeableActivity="true">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <application android:allowBackup="true" android:label="@string/app_name" android:usesCleartextTraffic="true" android:icon="@mipmap/ic_launcher" android:resizeableActivity="true" android:networkSecurityConfig="@xml/network_security_config">
 <!--    <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-2939404909903363~7181436382"/>-->
     <meta-data android:name="android.app.lib_name" android:value="cocos"/>
     <meta-data
         android:name="com.google.android.gms.ads.APPLICATION_ID"
         android:value="ca-app-pub-2939404909903363~7181436382"/>
+      <meta-data
+          android:name="unityads.configurationurl"
+          android:value="https://configv2.unityads.unitychina.cn" />
+      <meta-data
+          android:name="unityads.baseurl"
+          android:value="https://unityads.unitychina.cn" />
     <activity android:name="com.cocos.game.AppActivity" android:screenOrientation="sensorLandscape" android:configChanges="orientation|keyboardHidden|screenSize|screenLayout" android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:launchMode="singleTask" android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>

@@ -5,6 +5,8 @@ import { RaceJoinState } from "../component/raceScore/RaceScoreLineItem"
 import { HttpConfig } from "./HttpConfig"
 import { UIConfig } from "./UIConfig"
 import { UIManager } from "./UIManager"
+import { ZJSdk } from "../ZJSdk/ZJSdk"
+import { ZJConfig } from "../ZJSdk/ZJConfig"
 
 export enum RaceType {
     none,
@@ -286,7 +288,7 @@ export namespace GlobalData {
         /**110 新一轮游戏开始*/
         GameRestart: 110,
         //一键理牌
-        Organize: 156, 
+        Organize: 156,
         /**400 出错*/
         Error: 400,
     }
