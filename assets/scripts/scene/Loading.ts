@@ -8,6 +8,7 @@ import { utils } from "../common/utils";
 import { ZJSdk } from "../ZJSdk/ZJSdk";
 import { ZJConfig } from "../ZJSdk/ZJConfig";
 import { ZJCustomController } from "../ZJSdk/ZJCustomController";
+import { SignInManager } from "../manager/SignInManager";
 
 const { ccclass, property } = _decorator;
 
@@ -372,6 +373,12 @@ export class Loading extends Component {
                 if (data) {
                     GlobalData.loginInfo.token = data.token;
                     localStorage.setItem(GlobalData.TOKEN, data.token);
+                    let userInfodata: SignInManager.UserInfo = {
+                        token: GlobalData.loginInfo.token,
+                        name: data.name,
+                        ad_watch_count: 0,
+                    };
+                    SignInManager.addOrUpdateUser(userInfodata)
                 }
                 GlobalData.requestGetUserInfo({
                     success: () => {

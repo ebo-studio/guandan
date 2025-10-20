@@ -7,6 +7,7 @@ import { UIConfig } from "./UIConfig"
 import { UIManager } from "./UIManager"
 import { ZJSdk } from "../ZJSdk/ZJSdk"
 import { ZJConfig } from "../ZJSdk/ZJConfig"
+import { SignInManager } from "./SignInManager"
 
 export enum RaceType {
     none,
@@ -199,6 +200,8 @@ export namespace GlobalData {
         Login: 2,
         /**3 用户 */
         User: 3,
+        /**金币通知 */
+        GOLD_CHANGE2: 4,
         /**10 创建房间*/
         CreateRoom: 10,
         /**11 加入房间成功*/
@@ -402,7 +405,8 @@ export namespace GlobalData {
         isOnline: true,
         address: '',
         isLogin: false,
-        is_vip: 0 //1为合伙人，0为普通玩家
+        is_vip: 0, //1为合伙人，0为普通玩家
+        ad_watch_count: 0
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -440,6 +444,65 @@ export namespace GlobalData {
             }
         });
     }
+
+    export function requestGetAdtchInfo(cb: { success: Function, fail?: Function }) {
+        var url = HttpConfig.getUrl(HttpConfig.AdWatchInfo);
+        let sendData = {
+            token: GlobalData.loginInfo.token
+        }
+        // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        // if (!sys.isNative) {
+        utils.sendHttpRequest({
+            url: url,
+            method: "POST",
+            data: utils.toJson(sendData),
+            success: function (data) {
+                // console.log("📦 接口完整返回 data:", JSON.stringify(data));
+                // console.log("GetAdtchInfo success", data);
+                userInfo.ad_watch_count = data.data.ad_watch_count
+                if (cb.success) cb.success();
+            },
+            fail: function (data) {
+                console.log("GetAdtchInfo fail ", data);
+                // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data });
+                // if (cb.fail) cb.fail();
+            },
+            complete: function () {
+                console.log("GetAdtchInfo complete ");
+                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+            }
+        });
+    }
+
+    export function requestAddAdtchCount(cb: { success: Function, fail?: Function }) {
+        var url = HttpConfig.getUrl(HttpConfig.AdWatchCount);
+        let sendData = {
+            token: GlobalData.loginInfo.token
+        }
+        // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        // if (!sys.isNative) {
+        utils.sendHttpRequest({
+            url: url,
+            method: "POST",
+            data: utils.toJson(sendData),
+            success: function (data) {
+                // console.log("GetAdtchInfo success", data);
+                userInfo.ad_watch_count = data.data.ad_watch_count
+                if (cb.success) cb.success();
+            },
+            fail: function (data) {
+                // console.log("GetAdtchInfo fail ", data);
+                // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data });
+                // if (cb.fail) cb.fail();
+            },
+            complete: function () {
+                // console.log("GetAdtchInfo complete ");
+                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+            }
+        });
+    }
+
+
     //查询用户信息
     export function requestGetUserInfo(cb: { success: Function, fail?: Function }) {
         var url = HttpConfig.getUrl(HttpConfig.GetUserInfo);
@@ -461,6 +524,13 @@ export namespace GlobalData {
                 userInfo.score = data.gold;
                 userInfo.name = data.name;
                 userInfo.is_vip = data.is_vip;
+
+                // let userInfodata: SignInManager.UserInfo = {
+                //     token: GlobalData.loginInfo.token,
+                //     name: userInfo.name,
+                //     ad_watch_count: 0,
+                // };
+                // SignInManager.addOrUpdateUser(userInfodata)
                 if (cb.success) cb.success();
             },
             fail: function (data) {

@@ -12,7 +12,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 7; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 9; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 

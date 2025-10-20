@@ -49,6 +49,7 @@ message Start {
     int32 num = 5; // 当前局数
     int32 is_my = 6; // 是不是打自己的等级
     int32 is_out = 7; // 需要发牌动画
+    int32 is_error = 8; // 是否牌型出错，更新牌组
 }
 
 message NextUser {

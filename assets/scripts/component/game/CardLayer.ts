@@ -433,8 +433,10 @@ export class CardLayer extends Component {
     //手牌
     private setHandCards(value: number[], ani: boolean = false, isUp: boolean = false) {
         this.is_game_start = true;
-        // if (this.isOrganize) {
+        // if (!ani && this.isOrganize) {
+        //   this.btnLabel == '恢复'
         //   this.onBtnCardCollect();
+        //   return
         // }
         // if (GlobalData.cardInfo.gameType == 97) {
         //   this.btnCardCollect.node.active = false;
@@ -447,6 +449,8 @@ export class CardLayer extends Component {
             if (this.isOrganize) {
                 this.picHuifuDir.node.active = true;
                 this.picCardDir.node.active = false;
+                this.btnLabel = '恢复'
+                this.onBtnCardCollect();
             }
             else {
                 if (this.btnLabel == '恢复') {
@@ -497,6 +501,7 @@ export class CardLayer extends Component {
                 // console.log("i-------> ", i);
                 let card = this.getOneCard();
                 if (!card) {
+                    console.log('!!!!!!!!!!card :>> ',);
                     return;
                 }
                 card.node.setSiblingIndex(i);
@@ -2798,6 +2803,9 @@ export class CardLayer extends Component {
         GlobalData.cardInfo.maxnum = data.maxnum;
         GlobalData.cardInfo.isMy = data.isMy == 1;
         GlobalData.cardInfo.curRate = data.num + "/" + data.maxnum;
+        if (data.isError) {
+
+        }
         // if (data.isOut >= 0) {
         //   this.playChooseAni(data.level);
         //   setTimeout(() => {
@@ -3800,6 +3808,21 @@ export class CardLayer extends Component {
                 this.onBtnCardCollect1(item.card);
             })
         }
+        this.isOrganize = false;
+    }
+
+
+    setHandCards2() {
+        this.clearHandCards()
+    }
+
+
+
+
+
+    bbbetHandCards2() {
+        let val = [23, 31, 33, 41, 42, 64, 71, 73, 74, 74, 84, 102, 112, 122, 124, 132, 133, 142, 155, 165]
+        this.setHandCards(val)
     }
 
     getOrganize() {

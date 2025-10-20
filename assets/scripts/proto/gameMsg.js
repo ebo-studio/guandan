@@ -1563,6 +1563,7 @@
              * @property {number|null} [num] Start num
              * @property {number|null} [isMy] Start isMy
              * @property {number|null} [isOut] Start isOut
+             * @property {number|null} [isError] Start isError
              */
     
             /**
@@ -1638,6 +1639,14 @@
             Start.prototype.isOut = 0;
     
             /**
+             * Start isError.
+             * @member {number} isError
+             * @memberof GameMsg.Start
+             * @instance
+             */
+            Start.prototype.isError = 0;
+    
+            /**
              * Creates a new Start instance using the specified properties.
              * @function create
              * @memberof GameMsg.Start
@@ -1679,6 +1688,8 @@
                     writer.uint32(/* id 6, wireType 0 =*/48).int32(message.isMy);
                 if (message.isOut != null && message.hasOwnProperty("isOut"))
                     writer.uint32(/* id 7, wireType 0 =*/56).int32(message.isOut);
+                if (message.isError != null && message.hasOwnProperty("isError"))
+                    writer.uint32(/* id 8, wireType 0 =*/64).int32(message.isError);
                 return writer;
             };
     
@@ -1741,6 +1752,9 @@
                     case 7:
                         message.isOut = reader.int32();
                         break;
+                    case 8:
+                        message.isError = reader.int32();
+                        break;
                     default:
                         reader.skipType(tag & 7);
                         break;
@@ -1801,6 +1815,9 @@
                 if (message.isOut != null && message.hasOwnProperty("isOut"))
                     if (!$util.isInteger(message.isOut))
                         return "isOut: integer expected";
+                if (message.isError != null && message.hasOwnProperty("isError"))
+                    if (!$util.isInteger(message.isError))
+                        return "isError: integer expected";
                 return null;
             };
     
@@ -1835,6 +1852,8 @@
                     message.isMy = object.isMy | 0;
                 if (object.isOut != null)
                     message.isOut = object.isOut | 0;
+                if (object.isError != null)
+                    message.isError = object.isError | 0;
                 return message;
             };
     
@@ -1860,6 +1879,7 @@
                     object.num = 0;
                     object.isMy = 0;
                     object.isOut = 0;
+                    object.isError = 0;
                 }
                 if (message.cards && message.cards.length) {
                     object.cards = [];
@@ -1878,6 +1898,8 @@
                     object.isMy = message.isMy;
                 if (message.isOut != null && message.hasOwnProperty("isOut"))
                     object.isOut = message.isOut;
+                if (message.isError != null && message.hasOwnProperty("isError"))
+                    object.isError = message.isError;
                 return object;
             };
     

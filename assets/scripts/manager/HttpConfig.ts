@@ -24,6 +24,8 @@ export module HttpConfig{
     export const AuditionUpList: number = 115;       //海选赛晋级名单
     export const SendCode: number = 116;
     export const QueryMyFirstInviter: number = 117; //查询自己所有一级
+    export const AdWatchInfo: number = 118; //查询自己所有一级
+    export const AdWatchCount: number = 118; //查询自己所有一级
 
 
     var httpMap: Map<number, string> = null;
@@ -51,6 +53,8 @@ export module HttpConfig{
         httpMap.set(Login, commonUrl + 'api/Login/loginOrRegister');
         httpMap.set(SendCode, commonUrl + 'api/Login/sendCode');
         httpMap.set(QueryMyFirstInviter, commonUrl + 'api/User/queryMyFirstInviter');
+        httpMap.set(AdWatchInfo, commonUrl + 'api/User/queryAdWatchInfo');
+        httpMap.set(AdWatchCount, commonUrl + 'api/User/incrementAdWatchCount');
     }
     export function getUrl(cmdID: number) {
         if (httpMap.has(cmdID)) {

@@ -95,6 +95,12 @@ export module GameSocket {
                 GlobalData.userInfo.score = data.gold;
             }
         }
+        else if(recData.id == GlobalData.S2C_Event.GOLD_CHANGE2) {
+            let data = GameMsg.User.decode(recData.msg); 
+            console.log("📦 金币接口完整返回 data:", JSON.stringify(data));
+            GlobalData.userInfo.score = data.gold;
+            utils.send(GlobalData.localEvent.UpdateScore);
+        }
         else if (recData.id == GlobalData.S2C_Event.CreateRoom) {
             let room = GameMsg.Room.decode(recData.msg);
             utils.send(GlobalData.localEvent.CreateRoom, room);

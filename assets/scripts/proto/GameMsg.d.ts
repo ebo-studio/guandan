@@ -705,6 +705,9 @@ export namespace GameMsg {
 
         /** Start isOut */
         isOut?: (number|null);
+
+        /** Start isError */
+        isError?: (number|null);
     }
 
     /** Represents a Start. */
@@ -736,6 +739,9 @@ export namespace GameMsg {
 
         /** Start isOut. */
         public isOut: number;
+
+        /** Start isError. */
+        public isError: number;
 
         /**
          * Creates a new Start instance using the specified properties.

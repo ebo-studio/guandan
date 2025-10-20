@@ -119,6 +119,11 @@ export class SetingItem extends PopWindow {
         checkForUpdate(true);
     }
 
+    onBtnSwitchUser() {
+        SoundManager.playClick();
+        UIManager.Instace.showUI({ path: UIConfig.LoginUserViewKey });
+    }
+
     openAgreementUrl() {
         var url = 'https://lm6789.com/agreement.html';
         if (!sys.isNative) {
