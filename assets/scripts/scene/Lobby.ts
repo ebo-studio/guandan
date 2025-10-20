@@ -59,6 +59,7 @@ export class Lobby extends Component {
     onClickShowAd() {
         UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
         SignInManager.getRemainingAds((data) => {
+            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
             if (this.inChina) {
                 if (GlobalData.userInfo.ad_watch_count >= 30) {
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
