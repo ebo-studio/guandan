@@ -59,64 +59,47 @@ export class Lobby extends Component {
     onClickShowAd() {
         UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
         SignInManager.getRemainingAds((data) => {
-            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
             if (this.inChina) {
                 if (GlobalData.userInfo.ad_watch_count >= 30) {
+                    UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
                 }
                 else {
-                    ZJSdk.showRewardedAd({
-                        onError(errCode: Number, errMsg: string) {
-                            console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+                    ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
+                        onAdLoaded(msg) {
+                            // onRequestFinish()
+                            let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                            console.log(`激励广告加载成功, 价格为${ecpm}`);
+                            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            ZJSdk.showRewardedAd({
+                                onError(errCode: Number, errMsg: string) {
+                                    console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+                                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                                },
+                                onAdShow() {
+                                    console.log("激励广告展示");
+                                },
+                                onAdClick() {
+                                    console.log("激励广告点击");
+                                },
+                                onAdClose() {
+                                    console.log("激励广告关闭");
+                                }
+                            }, {
+                                onAdReward(extra) {
+                                    SignInManager.addAdWatch((data) => {
+                                        // console.log(`今日已观看 ${GlobalData.userInfo.ad_watch_count} / 30 次`);
+                                        UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                                    });
+                                },
+                            })
+                        }, onError(errCode, errMsg) {
+                            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
-                            ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
-                                onAdLoaded(msg) {
-                                    // onRequestFinish()
-                                    let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                    console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                }, onError(errCode, errMsg) {
-                                    // onRequestFinish()
-                                    console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                }
-                            });
-                        },
-                        onAdShow() {
-                            console.log("激励广告展示");
-                        },
-                        onAdClick() {
-                            console.log("激励广告点击");
-                        },
-                        onAdClose() {
-                            console.log("激励广告关闭");
+                            // onRequestFinish()
+                            console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
                         }
-                    }, {
-                        onAdReward(extra) {
-                            ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
-                                onAdLoaded(msg) {
-                                    // onRequestFinish()
-                                    let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                    console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                }, onError(errCode, errMsg) {
-                                    // onRequestFinish()
-                                    console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                }
-                            });
-                            // GlobalData.requestAddAdtchCount({
-                            //     success: () => {
-                            //         console.log(`今日已观看 ${GlobalData.userInfo.ad_watch_count} / 30 次`);
-                            //         // console.log(`激励广告发奖`);
-                            //         UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                            //     }
-                            // })
-                            SignInManager.addAdWatch((data) => {
-                                // console.log(`今日已观看 ${GlobalData.userInfo.ad_watch_count} / 30 次`);
-                                UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                            });
-                            // SignInManager.addAdWatch();
-
-
-                        },
-                    })
+                    });
                 }
 
             }

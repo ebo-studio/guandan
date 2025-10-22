@@ -27,6 +27,7 @@ export class exchangeRecordViewItem extends PopWindow {
     // private recordData: any;
 
     public setData(obj?: any): void {
+        this.scrollView.content.removeAllChildren();
         this.nodataNode.active = true;
         this.recordNode.active = false;
         if (!sys.isNative) {

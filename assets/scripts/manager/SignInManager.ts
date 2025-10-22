@@ -192,7 +192,7 @@ export module SignInManager {
         const index = list.findIndex(u => u.token === user.token);
         if (index >= 0) list[index] = user;
         else list.push(user);
-        switchUser(user.token);
+        // switchUser(user.token);
         saveUserList(list);
     }
 
@@ -201,7 +201,14 @@ export module SignInManager {
         if (!user) {
             return false;
         }
+        console.log('选择用户>>>');
         localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    }
+
+    export function getUserByName(name: string): UserInfo | null {
+        const list = getUserList();
+        const user = list.find(u => u.name === name);
+        return user ?? null;
     }
 
     export function getCurrentUser(): UserInfo | null {

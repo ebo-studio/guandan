@@ -218,33 +218,23 @@ export class Loading extends Component {
                     success: () => {
                         GlobalData.userInfo.haveToken = true;
                         this.joginGame.node.active = true;
+                        if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                            let userInfodata: SignInManager.UserInfo = {
+                                token: GlobalData.loginInfo.token,
+                                name: GlobalData.userInfo.name,
+                                ad_watch_count: 0,
+                            };
+                            SignInManager.addOrUpdateUser(userInfodata)
+                        }
+                        SignInManager.switchUser(GlobalData.loginInfo.token);
+
                         ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
                         ZJSdk.start({
                             onStartFailed(code, msg) {
                                 console.log(`onStartFailed:${code}-${msg}`);
                                 // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
                             }, onStartSuccess() {
-                                console.log("onStartSuccess");
-                                ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
-                                    onAdLoaded(msg) {
-                                        // onRequestFinish()
-                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                        console.log(`开屏广告加载成功, 价格为${ecpm}`);
-                                    }, onError(errCode, errMsg) {
-                                        // onRequestFinish()
-                                        console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                    }
-                                });
-                                ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
-                                    onAdLoaded(msg) {
-                                        // onRequestFinish()
-                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                        console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                    }, onError(errCode, errMsg) {
-                                        // onRequestFinish()
-                                        console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                    }
-                                });
+                                console.log("onStartSuccess");                                                             
                                 // toast("初始化成功")
                             }
                         })
@@ -373,13 +363,16 @@ export class Loading extends Component {
                 if (data) {
                     GlobalData.loginInfo.token = data.token;
                     localStorage.setItem(GlobalData.TOKEN, data.token);
-                    let userInfodata: SignInManager.UserInfo = {
-                        token: GlobalData.loginInfo.token,
-                        name: data.name,
-                        ad_watch_count: 0,
-                    };
-                    SignInManager.addOrUpdateUser(userInfodata)
+                    if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                        let userInfodata: SignInManager.UserInfo = {
+                            token: data.token,
+                            name: data.name,
+                            ad_watch_count: 0,
+                        };
+                        SignInManager.addOrUpdateUser(userInfodata)
+                    }
                 }
+                SignInManager.switchUser(GlobalData.loginInfo.token);
                 GlobalData.requestGetUserInfo({
                     success: () => {
                         clearInterval(this.timer);
@@ -391,26 +384,26 @@ export class Loading extends Component {
                                 // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
                             }, onStartSuccess() {
                                 console.log("onStartSuccess");
-                                ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
-                                    onAdLoaded(msg) {
-                                        // onRequestFinish()
-                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                        console.log(`开屏广告加载成功, 价格为${ecpm}`);
-                                    }, onError(errCode, errMsg) {
-                                        // onRequestFinish()
-                                        console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                    }
-                                });
-                                ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
-                                    onAdLoaded(msg) {
-                                        // onRequestFinish()
-                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                        console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                    }, onError(errCode, errMsg) {
-                                        // onRequestFinish()
-                                        console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                    }
-                                });
+                                // ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
+                                //     onAdLoaded(msg) {
+                                //         // onRequestFinish()
+                                //         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                                //         console.log(`开屏广告加载成功, 价格为${ecpm}`);
+                                //     }, onError(errCode, errMsg) {
+                                //         // onRequestFinish()
+                                //         console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+                                //     }
+                                // });
+                                // ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
+                                //     onAdLoaded(msg) {
+                                //         // onRequestFinish()
+                                //         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                                //         console.log(`激励广告加载成功, 价格为${ecpm}`);
+                                //     }, onError(errCode, errMsg) {
+                                //         // onRequestFinish()
+                                //         console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+                                //     }
+                                // });
                                 // toast("初始化成功")
                             }
                         })

@@ -117,7 +117,7 @@ export class exchangeViewItem extends PopWindow {
         const paramString = `${params.address}${params.integral}${params.time_str}${params.user_id}${secretKey}`;
         return md5(paramString); // 使用 MD5 对拼接字符串进行哈希
     }
-
+    
     async postWithFetch(url: string, data: any): Promise<any> {
         try {
             const response = await fetch(url, {

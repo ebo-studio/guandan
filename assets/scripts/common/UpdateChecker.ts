@@ -1,6 +1,7 @@
 import { sys, native } from 'cc';
 import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
+import { NetworkManager } from '../manager/NetworkManager';
 
 /**
  * ✅ 游戏启动时调用此函数自动检测更新
@@ -12,7 +13,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 9; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 12; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 
@@ -28,8 +29,31 @@ export async function checkForUpdate(showTip: boolean = false) {
             console.log(`📢 发现新版本 v${remoteVersion}`);
             showUpdateDialog(updateDesc, downloadUrl);
         } else {
-            if(showTip) {
+            if (showTip) {
                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "当前已是最新版本" });
+            }
+            else {
+                NetworkManager.checkProxy((isProxy) => {
+                    if (isProxy) {
+                        UIManager.Instace.showUI({
+                            path: UIConfig.MessageBoxCommonKey,
+                            data: {
+                                okName: "确定",
+                                cancleName: "取消",
+                                des: "检测到您正在使用 VPN 或代理网络\n为了更顺畅的体验,建议请先关闭代理",
+                                okFunc: () => {
+
+                                },
+                                cancleFunc: () => {
+
+                                }
+                            }
+                        });
+                        console.warn("⚠️ 检测到代理 / VPN");
+                    } else {
+                        console.log("✅ 网络环境正常");
+                    }
+                });
             }
             console.log("✅ 当前已是最新版本");
         }
@@ -49,7 +73,7 @@ function showUpdateDialog(message: string, url: string) {
         path: UIConfig.MessageBoxCommonKey,
         data: {
             okName: "确定",
-            cancleName: "取消",
+            // cancleName: "取消",
             des: message,
             okFunc: () => {
                 openUrl(url);
