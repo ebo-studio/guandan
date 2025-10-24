@@ -1,3 +1,4 @@
+import { AppGlobal } from "../AppGlobal";
 import { utils } from "../common/utils";
 import { websocket } from "../common/websocket";
 import { PbManager } from "../proto/PbManager";
@@ -58,6 +59,8 @@ export module GameSocket {
         send(sendBuffer);
         startHeart();
         setIsConnect(true);
+        UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+        AppGlobal.instance.isShowTip = false;
     }
     function clearTimeout() {
         if (checkTimeoutId != null) {

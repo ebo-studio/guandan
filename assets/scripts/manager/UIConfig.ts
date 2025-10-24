@@ -37,6 +37,7 @@ import { exchangeRecordViewItem } from "../component/activity/exchangeRecordView
 import { shareRecordViewItem } from "../component/activity/shareRecordViewItem";
 import { activityViewItem } from "../component/activity/activityViewItem";
 import { LoginUserView } from "../component/game/LoginUserView";
+import { AnnounceViewItem } from "../component/activity/AnnounceViewItem";
 
 export module UIConfig {
 
@@ -82,6 +83,7 @@ export module UIConfig {
         configMap.set(shareRecordViewItemKey, {path: 'prefab/activity/shareRecordViewItem', comp: shareRecordViewItem});
         configMap.set(activityViewItemKey, {path: 'prefab/activity/activityViewItem', comp: activityViewItem});
         configMap.set(LoginUserViewKey, {path: 'prefab/game/LoginUserView', comp: LoginUserView});
+        configMap.set(announceViewItemKey, {path: 'prefab/activity/announceViewItem', comp: AnnounceViewItem});
     }
 
     export function getUIInfoByName(str: string) {
@@ -91,6 +93,7 @@ export module UIConfig {
         return null;
     }
 
+    export const announceViewItemKey:string = 'announceViewItem';
     export const activityViewItemKey:string = 'activityViewItem';
     export const shareRecordViewItemKey: string = 'shareRecordViewItem';
     export const exchangeRecordViewItemKey: string = 'exchangeRecordViewItem';

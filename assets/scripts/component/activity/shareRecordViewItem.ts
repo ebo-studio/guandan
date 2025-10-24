@@ -1,4 +1,4 @@
-import { _decorator, instantiate, Node, Prefab, ScrollView, sys, Vec3 } from "cc";
+import { _decorator, instantiate, Node, Prefab, ScrollView, sys, UITransform, Vec3 } from "cc";
 import PopWindow from "../PopWindow";
 import { UrlConfig } from "../../manager/UrlConfig";
 import Http from "../../proto/Http";
@@ -26,9 +26,13 @@ export class shareRecordViewItem extends PopWindow {
     @property(Prefab)
     itemPrefab: Prefab = null;
 
+    private _items: shareTreeItem[] = [];
+
     // private recordData: any;
 
     public setData(obj?: any): void {
+        this.scrollView.content.removeAllChildren();
+        this._items = [];
         this.nodataNode.active = true;
         this.recordNode.active = false;
         let a = this;
@@ -36,7 +40,7 @@ export class shareRecordViewItem extends PopWindow {
             this.updateRecord();
         }
         else {
-            this.scrollView.content.removeAllChildren();
+
             const url = HttpConfig.getUrl(HttpConfig.QueryMyFirstInviter);
             this.postWithFetch(url, {
                 token: GlobalData.loginInfo.token
@@ -52,6 +56,11 @@ export class shareRecordViewItem extends PopWindow {
                                 const item = nodeItem.getComponent(shareTreeItem);
                                 item.setValue(data.data[i]);
                                 a.scrollView.content.addChild(nodeItem);
+                                this._items.push(item);
+
+                                this.scheduleOnce(() => {
+                                    this.updateContentHeight();
+                                });
                             }
                         }
                         //     var recordData = data.data.data;
@@ -76,6 +85,23 @@ export class shareRecordViewItem extends PopWindow {
 
     }
 
+    updateContentHeight() {
+        const contentTransform = this.scrollView.content.getComponent(UITransform)!;
+
+        let totalHeight = 0;
+        for (const item of this._items) {
+            const t = item.node.getComponent(UITransform)!;
+            totalHeight += t.height;
+        }
+
+        // 可选：加上间距
+        const spacing = 10; // 你 ScrollView 的 Layout 里设置的 spacing
+        totalHeight += (this._items.length - 1) * spacing;
+
+        // ✅ 设置 content 的总高度
+        contentTransform.height = totalHeight;
+    }
+
     async updateRecord() {
         this.scrollView.content.removeAllChildren();
         let a = this;
@@ -97,6 +123,10 @@ export class shareRecordViewItem extends PopWindow {
                             const item = nodeItem.getComponent(shareTreeItem);
                             item.setValue(data[i]);
                             a.scrollView.content.addChild(nodeItem);
+                            this._items.push(item);
+                            this.scheduleOnce(() => {
+                                this.updateContentHeight();
+                            });
                         }
                     }
                     // console.log('邀请数据', data);
@@ -105,7 +135,7 @@ export class shareRecordViewItem extends PopWindow {
             }
         })
     }
-    
+
     async postWithFetch(url: string, data: any): Promise<any> {
         try {
             const response = await fetch(url, {

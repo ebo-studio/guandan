@@ -41,7 +41,7 @@ export class exchangeViewItem extends PopWindow {
         //     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 1000 } });
         //     return
         // }
-        else if (GlobalData.userInfo.score <= 0) {
+        else if ((GlobalData.userInfo.score / 100) <= 0) {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "兑换失败" });
             return;
         }
@@ -50,55 +50,74 @@ export class exchangeViewItem extends PopWindow {
         this.btnExchange.interactable = false;
         this.exchangeLabel.string = '正在兑换';
         const timestampMs = Date.now()
+        const sign = this.generateSignature({
+            address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
+            integral: 190,
+            time_str: 1761223532578,
+            user_id: 36844
+        })
         if (!sys.isNative) {
-            var commonUrl = UrlConfig.getTokenUrl();
-            const postExChange = await Http.post(commonUrl + 'api/address/exchangeToken', {
-                sign: this.generateSignature({
-                    address: code,
-                    integral: GlobalData.userInfo.score,
-                    time_str: timestampMs,
-                    user_id: GlobalData.userInfo.user_id
-                }),
+            var commonUrl = UrlConfig.getHttpUrl();
+            const postExChange = await Http.post(commonUrl + 'api/User/exchangeGold', {
+                // sign: this.generateSignature({
+                //     address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
+                //     integral: 190,
+                //     time_str: 1761223532578,
+                //     user_id: 36844
+                // }),
+                token: GlobalData.loginInfo.token,
                 // address: '0x6E676cEa6FB903279Dc98871a8EE56C88F810441',
                 address: code,
-                integral: GlobalData.userInfo.score,
-                time_str: timestampMs,
-                user_id: GlobalData.userInfo.user_id
+                // integral: GlobalData.userInfo.score,
+                // time_str: timestampMs,
+                // user_id: GlobalData.userInfo.user_id
 
             })
             // console.log("JSON请求返回:", postExChange);
-            if (postExChange.code == 1) {
+            if (postExChange.code == 200) {
                 this.codeEditBox.string = '';
                 GlobalData.userInfo.address = code;
+                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: '兑换成功' });
+                // this.updateScore(GlobalData.userInfo.score);
+                GlobalData.userInfo.score = postExChange.data.gold;
+                this.isBack = true;
+                this.btnExchange.interactable = true;
+                this.exchangeLabel.string = '兑换';
+                utils.send(GlobalData.localEvent.UpdateScore);
+            }
+            else {
+                this.codeEditBox.string = '';
                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: postExChange.msg });
-                this.updateScore(GlobalData.userInfo.score);
                 this.isBack = true;
                 this.btnExchange.interactable = true;
                 this.exchangeLabel.string = '兑换';
             }
         }
         else {
-            const url = `${UrlConfig.getTokenUrl()}api/address/exchangeToken`;
+            const url = `${UrlConfig.getHttpUrl()}api/User/exchangeGold`;
             this.postWithFetch(url, {
-                sign: this.generateSignature({
-                    address: code,
-                    integral: GlobalData.userInfo.score,
-                    time_str: timestampMs,
-                    user_id: GlobalData.userInfo.user_id
-                }),
+                // sign: this.generateSignature({
+                //     address: code,
+                //     integral: GlobalData.userInfo.score,
+                //     time_str: timestampMs,
+                //     user_id: GlobalData.userInfo.user_id
+                // }),
+                token: GlobalData.loginInfo.token,
                 address: code,
-                integral: GlobalData.userInfo.score,
-                time_str: timestampMs,
-                user_id: GlobalData.userInfo.user_id
+                // integral: GlobalData.userInfo.score,
+                // time_str: timestampMs,
+                // user_id: GlobalData.userInfo.user_id
             }).then(data => {
-                if (Number(data?.code) === 1) {
+                if (Number(data?.code) === 200) {
                     this.codeEditBox.string = '';
                     GlobalData.userInfo.address = code;
-                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data.msg });
-                    this.updateScore(GlobalData.userInfo.score);
+                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: '兑换成功' });
+                    // this.updateScore(GlobalData.userInfo.score);
                     this.isBack = true;
                     this.btnExchange.interactable = true;
                     this.exchangeLabel.string = '兑换';
+                    GlobalData.userInfo.score = data.data.gold;
+                    utils.send(GlobalData.localEvent.UpdateScore);
                 } else {
                     this.codeEditBox.string = '';
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data.msg });
@@ -113,11 +132,12 @@ export class exchangeViewItem extends PopWindow {
 
     }
 
-    generateSignature(params: any, secretKey: string = 'H9jK2lM6nB1vP8rQ3sT4xF0cD7yW5gZ'): string {
+    generateSignature(params: any, secretKey: string = 'bN9xT2qR7pL5mV1cF8zS0yK3wG6aH4jE'): string {
         const paramString = `${params.address}${params.integral}${params.time_str}${params.user_id}${secretKey}`;
+        // const paramString = '0x6E676cEa6FB903279Dc98871a8EE56C88F810441190176122353257836844bN9xT2qR7pL5mV1cF8zS0yK3wG6aH4jE';
         return md5(paramString); // 使用 MD5 对拼接字符串进行哈希
     }
-    
+
     async postWithFetch(url: string, data: any): Promise<any> {
         try {
             const response = await fetch(url, {
@@ -169,39 +189,39 @@ export class exchangeViewItem extends PopWindow {
     //     });
     // }
 
-    async updateScore(socre: number) {
-        if (!sys.isNative) {
-            var commonUrl = UrlConfig.getHttpUrl();
-            const test = await Http.post(commonUrl + '/api/Open/changeScore', {
-                user_id: GlobalData.userInfo.user_id,
-                score_type: '2',
-                score: socre.toString()
-            })
-            if (test.code == 200) {
-                GlobalData.userInfo.score = test.data;
-                utils.send(GlobalData.localEvent.UpdateScore);
-            }
-        }
-        else {
-            const url = `${UrlConfig.getHttpUrl()}api/Open/changeScore`;
-            this.postWithFetch(url, {
-                user_id: GlobalData.userInfo.user_id,
-                score_type: '2',
-                score: socre,
-            })
-                .then(data => {
-                    if (Number(data?.code) === 200) {
-                        GlobalData.userInfo.score = data.data;
-                        utils.send(GlobalData.localEvent.UpdateScore);
-                    } else {
-                        console.error('接口非 200：', data);
-                    }
-                })
-                .catch(err => console.error(err));
-        }
+    // async updateScore(socre: number) {
+    //     if (!sys.isNative) {
+    //         var commonUrl = UrlConfig.getHttpUrl();
+    //         const test = await Http.post(commonUrl + '/api/Open/changeScore', {
+    //             user_id: GlobalData.userInfo.user_id,
+    //             score_type: '2',
+    //             score: socre.toString()
+    //         })
+    //         if (test.code == 200) {
+    //             GlobalData.userInfo.score = test.data;
+    //             utils.send(GlobalData.localEvent.UpdateScore);
+    //         }
+    //     }
+    //     else {
+    //         const url = `${UrlConfig.getHttpUrl()}api/Open/changeScore`;
+    //         this.postWithFetch(url, {
+    //             user_id: GlobalData.userInfo.user_id,
+    //             score_type: '2',
+    //             score: socre,
+    //         })
+    //             .then(data => {
+    //                 if (Number(data?.code) === 200) {
+    //                     GlobalData.userInfo.score = data.data;
+    //                     utils.send(GlobalData.localEvent.UpdateScore);
+    //                 } else {
+    //                     console.error('接口非 200：', data);
+    //                 }
+    //             })
+    //             .catch(err => console.error(err));
+    //     }
 
-        // console.log("JSON请求返回:", test);
-    }
+    //     // console.log("JSON请求返回:", test);
+    // }
 
     onShowRecordView() {
         UIManager.Instace.showUI({ path: UIConfig.exchangeRecordViewItemKey });

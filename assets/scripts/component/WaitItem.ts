@@ -1,44 +1,51 @@
-import { _decorator, Node, Label, Sprite, color, tween } from 'cc';
+import { _decorator, Node, Label, Sprite, color, tween, Tween } from 'cc';
 import PopWindow from './PopWindow';
 const { ccclass, property } = _decorator;
 
 @ccclass('WaitItem')
 export class WaitItem extends PopWindow {
-    //背景
     @property(Node)
     picBg: Node = null!;
-    //背景
+
     @property(Node)
     picLoad: Node = null!;
-    //文本
+
     @property(Label)
     txtDes: Label = null!;
 
-    setData(data: { opacity: number, des: string }) {
-        this.picBg.getComponent(Sprite).color = color(0, 0, 0, data.opacity * 255);
-        this.picLoad.active = data.opacity != 0;
-        if (data.opacity == 0) {
-            this.txtDes.string = "";
-        } else {
-            this.txtDes.string = data.des;
+    private _rotateTween: Tween<Node> | null = null;
+
+    setData(data: { opacity: number; des: string }) {
+        if (!this.picBg || !this.picLoad || !this.txtDes) {
+            console.warn('WaitItem 节点未完整绑定');
+            return;
         }
-        if (this.picLoad) {
-            tween(this.picLoad)
-                .by(2, { angle: -360 }).repeatForever()
+
+        const alpha = Math.min(Math.max(data.opacity * 255, 0), 255);
+        this.picBg.getComponent(Sprite)!.color = color(0, 0, 0, alpha);
+
+        this.picLoad.active = data.opacity !== 0;
+        this.txtDes.string = data.opacity === 0 ? '' : data.des;
+
+        // 停止旧动画，防止重复叠加
+        if (this._rotateTween) this._rotateTween.stop();
+        if (this.picLoad.active) {
+            this._rotateTween = tween(this.picLoad)
+                .by(2, { angle: -360 })
+                .repeatForever()
                 .start();
         }
     }
-    show() {
-        if(this.node == null) {
-            return;
-        }
-        this.node.active = true;
+
+    updateMessage(des: string) {
+        this.txtDes.string = des;
     }
+
+    show() {
+        if (this.node) this.node.active = true;
+    }
+
     hide() {
-        if(this.node == null) {
-            return;
-        }
-        this.node.active = false;
+        if (this.node) this.node.active = false;
     }
 }
-

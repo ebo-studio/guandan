@@ -1,0 +1,160 @@
+
+hdzx_anniu.png
+size: 1024,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+img_heitao_00
+  rotate: false
+  xy: 912, 23
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1
+img_hongxin_00
+  rotate: false
+  xy: 912, 56
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+img_meihua_00
+  rotate: false
+  xy: 962, 89
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+xzan_01
+  rotate: true
+  xy: 348, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_02
+  rotate: true
+  xy: 395, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_03
+  rotate: true
+  xy: 442, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_04
+  rotate: true
+  xy: 489, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_05
+  rotate: true
+  xy: 536, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_06
+  rotate: true
+  xy: 583, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_07
+  rotate: true
+  xy: 630, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_08
+  rotate: true
+  xy: 677, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_09
+  rotate: true
+  xy: 724, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_1
+  rotate: false
+  xy: 2, 20
+  size: 221, 102
+  orig: 221, 102
+  offset: 0, 0
+  index: -1
+xzan_10
+  rotate: true
+  xy: 771, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_11
+  rotate: true
+  xy: 818, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_12
+  rotate: true
+  xy: 865, 14
+  size: 108, 45
+  orig: 108, 45
+  offset: 0, 0
+  index: -1
+xzan_2
+  rotate: true
+  xy: 98, 4
+  size: 14, 90
+  orig: 14, 90
+  offset: 0, 0
+  index: -1
+xzan_3
+  rotate: false
+  xy: 225, 3
+  size: 101, 23
+  orig: 101, 23
+  offset: 0, 0
+  index: -1
+xzan_4
+  rotate: false
+  xy: 912, 90
+  size: 48, 32
+  orig: 48, 32
+  offset: 0, 0
+  index: -1
+xzan_5
+  rotate: false
+  xy: 225, 28
+  size: 65, 94
+  orig: 65, 94
+  offset: 0, 0
+  index: -1
+xzan_6
+  rotate: false
+  xy: 292, 28
+  size: 54, 94
+  orig: 54, 94
+  offset: 0, 0
+  index: -1
+xzan_7
+  rotate: true
+  xy: 2, 2
+  size: 16, 94
+  orig: 16, 94
+  offset: 0, 0
+  index: -1

@@ -9,6 +9,12 @@ import { ZJSdk } from "../ZJSdk/ZJSdk"
 import { ZJConfig } from "../ZJSdk/ZJConfig"
 import { SignInManager } from "./SignInManager"
 
+export interface NoticeInfo {
+    id: number;
+    title: string;
+    content: string;
+}
+
 export enum RaceType {
     none,
     score,     //积分
@@ -391,7 +397,8 @@ export namespace GlobalData {
     //登录信息
     export const loginInfo = {
         code: "11",
-        token: ""
+        token: "",
+        service: false,
     }
     //自己信息
     export const userInfo = {
@@ -406,7 +413,8 @@ export namespace GlobalData {
         address: '',
         isLogin: false,
         is_vip: 0, //1为合伙人，0为普通玩家
-        ad_watch_count: 0
+        ad_watch_count: 0,
+        noticeData: []
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关

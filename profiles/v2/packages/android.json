@@ -2865,6 +2865,951 @@
         },
         "swappy": false,
         "__version__": "1.0.1"
+      },
+      "1761113795966": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761133382641": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761206356249": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761206790439": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761207333869": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761207715476": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761219472286": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761220059171": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761221784982": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761222774964": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761222973150": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761223447919": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761224751398": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761225263431": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761226729084": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761227298068": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761228311706": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761284618907": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761285541898": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761285704611": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761286662022": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761287509375": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761287906426": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761287981939": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761288639094": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761289663762": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1761290211697": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 35,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "D:\\xuhang\\guan_dan\\key\\release.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "release",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
       }
     },
     "__version__": "1.3.7",

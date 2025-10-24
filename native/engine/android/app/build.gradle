@@ -19,7 +19,7 @@ android {
         applicationId APPLICATION_ID
         minSdkVersion PROP_MIN_SDK_VERSION.toInteger()
         targetSdkVersion PROP_TARGET_SDK_VERSION.toInteger()
-        versionCode 12
+        versionCode 16
         versionName "1.0.0"
 
         externalNativeBuild {

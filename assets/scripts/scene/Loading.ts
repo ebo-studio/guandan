@@ -9,6 +9,8 @@ import { ZJSdk } from "../ZJSdk/ZJSdk";
 import { ZJConfig } from "../ZJSdk/ZJConfig";
 import { ZJCustomController } from "../ZJSdk/ZJCustomController";
 import { SignInManager } from "../manager/SignInManager";
+import { checkForNotice } from "../common/UpdateNotice";
+import { UrlConfig } from "../manager/UrlConfig";
 
 const { ccclass, property } = _decorator;
 
@@ -210,6 +212,7 @@ export class Loading extends Component {
             this.progressBar.progress = progress;
         }
         if (progress >= 1) {
+            checkForNotice();
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
             if (token) {
@@ -226,7 +229,7 @@ export class Loading extends Component {
                             };
                             SignInManager.addOrUpdateUser(userInfodata)
                         }
-                        SignInManager.switchUser(GlobalData.loginInfo.token);
+                        SignInManager.switchUser(GlobalData.userInfo.name);
 
                         ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
                         ZJSdk.start({
@@ -234,10 +237,26 @@ export class Loading extends Component {
                                 console.log(`onStartFailed:${code}-${msg}`);
                                 // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
                             }, onStartSuccess() {
-                                console.log("onStartSuccess");                                                             
+                                console.log("onStartSuccess");
                                 // toast("初始化成功")
                             }
                         })
+                        const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                        this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            GlobalData.userInfo.noticeData = [];
+                            if (Number(data?.code) === 200) {
+                                for (let i = 0; i < data.data.length; i++) {
+                                    GlobalData.userInfo.noticeData.push(data.data[i]);
+                                    if (data.data[i].title == '系统维护通知') {
+                                        const localNotices = [data.data[i]];
+                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+                                    }
+                                }
+                            }
+                        })
+                            .catch(err => console.error(err));
+
                     },
                     fail: () => {
                         this.joginGame.node.active = false;
@@ -257,7 +276,35 @@ export class Loading extends Component {
         // this.tipLabel.string = `加载中 ${Math.floor(p * 100)}%`;
     }
 
+    async postWithFetch(url: string, data: any): Promise<any> {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const text = await response.text();
+            console.log('status:', response.status, 'body:', text.slice(0, 200));
+
+            if (/<!doctype|<html/i.test(text))
+                throw new Error('收到 HTML（登录/错误页）');
+
+            return JSON.parse(text.replace(/^\uFEFF/, ''));
+        } catch (err) {
+            console.error('postWithFetch error:', err);
+            throw err;
+        }
+    }
+
     private startGame() {
+        if (GlobalData.loginInfo.service) {
+            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "停服中" });
+            return;
+        }
         // UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.lobby });
         director.loadScene(GlobalData.sceneName.lobby);
     }
@@ -371,8 +418,9 @@ export class Loading extends Component {
                         };
                         SignInManager.addOrUpdateUser(userInfodata)
                     }
+                    SignInManager.switchUser(data.name);
                 }
-                SignInManager.switchUser(GlobalData.loginInfo.token);
+                
                 GlobalData.requestGetUserInfo({
                     success: () => {
                         clearInterval(this.timer);
@@ -384,33 +432,28 @@ export class Loading extends Component {
                                 // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
                             }, onStartSuccess() {
                                 console.log("onStartSuccess");
-                                // ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
-                                //     onAdLoaded(msg) {
-                                //         // onRequestFinish()
-                                //         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                //         console.log(`开屏广告加载成功, 价格为${ecpm}`);
-                                //     }, onError(errCode, errMsg) {
-                                //         // onRequestFinish()
-                                //         console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                //     }
-                                // });
-                                // ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
-                                //     onAdLoaded(msg) {
-                                //         // onRequestFinish()
-                                //         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                //         console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                //     }, onError(errCode, errMsg) {
-                                //         // onRequestFinish()
-                                //         console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                //     }
-                                // });
-                                // toast("初始化成功")
+
                             }
                         })
                         this.loginNode.active = false;
                         // this.phoneLoginBtn.node.active = false;
                         this.emailBtn.node.active = false;
                         this.joginGame.node.active = true;
+                        const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                        this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            GlobalData.userInfo.noticeData = [];
+                            if (Number(data?.code) === 200) {
+                                for (let i = 0; i < data.data.length; i++) {
+                                    GlobalData.userInfo.noticeData.push(data.data[i]);
+                                    if (data.data[i].title == '系统维护通知') {
+                                        const localNotices = [data.data[i]];
+                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+                                    }
+                                }
+                            }
+                        })
+                            .catch(err => console.error(err));
                     }
                 });
             }

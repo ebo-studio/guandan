@@ -36,7 +36,7 @@ export class UserHead extends Component {
             this.node.getChildByName("picScoreBg").active = true;
             let txtScore = this.node.getChildByName("picScoreBg").getChildByName("txtScore").getComponent(Label);
             if (txtScore) {
-                txtScore.string = data.score.toString();
+                txtScore.string = (data.score / 100).toFixed(1);
             }
         }
         this.tmpTeamType = this.node.getChildByName("picTeamType")?.getComponent(Sprite);

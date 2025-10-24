@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, native, sp, sys } from 'cc';
+import { _decorator, Component, Label, native, sp, sys, UI } from 'cc';
 import { AppGlobal } from '../AppGlobal';
 import { utils } from '../common/utils';
 import { GlobalData } from '../manager/GlobalData';
@@ -57,7 +57,7 @@ export class Lobby extends Component {
     }
 
     onClickShowAd() {
-        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
         SignInManager.getRemainingAds((data) => {
             if (this.inChina) {
                 if (GlobalData.userInfo.ad_watch_count >= 30) {
@@ -185,10 +185,15 @@ export class Lobby extends Component {
     loginOutGameHandler() {
         UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
     }
+
+    onGotoNoticeView() {
+        UIManager.Instace.showUI({path: UIConfig.announceViewItemKey});
+    }
+
     //金币
     onUpdateScore() {
         console.log('更新积分>>>', GlobalData.userInfo.score);
-        this.txtScore.string = GlobalData.userInfo.score + "";
+        this.txtScore.string = (GlobalData.userInfo.score / 100).toFixed(1);
     }
     //登录
     onUserLogin(data: GameMsg.User) {
@@ -251,7 +256,7 @@ export class Lobby extends Component {
     //创建房间
     onBtnCreateRoomClick() {
         SoundManager.playClick();
-        if (GlobalData.userInfo.score < 30) {
+        if ((GlobalData.userInfo.score / 100) < 30) {
             UIManager.Instace.showUI({
                 path: UIConfig.MessageBoxCommonKey,
                 data: {
@@ -294,7 +299,7 @@ export class Lobby extends Component {
     }
     //自由嗨完
     async onBtnRaceFreeClick() {
-        if (GlobalData.userInfo.score < 30) {
+        if ((GlobalData.userInfo.score / 100) < 30) {
             UIManager.Instace.showUI({
                 path: UIConfig.MessageBoxCommonKey,
                 data: {

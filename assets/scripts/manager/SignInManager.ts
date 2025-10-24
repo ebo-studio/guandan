@@ -1,3 +1,4 @@
+import { utils } from "../common/utils";
 import { GlobalData } from "./GlobalData";
 import { UrlConfig } from "./UrlConfig";
 
@@ -88,18 +89,19 @@ export module SignInManager {
      */
     export function addAdWatch(onSuccess?: (data: any) => void) {
         const url = `${UrlConfig.getHttpUrl()}api/User/incrementAdWatchCount`;
-        SignInManager.postWithFetch(url, {
+        SignInManager.postWithFetch(url, {token: GlobalData.loginInfo.token
         })
             .then(data => {
-                // console.log('返回啥:', data.code);
+                console.log('返回啥:', JSON.stringify(data.data));
                 if (Number(data?.code) === 200) {
+                    GlobalData.userInfo.score = data.data.gold;
                     // GlobalData.userInfo.ad_watch_count = data.data.ad_watch_count;
                     // console.log("🎯 新的广告次数:", GlobalData.userInfo.ad_watch_count);
                     if (onSuccess) {
                         onSuccess(data);
                     }
                     // return GlobalData.userInfo.ad_watch_count;
-                    // utils.send(GlobalData.localEvent.UpdateScore);
+                    utils.send(GlobalData.localEvent.UpdateScore);
                 } else {
                     GlobalData.userInfo.ad_watch_count = GlobalData.userInfo.ad_watch_count;
                     console.error('接口非 200：', data);
@@ -197,7 +199,7 @@ export module SignInManager {
     }
 
     export function switchUser(token: string): boolean {
-        const user = getUserList().find(u => u.token === token);
+        const user = getUserList().find(u => u.name === token);
         if (!user) {
             return false;
         }

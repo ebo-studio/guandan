@@ -1,0 +1,272 @@
+
+huodong_biaoti2.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+biapti_1
+  rotate: true
+  xy: 559, 40
+  size: 123, 12
+  orig: 123, 12
+  offset: 0, 0
+  index: -1
+biapti_2
+  rotate: true
+  xy: 544, 58
+  size: 105, 13
+  orig: 105, 13
+  offset: 0, 0
+  index: -1
+biapti_3
+  rotate: false
+  xy: 278, 2
+  size: 142, 20
+  orig: 142, 20
+  offset: 0, 0
+  index: -1
+biapti_5
+  rotate: false
+  xy: 422, 2
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+biapti_6
+  rotate: false
+  xy: 997, 119
+  size: 24, 29
+  orig: 24, 29
+  offset: 0, 0
+  index: -1
+biapti_7
+  rotate: false
+  xy: 889, 109
+  size: 14, 7
+  orig: 14, 7
+  offset: 0, 0
+  index: -1
+biapti_8
+  rotate: true
+  xy: 1013, 234
+  size: 20, 9
+  orig: 20, 9
+  offset: 0, 0
+  index: -1
+biapti_9
+  rotate: false
+  xy: 909, 127
+  size: 38, 54
+  orig: 38, 54
+  offset: 0, 0
+  index: -1
+biapti_910
+  rotate: true
+  xy: 444, 2
+  size: 72, 91
+  orig: 72, 91
+  offset: 0, 0
+  index: -1
+biapti_xiaoji1
+  rotate: true
+  xy: 989, 183
+  size: 18, 20
+  orig: 18, 20
+  offset: 0, 0
+  index: -1
+biapti_xiaoji2
+  rotate: true
+  xy: 537, 9
+  size: 47, 20
+  orig: 47, 20
+  offset: 0, 0
+  index: -1
+biapti_xiaoji3
+  rotate: true
+  xy: 573, 89
+  size: 74, 17
+  orig: 74, 17
+  offset: 0, 0
+  index: -1
+biapti_xiaoji4
+  rotate: true
+  xy: 836, 118
+  size: 61, 71
+  orig: 61, 71
+  offset: 0, 0
+  index: -1
+biapti_xiaoji5
+  rotate: true
+  xy: 997, 150
+  size: 31, 23
+  orig: 31, 23
+  offset: 0, 0
+  index: -1
+biapti_xiaoji6
+  rotate: true
+  xy: 909, 183
+  size: 71, 78
+  orig: 71, 78
+  offset: 0, 0
+  index: -1
+biapti_xiaoji6shou
+  rotate: false
+  xy: 597, 48
+  size: 12, 15
+  orig: 12, 15
+  offset: 0, 0
+  index: -1
+biapti_xiaojishouy
+  rotate: true
+  xy: 592, 89
+  size: 21, 11
+  orig: 21, 11
+  offset: 0, 0
+  index: -1
+biapti_xiaojishouz
+  rotate: false
+  xy: 1011, 189
+  size: 11, 12
+  orig: 11, 12
+  offset: 0, 0
+  index: -1
+biaptig_1
+  rotate: false
+  xy: 559, 4
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+biaptig_2
+  rotate: false
+  xy: 597, 65
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+biaptig_4
+  rotate: false
+  xy: 605, 89
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+biaptig_6
+  rotate: false
+  xy: 633, 97
+  size: 18, 18
+  orig: 18, 18
+  offset: 0, 0
+  index: -1
+biaptig_61
+  rotate: false
+  xy: 444, 76
+  size: 98, 87
+  orig: 98, 87
+  offset: 0, 0
+  index: -1
+biaptig_7
+  rotate: false
+  xy: 278, 24
+  size: 164, 139
+  orig: 164, 139
+  offset: 0, 0
+  index: -1
+biaptig_8
+  rotate: false
+  xy: 2, 3
+  size: 274, 160
+  orig: 274, 160
+  offset: 0, 0
+  index: -1
+hdbdi
+  rotate: false
+  xy: 2, 165
+  size: 607, 89
+  orig: 607, 89
+  offset: 0, 0
+  index: -1
+hdbtzi_1
+  rotate: false
+  xy: 611, 117
+  size: 223, 62
+  orig: 223, 62
+  offset: 0, 0
+  index: -1
+hdbtzi_2
+  rotate: false
+  xy: 611, 181
+  size: 296, 73
+  orig: 296, 73
+  offset: 0, 0
+  index: -1
+luoxue0001
+  rotate: false
+  xy: 989, 203
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0002
+  rotate: false
+  xy: 949, 130
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0003
+  rotate: false
+  xy: 592, 112
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0004
+  rotate: false
+  xy: 1001, 203
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0005
+  rotate: false
+  xy: 961, 130
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0006
+  rotate: false
+  xy: 973, 130
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0007
+  rotate: false
+  xy: 573, 36
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0008
+  rotate: false
+  xy: 585, 36
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0009
+  rotate: false
+  xy: 985, 130
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1
+luoxue0010
+  rotate: true
+  xy: 836, 106
+  size: 10, 51
+  orig: 10, 51
+  offset: 0, 0
+  index: -1

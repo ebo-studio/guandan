@@ -41,10 +41,10 @@ export class AppGlobal extends Component {
     onLoad() {
         // if (GlobalData.userInfo.haveToken) return;
         //常驻节点
-        // if (AppGlobal.instance) {
-        //     this.node.destroy(); // 避免场景里重复生成
-        //     return;
-        // }
+        if (AppGlobal.instance) {
+            this.node.destroy(); // 避免场景里重复生成
+            return;
+        }
         director.addPersistRootNode(this.node);
         AppGlobal.instance = this;
         HttpConfig.init();
@@ -248,10 +248,18 @@ export class AppGlobal extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data.msg });
         }
     }
+    public isShowTip: boolean = false;
     //socket 断开
     onSocketError() {
-        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
-        UIManager.Instace.clearAllUI();
+        if(!this.isShowTip) {
+            UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "网络异常,正在给您重连..." } });
+            this.isShowTip = true;
+        }
+        
+        if (utils.getSceneName() == GlobalData.sceneName.game) {
+            UIManager.Instace.clearAllUI();
+        }
+        // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
         GameSocket.initAndConnect();
         // UIManager.Instace.showUI({
         //     path: UIConfig.MessageBoxCommonKey,

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>lobby/activity/imge/img_flag_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{164,942},{20,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{20,52}</string>
+			</dict>
+			<key>lobby/activity/imge/img_flag_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{209,966},{20,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{20,52}</string>
+			</dict>
+			<key>lobby/activity/imge/img_flag_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{220,942},{20,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{20,52}</string>
+			</dict>
+			<key>lobby/activity/imge/img_flag_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{209,990},{20,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{20,52}</string>
+			</dict>
+			<key>lobby/activity/imge/img_flag_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{265,966},{20,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{20,52}</string>
+			</dict>
+			<key>lobby/activity/imge/img_activity_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,969},{45,66}}</string>
+				<key>offset</key>
+				<string>{-1,-2}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_activity_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{568,673},{76,100}}</string>
+				<key>offset</key>
+				<string>{-1,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_announcement_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{144,969},{42,61}}</string>
+				<key>offset</key>
+				<string>{0,-4}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_announcement_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{164,772},{76,96}}</string>
+				<key>offset</key>
+				<string>{0,-2}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_bg1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{164,872},{66,67}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{66,67}</string>
+			</dict>
+			<key>lobby/activity/imge/img_bg3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,581},{88,575}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{88,575}</string>
+			</dict>
+			<key>lobby/activity/imge/img_bg4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,2},{227,575}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{227,575}</string>
+			</dict>
+			<key>lobby/activity/imge/img_clicktitle_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{184,1021},{1,1}}</string>
+				<key>offset</key>
+				<string>{110,-43}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{221,88}</string>
+			</dict>
+			<key>lobby/activity/imge/img_light.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,673},{292,158}}</string>
+				<key>offset</key>
+				<string>{2,7}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{296,173}</string>
+			</dict>
+			<key>lobby/activity/imge/img_limittime_0.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{72,969},{41,68}}</string>
+				<key>offset</key>
+				<string>{0,-1}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_limittime_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{258,772},{74,100}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{78,100}</string>
+			</dict>
+			<key>lobby/activity/imge/img_line.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{184,1015},{70,2}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{70,2}</string>
+			</dict>
+			<key>lobby/activity/imge/img_line1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,1018},{178,2}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{178,2}</string>
+			</dict>
+			<key>lobby/activity/imge/img_title.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{164,673},{400,95}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{400,95}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>Activity.png</string>
+			<key>realTextureFileName</key>
+			<string>Activity.png</string>
+			<key>size</key>
+			<string>{646,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>646</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

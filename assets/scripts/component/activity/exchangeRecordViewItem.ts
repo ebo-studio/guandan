@@ -1,4 +1,4 @@
-import { _decorator, instantiate, Node, Prefab, ScrollView, sys, Vec3 } from "cc";
+import { _decorator, instantiate, Node, Prefab, ScrollView, sys, UITransform, Vec3 } from "cc";
 import PopWindow from "../PopWindow";
 import { UrlConfig } from "../../manager/UrlConfig";
 import Http from "../../proto/Http";
@@ -24,10 +24,13 @@ export class exchangeRecordViewItem extends PopWindow {
     @property(Prefab)
     itemPrefab: Prefab = null;
 
+    private _items: recordItem[] = [];
+
     // private recordData: any;
 
     public setData(obj?: any): void {
         this.scrollView.content.removeAllChildren();
+        this._items = [];
         this.nodataNode.active = true;
         this.recordNode.active = false;
         if (!sys.isNative) {
@@ -53,6 +56,11 @@ export class exchangeRecordViewItem extends PopWindow {
                                 const item = nodeItem.getComponent(recordItem);
                                 item.setValue(recordinfo);
                                 this.scrollView.content.addChild(nodeItem);
+                                this._items.push(item);
+
+                                this.scheduleOnce(() => {
+                                    this.updateContentHeight();
+                                });
                             }
                         }
                     } else {
@@ -62,6 +70,23 @@ export class exchangeRecordViewItem extends PopWindow {
                 .catch(err => console.error(err));
         }
 
+    }
+
+    updateContentHeight() {
+        const contentTransform = this.scrollView.content.getComponent(UITransform)!;
+
+        let totalHeight = 0;
+        for (const item of this._items) {
+            const t = item.node.getComponent(UITransform)!;
+            totalHeight += t.height;
+        }
+
+        // 可选：加上间距
+        const spacing = 10; // 你 ScrollView 的 Layout 里设置的 spacing
+        totalHeight += (this._items.length - 1) * spacing;
+
+        // ✅ 设置 content 的总高度
+        contentTransform.height = totalHeight;
     }
 
     async updateRecord() {
@@ -87,6 +112,10 @@ export class exchangeRecordViewItem extends PopWindow {
                     const item = nodeItem.getComponent(recordItem);
                     item.setValue(recordinfo);
                     this.scrollView.content.addChild(nodeItem);
+                    this._items.push(item);
+                    this.scheduleOnce(() => {
+                        this.updateContentHeight();
+                    });
                 }
             }
         }

@@ -1,4 +1,4 @@
-import { _decorator, Label, TiledUserNodeData } from 'cc';
+import { _decorator, Label, Sprite, TiledUserNodeData } from 'cc';
 import PopWindow from '../PopWindow';
 import { UIManager } from '../../manager/UIManager';
 import { UIConfig } from '../../manager/UIConfig';
@@ -12,11 +12,14 @@ export enum KeyBoardType {
 @ccclass('KeyBoardItem')
 export class KeyBoardItem extends PopWindow {
     //标题
-    @property(Label)
-    txtTitle: Label = null;
+    // @property(Label)
+    // txtTitle: Label = null;
     //房间号
     @property(Label)
     txtNum: Label = null;
+
+    @property(Sprite)
+    txtBg: Sprite = null;
 
     private listName = ["加入房间", "加入队伍"];
     private callBack: Function = null;
@@ -29,14 +32,16 @@ export class KeyBoardItem extends PopWindow {
         this._tmpNum = value;
         if (value == "") {
             this.txtNum.string = "";
+            this.txtBg.node.active = true;
         } else {
+            this.txtBg.node.active = false;
             this.txtNum.string = "";
             let tmpStr = "";
             for (let i = 0; i < value.length; i++) {
                 if (i == 0) {
                     tmpStr += value[i];
                 } else {
-                    tmpStr += ("    " + value[i]);
+                    tmpStr += ("       " + value[i]);
                 }
             }
             this.txtNum.string = tmpStr;
@@ -54,7 +59,7 @@ export class KeyBoardItem extends PopWindow {
 
     public setData(obj?: { type: KeyBoardType, cb: Function }): void {
         this.callBack = obj.cb;
-        this.txtTitle.string = this.listName[Number(obj.type)];
+        // this.txtTitle.string = this.listName[Number(obj.type)];
         this.resetNum();
     }
 
@@ -92,6 +97,7 @@ export class KeyBoardItem extends PopWindow {
     resetNum() {
         this.txtNum.string = "";
         this.tmpNum = "";
+        this.txtBg.node.active = true;
     }
     onBtnCloseClick(){
         this.hide();

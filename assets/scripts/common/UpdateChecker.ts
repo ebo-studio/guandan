@@ -13,7 +13,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 12; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 16; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 
@@ -27,7 +27,8 @@ export async function checkForUpdate(showTip: boolean = false) {
 
         if (remoteVersion > localVersionCode) {
             console.log(`📢 发现新版本 v${remoteVersion}`);
-            showUpdateDialog(updateDesc, downloadUrl);
+            // showUpdateDialog(updateDesc, downloadUrl);
+            showUpdateDialog(updateDesc, 'https://lm6789.com/download/goldenAnt_v1.0.9.apk');
         } else {
             if (showTip) {
                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "当前已是最新版本" });
@@ -84,9 +85,98 @@ function showUpdateDialog(message: string, url: string) {
 }
 
 /**
+ * 弹出提示框
+ */
+function showUpdateFailDialog(message: string, url: string) {
+    // if (confirm(`${message}\n\n是否前往下载最新版本？`)) {
+    //     openUrl(url);
+    // }
+    UIManager.Instace.showUI({
+        path: UIConfig.MessageBoxCommonKey,
+        data: {
+            okName: "前往",
+            // cancleName: "取消",
+            des: message,
+            okFunc: () => {
+                openGoldenUrl(url);
+            },
+            cancleFunc: null
+        }
+    });
+}
+
+let _progressUI: any = null;
+/**
  * 打开官网或下载地址
  */
 function openUrl(url: string) {
+    if (sys.isNative && sys.platform === sys.Platform.ANDROID) {
+        // native.reflection.callStaticMethod(
+        //     "com/cocos/game/AppActivity",
+        //     "openUpdateUrl",
+        //     "(Ljava/lang/String;)V",
+        //     url
+        // );
+        // 显示进度条 UI
+        // _progressUI = UIManager.Instace.showUI({
+        //     path: UIConfig.WaitItemKey,
+        //     data: "正在下载更新: 0%"
+        // });
+
+        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在下载更新: 0%" } });
+
+        _progressUI = UIManager.Instace.getUI(UIConfig.WaitItemKey);
+
+        (globalThis as any).onDownloadProgress = (p: number) => {
+            console.log(`下载进度: ${p.toFixed(1)}%`);
+            if (_progressUI && p <= 100) {
+                _progressUI.updateMessage(`正在下载更新: ${p.toFixed(1)}%`);
+            }
+        };
+        (globalThis as any).onDownloadCompleted = () => {
+            console.log("下载完成，准备安装");
+            if (_progressUI) {
+                _progressUI.updateMessage("下载完成，正在准备安装...");
+            }
+        };
+        (globalThis as any).onDownloadFailed = (msg: string) => {
+            console.log("下载失败:", msg);
+            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+            showUpdateFailDialog('更新失败,请前往官网进行手动下载', 'https://lm6789.com/download.html')
+        };
+
+        (globalThis as any).onInstallCanceled = () => {
+            console.warn("⚠️ 用户取消了安装");
+            UIManager.Instace.showUI({
+                path: UIConfig.MessageBoxCommonKey,
+                data: {
+                    des: "您取消了安装，请手动安装",
+                    okName: "重新安装",
+                    okFunc: () => {
+                        // 重新打开安装界面
+                        native.reflection.callStaticMethod(
+                            "com/cocos/game/AppActivity",
+                            "installApkAgain",
+                            "()V"
+                        );
+                    }
+                }
+            });
+        };
+
+        // 调用原生方法开始下载
+        native.reflection.callStaticMethod(
+            "com/cocos/game/AppActivity",
+            "downloadAndInstallApkWithProgress",
+            "(Ljava/lang/String;)V",
+            url
+        );
+    } else {
+        window.open(url, "_blank");
+    }
+}
+
+function openGoldenUrl(url: string) {
     if (sys.isNative && sys.platform === sys.Platform.ANDROID) {
         native.reflection.callStaticMethod(
             "com/cocos/game/AppActivity",
@@ -98,3 +188,4 @@ function openUrl(url: string) {
         window.open(url, "_blank");
     }
 }
+

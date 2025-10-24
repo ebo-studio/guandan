@@ -29,26 +29,26 @@ export class GetItem extends PopWindow {
 
             }
         });
-        if (!sys.isNative) {
-            this.updateScore();
-        } else {
-            const url = `${UrlConfig.getHttpUrl()}api/Open/changeScore`;
-            this.postWithFetch(url, {
-                user_id: GlobalData.userInfo.user_id,
-                score_type: '1',
-                score: String(this.count),
-            })
-                .then(data => {
-                    console.log('返回啥:', data.code);
-                    if (Number(data?.code) === 200) {
-                        GlobalData.userInfo.score = data.data;
-                        utils.send(GlobalData.localEvent.UpdateScore);
-                    } else {
-                        console.error('接口非 200：', data);
-                    }
-                })
-                .catch(err => console.error(err));
-        }
+        // if (!sys.isNative) {
+        //     this.updateScore();
+        // } else {
+        //     const url = `${UrlConfig.getHttpUrl()}api/Open/changeScore`;
+        //     this.postWithFetch(url, {
+        //         user_id: GlobalData.userInfo.user_id,
+        //         score_type: '1',
+        //         score: String(this.count),
+        //     })
+        //         .then(data => {
+        //             console.log('返回啥:', data.code);
+        //             if (Number(data?.code) === 200) {
+        //                 GlobalData.userInfo.score = data.data;
+        //                 utils.send(GlobalData.localEvent.UpdateScore);
+        //             } else {
+        //                 console.error('接口非 200：', data);
+        //             }
+        //         })
+        //         .catch(err => console.error(err));
+        // }
 
     }
 

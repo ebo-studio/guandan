@@ -1,4 +1,4 @@
-import { _decorator, instantiate, Prefab, ScrollView } from "cc";
+import { _decorator, instantiate, Prefab, ScrollView, UITransform } from "cc";
 import PopWindow from "../PopWindow";
 import { SignInManager } from "../../manager/SignInManager";
 import { LoginUserItem } from "./LoginUserItem";
@@ -26,6 +26,27 @@ export class LoginUserView extends PopWindow {
             this.scrollView.content.addChild(nodeItem);
             this._items.push(item);
         }
+
+        this.scheduleOnce(() => {
+            this.updateContentHeight();
+        });
+    }
+
+    updateContentHeight() {
+        const contentTransform = this.scrollView.content.getComponent(UITransform)!;
+
+        let totalHeight = 0;
+        for (const item of this._items) {
+            const t = item.node.getComponent(UITransform)!;
+            totalHeight += t.height;
+        }
+
+        // 可选：加上间距
+        const spacing = 10; // 你 ScrollView 的 Layout 里设置的 spacing
+        totalHeight += (this._items.length - 1) * spacing;
+
+        // ✅ 设置 content 的总高度
+        contentTransform.height = totalHeight;
     }
 
     onClose() {
@@ -55,7 +76,7 @@ export class LoginUserView extends PopWindow {
                     GlobalData.loginInfo.token = token;
                     GlobalData.requestGetUserInfo({
                         success: () => {
-                            SignInManager.switchUser(token);
+                            SignInManager.switchUser(name);
                             GlobalData.userInfo.haveToken = true;
                             utils.send(GlobalData.localEvent.FirstUpdate);
                             this.updateSelection();
