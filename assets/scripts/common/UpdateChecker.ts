@@ -13,7 +13,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 16; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 18; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 
@@ -28,7 +28,7 @@ export async function checkForUpdate(showTip: boolean = false) {
         if (remoteVersion > localVersionCode) {
             console.log(`📢 发现新版本 v${remoteVersion}`);
             // showUpdateDialog(updateDesc, downloadUrl);
-            showUpdateDialog(updateDesc, 'https://lm6789.com/download/goldenAnt_v1.0.9.apk');
+            showUpdateDialog(updateDesc, downloadUrl);
         } else {
             if (showTip) {
                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "当前已是最新版本" });

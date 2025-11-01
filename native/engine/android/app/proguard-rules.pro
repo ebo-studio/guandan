@@ -48,3 +48,8 @@
 -dontwarn android.webkit.WebView
 -dontwarn android.net.http.SslError
 -dontwarn android.webkit.WebViewClient
+
+-dontwarn com.zj.zjsdk.**
+-dontwarn com.anythink.**
+-dontwarn com.bytedance.sdk.**
+-dontwarn com.unity3d.ads.**

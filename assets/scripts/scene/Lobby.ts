@@ -57,7 +57,6 @@ export class Lobby extends Component {
     }
 
     onClickShowAd() {
-        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
         SignInManager.getRemainingAds((data) => {
             if (this.inChina) {
                 if (GlobalData.userInfo.ad_watch_count >= 30) {
@@ -65,6 +64,7 @@ export class Lobby extends Component {
                     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
                 }
                 else {
+                    UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
                     ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {
                         onAdLoaded(msg) {
                             // onRequestFinish()
@@ -87,10 +87,10 @@ export class Lobby extends Component {
                                 }
                             }, {
                                 onAdReward(extra) {
-                                    SignInManager.addAdWatch((data) => {
-                                        // console.log(`今日已观看 ${GlobalData.userInfo.ad_watch_count} / 30 次`);
-                                        UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                                    });
+                                    // SignInManager.addAdWatch((data) => {
+                                    //     console.log(`测试屏蔽了没有`);
+                                    // });
+                                    UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
                                 },
                             })
                         }, onError(errCode, errMsg) {

@@ -20,8 +20,8 @@ export class Loading extends Component {
     @property(ProgressBar)
     progressBar: ProgressBar = null;
 
-    // @property(Button)
-    // phoneLoginBtn: Button = null;
+    @property(Button)
+    phoneLoginBtn: Button = null;
 
     @property(Button)
     emailBtn: Button = null;
@@ -248,11 +248,12 @@ export class Loading extends Component {
                             if (Number(data?.code) === 200) {
                                 for (let i = 0; i < data.data.length; i++) {
                                     GlobalData.userInfo.noticeData.push(data.data[i]);
-                                    if (data.data[i].title == '系统维护通知') {
-                                        const localNotices = [data.data[i]];
-                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
-                                    }
+                                    // if (data.data[i].title == '系统维护通知') {
+                                    //     const localNotices = [data.data[i]];
+                                    //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+                                    // }
                                 }
+                                UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
                             }
                         })
                             .catch(err => console.error(err));
@@ -260,14 +261,14 @@ export class Loading extends Component {
                     },
                     fail: () => {
                         this.joginGame.node.active = false;
-                        // this.phoneLoginBtn.node.active = true;
+                        this.phoneLoginBtn.node.active = true;
                         this.emailBtn.node.active = true;
                     }
                 });
             }
             else {
                 this.joginGame.node.active = false;
-                // this.phoneLoginBtn.node.active = true;
+                this.phoneLoginBtn.node.active = true;
                 this.emailBtn.node.active = true;
             }
 
@@ -353,15 +354,51 @@ export class Loading extends Component {
                 if (data) {
                     GlobalData.loginInfo.token = data.token;
                     localStorage.setItem(GlobalData.TOKEN, data.token);
+                    if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                        let userInfodata: SignInManager.UserInfo = {
+                            token: data.token,
+                            name: data.name,
+                            ad_watch_count: 0,
+                        };
+                        SignInManager.addOrUpdateUser(userInfodata)
+                    }
+                    SignInManager.switchUser(data.name);
                 }
+
                 GlobalData.requestGetUserInfo({
                     success: () => {
                         clearInterval(this.timer);
                         GlobalData.userInfo.haveToken = true;
+                        ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                        ZJSdk.start({
+                            onStartFailed(code, msg) {
+                                console.log(`onStartFailed:${code}-${msg}`);
+                                // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                            }, onStartSuccess() {
+                                console.log("onStartSuccess");
+
+                            }
+                        })
                         this.loginNode.active = false;
-                        // this.phoneLoginBtn.node.active = false;
+                        this.phoneLoginBtn.node.active = false;
                         this.emailBtn.node.active = false;
                         this.joginGame.node.active = true;
+                        const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                        this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            GlobalData.userInfo.noticeData = [];
+                            if (Number(data?.code) === 200) {
+                                for (let i = 0; i < data.data.length; i++) {
+                                    GlobalData.userInfo.noticeData.push(data.data[i]);
+                                    // if (data.data[i].title == '系统维护通知') {
+                                    //     const localNotices = [data.data[i]];
+                                        
+                                    // }
+                                }
+                                UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                            }
+                        })
+                            .catch(err => console.error(err));
                     }
                 });
             }
@@ -420,7 +457,7 @@ export class Loading extends Component {
                     }
                     SignInManager.switchUser(data.name);
                 }
-                
+
                 GlobalData.requestGetUserInfo({
                     success: () => {
                         clearInterval(this.timer);
@@ -436,7 +473,7 @@ export class Loading extends Component {
                             }
                         })
                         this.loginNode.active = false;
-                        // this.phoneLoginBtn.node.active = false;
+                        this.phoneLoginBtn.node.active = false;
                         this.emailBtn.node.active = false;
                         this.joginGame.node.active = true;
                         const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
@@ -446,11 +483,12 @@ export class Loading extends Component {
                             if (Number(data?.code) === 200) {
                                 for (let i = 0; i < data.data.length; i++) {
                                     GlobalData.userInfo.noticeData.push(data.data[i]);
-                                    if (data.data[i].title == '系统维护通知') {
-                                        const localNotices = [data.data[i]];
-                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
-                                    }
+                                    // if (data.data[i].title == '系统维护通知') {
+                                    //     const localNotices = [data.data[i]];
+                                    //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+                                    // }
                                 }
+                                UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
                             }
                         })
                             .catch(err => console.error(err));
