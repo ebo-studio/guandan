@@ -7,14 +7,15 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "android-005",
+    "outputName": "ios_new",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "android",
+    "platform": "ios",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-    "name": "GoldenAnt",
+    "name": "goldenAnt",
     "replaceSplashScreen": true,
     "md5Cache": true,
-    "debug": false
+    "debug": false,
+    "buildPath": "project://build"
   },
   "BuildTaskManager": {
     "taskMap": {
@@ -25,6 +26,7 @@
         "state": "success",
         "stage": "build",
         "message": "2025-9-15 12:56 Build success in 51589 ms!",
+        "detailMessage": "",
         "options": {
           "name": "GoldenAnt",
           "platform": "web-mobile",
@@ -66,7 +68,14 @@
           "__version__": "1.3.3",
           "web-mobile": [],
           "useSplashScreen": true,
-          "packages": {}
+          "packages": {},
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting",
+              "gfx-webgl2": "inherit-project-setting"
+            }
+          }
         },
         "time": "2025-9-15 12:55",
         "dirty": false
@@ -77,7 +86,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-11-3 19:49:22 build success in 18 s!",
+        "message": "2025-11-1 20:23:46 build success in 21 s!",
+        "detailMessage": "",
         "options": {
           "name": "goldenAnt",
           "server": "",
@@ -120,12 +130,21 @@
           "packages": {},
           "__version__": "1.3.7",
           "buildMode": "normal",
-          "logDest": "project://temp/builder/log/android2025-11-3 19-49.log"
+          "logDest": "project://temp/builder/log/android2025-11-1 20-23.log",
+          "overwriteProjectSettings": {
+            "includeModules": {
+              "physics": "inherit-project-setting",
+              "physics-2d": "inherit-project-setting"
+            },
+            "macroConfig": {
+              "cleanupImageCache": "inherit-project-setting"
+            }
+          }
         },
         "time": "2025-11-3 19:49:04",
         "dirty": false
       }
     }
   },
-  "__version__": "1.3.7"
+  "__version__": "1.3.8"
 }
