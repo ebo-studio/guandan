@@ -22,7 +22,7 @@ export class LoginUserItem extends Component {
         this._onClick = onSelected;
         this.userName.string = data.name;
 
-        const isCurrent = data.token === GlobalData.loginInfo.token;
+        const isCurrent = data.name === GlobalData.userInfo.name;
         this.current.node.active = isCurrent;
         this.isSelect.node.active = isCurrent;
     }

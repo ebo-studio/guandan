@@ -2,6 +2,7 @@ import { sys, native } from 'cc';
 import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
 import { NetworkManager } from '../manager/NetworkManager';
+import { SignInManager } from '../manager/SignInManager';
 
 /**
  * ✅ 游戏启动时调用此函数自动检测更新
@@ -13,7 +14,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 18; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 23; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 
@@ -27,6 +28,25 @@ export async function checkForUpdate(showTip: boolean = false) {
 
         if (remoteVersion > localVersionCode) {
             console.log(`📢 发现新版本 v${remoteVersion}`);
+            if (sys.os === sys.OS.ANDROID) {
+                // @ts-ignore
+                const versionCode = jsb.reflection.callStaticMethod(
+                    "com/cocos/game/AppActivity",
+                    "getVersionCode",
+                    "()I"
+                );
+                // @ts-ignore
+                const versionName = jsb.reflection.callStaticMethod(
+                    "com/cocos/game/AppActivity",
+                    "getVersionName",
+                    "()Ljava/lang/String;"
+                );
+                console.log("Android VersionCode:", versionCode);
+                console.log("Android VersionName:", versionName);
+                if(versionCode <= 20) {
+                    SignInManager.resetUserList();
+                }
+            }
             // showUpdateDialog(updateDesc, downloadUrl);
             showUpdateDialog(updateDesc, downloadUrl);
         } else {

@@ -1,4 +1,4 @@
-import { _decorator, Animation, assert, Button, Component, director, EditBox, error, Label, Node, Prefab, ProgressBar, resources, Toggle, VideoClip, VideoPlayer } from "cc";
+import { _decorator, Animation, assert, Button, Component, director, EditBox, error, Label, Node, Prefab, ProgressBar, resources, sys, Toggle, VideoClip, VideoPlayer } from "cc";
 import { GlobalData } from "../manager/GlobalData";
 import { UIManager } from "../manager/UIManager";
 import { UIConfig } from "../manager/UIConfig";
@@ -212,6 +212,25 @@ export class Loading extends Component {
             this.progressBar.progress = progress;
         }
         if (progress >= 1) {
+            if (sys.os === sys.OS.ANDROID) {
+                // @ts-ignore
+                const versionCode = jsb.reflection.callStaticMethod(
+                    "com/cocos/game/AppActivity",
+                    "getVersionCode",
+                    "()I"
+                );
+                // @ts-ignore
+                const versionName = jsb.reflection.callStaticMethod(
+                    "com/cocos/game/AppActivity",
+                    "getVersionName",
+                    "()Ljava/lang/String;"
+                );
+                console.log("Android VersionCode:", versionCode);
+                console.log("Android VersionName:", versionName);
+                // if(versionCode <= 20) {
+                //     SignInManager.resetUserList();
+                // }
+            }
             checkForNotice();
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
@@ -354,7 +373,7 @@ export class Loading extends Component {
                 if (data) {
                     GlobalData.loginInfo.token = data.token;
                     localStorage.setItem(GlobalData.TOKEN, data.token);
-                    if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                    if (!SignInManager.getUserByName(data.name)) {
                         let userInfodata: SignInManager.UserInfo = {
                             token: data.token,
                             name: data.name,
@@ -392,7 +411,7 @@ export class Loading extends Component {
                                     GlobalData.userInfo.noticeData.push(data.data[i]);
                                     // if (data.data[i].title == '系统维护通知') {
                                     //     const localNotices = [data.data[i]];
-                                        
+
                                     // }
                                 }
                                 UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
@@ -447,7 +466,7 @@ export class Loading extends Component {
                 if (data) {
                     GlobalData.loginInfo.token = data.token;
                     localStorage.setItem(GlobalData.TOKEN, data.token);
-                    if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                    if (!SignInManager.getUserByName(data.name)) {
                         let userInfodata: SignInManager.UserInfo = {
                             token: data.token,
                             name: data.name,
