@@ -77,25 +77,35 @@ export class App extends Component {
     }
 
     private updateRatio() {
-		this.spriteRatio.fillRange = this.ratio
+        if (!this.spriteRatio?.isValid) return;
 
-        if (this.followRatio) 
-            this.followRatio.setPosition(this.ratioWidth * (this.ratio - .5), 0)
-    }
+        this.spriteRatio.fillRange = this.ratio;
 
-
-    protected update(dt: number): void {
-        // 2秒
-        this.ratio = lerp(this.ratio, 1, .005)
-        this.updateRatio()
-
-        this.textTime += dt
-        if (this.textTime > .5) {
-            this.textTime = 0
-            this.topText.string = textStr[this.textIndex % textStr.length]
-            this.textIndex++
+        if (this.followRatio?.isValid) {
+            this.followRatio.setPosition(this.ratioWidth * (this.ratio - 0.5), 0);
         }
     }
+
+    protected update(dt: number): void {
+        if (!this.enabled) return;
+
+        this.ratio = lerp(this.ratio, 1, 0.005);
+        this.updateRatio();
+
+        if (this.topText?.isValid && initData.showLoadingText) {
+            this.textTime += dt;
+            if (this.textTime > 0.5) {
+                this.textTime = 0;
+                this.topText.string = textStr[this.textIndex % textStr.length];
+                this.textIndex++;
+            }
+        }
+    }
+
+    onDestroy() {
+        this.enabled = false;
+    }
+
 
 }
 
