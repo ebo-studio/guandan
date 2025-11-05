@@ -56,13 +56,13 @@ export class App extends Component {
 
         let dec = loading.getChildByName("BottomDec")!
         if (initData.versionId && initData.showLoadingText) {
-            dec.active = true
+            dec.active = false
             dec.getComponentInChildren(Label)!.string = initData.versionId
         }
         else
             dec.active = false
 
-        loading.getChildByName("Age")!.active = initData.showLoadingText
+        // loading.getChildByName("Age")!.active = initData.showLoadingText
 
         let Bg = ratio.getChildByName("Bg")!
 
