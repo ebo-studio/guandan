@@ -2,24 +2,28 @@
 import { sys, _decorator, Component, Sprite, Label, lerp, assetManager, UITransform, Node } from "cc";
 import { EDITOR } from "cc/env";
 import { initData } from "./GameDefine";
+import '../main/script/Main';
+import "db://assets/main/script/Main";
+import { _main, boot, initApeng } from "../main/script/Main";
+// ✅ 如果你要访问 Main.ts 里的变量/方法（比如 _main 或 boot）
 
 
 // 加载主包
-let isEnter = false;
-(function () {
-    if (EDITOR)
-        return
-    if (isEnter)
-        return
-    isEnter = true
+// let isEnter = false;
+// (function () {
+//     if (EDITOR)
+//         return
+//     if (isEnter)
+//         return
+//     isEnter = true
 
-    let _wx = (window as any)["wx"]
-    if (_wx && _wx.startRenderDestroy)
-        _wx.startRenderDestroy()
+//     let _wx = (window as any)["wx"]
+//     if (_wx && _wx.startRenderDestroy)
+//         _wx.startRenderDestroy()
 
-    console.log("load bundle main " + Date.now())
-    assetManager.loadBundle("main2")
-})();
+//     console.log("load bundle main " + Date.now())
+//     assetManager.loadBundle("main2")
+// })();
 
 
 // cc启动脚本
@@ -32,10 +36,13 @@ const textStr = [
     "加载中···",
 ]
 
+const TARGET_APENG_SCENE = "Scene"; // ← 你的 apeng 目标场景名（按你工程来）
+
 
 @ccclass("App")
 @menu("App")
 export class App extends Component {
+
 
     private spriteRatio: Sprite = null!
     private ratio = 0
@@ -47,7 +54,48 @@ export class App extends Component {
 
     private ratioWidth = 0
 
-    onLoad() {
+    async start() {
+        console.log("[App] start - 准备加载 main2.bundle");
+
+        // ✅ 加载 main2.bundle
+        assetManager.loadBundle("main2", (err, bundle) => {
+            if (err) {
+                console.error("❌ 加载 main2 失败:", err);
+                return;
+            }
+            console.log("[App] start - 直接调用 Main.ts 的初始化逻辑");
+
+            // ✅ 直接执行 Main.ts 的 boot()RaceAuditionItem
+            if (typeof initApeng === "function") {
+                // this._killSelfSafely();
+                initApeng();
+                // const ap = (window as any).apeng;
+                // if (ap && ap._scene && ap._scene.EventType) {
+                //     const onChanged = (url: string) => {
+                //         // 这里如果你想任何 apeng 场景都销毁 App，就去掉判断
+                //         if (!TARGET_APENG_SCENE || url === TARGET_APENG_SCENE) {
+                //             console.log(`[App] 侦测到 apeng 场景切换成功: ${url} → 销毁 App`);
+                //             // 及时解绑，避免回调野指针
+                //             ap._scene.off(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
+                //             this.scheduleOnce(() => {
+                //                 console.log("[App] 延迟销毁触发");
+                //                 this._killSelfSafely();
+                //             }, 0);
+                //         }
+                //     };
+                //     ap._scene.on(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
+                // } else {
+                //     // 如果拿不到事件（极端情况），延迟1帧也自杀，避免 App 留存
+                //     console.warn("[App] 未能订阅 apeng 场景事件，采用兜底自清");
+                //     this.scheduleOnce(() => this._killSelfSafely(), 0);
+                // }
+            } else {
+                console.warn("⚠️ Main.ts 未导出 boot 函数，可能已自动执行初始化。");
+            }
+        });
+    }
+
+    async onLoad() {
         let loading = this.node.getChildByName("Loading")!
         let ratio = loading.getChildByName("Ratio")!
 
@@ -104,6 +152,17 @@ export class App extends Component {
 
     onDestroy() {
         this.enabled = false;
+    }
+
+    private _killSelfSafely() {
+        // 防止多次调用
+        if (!this.node || !this.node.isValid) return;
+        // 停掉自身调度与 update
+        this.enabled = false;
+        this.unscheduleAllCallbacks?.();
+        // 从场景树移除并销毁
+        this.node.removeFromParent();
+        this.node.destroy();
     }
 
 

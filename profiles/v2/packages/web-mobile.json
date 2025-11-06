@@ -5,11 +5,17 @@
         "orientation": "landscape",
         "embedWebDebugger": false,
         "__version__": "1.0.0"
+      },
+      "1762406910549": {
+        "orientation": "landscape",
+        "embedWebDebugger": false,
+        "cullEngineAsmJsModule": false,
+        "__version__": "1.0.1"
       }
     },
     "__version__": "1.3.7",
     "common": {
-      "outputName": "web-mobile",
+      "outputName": "web-mobile-001",
       "polyfills": {
         "asyncFunctions": true,
         "coreJs": true
@@ -20,7 +26,8 @@
       "name": "GoldenAnt",
       "replaceSplashScreen": true,
       "md5Cache": true,
-      "debug": false
+      "debug": false,
+      "buildPath": "project://build"
     },
     "options": {
       "web-mobile": {

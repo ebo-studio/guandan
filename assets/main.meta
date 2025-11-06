@@ -9,6 +9,19 @@
     "isBundle": true,
     "bundleName": "main2",
     "priority": 9,
-    "bundleConfigID": "auto_c2d4J3BJ9MvoK7H5tTDj/B"
+    "bundleConfigID": "auto_c2d4J3BJ9MvoK7H5tTDj/B",
+    "bundleFilterConfig": [
+      {
+        "range": "include",
+        "type": "url",
+        "patchOption": {
+          "patchType": "glob",
+          "value": "db://assets/main/**/*"
+        },
+        "assets": [
+          ""
+        ]
+      }
+    ]
   }
 }

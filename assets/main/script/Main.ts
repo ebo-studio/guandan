@@ -1,4 +1,4 @@
-// console.log("main run " + Date.now())
+console.log("main run " + Date.now())
 
 
 import "./apeng.js"
@@ -10,6 +10,7 @@ import { initData } from "../../app/GameDefine"
 
 import { LogicModule } from "./module/LogicModule"
 import { GameTypeModule } from "./module/GameTypeModule.js"
+import { ZJSdk } from "../../scripts/ZJSdk/ZJSdk.js"
 
 
 /**配置 */
@@ -33,38 +34,106 @@ export let _rank: apeng.RankModule = null!
 export let _gameType: GameTypeModule = null!
 export let _logic: LogicModule = null!
 
-if (!EDITOR) {
-    // 等待其他模块装载器加入
-    setTimeout(() => {
-        const { initCore, EInitCoreState } = apeng
-        // 初始化框架
-        initCore(initData, (state) => {
-            switch (state) {
-                case EInitCoreState.init:
-                    _scene = apeng._scene
-                    _ui = apeng._ui
-                    _audio = apeng._audio
-                    _gm = apeng._gm
-                    _guide = apeng._guide
-                    _language = apeng._language
-                    _login = apeng._login
-                    _main = apeng._main
-                    _platform = apeng._platform
-                    _privacy = apeng._privacy
-                    _resouces = apeng._resouces
-                    _timer = apeng._timer
-                    _prop = apeng._prop
-                    _rank = apeng._rank
+// if (!EDITOR) {
+//     // 等待其他模块装载器加入
+//     setTimeout(() => {
+//         const { initCore, EInitCoreState } = apeng
+//         // 初始化框架
+//         initCore(initData, (state) => {
+//             switch (state) {
+//                 case EInitCoreState.init:
+//                     _scene = apeng._scene
+//                     _ui = apeng._ui
+//                     _audio = apeng._audio
+//                     _gm = apeng._gm
+//                     _guide = apeng._guide
+//                     _language = apeng._language
+//                     _login = apeng._login
+//                     _main = apeng._main
+//                     _platform = apeng._platform
+//                     _privacy = apeng._privacy
+//                     _resouces = apeng._resouces
+//                     _timer = apeng._timer
+//                     _prop = apeng._prop
+//                     _rank = apeng._rank
 
-                    _logic = moduleMgr.get(EModuleType.logic)
-                    _gameType = moduleMgr.get(EModuleType.gameType)
-                    break
-                case EInitCoreState.config:
-                    _config_ = apeng._config_ as any
-                    break
-            }
-        })
-    })
+//                     _logic = moduleMgr.get(EModuleType.logic)
+//                     _gameType = moduleMgr.get(EModuleType.gameType)
+//                     break
+//                 case EInitCoreState.config:
+//                     _config_ = apeng._config_ as any
+//                     break
+//             }
+//         })
+//     })
+// }
+
+let inited = false;
+export function boot() {
+    if (inited) return;
+    inited = true;
+}
+
+export function initApeng() {
+    const { initCore, EInitCoreState, moduleMgr } = apeng;
+    console.log("[Main] boot, calling apeng.initCore");
+
+    initCore(initData, (state: number) => {
+        console.log("[Main] apeng state =", state);
+        switch (state) {
+            case EInitCoreState.init:
+                _scene = apeng._scene
+                _ui = apeng._ui
+                _audio = apeng._audio
+                _gm = apeng._gm
+                _guide = apeng._guide
+                _language = apeng._language
+                _login = apeng._login
+                _main = apeng._main
+                _main.showVideo = (report: string, complete: () => void, share?: boolean, shareFail?: () => void) => {
+                    console.log(`[自定义 showVideo] ${report}`);
+                    // 🔥 自定义逻辑：
+                    // ZJSdk.loadRewardedAd('Pno79en81mh8', '123456', {
+                    //     onAdLoaded() {
+                    //         ZJSdk.showRewardedAd({
+                    //             onAdReward() {
+                    //                 complete?.();
+                    //             }
+                    //         });
+                    //     }
+                    // });
+                    complete?.();
+                };
+                _platform = apeng._platform
+                _privacy = apeng._privacy
+                _resouces = apeng._resouces
+                _timer = apeng._timer
+                _prop = apeng._prop
+                _rank = apeng._rank
+
+                _logic = moduleMgr.get(EModuleType.logic)
+                _gameType = moduleMgr.get(EModuleType.gameType)
+                console.log("[Main] apeng init done, modules wired.");
+                break;
+
+            case EInitCoreState.config:
+                _config_ = apeng._config_ as any
+                console.log("[Main] config loaded.");
+                break;
+
+            default:
+                console.log("[Main] other state:", state);
+                break;
+        }
+    });
+}
+
+// ✅ 在编辑器预览 & 真机/浏览器，都执行 boot()
+//    （用 setTimeout 仅仅是把时序放到微后面，避免和其它 loader 冲突）
+if (EDITOR) {
+    setTimeout(boot, 0);
+} else {
+    setTimeout(boot, 0);
 }
 
 /**业务模块 暂内置40个系统模块*/

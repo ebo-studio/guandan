@@ -37,6 +37,8 @@ export class AppGlobal extends Component {
     public errorCallBack: Function = null; //全局回调
     private static _eventBound = false;
 
+    public static _isLoadGameModule = false;
+
     //很奇怪,appglobal 是常驻节点,但是onLoad 和 start 切换场景的时候会再次调用
     onLoad() {
         // if (GlobalData.userInfo.haveToken) return;

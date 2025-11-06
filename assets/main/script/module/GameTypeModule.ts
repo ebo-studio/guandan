@@ -72,9 +72,17 @@ export class GameTypeModule extends BaseModuleEvent {
             complete(isWin)
         })
 
-        this.scene.create()
-        _timer.loop(this, this._runCheckComplete, 1, -1, -1)
-        this.isRun = true
+        // this.scene.create()
+        // _timer.loop(this, this._runCheckComplete, 1, -1, -1)
+        // this.isRun = true
+
+        if (this.scene && this.scene.create) {
+            this.scene.create();
+            _timer.loop(this, this._runCheckComplete, 1, -1, -1);
+            this.isRun = true;
+        } else {
+            console.warn("[GameTypeModule] 当前 _scene.getCurrent() 返回 null，跳过 scene.create()");
+        }
     }
 
     public _runCheckComplete(checkIsRun = true) {
