@@ -549,7 +549,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 512.0668058455115,
+    "_orthoHeight": 591.3233287858118,
     "_near": 1,
     "_far": 2000,
     "_color": {
@@ -3471,7 +3471,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -86.20000000000002,
+      "x": 55.79999999999998,
       "y": 32.241,
       "z": 0
     },
@@ -3965,7 +3965,7 @@
     "__prefab": null,
     "_alignFlags": 8,
     "_target": null,
-    "_left": 283.4,
+    "_left": 425.4,
     "_right": 0,
     "_top": 0,
     "_bottom": 0,
@@ -4542,7 +4542,7 @@
         "__id__": 136
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 139
@@ -5481,8 +5481,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 1.1,
+      "y": 1.1,
       "z": 1
     },
     "_mobility": 0,
@@ -7562,7 +7562,6 @@
     "__type__": "dbf498ETO1AKZCTW1P6+not",
     "_name": "",
     "_objFlags": 0,
-    "__editorExtras__": {},
     "node": {
       "__id__": 18
     },

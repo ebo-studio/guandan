@@ -3348,6 +3348,8 @@
       "__id__": 0
     },
     "fileId": "83aDFPuKpNUp524vXlWN8O",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -3390,9 +3392,9 @@
     "__prefab": {
       "__id__": 159
     },
-    "_alignFlags": 18,
+    "_alignFlags": 0,
     "_target": null,
-    "_left": 0,
+    "_left": 480,
     "_right": 0,
     "_top": 0,
     "_bottom": 0,

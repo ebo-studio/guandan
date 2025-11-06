@@ -16,7 +16,7 @@ import { ZJSdk } from '../ZJSdk/ZJSdk';
 import { SignInManager } from '../manager/SignInManager';
 import { checkForUpdate } from '../common/UpdateChecker';
 import { initData } from '../../app/GameDefine';
-import { _gameType, _ui, initApeng } from '../../main/script/Main';
+import { _audio, _gameType, _ui, initApeng } from '../../main/script/Main';
 // import "db://assets/main/script/Main"
 // import { PangleBridge } from '../common/PangleBridge';
 // import { ethers } from "ethers";
@@ -290,7 +290,50 @@ export class Lobby extends Component {
     }
     //自由玩开始匹配
     onFreeMatchStart(data: GameMsg.Match) {
-        UIManager.Instace.showUI({ path: UIConfig.FreeMatchItemKey, data: data });
+        utils.setMusic(false);
+        if (!AppGlobal._isLoadGameModule) {
+            AppGlobal._isLoadGameModule = true;
+            director.loadScene("App");
+        }
+        else {
+            const ap = (window as any).apeng;
+            if (ap && ap._scene && typeof ap._scene.change === "function") {
+                console.log("[App] 检测到 apeng 已存在，直接加载 Cocos 场景");
+
+                this.scheduleOnce(() => {
+                    try {
+                        // ✅ 普通 Creator 场景（不是 apeng bundle）
+                        ap._scene.change("scene/scene/Scene", () => {
+                            console.log("[App] ✅ apeng Scene 切换完成");
+                            console.log("[App] ✅ 已直接进入 Cocos Scene.scene");
+                            // ✅ 如果 apeng 框架已存在但未初始化逻辑，重新 init
+                            if (!_gameType || !_gameType.isRun) {
+                                console.log("[Scene] 重新执行 initApeng()");
+                                initApeng();
+                            }
+
+                            // ✅ 等待初始化完成后，启动默认游戏逻辑
+                            this.scheduleOnce(() => {
+                                if (_gameType) {
+                                    console.log("[Scene] 启动 GameTypeModule.run()");
+                                    _ui.open(initData.uiUrl.index);
+                                    _audio.setVolume(true, 1);
+                                    //_gameType.run(0); // 0 表示 EGameType.today / 你定义的默认类型
+                                } else {
+                                    console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
+                                }
+                            }, 0.5);
+                        });
+
+                    } catch (e) {
+                        console.warn("[App] ❌ 跳转失败：", e);
+                    }
+                }, 0);
+
+                return;
+            }
+        }
+        // UIManager.Instace.showUI({ path: UIConfig.FreeMatchItemKey, data: data });
     }
     //自由玩匹配超时
     onFreeMatchTimeOut() {

@@ -1,11 +1,12 @@
 import { assetManager, director, Label } from "cc"
-import { ccclass, EUILayer, EBlockOnceAdType, _scene, _platform, EPlatformType, EBottomAdType, _ui, _rank, _logic, _gameType, _main } from "../Main"
+import { ccclass, EUILayer, EBlockOnceAdType, _scene, _platform, EPlatformType, EBottomAdType, _ui, _rank, _logic, _gameType, _main, _audio } from "../Main"
 import { AnimBaseUI } from "./AnimBaseUI"
 import { EGameType } from "../module/define/GameTypeDefine"
 import { initData } from "../../../app/GameDefine"
 import { GlobalData } from "db://assets/scripts/manager/GlobalData"
 import { UIManager } from "db://assets/scripts/manager/UIManager"
 import { UIConfig } from "db://assets/scripts/manager/UIConfig"
+import { utils } from "db://assets/scripts/common/utils"
 
 
 @ccclass("IndexUI")
@@ -56,6 +57,7 @@ export class IndexUI extends AnimBaseUI {
 			// _ui?.closeAll?.(EUILayer.WindowUp);
 			_ui?.close(initData.uiUrl.index);
 			_ui?.dispose(initData.uiUrl.index);
+			_audio.setVolume(true, 0);
 
 			try {
 				const audioSys = (window as any).apeng?._audio;
@@ -108,6 +110,7 @@ export class IndexUI extends AnimBaseUI {
 			await new Promise((r) => setTimeout(r, 0));
 
 			console.log("[App] ✅ 框架停机完成，开始切 Lobby");
+			utils.setMusic(true);
 
 			UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.lobby });
 

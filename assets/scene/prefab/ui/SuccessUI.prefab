@@ -2033,7 +2033,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 417.2,
+      "width": 720,
       "height": 191
     },
     "_anchorPoint": {
@@ -2097,7 +2097,7 @@
     "__prefab": {
       "__id__": 104
     },
-    "_alignFlags": 16,
+    "_alignFlags": 0,
     "_target": null,
     "_left": 0,
     "_right": 0,
@@ -2130,6 +2130,8 @@
       "__id__": 0
     },
     "fileId": "46E1B4dAZO8qtW5Wzjf1Am",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
