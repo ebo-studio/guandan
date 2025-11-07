@@ -1,10 +1,43 @@
+import * as cc from "cc";
+
+
+(function hookCameraVisibility() {
+    try {
+        const Camera = (cc as any).Camera;
+        if (!Camera) {
+            console.warn("[Hook] ⚠️ 未找到 Camera 类");
+            return;
+        }
+
+        const proto = (Camera as any).prototype;
+        const desc = Object.getOwnPropertyDescriptor(proto, "visibility");
+        if (!desc || !desc.set) return;
+
+        Object.defineProperty(proto, "visibility", {
+            get() { return desc.get!.call(this); },
+            set(v: any) {
+                console.error("[Camera.visibility ←]", v, typeof v, "\n", new Error().stack);
+                const n = (typeof v === "number") ? v
+                    : (typeof v === "boolean") ? (v ? 0xFFFFFFFF : 0)
+                        : (typeof v === "string") ? Number(v) : NaN;
+                desc.set!.call(this, Number.isFinite(n) ? n : (1 << 25)); // Layers.BitMask.UI_2D
+            },
+            configurable: true,
+            enumerable: desc.enumerable,
+        });
+        console.log("[Hook] ✅ Camera.visibility hook installed.");
+    } catch (e) {
+        console.warn("[Hook] ⚠️ Camera.visibility hook failed:", e);
+    }
+})();
+
 
 import { sys, _decorator, Component, Sprite, Label, lerp, assetManager, UITransform, Node } from "cc";
 import { EDITOR } from "cc/env";
 import { initData } from "./GameDefine";
-import '../main/script/Main';
-import "db://assets/main/script/Main";
-import { _main, boot, initApeng } from "../main/script/Main";
+// import '../main/script/Main';
+// import "db://assets/main/script/Main";
+// import { _main, boot, initApeng } from "../main/script/Main";
 // ✅ 如果你要访问 Main.ts 里的变量/方法（比如 _main 或 boot）
 
 
@@ -65,33 +98,47 @@ export class App extends Component {
             }
             console.log("[App] start - 直接调用 Main.ts 的初始化逻辑");
 
-            // ✅ 直接执行 Main.ts 的 boot()RaceAuditionItem
-            if (typeof initApeng === "function") {
-                // this._killSelfSafely();
-                initApeng();
-                // const ap = (window as any).apeng;
-                // if (ap && ap._scene && ap._scene.EventType) {
-                //     const onChanged = (url: string) => {
-                //         // 这里如果你想任何 apeng 场景都销毁 App，就去掉判断
-                //         if (!TARGET_APENG_SCENE || url === TARGET_APENG_SCENE) {
-                //             console.log(`[App] 侦测到 apeng 场景切换成功: ${url} → 销毁 App`);
-                //             // 及时解绑，避免回调野指针
-                //             ap._scene.off(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
-                //             this.scheduleOnce(() => {
-                //                 console.log("[App] 延迟销毁触发");
-                //                 this._killSelfSafely();
-                //             }, 0);
-                //         }
-                //     };
-                //     ap._scene.on(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
-                // } else {
-                //     // 如果拿不到事件（极端情况），延迟1帧也自杀，避免 App 留存
-                //     console.warn("[App] 未能订阅 apeng 场景事件，采用兜底自清");
-                //     this.scheduleOnce(() => this._killSelfSafely(), 0);
-                // }
-            } else {
-                console.warn("⚠️ Main.ts 未导出 boot 函数，可能已自动执行初始化。");
-            }
+            // // ✅ 直接执行 Main.ts 的 boot()RaceAuditionItem
+            // if (typeof initApeng === "function") {
+            //     // this._killSelfSafely();
+            //     initApeng();
+            //     // const ap = (window as any).apeng;
+            //     // if (ap && ap._scene && ap._scene.EventType) {
+            //     //     const onChanged = (url: string) => {
+            //     //         // 这里如果你想任何 apeng 场景都销毁 App，就去掉判断
+            //     //         if (!TARGET_APENG_SCENE || url === TARGET_APENG_SCENE) {
+            //     //             console.log(`[App] 侦测到 apeng 场景切换成功: ${url} → 销毁 App`);
+            //     //             // 及时解绑，避免回调野指针
+            //     //             ap._scene.off(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
+            //     //             this.scheduleOnce(() => {
+            //     //                 console.log("[App] 延迟销毁触发");
+            //     //                 this._killSelfSafely();
+            //     //             }, 0);
+            //     //         }
+            //     //     };
+            //     //     ap._scene.on(ap._scene.EventType.CHANG_SUCCESS, onChanged, this);
+            //     // } else {
+            //     //     // 如果拿不到事件（极端情况），延迟1帧也自杀，避免 App 留存
+            //     //     console.warn("[App] 未能订阅 apeng 场景事件，采用兜底自清");
+            //     //     this.scheduleOnce(() => this._killSelfSafely(), 0);
+            //     // }
+            // } else {
+            //     console.warn("⚠️ Main.ts 未导出 boot 函数，可能已自动执行初始化。");
+            // }
+
+            console.log("[App] main2.bundle 加载完成，准备导入 Main.ts");
+
+            import("db://assets/main/script/Main").then((mainModule) => {
+                if (typeof mainModule.initApeng === "function") {
+                    mainModule.initApeng();
+                } else if (typeof mainModule.boot === "function") {
+                    mainModule.boot();
+                } else {
+                    console.warn("⚠️ Main.ts 未导出 initApeng 或 boot。");
+                }
+            }).catch((e) => {
+                console.error("动态导入 Main.ts 出错:", e);
+            });
         });
     }
 

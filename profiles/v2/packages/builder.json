@@ -7,9 +7,9 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "web-mobile-001",
+    "outputName": "android-005",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "web-mobile",
+    "platform": "android",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
     "name": "GoldenAnt",
     "replaceSplashScreen": true,
@@ -19,59 +19,6 @@
   },
   "BuildTaskManager": {
     "taskMap": {
-      "1757912159054": {
-        "type": "build",
-        "id": "1757912159054",
-        "progress": 1,
-        "state": "success",
-        "stage": "build",
-        "message": "2025-9-15 12:56 Build success in 51589 ms!",
-        "options": {
-          "name": "GoldenAnt",
-          "platform": "web-mobile",
-          "buildPath": "project://build",
-          "debug": false,
-          "md5Cache": true,
-          "skipCompressTexture": false,
-          "sourceMaps": false,
-          "polyfills": {
-            "asyncFunctions": true,
-            "coreJs": true
-          },
-          "experimentalEraseModules": false,
-          "useBuiltinServer": false,
-          "mainBundleIsRemote": false,
-          "mainBundleCompressionType": "merge_dep",
-          "compressTexture": true,
-          "packAutoAtlas": true,
-          "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-          "outputName": "web-mobile",
-          "scenes": [
-            {
-              "url": "db://assets/scenes/Game.scene",
-              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/loading.scene",
-              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/Lobby.scene",
-              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-              "inBundle": false
-            }
-          ],
-          "android": [],
-          "__version__": "1.3.3",
-          "web-mobile": [],
-          "useSplashScreen": true,
-          "packages": {}
-        },
-        "time": "2025-9-15 12:55",
-        "dirty": false
-      },
       "1762170544252": {
         "type": "build",
         "id": "1762170544252",
@@ -188,6 +135,69 @@
           "logDest": "project://temp/builder/log/web-mobile2025-11-6 13-28.log"
         },
         "time": "2025-11-6 13:28:30",
+        "dirty": false
+      },
+      "1762524205552": {
+        "type": "build",
+        "id": "1762524205552",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-11-7 22:03:58 build success in 32 s!",
+        "options": {
+          "name": "goldenAnt",
+          "server": "",
+          "platform": "android",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+          "outputName": "android-005",
+          "taskName": "android-001",
+          "scenes": [
+            {
+              "url": "db://assets/scenes/Game.scene",
+              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0"
+            },
+            {
+              "url": "db://assets/scenes/loading.scene",
+              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
+            },
+            {
+              "url": "db://assets/scenes/Lobby.scene",
+              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a"
+            },
+            {
+              "url": "db://assets/app/App.scene",
+              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+            },
+            {
+              "url": "db://assets/scene/scene/Scene.scene",
+              "uuid": "150730f1-22ed-47e8-b453-3d3d45752f15",
+              "bundle": "db://assets/scene"
+            }
+          ],
+          "replaceSplashScreen": true,
+          "packages": {},
+          "__version__": "1.3.7",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/android2025-11-7 22-03.log"
+        },
+        "time": "2025-11-7 22:03:25",
         "dirty": false
       }
     }

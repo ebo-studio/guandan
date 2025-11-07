@@ -1,12 +1,22 @@
 {
-  /* Base configuration. Do not edit this field. */
   "extends": "./temp/tsconfig.cocos.json",
 
-  /* Add your custom configuration here. */
   "compilerOptions": {
     "strict": false,
     "target": "es2019",
-    "lib": ["ES2019", "dom"], // ✅ 添加 es2016（或更高），确保支持 includes
-    "sourceMap": true
-  }
+    "lib": ["ES2019", "dom"],
+    "sourceMap": true,
+    "baseUrl": ".",
+    // "paths": {
+    //   "@scripts/*": ["assets/scripts/*"]
+    // },
+    // ✅ 新增：覆盖 Cocos 默认 module 设置
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  // "include": [
+  //   "assets"
+  // ]
 }

@@ -16,7 +16,7 @@ import { ZJSdk } from '../ZJSdk/ZJSdk';
 import { SignInManager } from '../manager/SignInManager';
 import { checkForUpdate } from '../common/UpdateChecker';
 import { initData } from '../../app/GameDefine';
-import { _audio, _gameType, _ui, initApeng } from '../../main/script/Main';
+// import { _audio, _gameType, _ui, initApeng } from '../../main/script/Main';
 // import "db://assets/main/script/Main"
 // import { PangleBridge } from '../common/PangleBridge';
 // import { ethers } from "ethers";
@@ -141,7 +141,7 @@ export class Lobby extends Component {
         utils.on(GlobalData.localEvent.UserLogin, this, this.onUserLogin);
         utils.on(GlobalData.localEvent.FirstUpdate, this, this.onFirstUpdate);
         utils.on(GlobalData.localEvent.CreateRoom, this, this.onCreateRoom);
-        utils.on(GlobalData.localEvent.FreeMatchStart, this, this.onFreeMatchStart);
+        // utils.on(GlobalData.localEvent.FreeMatchStart, this, this.onFreeMatchStart);
         utils.on(GlobalData.localEvent.FreeMatchTimeOut, this, this.onFreeMatchTimeOut);
         utils.on(GlobalData.localEvent.AuditionMatchStart, this, this.onAuditionMatchStart);
         utils.on(GlobalData.localEvent.AuditionMatchTimeOut, this, this.onAuditionMatchTimeOut);
@@ -178,7 +178,7 @@ export class Lobby extends Component {
         utils.off(GlobalData.localEvent.UserLogin, this, this.onUserLogin);
         utils.off(GlobalData.localEvent.FirstUpdate, this, this.onFirstUpdate);
         utils.off(GlobalData.localEvent.CreateRoom, this, this.onCreateRoom);
-        utils.off(GlobalData.localEvent.FreeMatchStart, this, this.onFreeMatchStart);
+        // utils.off(GlobalData.localEvent.FreeMatchStart, this, this.onFreeMatchStart);
         utils.off(GlobalData.localEvent.FreeMatchTimeOut, this, this.onFreeMatchTimeOut);
         utils.off(GlobalData.localEvent.AuditionMatchStart, this, this.onAuditionMatchStart);
         utils.off(GlobalData.localEvent.AuditionMatchTimeOut, this, this.onAuditionMatchStart);
@@ -262,21 +262,27 @@ export class Lobby extends Component {
                             console.log("[App] ✅ apeng Scene 切换完成");
                             console.log("[App] ✅ 已直接进入 Cocos Scene.scene");
                             // ✅ 如果 apeng 框架已存在但未初始化逻辑，重新 init
-                            if (!_gameType || !_gameType.isRun) {
-                                console.log("[Scene] 重新执行 initApeng()");
-                                initApeng();
-                            }
+                            // if (!_gameType || !_gameType.isRun) {
+                            console.log("[Scene] 重新执行 initApeng()");
+                            import("db://assets/main/script/Main")
+                                .then((mainModule) => {
+                                    mainModule.initApeng();
 
-                            // ✅ 等待初始化完成后，启动默认游戏逻辑
-                            this.scheduleOnce(() => {
-                                if (_gameType) {
-                                    console.log("[Scene] 启动 GameTypeModule.run()");
-                                    _ui.open(initData.uiUrl.index);
-                                    //_gameType.run(0); // 0 表示 EGameType.today / 你定义的默认类型
-                                } else {
-                                    console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
-                                }
-                            }, 0.5);
+                                    // 等待初始化后再执行 UI / 音频逻辑
+                                    this.scheduleOnce(() => {
+                                        const { _ui, _audio, _gameType } = mainModule;
+                                        if (_gameType) {
+                                            console.log("[Scene] 启动 GameTypeModule.run()");
+                                            _ui.open(initData.uiUrl.index);
+                                            if (_audio?.setVolume) _audio.setVolume(true, 1);
+                                        } else {
+                                            console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
+                                        }
+                                    }, 0.5);
+                                })
+                                .catch((e) => console.error("[Scene] 动态导入 Main.ts 失败：", e));
+                            // }
+
                         });
 
                     } catch (e) {
@@ -290,49 +296,7 @@ export class Lobby extends Component {
     }
     //自由玩开始匹配
     onFreeMatchStart(data: GameMsg.Match) {
-        utils.setMusic(false);
-        if (!AppGlobal._isLoadGameModule) {
-            AppGlobal._isLoadGameModule = true;
-            director.loadScene("App");
-        }
-        else {
-            const ap = (window as any).apeng;
-            if (ap && ap._scene && typeof ap._scene.change === "function") {
-                console.log("[App] 检测到 apeng 已存在，直接加载 Cocos 场景");
 
-                this.scheduleOnce(() => {
-                    try {
-                        // ✅ 普通 Creator 场景（不是 apeng bundle）
-                        ap._scene.change("scene/scene/Scene", () => {
-                            console.log("[App] ✅ apeng Scene 切换完成");
-                            console.log("[App] ✅ 已直接进入 Cocos Scene.scene");
-                            // ✅ 如果 apeng 框架已存在但未初始化逻辑，重新 init
-                            if (!_gameType || !_gameType.isRun) {
-                                console.log("[Scene] 重新执行 initApeng()");
-                                initApeng();
-                            }
-
-                            // ✅ 等待初始化完成后，启动默认游戏逻辑
-                            this.scheduleOnce(() => {
-                                if (_gameType) {
-                                    console.log("[Scene] 启动 GameTypeModule.run()");
-                                    _ui.open(initData.uiUrl.index);
-                                    _audio.setVolume(true, 1);
-                                    //_gameType.run(0); // 0 表示 EGameType.today / 你定义的默认类型
-                                } else {
-                                    console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
-                                }
-                            }, 0.5);
-                        });
-
-                    } catch (e) {
-                        console.warn("[App] ❌ 跳转失败：", e);
-                    }
-                }, 0);
-
-                return;
-            }
-        }
         // UIManager.Instace.showUI({ path: UIConfig.FreeMatchItemKey, data: data });
     }
     //自由玩匹配超时
@@ -426,26 +390,76 @@ export class Lobby extends Component {
     }
     //自由嗨完
     async onBtnRaceFreeClick() {
-        if ((GlobalData.userInfo.score / 100) < 30) {
-            UIManager.Instace.showUI({
-                path: UIConfig.MessageBoxCommonKey,
-                data: {
-                    okName: "观看",
-                    cancleName: "取消",
-                    des: "您的积分不足30,是否观看视频获得积分",
-                    okFunc: () => {
-                        this.onClickShowAd();
-                    },
-                    cancleFunc: () => {
+        // if ((GlobalData.userInfo.score / 100) < 30) {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.MessageBoxCommonKey,
+        //         data: {
+        //             okName: "观看",
+        //             cancleName: "取消",
+        //             des: "您的积分不足30,是否观看视频获得积分",
+        //             okFunc: () => {
+        //                 this.onClickShowAd();
+        //             },
+        //             cancleFunc: () => {
 
-                    }
-                }
-            });
+        //             }
+        //         }
+        //     });
+        // }
+        // else {
+        //     GlobalData.cardInfo.gameType = GlobalData.gameType.free;
+        //     let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
+        //     GameSocket.send(sendBuffer);
+        // }
+
+        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在加载游戏模块" } });
+        utils.setMusic(false);
+        if (!AppGlobal._isLoadGameModule) {
+            AppGlobal._isLoadGameModule = true;
+            director.loadScene("App");
         }
         else {
-            GlobalData.cardInfo.gameType = GlobalData.gameType.free;
-            let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
-            GameSocket.send(sendBuffer);
+            const ap = (window as any).apeng;
+            if (ap && ap._scene && typeof ap._scene.change === "function") {
+                console.log("[App] 检测到 apeng 已存在，直接加载 Cocos 场景");
+
+                this.scheduleOnce(() => {
+                    try {
+                        // ✅ 普通 Creator 场景（不是 apeng bundle）
+                        ap._scene.change("scene/scene/Scene", () => {
+                            console.log("[App] ✅ apeng Scene 切换完成");
+                            console.log("[App] ✅ 已直接进入 Cocos Scene.scene");
+                            // ✅ 如果 apeng 框架已存在但未初始化逻辑，重新 init
+                            // if (!_gameType || !_gameType.isRun) {
+                            console.log("[Scene] 重新执行 initApeng()");
+                            import("db://assets/main/script/Main")
+                                .then((mainModule) => {
+                                    mainModule.initApeng();
+
+                                    // 等待初始化后再执行 UI / 音频逻辑
+                                    this.scheduleOnce(() => {
+                                        const { _ui, _audio, _gameType } = mainModule;
+                                        if (_gameType) {
+                                            console.log("[Scene] 启动 GameTypeModule.run()");
+                                            _ui.open(initData.uiUrl.index);
+                                            if (_audio?.setVolume) _audio.setVolume(true, 1);
+                                        } else {
+                                            console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
+                                        }
+                                    }, 0.5);
+                                })
+                                .catch((e) => console.error("[Scene] 动态导入 Main.ts 失败：", e));
+                            // }
+
+                        });
+
+                    } catch (e) {
+                        console.warn("[App] ❌ 跳转失败：", e);
+                    }
+                }, 0);
+
+                return;
+            }
         }
 
 

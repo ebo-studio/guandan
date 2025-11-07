@@ -353,6 +353,8 @@ export class Loading extends Component {
 
     /**手机登录相关 */
     onPhoneLogin() {
+        // this.startZimLocalTest();
+        // return;
         const phone = this.phoneEditBox.string.trim();
         const code = this.phoneCodeEditBox.string.trim();
         const inviter = this.phoneinviterEditBox.string.trim();
@@ -422,6 +424,36 @@ export class Loading extends Component {
                 });
             }
         })
+    }
+
+    startZimLocalTest() {
+        // if (!this._initialized) {
+        //     console.error('[Pangle] SDK not initialized');
+        //     return;
+        // }
+        if (!sys.isNative) return;
+
+        (globalThis as any).onZimTestResult = function (success: boolean, msg: string) {
+            console.log("ZIM 本地测试结果:", success, msg);
+
+            // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: code + ',' +  msg});
+        };
+
+        try {
+            if (sys.os === sys.OS.ANDROID) {
+                // @ts-ignore
+                jsb.reflection.callStaticMethod(
+                    'com/cocos/game/AppActivity',
+                    'startLocalZimTest',
+                    '()V',
+                );
+            } else if (sys.os === sys.OS.IOS) {
+                // @ts-ignore
+                // jsb.reflection.callStaticMethod('PangleAdapter', 'showRewardedVideoWithAdUnitId:', adUnitId);
+            }
+        } catch (e) {
+            console.error('[Pangle] show rewarded failed:', e);
+        }
     }
 
     onGetPhoneCode() {

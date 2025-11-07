@@ -44,14 +44,14 @@ export class SuccessUI extends BaseUI {
 	}
 
 	onOpen() {
-		if (_platform.type == EPlatformType.oppo)
-			_platform._nativeTemp_.showRoot()
-		else
-			if (this.bottomAdType == EBottomAdType.Banner)
-				NodeHelper.setPositionY(this.cBtns, _platform._banner_.worldTopY, true)
-			else {
+		// if (_platform.type == EPlatformType.oppo)
+		// 	_platform._nativeTemp_.showRoot()
+		// else
+		// 	if (this.bottomAdType == EBottomAdType.Banner)
+		// 		NodeHelper.setPositionY(this.cBtns, _platform._banner_.worldTopY, true)
+		// 	else {
 
-			}
+		// 	}
 
 		if (this.cNativeHight)
 			if (_platform.type == EPlatformType.oppo)
