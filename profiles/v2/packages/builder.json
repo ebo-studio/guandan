@@ -7,11 +7,11 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "android-005",
+    "outputName": "ios_new",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "android",
+    "platform": "ios",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-    "name": "GoldenAnt",
+    "name": "goldenAnt",
     "replaceSplashScreen": true,
     "md5Cache": true,
     "debug": false,
@@ -137,17 +137,17 @@
         "time": "2025-11-6 13:28:30",
         "dirty": false
       },
-      "1762524205552": {
+      "1762552595867": {
         "type": "build",
-        "id": "1762524205552",
+        "id": "1762552595867",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-11-7 22:03:58 build success in 32 s!",
+        "message": "2025-11-8 05:56:58 build success in 22 s!",
         "options": {
-          "name": "goldenAnt",
+          "name": "Test",
           "server": "",
-          "platform": "android",
+          "platform": "ios",
           "buildPath": "project://build",
           "debug": false,
           "md5Cache": false,
@@ -166,24 +166,24 @@
           "bundleCommonChunk": false,
           "packAutoAtlas": true,
           "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-          "outputName": "android-005",
-          "taskName": "android-001",
+          "outputName": "ios",
+          "taskName": "ios",
           "scenes": [
+            {
+              "url": "db://assets/app/App.scene",
+              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+            },
             {
               "url": "db://assets/scenes/Game.scene",
               "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0"
-            },
-            {
-              "url": "db://assets/scenes/loading.scene",
-              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
             },
             {
               "url": "db://assets/scenes/Lobby.scene",
               "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a"
             },
             {
-              "url": "db://assets/app/App.scene",
-              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+              "url": "db://assets/scenes/loading.scene",
+              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
             },
             {
               "url": "db://assets/scene/scene/Scene.scene",
@@ -191,13 +191,74 @@
               "bundle": "db://assets/scene"
             }
           ],
-          "replaceSplashScreen": true,
           "packages": {},
           "__version__": "1.3.7",
           "buildMode": "normal",
-          "logDest": "project://temp/builder/log/android2025-11-7 22-03.log"
+          "logDest": "project://temp/builder/log/ios11-8-2025 05-56.log"
         },
-        "time": "2025-11-7 22:03:25",
+        "time": "11-8-2025 05:56:35",
+        "dirty": false
+      },
+      "1762553036744": {
+        "type": "build",
+        "id": "1762553036744",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "2025-11-8 06:04:27 build success in 30 s!",
+        "options": {
+          "name": "goldenAnt",
+          "server": "",
+          "platform": "ios",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "startSceneAssetBundle": false,
+          "bundleConfigs": [],
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "useSplashScreen": true,
+          "bundleCommonChunk": false,
+          "packAutoAtlas": true,
+          "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
+          "outputName": "ios_new",
+          "taskName": "ios-001",
+          "scenes": [
+            {
+              "url": "db://assets/app/App.scene",
+              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+            },
+            {
+              "url": "db://assets/scenes/Game.scene",
+              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0"
+            },
+            {
+              "url": "db://assets/scenes/Lobby.scene",
+              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a"
+            },
+            {
+              "url": "db://assets/scenes/loading.scene",
+              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
+            },
+            {
+              "url": "db://assets/scene/scene/Scene.scene",
+              "uuid": "150730f1-22ed-47e8-b453-3d3d45752f15",
+              "bundle": "db://assets/scene"
+            }
+          ],
+          "packages": {},
+          "__version__": "1.3.7",
+          "buildMode": "normal",
+          "logDest": "project://temp/builder/log/ios11-8-2025 06-03.log"
+        },
+        "time": "11-8-2025 06:03:56",
         "dirty": false
       }
     }

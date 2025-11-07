@@ -9,6 +9,7 @@ build/
 dist/
 library/
 native/engine/android/
+native/engine/ios/
 temp/
 *.apk
 *.rar
