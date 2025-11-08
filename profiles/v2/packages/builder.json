@@ -7,11 +7,11 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "android-005",
+    "outputName": "ios_new",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "android",
+    "platform": "ios",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-    "name": "GoldenAnt",
+    "name": "goldenAnt",
     "replaceSplashScreen": true,
     "md5Cache": true,
     "debug": false,
@@ -145,9 +145,9 @@
         "stage": "build",
         "message": "2025-11-8 19:43:46 build success in 23 s!",
         "options": {
-          "name": "goldenAnt",
+          "name": "Test",
           "server": "",
-          "platform": "android",
+          "platform": "ios",
           "buildPath": "project://build",
           "debug": false,
           "md5Cache": false,
@@ -166,24 +166,24 @@
           "bundleCommonChunk": false,
           "packAutoAtlas": true,
           "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-          "outputName": "android-005",
-          "taskName": "android-001",
+          "outputName": "ios",
+          "taskName": "ios",
           "scenes": [
+            {
+              "url": "db://assets/app/App.scene",
+              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+            },
             {
               "url": "db://assets/scenes/Game.scene",
               "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0"
-            },
-            {
-              "url": "db://assets/scenes/loading.scene",
-              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
             },
             {
               "url": "db://assets/scenes/Lobby.scene",
               "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a"
             },
             {
-              "url": "db://assets/app/App.scene",
-              "uuid": "2478cef9-c7e9-4a19-a6f7-b1ec3b562048"
+              "url": "db://assets/scenes/loading.scene",
+              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c"
             },
             {
               "url": "db://assets/scene/scene/Scene.scene",
@@ -191,7 +191,6 @@
               "bundle": "db://assets/scene"
             }
           ],
-          "replaceSplashScreen": true,
           "packages": {},
           "__version__": "1.3.7",
           "buildMode": "normal",

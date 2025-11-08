@@ -3,7 +3,7 @@ console.log("main run " + Date.now())
 
 import "./apeng.js"
 
-import { Asset } from "cc"
+import { Asset, sys } from "cc"
 import { EDITOR } from "cc/env"
 import { TConfigFileName, ConfigFileName } from "../../app/Config"
 import { initData } from "../../app/GameDefine"
@@ -96,51 +96,57 @@ export function initApeng() {
                 _login = apeng._login
                 _main = apeng._main
                 _main.showVideo = (report: string, complete: () => void, share?: boolean, shareFail?: () => void) => {
-                    SignInManager.getRemainingAds((data) => {
-                        if (GlobalData.userInfo.ad_watch_count >= 30) {
-                            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
-                        }
-                        else {
-                            // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
-                            ZJSdk.loadRewardedAd('Prvav5lzty4e', GlobalData.userInfo.user_id.toString(), {
-                                onAdLoaded(msg) {
-                                    // onRequestFinish()
-                                    let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                    console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                    UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                    ZJSdk.showRewardedAd({
-                                        onError(errCode: Number, errMsg: string) {
-                                            console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
-                                        },
-                                        onAdShow() {
-                                            console.log("激励广告展示");
-                                        },
-                                        onAdClick() {
-                                            console.log("激励广告点击");
-                                        },
-                                        onAdClose() {
-                                            console.log("激励广告关闭");
-                                        }
-                                    }, {
-                                        onAdReward(extra) {
-                                            complete?.();
-                                            // SignInManager.addAdWatch((data) => {
-                                            //     console.log(`测试屏蔽了没有`);
-                                            // });
-                                            // UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                                        },
-                                    })
-                                }, onError(errCode, errMsg) {
-                                    UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
-                                    // onRequestFinish()
-                                    console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                }
-                            });
-                        }
-                    });
+                    if (sys.os == sys.OS.ANDROID) {
+                        SignInManager.getRemainingAds((data) => {
+                            if (GlobalData.userInfo.ad_watch_count >= 30) {
+                                UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
+                            }
+                            else {
+                                // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
+                                ZJSdk.loadRewardedAd('Prvav5lzty4e', GlobalData.userInfo.user_id.toString(), {
+                                    onAdLoaded(msg) {
+                                        // onRequestFinish()
+                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+                                        console.log(`激励广告加载成功, 价格为${ecpm}`);
+                                        UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        ZJSdk.showRewardedAd({
+                                            onError(errCode: Number, errMsg: string) {
+                                                console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+                                                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                                            },
+                                            onAdShow() {
+                                                console.log("激励广告展示");
+                                            },
+                                            onAdClick() {
+                                                console.log("激励广告点击");
+                                            },
+                                            onAdClose() {
+                                                console.log("激励广告关闭");
+                                            }
+                                        }, {
+                                            onAdReward(extra) {
+                                                complete?.();
+                                                // SignInManager.addAdWatch((data) => {
+                                                //     console.log(`测试屏蔽了没有`);
+                                                // });
+                                                // UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                                            },
+                                        })
+                                    }, onError(errCode, errMsg) {
+                                        UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                                        // onRequestFinish()
+                                        console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        complete?.();
+                    }
+
                     console.log(`[自定义 showVideo] ${report}`);
                     // 🔥 自定义逻辑：
                     // ZJSdk.loadRewardedAd('Pno79en81mh8', '123456', {
@@ -152,7 +158,7 @@ export function initApeng() {
                     //         });
                     //     }
                     // });
-                    
+
                 };
                 _platform = apeng._platform
                 _privacy = apeng._privacy

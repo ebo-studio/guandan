@@ -775,6 +775,10 @@
       "android": {
         "configID": "944002",
         "services": []
+      },
+      "ios": {
+        "configID": "944002",
+        "services": []
       }
     }
   },
