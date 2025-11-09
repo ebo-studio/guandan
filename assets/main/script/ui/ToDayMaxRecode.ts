@@ -12,13 +12,21 @@ export class ToDayMaxRecode extends BaseComponent {
 
 	onEnable(): void {
 		super.onEnable()
-		let time = _logic._today.todayTime
-		if (time == -1) {
-			this.SwitchChildrenCC.index = 0
+		// let time = _logic._today.todayTime
+		// if (time == -1) {
+		// 	this.SwitchChildrenCC.index = 0
+		// }
+		// else {
+		// 	this.SwitchChildrenCC.index = 1
+		// 	this.cLabel_time.string = Times.numHourCountDown(time * 1000)
+		// }
+		let level = _logic._level.curLevel;
+		if(level <= 0) {
+			this.SwitchChildrenCC.index = 0;
 		}
 		else {
-			this.SwitchChildrenCC.index = 1
-			this.cLabel_time.string = Times.numHourCountDown(time * 1000)
+			this.SwitchChildrenCC.index = 1;
+			this.cLabel_time.string = '第' + level + '关';
 		}
 	}
 }

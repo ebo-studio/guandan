@@ -148,7 +148,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680,
+      "width": 1680.0000000000002,
       "height": 720
     },
     "_anchorPoint": {
@@ -305,10 +305,7 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": {
-      "__uuid__": "cc7bbd10-c1e8-4cac-8f9d-0213384df574@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_normalSprite": null,
     "_hoverSprite": null,
     "_pressedSprite": null,
     "_disabledSprite": null,
@@ -327,7 +324,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "b6434sO3WNJp51rg9EiK3LZ",
+    "_componentId": "7875eGMuyZJLryOf0ZS7b2f",
     "handler": "onBtnCloseClick",
     "customEventData": ""
   },
@@ -2895,7 +2892,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -672.5,
+      "x": -672.5000000000001,
       "y": -50,
       "z": 0
     },
@@ -5075,7 +5072,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -28,
+      "x": -28.000000000000114,
       "y": 311,
       "z": 0
     },
@@ -5226,7 +5223,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 72,
+      "width": 71.9944065740103,
       "height": 63
     },
     "_anchorPoint": {
@@ -5265,7 +5262,7 @@
     "_string": "排名",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 36,
+    "_actualFontSize": 36.942857142857136,
     "_fontSize": 36,
     "_fontFamily": "Arial",
     "_lineHeight": 50,
@@ -5651,7 +5648,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680,
+      "width": 1680.0000000000002,
       "height": 720
     },
     "_anchorPoint": {

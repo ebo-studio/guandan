@@ -145,7 +145,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680,
+      "width": 1680.0000000000002,
       "height": 720
     },
     "_anchorPoint": {
@@ -273,7 +273,7 @@
       }
     ],
     "_interactable": true,
-    "_transition": 0,
+    "_transition": 2,
     "_normalColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -302,10 +302,7 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": {
-      "__uuid__": "cc7bbd10-c1e8-4cac-8f9d-0213384df574@f9941",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_normalSprite": null,
     "_hoverSprite": null,
     "_pressedSprite": null,
     "_disabledSprite": null,
@@ -519,8 +516,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80,
-      "height": 52.92
+      "width": 79.9851377270338,
+      "height": 52.919999999999995
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -558,7 +555,7 @@
     "_string": "暂无",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 40,
+    "_actualFontSize": 41.047619047619044,
     "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 42,
@@ -1208,8 +1205,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 50.4
+      "width": 59.98886072995215,
+      "height": 50.400000000000006
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1247,7 +1244,7 @@
     "_string": "头像",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
+    "_actualFontSize": 30.785714285714285,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1367,8 +1364,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 188.3349609375,
-      "height": 50.4
+      "width": 188.2999924661942,
+      "height": 50.400000000000006
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1406,7 +1403,7 @@
     "_string": "昵称/所属单位",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
+    "_actualFontSize": 30.785714285714285,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1526,8 +1523,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 50.4
+      "width": 59.98886072995215,
+      "height": 50.400000000000006
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1565,7 +1562,7 @@
     "_string": "积分",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
+    "_actualFontSize": 30.785714285714285,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1685,8 +1682,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 50.4
+      "width": 59.98886072995215,
+      "height": 50.400000000000006
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1724,7 +1721,7 @@
     "_string": "局数",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
+    "_actualFontSize": 30.785714285714285,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -1844,8 +1841,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 60,
-      "height": 50.4
+      "width": 59.98886072995215,
+      "height": 50.400000000000006
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1883,7 +1880,7 @@
     "_string": "晋级",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 30,
+    "_actualFontSize": 30.785714285714285,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2200,7 +2197,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -28,
+      "x": -28.000000000000114,
       "y": 311,
       "z": 0
     },
@@ -2351,7 +2348,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 72,
+      "width": 71.9944065740103,
       "height": 63
     },
     "_anchorPoint": {
@@ -2390,7 +2387,7 @@
     "_string": "战绩",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 36,
+    "_actualFontSize": 36.942857142857136,
     "_fontSize": 36,
     "_fontFamily": "Arial",
     "_lineHeight": 50,
@@ -2776,7 +2773,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680,
+      "width": 1680.0000000000002,
       "height": 720
     },
     "_anchorPoint": {

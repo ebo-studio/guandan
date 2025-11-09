@@ -30,10 +30,10 @@ export class LevelSelectUI extends BaseUI {
 			item.getComponent(LevelSelectUIItems)!
 				.init(data * rowCount, data == this.colCount - 1 ? this.endCount : rowCount, this)
 		}
-		this.ListRollCC.setPositionX(-100000, false)
-		this.scheduleOnce(() => {
-			this.ListRollCC.setPositionX(0, false)
-		}, .1)
+		// this.ListRollCC.setPositionX(-100000, false)
+		// this.scheduleOnce(() => {
+		// 	this.ListRollCC.setPositionX(0, false)
+		// }, .1)
 	}
 
 	onOpen() {

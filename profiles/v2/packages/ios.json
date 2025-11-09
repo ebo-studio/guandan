@@ -3,7 +3,7 @@
   "builder": {
     "common": {
       "buildPath": "project://build",
-      "outputName": "ios_new",
+      "outputName": "ios_golden",
       "mainBundleCompressionType": "merge_dep",
       "platform": "ios",
       "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
@@ -217,6 +217,27 @@
         "developerTeam": "37W8XA5245_30F792A8903675F1E913E9217D82B0906B8EE30B"
       },
       "1762553036744": {
+        "executableName": "GoldenAnt",
+        "packageName": "com.goldenant.id",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": true
+        },
+        "targetVersion": "15.0",
+        "__version__": "1.0.1",
+        "developerTeam": "37W8XA5245_30F792A8903675F1E913E9217D82B0906B8EE30B"
+      },
+      "1762584225472": {
         "executableName": "GoldenAnt",
         "packageName": "com.goldenant.id",
         "renderBackEnd": {

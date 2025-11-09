@@ -3,6 +3,8 @@ import { ccclass, EBlockOnceAdType, EPlatformType, EBottomAdType, NodeHelper, Pr
 import { AnimBaseUI } from "../../../main/script/ui/AnimBaseUI";
 import { CGameData } from "../../../app/GameDefine";
 import { EGameType } from "../../../main/script/module/define/GameTypeDefine";
+import { GlobalData } from "db://assets/scripts/manager/GlobalData";
+// import { GlobalData } from "db://assets/scripts/manager/GlobalData";
 
 
 
@@ -20,7 +22,8 @@ export class RunUI extends AnimBaseUI {
 	private cBottomBtns: Node = null!
 
 	private cAnimtorByTweenCC_tip: AnimtorByTweenCC = null!
-	private useTipNodes: Node[] = []
+	private useTipNodes: Node[] = [];
+	private cLabel_score: Label = null!;
 
 	onCreate() {
 		super.onCreate()
@@ -69,6 +72,8 @@ export class RunUI extends AnimBaseUI {
 			for (let node of this.useTipNodes)
 				node.active = true
 		}, this, _logic)
+
+		this.cLabel_score.string = (GlobalData.userInfo.score / 100).toFixed(1);
 	}
 
 	onOpen() {
@@ -91,6 +96,7 @@ export class RunUI extends AnimBaseUI {
 				this.cLabel_level.node.active = false
 				this.cAstep.active = false
 				this.cAtime.active = true
+				this.cLabel_score.string = (GlobalData.userInfo.score / 100).toFixed(1);
 				_timer.loop(this, this.onLoopDownCount, 1, -1, -1)
 				if (_logic._today.configIndex == 0)
 					this.playAnim(true)

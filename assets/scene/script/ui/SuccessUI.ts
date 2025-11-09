@@ -61,7 +61,7 @@ export class SuccessUI extends BaseUI {
 
 		if (_language.cur == ELanguageType.chinese) {
 			if (this.cAShare)
-				this.cAShare.active = true
+				this.cAShare.active = false
 			this.cButtonCCNext.isPlayBreathe = false
 		}
 		else {

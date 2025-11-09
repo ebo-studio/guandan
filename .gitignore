@@ -11,14 +11,15 @@ library/
 # 忽略整个 native/engine/android，但保留 com/cocos/game 目录
 # 忽略整个 android 目录
 native/engine/android/*
+native/engine/ios/*
 # native/engine/android/app/*
 
 # 但保留 app/src/com/cocos/game
-!native/engine/android/app/
-!native/engine/android/app/src/
-!native/engine/android/app/src/com/
-!native/engine/android/app/src/com/cocos/
-!native/engine/android/app/src/com/cocos/game/
+# !native/engine/android/app/
+# !native/engine/android/app/src/
+# !native/engine/android/app/src/com/
+# !native/engine/android/app/src/com/cocos/
+# !native/engine/android/app/src/com/cocos/game/
 temp/
 *.apk
 *.rar
