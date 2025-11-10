@@ -95,7 +95,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -185.4770334336708,
+      "x": -185.5,
       "y": 0,
       "z": 0
     },
@@ -234,7 +234,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -46.49164852133484,
+      "x": -46.5,
       "y": 0,
       "z": 0
     },
@@ -275,8 +275,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 234.97076982467195,
-      "height": 130.00000000000003
+      "width": 235,
+      "height": 130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -314,7 +314,7 @@
     "_string": "最高通关纪录：",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 33.864285714285714,
+    "_actualFontSize": 33,
     "_fontSize": 33,
     "_fontFamily": "Arial",
     "_lineHeight": 100,
@@ -421,7 +421,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 70.99373639100114,
+      "x": 71,
       "y": 0,
       "z": 0
     },
@@ -515,8 +515,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 135.98329704266968,
-      "height": 130.00000000000003
+      "width": 136,
+      "height": 130
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -554,7 +554,7 @@
     "_string": "暂未通关",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 33.864285714285714,
+    "_actualFontSize": 33,
     "_fontSize": 33,
     "_fontFamily": "Arial",
     "_lineHeight": 100,
@@ -822,7 +822,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 135.98329704266968,
+      "width": 136,
       "height": 100
     },
     "_anchorPoint": {
@@ -922,7 +922,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 413.9540668673416,
+      "width": 414,
       "height": 100
     },
     "_anchorPoint": {

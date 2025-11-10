@@ -17,6 +17,11 @@ export class SuccessUI extends BaseUI {
 	private cBtns: Node = null!
 	private cNativeHight: Node = null!
 
+	public _openData: boolean = null!
+	private cLabel_desc: Label = null!;
+	private cLabel_desc1: Label = null!;
+	
+
 	protected openByAudioUrls = [
 		"scene/audio/success",
 	]
@@ -86,6 +91,14 @@ export class SuccessUI extends BaseUI {
 		if (_platform.type == EPlatformType.overseas_kwai)
 			_platform._interstitial_.show()
 
+		if(this._openData && this._openData) {
+			this.cLabel_desc.node.active = true;
+			this.cLabel_desc1.node.active = true;
+		}
+		else {
+			this.cLabel_desc.node.active = false;
+			this.cLabel_desc1.node.active = false;
+		}
 	}
 
 

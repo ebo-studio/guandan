@@ -1,6 +1,7 @@
 
 import { Label } from "cc";
 import { _logic, BaseComponent, ccclass, Times } from "../Main";
+import { GlobalData } from "db://assets/scripts/manager/GlobalData";
 
 
 
@@ -20,7 +21,7 @@ export class ToDayMaxRecode extends BaseComponent {
 		// 	this.SwitchChildrenCC.index = 1
 		// 	this.cLabel_time.string = Times.numHourCountDown(time * 1000)
 		// }
-		let level = _logic._level.curLevel;
+		let level = GlobalData.userInfo.level_info;
 		if(level <= 0) {
 			this.SwitchChildrenCC.index = 0;
 		}

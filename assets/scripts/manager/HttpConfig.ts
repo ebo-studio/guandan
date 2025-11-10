@@ -26,6 +26,7 @@ export module HttpConfig{
     export const QueryMyFirstInviter: number = 117; //查询自己所有一级
     export const AdWatchInfo: number = 118; //查询自己所有一级
     export const AdWatchCount: number = 119; //查询自己所有一级
+    export const GetUserLevelInfo: number = 120;
 
 
     var httpMap: Map<number, string> = null;
@@ -47,6 +48,7 @@ export module HttpConfig{
         httpMap.set(ScoreGroupList, commonUrl + "api/Game/scoreGroupList");
         httpMap.set(GameResultList, commonUrl + "api/Game/queryGameResultList");
         httpMap.set(GetUserInfo, commonUrl + "api/User/getUserInfo");
+        httpMap.set(GetUserLevelInfo, commonUrl + 'api/User/getUserLevelInfo');
         httpMap.set(CancelGameZu, commonUrl + "api/Game/cancelGameZu");
         httpMap.set(QueryAuditionGameList, commonUrl + "api/Game/queryMassGameList");
         httpMap.set(AuditionUpList, commonUrl + "api/Game/massUserList");

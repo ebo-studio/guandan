@@ -170,6 +170,11 @@ export class Lobby extends Component {
             //     }
             // })
         }
+        // GlobalData.requestGetUserLevelInfo({
+        //     success: () => {
+
+        //     }
+        // })
         SignInManager.getRemainingAds();
 
     }

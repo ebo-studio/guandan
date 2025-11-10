@@ -22,6 +22,7 @@ export class LogicModule extends BaseModuleEvent {
         USE_DIRBACK: "USE_DIRBACK",
         USE_DIRBACK_COMPLETE: "USE_DIRBACK_COMPLETE",
         DURATION_CHANGE: "DURATION_CHANGE",
+        CHANGE_SCORE: 'CHANGE_SCORE'
     }
 
     public data: DataLogicHelper<ILogicData> = null!

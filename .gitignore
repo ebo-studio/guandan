@@ -15,11 +15,11 @@ native/engine/ios/*
 # native/engine/android/app/*
 
 # 但保留 app/src/com/cocos/game
-# !native/engine/android/app/
-# !native/engine/android/app/src/
-# !native/engine/android/app/src/com/
-# !native/engine/android/app/src/com/cocos/
-# !native/engine/android/app/src/com/cocos/game/
+!native/engine/android/app/
+!native/engine/android/app/src/
+!native/engine/android/app/src/com/
+!native/engine/android/app/src/com/cocos/
+!native/engine/android/app/src/com/cocos/game/
 temp/
 *.apk
 *.rar
@@ -33,9 +33,9 @@ temp/
 # 忽略临时文件
 *.tmp
 *.swp
-# *.gradle
-*.dm
 *.gradle
+*.dm
+# *.gradle
 
 # 忽略 VS Code 配置
 .vscode/

@@ -16,6 +16,8 @@ import { GlobalData } from "../../scripts/manager/GlobalData"
 import { UIManager } from "../../scripts/manager/UIManager"
 import { UIConfig } from "../../scripts/manager/UIConfig"
 import { PangleAdManager } from "../../scripts/common/PangleAdManager.js"
+import { md5 } from "../../scripts/common/md5"
+import { UrlConfig } from "../../scripts/manager/UrlConfig"
 
 
 /**配置 */
@@ -97,10 +99,60 @@ export function initApeng() {
                 _main = apeng._main
                 _main.showVideo = (report: string, complete: () => void, share?: boolean, shareFail?: () => void) => {
                     if (sys.os == sys.OS.ANDROID) {
+                        _ui.Loading.wait(true)
                         SignInManager.getRemainingAds((data) => {
                             if (GlobalData.userInfo.ad_watch_count >= 30) {
-                                UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
+                                _ui.Loading.wait(false)
+                                _ui.dialogue(
+                                    "当前看视频已达上限,是否扣除5积分获得道具",
+                                    {
+                                        text: "取消",
+                                        onClick: () => {
+                                            // _platform.instance.killGame()
+                                        },
+                                    },
+                                    {
+                                        text: "确认",
+                                        color: "darkBlue",
+                                        onClick: () => {
+                                            if(GlobalData.userInfo.score < 5) {
+                                                _ui.tip('积分不足');
+                                                return;
+                                            }
+                                            const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
+                                            const userId = GlobalData.userInfo.user_id;             // 当前用户ID
+                                            const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
+                                            const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
+
+                                            const url = `${UrlConfig.getHttpUrl()}api/User/deductGold`;
+                                            const postData = {
+                                                token: GlobalData.loginInfo.token,
+                                                userId: userId,
+                                                time: time,
+                                                sign: sign,
+                                                amount: 500
+                                            };
+
+                                            GlobalData.postWithFetch(url, postData)
+                                                .then(data => {
+                                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                                    GlobalData.requestGetUserInfo({
+                                                        success: () => {
+
+                                                        }
+                                                    });
+                                                    complete?.();
+                                                    _logic.emit(_logic.EventType.CHANGE_SCORE)
+                                                })
+                                                .catch(err => {
+                                                    console.error('deductGold error:', err);
+
+                                                });
+                                        },
+                                    },
+                                )
+                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
                             }
                             else {
                                 // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
@@ -109,7 +161,8 @@ export function initApeng() {
                                         // onRequestFinish()
                                         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
                                         console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                        UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        _ui.Loading.wait(false);
+                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                                         ZJSdk.showRewardedAd({
                                             onError(errCode: Number, errMsg: string) {
                                                 console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
@@ -134,8 +187,10 @@ export function initApeng() {
                                             },
                                         })
                                     }, onError(errCode, errMsg) {
-                                        UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                                        _ui.Loading.wait(false);
+                                        _ui.tip('视频加载失败,请稍后重试');
+                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
                                         // onRequestFinish()
                                         console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
                                     }

@@ -73,7 +73,11 @@ export class RunUI extends AnimBaseUI {
 				node.active = true
 		}, this, _logic)
 
-		this.cLabel_score.string = (GlobalData.userInfo.score / 100).toFixed(1);
+		this.addEvent(_logic.EventType.CHANGE_SCORE, ()=>{
+			this.cLabel_score.string = (GlobalData.userInfo.score / 100).toFixed(1);
+		}, this, _logic);
+
+		
 	}
 
 	onOpen() {
@@ -90,7 +94,8 @@ export class RunUI extends AnimBaseUI {
 				this.onEventLevel(_logic._level.curLevel)
 				this.playAnim(true)
 				this.cAstep.active = true
-				this.onEventStepCount()
+				this.onEventStepCount();
+				this.cLabel_score.string = (GlobalData.userInfo.score / 100).toFixed(1);
 				break;
 			case EGameType.today:
 				this.cLabel_level.node.active = false

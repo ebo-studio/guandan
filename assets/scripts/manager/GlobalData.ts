@@ -8,6 +8,7 @@ import { UIManager } from "./UIManager"
 import { ZJSdk } from "../ZJSdk/ZJSdk"
 import { ZJConfig } from "../ZJSdk/ZJConfig"
 import { SignInManager } from "./SignInManager"
+import { md5 } from "../common/md5"
 
 export interface NoticeInfo {
     id: number;
@@ -414,7 +415,8 @@ export namespace GlobalData {
         isLogin: false,
         is_vip: 0, //1为合伙人，0为普通玩家
         ad_watch_count: 0,
-        noticeData: []
+        noticeData: [],
+        level_info: -1
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -510,6 +512,28 @@ export namespace GlobalData {
         });
     }
 
+    export function requestGetUserLevelInfo(cb: { success: Function, fail?: Function }) {
+        const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
+        const userId = GlobalData.userInfo.user_id;             // 当前用户ID
+        const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
+        const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
+        var url = HttpConfig.getUrl(HttpConfig.GetUserLevelInfo);
+        let sendData = {
+            token: GlobalData.loginInfo.token,
+            userId: userId,
+            time: time,
+            sign: sign
+        }
+        utils.sendHttpRequest({
+            url: url,
+            method: "POST",
+            data: utils.toJson(sendData),
+            success: function (data) {
+                console.log("GetUserLevelInfo success", data);
+            }
+        })
+    }
+
 
     //查询用户信息
     export function requestGetUserInfo(cb: { success: Function, fail?: Function }) {
@@ -532,7 +556,12 @@ export namespace GlobalData {
                 userInfo.score = data.gold;
                 userInfo.name = data.name;
                 userInfo.is_vip = data.is_vip;
-
+                if (data.level_info == null) {
+                    userInfo.level_info = -1;
+                }
+                else {
+                    userInfo.level_info = Number(data.level_info);
+                }
                 // let userInfodata: SignInManager.UserInfo = {
                 //     token: GlobalData.loginInfo.token,
                 //     name: userInfo.name,
@@ -1215,6 +1244,22 @@ export namespace GlobalData {
                 func();
             }
         });
+    }
+
+    export async function postWithFetch(url: string, data: any) {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
+
+        return await res.json();
     }
 }
 

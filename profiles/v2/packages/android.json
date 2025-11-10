@@ -5245,11 +5245,221 @@
         },
         "swappy": false,
         "__version__": "1.0.1"
+      },
+      "1762766406267": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1762766839576": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1762778419986": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1762785345958": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1762785634232": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
+      },
+      "1762785772171": {
+        "packageName": "com.skyland.flysdtpchat.my",
+        "resizeableActivity": true,
+        "maxAspectRatio": "2.4",
+        "orientation": {
+          "portrait": false,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "apiLevel": 36,
+        "appABIs": [
+          "arm64-v8a"
+        ],
+        "useDebugKeystore": false,
+        "keystorePath": "/Users/mac/xuhang/guandan/key/release1.jks",
+        "keystorePassword": "xuhang518",
+        "keystoreAlias": "key0",
+        "keystoreAliasPassword": "xuhang518",
+        "appBundle": false,
+        "androidInstant": false,
+        "inputSDK": false,
+        "remoteUrl": "",
+        "sdkPath": "",
+        "ndkPath": "",
+        "javaHome": "",
+        "javaPath": "",
+        "renderBackEnd": {
+          "vulkan": false,
+          "gles3": true,
+          "gles2": true
+        },
+        "swappy": false,
+        "__version__": "1.0.1"
       }
     },
     "__version__": "1.3.7",
     "common": {
-      "outputName": "android",
+      "outputName": "android-005",
       "mainBundleCompressionType": "merge_dep",
       "platform": "android",
       "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",

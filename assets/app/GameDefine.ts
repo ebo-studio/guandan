@@ -40,6 +40,7 @@ export const CGameData = {
     SuccessUrl: "scene/prefab/ui/" + (IsNativeAd ? "SuccessNativeUI" : "SuccessUI"),
     RunUIUrl: "scene/prefab/ui/RunUI",
     ResetCardAnimUI: "scene/prefab/ui/ResetCardAnimUI",
+    
     /**使用羊皮肤，海外快手上不去 */
     useSheep: false,
 }

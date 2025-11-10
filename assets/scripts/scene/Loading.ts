@@ -367,76 +367,82 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        let data = { account: phone, type: 1, code: code, inviterId: inviter };
-        LoginGlobal.instance.requestLogin(data, {
-            success: (data) => {
-                console.log('登录成功:', data);
-                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
-                if (data) {
-                    GlobalData.loginInfo.token = data.token;
-                    localStorage.setItem(GlobalData.TOKEN, data.token);
-                    if (!SignInManager.getUserByName(data.name)) {
-                        let userInfodata: SignInManager.UserInfo = {
-                            token: data.token,
-                            name: data.name,
-                            ad_watch_count: 0,
-                        };
-                        SignInManager.addOrUpdateUser(userInfodata)
-                    }
-                    SignInManager.switchUser(data.name);
-                }
-
-                GlobalData.requestGetUserInfo({
-                    success: () => {
-                        clearInterval(this.timer);
-                        GlobalData.userInfo.haveToken = true;
-                        ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                        ZJSdk.start({
-                            onStartFailed(code, msg) {
-                                console.log(`onStartFailed:${code}-${msg}`);
-                                // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                            }, onStartSuccess() {
-                                console.log("onStartSuccess");
-
+        this.startZimLocalTest((success, certifyId) => {
+            if (success) {
+                console.log("ZIM 本地测试成功:", success);
+                let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId:  certifyId};
+                LoginGlobal.instance.requestLogin(data, {
+                    success: (data) => {
+                        console.log('登录成功:', data);
+                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                        if (data) {
+                            GlobalData.loginInfo.token = data.token;
+                            localStorage.setItem(GlobalData.TOKEN, data.token);
+                            if (!SignInManager.getUserByName(data.name)) {
+                                let userInfodata: SignInManager.UserInfo = {
+                                    token: data.token,
+                                    name: data.name,
+                                    ad_watch_count: 0,
+                                };
+                                SignInManager.addOrUpdateUser(userInfodata)
                             }
-                        })
-                        this.loginNode.active = false;
-                        this.phoneLoginBtn.node.active = false;
-                        this.emailBtn.node.active = false;
-                        this.joginGame.node.active = true;
-                        const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
-                        this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                            GlobalData.userInfo.noticeData = [];
-                            if (Number(data?.code) === 200) {
-                                for (let i = 0; i < data.data.length; i++) {
-                                    GlobalData.userInfo.noticeData.push(data.data[i]);
-                                    // if (data.data[i].title == '系统维护通知') {
-                                    //     const localNotices = [data.data[i]];
+                            SignInManager.switchUser(data.name);
+                        }
 
-                                    // }
-                                }
-                                UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                        GlobalData.requestGetUserInfo({
+                            success: () => {
+                                clearInterval(this.timer);
+                                GlobalData.userInfo.haveToken = true;
+                                ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                                ZJSdk.start({
+                                    onStartFailed(code, msg) {
+                                        console.log(`onStartFailed:${code}-${msg}`);
+                                        // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                                    }, onStartSuccess() {
+                                        console.log("onStartSuccess");
+
+                                    }
+                                })
+                                this.loginNode.active = false;
+                                this.phoneLoginBtn.node.active = false;
+                                this.emailBtn.node.active = false;
+                                this.joginGame.node.active = true;
+                                const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                    GlobalData.userInfo.noticeData = [];
+                                    if (Number(data?.code) === 200) {
+                                        for (let i = 0; i < data.data.length; i++) {
+                                            GlobalData.userInfo.noticeData.push(data.data[i]);
+                                            // if (data.data[i].title == '系统维护通知') {
+                                            //     const localNotices = [data.data[i]];
+
+                                            // }
+                                        }
+                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                    }
+                                })
+                                    .catch(err => console.error(err));
                             }
-                        })
-                            .catch(err => console.error(err));
+                        });
                     }
-                });
+                })
+            } else {
+                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
+                // console.warn("ZIM 本地测试失败:", msg);
             }
-        })
+        });
+
     }
 
-    startZimLocalTest() {
-        // if (!this._initialized) {
-        //     console.error('[Pangle] SDK not initialized');
-        //     return;
-        // }
+    startZimLocalTest(callback?: (success: boolean, msg: string) => void) {
         if (!sys.isNative) return;
 
-        (globalThis as any).onZimTestResult = function (success: boolean, msg: string) {
-            console.log("ZIM 本地测试结果:", success, msg);
-
-            // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: code + ',' +  msg});
+        (globalThis as any).onZimTestResult = function (success: boolean, certifyId: string) {
+            console.log("ZIM 本地测试结果:", success, certifyId);
+            if (callback) callback(success, certifyId);
+            // 这里也可以继续触发UI提示
+            // UIManager.Instance.showUI({ path: UIConfig.MessageHintKey, data: msg });
         };
 
         try {
@@ -449,10 +455,11 @@ export class Loading extends Component {
                 );
             } else if (sys.os === sys.OS.IOS) {
                 // @ts-ignore
-                // jsb.reflection.callStaticMethod('PangleAdapter', 'showRewardedVideoWithAdUnitId:', adUnitId);
+                // jsb.reflection.callStaticMethod('PangleAdapter', 'startLocalZimTest');
             }
         } catch (e) {
-            console.error('[Pangle] show rewarded failed:', e);
+            console.error('[ZIM] 本地测试失败:', e);
+            if (callback) callback(false, e.toString());
         }
     }
 
@@ -490,63 +497,128 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        let data = { account: email, type: 2, code: code, inviterId: inviter };
-        LoginGlobal.instance.requestLogin(data, {
-            success: (data) => {
-                console.log('登录成功:', data);
-                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
-                if (data) {
-                    GlobalData.loginInfo.token = data.token;
-                    localStorage.setItem(GlobalData.TOKEN, data.token);
-                    if (!SignInManager.getUserByName(data.name)) {
-                        let userInfodata: SignInManager.UserInfo = {
-                            token: data.token,
-                            name: data.name,
-                            ad_watch_count: 0,
-                        };
-                        SignInManager.addOrUpdateUser(userInfodata)
-                    }
-                    SignInManager.switchUser(data.name);
-                }
-
-                GlobalData.requestGetUserInfo({
-                    success: () => {
-                        clearInterval(this.timer);
-                        GlobalData.userInfo.haveToken = true;
-                        ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                        ZJSdk.start({
-                            onStartFailed(code, msg) {
-                                console.log(`onStartFailed:${code}-${msg}`);
-                                // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                            }, onStartSuccess() {
-                                console.log("onStartSuccess");
-
+        this.startZimLocalTest((success, certifyId) => {
+            if (success) {
+                console.log("ZIM 本地测试成功:", success);
+                let data = { account: email, type: 2, code: code, inviterId: inviter, certifyId:  certifyId};
+                LoginGlobal.instance.requestLogin(data, {
+                    success: (data) => {
+                        console.log('登录成功:', data);
+                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                        if (data) {
+                            GlobalData.loginInfo.token = data.token;
+                            localStorage.setItem(GlobalData.TOKEN, data.token);
+                            if (!SignInManager.getUserByName(data.name)) {
+                                let userInfodata: SignInManager.UserInfo = {
+                                    token: data.token,
+                                    name: data.name,
+                                    ad_watch_count: 0,
+                                };
+                                SignInManager.addOrUpdateUser(userInfodata)
                             }
-                        })
-                        this.loginNode.active = false;
-                        this.phoneLoginBtn.node.active = false;
-                        this.emailBtn.node.active = false;
-                        this.joginGame.node.active = true;
-                        const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
-                        this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                            GlobalData.userInfo.noticeData = [];
-                            if (Number(data?.code) === 200) {
-                                for (let i = 0; i < data.data.length; i++) {
-                                    GlobalData.userInfo.noticeData.push(data.data[i]);
-                                    // if (data.data[i].title == '系统维护通知') {
-                                    //     const localNotices = [data.data[i]];
-                                    //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
-                                    // }
-                                }
-                                UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                            SignInManager.switchUser(data.name);
+                        }
+
+                        GlobalData.requestGetUserInfo({
+                            success: () => {
+                                clearInterval(this.timer);
+                                GlobalData.userInfo.haveToken = true;
+                                ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                                ZJSdk.start({
+                                    onStartFailed(code, msg) {
+                                        console.log(`onStartFailed:${code}-${msg}`);
+                                        // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                                    }, onStartSuccess() {
+                                        console.log("onStartSuccess");
+
+                                    }
+                                })
+                                this.loginNode.active = false;
+                                this.phoneLoginBtn.node.active = false;
+                                this.emailBtn.node.active = false;
+                                this.joginGame.node.active = true;
+                                const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                    GlobalData.userInfo.noticeData = [];
+                                    if (Number(data?.code) === 200) {
+                                        for (let i = 0; i < data.data.length; i++) {
+                                            GlobalData.userInfo.noticeData.push(data.data[i]);
+                                            // if (data.data[i].title == '系统维护通知') {
+                                            //     const localNotices = [data.data[i]];
+
+                                            // }
+                                        }
+                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                    }
+                                })
+                                    .catch(err => console.error(err));
                             }
-                        })
-                            .catch(err => console.error(err));
+                        });
                     }
-                });
+                })
+            } else {
+                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
+                // console.warn("ZIM 本地测试失败:", msg);
             }
-        })
+        });
+        // let data = { account: email, type: 2, code: code, inviterId: inviter };
+        // LoginGlobal.instance.requestLogin(data, {
+        //     success: (data) => {
+        //         console.log('登录成功:', data);
+        //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+        //         if (data) {
+        //             GlobalData.loginInfo.token = data.token;
+        //             localStorage.setItem(GlobalData.TOKEN, data.token);
+        //             if (!SignInManager.getUserByName(data.name)) {
+        //                 let userInfodata: SignInManager.UserInfo = {
+        //                     token: data.token,
+        //                     name: data.name,
+        //                     ad_watch_count: 0,
+        //                 };
+        //                 SignInManager.addOrUpdateUser(userInfodata)
+        //             }
+        //             SignInManager.switchUser(data.name);
+        //         }
+
+        //         GlobalData.requestGetUserInfo({
+        //             success: () => {
+        //                 clearInterval(this.timer);
+        //                 GlobalData.userInfo.haveToken = true;
+        //                 ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+        //                 ZJSdk.start({
+        //                     onStartFailed(code, msg) {
+        //                         console.log(`onStartFailed:${code}-${msg}`);
+        //                         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+        //                     }, onStartSuccess() {
+        //                         console.log("onStartSuccess");
+
+        //                     }
+        //                 })
+        //                 this.loginNode.active = false;
+        //                 this.phoneLoginBtn.node.active = false;
+        //                 this.emailBtn.node.active = false;
+        //                 this.joginGame.node.active = true;
+        //                 const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+        //                 this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+        //                     // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+        //                     GlobalData.userInfo.noticeData = [];
+        //                     if (Number(data?.code) === 200) {
+        //                         for (let i = 0; i < data.data.length; i++) {
+        //                             GlobalData.userInfo.noticeData.push(data.data[i]);
+        //                             // if (data.data[i].title == '系统维护通知') {
+        //                             //     const localNotices = [data.data[i]];
+        //                             //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+        //                             // }
+        //                         }
+        //                         UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+        //                     }
+        //                 })
+        //                     .catch(err => console.error(err));
+        //             }
+        //         });
+        //     }
+        // })
     }
 
     onGetCode() {

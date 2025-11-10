@@ -42,7 +42,7 @@ export class LoginGlobal extends Component {
                     },
                     fail: function (data) {
                         console.log("Login fail ", data);
-                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data });
+                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey,  data: "登录失败"});
                         if (cb.fail) cb.fail();
                     },
                     complete: function () {

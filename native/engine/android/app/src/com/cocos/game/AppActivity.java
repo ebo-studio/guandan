@@ -3,6 +3,7 @@
  ****************************************************************************/
 package com.cocos.game;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.ClipData;
@@ -13,6 +14,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -26,11 +28,13 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
-import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSON;
+//import com.alibaba.fastjson.JSONObject;
 import com.alipay.face.api.ZIMCallback;
 import com.alipay.face.api.ZIMFacade;
 import com.alipay.face.api.ZIMFacadeBuilder;
 import com.alipay.face.api.ZIMResponse;
+import com.alipay.face.api.ZIMFacade;
 import com.cocos.lib.CocosActivity;
 import com.cocos.lib.CocosHelper;
 import com.cocos.lib.CocosJavascriptJavaBridge;
@@ -42,13 +46,21 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Locale;
 
 public class AppActivity extends CocosActivity {
 
-    private static final String TAG = "goldenAnt";
+    private static final String TAG = "ZIM";
     private static AppActivity instance;
     private static RewardedAd mRewardedAd;
 
@@ -64,6 +76,13 @@ public class AppActivity extends CocosActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, 1001);
+            }
+        }
 
 //        Locale locale = new Locale("en", "US");
 //        Locale.setDefault(locale);
@@ -325,39 +344,117 @@ public class AppActivity extends CocosActivity {
         AppActivity activity = AppActivity.getInstance();
         activity.runOnUiThread(() -> {
             try {
-                Log.i(TAG, "启动阿里云 ZIM 人脸检测本地测试");
+                Log.i(TAG, "启动阿里云 ZIM 实人认证");
 
-                // ⚠️ 这里用“假 token”测试，不做服务端签名校验
-                String fakeVerificationToken = "test-token-" + System.currentTimeMillis();
+                // 1️⃣ 从 SDK 获取 MetaInfo
+//                String metaInfo = ZIMFacade.getMetaInfos(activity);
+                ZIMFacade zim = ZIMFacadeBuilder.create(activity);
+                String metaInfo = "";
+                try {
+                    metaInfo = zim.getMetaInfos(activity);
+                    Log.i(TAG, "MetaInfo 收集成功: " + metaInfo);
+                } catch (Exception e) {
+                    Log.e(TAG, "获取 MetaInfo 失败: " + e.getMessage());
+                }
 
-                // 创建 SDK 实例
-                ZIMFacade zimFacade = ZIMFacadeBuilder.create(activity);
+                final String finalMetaInfo = metaInfo;
 
-                // 配置参数
-                HashMap<String, String> extParams = new HashMap<>();
-                extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_USE_VIDEO,
-                        ZIMFacade.ZIM_EXT_PARAMS_VAL_USE_VIDEO_TRUE);
-                extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_FACE_PROGRESS_COLOR, "#FF0000");
-                extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_SCREEN_ORIENTATION,
-                        ZIMFacade.ZIM_EXT_PARAMS_VAL_SCREEN_LAND);
+                // 2️⃣ 调用后端，获取真正的 verifyToken
+                new Thread(() -> {
+                    try {
+                        URL url = new URL("http://129.204.21.168:8089/api/Login/initFaceVerify");
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setRequestMethod("POST");
+                        conn.setRequestProperty("Content-Type", "application/json");
+                        conn.setDoOutput(true);
 
-                // 调起 SDK
-                zimFacade.verify(fakeVerificationToken, true, extParams, new ZIMCallback() {
-                    @Override
-                    public boolean response(final ZIMResponse response) {
-                        Log.i(TAG, "ZIM 回调: " + JSON.toJSONString(response));
-                        boolean success = response.code == 1000;
-                        String msg = success ? "刷脸通过" :
-                                "刷脸失败([" + response.code + "] " + response.reason + ")";
-//                        sendResultToJS(success, msg);
-                        callJsCallback("onZimTestResult", success, msg);
-                        return true;
+                        JSONObject body = new JSONObject();
+                        body.put("metaInfo", finalMetaInfo);
+                        body.put("returnUrl", "");
+
+                        OutputStream os = conn.getOutputStream();
+                        os.write(body.toString().getBytes());
+                        os.close();
+
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        StringBuilder sb = new StringBuilder();
+                        String line;
+                        while ((line = reader.readLine()) != null) sb.append(line);
+                        reader.close();
+
+                        JSONObject resp = new JSONObject(sb.toString());
+//                        Log.e(TAG, "后端响应原始内容: " + sb.toString());
+
+//                        if (!resp.has("data")) {
+//                            runOnUiThread(() ->
+//                                    Toast.makeText(MainActivity.this, "后端响应缺少 data: " + sb.toString(), Toast.LENGTH_LONG).show());
+//                            return;
+//                        }
+//                        JSONObject data = resp.getJSONObject("data");
+                        JSONObject data = resp.getJSONObject("data");
+                        String certifyId = data.getString("certifyId");
+                        Log.i(TAG, "服务端返回 certifyId: " + certifyId);
+
+                        activity.runOnUiThread(() -> startZimSdk(certifyId));
+
+                    } catch (Exception e) {
+                        Log.e(TAG, "后端请求失败: " + e.getMessage());
                     }
-                });
+                }).start();
 
             } catch (Exception e) {
                 Log.e(TAG, "ZIM 启动异常: " + e.getMessage());
-//                sendResultToJS(false, e.getMessage());
+            }
+        });
+    }
+
+    private static void startZimSdk(String token) {
+        AppActivity activity = AppActivity.getInstance();
+        ZIMFacade zimFacade = ZIMFacadeBuilder.create(activity);
+
+        HashMap<String, String> extParams = new HashMap<>();
+        extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_USE_VIDEO,
+                ZIMFacade.ZIM_EXT_PARAMS_VAL_USE_VIDEO_TRUE);
+        extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_FACE_PROGRESS_COLOR, "#FF0000");
+//        extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_SCREEN_ORIENTATION,
+//                ZIMFacade.ZIM_EXT_PARAMS_VAL_SCREEN_LAND); // 横屏刷脸
+        extParams.put(ZIMFacade.ZIM_EXT_PARAMS_KEY_SCREEN_ORIENTATION,
+                ZIMFacade.ZIM_EXT_PARAMS_VAL_SCREEN_PORT);
+
+//        zimFacade.verify(token, true, extParams, new ZIMCallback() {
+//            @Override
+//            public boolean response(ZIMResponse response) {
+//                boolean success = response.code == 1000;
+//                String msg = success ? "刷脸通过" : "刷脸失败([" + response.code + "] " + response.reason + ")";
+//                callJsCallback("onZimTestResult", success, msg);
+//                return true;
+//            }
+//        });
+
+        zimFacade.verify(token, true, extParams, new ZIMCallback() {
+            @Override
+            public boolean response(ZIMResponse response) {
+                try {
+                    // 打印完整对象
+                    org.json.JSONObject json = new org.json.JSONObject();
+                    json.put("code", response.code);
+                    json.put("reason", response.reason);
+//                    json.put("retCodeSub", response.retCodeSub);
+                    json.put("retMessageSub", response.retMessageSub);
+//                    json.put("verifyId", response.verifyId);
+                    json.put("deviceToken", response.deviceToken);
+
+                    Log.i(TAG, "🧩 ZIM 回调完整数据: " + json.toString());
+
+                    boolean success = response.code == 1000;
+                    String msg = success ? "✅ 实人认证成功"
+                            : "❌ 实人认证失败(" + response.code + " - " + response.reason + ")";
+                    callJsCallback("onZimTestResult", success, token);
+
+                } catch (Exception e) {
+                    Log.e(TAG, "打印 ZIM 回调异常: " + e.getMessage());
+                }
+                return true;
             }
         });
     }

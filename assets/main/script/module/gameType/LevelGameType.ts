@@ -3,6 +3,9 @@ import { CGameData, initData } from "../../../../app/GameDefine";
 import { ILevelSelectUIData } from "../../../../scene/script/ui/LevelSelectUI";
 import { LevelHelper, Maths, PropHelper, RandomSeed, TResoucesUrl, _config_, _gameType, _logic, _prop, _timer, _ui, winCenterPostion } from "../../Main";
 import { EGameType, IGameTypeLogic, gameTypeModule } from "../define/GameTypeDefine";
+import { GlobalData } from "db://assets/scripts/manager/GlobalData";
+import { UrlConfig } from "db://assets/scripts/manager/UrlConfig";
+import { md5 } from "db://assets/scripts/common/md5";
 
 
 
@@ -78,7 +81,12 @@ export class LevelGameType implements IGameTypeLogic {
                 )
             },
             (isWin) => {
+                let isGetReward: boolean = false;
                 if (isWin) {
+                    if (GlobalData.userInfo.level_info < this.curLevel) {
+                        this.getWinReward(this.curLevel);
+                        isGetReward = true;
+                    }
                     if (this.level.cur == this.curLevel)
                         this.level.add()
 
@@ -86,7 +94,7 @@ export class LevelGameType implements IGameTypeLogic {
                     // 等待飞行动画
                     _timer.once(this, () => {
                         _ui.blockTouchEvent(false)
-                        _ui.open(CGameData.SuccessUrl)
+                        _ui.open(CGameData.SuccessUrl, isGetReward)
                     }, .5)
                 }
                 else
@@ -100,6 +108,61 @@ export class LevelGameType implements IGameTypeLogic {
             if (config.anim === 1)
                 _gameType.emit(_gameType.EventType.PLAY_ANIM)
         })
+    }
+
+    async getWinReward(level: number) {
+        const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
+        const userId = GlobalData.userInfo.user_id;             // 当前用户ID
+        const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
+        const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
+
+        const url = `${UrlConfig.getHttpUrl()}api/User/addGoldForLevelPass`;
+        const postData = {
+            token: GlobalData.loginInfo.token,
+            userId: userId,
+            time: time,
+            sign: sign,
+            level_info: level
+        };
+
+        this.postWithFetch(url, postData)
+            .then(data => {
+                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                GlobalData.requestGetUserInfo({
+                    success: () => {
+                        _logic.emit(_logic.EventType.CHANGE_SCORE);
+                    }
+                });
+                
+            })
+            .catch(err => {
+                console.error('getWinReward error:', err);
+
+            });
+    }
+
+    async postWithFetch(url: string, data: any): Promise<any> {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const text = await response.text();
+            console.log('status:', response.status, 'body:', text.slice(0, 200));
+
+            if (/ <!doctype |<html/i.test(text))
+                throw new Error('收到 HTML（登录/错误页）');
+
+            return JSON.parse(text.replace(/^\uFEFF/, ''));
+        } catch (err) {
+            console.error('postWithFetch error:', err);
+            throw err;
+        }
     }
 
 
