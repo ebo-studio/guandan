@@ -1,0 +1,125 @@
+
+dating_gdyx.png
+size: 443,269
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+di
+  rotate: true
+  xy: 228, 176
+  size: 91, 160
+  orig: 91, 160
+  offset: 0, 0
+  index: -1
+dtgdyx_jiantou
+  rotate: false
+  xy: 382, 86
+  size: 31, 40
+  orig: 31, 40
+  offset: 0, 0
+  index: -1
+dtgdyx_jiyoushou
+  rotate: true
+  xy: 308, 12
+  size: 16, 20
+  orig: 16, 20
+  offset: 0, 0
+  index: -1
+dtgdyx_jizuoshou
+  rotate: true
+  xy: 2, 2
+  size: 13, 28
+  orig: 13, 28
+  offset: 0, 0
+  index: -1
+dtgdyx_jtquann
+  rotate: false
+  xy: 390, 184
+  size: 38, 38
+  orig: 38, 38
+  offset: 0, 0
+  index: -1
+dtgdyx_reqiqiu
+  rotate: false
+  xy: 228, 80
+  size: 124, 94
+  orig: 124, 100
+  offset: 0, 6
+  index: -1
+dtgdyx_tf
+  rotate: false
+  xy: 2, 17
+  size: 80, 250
+  orig: 80, 250
+  offset: 0, 0
+  index: -1
+dtgdyx_xiaoji
+  rotate: true
+  xy: 225, 16
+  size: 62, 81
+  orig: 62, 81
+  offset: 0, 0
+  index: -1
+fudai
+  rotate: true
+  xy: 354, 4
+  size: 68, 71
+  orig: 68, 71
+  offset: 0, 0
+  index: -1
+gebo_y
+  rotate: true
+  xy: 382, 128
+  size: 46, 27
+  orig: 46, 30
+  offset: 0, 0
+  index: -1
+gebo_z
+  rotate: true
+  xy: 330, 13
+  size: 15, 18
+  orig: 15, 18
+  offset: 0, 0
+  index: -1
+jinbao_glow
+  rotate: false
+  xy: 84, 113
+  size: 142, 154
+  orig: 142, 154
+  offset: 0, 0
+  index: -1
+jinbi
+  rotate: false
+  xy: 308, 30
+  size: 44, 48
+  orig: 44, 48
+  offset: 0, 0
+  index: -1
+kk
+  rotate: true
+  xy: 354, 74
+  size: 100, 26
+  orig: 100, 26
+  offset: 0, 0
+  index: -1
+lizi
+  rotate: false
+  xy: 411, 168
+  size: 15, 14
+  orig: 15, 14
+  offset: 0, 0
+  index: -1
+shayu_body
+  rotate: true
+  xy: 84, 6
+  size: 105, 139
+  orig: 105, 148
+  offset: 0, 4
+  index: -1
+yifu2
+  rotate: false
+  xy: 390, 224
+  size: 51, 43
+  orig: 51, 43
+  offset: 0, 0
+  index: -1

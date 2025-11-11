@@ -352,32 +352,33 @@ export class Lobby extends Component {
     //创建房间
     onBtnCreateRoomClick() {
         SoundManager.playClick();
-        if ((GlobalData.userInfo.score / 100) < 30) {
-            UIManager.Instace.showUI({
-                path: UIConfig.MessageBoxCommonKey,
-                data: {
-                    okName: "观看",
-                    cancleName: "取消",
-                    des: "您的积分不足30,是否观看视频获得积分",
-                    okFunc: () => {
-                        this.onClickShowAd();
-                    },
-                    cancleFunc: () => {
+         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "更多游戏，敬请期待" });
+        // if ((GlobalData.userInfo.score / 100) < 30) {更多游戏，敬请期待...
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.MessageBoxCommonKey,
+        //         data: {
+        //             okName: "观看",
+        //             cancleName: "取消",
+        //             des: "您的积分不足30,是否观看视频获得积分",
+        //             okFunc: () => {
+        //                 this.onClickShowAd();
+        //             },
+        //             cancleFunc: () => {
 
-                    }
-                }
-            });
-        }
-        else {
-            UIManager.Instace.showUI({
-                path: UIConfig.CreateRoomItemKey, data: () => {
-                    let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
-                    let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
-                    let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
-                    GameSocket.send(sendBuffer);
-                }
-            });
-        }
+        //             }
+        //         }
+        //     });
+        // }
+        // else {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.CreateRoomItemKey, data: () => {
+        //             let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
+        //             let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
+        //             let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
+        //             GameSocket.send(sendBuffer);
+        //         }
+        //     });
+        // }
 
     }
     //加入房间
