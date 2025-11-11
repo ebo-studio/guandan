@@ -367,10 +367,10 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        this.startZimLocalTest((success, certifyId) => {
+        this.startZimLocalTest((success, certifyIds) => {
             if (success) {
-                console.log("ZIM 本地测试成功:", success);
-                let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId:  certifyId};
+                console.log("ZIM 本地测试成功:", success, certifyIds);
+                let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId:  certifyIds};
                 LoginGlobal.instance.requestLogin(data, {
                     success: (data) => {
                         console.log('登录成功:', data);
@@ -497,10 +497,10 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        this.startZimLocalTest((success, certifyId) => {
+        this.startZimLocalTest((success, certifyIds) => {
             if (success) {
-                console.log("ZIM 本地测试成功:", success);
-                let data = { account: email, type: 2, code: code, inviterId: inviter, certifyId:  certifyId};
+                console.log("ZIM 本地测试成功:", success, certifyIds);
+                let data = { account: email, type: 2, code: code, inviterId: inviter, certifyId:  certifyIds};
                 LoginGlobal.instance.requestLogin(data, {
                     success: (data) => {
                         console.log('登录成功:', data);

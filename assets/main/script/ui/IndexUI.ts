@@ -36,6 +36,10 @@ export class IndexUI extends AnimBaseUI {
 	}
 
 	private onClickLevel() {
+		if (GlobalData.userInfo.score / 100 < 10) {
+			_ui.tip('积分不足,无法继续挑战');
+			return;
+		}
 		this.clickRun(EGameType.level)
 	}
 

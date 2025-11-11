@@ -1,8 +1,9 @@
-import { Node } from "cc";
+import { Label, Node } from "cc";
 import { ccclass, BaseUI, EUILayer, EBlockOnceAdType, EPlatformType, EBottomAdType, NodeHelper, Times, _main, _language, SpriteLoaderCC, _platform, _audio, _ui, _gameType, _logic } from "../../../main/script/Main";
 import { ToDayMaxRecode } from "../../../main/script/ui/ToDayMaxRecode";
 import { EGameType } from "../../../main/script/module/define/GameTypeDefine";
 import { initData } from "../../../app/GameDefine";
+import { GlobalData } from "db://assets/scripts/manager/GlobalData";
 
 
 const tipName = [
@@ -25,6 +26,10 @@ export class FailUI extends BaseUI {
 	protected get toDayMaxRecode() { return this.getCacheComponent("ToDayMaxRecode") as ToDayMaxRecode }
 
 	private openTime = -1
+
+	public _openData: boolean = null!
+	private cLabel_desc: Label = null!;
+	private cLabel_desc1: Label = null!;
 
 	protected onCreate(): void {
 		switch (_platform.type) {
@@ -77,6 +82,15 @@ export class FailUI extends BaseUI {
 				break;
 		}
 
+		if (this._openData && this._openData) {
+			this.cLabel_desc.node.active = true;
+			this.cLabel_desc1.node.active = true;
+		}
+		else {
+			this.cLabel_desc.node.active = false;
+			this.cLabel_desc1.node.active = false;
+		}
+
 
 		if (_platform.type == EPlatformType.overseas_kwai
 			|| _platform.type == EPlatformType.wx)
@@ -95,6 +109,10 @@ export class FailUI extends BaseUI {
 	}
 
 	private onClickReset() {
+		if (GlobalData.userInfo.score / 100 < 10) {
+			_ui.tip('积分不足,无法继续挑战');
+			return;
+		}
 		if (_gameType.hasRun()) {
 			this.closeUI()
 			_gameType.reset()

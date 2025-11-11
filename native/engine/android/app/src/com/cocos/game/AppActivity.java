@@ -362,7 +362,7 @@ public class AppActivity extends CocosActivity {
                 // 2️⃣ 调用后端，获取真正的 verifyToken
                 new Thread(() -> {
                     try {
-                        URL url = new URL("http://129.204.21.168:8089/api/Login/initFaceVerify");
+                        URL url = new URL("https://gdapi.7919.cn/api/Login/initFaceVerify");
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                         conn.setRequestMethod("POST");
                         conn.setRequestProperty("Content-Type", "application/json");

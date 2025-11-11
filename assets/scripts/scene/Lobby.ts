@@ -417,6 +417,23 @@ export class Lobby extends Component {
         //     GameSocket.send(sendBuffer);
         // }
 
+        if ((GlobalData.userInfo.score / 100) < 10) {
+            UIManager.Instace.showUI({
+                path: UIConfig.MessageBoxCommonKey,
+                data: {
+                    okName: "观看",
+                    cancleName: "取消",
+                    des: "您的积分不足10,是否观看视频获得积分",
+                    okFunc: () => {
+                        this.onClickShowAd();
+                    },
+                    cancleFunc: () => {
+
+                    }
+                }
+            });
+            return
+        }
         UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在加载游戏模块" } });
         utils.setMusic(false);
         if (!AppGlobal._isLoadGameModule) {

@@ -25,7 +25,9 @@ export class LoginGlobal extends Component {
             account: data.account,
             type: data.type,
             code: data.code,
-            inviterId: data.inviterId
+            inviterId: data.inviterId,
+            certifyId: data.certifyId,
+            open: true
         }
         UIManager.Instace.showUI({
             path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." }, callBack: () => {
@@ -42,7 +44,7 @@ export class LoginGlobal extends Component {
                     },
                     fail: function (data) {
                         console.log("Login fail ", data);
-                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey,  data: "登录失败"});
+                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data });
                         if (cb.fail) cb.fail();
                     },
                     complete: function () {

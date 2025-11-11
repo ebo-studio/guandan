@@ -669,6 +669,26 @@
       "1762785772171": {
         "cleanupImageCache": "inheritProjectSetting",
         "__version__": "1.0.8"
+      },
+      "1762837549519": {
+        "cleanupImageCache": "inheritProjectSetting",
+        "__version__": "1.0.8"
+      },
+      "1762838157945": {
+        "cleanupImageCache": "inheritProjectSetting",
+        "__version__": "1.0.8"
+      },
+      "1762842941056": {
+        "cleanupImageCache": "inheritProjectSetting",
+        "__version__": "1.0.8"
+      },
+      "1762843380866": {
+        "cleanupImageCache": "inheritProjectSetting",
+        "__version__": "1.0.8"
+      },
+      "1762847552858": {
+        "cleanupImageCache": "inheritProjectSetting",
+        "__version__": "1.0.8"
       }
     },
     "__version__": "1.3.7"

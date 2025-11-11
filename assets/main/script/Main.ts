@@ -115,7 +115,7 @@ export function initApeng() {
                                         text: "确认",
                                         color: "darkBlue",
                                         onClick: () => {
-                                            if(GlobalData.userInfo.score < 5) {
+                                            if(GlobalData.userInfo.score / 100 < 10) {
                                                 _ui.tip('积分不足');
                                                 return;
                                             }

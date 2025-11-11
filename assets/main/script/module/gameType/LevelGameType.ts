@@ -97,8 +97,47 @@ export class LevelGameType implements IGameTypeLogic {
                         _ui.open(CGameData.SuccessUrl, isGetReward)
                     }, .5)
                 }
-                else
-                    _ui.open(CGameData.FailUrl)
+                else {
+                    if (GlobalData.userInfo.level_info < this.curLevel) {
+                        isGetReward = true;
+                        const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
+                        const userId = GlobalData.userInfo.user_id;             // 当前用户ID
+                        const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
+                        const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
+
+                        const url = `${UrlConfig.getHttpUrl()}api/User/deductGold`;
+                        const postData = {
+                            token: GlobalData.loginInfo.token,
+                            userId: userId,
+                            time: time,
+                            sign: sign,
+                            amount: 500
+                        };
+
+                        GlobalData.postWithFetch(url, postData)
+                            .then(data => {
+                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                GlobalData.requestGetUserInfo({
+                                    success: () => {
+                                        _ui.open(CGameData.FailUrl)
+                                        _logic.emit(_logic.EventType.CHANGE_SCORE)
+                                    }
+                                });
+                                // complete?.();
+                            })
+                            .catch(err => {
+                                console.error('deductGold error:', err);
+
+                            });
+                        // this.getWinReward(this.curLevel);
+                        // isGetReward = true;
+                    }
+                    else {
+                        _ui.open(CGameData.FailUrl, isGetReward)
+                    }
+                    
+                }
+
             }
         )
 
@@ -133,7 +172,7 @@ export class LevelGameType implements IGameTypeLogic {
                         _logic.emit(_logic.EventType.CHANGE_SCORE);
                     }
                 });
-                
+
             })
             .catch(err => {
                 console.error('getWinReward error:', err);
