@@ -7,9 +7,9 @@
       "asyncFunctions": true,
       "coreJs": true
     },
-    "outputName": "ios_new",
+    "outputName": "android-005",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "ios",
+    "platform": "android",
     "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
     "name": "goldenAnt",
     "replaceSplashScreen": true,
