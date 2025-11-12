@@ -1211,9 +1211,16 @@
         "compressZip": false,
         "JobSystem": "none",
         "__version__": "1.0.2"
+      },
+      "1762952748004": {
+        "encrypted": false,
+        "xxteaKey": "27LdYacmVM1IcLVw",
+        "compressZip": false,
+        "JobSystem": "none",
+        "__version__": "1.0.2"
       }
     },
-    "__version__": "1.3.7",
+    "__version__": "1.3.8",
     "options": {
       "android": {
         "encrypted": false,

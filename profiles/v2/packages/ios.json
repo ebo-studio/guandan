@@ -257,8 +257,29 @@
         "targetVersion": "15.0",
         "__version__": "1.0.1",
         "developerTeam": "37W8XA5245_30F792A8903675F1E913E9217D82B0906B8EE30B"
+      },
+      "1762952748004": {
+        "executableName": "GoldenAnt",
+        "packageName": "com.goldenant.id",
+        "renderBackEnd": {
+          "metal": true
+        },
+        "skipUpdateXcodeProject": false,
+        "orientation": {
+          "portrait": true,
+          "upsideDown": false,
+          "landscapeRight": true,
+          "landscapeLeft": true
+        },
+        "osTarget": {
+          "iphoneos": true,
+          "simulator": true
+        },
+        "targetVersion": "15.0",
+        "__version__": "1.0.1",
+        "developerTeam": "37W8XA5245_30F792A8903675F1E913E9217D82B0906B8EE30B"
       }
     },
-    "__version__": "1.3.7"
+    "__version__": "1.3.8"
   }
 }

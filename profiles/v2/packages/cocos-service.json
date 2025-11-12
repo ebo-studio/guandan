@@ -894,9 +894,24 @@
         "configID": "944002",
         "services": [],
         "__version__": "3.0.7"
+      },
+      "1762584225472}": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1762868560714}": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
+      },
+      "1762952748004": {
+        "configID": "944002",
+        "services": [],
+        "__version__": "3.0.7"
       }
     },
-    "__version__": "1.3.7",
+    "__version__": "1.3.8",
     "options": {
       "web-desktop": {
         "configID": "944002",

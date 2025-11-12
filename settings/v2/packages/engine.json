@@ -107,6 +107,9 @@
       },
       "custom-pipeline": {
         "_value": false
+      },
+      "graphics": {
+        "_value": true
       }
     },
     "flags": {},
@@ -121,6 +124,7 @@
       "gfx-webgl2",
       "intersection-2d",
       "light-probe",
+      "meshopt",
       "particle-2d",
       "physics-2d-builtin",
       "primitive",
@@ -138,5 +142,5 @@
   "macroConfig": {
     "ENABLE_MULTI_TOUCH": false
   },
-  "__version__": "1.0.8"
+  "__version__": "1.0.9"
 }

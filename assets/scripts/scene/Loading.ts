@@ -11,6 +11,7 @@ import { ZJCustomController } from "../ZJSdk/ZJCustomController";
 import { SignInManager } from "../manager/SignInManager";
 import { checkForNotice } from "../common/UpdateNotice";
 import { UrlConfig } from "../manager/UrlConfig";
+import { checkForUpdate } from "../common/UpdateChecker";
 
 const { ccclass, property } = _decorator;
 
@@ -231,7 +232,7 @@ export class Loading extends Component {
                 //     SignInManager.resetUserList();
                 // }
             }
-            checkForNotice();
+            checkForUpdate();
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
             if (token) {
@@ -455,6 +456,11 @@ export class Loading extends Component {
                 );
             } else if (sys.os === sys.OS.IOS) {
                 // @ts-ignore
+                jsb.reflection.callStaticMethod(
+                    'AppController',
+                    'startFaceVerify',
+                    '()V'
+                );
                 // jsb.reflection.callStaticMethod('PangleAdapter', 'startLocalZimTest');
             }
         } catch (e) {
