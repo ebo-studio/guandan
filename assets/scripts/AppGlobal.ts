@@ -77,7 +77,7 @@ export class AppGlobal extends Component {
                 }
             });
 
-            checkForUpdate();
+            // checkForUpdate();
         }
 
         if (sys.isBrowser) {

@@ -3,6 +3,7 @@ import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
 import { NetworkManager } from '../manager/NetworkManager';
 import { SignInManager } from '../manager/SignInManager';
+import { checkForNotice } from './UpdateNotice';
 
 /**
  * ✅ 游戏启动时调用此函数自动检测更新
@@ -50,6 +51,7 @@ export async function checkForUpdate(showTip: boolean = false) {
             // showUpdateDialog(updateDesc, downloadUrl);
             showUpdateDialog(updateDesc, downloadUrl);
         } else {
+            checkForNotice();
             if (showTip) {
                 UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "当前已是最新版本" });
             }

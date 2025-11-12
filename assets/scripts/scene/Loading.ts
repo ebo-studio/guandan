@@ -11,6 +11,7 @@ import { ZJCustomController } from "../ZJSdk/ZJCustomController";
 import { SignInManager } from "../manager/SignInManager";
 import { checkForNotice } from "../common/UpdateNotice";
 import { UrlConfig } from "../manager/UrlConfig";
+import { checkForUpdate } from "../common/UpdateChecker";
 
 const { ccclass, property } = _decorator;
 
@@ -231,7 +232,8 @@ export class Loading extends Component {
                 //     SignInManager.resetUserList();
                 // }
             }
-            checkForNotice();
+            checkForUpdate();
+            // checkForNotice();
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
             if (token) {
