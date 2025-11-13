@@ -53,3 +53,13 @@
 -dontwarn com.anythink.**
 -dontwarn com.bytedance.sdk.**
 -dontwarn com.unity3d.ads.**
+
+-keep class org.chromium.** {*;}
+-keep class org.chromium.** { *; }
+-keep class aegon.chrome.** { *; }
+-keep class com.kwai.**{ *; }
+-keep class com.yxcorp.kuaishou.addfp.android.Orange {*;}
+-dontwarn com.kwai.**
+-dontwarn com.kwad.**
+-dontwarn com.ksad.**
+-dontwarn aegon.chrome.**

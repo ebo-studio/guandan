@@ -252,16 +252,16 @@ export class Loading extends Component {
                         }
                         SignInManager.switchUser(GlobalData.userInfo.name);
 
-                        ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                        ZJSdk.start({
-                            onStartFailed(code, msg) {
-                                console.log(`onStartFailed:${code}-${msg}`);
-                                // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                            }, onStartSuccess() {
-                                console.log("onStartSuccess");
-                                // toast("初始化成功")
-                            }
-                        })
+                        // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                        // ZJSdk.start({
+                        //     onStartFailed(code, msg) {
+                        //         console.log(`onStartFailed:${code}-${msg}`);
+                        //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                        //     }, onStartSuccess() {
+                        //         console.log("onStartSuccess");
+                        //         // toast("初始化成功")
+                        //     }
+                        // })
                         const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
                         this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
                             // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
@@ -395,16 +395,16 @@ export class Loading extends Component {
                             success: () => {
                                 clearInterval(this.timer);
                                 GlobalData.userInfo.haveToken = true;
-                                ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                                ZJSdk.start({
-                                    onStartFailed(code, msg) {
-                                        console.log(`onStartFailed:${code}-${msg}`);
-                                        // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                                    }, onStartSuccess() {
-                                        console.log("onStartSuccess");
+                                // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                                // ZJSdk.start({
+                                //     onStartFailed(code, msg) {
+                                //         console.log(`onStartFailed:${code}-${msg}`);
+                                //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                                //     }, onStartSuccess() {
+                                //         console.log("onStartSuccess");
 
-                                    }
-                                })
+                                //     }
+                                // })
                                 this.loginNode.active = false;
                                 this.phoneLoginBtn.node.active = false;
                                 this.emailBtn.node.active = false;
@@ -525,16 +525,16 @@ export class Loading extends Component {
                             success: () => {
                                 clearInterval(this.timer);
                                 GlobalData.userInfo.haveToken = true;
-                                ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                                ZJSdk.start({
-                                    onStartFailed(code, msg) {
-                                        console.log(`onStartFailed:${code}-${msg}`);
-                                        // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                                    }, onStartSuccess() {
-                                        console.log("onStartSuccess");
+                                // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                                // ZJSdk.start({
+                                //     onStartFailed(code, msg) {
+                                //         console.log(`onStartFailed:${code}-${msg}`);
+                                //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                                //     }, onStartSuccess() {
+                                //         console.log("onStartSuccess");
 
-                                    }
-                                })
+                                //     }
+                                // })
                                 this.loginNode.active = false;
                                 this.phoneLoginBtn.node.active = false;
                                 this.emailBtn.node.active = false;

@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
 //import com.alibaba.fastjson.JSON;
@@ -35,6 +36,11 @@ import com.alipay.face.api.ZIMFacade;
 import com.alipay.face.api.ZIMFacadeBuilder;
 import com.alipay.face.api.ZIMResponse;
 import com.alipay.face.api.ZIMFacade;
+import com.bytedance.sdk.openadsdk.AdSlot;
+import com.bytedance.sdk.openadsdk.TTAdConfig;
+import com.bytedance.sdk.openadsdk.TTAdNative;
+import com.bytedance.sdk.openadsdk.TTAdSdk;
+import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.cocos.lib.CocosActivity;
 import com.cocos.lib.CocosHelper;
 import com.cocos.lib.CocosJavascriptJavaBridge;
@@ -45,6 +51,21 @@ import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
+import com.kwad.sdk.api.KsAdSDK;
+import com.kwad.sdk.api.KsInitCallback;
+import com.kwad.sdk.api.KsInterstitialAd;
+import com.kwad.sdk.api.KsLoadManager;
+import com.kwad.sdk.api.KsRewardVideoAd;
+import com.kwad.sdk.api.KsScene;
+import com.kwad.sdk.api.SdkConfig;
+import com.qq.e.ads.interstitial2.UnifiedInterstitialAD;
+import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener;
+import com.qq.e.ads.rewardvideo.RewardVideoAD;
+import com.qq.e.ads.rewardvideo.RewardVideoADListener;
+import com.qq.e.comm.managers.GDTAdSdk;
+import com.qq.e.comm.managers.setting.GlobalSetting;
+import com.qq.e.comm.util.AdError;
+//import com.bytedance.sdk.openadsdk.tt
 
 import org.json.JSONObject;
 
@@ -56,13 +77,20 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class AppActivity extends CocosActivity {
 
     private static final String TAG = "ZIM";
+    private static final String SKD_TAG = "KSSDK";
     private static AppActivity instance;
     private static RewardedAd mRewardedAd;
+
+    private static KsRewardVideoAd mKsRewardVideoAd;
+    private KsInterstitialAd mKsInterstitialAd;
+    private long interstitialPosId = 29730000005L; // ← 你自己的插屏广告ID（long）
 
 //    private static final String TAG = "Updater";
 
@@ -71,6 +99,9 @@ public class AppActivity extends CocosActivity {
     private static boolean isGameActive = true;
     private static final Handler handler = new Handler(Looper.getMainLooper());
     private static File lastDownloadedApk = null;
+
+    private RewardVideoAD gdtRewardVideoAD;
+    private String gdtRewardPosId = "8203029168845782";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,11 +135,585 @@ public class AppActivity extends CocosActivity {
         SDKWrapper.shared().init(this);
         ZIMFacade.install(this);
 
+        initKSSDK(this);
 
+        KsAdSDK.start();
+
+        initGDT();
+
+        initTTAdSkd(this);
 
         // 初始化广告
 //        loadRewarded();
     }
+
+    //快手视频相关
+    public static void initKSSDK(Context appContext) {
+        KsAdSDK.init(appContext, new SdkConfig.Builder()
+                .appId("2973000001")
+                .showNotification(true)
+                .debug(true)
+                .setInitCallback(new KsInitCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.i(SKD_TAG, "init success time: " + (System.currentTimeMillis()));
+                    }
+
+                    @Override
+                    public void onFail(int code, String msg) {
+                        Log.i(SKD_TAG, "init fail code:" + code + "--msg:" + msg);
+                    }
+                }).setStartCallback(new KsInitCallback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.i(SKD_TAG, "start success");
+//                        ToastUtil.showToast(appContext, "SDK启动成功");
+                    }
+
+                    @Override
+                    public void onFail(int code, String msg) {
+                        Log.i(SKD_TAG, "start fail msg: " + msg);
+//                        ToastUtil.showToast(appContext, "SDK启动失败：" + msg);
+                    }
+                })
+                .build()
+        );
+    }
+
+    public static void setKsRewardVideoId(String id) {
+        try {
+            long parsedId = Long.parseLong(id);
+            if (instance != null) {
+                instance.ksRewardVideoId = parsedId;
+                Log.d(SKD_TAG, "【收到 TS 激励视频广告ID】" + parsedId);
+            }
+        } catch (Exception e) {
+            Log.e(SKD_TAG, "激励视频广告ID解析失败: " + id);
+        }
+    }
+
+    // 广告位 ID
+    private long ksRewardVideoId  = 0L;
+
+    // JSB 入口，让 Cocos 调用
+    public static void showKsRewardVideo() {
+        if (instance != null) {
+            instance.loadAndShowRewardAd();
+        }
+    }
+
+    private String ksUserId = "0";   // 默认值
+    public static void setKsUserId(String uid) {
+        if (instance != null) {
+            instance.ksUserId = uid;
+            Log.d(SKD_TAG, "【收到 Cocos UID】" + uid);
+        }
+    }
+
+    // 加载 + 显示激励视频
+    private void loadAndShowRewardAd() {
+        long posIdToUse = ksRewardVideoId > 0 ? ksRewardVideoId : 29730000001L; // fallback
+        KsScene.Builder builder = new KsScene.Builder(posIdToUse);
+        KsScene scene = builder.build();
+
+        // ====== 服务端回调参数 ======
+        if (ksUserId != null && !ksUserId.isEmpty() && !ksUserId.equals("0")) {
+            Map<String, String> rewardCallbackExtraData = new HashMap<>();
+            rewardCallbackExtraData.put("thirdUserId", ksUserId);
+            builder.rewardCallbackExtraData(rewardCallbackExtraData);
+
+            Log.d(SKD_TAG, "已写入 thirdUserId=" + ksUserId);
+        } else {
+            Log.d(SKD_TAG, "未设置 UID → 不写入 rewardCallbackExtraData");
+        }
+
+        KsAdSDK.getLoadManager().loadRewardVideoAd(scene, new KsLoadManager.RewardVideoAdListener() {
+            @Override
+            public void onError(int code, String msg) {
+                Log.e(SKD_TAG, "激励视频广告请求失败: " + code + ", msg=" + msg);
+                callJsCallback("onKsRewardFail");
+            }
+
+            @Override
+            public void onRewardVideoResult(@Nullable List<KsRewardVideoAd> adList) {
+//                Log.d(SKD_TAG, "激励视频数据请求成功（不含资源）");
+            }
+
+            @Override
+            public void onRewardVideoAdLoad(@Nullable List<KsRewardVideoAd> adList) {
+                if (adList != null && !adList.isEmpty()) {
+
+                    mKsRewardVideoAd = adList.get(0);
+//                    Log.d(SKD_TAG, "激励视频资源已缓存");
+
+                    setupRewardVideoListener();
+                    showRewardVideoAd();
+                }
+            }
+        });
+    }
+
+    // 播放激励视频
+    private void showRewardVideoAd() {
+        if (mKsRewardVideoAd != null) {
+            mKsRewardVideoAd.showRewardVideoAd(AppActivity.this, null);
+        } else {
+            Log.w(SKD_TAG, "广告未缓存，重新加载");
+            loadAndShowRewardAd();
+        }
+    }
+
+    // 设置激励视频监听器（你 SDK 的完整版本）
+    private void setupRewardVideoListener() {
+
+        mKsRewardVideoAd.setRewardAdInteractionListener(new KsRewardVideoAd.RewardAdInteractionListener() {
+
+            @Override
+            public void onAdClicked() {
+                Log.d(SKD_TAG, "激励视频点击");
+            }
+
+            @Override
+            public void onPageDismiss() {
+                Log.d(SKD_TAG, "激励视频关闭");
+            }
+
+            @Override
+            public void onVideoPlayError(int code, int extra) {
+                Log.e(SKD_TAG, "激励视频播放错误 code=" + code + ", extra=" + extra);
+            }
+
+            @Override
+            public void onVideoPlayStart() {
+                Log.d(SKD_TAG, "激励视频播放开始");
+            }
+
+            @Override
+            public void onVideoPlayEnd() {
+                Log.d(SKD_TAG, "激励视频播放结束");
+            }
+
+            // ========================== 主奖励 ==========================
+            // 新版：Map 参数奖励回调
+            @Override
+            public void onRewardVerify(Map<String, Object> rewardInfo) {
+                Log.d(SKD_TAG, "激励视频奖励（Map）回调: " + rewardInfo);
+                callJsCallback("onKsRewarded");
+            }
+
+            // 老版：无参奖励回调
+            @Override
+            public void onRewardVerify() {
+                Log.d(SKD_TAG, "激励视频完整观看，触发主奖励");
+                callJsCallback("onKsRewarded");
+
+//                AppActivity.this.runOnGLThread(() -> {
+//                    CocosJavascriptBridge.evalString("window.onKsRewarded && window.onKsRewarded()");
+//                });
+            }
+
+            // ========================== 阶段奖励 ==========================
+            @Override
+            public void onRewardStepVerify(int taskType, int currentTaskStatus) {
+                Log.d(SKD_TAG, "阶段奖励: taskType=" + taskType + ", status=" + currentTaskStatus);
+            }
+
+            // ========================== 额外奖励 ==========================
+            @Override
+            public void onExtraRewardVerify(int type) {
+                Log.d(SKD_TAG, "额外奖励触发 type=" + type);
+
+//                AppActivity.this.runOnGLThread(() -> {
+//                    CocosJavascriptBridge.evalString(
+//                            "window.onKsExtraReward && window.onKsExtraReward(" + type + ")"
+//                    );
+//                });
+            }
+
+            // ========================== 跳过时长 ==========================
+            @Override
+            public void onVideoSkipToEnd(long playTime) {
+                Log.w(SKD_TAG, "用户滑动跳过到结尾 playTime=" + playTime);
+            }
+        });
+    }
+
+    public static void showKsInterstitial() {
+        if (instance != null) {
+            instance.loadAndShowInterstitial();
+        }
+    }
+
+    private void loadAndShowInterstitial() {
+        KsScene scene = new KsScene.Builder(interstitialPosId).build();
+
+        KsAdSDK.getLoadManager().loadInterstitialAd(scene, new KsLoadManager.InterstitialAdListener() {
+
+            @Override
+            public void onError(int code, String msg) {
+                Log.e(SKD_TAG, "插屏广告加载失败: " + code + ", " + msg);
+
+                // 如果你需要 TS 端失败回调，可以这样：
+//                AppActivity.this.runOnGLThread(() -> {
+//                    CocosJavascriptBridge.evalString(
+//                            "window.onKsInterstitialFail && window.onKsInterstitialFail('" + msg + "')"
+//                    );
+//                });
+            }
+
+            @Override
+            public void onRequestResult(int requestResult) {
+                Log.d(SKD_TAG, "插屏广告数据请求成功（不含资源）");
+            }
+
+            @Override
+            public void onInterstitialAdLoad(@Nullable List<KsInterstitialAd> adList) {
+                if (adList != null && !adList.isEmpty()) {
+                    mKsInterstitialAd = adList.get(0);
+                    Log.d(SKD_TAG, "插屏广告缓存成功");
+
+                    setupInterstitialListener();
+                    showInterstitialAd();
+                }
+            }
+        });
+    }
+
+    private void setupInterstitialListener() {
+
+        mKsInterstitialAd.setAdInteractionListener(new KsInterstitialAd.AdInteractionListener() {
+            @Override
+            public void onAdClicked() {
+                Log.d(SKD_TAG, "插屏广告点击");
+            }
+
+            @Override
+            public void onAdShow() {
+                Log.d(SKD_TAG, "插屏广告展示");
+            }
+
+            @Override
+            public void onAdClosed() {
+                Log.d(SKD_TAG, "插屏广告关闭");
+            }
+
+//            @Override
+//            public void onRenderFail() {
+//                Log.e(SKD_TAG, "插屏广告渲染失败");
+//            }
+
+            @Override
+            public void onPageDismiss() {
+                Log.d(SKD_TAG, "插屏广告页面消失");
+            }
+
+            @Override
+            public void onVideoPlayError(int code, int extra) {
+                Log.e(SKD_TAG, "插屏视频播放失败 code=" + code + " extra=" + extra);
+            }
+
+            @Override
+            public void onVideoPlayStart() {
+                Log.d(SKD_TAG, "插屏视频播放开始");
+            }
+
+            @Override
+            public void onVideoPlayEnd() {
+                Log.d(SKD_TAG, "插屏视频播放结束");
+            }
+
+            @Override
+            public void onSkippedAd() {
+                Log.w(SKD_TAG, "插屏广告被跳过（用户跳过）");
+            }
+        });
+    }
+
+    private void showInterstitialAd() {
+        if (mKsInterstitialAd != null) {
+            mKsInterstitialAd.showInterstitialAd(AppActivity.this, null);
+        } else {
+            Log.w(SKD_TAG, "插屏未缓存，重新加载");
+            loadAndShowInterstitial();
+        }
+    }
+
+    //----   优量汇-----//
+    private void initGDT() {
+        final AppActivity act = AppActivity.getInstance();
+        GDTAdSdk.initWithoutStart(act, "1211829064");
+        GDTAdSdk.start(new GDTAdSdk.OnStartListener() {
+            @Override
+            public void onStartSuccess() {
+                Log.i(SKD_TAG, "GDT ADK SUCCESS ");
+            }
+
+            @Override
+            public void onStartFailed(Exception e) {
+                Log.i(SKD_TAG, "GDT ADK Failed ");
+            }
+        });
+    }
+
+    public static void showGDTRewardVideo() {
+        if (instance != null) {
+            instance.loadAndShowGDTReward();
+        }
+    }
+
+//    private String gdtInterstitialPosId = "0";   // 默认值
+    public static void setInterstitialPosId(String PosId) {
+        if (instance != null) {
+            instance.gdtRewardPosId = PosId;
+//            Log.d(SKD_TAG, "【收到 Cocos UID】" + uid);
+        }
+    }
+
+    private void loadAndShowGDTReward() {
+        final AppActivity act = AppActivity.getInstance();
+        gdtRewardVideoAD = new RewardVideoAD(act, gdtRewardPosId, new RewardVideoADListener() {
+            @Override
+            public void onADLoad() {
+                Log.d("GDT", "优量汇激励加载成功");
+            }
+
+            @Override
+            public void onVideoCached() {
+                Log.d("GDT", "优量汇激励缓存完成");
+                gdtRewardVideoAD.showAD(AppActivity.this);
+            }
+
+            @Override
+            public void onADShow() {
+
+            }
+
+            @Override
+            public void onADExpose() {
+
+            }
+
+            @Override
+            public void onReward(Map<String, Object> map) {
+                callJsCallback("onGDTRewarded");
+            }
+
+            @Override
+            public void onADClick() {
+
+            }
+
+            @Override
+            public void onVideoComplete() {
+
+            }
+
+            @Override
+            public void onADClose() {
+
+            }
+
+            @Override
+            public void onError(AdError adError) {
+                callJsCallback("onGDTAdFail");
+            }
+        });
+
+        gdtRewardVideoAD.loadAD();
+    }
+
+    public static void showGDTInterstitial() {
+        if (instance != null) {
+            instance.loadAndShowGDTFullInterstitial();
+        }
+    }
+    private void loadAndShowGDTFullInterstitial() {
+
+        UnifiedInterstitialAD iad = getGDTFullInterstitialAD();
+
+        // 设置视频配置（可选）
+//        iad.setVideoOption(VideoOptionHelper.getVideoOption());
+
+        Log.d("GDT-FULL", "开始加载全屏插屏广告");
+        iad.loadFullScreenAD();   // ⭐ 必须使用全屏插屏的加载接口
+    }
+
+    private UnifiedInterstitialAD gdtFullInterstitialAD;
+    private String gdtInterstitialPosId = "2223523109573886";
+    // 创建广告对象（包含服务端回调参数）
+    private UnifiedInterstitialAD getGDTFullInterstitialAD() {
+
+        if (gdtFullInterstitialAD == null) {
+            gdtFullInterstitialAD = new UnifiedInterstitialAD(
+                    this,
+                    gdtInterstitialPosId,
+                    new UnifiedInterstitialADListener() {
+
+                        @Override
+                        public void onADReceive() {
+                            Log.d("GDT-FULL", "全屏插屏加载成功");
+//                            gdtFullInterstitialAD.setMediaListener(mediaListener);
+//                            gdtFullInterstitialAD.setRewardListener(rewardListener);
+                        }
+
+                        @Override
+                        public void onRenderSuccess() {
+                            Log.d("GDT-FULL", "全屏插屏渲染成功 → 准备展示");
+                            gdtFullInterstitialAD.showFullScreenAD(AppActivity.this);
+                        }
+
+                        @Override
+                        public void onRenderFail() {
+                            Log.e("GDT-FULL", "渲染失败");
+                            callJsCallback("onGDTInterstitialFail");
+                        }
+
+                        @Override
+                        public void onNoAD(AdError adError) {
+                            Log.e("GDT-FULL", "加载失败：" + adError.getErrorMsg());
+                            callJsCallback("onGDTInterstitialFail");
+                        }
+
+                        @Override
+                        public void onADExposure() {
+                            Log.d("GDT-FULL", "全屏插屏曝光");
+                        }
+
+                        @Override
+                        public void onADClicked() {
+                            Log.d("GDT-FULL", "全屏插屏点击");
+                        }
+
+                        @Override
+                        public void onADClosed() {
+                            Log.d("GDT-FULL", "全屏插屏关闭");
+                            callJsCallback("onGDTInterstitialClosed");
+                        }
+
+                        @Override public void onVideoCached() {}
+                        @Override public void onADOpened() {}
+                        @Override public void onADLeftApplication() {}
+                    }
+            );
+        }
+
+        return gdtFullInterstitialAD;
+    }
+
+    //-------------------------穿山甲------------------------------//
+    public static void initTTAdSkd(Context context) {
+        TTAdConfig config = new TTAdConfig.Builder()
+                    .appId("5754219")                                 // ← 从 JS 传进来的
+                    .appName("金蚂蚁")                  // 用包里真实应用名
+                    .supportMultiProcess(false)
+                    .build();
+        TTAdSdk.init(context, config);
+
+        TTAdSdk.start(new TTAdSdk.Callback() {
+            @Override
+            public void success() {
+                Log.i(SKD_TAG, "TTAdSdk ADK SUCCESS ");
+            }
+
+            @Override
+            public void fail(int i, String s) {
+
+            }
+        });
+    }
+
+    private TTRewardVideoAd pangleRewardAd;
+    public static void showPangleRewardVideo(String userId, String rewardName) {
+        if (instance != null) {
+            instance.loadAndShowPangleReward(userId);
+        }
+    }
+
+    private void loadAndShowPangleReward(String uid) {
+        final AppActivity act = AppActivity.getInstance();
+        AdSlot adSlot = new AdSlot.Builder()
+                .setCodeId("972774918")
+                .setUserID(uid)
+                .setRewardName("奖励")
+                .setRewardAmount(10)
+                .build();
+
+        TTAdSdk.getAdManager().createAdNative(act).loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
+            @Override
+            public void onError(int code, String msg) {
+                Log.e(SKD_TAG, "激励视频加载失败：" + code + ", " + msg);
+                callJsCallback("onPangleRewardFail");
+            }
+
+            @Override
+            public void onRewardVideoAdLoad(TTRewardVideoAd ttRewardVideoAd) {
+                Log.d(SKD_TAG, "激励视频素材成功加载");
+                pangleRewardAd = ttRewardVideoAd;
+
+                bindRewardListener();
+
+                // 提示：穿山甲允许素材加载成功后“马上展示”
+                pangleRewardAd.showRewardVideoAd(AppActivity.this);
+            }
+
+            @Override
+            public void onRewardVideoCached() {
+
+            }
+
+            @Override
+            public void onRewardVideoCached(TTRewardVideoAd ttRewardVideoAd) {
+
+            }
+        });
+    }
+
+    private void bindRewardListener() {
+        pangleRewardAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
+            @Override
+            public void onAdShow() {
+
+            }
+
+            @Override
+            public void onAdVideoBarClick() {
+
+            }
+
+            @Override
+            public void onAdClose() {
+
+            }
+
+            @Override
+            public void onVideoComplete() {
+
+            }
+
+            @Override
+            public void onVideoError() {
+
+            }
+
+            @Override
+            public void onRewardVerify(boolean b, int i, String s, int i1, String s1) {
+                Log.d(SKD_TAG, "激励发放成功");
+                callJsCallback("onPangleRewarded");
+            }
+
+            @Override
+            public void onRewardArrived(boolean b, int i, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onSkippedVideo() {
+
+            }
+        });
+    }
+
+
 
     /** ✅ 获取当前实例 */
     public static AppActivity getInstance() {
@@ -449,7 +1054,17 @@ public class AppActivity extends CocosActivity {
                     boolean success = response.code == 1000;
                     String msg = success ? "✅ 实人认证成功"
                             : "❌ 实人认证失败(" + response.code + " - " + response.reason + ")";
-                    callJsCallback("onZimTestResult", success, token);
+//                    callJsCallback("onZimTestResult", success, token);
+                    // ⚡ 主线程安全执行 JS 回调
+                    activity.runOnUiThread(() -> {
+                        try {
+                            callJsCallback("onZimTestResult", success, token);
+                            Log.i(TAG, "📩 执行 JS 回调: " + success);
+//                            Cocos2dxJavascriptJavaBridge.evalString(jsCode);
+                        } catch (Exception e) {
+                            Log.e(TAG, "⚠️ 执行 JS 回调出错: " + e.getMessage());
+                        }
+                    });
 
                 } catch (Exception e) {
                     Log.e(TAG, "打印 ZIM 回调异常: " + e.getMessage());

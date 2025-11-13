@@ -10,6 +10,7 @@ import { GameSocket } from './manager/GameSocket';
 import { ZJSdk } from './ZJSdk/ZJSdk';
 import { checkForUpdate } from './common/UpdateChecker';
 import { NetworkManager } from './manager/NetworkManager';
+import { ad } from './manager/ADManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('AppGlobal')
@@ -52,30 +53,31 @@ export class AppGlobal extends Component {
         if (!AppGlobal._eventBound) {
             this.bindEvent();
             AppGlobal._eventBound = true;
-            ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
-                onAdLoaded(msg) {
-                    // onRequestFinish()
-                    let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                    console.log(`开屏广告加载成功, 价格为${ecpm}`);
-                    ZJSdk.showSplashAd({
-                        onError(errCode: Number, errMsg: string) {
-                            console.log(`开屏广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
-                        },
-                        onAdShow() {
-                            console.log("开屏广告展示");
-                        },
-                        onAdClick() {
-                            console.log("开屏广告点击");
-                        },
-                        onAdClose() {
-                            console.log("开屏广告关闭");
-                        }
-                    });
-                }, onError(errCode, errMsg) {
-                    // onRequestFinish()
-                    console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                }
-            });
+            ad.showInterstitial();
+            // ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
+            //     onAdLoaded(msg) {
+            //         // onRequestFinish()
+            //         let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
+            //         console.log(`开屏广告加载成功, 价格为${ecpm}`);
+            //         ZJSdk.showSplashAd({
+            //             onError(errCode: Number, errMsg: string) {
+            //                 console.log(`开屏广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
+            //             },
+            //             onAdShow() {
+            //                 console.log("开屏广告展示");
+            //             },
+            //             onAdClick() {
+            //                 console.log("开屏广告点击");
+            //             },
+            //             onAdClose() {
+            //                 console.log("开屏广告关闭");
+            //             }
+            //         });
+            //     }, onError(errCode, errMsg) {
+            //         // onRequestFinish()
+            //         console.log(`开屏广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
+            //     }
+            // });
 
             // checkForUpdate();
         }

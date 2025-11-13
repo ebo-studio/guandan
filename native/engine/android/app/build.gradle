@@ -19,8 +19,8 @@ android {
         applicationId APPLICATION_ID
         minSdkVersion PROP_MIN_SDK_VERSION.toInteger()
         targetSdkVersion PROP_TARGET_SDK_VERSION.toInteger()
-        versionCode 23
-        versionName "1.0.4"
+        versionCode 24
+        versionName "1.0.5"
 
         externalNativeBuild {
             cmake {
@@ -101,7 +101,8 @@ dependencies {
 //    implementation 'com.bytedance.sdk:openadsdk:7.1.0.5'
 //    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 //    implementation files('libs/open_ad_sdk_7.1.0.5.aar')
-    implementation files('libs/open_ad_sdk.aar')
+    implementation(name: 'open_ad_sdk_7.2.2.1', ext: 'aar')
+//    implementation files('libs/open_ad_sdk.aar')
 //    implementation fileTree(dir: '../libs', include: ['*.jar','*.aar'])
 //    implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation fileTree(dir: "${COCOS_ENGINE_PATH}/cocos/platform/android/java/libs", include: ['*.jar'])
@@ -110,15 +111,15 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads:24.6.0")
 
     /// 设备OAID，如已引入，可忽略
-    implementation 'com.zj.zjsdk:oaid_sdk:1.0.25'
-
-    // SDK包
-    implementation 'com.zj.zjsdk:zjsdk-cocos-bridge:2.5.5.60'
-    implementation 'com.zj.zjsdk:kssdk-ct:4.9.20.1'
-    // implementation 'com.pangle.cn:mediation-sdk:7.0.1.2'  // 融合SDK
-    implementation 'com.zj.zjsdk:beizi_fusion_sdk:5.2.2.0'
-    implementation 'com.zj.zjsdk:octopus_ad_sdk:2.5.10.5'
-    implementation 'com.zj.zjsdk:jy:2.0.125'
+//    implementation 'com.zj.zjsdk:oaid_sdk:1.0.25'
+//
+//    // SDK包
+//    implementation 'com.zj.zjsdk:zjsdk-cocos-bridge:2.5.5.60'
+//    implementation 'com.zj.zjsdk:kssdk-ct:4.9.20.1'
+//    // implementation 'com.pangle.cn:mediation-sdk:7.0.1.2'  // 融合SDK
+//    implementation 'com.zj.zjsdk:beizi_fusion_sdk:5.2.2.0'
+//    implementation 'com.zj.zjsdk:octopus_ad_sdk:2.5.10.5'
+//    implementation 'com.zj.zjsdk:jy:2.0.125'
 
 //    implementation(fileTree(dir: "libs", includes: ["*.aar"]))
     //fastjson 依赖
@@ -137,21 +138,28 @@ dependencies {
     implementation(name: 'aliyun-nfc-2.3.42.251020152522', ext: 'aar')
     implementation(name: 'aliyun-ocr-2.3.42.251020152522', ext: 'aar')
     implementation(name: 'aliyun-wishverify-2.3.42.251020152522', ext: 'aar')
+    implementation(name: 'kssdk-ad-4.9.20.5-publishRelease-1910680d9f', ext: 'aar');
+    implementation(name: 'GDTSDK.unionNormal.4.660.1530', ext: 'aar');
+
+    def support_version = "28.0.0" //建议使用的26以上的support库版本，建议使用28最新的即可。
+    // supprot库依赖，SDK内部依赖如下support，请确保添加
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
 
     // （以下为必要的运行依赖，若冲突 Gradle 会自动合并）
 //    implementation 'com.alibaba:fastjson2:2.0.47'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-
-    def takuVersion = "6.5.36"
-    implementation "com.anythink.sdk:core-taku:$takuVersion"
-    implementation "com.anythink.sdk:core-china-taku:$takuVersion"
-    implementation "com.anythink.sdk:nativead-taku:$takuVersion"
-    implementation "com.anythink.sdk:banner-taku:$takuVersion"
-    implementation "com.anythink.sdk:interstitial-taku:$takuVersion"
-    implementation "com.anythink.sdk:rewardedvideo-taku:$takuVersion"
-    implementation "com.anythink.sdk:splash-taku:$takuVersion"
-    implementation "com.anythink.sdk:adapter-taku-sdm:6.5.36.1"
-    implementation "com.smartdigimkttech.sdk:sdm-sdk-cn:6.5.37"
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+//
+//    def takuVersion = "6.5.36"
+//    implementation "com.anythink.sdk:core-taku:$takuVersion"
+//    implementation "com.anythink.sdk:core-china-taku:$takuVersion"
+//    implementation "com.anythink.sdk:nativead-taku:$takuVersion"
+//    implementation "com.anythink.sdk:banner-taku:$takuVersion"
+//    implementation "com.anythink.sdk:interstitial-taku:$takuVersion"
+//    implementation "com.anythink.sdk:rewardedvideo-taku:$takuVersion"
+//    implementation "com.anythink.sdk:splash-taku:$takuVersion"
+//    implementation "com.anythink.sdk:adapter-taku-sdm:6.5.36.1"
+//    implementation "com.smartdigimkttech.sdk:sdm-sdk-cn:6.5.37"
 //    implementation ('com.appodeal.ads:sdk:3.10.0.0') {
 //        exclude group: 'com.pangle.global', module: 'pag-sdk'
 //        exclude group: 'com.pangle.global', module: 'pag-sdk-ad'

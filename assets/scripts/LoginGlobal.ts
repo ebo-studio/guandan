@@ -27,7 +27,6 @@ export class LoginGlobal extends Component {
             code: data.code,
             inviterId: data.inviterId,
             certifyId: data.certifyId,
-            open: true
         }
         UIManager.Instace.showUI({
             path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." }, callBack: () => {
