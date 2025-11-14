@@ -8,6 +8,7 @@ node_modules/
 build/
 dist/
 library/
+native/engine/
 temp/
 *.apk
 *.rar
