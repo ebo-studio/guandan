@@ -26,6 +26,7 @@ export module HttpConfig{
     export const QueryMyFirstInviter: number = 117; //查询自己所有一级
     export const AdWatchInfo: number = 118; //查询自己所有一级
     export const AdWatchCount: number = 119; //查询自己所有一级
+    export const checkUserExists: number = 120;
 
 
     var httpMap: Map<number, string> = null;
@@ -55,6 +56,7 @@ export module HttpConfig{
         httpMap.set(QueryMyFirstInviter, commonUrl + 'api/User/queryMyFirstInviter');
         httpMap.set(AdWatchInfo, commonUrl + 'api/User/queryAdWatchInfo');
         httpMap.set(AdWatchCount, commonUrl + 'api/User/incrementAdWatchCount');
+        httpMap.set(checkUserExists, commonUrl + 'api/Login/checkUserExists');
     }
     export function getUrl(cmdID: number) {
         if (httpMap.has(cmdID)) {

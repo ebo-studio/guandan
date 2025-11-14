@@ -524,7 +524,7 @@ export namespace GlobalData {
             method: "POST",
             data: utils.toJson(sendData),
             success: function (data) {
-                console.log("GetUserInfo success", data);
+                console.log("GetUserInfo success", JSON.stringify(data));
                 userInfo.group_id = data.group_id;
                 userInfo.group_name = data.group_name;
                 userInfo.user_id = data.user_id;

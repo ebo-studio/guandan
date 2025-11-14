@@ -13,6 +13,8 @@ export module GameSocket {
     var isConnect: boolean = false;
     var checkTimeoutId: number = 0;
     var noHeartbeatTime: number = 0;
+    var retryCount = 0;
+    var reconnecting = false
 
     export function initAndConnect() {
         GameSocket.closeSocket();
@@ -22,6 +24,7 @@ export module GameSocket {
     }
     //初始化
     function init() {
+        console.log("gameSocket-->init");
         if (!gameSocket) {
             gameSocket = null;
             closeSocket();
@@ -52,6 +55,8 @@ export module GameSocket {
         }
     }
     function onGameSocketOpen() {
+        retryCount = 0;
+        reconnecting = false;
         console.log("onGameSocketOpen");
         let baseInfo = GameMsg.Login.create({ token: GlobalData.loginInfo.token });
         let baseBuffer = GameMsg.Login.encode(baseInfo).finish();
@@ -62,6 +67,27 @@ export module GameSocket {
         UIManager.Instace.hideUI(UIConfig.WaitItemKey);
         AppGlobal.instance.isShowTip = false;
     }
+
+    function tryReconnect() {
+        if (reconnecting) return;
+        reconnecting = true;
+
+        retryCount++;
+
+        // 最多延迟 5 秒
+        let delay = Math.min(retryCount, 5) * 1000;
+
+        console.log(`🔄 尝试重连 WebSocket，第 ${retryCount} 次，${delay / 1000}s 后开始`);
+
+        setTimeout(() => {
+            reconnecting = false;
+
+            let url = UrlConfig.getSocketUrl();
+            console.log("🔄 开始重连，url =", url);
+            connect(url);
+        }, delay);
+    }
+
     function clearTimeout() {
         if (checkTimeoutId != null) {
             clearInterval(checkTimeoutId);
@@ -75,13 +101,14 @@ export module GameSocket {
         if (recData.id != 1) {
             // console.log("recData ", recData);
         }
+        console.log('ws 通知', recData.id);
         if (recData.id == GlobalData.S2C_Event.Pong) {
             // console.log("心跳返回--->");
             clearTimeout();
             checkTimeoutId = setInterval(function () {
                 noHeartbeatTime += 1;
                 // 收不到心跳6秒钟,主动断开
-                if (noHeartbeatTime > 6) {
+                if (noHeartbeatTime > 12) {
                     closeSocket();
                     utils.send(GlobalData.localEvent.SocketError);
                 }
@@ -92,14 +119,15 @@ export module GameSocket {
             let user = GameMsg.User.decode(recData.msg);
             utils.send(GlobalData.localEvent.UserLogin, user);
         }
-        else if(recData.id == GlobalData.S2C_Event.User) {
-            let data = GameMsg.User.decode(recData.msg); 
-            if(data.gold != null) {
+        else if (recData.id == GlobalData.S2C_Event.User) {
+            let data = GameMsg.User.decode(recData.msg);
+            if (data.gold != null) {
                 GlobalData.userInfo.score = data.gold;
+                utils.send(GlobalData.localEvent.UpdateScore);
             }
         }
-        else if(recData.id == GlobalData.S2C_Event.GOLD_CHANGE2) {
-            let data = GameMsg.User.decode(recData.msg); 
+        else if (recData.id == GlobalData.S2C_Event.GOLD_CHANGE2) {
+            let data = GameMsg.User.decode(recData.msg);
             console.log("📦 金币接口完整返回 data:", JSON.stringify(data));
             GlobalData.userInfo.score = data.gold;
             utils.send(GlobalData.localEvent.UpdateScore);
@@ -255,7 +283,7 @@ export module GameSocket {
         }
         else if (recData.id == GlobalData.S2C_Event.FreeMatchStart) {
             let msg = GameMsg.Match.decode(recData.msg);
-            console.log('FreeMatchStart----> ',msg);
+            console.log('FreeMatchStart----> ', msg);
             utils.send(GlobalData.localEvent.FreeMatchStart, msg);
         }
         else if (recData.id == GlobalData.S2C_Event.FreeMatchTimeOut) {
@@ -263,7 +291,7 @@ export module GameSocket {
         }
         else if (recData.id == GlobalData.S2C_Event.AuditionMatchStart) {
             let msg = GameMsg.Match.decode(recData.msg);
-            console.log('AuditionMatchStart----> ',msg);
+            console.log('AuditionMatchStart----> ', msg);
             utils.send(GlobalData.localEvent.AuditionMatchStart, msg);
         }
         else if (recData.id == GlobalData.S2C_Event.AuditionMatchTimeOut) {
@@ -279,7 +307,7 @@ export module GameSocket {
         else if (recData.id == GlobalData.S2C_Event.OutGame) {
             // console.log("比赛状态");
             let msg = GameMsg.OutGame.decode(recData.msg);
-            utils.send(GlobalData.localEvent.KickGameInfo,msg);
+            utils.send(GlobalData.localEvent.KickGameInfo, msg);
         }
         else if (recData.id == GlobalData.S2C_Event.ReconnecteKangGong) {
             let msg = GameMsg.KongGong.decode(recData.msg);
@@ -294,7 +322,7 @@ export module GameSocket {
         else if (recData.id == GlobalData.S2C_Event.ReconnectError) {
             GlobalData.loginInfo.token = null;
         }
-        else if(recData.id == GlobalData.S2C_Event.Organize) {
+        else if (recData.id == GlobalData.S2C_Event.Organize) {
             let msg = GameMsg.Organize.decode(recData.msg);
             utils.send(GlobalData.localEvent.Organize, msg);
         }
@@ -302,9 +330,12 @@ export module GameSocket {
     //错误
     export function onGameSocketError(event) {
         setIsConnect(false);
-        console.log("onGameSocketError ", event);
+        console.log("❌ onGameSocketError ", event);
+
         utils.send(GlobalData.localEvent.SocketError);
-        
+
+        tryReconnect(); // ← 自动重连
+
     }
     //关闭
     export function onGameSocketClose() {

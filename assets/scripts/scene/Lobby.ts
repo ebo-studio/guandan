@@ -73,10 +73,20 @@ export class Lobby extends Component {
                         () => {
                             UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                             UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                            GlobalData.requestGetUserInfo({
+                                success: () => {
+                                    this.onUpdateScore();
+                                }
+                            });
+
                         },
                         () => {
                             UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                        },
+                        () => {
+                            UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "中途退出,无法获得奖励" });
                         }
                     )
                     // ZJSdk.loadRewardedAd('Pno79en81mh8', GlobalData.userInfo.user_id.toString(), {

@@ -233,6 +233,7 @@ export class Loading extends Component {
                 // }
             }
             checkForUpdate();
+            // let data = { account: 13713594780, type: 1, code: code, inviterId: inviter, certifyId:  certifyIds};
             // checkForNotice();
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
@@ -329,6 +330,32 @@ export class Loading extends Component {
         }
         // UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.lobby });
         director.loadScene(GlobalData.sceneName.lobby);
+        // this.startZimLocalTest((success, certifyIds) => {
+        //     if (success) {
+        //         console.log("ZIM 本地测试成功:", success, certifyIds);
+        //         let data = { account: 15815289337, type: 1, code: 1234, inviterId: '', certifyId: certifyIds };
+        //         LoginGlobal.instance.requestLogin(data, {
+        //             success: (data) => {
+                        
+        //             },
+        //             fail: (data) => {
+        //                 let data1 = { account: 15815289337, type: 1, code: 1234, inviterId: '', certifyId: certifyIds };
+        //                 LoginGlobal.instance.requestLogin(data1, {
+        //                     success: (data) => {
+                                
+        //                         // });
+        //                     },
+        //                     fail: (data) => {
+
+        //                     }
+        //                 })
+        //             }
+        //         })
+        //     } else {
+        //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
+        //         // console.warn("ZIM 本地测试失败:", msg);
+        //     }
+        // });
     }
 
     showPhoneNode() {
@@ -369,71 +396,131 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        this.startZimLocalTest((success, certifyIds) => {
-            if (success) {
-                console.log("ZIM 本地测试成功:", success, certifyIds);
-                let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId:  certifyIds};
-                LoginGlobal.instance.requestLogin(data, {
-                    success: (data) => {
-                        console.log('登录成功:', data);
-                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
-                        if (data) {
-                            GlobalData.loginInfo.token = data.token;
-                            localStorage.setItem(GlobalData.TOKEN, data.token);
-                            if (!SignInManager.getUserByName(data.name)) {
-                                let userInfodata: SignInManager.UserInfo = {
-                                    token: data.token,
-                                    name: data.name,
-                                    ad_watch_count: 0,
-                                };
-                                SignInManager.addOrUpdateUser(userInfodata)
+
+        let checkData = { account: phone, type: 1 }
+        LoginGlobal.instance.requestCheckUserExists(checkData, {
+            success: (data) => {
+                if (data.exists) {
+                    let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId: "" };
+                    LoginGlobal.instance.requestLogin(data, {
+                        success: (data) => {
+                            console.log('登录成功:', data);
+                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                            if (data) {
+                                GlobalData.loginInfo.token = data.token;
+                                localStorage.setItem(GlobalData.TOKEN, data.token);
+                                if (!SignInManager.getUserByName(data.name)) {
+                                    let userInfodata: SignInManager.UserInfo = {
+                                        token: data.token,
+                                        name: data.name,
+                                        ad_watch_count: 0,
+                                    };
+                                    SignInManager.addOrUpdateUser(userInfodata)
+                                }
+                                SignInManager.switchUser(data.name);
                             }
-                            SignInManager.switchUser(data.name);
-                        }
 
-                        GlobalData.requestGetUserInfo({
-                            success: () => {
-                                clearInterval(this.timer);
-                                GlobalData.userInfo.haveToken = true;
-                                // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                                // ZJSdk.start({
-                                //     onStartFailed(code, msg) {
-                                //         console.log(`onStartFailed:${code}-${msg}`);
-                                //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                                //     }, onStartSuccess() {
-                                //         console.log("onStartSuccess");
+                            GlobalData.requestGetUserInfo({
+                                success: () => {
+                                    clearInterval(this.timer);
+                                    GlobalData.userInfo.haveToken = true;
+                                    this.loginNode.active = false;
+                                    this.phoneLoginBtn.node.active = false;
+                                    this.emailBtn.node.active = false;
+                                    this.joginGame.node.active = true;
+                                    const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                    this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        GlobalData.userInfo.noticeData = [];
+                                        if (Number(data?.code) === 200) {
+                                            for (let i = 0; i < data.data.length; i++) {
+                                                GlobalData.userInfo.noticeData.push(data.data[i]);
+                                                // if (data.data[i].title == '系统维护通知') {
+                                                //     const localNotices = [data.data[i]];
 
-                                //     }
-                                // })
-                                this.loginNode.active = false;
-                                this.phoneLoginBtn.node.active = false;
-                                this.emailBtn.node.active = false;
-                                this.joginGame.node.active = true;
-                                const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
-                                this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                    GlobalData.userInfo.noticeData = [];
-                                    if (Number(data?.code) === 200) {
-                                        for (let i = 0; i < data.data.length; i++) {
-                                            GlobalData.userInfo.noticeData.push(data.data[i]);
-                                            // if (data.data[i].title == '系统维护通知') {
-                                            //     const localNotices = [data.data[i]];
-
-                                            // }
+                                                // }
+                                            }
+                                            UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
                                         }
-                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                    })
+                                        .catch(err => console.error(err));
+                                }
+                            });
+                        }
+                    })
+                }
+                else {
+                    this.startZimLocalTest((success, certifyIds) => {
+                        if (success) {
+                            console.log("ZIM 本地测试成功:", success, certifyIds);
+                            let data = { account: phone, type: 1, code: code, inviterId: inviter, certifyId: certifyIds };
+                            LoginGlobal.instance.requestLogin(data, {
+                                success: (data) => {
+                                    console.log('登录成功:', data);
+                                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                                    if (data) {
+                                        GlobalData.loginInfo.token = data.token;
+                                        localStorage.setItem(GlobalData.TOKEN, data.token);
+                                        if (!SignInManager.getUserByName(data.name)) {
+                                            let userInfodata: SignInManager.UserInfo = {
+                                                token: data.token,
+                                                name: data.name,
+                                                ad_watch_count: 0,
+                                            };
+                                            SignInManager.addOrUpdateUser(userInfodata)
+                                        }
+                                        SignInManager.switchUser(data.name);
                                     }
-                                })
-                                    .catch(err => console.error(err));
-                            }
-                        });
-                    }
-                })
-            } else {
-                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
-                // console.warn("ZIM 本地测试失败:", msg);
+
+                                    GlobalData.requestGetUserInfo({
+                                        success: () => {
+                                            clearInterval(this.timer);
+                                            GlobalData.userInfo.haveToken = true;
+                                            // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+                                            // ZJSdk.start({
+                                            //     onStartFailed(code, msg) {
+                                            //         console.log(`onStartFailed:${code}-${msg}`);
+                                            //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+                                            //     }, onStartSuccess() {
+                                            //         console.log("onStartSuccess");
+
+                                            //     }
+                                            // })
+                                            this.loginNode.active = false;
+                                            this.phoneLoginBtn.node.active = false;
+                                            this.emailBtn.node.active = false;
+                                            this.joginGame.node.active = true;
+                                            const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                            this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                                GlobalData.userInfo.noticeData = [];
+                                                if (Number(data?.code) === 200) {
+                                                    for (let i = 0; i < data.data.length; i++) {
+                                                        GlobalData.userInfo.noticeData.push(data.data[i]);
+                                                        // if (data.data[i].title == '系统维护通知') {
+                                                        //     const localNotices = [data.data[i]];
+
+                                                        // }
+                                                    }
+                                                    UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                                }
+                                            })
+                                                .catch(err => console.error(err));
+                                        }
+                                    });
+                                }
+                            })
+                        } else {
+                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
+                            // console.warn("ZIM 本地测试失败:", msg);
+                        }
+                    });
+                }
+
             }
-        });
+        })
+
+
 
     }
 
@@ -499,128 +586,110 @@ export class Loading extends Component {
             UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "请输入验证码" });
             return;
         }
-        this.startZimLocalTest((success, certifyIds) => {
-            if (success) {
-                console.log("ZIM 本地测试成功:", success, certifyIds);
-                let data = { account: email, type: 2, code: code, inviterId: inviter, certifyId:  certifyIds};
-                LoginGlobal.instance.requestLogin(data, {
-                    success: (data) => {
-                        console.log('登录成功:', data);
-                        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
-                        if (data) {
-                            GlobalData.loginInfo.token = data.token;
-                            localStorage.setItem(GlobalData.TOKEN, data.token);
-                            if (!SignInManager.getUserByName(data.name)) {
-                                let userInfodata: SignInManager.UserInfo = {
-                                    token: data.token,
-                                    name: data.name,
-                                    ad_watch_count: 0,
-                                };
-                                SignInManager.addOrUpdateUser(userInfodata)
+        let checkData = { account: email, type: 2 }
+        LoginGlobal.instance.requestCheckUserExists(checkData, {
+            success: (data) => {
+                if (data.exists) {
+                    let logindata = { account: email, type: 2, code: code, inviterId: inviter, certifyId: "" };
+                    LoginGlobal.instance.requestLogin(logindata, {
+                        success: (data) => {
+                            console.log('登录成功:', data);
+                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                            if (data) {
+                                GlobalData.loginInfo.token = data.token;
+                                localStorage.setItem(GlobalData.TOKEN, data.token);
+                                if (!SignInManager.getUserByName(data.name)) {
+                                    let userInfodata: SignInManager.UserInfo = {
+                                        token: data.token,
+                                        name: data.name,
+                                        ad_watch_count: 0,
+                                    };
+                                    SignInManager.addOrUpdateUser(userInfodata)
+                                }
+                                SignInManager.switchUser(data.name);
                             }
-                            SignInManager.switchUser(data.name);
-                        }
 
-                        GlobalData.requestGetUserInfo({
-                            success: () => {
-                                clearInterval(this.timer);
-                                GlobalData.userInfo.haveToken = true;
-                                // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-                                // ZJSdk.start({
-                                //     onStartFailed(code, msg) {
-                                //         console.log(`onStartFailed:${code}-${msg}`);
-                                //         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-                                //     }, onStartSuccess() {
-                                //         console.log("onStartSuccess");
-
-                                //     }
-                                // })
-                                this.loginNode.active = false;
-                                this.phoneLoginBtn.node.active = false;
-                                this.emailBtn.node.active = false;
-                                this.joginGame.node.active = true;
-                                const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
-                                this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                    GlobalData.userInfo.noticeData = [];
-                                    if (Number(data?.code) === 200) {
-                                        for (let i = 0; i < data.data.length; i++) {
-                                            GlobalData.userInfo.noticeData.push(data.data[i]);
-                                            // if (data.data[i].title == '系统维护通知') {
-                                            //     const localNotices = [data.data[i]];
-
-                                            // }
+                            GlobalData.requestGetUserInfo({
+                                success: () => {
+                                    clearInterval(this.timer);
+                                    GlobalData.userInfo.haveToken = true;
+                                    this.loginNode.active = false;
+                                    this.phoneLoginBtn.node.active = false;
+                                    this.emailBtn.node.active = false;
+                                    this.joginGame.node.active = true;
+                                    const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                    this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                        GlobalData.userInfo.noticeData = [];
+                                        if (Number(data?.code) === 200) {
+                                            for (let i = 0; i < data.data.length; i++) {
+                                                GlobalData.userInfo.noticeData.push(data.data[i]);
+                                            }
+                                            UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
                                         }
-                                        UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                    })
+                                        .catch(err => console.error(err));
+                                }
+                            });
+                        }
+                    })
+                }
+                else {
+                    this.startZimLocalTest((success, certifyIds) => {
+                        if (success) {
+                            console.log("ZIM 本地测试成功:", success, certifyIds);
+                            let data = { account: email, type: 2, code: code, inviterId: inviter, certifyId: certifyIds };
+                            LoginGlobal.instance.requestLogin(data, {
+                                success: (data) => {
+                                    console.log('登录成功:', data);
+                                    UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+                                    if (data) {
+                                        GlobalData.loginInfo.token = data.token;
+                                        localStorage.setItem(GlobalData.TOKEN, data.token);
+                                        if (!SignInManager.getUserByName(data.name)) {
+                                            let userInfodata: SignInManager.UserInfo = {
+                                                token: data.token,
+                                                name: data.name,
+                                                ad_watch_count: 0,
+                                            };
+                                            SignInManager.addOrUpdateUser(userInfodata)
+                                        }
+                                        SignInManager.switchUser(data.name);
                                     }
-                                })
-                                    .catch(err => console.error(err));
-                            }
-                        });
-                    }
-                })
-            } else {
-                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
-                // console.warn("ZIM 本地测试失败:", msg);
+
+                                    GlobalData.requestGetUserInfo({
+                                        success: () => {
+                                            clearInterval(this.timer);
+                                            GlobalData.userInfo.haveToken = true;
+                                            this.loginNode.active = false;
+                                            this.phoneLoginBtn.node.active = false;
+                                            this.emailBtn.node.active = false;
+                                            this.joginGame.node.active = true;
+                                            const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+                                            this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+                                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                                GlobalData.userInfo.noticeData = [];
+                                                if (Number(data?.code) === 200) {
+                                                    for (let i = 0; i < data.data.length; i++) {
+                                                        GlobalData.userInfo.noticeData.push(data.data[i]);
+                                                    }
+                                                    UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+                                                }
+                                            })
+                                                .catch(err => console.error(err));
+                                        }
+                                    });
+                                }
+                            })
+                        } else {
+                            UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录失败" });
+                            // console.warn("ZIM 本地测试失败:", msg);
+                        }
+                    });
+                }
+
             }
-        });
-        // let data = { account: email, type: 2, code: code, inviterId: inviter };
-        // LoginGlobal.instance.requestLogin(data, {
-        //     success: (data) => {
-        //         console.log('登录成功:', data);
-        //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
-        //         if (data) {
-        //             GlobalData.loginInfo.token = data.token;
-        //             localStorage.setItem(GlobalData.TOKEN, data.token);
-        //             if (!SignInManager.getUserByName(data.name)) {
-        //                 let userInfodata: SignInManager.UserInfo = {
-        //                     token: data.token,
-        //                     name: data.name,
-        //                     ad_watch_count: 0,
-        //                 };
-        //                 SignInManager.addOrUpdateUser(userInfodata)
-        //             }
-        //             SignInManager.switchUser(data.name);
-        //         }
-
-        //         GlobalData.requestGetUserInfo({
-        //             success: () => {
-        //                 clearInterval(this.timer);
-        //                 GlobalData.userInfo.haveToken = true;
-        //                 ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
-        //                 ZJSdk.start({
-        //                     onStartFailed(code, msg) {
-        //                         console.log(`onStartFailed:${code}-${msg}`);
-        //                         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
-        //                     }, onStartSuccess() {
-        //                         console.log("onStartSuccess");
-
-        //                     }
-        //                 })
-        //                 this.loginNode.active = false;
-        //                 this.phoneLoginBtn.node.active = false;
-        //                 this.emailBtn.node.active = false;
-        //                 this.joginGame.node.active = true;
-        //                 const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
-        //                 this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-        //                     // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-        //                     GlobalData.userInfo.noticeData = [];
-        //                     if (Number(data?.code) === 200) {
-        //                         for (let i = 0; i < data.data.length; i++) {
-        //                             GlobalData.userInfo.noticeData.push(data.data[i]);
-        //                             // if (data.data[i].title == '系统维护通知') {
-        //                             //     const localNotices = [data.data[i]];
-        //                             //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
-        //                             // }
-        //                         }
-        //                         UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
-        //                     }
-        //                 })
-        //                     .catch(err => console.error(err));
-        //             }
-        //         });
-        //     }
-        // })
+        })
     }
 
     onGetCode() {

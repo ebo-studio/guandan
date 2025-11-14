@@ -38,8 +38,10 @@ import com.alipay.face.api.ZIMResponse;
 import com.alipay.face.api.ZIMFacade;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdConfig;
+import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAdSdk;
+import com.bytedance.sdk.openadsdk.TTFullScreenVideoAd;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import com.cocos.lib.CocosActivity;
 import com.cocos.lib.CocosHelper;
@@ -62,6 +64,7 @@ import com.qq.e.ads.interstitial2.UnifiedInterstitialAD;
 import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener;
 import com.qq.e.ads.rewardvideo.RewardVideoAD;
 import com.qq.e.ads.rewardvideo.RewardVideoADListener;
+import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
 import com.qq.e.comm.managers.GDTAdSdk;
 import com.qq.e.comm.managers.setting.GlobalSetting;
 import com.qq.e.comm.util.AdError;
@@ -212,10 +215,10 @@ public class AppActivity extends CocosActivity {
 
     // 加载 + 显示激励视频
     private void loadAndShowRewardAd() {
-        long posIdToUse = ksRewardVideoId > 0 ? ksRewardVideoId : 29730000001L; // fallback
+        long posIdToUse = 29730000007L; // fallback
         KsScene.Builder builder = new KsScene.Builder(posIdToUse);
         KsScene scene = builder.build();
-
+        Log.d(SKD_TAG, "【KS】【加载开始】广告位ID = " + posIdToUse);
         // ====== 服务端回调参数 ======
         if (ksUserId != null && !ksUserId.isEmpty() && !ksUserId.equals("0")) {
             Map<String, String> rewardCallbackExtraData = new HashMap<>();
@@ -242,7 +245,6 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onRewardVideoAdLoad(@Nullable List<KsRewardVideoAd> adList) {
                 if (adList != null && !adList.isEmpty()) {
-
                     mKsRewardVideoAd = adList.get(0);
 //                    Log.d(SKD_TAG, "激励视频资源已缓存");
 
@@ -270,16 +272,20 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClicked() {
+
                 Log.d(SKD_TAG, "激励视频点击");
             }
 
             @Override
             public void onPageDismiss() {
+
                 Log.d(SKD_TAG, "激励视频关闭");
+//                callJsCallback("onAdClose");
             }
 
             @Override
             public void onVideoPlayError(int code, int extra) {
+                callJsCallback("onAdClose");
                 Log.e(SKD_TAG, "激励视频播放错误 code=" + code + ", extra=" + extra);
             }
 
@@ -352,6 +358,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onError(int code, String msg) {
                 Log.e(SKD_TAG, "插屏广告加载失败: " + code + ", " + msg);
+                callJsCallback("onKsInterstitialFail");
 
                 // 如果你需要 TS 端失败回调，可以这样：
 //                AppActivity.this.runOnGLThread(() -> {
@@ -510,7 +517,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onADClose() {
-
+//                callJsCallback("onAdClose");
             }
 
             @Override
@@ -518,6 +525,18 @@ public class AppActivity extends CocosActivity {
                 callJsCallback("onGDTAdFail");
             }
         });
+
+        ServerSideVerificationOptions.Builder builder = new ServerSideVerificationOptions.Builder();
+
+        if(ksUserId != null && !ksUserId.equals("") && !ksUserId.equals("0")) {
+            builder.setUserId(ksUserId);
+            builder.setCustomData("userid=" + ksUserId);
+            Log.d("GDT", "已写入激励服务端回调参数：userId=" + ksUserId);
+
+        }else {
+            Log.d("GDT", "未设置用户ID → 不启用服务器验证参数");
+        }
+        gdtRewardVideoAD.setServerSideVerificationOptions(builder.build());
 
         gdtRewardVideoAD.loadAD();
     }
@@ -612,7 +631,7 @@ public class AppActivity extends CocosActivity {
         TTAdSdk.start(new TTAdSdk.Callback() {
             @Override
             public void success() {
-                Log.i(SKD_TAG, "TTAdSdk ADK SUCCESS ");
+                Log.i("Pangle", "TTAdSdk ADK SUCCESS ");
             }
 
             @Override
@@ -621,6 +640,8 @@ public class AppActivity extends CocosActivity {
             }
         });
     }
+
+    public static boolean pangleUseServerCallback = false;
 
     private TTRewardVideoAd pangleRewardAd;
     public static void showPangleRewardVideo(String userId, String rewardName) {
@@ -631,23 +652,44 @@ public class AppActivity extends CocosActivity {
 
     private void loadAndShowPangleReward(String uid) {
         final AppActivity act = AppActivity.getInstance();
-        AdSlot adSlot = new AdSlot.Builder()
+
+        AdSlot.Builder builder = new AdSlot.Builder()
                 .setCodeId("972774918")
-                .setUserID(uid)
                 .setRewardName("奖励")
-                .setRewardAmount(10)
-                .build();
+                .setRewardAmount(10);
+
+        if(ksUserId != null && !ksUserId.isEmpty() && !uid.equals("0")) {
+            pangleUseServerCallback = true;
+
+            builder.setUserID(ksUserId);
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("user_id", uid);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            builder.setMediaExtra(obj.toString());
+
+            Log.d("Pangle", "Pangle 激励：使用 S2S 回调 uid=" + uid);
+        }else {
+
+            pangleUseServerCallback = false;
+
+            Log.d("Pangle", "Pangle 激励：走普通客户端回调（未设置 uid）");
+        }
+
+        AdSlot adSlot = builder.build();
 
         TTAdSdk.getAdManager().createAdNative(act).loadRewardVideoAd(adSlot, new TTAdNative.RewardVideoAdListener() {
             @Override
             public void onError(int code, String msg) {
-                Log.e(SKD_TAG, "激励视频加载失败：" + code + ", " + msg);
+                Log.e("Pangle", "激励视频加载失败：" + code + ", " + msg);
                 callJsCallback("onPangleRewardFail");
             }
 
             @Override
             public void onRewardVideoAdLoad(TTRewardVideoAd ttRewardVideoAd) {
-                Log.d(SKD_TAG, "激励视频素材成功加载");
+                Log.d("Pangle", "激励视频素材成功加载");
                 pangleRewardAd = ttRewardVideoAd;
 
                 bindRewardListener();
@@ -697,12 +739,102 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onRewardVerify(boolean b, int i, String s, int i1, String s1) {
-                Log.d(SKD_TAG, "激励发放成功");
-                callJsCallback("onPangleRewarded");
+                if(!pangleUseServerCallback) {
+                    Log.d("Pangle", "普通激励发放成功");
+                    callJsCallback("onPangleRewarded");
+                }
+
             }
 
             @Override
             public void onRewardArrived(boolean b, int i, Bundle bundle) {
+                if(pangleUseServerCallback) {
+                    Log.d("Pangle", "Pangle S2S奖励成功：onRewardArrived");
+                    callJsCallback("onPangleRewarded");
+                }
+            }
+
+            @Override
+            public void onSkippedVideo() {
+
+            }
+        });
+    }
+
+    private TTFullScreenVideoAd pangleInterstitialAd;
+    public static void showPangleInterstitial() {
+//        if (pangleInterstitialAd != null) {
+//            Log.d("Pangle", "▶️ 展示插屏广告");
+//            pangleInterstitialAd.showFullScreenVideoAd(this);
+//        } else {
+//            Log.w("Pangle", "⚠ 插屏广告对象为空，重新加载");
+//            loadAndShowPangleInterstitial();
+//        }
+        Log.d("Pangle", "▶️ 展示插屏广告");
+        if (instance != null) {
+
+            instance.loadAndShowPangleInterstitial();
+        }
+    }
+
+    public void loadAndShowPangleInterstitial() {
+        final AppActivity act = AppActivity.getInstance();
+        AdSlot adSlot = new AdSlot.Builder()
+                .setCodeId("972826563")
+                .setOrientation(TTAdConstant.HORIZONTAL)
+                .build();
+
+        TTAdSdk.getAdManager().createAdNative(act)
+                .loadFullScreenVideoAd(adSlot, new TTAdNative.FullScreenVideoAdListener() {
+                    @Override
+                    public void onError(int i, String s) {
+                        Log.e("Pangle", "❌ 插屏加载失败：" + i + ", msg=" + s);
+                    }
+
+                    @Override
+                    public void onFullScreenVideoAdLoad(TTFullScreenVideoAd ttFullScreenVideoAd) {
+                        Log.d("Pangle", "📥 插屏广告素材加载成功");
+                        pangleInterstitialAd = ttFullScreenVideoAd;
+
+                        bindPangleInterstitialListener();
+                    }
+
+                    @Override
+                    public void onFullScreenVideoCached() {
+                        Log.d("Pangle", "InterstitialFull onFullScreenVideoCached");
+                    }
+
+                    @Override
+                    public void onFullScreenVideoCached(TTFullScreenVideoAd ttFullScreenVideoAd) {
+                        Log.d("Pangle", "InterstitialFull onFullScreenVideoCached");
+                        // 建议在该回调后进行广告展示
+                        pangleInterstitialAd = ttFullScreenVideoAd;
+
+                        bindPangleInterstitialListener();
+                    }
+                });
+    }
+
+    private void bindPangleInterstitialListener() {
+        final AppActivity act = AppActivity.getInstance();
+        pangleInterstitialAd.setFullScreenVideoAdInteractionListener(new TTFullScreenVideoAd.FullScreenVideoAdInteractionListener() {
+            @Override
+            public void onAdShow() {
+
+            }
+
+            @Override
+            public void onAdVideoBarClick() {
+
+            }
+
+            @Override
+            public void onAdClose() {
+
+            }
+
+            @Override
+            public void onVideoComplete() {
 
             }
 
@@ -711,6 +843,8 @@ public class AppActivity extends CocosActivity {
 
             }
         });
+        pangleInterstitialAd.showFullScreenVideoAd(act);
+//        showPangleInterstitial();
     }
 
 

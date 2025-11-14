@@ -2,8 +2,86 @@ import { sys } from "cc";
 import { GlobalData } from "./GlobalData";
 
 export enum AdPlatform {
-    KS = "ks",     // 快手
-    GDT = "gdt",   // 优量汇 (Tencent GDT)
+    KS = "ks",
+    GDT = "gdt",
+    PANGLE = 'pangel'
+}
+
+// =============================
+// 每日次数限制器（新增）
+// =============================
+class DailyCounter {
+    private maxCount = 30
+    private key = "ad_limit_data";
+
+    private data = {
+        date: "",
+        counts: {
+            ks: 0,
+            gdt: 0,
+            pangel: 0,
+        }
+    };
+
+    constructor() {
+        this.load();
+        this.checkReset();
+    }
+
+    private today() {
+        const d = new Date();
+        return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
+    }
+
+    private checkReset() {
+        const t = this.today();
+        if (this.data.date !== t) {
+            this.data.date = t;
+            this.data.counts = { ks: 0, gdt: 0, pangel: 0 };
+            this.save();
+        }
+    }
+
+    private save() {
+        sys.localStorage.setItem(this.key, JSON.stringify(this.data));
+    }
+
+    private load() {
+        const raw = sys.localStorage.getItem(this.key);
+        if (!raw) return;
+        try {
+            this.data = JSON.parse(raw);
+        } catch { }
+    }
+
+    canPlay(platform: AdPlatform): boolean {
+        this.checkReset();
+        return this.data.counts[platform] < this.maxCount;
+    }
+
+    add(platform: AdPlatform) {
+        this.checkReset();
+        this.data.counts[platform]++;
+        this.save();
+    }
+
+    remain(platform: AdPlatform) {
+        this.checkReset();
+        return this.maxCount - this.data.counts[platform];
+    }
+
+    pickPlatform(platforms: AdPlatform[]): AdPlatform | null {
+        this.checkReset();
+
+        const available = platforms.filter(p => this.canPlay(p));
+        if (available.length === 0) return null;
+
+        available.sort((a, b) => {
+            return this.data.counts[a] - this.data.counts[b];
+        });
+
+        return available[0];
+    }
 }
 
 export class ADManager {
@@ -12,6 +90,8 @@ export class ADManager {
         if (!this._inst) this._inst = new ADManager();
         return this._inst;
     }
+
+    private counter = new DailyCounter();
 
     private constructor() {
         this.bindNativeCallbacks();
@@ -56,107 +136,181 @@ export class ADManager {
     }
 
     // =============================
+    // ⭐ 冷却相关（新增字段）
+    // =============================
+    private failCount = {
+        ks: 0,
+        gdt: 0,
+        pangel: 0,
+    };
+
+    private banUntil = {
+        ks: 0,
+        gdt: 0,
+        pangel: 0,
+    };
+
+    // =============================
     // 激励视频
     // =============================
 
     private _rewardCallback: (() => void) | null = null;
     private _extraRewardCallback: ((type: number) => void) | null = null;
     private _failCallback: (() => void) | null = null;
+    private _closeCallback: (() => void) | null = null;
+
 
     private rewardPlatforms: AdPlatform[] = [
         AdPlatform.GDT,
         AdPlatform.KS,
+        AdPlatform.PANGLE
     ];
 
-    /**
-     * 播放激励视频
-     * @param callback 看完主奖励回调
-     * @param extraCallback 额外奖励回调
-     */
-    public showRewardVideo(callback?: () => void, failCallback?: () => void, extraCallback?: (type: number) => void) {
+    private tryPlatforms: AdPlatform[] = [];
+
+    public showRewardVideo(callback?: () => void, failCallback?: () => void, closeCallback?: () => void, extraCallback?: (type: number) => void) {
         this._rewardCallback = callback || null;
         this._extraRewardCallback = extraCallback || null;
         this._failCallback = failCallback || null
+        this._closeCallback = closeCallback || null;
 
         if (!this._isAndroidNative()) {
             this._rewardCallback?.();
             return;
         }
 
-        try {
-            //@ts-ignore
-            // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsRewardVideo", "()V");
-            // jsb.reflection.callStaticMethod(
-            //     "com/cocos/game/AppActivity",
-            //     "showPangleRewardVideo",
-            //     "(Ljava/lang/String;Ljava/lang/String;)V",
-            //     GlobalData.userInfo.user_id, 'rewardName'
-            // );
+        const allPlatforms: AdPlatform[] = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE];
 
-            // const p = AdPlatform.GDT; // 取第一个平台
+        const selected = this.counter.pickPlatform(allPlatforms);
+        if (!selected) {
+            this._failCallback?.();
+            return;
+        }
 
-            // if (p === AdPlatform.GDT) {
-                // @ts-ignore
-                jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showGDTRewardVideo", "()V");
-            // } else if (p === AdPlatform.KS) {
-                // // @ts-ignore
-                // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsRewardVideo", "()V");
-            // }
-            // // @ts-ignore
-            // jsb.reflection.callStaticMethod(
-            //     "com/cocos/game/AppActivity",
-            //     "showKsRewardVideo",
-            //     "()V"
-            // );
-        } catch (e) {
+        console.log('今日选择播放平台=', selected);
+
+        this.tryPlatforms = allPlatforms.filter(p => p !== selected).sort(() => Math.random() - 0.5);
+        this.tryPlatforms.unshift(selected);
+
+        console.log('本次尝试顺序', this.tryPlatforms);
+
+        this._playNextPlatform();
+    }
+
+    private _playNextPlatform() {
+        if (this.tryPlatforms.length === 0) {
+            console.warn("所有广告平台都失败了");
+            this._failCallback?.();
+            return;
+        }
+
+        const platform = this.tryPlatforms.shift()!;
+        console.log("尝试播放平台：", platform);
+
+        // ⭐ 新增：冷却判断
+        const now = Date.now();
+        if (this.banUntil[platform] > now) {
+            console.log(platform, "处于冷却中，跳过");
+            this._playNextPlatform();
+            return;
+        }
+
+        if (!this.counter.canPlay(platform)) {
+            console.log("平台今日次数已满，跳过：", platform);
+            this._playNextPlatform();
+            return;
+        }
+
+        if (platform === AdPlatform.GDT) {
+            // @ts-ignore
+            jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showGDTRewardVideo", "()V");
+        }
+        else if (platform === AdPlatform.KS) {
+            // @ts-ignore
+            jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsRewardVideo", "()V");
+        }
+        else if (platform === AdPlatform.PANGLE) {
+            // @ts-ignore
+            jsb.reflection.callStaticMethod(
+                "com/cocos/game/AppActivity",
+                "showPangleRewardVideo",
+                "(Ljava/lang/String;Ljava/lang/String;)V",
+                GlobalData.userInfo.user_id,
+                "reward"
+            );
         }
     }
 
+    /** 平台失败回到这个逻辑 */
+    public onRewardVideoFailPlatform(platform: AdPlatform, msg: string) {
+        console.log("平台失败：", platform, msg);
+
+        // ⭐ 新增：失败次数统计
+        this.failCount[platform]++;
+
+        // ⭐ 同平台连续 3 次失败 → 冷却 3 分钟
+        if (this.failCount[platform] >= 3) {
+            this.banUntil[platform] = Date.now() + 3 * 60 * 1000;
+            this.failCount[platform] = 0;
+            console.log(`${platform} 连续失败，进入 3 分钟冷却`);
+        }
+
+        this._playNextPlatform();
+    }
+
     private bindNativeCallbacks() {
-        // 主奖励
         (window as any).onKsRewarded = () => {
+            this.failCount.ks = 0;     // ⭐ 清零
+            this.counter.add(AdPlatform.KS);
             this._rewardCallback?.();
         };
 
         (window as any).onKsRewardFail = () => {
-            this._failCallback?.();
+            this.onRewardVideoFailPlatform(AdPlatform.KS, 'msg');
         };
 
         (window as any).onGDTRewarded = () => {
+            this.failCount.gdt = 0;   // ⭐ 清零
+            this.counter.add(AdPlatform.GDT);
             this._rewardCallback?.();
         };
 
+        (window as any).onAdClose = () => {
+            this._closeCallback?.();
+        }
+
         (window as any).onGDTAdFail = (msg: string) => {
-            // this.onRewardFailPlatform(AdPlatform.GDT, msg);
-            this._failCallback?.();
+            this.onRewardVideoFailPlatform(AdPlatform.GDT, msg);
         };
 
         (window as any).onGDTInterstitialFail = (msg: string) => {
-            // this.onRewardFailPlatform(AdPlatform.GDT, msg);
-            // this._failCallback?.();
             this.onRewardFailPlatform(AdPlatform.GDT, msg);
         };
 
+        (window as any).onKsInterstitialFail = () => {
+            this.onRewardFailPlatform(AdPlatform.KS, '');
+        }
+
         (window as any).onPangleRewarded = () => {
-            console.log("【Pangle】激励视频观看完成");
+            this.failCount.pangel = 0;  // ⭐ 清零
+            this.counter.add(AdPlatform.PANGLE);
             this._rewardCallback?.();
         };
 
         (window as any).onPangleRewardFail = () => {
-            this._failCallback?.();
+            this.onRewardVideoFailPlatform(AdPlatform.PANGLE, "fail");
         };
     }
 
     // =============================
-    // 插屏广告（如果你之后要加）
+    // 插屏广告（保持原样，不改你任何逻辑）
     // =============================
-
     public showInterstitial() {
         if (!this._isAndroidNative()) {
             return;
         }
         try {
-            const p = this.rewardPlatforms[0]; // 取第一个平台
+            const p = this.rewardPlatforms[0];
 
             if (p === AdPlatform.GDT) {
                 // @ts-ignore
@@ -164,14 +318,14 @@ export class ADManager {
             } else if (p === AdPlatform.KS) {
                 // @ts-ignore
                 jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsInterstitial", "()V");
+            } else if (p === AdPlatform.PANGLE) {
+                // @ts-ignore
+                jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showPangleInterstitial", "()V");
             }
         } catch (e) {
 
         }
     }
-    // =============================
-    // 环境检测
-    // =============================
 
     private _isAndroidNative(): boolean {
         return sys.isNative && sys.os === sys.OS.ANDROID;
@@ -196,16 +350,8 @@ export class ADManager {
     public onRewardFailPlatform(platform: AdPlatform, msg: string) {
         console.log("平台失败：", platform, msg);
 
-        // 移除失败的平台
         this.rewardPlatforms = this.rewardPlatforms.filter(p => p !== platform);
 
-        // if (this.rewardPlatforms.length === 0) {
-        //     console.log("全部平台失败");
-        //     this._failCallback?.(msg);
-        //     return;
-        // }
-
-        // // 使用下一个平台重试
         this.showInterstitial();
     }
 }
