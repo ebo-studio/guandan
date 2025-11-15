@@ -36,6 +36,11 @@ import com.alipay.face.api.ZIMFacade;
 import com.alipay.face.api.ZIMFacadeBuilder;
 import com.alipay.face.api.ZIMResponse;
 import com.alipay.face.api.ZIMFacade;
+import com.baidu.mobads.sdk.api.BDAdConfig;
+import com.baidu.mobads.sdk.api.FullScreenVideoAd;
+import com.baidu.mobads.sdk.api.MobadsPermissionSettings;
+import com.baidu.mobads.sdk.api.RequestParameters;
+import com.baidu.mobads.sdk.api.RewardVideoAd;
 import com.bytedance.sdk.openadsdk.AdSlot;
 import com.bytedance.sdk.openadsdk.TTAdConfig;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
@@ -145,6 +150,8 @@ public class AppActivity extends CocosActivity {
         initGDT();
 
         initTTAdSkd(this);
+
+        initBdADSDK();
 
         // 初始化广告
 //        loadRewarded();
@@ -285,13 +292,14 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onVideoPlayError(int code, int extra) {
-                callJsCallback("onAdClose");
+                callJsCallback("onKsRewardFail");
                 Log.e(SKD_TAG, "激励视频播放错误 code=" + code + ", extra=" + extra);
             }
 
             @Override
             public void onVideoPlayStart() {
                 Log.d(SKD_TAG, "激励视频播放开始");
+                callJsCallback("onAdLoadComplete");
             }
 
             @Override
@@ -481,6 +489,7 @@ public class AppActivity extends CocosActivity {
         gdtRewardVideoAD = new RewardVideoAD(act, gdtRewardPosId, new RewardVideoADListener() {
             @Override
             public void onADLoad() {
+                callJsCallback("onAdLoadComplete");
                 Log.d("GDT", "优量汇激励加载成功");
             }
 
@@ -689,6 +698,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onRewardVideoAdLoad(TTRewardVideoAd ttRewardVideoAd) {
+                callJsCallback("onAdLoadComplete");
                 Log.d("Pangle", "激励视频素材成功加载");
                 pangleRewardAd = ttRewardVideoAd;
 
@@ -845,6 +855,166 @@ public class AppActivity extends CocosActivity {
         });
         pangleInterstitialAd.showFullScreenVideoAd(act);
 //        showPangleInterstitial();
+    }
+
+    //-------百度------------//
+    public static void initBdADSDK() {
+        final AppActivity act = AppActivity.getInstance();
+        BDAdConfig bdAdConfig = new BDAdConfig.Builder()
+                .setAppsid("bf4a362b")
+                .setDebug(false)
+                .setWXAppid("")
+                .setBDAdInitListener(new BDAdConfig.BDAdInitListener() {
+                    @Override
+                    public void success() {
+                        Log.d("bdsdk", "SDK初始化成功");
+                    }
+
+                    @Override
+                    public void fail() {
+                        Log.d("bdsdk", "SDK初始化失败");
+                    }
+                })
+                .build(act);
+        bdAdConfig.init();
+        MobadsPermissionSettings.setPermissionReadDeviceID(true);
+        MobadsPermissionSettings.setPermissionLocation(true);
+        MobadsPermissionSettings.setPermissionStorage(true);
+        MobadsPermissionSettings.setPermissionAppList(true);
+
+    }
+
+    public static void showBaiduInterstitial() {
+        if(instance != null) {
+            instance.loadBaiduFullVideo();
+        }
+    }
+    private FullScreenVideoAd baiduFullVideoAd;
+    private void loadBaiduFullVideo() {
+        final AppActivity act = AppActivity.getInstance();
+        Log.d("bdsdk", "开始加载百度插屏视频");
+        baiduFullVideoAd = new FullScreenVideoAd(act, "18703589", new FullScreenVideoAd.FullScreenVideoAdListener() {
+            @Override
+            public void onAdShow() {
+
+            }
+
+            @Override
+            public void onAdClick() {
+
+            }
+
+            @Override
+            public void onAdClose(float v) {
+
+            }
+
+            @Override
+            public void onAdFailed(String s) {
+                callJsCallback("onBaiduInterstitialFail");
+                Log.d("bdsdk", "插屏幕视频加载失败" + s);
+            }
+
+            @Override
+            public void onVideoDownloadSuccess() {
+
+            }
+
+            @Override
+            public void onVideoDownloadFailed() {
+
+            }
+
+            @Override
+            public void playCompletion() {
+
+            }
+
+            @Override
+            public void onAdSkip(float v) {
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+                baiduFullVideoAd.show();
+            }
+        });
+        baiduFullVideoAd.load();
+    }
+
+    public static void showBaiduRewardVideo() {
+        if(instance != null) {
+            instance.loadBaiduAndShow();
+        }
+    }
+    private RewardVideoAd baiduRewardAd;
+    private void loadBaiduAndShow(){
+        final AppActivity act = AppActivity.getInstance();
+        Log.d("bdsdk", "开始加载百度激励视频");
+        baiduRewardAd = new RewardVideoAd(act, "18703541", new RewardVideoAd.RewardVideoAdListener() {
+            @Override
+            public void onAdShow() {
+
+            }
+
+            @Override
+            public void onAdClick() {
+                Log.d("bdsdk", "onAdClick:");
+            }
+
+            @Override
+            public void onAdClose(float v) {
+                Log.d("bdsdk", "onAdClose:" + v);
+            }
+
+            @Override
+            public void onAdFailed(String s) {
+                Log.d("bdsdk", "激励视频加载失败" + s);
+                callJsCallback("onBaiduRewardFail");
+            }
+
+            @Override
+            public void onVideoDownloadSuccess() {
+
+            }
+
+            @Override
+            public void onVideoDownloadFailed() {
+            }
+
+            @Override
+            public void playCompletion() {
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+                Log.d("bdsdk", "激励视频加载成功");
+                baiduRewardAd.show(act);
+            }
+
+            @Override
+            public void onAdSkip(float v) {
+                Log.d("bdsdk", "onAdSkip:" + v);
+                callJsCallback("onAdClose");
+            }
+
+            @Override
+            public void onRewardVerify(boolean b) {
+                Log.d("bdsdk", "观看视频完成，获得奖励");
+                callJsCallback("onBaiduReward");
+            }
+        });
+
+        RequestParameters requestParameters = new RequestParameters.Builder()
+                .addExtra("user_id", ksUserId)
+                        .addExtra("extra", "uid=" + ksUserId)
+                                .build();
+
+        baiduRewardAd.setRequestParameters(requestParameters);
+//        baiduRewardAd.setRequestParameters();
+        baiduRewardAd.load();
     }
 
 

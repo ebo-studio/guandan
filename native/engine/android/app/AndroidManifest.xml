@@ -67,11 +67,40 @@
     <activity android:name="com.bytedance.sdk.openadsdk.activity.TTAdActivity">
       <property android:name="android.window.PROPERTY_COMPAT_ALLOW_RESTRICTED_RESIZABILITY" tools:node="remove"/>
     </activity>
+      <activity
+          android:name="com.baidu.mobads.sdk.api.MobRewardVideoActivity"
+          android:exported="false"
+          tools:replace="android:configChanges"
+          android:configChanges="screenSize|orientation|keyboardHidden|uiMode" />
+
+      <activity
+          android:name="com.baidu.mobads.sdk.api.MobAdActivity"
+          android:exported="false"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+      <activity
+          android:name="com.baidu.mobads.sdk.internal.webview.MobADWebViewActivity"
+          android:exported="false"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
+
+      <activity
+          android:name="com.baidu.mobads.sdk.internal.MobCommonActivity"
+          android:exported="false"
+          android:configChanges="keyboard|keyboardHidden|orientation|screenSize" />
     <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
     </provider>
     <provider android:name="com.qq.e.comm.GDTFileProvider" android:authorities="${applicationId}.gdt.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/gdt_file_path"/>
     </provider>
+      <provider
+          android:name="com.baidu.mobads.sdk.api.BdFileProvider"
+          android:authorities="${applicationId}.bd.provider"
+          android:exported="false"
+          android:grantUriPermissions="true">
+          <meta-data
+              android:name="android.support.FILE_PROVIDER_PATHS"
+              android:resource="@xml/bd_file_paths" />
+      </provider>
   </application>
 </manifest>

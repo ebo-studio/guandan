@@ -4,7 +4,8 @@ import { GlobalData } from "./GlobalData";
 export enum AdPlatform {
     KS = "ks",
     GDT = "gdt",
-    PANGLE = 'pangel'
+    PANGLE = 'pangel',
+    BAIDU = 'baidu'
 }
 
 // =============================
@@ -20,6 +21,7 @@ class DailyCounter {
             ks: 0,
             gdt: 0,
             pangel: 0,
+            baidu: 0
         }
     };
 
@@ -37,7 +39,7 @@ class DailyCounter {
         const t = this.today();
         if (this.data.date !== t) {
             this.data.date = t;
-            this.data.counts = { ks: 0, gdt: 0, pangel: 0 };
+            this.data.counts = { ks: 0, gdt: 0, pangel: 0, baidu: 0 };
             this.save();
         }
     }
@@ -142,12 +144,14 @@ export class ADManager {
         ks: 0,
         gdt: 0,
         pangel: 0,
+        baidu: 0
     };
 
     private banUntil = {
         ks: 0,
         gdt: 0,
         pangel: 0,
+        baidu: 0
     };
 
     // =============================
@@ -157,29 +161,41 @@ export class ADManager {
     private _rewardCallback: (() => void) | null = null;
     private _extraRewardCallback: ((type: number) => void) | null = null;
     private _failCallback: (() => void) | null = null;
-    private _closeCallback: (() => void) | null = null;
+    private _loadCompleteCallback: (() => void) | null = null;
 
 
     private rewardPlatforms: AdPlatform[] = [
         AdPlatform.GDT,
         AdPlatform.KS,
-        AdPlatform.PANGLE
+        AdPlatform.PANGLE,
+        AdPlatform.BAIDU
     ];
 
     private tryPlatforms: AdPlatform[] = [];
 
-    public showRewardVideo(callback?: () => void, failCallback?: () => void, closeCallback?: () => void, extraCallback?: (type: number) => void) {
+    public showRewardVideo(callback?: () => void, failCallback?: () => void, loadCompleteCallback?: () => void, extraCallback?: (type: number) => void) {
         this._rewardCallback = callback || null;
         this._extraRewardCallback = extraCallback || null;
         this._failCallback = failCallback || null
-        this._closeCallback = closeCallback || null;
+        this._loadCompleteCallback = loadCompleteCallback || null;
 
         if (!this._isAndroidNative()) {
             this._rewardCallback?.();
             return;
         }
 
-        const allPlatforms: AdPlatform[] = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE];
+        // @ts-ignore
+        // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showBaiduRewardVideo", "()V");
+        // return;
+        // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsRewardVideo", "()V");
+        let allPlatforms: AdPlatform[] = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE];
+        if(this.isSamsungDevice) {
+            console.warn("检测到三星手机 → 自动禁用百度广告");
+            allPlatforms = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE]
+        }
+        else {
+            allPlatforms = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE, AdPlatform.BAIDU];
+        }
 
         const selected = this.counter.pickPlatform(allPlatforms);
         if (!selected) {
@@ -239,6 +255,10 @@ export class ADManager {
                 "reward"
             );
         }
+        else if(platform === AdPlatform.BAIDU) {
+            // @ts-ignore
+            jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showBaiduRewardVideo", "()V");
+        }
     }
 
     /** 平台失败回到这个逻辑 */
@@ -275,8 +295,8 @@ export class ADManager {
             this._rewardCallback?.();
         };
 
-        (window as any).onAdClose = () => {
-            this._closeCallback?.();
+        (window as any).onAdLoadComplete= () => {
+            this._loadCompleteCallback?.();
         }
 
         (window as any).onGDTAdFail = (msg: string) => {
@@ -300,6 +320,20 @@ export class ADManager {
         (window as any).onPangleRewardFail = () => {
             this.onRewardVideoFailPlatform(AdPlatform.PANGLE, "fail");
         };
+
+        (window as any).onBaiduReward = () => {
+            this.failCount.baidu = 0;
+            this.counter.add(AdPlatform.BAIDU);
+            this._rewardCallback?.();
+        };
+
+        (window as any).onBaiduRewardFail = () => {
+            this._failCallback?.();
+        }
+
+        (window as any).onBaiduInterstitialFail = () => {
+            this.onRewardFailPlatform(AdPlatform.BAIDU, "");
+        }
     }
 
     // =============================
@@ -321,6 +355,9 @@ export class ADManager {
             } else if (p === AdPlatform.PANGLE) {
                 // @ts-ignore
                 jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showPangleInterstitial", "()V");
+            } else if (p === AdPlatform.BAIDU) {
+                // @ts-ignore
+                jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showBaiduInterstitial", "()V");
             }
         } catch (e) {
 
@@ -353,6 +390,19 @@ export class ADManager {
         this.rewardPlatforms = this.rewardPlatforms.filter(p => p !== platform);
 
         this.showInterstitial();
+    }
+
+    private isSamsungDevice(): boolean {
+        if (!this._isAndroidNative()) return false;
+
+        try {
+            // @ts-ignore
+            const info = jsb.device.getDeviceInfo();
+            const brand = info?.brand?.toLowerCase() || "";
+            return brand.includes("samsung");
+        } catch (e) {
+            return false;
+        }
     }
 }
 

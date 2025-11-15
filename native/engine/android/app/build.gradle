@@ -143,6 +143,7 @@ dependencies {
     implementation(name: 'aliyun-wishverify-2.3.42.251020152522', ext: 'aar')
     implementation(name: 'kssdk-ad-4.9.20.5-publishRelease-1910680d9f', ext: 'aar');
     implementation(name: 'GDTSDK.unionNormal.4.660.1530', ext: 'aar');
+    implementation(name: 'Baidu_MobAds_SDK-release_v9.422', ext: 'aar');
 
     def support_version = "28.0.0" //建议使用的26以上的support库版本，建议使用28最新的即可。
     // supprot库依赖，SDK内部依赖如下support，请确保添加
