@@ -16,6 +16,8 @@ export module GameSocket {
     var retryCount = 0;
     var reconnecting = false
 
+    var isAdshowing = false;
+
     export function initAndConnect() {
         GameSocket.closeSocket();
         let url = UrlConfig.getSocketUrl();
@@ -108,7 +110,7 @@ export module GameSocket {
             checkTimeoutId = setInterval(function () {
                 noHeartbeatTime += 1;
                 // 收不到心跳6秒钟,主动断开
-                if (noHeartbeatTime > 12) {
+                if (!GlobalData.userInfo.isAdshowing && noHeartbeatTime > 12) {
                     closeSocket();
                     utils.send(GlobalData.localEvent.SocketError);
                 }
@@ -387,6 +389,7 @@ export module GameSocket {
     export function closeSocket() {
         setIsConnect(false);
         if (gameSocket) {
+            console.log('断掉当前socket', GlobalData.userInfo.name);
             stopHeart();
             gameSocket.onSocketOpen = () => { };
             gameSocket.onSocketMessage = () => { };

@@ -1,5 +1,7 @@
 import { sys } from "cc";
 import { GlobalData } from "./GlobalData";
+import { GameSocket } from "./GameSocket";
+import { PbManager } from "../proto/PbManager";
 
 export enum AdPlatform {
     KS = "ks",
@@ -333,6 +335,28 @@ export class ADManager {
 
         (window as any).onBaiduInterstitialFail = () => {
             this.onRewardFailPlatform(AdPlatform.BAIDU, "");
+        }
+
+        (window as any).nativeHearBeat = () => {
+            if(!GameSocket.getIsConnect) {
+                console.log('HeartBeat, 游戏socket断了？' )
+                return
+            }
+            const buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
+            GameSocket.send(buf);
+        }
+
+        (window as any).onAdClose = () => {
+            // GameSocket.isAdshowing = false;
+            GlobalData.userInfo.isAdshowing = false;
+            GameSocket.startHeart();
+        }
+
+        (window as any).onAdShow = () => {
+            // GameSocket.isAdshowing = true;
+            // GameSocket.startHeart();
+            GlobalData.userInfo.isAdshowing = true;
+
         }
     }
 

@@ -6,6 +6,7 @@ import { UIManager } from '../manager/UIManager';
 import { UIConfig } from '../manager/UIConfig';
 import { GlobalData } from '../manager/GlobalData';
 import { checkForUpdate } from '../common/UpdateChecker';
+import { GameSocket } from '../manager/GameSocket';
 const { ccclass, property } = _decorator;
 
 @ccclass('SetingItem')
@@ -188,6 +189,7 @@ export class SetingItem extends PopWindow {
                 cancleName: "取消",
                 des: "是否退出登录",
                 okFunc: () => {
+                    GameSocket.closeSocket();
                     localStorage.removeItem(GlobalData.TOKEN);
                     utils.send(GlobalData.localEvent.LoginOut);
                     // UIManager.Instace.clearAllUI();

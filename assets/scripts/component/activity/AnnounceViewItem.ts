@@ -22,6 +22,10 @@ export class AnnounceViewItem extends PopWindow {
     @property(Prefab)
     itemPrefab: Prefab = null;
 
+    @property(Label)
+    timeLabel: Label = null;
+
+
     private _items: AnnounceMenuItem[] = [];
     private _selectedItem: AnnounceMenuItem | null = null;
 
@@ -74,6 +78,7 @@ export class AnnounceViewItem extends PopWindow {
     private setActiveNotice(notice: any, item: AnnounceMenuItem) {
         this.titleLabel.string = notice.title;
         this.contentLabel.string = notice.content;
+        this.timeLabel.string = this.formatDate(notice.create_time);
 
         // 更新高亮状态
         if (this._selectedItem && this._selectedItem !== item) {
@@ -85,6 +90,21 @@ export class AnnounceViewItem extends PopWindow {
         if (this.title) {
             this.title.scrollToTop(0.1, false); // 第二个参数为是否缓动，false 代表立即
         }
+    }
+
+    formatDate(dateStr: string, format = "yyyy年MM月dd日") {
+        const d = new Date(dateStr);
+
+        const map: any = {
+            yyyy: d.getFullYear(),
+            MM: String(d.getMonth() + 1).padStart(2, '0'),
+            dd: String(d.getDate()).padStart(2, '0'),
+            HH: String(d.getHours()).padStart(2, '0'),
+            mm: String(d.getMinutes()).padStart(2, '0'),
+            ss: String(d.getSeconds()).padStart(2, '0'),
+        };
+
+        return format.replace(/yyyy|MM|dd|HH|mm|ss/g, m => map[m]);
     }
 
     updateContentHeight() {

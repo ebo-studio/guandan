@@ -30,12 +30,37 @@ export module SignInManager {
     // ============================================================
 
     /** 获取本地所有用户 */
+    // export function getUserList(): UserInfo[] {
+    //     const dataStr = localStorage.getItem(USERS_KEY);
+    //     if (!dataStr) return [];
+    //     try {
+    //         const list = JSON.parse(dataStr);
+    //         return Array.isArray(list) ? list : [];
+    //     } catch {
+    //         return [];
+    //     }
+    // }
+
     export function getUserList(): UserInfo[] {
         const dataStr = localStorage.getItem(USERS_KEY);
         if (!dataStr) return [];
+
         try {
-            const list = JSON.parse(dataStr);
-            return Array.isArray(list) ? list : [];
+            let list: UserInfo[] = JSON.parse(dataStr);
+
+            if (!Array.isArray(list)) return [];
+
+            // ✅ 过滤掉 name 为空字符串的用户
+            const cleaned = list.filter(u => u.name && u.name.trim() !== "");
+
+            // 若有清理，写回本地
+            if (cleaned.length !== list.length) {
+                localStorage.setItem(USERS_KEY, JSON.stringify(cleaned));
+                console.log("🧹 已自动清理无效用户 (name='')，数量：",
+                    list.length - cleaned.length);
+            }
+
+            return cleaned;
         } catch {
             return [];
         }

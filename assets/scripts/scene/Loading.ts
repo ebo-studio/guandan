@@ -243,14 +243,14 @@ export class Loading extends Component {
                     success: () => {
                         GlobalData.userInfo.haveToken = true;
                         this.joginGame.node.active = true;
-                        if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
-                            let userInfodata: SignInManager.UserInfo = {
-                                token: GlobalData.loginInfo.token,
-                                name: GlobalData.userInfo.name,
-                                ad_watch_count: 0,
-                            };
-                            SignInManager.addOrUpdateUser(userInfodata)
-                        }
+                        // if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
+                        let userInfodata: SignInManager.UserInfo = {
+                            token: GlobalData.loginInfo.token,
+                            name: GlobalData.userInfo.name,
+                            ad_watch_count: 0,
+                        };
+                        SignInManager.addOrUpdateUser(userInfodata)
+                        // }
                         SignInManager.switchUser(GlobalData.userInfo.name);
 
                         // ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
@@ -268,6 +268,7 @@ export class Loading extends Component {
                             // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                             GlobalData.userInfo.noticeData = [];
                             if (Number(data?.code) === 200) {
+                                console.log('公告数据>>>', JSON.stringify(data));
                                 for (let i = 0; i < data.data.length; i++) {
                                     GlobalData.userInfo.noticeData.push(data.data[i]);
                                     // if (data.data[i].title == '系统维护通知') {
@@ -336,13 +337,13 @@ export class Loading extends Component {
         //         let data = { account: 15815289337, type: 1, code: 1234, inviterId: '', certifyId: certifyIds };
         //         LoginGlobal.instance.requestLogin(data, {
         //             success: (data) => {
-                        
+
         //             },
         //             fail: (data) => {
         //                 let data1 = { account: 15815289337, type: 1, code: 1234, inviterId: '', certifyId: certifyIds };
         //                 LoginGlobal.instance.requestLogin(data1, {
         //                     success: (data) => {
-                                
+
         //                         // });
         //                     },
         //                     fail: (data) => {
@@ -409,14 +410,14 @@ export class Loading extends Component {
                             if (data) {
                                 GlobalData.loginInfo.token = data.token;
                                 localStorage.setItem(GlobalData.TOKEN, data.token);
-                                if (!SignInManager.getUserByName(data.name)) {
-                                    let userInfodata: SignInManager.UserInfo = {
-                                        token: data.token,
-                                        name: data.name,
-                                        ad_watch_count: 0,
-                                    };
-                                    SignInManager.addOrUpdateUser(userInfodata)
-                                }
+                                // if (!SignInManager.getUserByName(data.name)) {
+                                let userInfodata: SignInManager.UserInfo = {
+                                    token: data.token,
+                                    name: data.name,
+                                    ad_watch_count: 0,
+                                };
+                                SignInManager.addOrUpdateUser(userInfodata)
+                                // }
                                 SignInManager.switchUser(data.name);
                             }
 
@@ -461,14 +462,14 @@ export class Loading extends Component {
                                     if (data) {
                                         GlobalData.loginInfo.token = data.token;
                                         localStorage.setItem(GlobalData.TOKEN, data.token);
-                                        if (!SignInManager.getUserByName(data.name)) {
-                                            let userInfodata: SignInManager.UserInfo = {
-                                                token: data.token,
-                                                name: data.name,
-                                                ad_watch_count: 0,
-                                            };
-                                            SignInManager.addOrUpdateUser(userInfodata)
-                                        }
+                                        // if (!SignInManager.getUserByName(data.name)) {
+                                        let userInfodata: SignInManager.UserInfo = {
+                                            token: data.token,
+                                            name: data.name,
+                                            ad_watch_count: 0,
+                                        };
+                                        SignInManager.addOrUpdateUser(userInfodata)
+                                        // }
                                         SignInManager.switchUser(data.name);
                                     }
 
@@ -598,14 +599,14 @@ export class Loading extends Component {
                             if (data) {
                                 GlobalData.loginInfo.token = data.token;
                                 localStorage.setItem(GlobalData.TOKEN, data.token);
-                                if (!SignInManager.getUserByName(data.name)) {
-                                    let userInfodata: SignInManager.UserInfo = {
-                                        token: data.token,
-                                        name: data.name,
-                                        ad_watch_count: 0,
-                                    };
-                                    SignInManager.addOrUpdateUser(userInfodata)
-                                }
+                                // if (!SignInManager.getUserByName(data.name)) {
+                                let userInfodata: SignInManager.UserInfo = {
+                                    token: data.token,
+                                    name: data.name,
+                                    ad_watch_count: 0,
+                                };
+                                SignInManager.addOrUpdateUser(userInfodata)
+                                // }
                                 SignInManager.switchUser(data.name);
                             }
 
@@ -646,14 +647,14 @@ export class Loading extends Component {
                                     if (data) {
                                         GlobalData.loginInfo.token = data.token;
                                         localStorage.setItem(GlobalData.TOKEN, data.token);
-                                        if (!SignInManager.getUserByName(data.name)) {
-                                            let userInfodata: SignInManager.UserInfo = {
-                                                token: data.token,
-                                                name: data.name,
-                                                ad_watch_count: 0,
-                                            };
-                                            SignInManager.addOrUpdateUser(userInfodata)
-                                        }
+                                        // if (!SignInManager.getUserByName(data.name)) {
+                                        let userInfodata: SignInManager.UserInfo = {
+                                            token: data.token,
+                                            name: data.name,
+                                            ad_watch_count: 0,
+                                        };
+                                        SignInManager.addOrUpdateUser(userInfodata)
+                                        // }
                                         SignInManager.switchUser(data.name);
                                     }
 

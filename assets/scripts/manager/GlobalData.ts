@@ -414,7 +414,8 @@ export namespace GlobalData {
         isLogin: false,
         is_vip: 0, //1为合伙人，0为普通玩家
         ad_watch_count: 0,
-        noticeData: []
+        noticeData: [],
+        isAdshowing: false
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关

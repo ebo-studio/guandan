@@ -21,6 +21,7 @@ export class AnnounceMenuItem extends Component {
     public setValue(data: any, callback?: (notice: any, item: AnnounceMenuItem) => void) {
         this._data = data;
         this.selelct_title.string = this.unSelect_title.string = data.title;
+        // this.timeLabel.string = data.create_time;
         this._callback = callback;
         // const isCurrent = data.id === 1;
         // this.selelct_title.node.active = isCurrent;

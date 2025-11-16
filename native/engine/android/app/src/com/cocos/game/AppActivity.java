@@ -157,6 +157,32 @@ public class AppActivity extends CocosActivity {
 //        loadRewarded();
     }
 
+    private Handler hearHandler = new Handler(Looper.getMainLooper());
+    private Runnable heartTask = new Runnable() {
+        @Override
+        public void run() {
+            try{
+                CocosHelper.runOnGameThread(()->{
+                    callJsCallback("nativeHearBeat");
+                });
+            } catch (Exception ignored) {
+
+            }
+            hearHandler.postDelayed(this, 1000);
+        }
+    };
+
+    private void startNativeHeart() {
+        Log.d("HeartBeat", "启动原生心跳(广告期间)");
+        hearHandler.removeCallbacks(heartTask);
+        hearHandler.post(heartTask);
+    }
+
+    private void stopNativeHeart() {
+        Log.d("HeartBeat", "停止原生心跳(恢复Js心跳)");
+        hearHandler.removeCallbacks(heartTask);
+    }
+
     //快手视频相关
     public static void initKSSDK(Context appContext) {
         KsAdSDK.init(appContext, new SdkConfig.Builder()
@@ -287,6 +313,8 @@ public class AppActivity extends CocosActivity {
             public void onPageDismiss() {
 
                 Log.d(SKD_TAG, "激励视频关闭");
+                stopNativeHeart();
+                callJsCallback("onAdClose");
 //                callJsCallback("onAdClose");
             }
 
@@ -299,7 +327,9 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onVideoPlayStart() {
                 Log.d(SKD_TAG, "激励视频播放开始");
+                startNativeHeart();
                 callJsCallback("onAdLoadComplete");
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -404,12 +434,16 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdShow() {
+                startNativeHeart();
                 Log.d(SKD_TAG, "插屏广告展示");
+                callJsCallback("onAdShow");
             }
 
             @Override
             public void onAdClosed() {
+                stopNativeHeart();
                 Log.d(SKD_TAG, "插屏广告关闭");
+                callJsCallback("onAdClose");
             }
 
 //            @Override
@@ -501,7 +535,8 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onADShow() {
-
+                startNativeHeart();
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -527,6 +562,8 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onADClose() {
 //                callJsCallback("onAdClose");
+                stopNativeHeart();
+                callJsCallback("onAdClose");
             }
 
             @Override
@@ -604,7 +641,9 @@ public class AppActivity extends CocosActivity {
 
                         @Override
                         public void onADExposure() {
+                            startNativeHeart();
                             Log.d("GDT-FULL", "全屏插屏曝光");
+                            callJsCallback("onAdShow");
                         }
 
                         @Override
@@ -614,8 +653,10 @@ public class AppActivity extends CocosActivity {
 
                         @Override
                         public void onADClosed() {
+                            stopNativeHeart();
                             Log.d("GDT-FULL", "全屏插屏关闭");
                             callJsCallback("onGDTInterstitialClosed");
+                            callJsCallback("onAdClose");
                         }
 
                         @Override public void onVideoCached() {}
@@ -724,7 +765,8 @@ public class AppActivity extends CocosActivity {
         pangleRewardAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
             @Override
             public void onAdShow() {
-
+                startNativeHeart();
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -734,7 +776,8 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClose() {
-
+                stopNativeHeart();
+                callJsCallback("onAdClose");
             }
 
             @Override
@@ -830,7 +873,8 @@ public class AppActivity extends CocosActivity {
         pangleInterstitialAd.setFullScreenVideoAdInteractionListener(new TTFullScreenVideoAd.FullScreenVideoAdInteractionListener() {
             @Override
             public void onAdShow() {
-
+                startNativeHeart();
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -840,7 +884,8 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClose() {
-
+                startNativeHeart();
+                callJsCallback("onAdClose");
             }
 
             @Override
@@ -896,7 +941,8 @@ public class AppActivity extends CocosActivity {
         baiduFullVideoAd = new FullScreenVideoAd(act, "18703589", new FullScreenVideoAd.FullScreenVideoAdListener() {
             @Override
             public void onAdShow() {
-
+                startNativeHeart();
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -906,7 +952,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClose(float v) {
-
+                stopNativeHeart();
             }
 
             @Override
@@ -955,7 +1001,8 @@ public class AppActivity extends CocosActivity {
         baiduRewardAd = new RewardVideoAd(act, "18703541", new RewardVideoAd.RewardVideoAdListener() {
             @Override
             public void onAdShow() {
-
+                startNativeHeart();
+                callJsCallback("onAdShow");
             }
 
             @Override
@@ -966,6 +1013,8 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onAdClose(float v) {
                 Log.d("bdsdk", "onAdClose:" + v);
+                stopNativeHeart();
+                callJsCallback("onAdClose");
             }
 
             @Override
@@ -1007,10 +1056,13 @@ public class AppActivity extends CocosActivity {
             }
         });
 
+        baiduRewardAd.setUserId(ksUserId);
+//        baiduRewardAd.set
         RequestParameters requestParameters = new RequestParameters.Builder()
-                .addExtra("user_id", ksUserId)
-                        .addExtra("extra", "uid=" + ksUserId)
+                .addCustExt("user_id", ksUserId)
+                        .addCustExt("extra", "uid=" + ksUserId)
                                 .build();
+
 
         baiduRewardAd.setRequestParameters(requestParameters);
 //        baiduRewardAd.setRequestParameters();
