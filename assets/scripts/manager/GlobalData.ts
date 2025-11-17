@@ -466,7 +466,7 @@ export namespace GlobalData {
             method: "POST",
             data: utils.toJson(sendData),
             success: function (data) {
-                // console.log("📦 接口完整返回 data:", JSON.stringify(data));
+                console.log("📦 接口完整返回 data:", JSON.stringify(data));
                 // console.log("GetAdtchInfo success", data);
                 userInfo.ad_watch_count = data.data.ad_watch_count
                 if (cb.success) cb.success();
@@ -513,12 +513,14 @@ export namespace GlobalData {
 
 
     //查询用户信息
-    export function requestGetUserInfo(cb: { success: Function, fail?: Function }) {
+    export function requestGetUserInfo(cb: { success: Function, fail?: Function }, isShowTip: boolean = true) {
         var url = HttpConfig.getUrl(HttpConfig.GetUserInfo);
         let sendData = {
             token: GlobalData.loginInfo.token
         }
-        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        if(isShowTip) {
+             UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+        }
         // if (!sys.isNative) {
         utils.sendHttpRequest({
             url: url,
@@ -533,6 +535,7 @@ export namespace GlobalData {
                 userInfo.score = data.gold;
                 userInfo.name = data.name;
                 userInfo.is_vip = data.is_vip;
+                // userInfo.ad_watch_count = data.ad_watch_count;
 
                 // let userInfodata: SignInManager.UserInfo = {
                 //     token: GlobalData.loginInfo.token,

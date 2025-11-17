@@ -233,6 +233,9 @@ export class Loading extends Component {
                 // }
             }
             checkForUpdate();
+            // SignInManager.getRemainingAds((data) => {
+            //     //请求观看广告次数
+            // });
             // let data = { account: 13713594780, type: 1, code: code, inviterId: inviter, certifyId:  certifyIds};
             // checkForNotice();
             this.progressBar.node.active = false;
