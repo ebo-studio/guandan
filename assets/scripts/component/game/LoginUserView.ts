@@ -73,19 +73,21 @@ export class LoginUserView extends PopWindow {
                 des: `是否切换到${name}?`,
                 okFunc: () => {
                     // this.onClickShowAd();
-
-                    GameSocket.closeSocket();  // ← 关键！先关闭以前的 socket
-
-                    localStorage.setItem(GlobalData.TOKEN, token);
-                    GlobalData.loginInfo.token = token;
                     GlobalData.requestGetUserInfo({
                         success: () => {
+                            GameSocket.closeSocket();  // ← 关键！先关闭以前的 socket
+
+                            localStorage.setItem(GlobalData.TOKEN, token);
+                            GlobalData.loginInfo.token = token;
                             SignInManager.switchUser(name);
                             GlobalData.userInfo.haveToken = true;
                             utils.send(GlobalData.localEvent.FirstUpdate);
                             this.updateSelection();
                             // 7. 重新连接 WebSocket（需要你调用）
                             GameSocket.initAndConnect();
+                        },
+                        fail: () => {
+                            
                         }
                     });
                 },

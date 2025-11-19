@@ -152,6 +152,7 @@ export module SignInManager {
     export function isTodaySigned(): boolean {
         const user = getCurrentUser();
         if (!user) return false;
+        console.log(`✅ 用户 ${user.name} 签到日期: ` + user.lastSignDate);
         return user.lastSignDate === getTodayDateStr();
     }
 

@@ -23,7 +23,7 @@ export class signInViewItem extends PopWindow {
     alsignInBtn: Button = null;
 
     public setData(obj?: any): void {
-        if (SignInManager.isTodaySigned) {
+        if (SignInManager.isTodaySigned()) {
             // this.signInLabel.string = '明天再来';
             // this.signInBtn.interactable = false;
             this.signInBtn.node.active = false;
