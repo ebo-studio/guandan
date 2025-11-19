@@ -23,7 +23,7 @@ export class signInViewItem extends PopWindow {
     alsignInBtn: Button = null;
 
     public setData(obj?: any): void {
-        if (SignInManager.isTodaySigned()) {
+        if (SignInManager.isTodaySigned) {
             // this.signInLabel.string = '明天再来';
             // this.signInBtn.interactable = false;
             this.signInBtn.node.active = false;
@@ -74,24 +74,24 @@ export class signInViewItem extends PopWindow {
                 // ✅ 正常已签到（提示即可，不报错）
                 UIManager.Instace.showUI({
                     path: UIConfig.MessageHintKey,
-                    data: "今日已签到 ✅"
+                    data: "今日已签到"
                 });
-                this.signInBtn.interactable = false;
+                // this.signInBtn.interactable = false;
                 this.hide();
                 return;
             } else if (postExChange?.msg === "今日已签到1") {
                 // ❌ 异常返回，需要提示错误
-                UIManager.Instace.showUI({
-                    path: UIConfig.MessageHintKey,
-                    data: "签到状态异常，请稍后重试"
-                });
+                // UIManager.Instace.showUI({
+                //     path: UIConfig.MessageHintKey,
+                //     data: "签到状态异常，请稍后重试"
+                // });
                 return;
             }
 
             if (postExChange.code === 200) {
                 UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { count: 10 } });
                 SignInManager.signToday();
-                this.signInBtn.interactable = false;
+                // this.signInBtn.interactable = false;
                 GlobalData.userInfo.score = postExChange.data.gold;
                 this.hide();
             } else {
@@ -112,40 +112,10 @@ export class signInViewItem extends PopWindow {
         // this.hide();
         UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "请求中..." } });
         if (!sys.isNative) {
-            // var commonUrl = UrlConfig.getHttpUrl();
-            // const postExChange = await Http.post(commonUrl + 'api/User/signIn', { token: GlobalData.loginInfo.token })
-            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-            // // console.log("JSON请求返回:", postExChange);
-            // if (postExChange.code == 200) {
-            //     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-            //     SignInManager.signToday();
-            //     this.signInBtn.interactable = false;
-            //     this.hide();
-            // }
-            // else {
-            //     UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: postExChange.msg });
-            // }
             this.signInRequest();
         }
         else {
             this.signIn();
-            // const url = `${UrlConfig.getHttpUrl()}api/User/signIn`;
-            // this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
-            //     UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-            //     if (Number(data?.code) === 200) {
-            //         UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-            //         SignInManager.signToday();
-            //         this.signInBtn.interactable = false;
-            //         this.hide();
-            //         GlobalData.userInfo.score = data.data.gold;
-            //         utils.send(GlobalData.localEvent.UpdateScore);
-
-            //     } else {
-            //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: data.msg });
-            //         // console.error('接口非 200：', data);
-            //     }
-            // })
-            //     .catch(err => console.error(err));
         }
     }
 
@@ -171,17 +141,17 @@ export class signInViewItem extends PopWindow {
                     // ✅ 正常已签到（提示即可，不报错）
                     UIManager.Instace.showUI({
                         path: UIConfig.MessageHintKey,
-                        data: "今日已签到 ✅"
+                        data: "今日已签到"
                     });
-                    this.signInBtn.interactable = false;
+                    // this.signInBtn.interactable = false;
                     this.hide();
                     return;
                 } else if (data?.msg === "今日已签到1") {
                     // ❌ 异常返回，需要提示错误
-                    UIManager.Instace.showUI({
-                        path: UIConfig.MessageHintKey,
-                        data: "签到状态异常，请稍后重试"
-                    });
+                    // UIManager.Instace.showUI({
+                    //     path: UIConfig.MessageHintKey,
+                    //     data: "签到状态异常，请稍后重试"
+                    // });
                     return;
                 }
 
@@ -189,7 +159,7 @@ export class signInViewItem extends PopWindow {
                     // 成功逻辑
                     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
                     SignInManager.signToday();
-                    this.signInBtn.interactable = false;
+                    // this.signInBtn.interactable = false;
                     this.hide();
 
                     // 更新积分并广播事件
