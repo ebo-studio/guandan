@@ -80,14 +80,14 @@
         "time": "2025-9-15 12:55",
         "dirty": false
       },
-      "1763552383868": {
+      "1763644425546": {
         "type": "build",
-        "id": "1763552383868",
+        "id": "1763644425546",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-11-19 19:40:05 build success in 21 s!",
-        "detailMessage": "builder:build-project-total (21370ms)\r",
+        "message": "2025-11-20 21:14:00 build success in 14 s!",
+        "detailMessage": "builder:build-project-total (14482ms)\r",
         "options": {
           "name": "goldenAnt",
           "server": "",
@@ -142,9 +142,9 @@
           "packages": {},
           "__version__": "1.3.8",
           "buildMode": "normal",
-          "logDest": "project://temp/builder/log/android2025-11-19 19-39.log"
+          "logDest": "project://temp/builder/log/android2025-11-20 21-13.log"
         },
-        "time": "2025-11-19 19:39:43",
+        "time": "2025-11-20 21:13:45",
         "dirty": false
       }
     }

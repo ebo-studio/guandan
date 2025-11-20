@@ -191,7 +191,7 @@ export class ADManager {
         // return;
         // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showKsRewardVideo", "()V");
         let allPlatforms: AdPlatform[] = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE];
-        if(this.isSamsungDevice) {
+        if (this.isSamsung) {
             console.warn("检测到三星手机 → 自动禁用百度广告");
             allPlatforms = [AdPlatform.GDT, AdPlatform.KS, AdPlatform.PANGLE]
         }
@@ -257,7 +257,7 @@ export class ADManager {
                 "reward"
             );
         }
-        else if(platform === AdPlatform.BAIDU) {
+        else if (platform === AdPlatform.BAIDU) {
             // @ts-ignore
             jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showBaiduRewardVideo", "()V");
         }
@@ -297,7 +297,7 @@ export class ADManager {
             this._rewardCallback?.();
         };
 
-        (window as any).onAdLoadComplete= () => {
+        (window as any).onAdLoadComplete = () => {
             this._loadCompleteCallback?.();
         }
 
@@ -338,12 +338,26 @@ export class ADManager {
         }
 
         (window as any).nativeHearBeat = () => {
-            if(!GameSocket.getIsConnect) {
-                console.log('HeartBeat, 游戏socket断了？' )
-                return
-            }
-            const buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
-            GameSocket.send(buf);
+            // try {
+            //     if (typeof GameSocket.getIsConnect !== "function") {
+            //         console.warn("GameSocket.getIsConnect 不是方法！");
+            //         return;
+            //     }
+
+            //     if (!GameSocket.getIsConnect()) {
+            //         console.log('HeartBeat: 游戏 socket 断了');
+            //         return;
+            //     }
+
+            //     const buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
+            //     GameSocket.send(buf);
+            // } catch (e) {
+            //     console.error("nativeHeartBeat ERROR:", e);
+            // }
+            // 只有在广告中，才用原生心跳兜底
+            if (!GlobalData.userInfo.isAdshowing) return;
+
+            GameSocket.sendPingOnce();
         }
 
         (window as any).onAdClose = () => {
@@ -356,6 +370,7 @@ export class ADManager {
             // GameSocket.isAdshowing = true;
             // GameSocket.startHeart();
             GlobalData.userInfo.isAdshowing = true;
+            GameSocket.stopHeart();
 
         }
     }
@@ -416,14 +431,42 @@ export class ADManager {
         this.showInterstitial();
     }
 
-    private isSamsungDevice(): boolean {
-        if (!this._isAndroidNative()) return false;
+    // private isSamsungDevice(): boolean {
+    //     if (!this._isAndroidNative()) return false;
+
+    //     try {
+    //         // @ts-ignore
+    //         const info = jsb.device.getDeviceInfo();
+    //         const brand = info?.brand?.toLowerCase() || "";
+    //         return brand.includes("samsung");
+    //     } catch (e) {
+    //         return false;
+    //     }
+    // }
+
+    private get isSamsung(): boolean {
+        if (!sys.isNative || sys.os !== sys.OS.ANDROID) return false;
 
         try {
             // @ts-ignore
-            const info = jsb.device.getDeviceInfo();
-            const brand = info?.brand?.toLowerCase() || "";
-            return brand.includes("samsung");
+            const brand = jsb.reflection.callStaticMethod(
+                "com/cocos/game/AppActivity",
+                "getDeviceBrand",
+                "()Ljava/lang/String;"
+            );
+            // @ts-ignore
+            const model = jsb.reflection.callStaticMethod(
+                "com/cocos/game/AppActivity",
+                "getDeviceModel",
+                "()Ljava/lang/String;"
+            );
+
+            const br = (brand || "").toLowerCase();
+            const md = (model || "").toLowerCase();
+
+            console.log("brand =", br, "model=", md);
+
+            return br.includes("samsung") || md.startsWith("sm-");
         } catch (e) {
             return false;
         }

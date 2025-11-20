@@ -7,6 +7,7 @@ import { UIConfig } from '../manager/UIConfig';
 import { GlobalData } from '../manager/GlobalData';
 import { checkForUpdate } from '../common/UpdateChecker';
 import { GameSocket } from '../manager/GameSocket';
+import { AppGlobal } from '../AppGlobal';
 const { ccclass, property } = _decorator;
 
 @ccclass('SetingItem')
@@ -191,7 +192,9 @@ export class SetingItem extends PopWindow {
                 okFunc: () => {
                     GameSocket.closeSocket();
                     localStorage.removeItem(GlobalData.TOKEN);
+                    GlobalData.userInfo.isLogin = false;
                     utils.send(GlobalData.localEvent.LoginOut);
+
                     // UIManager.Instace.clearAllUI();
                     // director.loadScene(GlobalData.sceneName.loading);
                     // GlobalData.cardInfo.oneCard = false;

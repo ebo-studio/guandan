@@ -1197,6 +1197,7 @@ public class AppActivity extends CocosActivity {
         super.onResume();
         SDKWrapper.shared().onResume();
         isGameActive = true;
+        stopNativeHeart();
         Log.i(TAG, "▶️ 游戏恢复前台，允许 JS 回调");
     }
 
@@ -1205,6 +1206,7 @@ public class AppActivity extends CocosActivity {
         super.onPause();
         isGameActive = false;
         SDKWrapper.shared().onPause();
+        startNativeHeart();
         Log.i(TAG, "⏸️ 游戏进入后台，暂停 JS 回调");
     }
 
@@ -1596,6 +1598,22 @@ public class AppActivity extends CocosActivity {
             return info.versionName;
         } catch (Exception e) {
             e.printStackTrace();
+            return "";
+        }
+    }
+
+    public static String getDeviceBrand() {
+        try {
+            return android.os.Build.BRAND;
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static String getDeviceModel() {
+        try {
+            return android.os.Build.MODEL;
+        } catch (Exception e) {
             return "";
         }
     }

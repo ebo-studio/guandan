@@ -3,6 +3,7 @@ import { utils } from "../common/utils";
 import { websocket } from "../common/websocket";
 import { PbManager } from "../proto/PbManager";
 import { GlobalData } from "./GlobalData";
+import { SignInManager } from "./SignInManager";
 import { UIConfig } from "./UIConfig";
 import { UIManager } from "./UIManager";
 import { UrlConfig } from "./UrlConfig";
@@ -110,7 +111,7 @@ export module GameSocket {
             checkTimeoutId = setInterval(function () {
                 noHeartbeatTime += 1;
                 // 收不到心跳6秒钟,主动断开
-                if (!GlobalData.userInfo.isAdshowing && noHeartbeatTime > 12) {
+                if (!GlobalData.userInfo.isAdshowing && noHeartbeatTime > 6) {
                     closeSocket();
                     utils.send(GlobalData.localEvent.SocketError);
                 }
@@ -133,6 +134,11 @@ export module GameSocket {
             console.log("📦 金币接口完整返回 data:", JSON.stringify(data));
             GlobalData.userInfo.score = data.gold;
             utils.send(GlobalData.localEvent.UpdateScore);
+            SignInManager.getRemainingAds((data) => {
+                // success: () => {
+                utils.send(GlobalData.localEvent.UpdateAdCount);
+                // }
+            })
         }
         else if (recData.id == GlobalData.S2C_Event.CreateRoom) {
             let room = GameMsg.Room.decode(recData.msg);
@@ -372,6 +378,8 @@ export module GameSocket {
         }
     }
     export function startHeart() {
+
+        if (GlobalData.userInfo.isAdshowing) return; // 广告期间不启动心跳
         stopHeart();
         //（每秒钟一次，3秒无心跳自动断线)
         heartInterval = setInterval(() => {
@@ -399,6 +407,16 @@ export module GameSocket {
             gameSocket = null;
         }
         clearTimeout();
+    }
+
+    export function sendPingOnce() {
+        if (!gameSocket) return;
+        try {
+            let buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
+            send(buf);
+        } catch (e) {
+            console.error("nativePing 发送心跳失败:", e);
+        }
     }
 }
 

@@ -213,20 +213,20 @@ export module SignInManager {
             .catch(err => console.error(err));
     }
 
-    export function addAdWatch(onSuccess?: (data: any) => void) {
-        const url = `${UrlConfig.getHttpUrl()}api/User/incrementAdWatchCount`;
-        SignInManager.postWithFetch(url, { token: GlobalData.loginInfo.token })
-            .then(data => {
-                if (Number(data?.code) === 200) {
-                    GlobalData.userInfo.score = data.data.gold;
-                    onSuccess?.(data);
-                    utils.send(GlobalData.localEvent.UpdateScore);
-                } else {
-                    console.error('接口非200：', data);
-                }
-            })
-            .catch(err => console.error(err));
-    }
+    // export function addAdWatch(onSuccess?: (data: any) => void) {
+    //     const url = `${UrlConfig.getHttpUrl()}api/User/incrementAdWatchCount`;
+    //     SignInManager.postWithFetch(url, { token: GlobalData.loginInfo.token })
+    //         .then(data => {
+    //             if (Number(data?.code) === 200) {
+    //                 GlobalData.userInfo.score = data.data.gold;
+    //                 onSuccess?.(data);
+    //                 utils.send(GlobalData.localEvent.UpdateScore);
+    //             } else {
+    //                 console.error('接口非200：', data);
+    //             }
+    //         })
+    //         .catch(err => console.error(err));
+    // }
 
     // ============================================================
     // ✅ 网络请求封装

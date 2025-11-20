@@ -96,11 +96,27 @@ export class AppGlobal extends Component {
         }
     }
 
+    private _safeDestroy: boolean = false;
+    public static resetInstance() {
+        if (AppGlobal.instance) {
+            AppGlobal.instance._safeDestroy = true;
+            AppGlobal.instance.node.destroy();
+            AppGlobal.instance = null;
+            AppGlobal._eventBound = false;
+        }
+    }
+
     start() {
         this.requestLogin();
     }
     onDestroy() {
-        this.removeEvent();
+        if (this._safeDestroy) {
+            console.log("主实例安全销毁，移除事件");
+            this.removeEvent();
+        } else {
+            console.log("非主实例销毁，不移除事件");
+        }
+        // this.removeEvent();
     }
     requestLogin() {
         if (GlobalData.userInfo.isLogin) return;
@@ -253,11 +269,11 @@ export class AppGlobal extends Component {
     public isShowTip: boolean = false;
     //socket 断开
     onSocketError() {
-        if(!this.isShowTip) {
+        if (!this.isShowTip) {
             UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "网络异常,正在给您重连..." } });
             this.isShowTip = true;
         }
-        
+
         if (utils.getSceneName() == GlobalData.sceneName.game) {
             UIManager.Instace.clearAllUI();
         }

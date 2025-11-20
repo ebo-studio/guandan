@@ -1,4 +1,4 @@
-import { _decorator, Component, Label, native, Node, sp, sys, UI } from 'cc';
+import { _decorator, Component, director, Label, native, Node, sp, sys, UI } from 'cc';
 import { AppGlobal } from '../AppGlobal';
 import { utils } from '../common/utils';
 import { GlobalData } from '../manager/GlobalData';
@@ -79,17 +79,17 @@ export class Lobby extends Component {
                 () => {
                     UIManager.Instace.hideUI(UIConfig.WaitItemKey);
                     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                    GlobalData.requestGetUserInfo({
-                        success: () => {
-                            this.onUpdateScore();
-                            // this.updateAdCount();
-                        }
-                    }, false);
-                    SignInManager.getRemainingAds((data) => {
-                        // success: () => {
-                        this.updateAdCount();
-                        // }
-                    })
+                    // GlobalData.requestGetUserInfo({
+                    //     success: () => {
+                    //         this.onUpdateScore();
+                    //         // this.updateAdCount();
+                    //     }
+                    // }, false);
+                    // SignInManager.getRemainingAds((data) => {
+                    //     // success: () => {
+                    //     this.updateAdCount();
+                    //     // }
+                    // })
 
                 },
                 () => {
@@ -171,6 +171,7 @@ export class Lobby extends Component {
     //初始化
     start() {
         utils.on(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);
+        utils.on(GlobalData.localEvent.UpdateAdCount, this, this.updateAdCount);
         utils.on(GlobalData.localEvent.UserLogin, this, this.onUserLogin);
         utils.on(GlobalData.localEvent.FirstUpdate, this, this.onFirstUpdate);
         utils.on(GlobalData.localEvent.CreateRoom, this, this.onCreateRoom);
@@ -212,6 +213,7 @@ export class Lobby extends Component {
     }
     onDestroy() {
         utils.off(GlobalData.localEvent.UpdateScore, this, this.onUpdateScore);
+        utils.off(GlobalData.localEvent.UpdateAdCount, this, this.updateAdCount);
         utils.off(GlobalData.localEvent.UserLogin, this, this.onUserLogin);
         utils.off(GlobalData.localEvent.FirstUpdate, this, this.onFirstUpdate);
         utils.off(GlobalData.localEvent.CreateRoom, this, this.onCreateRoom);
@@ -223,7 +225,9 @@ export class Lobby extends Component {
     }
 
     loginOutGameHandler() {
-        UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
+        // UIManager.Instace.showUI({ path: UIConfig.LoadItemKey, data: GlobalData.sceneName.loading });
+        director.loadScene(GlobalData.sceneName.loading);
+        AppGlobal.resetInstance();
     }
 
     onGotoNoticeView() {

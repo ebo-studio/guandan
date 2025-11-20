@@ -142,7 +142,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680.0000000000002,
+      "width": 1680,
       "height": 720
     },
     "_anchorPoint": {
@@ -324,7 +324,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "ea276efLIxDlrMMu7czRIVQ",
+    "_componentId": "d6e80XuKV5EXYPz0sTvowwe",
     "handler": "onClose",
     "customEventData": ""
   },
@@ -1510,7 +1510,7 @@
     "_string": "ScrollView contents",
     "_horizontalAlign": 0,
     "_verticalAlign": 0,
-    "_actualFontSize": 20.523809523809522,
+    "_actualFontSize": 20,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
@@ -1897,8 +1897,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 63.984226306463896,
-      "height": 50.400000000000006
+      "width": 64,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1936,7 +1936,7 @@
     "_string": "标题",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 32.838095238095235,
+    "_actualFontSize": 32,
     "_fontSize": 32,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -2525,8 +2525,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 179.9664929737348,
-      "height": 37.800000000000004
+      "width": 180,
+      "height": 37.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2564,7 +2564,7 @@
     "_string": "《金蚂蚁》运营团队",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20.523809523809522,
+    "_actualFontSize": 20,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
@@ -2910,7 +2910,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 143.98875367060617,
+      "width": 144,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -2949,7 +2949,7 @@
     "_string": "《金蚂蚁》运营团",
     "_horizontalAlign": 2,
     "_verticalAlign": 1,
-    "_actualFontSize": 18.471428571428568,
+    "_actualFontSize": 18,
     "_fontSize": 18,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
@@ -3063,7 +3063,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1680.0000000000002,
+      "width": 1680,
       "height": 720
     },
     "_anchorPoint": {

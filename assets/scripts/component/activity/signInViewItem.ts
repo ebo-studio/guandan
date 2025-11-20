@@ -23,7 +23,7 @@ export class signInViewItem extends PopWindow {
     alsignInBtn: Button = null;
 
     public setData(obj?: any): void {
-        if (SignInManager.isTodaySigned()) {
+        if (GlobalData.userInfo.is_sign_in) {
             // this.signInLabel.string = '明天再来';
             // this.signInBtn.interactable = false;
             this.signInBtn.node.active = false;
@@ -91,6 +91,7 @@ export class signInViewItem extends PopWindow {
             if (postExChange.code === 200) {
                 UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { count: 10 } });
                 SignInManager.signToday();
+                GlobalData.userInfo.is_sign_in = true;
                 // this.signInBtn.interactable = false;
                 GlobalData.userInfo.score = postExChange.data.gold;
                 this.hide();
@@ -159,6 +160,7 @@ export class signInViewItem extends PopWindow {
                     // 成功逻辑
                     UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
                     SignInManager.signToday();
+                    GlobalData.userInfo.is_sign_in = true;
                     // this.signInBtn.interactable = false;
                     this.hide();
 

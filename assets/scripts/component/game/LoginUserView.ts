@@ -83,11 +83,16 @@ export class LoginUserView extends PopWindow {
                             GlobalData.userInfo.haveToken = true;
                             utils.send(GlobalData.localEvent.FirstUpdate);
                             this.updateSelection();
+                            SignInManager.getRemainingAds((data) => {
+                                // success: () => {
+                                utils.send(GlobalData.localEvent.UpdateAdCount);
+                                // }
+                            })
                             // 7. 重新连接 WebSocket（需要你调用）
                             GameSocket.initAndConnect();
                         },
                         fail: () => {
-                            
+
                         }
                     });
                 },

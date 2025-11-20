@@ -116,6 +116,7 @@ export namespace GlobalData {
         LookKickGameInfo: "LookKickGameInfo",
         HideUpDownUserHead: "HideUpDownUserHead", //隐藏左右头像
         UpdateScore: "UpdateScore",               //积分
+        UpdateAdCount: "UpdateAdCount",
         GameError: "GameError",                   //游戏内出错
         ForceExitGame: "ForceExitGame",           //强制退出
         KickGameInfo: "KickGameInfo",             //淘汰赛查询
@@ -415,7 +416,8 @@ export namespace GlobalData {
         is_vip: 0, //1为合伙人，0为普通玩家
         ad_watch_count: 0,
         noticeData: [],
-        isAdshowing: false
+        isAdshowing: false,
+        is_sign_in: false
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -535,6 +537,7 @@ export namespace GlobalData {
                 userInfo.score = data.gold;
                 userInfo.name = data.name;
                 userInfo.is_vip = data.is_vip;
+                userInfo.is_sign_in = data.is_sign_in;
                 // userInfo.ad_watch_count = data.ad_watch_count;
 
                 // let userInfodata: SignInManager.UserInfo = {
