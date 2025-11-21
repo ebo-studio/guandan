@@ -417,7 +417,8 @@ export namespace GlobalData {
         ad_watch_count: 0,
         noticeData: [],
         isAdshowing: false,
-        is_sign_in: false
+        is_sign_in: false,
+        isShowFullAd: false,
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关

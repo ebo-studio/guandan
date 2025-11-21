@@ -88,6 +88,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class AppActivity extends CocosActivity {
 
@@ -157,30 +160,52 @@ public class AppActivity extends CocosActivity {
 //        loadRewarded();
     }
 
-    private Handler hearHandler = new Handler(Looper.getMainLooper());
-    private Runnable heartTask = new Runnable() {
-        @Override
-        public void run() {
-            try{
-                CocosHelper.runOnGameThread(()->{
+//    private boolean isHeartRunning = false;
+//    private Handler hearHandler = new Handler(Looper.getMainLooper());
+//    private Runnable heartTask = new Runnable() {
+//        @Override
+//        public void run() {
+//            try{
+//                CocosHelper.runOnGameThread(()->{
+//                    callJsCallback("nativeHearBeat");
+//                });
+//            } catch (Exception ignored) {
+//
+//            }
+//            hearHandler.postDelayed(this, 1000);
+//        }
+//    };
+
+    private ScheduledExecutorService heartExecutor = null;
+    private boolean nativeHeartRunning = false;
+    private void startNativeHeart() {
+        if (nativeHeartRunning) return;
+        nativeHeartRunning = true;
+
+        Log.d("HeartBeat", "启动后台原生心跳（广告期间、跳 App 不会停）");
+
+        heartExecutor = Executors.newSingleThreadScheduledExecutor();
+        heartExecutor.scheduleAtFixedRate(() -> {
+            try {
+                CocosHelper.runOnGameThread(() -> {
                     callJsCallback("nativeHearBeat");
                 });
-            } catch (Exception ignored) {
-
+            } catch (Exception e) {
+                Log.e("HeartBeat", "nativeHeart error: " + e.getMessage());
             }
-            hearHandler.postDelayed(this, 1000);
-        }
-    };
-
-    private void startNativeHeart() {
-        Log.d("HeartBeat", "启动原生心跳(广告期间)");
-        hearHandler.removeCallbacks(heartTask);
-        hearHandler.post(heartTask);
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     private void stopNativeHeart() {
-        Log.d("HeartBeat", "停止原生心跳(恢复Js心跳)");
-        hearHandler.removeCallbacks(heartTask);
+        if (!nativeHeartRunning) return;
+        nativeHeartRunning = false;
+
+        Log.d("HeartBeat", "停止后台原生心跳（恢复 JS 心跳）");
+
+        if (heartExecutor != null) {
+            heartExecutor.shutdownNow();
+            heartExecutor = null;
+        }
     }
 
     //快手视频相关
@@ -248,7 +273,7 @@ public class AppActivity extends CocosActivity {
 
     // 加载 + 显示激励视频
     private void loadAndShowRewardAd() {
-        long posIdToUse = 29730000007L; // fallback
+        long posIdToUse = 29730000007L;; // fallback
         KsScene.Builder builder = new KsScene.Builder(posIdToUse);
         KsScene scene = builder.build();
         Log.d(SKD_TAG, "【KS】【加载开始】广告位ID = " + posIdToUse);
@@ -279,6 +304,7 @@ public class AppActivity extends CocosActivity {
             public void onRewardVideoAdLoad(@Nullable List<KsRewardVideoAd> adList) {
                 if (adList != null && !adList.isEmpty()) {
                     mKsRewardVideoAd = adList.get(0);
+                    callJsCallback("onAdLoadComplete");
 //                    Log.d(SKD_TAG, "激励视频资源已缓存");
 
                     setupRewardVideoListener();
@@ -328,7 +354,7 @@ public class AppActivity extends CocosActivity {
             public void onVideoPlayStart() {
                 Log.d(SKD_TAG, "激励视频播放开始");
                 startNativeHeart();
-                callJsCallback("onAdLoadComplete");
+//                callJsCallback("onAdLoadComplete");
                 callJsCallback("onAdShow");
             }
 
@@ -529,6 +555,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onVideoCached() {
+                callJsCallback("onAdLoadComplete");
                 Log.d("GDT", "优量汇激励缓存完成");
                 gdtRewardVideoAD.showAD(AppActivity.this);
             }
@@ -884,7 +911,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClose() {
-                startNativeHeart();
+                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -953,6 +980,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onAdClose(float v) {
                 stopNativeHeart();
+                callJsCallback("onAdClose");
             }
 
             @Override
@@ -1046,6 +1074,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onAdSkip(float v) {
                 Log.d("bdsdk", "onAdSkip:" + v);
+                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -1191,23 +1220,17 @@ public class AppActivity extends CocosActivity {
         });
     }
 
-    // ---------- SDKWrapper 生命周期同步 ----------
+//    // ---------- SDKWrapper 生命周期同步 ----------
     @Override
     protected void onResume() {
         super.onResume();
         SDKWrapper.shared().onResume();
-        isGameActive = true;
-        stopNativeHeart();
-        Log.i(TAG, "▶️ 游戏恢复前台，允许 JS 回调");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isGameActive = false;
         SDKWrapper.shared().onPause();
-        startNativeHeart();
-        Log.i(TAG, "⏸️ 游戏进入后台，暂停 JS 回调");
     }
 
     @Override
@@ -1234,12 +1257,18 @@ public class AppActivity extends CocosActivity {
     protected void onStart() {
         SDKWrapper.shared().onStart();
         super.onStart();
+        isGameActive = true;     // 前台
+        stopNativeHeart();       // 停止原生心跳
+        Log.i(TAG, "▶️ 游戏前台");
     }
 
     @Override
     protected void onStop() {
         SDKWrapper.shared().onStop();
         super.onStop();
+        isGameActive = false;    // 后台
+        startNativeHeart();      // 启动原生心跳
+        Log.i(TAG, "⏸️ 游戏后台");
     }
 
     @Override

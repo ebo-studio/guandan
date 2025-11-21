@@ -28,12 +28,12 @@ export module GameSocket {
     //初始化
     function init() {
         console.log("gameSocket-->init");
-        if (!gameSocket) {
-            gameSocket = null;
-            closeSocket();
-        }
+        // if (!gameSocket) {
+        //     gameSocket = null;
+        //     closeSocket();
+        // }
         bindSocket();
-        clearTimeout();
+        clearHeartbeatTimeout();
     }
     export function getIsConnect() {
         return isConnect;
@@ -71,7 +71,7 @@ export module GameSocket {
         AppGlobal.instance.isShowTip = false;
     }
 
-    function tryReconnect() {
+    export function tryReconnect() {
         if (reconnecting) return;
         reconnecting = true;
 
@@ -91,13 +91,83 @@ export module GameSocket {
         }, delay);
     }
 
-    function clearTimeout() {
+    var isReconnecting = false;
+    var lastReconnectTime = 0;
+
+    function safeReconnect() {
+        const now = Date.now();
+
+        // ① 1 秒内重复触发 → 忽略
+        if (now - this.lastReconnectTime < 1000) {
+            console.warn("⛔ safeReconnect：忽略重复触发(防抖)");
+            return;
+        }
+        this.lastReconnectTime = now;
+
+        // ② 已经在重连中 → 不再触发
+        if (this.isReconnecting) {
+            console.warn("⛔ safeReconnect：已经在重连中，跳过");
+            return;
+        }
+
+        this.isReconnecting = true;
+        console.log("🔄 safeReconnect: 开始重连...");
+
+        try {
+            // ③ 关闭旧 socket，避免触发第二次 error
+            this.closeSocket(true);
+        } catch { }
+
+        // ④ 开始重连
+        GameSocket.initAndConnect();
+
+        // ⑤ 3 秒后自动解锁（防止长时间锁死）
+        setTimeout(() => {
+            this.isReconnecting = false;
+        }, 3000);
+    }
+
+
+
+
+    function clearHeartbeatTimeout() {
         if (checkTimeoutId != null) {
             clearInterval(checkTimeoutId);
             checkTimeoutId = null;
             noHeartbeatTime = 0;
         }
     }
+
+    var heartbeatWatchTimer: number | null = null;
+    /** 启动“多久没收到 Pong”的监控（只创建一次） */
+    function ensureHeartbeatWatcher() {
+        if (heartbeatWatchTimer != null) return;
+
+        heartbeatWatchTimer = setInterval(() => {
+            // 没有连接 / 没有 socket：不计时
+            if (!gameSocket || !isConnect) {
+                noHeartbeatTime = 0;
+                return;
+            }
+
+            // 广告期间：完全不累计超时，也不触发断线
+            if (GlobalData.userInfo && GlobalData.userInfo.isAdshowing) {
+                noHeartbeatTime = 0;
+                return;
+            }
+
+            noHeartbeatTime += 1;
+
+            // 收不到心跳 12 秒钟, 主动断开
+            if (noHeartbeatTime > 12) {
+                console.log("noHeartbeatTime 超时，主动断开 socket");
+                closeSocket();
+                utils.send(GlobalData.localEvent.SocketError);
+            }
+            // console.log("noHeartbeatTime--> ", noHeartbeatTime);
+        }, 1000) as unknown as number;
+    }
+
     //接收消息
     function onGameSocketMessage(data: ArrayBuffer) {
         let recData: { id: number, msg: any } = PbManager.instance.reciveMsg(data);
@@ -107,11 +177,11 @@ export module GameSocket {
         console.log('ws 通知', recData.id);
         if (recData.id == GlobalData.S2C_Event.Pong) {
             // console.log("心跳返回--->");
-            clearTimeout();
+            clearHeartbeatTimeout();
             checkTimeoutId = setInterval(function () {
                 noHeartbeatTime += 1;
                 // 收不到心跳6秒钟,主动断开
-                if (!GlobalData.userInfo.isAdshowing && noHeartbeatTime > 6) {
+                if (!GlobalData.userInfo.isAdshowing && noHeartbeatTime > 12) {
                     closeSocket();
                     utils.send(GlobalData.localEvent.SocketError);
                 }
@@ -328,6 +398,7 @@ export module GameSocket {
             utils.send(GlobalData.localEvent.GameFinishCards, msg);
         }
         else if (recData.id == GlobalData.S2C_Event.ReconnectError) {
+            console.log('HeartBeat', '这个 token 不行了')
             GlobalData.loginInfo.token = null;
         }
         else if (recData.id == GlobalData.S2C_Event.Organize) {
@@ -342,7 +413,7 @@ export module GameSocket {
 
         utils.send(GlobalData.localEvent.SocketError);
 
-        tryReconnect(); // ← 自动重连
+        // tryReconnect(); // ← 自动重连
 
     }
     //关闭
@@ -381,6 +452,7 @@ export module GameSocket {
 
         if (GlobalData.userInfo.isAdshowing) return; // 广告期间不启动心跳
         stopHeart();
+        //ensureHeartbeatWatcher(); // 确保只创建一
         //（每秒钟一次，3秒无心跳自动断线)
         heartInterval = setInterval(() => {
             let buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
@@ -406,7 +478,7 @@ export module GameSocket {
             gameSocket.close();
             gameSocket = null;
         }
-        clearTimeout();
+        clearHeartbeatTimeout();
     }
 
     export function sendPingOnce() {
@@ -415,7 +487,7 @@ export module GameSocket {
             let buf = PbManager.instance.sendMsg(GlobalData.C2S_Event.Ping, null);
             send(buf);
         } catch (e) {
-            console.error("nativePing 发送心跳失败:", e);
+            console.error("HeartBeat 发送心跳失败:", e);
         }
     }
 }

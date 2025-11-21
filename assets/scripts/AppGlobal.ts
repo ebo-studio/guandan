@@ -53,7 +53,6 @@ export class AppGlobal extends Component {
         if (!AppGlobal._eventBound) {
             this.bindEvent();
             AppGlobal._eventBound = true;
-            ad.showInterstitial();
             // ZJSdk.loadSplashAd('Pcw05ytx6lhp', {
             //     onAdLoaded(msg) {
             //         // onRequestFinish()

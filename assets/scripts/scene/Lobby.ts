@@ -73,7 +73,7 @@ export class Lobby extends Component {
         }
         else {
             ad.setUserId(GlobalData.userInfo.user_id);
-            ad.setRewardVideoId(29730000001);  // 动态设置广告ID
+            ad.setRewardVideoId(29730000007);  // 动态设置广告ID
             ad.setGDTRewardVideoId("8203029168845782");
             ad.showRewardVideo(
                 () => {
@@ -248,6 +248,15 @@ export class Lobby extends Component {
     //登录
     onUserLogin(data: GameMsg.User) {
         console.log("data--> ", data);
+        if (!GlobalData.userInfo.isShowFullAd) {
+            ad.showInterstitial();
+            GlobalData.userInfo.isShowFullAd = true;
+        }
+        SignInManager.getRemainingAds((data) => {
+            // success: () => {
+            this.updateAdCount();
+            // }
+        })
     }
     //创建房间
     onCreateRoom(data: GameMsg.Room) {

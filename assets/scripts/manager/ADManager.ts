@@ -14,7 +14,7 @@ export enum AdPlatform {
 // 每日次数限制器（新增）
 // =============================
 class DailyCounter {
-    private maxCount = 30
+    private maxCount = 60
     private key = "ad_limit_data";
 
     private data = {
@@ -330,7 +330,8 @@ export class ADManager {
         };
 
         (window as any).onBaiduRewardFail = () => {
-            this._failCallback?.();
+            // this._failCallback?.();
+            this.onRewardVideoFailPlatform(AdPlatform.BAIDU, "fail");
         }
 
         (window as any).onBaiduInterstitialFail = () => {
@@ -356,13 +357,15 @@ export class ADManager {
             // }
             // 只有在广告中，才用原生心跳兜底
             if (!GlobalData.userInfo.isAdshowing) return;
-
+            console.log('HeartBeat', '原生心跳');
             GameSocket.sendPingOnce();
         }
 
         (window as any).onAdClose = () => {
             // GameSocket.isAdshowing = false;
             GlobalData.userInfo.isAdshowing = false;
+            // ⭐ 立刻补一次 Ping（非常关键！！）
+            GameSocket.sendPingOnce();
             GameSocket.startHeart();
         }
 
