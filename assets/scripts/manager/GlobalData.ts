@@ -516,13 +516,13 @@ export namespace GlobalData {
 
 
     //查询用户信息
-    export function requestGetUserInfo(cb: { success: Function, fail?: Function }, isShowTip: boolean = true) {
+    export function requestGetUserInfo(cb: { success: Function, fail?: Function }, isShowTip: boolean = true, token = '') {
         var url = HttpConfig.getUrl(HttpConfig.GetUserInfo);
         let sendData = {
-            token: GlobalData.loginInfo.token
+            token: token == '' ? GlobalData.loginInfo.token : token
         }
         if(isShowTip) {
-             UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
+            UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "加载中..." } });
         }
         // if (!sys.isNative) {
         utils.sendHttpRequest({

@@ -241,9 +241,10 @@ export class Loading extends Component {
             this.progressBar.node.active = false;
             const token = localStorage.getItem(GlobalData.TOKEN);
             if (token) {
-                GlobalData.loginInfo.token = token;
+                // GlobalData.loginInfo.token = token;
                 GlobalData.requestGetUserInfo({
                     success: () => {
+                        GlobalData.loginInfo.token = token;
                         GlobalData.userInfo.haveToken = true;
                         this.joginGame.node.active = true;
                         // if (!SignInManager.getUserByName(GlobalData.userInfo.name)) {
@@ -290,7 +291,7 @@ export class Loading extends Component {
                         this.phoneLoginBtn.node.active = true;
                         this.emailBtn.node.active = true;
                     }
-                });
+                }, true, token);
             }
             else {
                 this.joginGame.node.active = false;

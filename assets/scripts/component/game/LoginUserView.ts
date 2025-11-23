@@ -72,6 +72,7 @@ export class LoginUserView extends PopWindow {
                 cancleName: "取消",
                 des: `是否切换到${name}?`,
                 okFunc: () => {
+                    UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "切换用户中" } })
                     // this.onClickShowAd();
                     GlobalData.requestGetUserInfo({
                         success: () => {
@@ -94,7 +95,7 @@ export class LoginUserView extends PopWindow {
                         fail: () => {
 
                         }
-                    });
+                    }, false, token);
                 },
                 cancleFunc: () => {
 
