@@ -93,7 +93,19 @@ export class LoginUserView extends PopWindow {
                             GameSocket.initAndConnect();
                         },
                         fail: () => {
-
+                            UIManager.Instace.showUI({
+                                path: UIConfig.MessageBoxCommonKey,
+                                data: {
+                                    okName: "确定",
+                                    des: "登录信息已过期,请重新登录",
+                                    okFunc: () => {
+                                        GameSocket.closeSocket();
+                                        localStorage.removeItem(GlobalData.TOKEN);
+                                        GlobalData.userInfo.isLogin = false;
+                                        utils.send(GlobalData.localEvent.LoginOut);
+                                    }
+                                }
+                            });
                         }
                     }, false, token);
                 },

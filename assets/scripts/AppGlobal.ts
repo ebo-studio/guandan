@@ -247,18 +247,36 @@ export class AppGlobal extends Component {
         console.log("onGameError ", data);
         //提示框
         if (data.type == 1) {
-            UIManager.Instace.showUI({
-                path: UIConfig.MessageBoxCommonKey,
-                data: {
-                    okName: "确定",
-                    cancleName: "取消",
-                    des: data.msg,
-                    okFunc: () => {
-                        AppGlobal.instance.errorCallBack && AppGlobal.instance.errorCallBack();
-                    },
-                    cancleFunc: null
-                }
-            });
+            if (data.msg == 'token无效') {
+                UIManager.Instace.showUI({
+                    path: UIConfig.MessageBoxCommonKey,
+                    data: {
+                        okName: "确定",
+                        des: "登录信息已过期,请重新登录",
+                        okFunc: () => {
+                            GameSocket.closeSocket();
+                            localStorage.removeItem(GlobalData.TOKEN);
+                            GlobalData.userInfo.isLogin = false;
+                            utils.send(GlobalData.localEvent.LoginOut);
+                        }
+                    }
+                });
+            }
+            else {
+                UIManager.Instace.showUI({
+                    path: UIConfig.MessageBoxCommonKey,
+                    data: {
+                        okName: "确定",
+                        cancleName: "取消",
+                        des: data.msg,
+                        okFunc: () => {
+                            AppGlobal.instance.errorCallBack && AppGlobal.instance.errorCallBack();
+                        },
+                        cancleFunc: null
+                    }
+                });
+            }
+
         }
         //隐藏的提示(无用)
         else if (data.type == 2) {
