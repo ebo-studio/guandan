@@ -9,6 +9,7 @@ build/
 dist/
 library/
 native/engine/
+native/engine/ios
 protos/
 server/
 settings/
@@ -26,6 +27,7 @@ local/
 
 # 忽略 .env 文件（环境变量）
 .env
+.DS_Store
 
 # 忽略临时文件
 *.tmp

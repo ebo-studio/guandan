@@ -227,7 +227,7 @@ public class AppActivity extends CocosActivity {
 
     private ScheduledExecutorService heartExecutor = null;
     private boolean nativeHeartRunning = false;
-    private void startNativeHeart() {
+    private void onStartNativeHeart() {
         if (nativeHeartRunning) return;
         nativeHeartRunning = true;
 
@@ -245,7 +245,7 @@ public class AppActivity extends CocosActivity {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    private void stopNativeHeart() {
+    private void onStopNativeHeart() {
         if (!nativeHeartRunning) return;
         nativeHeartRunning = false;
 
@@ -388,7 +388,7 @@ public class AppActivity extends CocosActivity {
             public void onPageDismiss() {
 
                 Log.d(SKD_TAG, "激励视频关闭");
-                stopNativeHeart();
+//                stopNativeHeart();
                 callJsCallback("onAdClose");
 //                callJsCallback("onAdClose");
             }
@@ -402,7 +402,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onVideoPlayStart() {
                 Log.d(SKD_TAG, "激励视频播放开始");
-                startNativeHeart();
+//                startNativeHeart();
 //                callJsCallback("onAdLoadComplete");
                 callJsCallback("onAdShow");
             }
@@ -684,7 +684,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onADShow() {
-                startNativeHeart();
+//                startNativeHeart();
                 callJsCallback("onAdShow");
             }
 
@@ -711,7 +711,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onADClose() {
 //                callJsCallback("onAdClose");
-                stopNativeHeart();
+//                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -942,7 +942,7 @@ public class AppActivity extends CocosActivity {
         pangleRewardAd.setRewardAdInteractionListener(new TTRewardVideoAd.RewardAdInteractionListener() {
             @Override
             public void onAdShow() {
-                startNativeHeart();
+//                startNativeHeart();
                 callJsCallback("onAdShow");
             }
 
@@ -953,7 +953,7 @@ public class AppActivity extends CocosActivity {
 
             @Override
             public void onAdClose() {
-                stopNativeHeart();
+//                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -1212,7 +1212,7 @@ public class AppActivity extends CocosActivity {
         baiduRewardAd = new RewardVideoAd(act, "18703541", new RewardVideoAd.RewardVideoAdListener() {
             @Override
             public void onAdShow() {
-                startNativeHeart();
+//                startNativeHeart();
                 callJsCallback("onAdShow");
             }
 
@@ -1224,7 +1224,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onAdClose(float v) {
                 Log.d("bdsdk", "onAdClose:" + v);
-                stopNativeHeart();
+//                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -1257,7 +1257,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onAdSkip(float v) {
                 Log.d("bdsdk", "onAdSkip:" + v);
-                stopNativeHeart();
+//                stopNativeHeart();
                 callJsCallback("onAdClose");
             }
 
@@ -1441,8 +1441,9 @@ public class AppActivity extends CocosActivity {
         SDKWrapper.shared().onStart();
         super.onStart();
         isGameActive = true;     // 前台
-        stopNativeHeart();       // 停止原生心跳
+        onStopNativeHeart();       // 停止原生心跳
         Log.i(TAG, "▶️ 游戏前台");
+        callJsCallback("onWindowonStart");
     }
 
     @Override
@@ -1450,8 +1451,9 @@ public class AppActivity extends CocosActivity {
         SDKWrapper.shared().onStop();
         super.onStop();
         isGameActive = false;    // 后台
-        startNativeHeart();      // 启动原生心跳
+        onStartNativeHeart();      // 启动原生心跳
         Log.i(TAG, "⏸️ 游戏后台");
+        callJsCallback("onWindowonStop");
     }
 
     @Override

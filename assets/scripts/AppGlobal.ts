@@ -247,20 +247,21 @@ export class AppGlobal extends Component {
         console.log("onGameError ", data);
         //提示框
         if (data.type == 1) {
-            if (data.msg == 'token无效') {
-                UIManager.Instace.showUI({
-                    path: UIConfig.MessageBoxCommonKey,
-                    data: {
-                        okName: "确定",
-                        des: "登录信息已过期,请重新登录",
-                        okFunc: () => {
-                            GameSocket.closeSocket();
-                            localStorage.removeItem(GlobalData.TOKEN);
-                            GlobalData.userInfo.isLogin = false;
-                            utils.send(GlobalData.localEvent.LoginOut);
-                        }
-                    }
-                });
+            if (data.msg == 'token无效' || data.msg == "不能重复登录") {
+                return;
+                // UIManager.Instace.showUI({
+                //     path: UIConfig.MessageBoxCommonKey,
+                //     data: {
+                //         okName: "确定",
+                //         des: "登录信息已过期,请重新登录",
+                //         okFunc: () => {
+                //             GameSocket.closeSocket();
+                //             localStorage.removeItem(GlobalData.TOKEN);
+                //             GlobalData.userInfo.isLogin = false;
+                //             utils.send(GlobalData.localEvent.LoginOut);
+                //         }
+                //     }
+                // });
             }
             else {
                 UIManager.Instace.showUI({

@@ -365,20 +365,32 @@ export class ADManager {
             GameSocket.sendPingOnce();
         }
 
-        (window as any).onAdClose = () => {
-            // GameSocket.isAdshowing = false;
+        // (window as any).onAdClose = () => {
+        //     // GameSocket.isAdshowing = false;
+        //     GlobalData.userInfo.isAdshowing = false;
+        //     // ⭐ 立刻补一次 Ping（非常关键！！）
+        //     GameSocket.sendPingOnce();
+        //     GameSocket.startHeart();
+        // }
+
+        // (window as any).onAdShow = () => {
+        //     // GameSocket.isAdshowing = true;
+        //     // GameSocket.startHeart();
+        //     GlobalData.userInfo.isAdshowing = true;
+        //     GameSocket.stopHeart();
+
+        // }
+
+        (window as any).onWindowonStart = () => {
             GlobalData.userInfo.isAdshowing = false;
             // ⭐ 立刻补一次 Ping（非常关键！！）
             GameSocket.sendPingOnce();
             GameSocket.startHeart();
         }
 
-        (window as any).onAdShow = () => {
-            // GameSocket.isAdshowing = true;
-            // GameSocket.startHeart();
+        (window as any).onWindowonStop = () => {
             GlobalData.userInfo.isAdshowing = true;
             GameSocket.stopHeart();
-
         }
     }
 
