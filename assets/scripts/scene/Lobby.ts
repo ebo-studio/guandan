@@ -248,10 +248,6 @@ export class Lobby extends Component {
     //登录
     onUserLogin(data: GameMsg.User) {
         console.log("data--> ", data);
-        if (!GlobalData.userInfo.isShowFullAd) {
-            ad.showInterstitial();
-            GlobalData.userInfo.isShowFullAd = true;
-        }
         SignInManager.getRemainingAds((data) => {
             // success: () => {
             this.updateAdCount();

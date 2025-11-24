@@ -23,7 +23,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,7 +44,11 @@ import com.baidu.mobads.sdk.api.FullScreenVideoAd;
 import com.baidu.mobads.sdk.api.MobadsPermissionSettings;
 import com.baidu.mobads.sdk.api.RequestParameters;
 import com.baidu.mobads.sdk.api.RewardVideoAd;
+import com.baidu.mobads.sdk.api.SplashAd;
+import com.baidu.mobads.sdk.api.SplashInteractionListener;
 import com.bytedance.sdk.openadsdk.AdSlot;
+import com.bytedance.sdk.openadsdk.CSJAdError;
+import com.bytedance.sdk.openadsdk.CSJSplashAd;
 import com.bytedance.sdk.openadsdk.TTAdConfig;
 import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdNative;
@@ -64,12 +71,16 @@ import com.kwad.sdk.api.KsInterstitialAd;
 import com.kwad.sdk.api.KsLoadManager;
 import com.kwad.sdk.api.KsRewardVideoAd;
 import com.kwad.sdk.api.KsScene;
+import com.kwad.sdk.api.KsSplashScreenAd;
 import com.kwad.sdk.api.SdkConfig;
+import com.kwad.sdk.api.model.SplashAdExtraData;
 import com.qq.e.ads.interstitial2.UnifiedInterstitialAD;
 import com.qq.e.ads.interstitial2.UnifiedInterstitialADListener;
 import com.qq.e.ads.rewardvideo.RewardVideoAD;
 import com.qq.e.ads.rewardvideo.RewardVideoADListener;
 import com.qq.e.ads.rewardvideo.ServerSideVerificationOptions;
+import com.qq.e.ads.splash.SplashAD;
+import com.qq.e.ads.splash.SplashADListener;
 import com.qq.e.comm.managers.GDTAdSdk;
 import com.qq.e.comm.managers.setting.GlobalSetting;
 import com.qq.e.comm.util.AdError;
@@ -156,8 +167,46 @@ public class AppActivity extends CocosActivity {
 
         initBdADSDK();
 
+//        debugPrintViewTree();
+
         // 初始化广告
 //        loadRewarded();
+    }
+
+    private void debugPrintViewTree() {
+        View root = findViewById(android.R.id.content);
+        if (root == null) {
+            Log.e("VIEW_TREE", "root == null");
+            return;
+        }
+        dumpView(root, 0);
+    }
+
+    private void dumpView(View v, int depth) {
+        if (v == null) return;
+
+        StringBuilder prefix = new StringBuilder();
+        for (int i = 0; i < depth; i++) prefix.append("  ");
+
+        Log.e("VIEW_TREE", prefix + v.getClass().getName() +
+                " id=" + v.getId());
+
+        if (v instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) v;
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                dumpView(vg.getChildAt(i), depth + 1);
+            }
+        }
+    }
+
+    private boolean hasGoMain = false;
+
+    private void gotoMainActivity() {
+        if (hasGoMain) return;
+        hasGoMain = true;
+
+//        startActivity(new Intent(this, AppActivity.class));
+//        finish();
     }
 
 //    private boolean isHeartRunning = false;
@@ -414,94 +463,167 @@ public class AppActivity extends CocosActivity {
         }
     }
 
+    private View mKsSplashView = null;      // 开屏广告View
+    private ViewGroup mCocosRootView = null; // Cocos根布局
     private void loadAndShowInterstitial() {
-        KsScene scene = new KsScene.Builder(interstitialPosId).build();
+//        KsScene scene = new KsScene.Builder(interstitialPosId).build();
+//
+//        KsAdSDK.getLoadManager().loadInterstitialAd(scene, new KsLoadManager.InterstitialAdListener() {
+//
+//            @Override
+//            public void onError(int code, String msg) {
+//                Log.e(SKD_TAG, "插屏广告加载失败: " + code + ", " + msg);
+//                callJsCallback("onKsInterstitialFail");
+//
+//                // 如果你需要 TS 端失败回调，可以这样：
+////                AppActivity.this.runOnGLThread(() -> {
+////                    CocosJavascriptBridge.evalString(
+////                            "window.onKsInterstitialFail && window.onKsInterstitialFail('" + msg + "')"
+////                    );
+////                });
+//            }
+//
+//            @Override
+//            public void onRequestResult(int requestResult) {
+//                Log.d(SKD_TAG, "插屏广告数据请求成功（不含资源）");
+//            }
+//
+//            @Override
+//            public void onInterstitialAdLoad(@Nullable List<KsInterstitialAd> adList) {
+//                if (adList != null && !adList.isEmpty()) {
+//                    mKsInterstitialAd = adList.get(0);
+//                    Log.d(SKD_TAG, "插屏广告缓存成功");
+//
+//                    setupInterstitialListener();
+//                    showInterstitialAd();
+//                }
+//            }
+//        });
 
-        KsAdSDK.getLoadManager().loadInterstitialAd(scene, new KsLoadManager.InterstitialAdListener() {
 
-            @Override
-            public void onError(int code, String msg) {
-                Log.e(SKD_TAG, "插屏广告加载失败: " + code + ", " + msg);
-                callJsCallback("onKsInterstitialFail");
+        //----------------------------------开屏-------------------------------------------//
+        Log.d(SKD_TAG, "开始加载开屏广告");
+        SplashAdExtraData extraData = new SplashAdExtraData();
+        extraData.setDisableShakeStatus(true);
 
-                // 如果你需要 TS 端失败回调，可以这样：
-//                AppActivity.this.runOnGLThread(() -> {
-//                    CocosJavascriptBridge.evalString(
-//                            "window.onKsInterstitialFail && window.onKsInterstitialFail('" + msg + "')"
-//                    );
-//                });
-            }
+        KsScene scene = new KsScene.Builder(29730000009L)
+                .setSplashExtraData(extraData)
+                .build();
+//        if(KsAdSDK.getLoadManager() != null) {
 
-            @Override
-            public void onRequestResult(int requestResult) {
-                Log.d(SKD_TAG, "插屏广告数据请求成功（不含资源）");
-            }
-
-            @Override
-            public void onInterstitialAdLoad(@Nullable List<KsInterstitialAd> adList) {
-                if (adList != null && !adList.isEmpty()) {
-                    mKsInterstitialAd = adList.get(0);
-                    Log.d(SKD_TAG, "插屏广告缓存成功");
-
-                    setupInterstitialListener();
-                    showInterstitialAd();
+            KsAdSDK.getLoadManager().loadSplashScreenAd(scene, new KsLoadManager.SplashScreenAdListener() {
+                @Override
+                public void onError(int i, String s) {
+//                    mSplashAdContainer.setVisibility(View.GONE);
+//                    mEmptyView.setVisibility(View.VISIBLE);
+                    Log.d(SKD_TAG, "开屏广告失败:" + i + "," + s);
+                    removeKsSplashView();
+                    callJsCallback("onKsInterstitialFail");
                 }
-            }
-        });
-    }
 
-    private void setupInterstitialListener() {
+                @Override
+                public void onRequestResult(int i) {
+                    Log.d(SKD_TAG, "开屏广告请求填充数量:" + i);
+                }
 
-        mKsInterstitialAd.setAdInteractionListener(new KsInterstitialAd.AdInteractionListener() {
+                @Override
+                public void onSplashScreenAdLoad(@Nullable KsSplashScreenAd ksSplashScreenAd) {
+                    Log.d(SKD_TAG, "开屏广告加载成功");
+                    Log.e(SKD_TAG, "===== onSplashScreenAdLoad 回调到了 =====");
+                    Log.e(SKD_TAG, "当前类：" + this.getClass().getName());
+//                    mSplashAdContainer.setVisibility(View.VISIBLE);
+                    setupInterstitialListener(ksSplashScreenAd);
+                }
+            });
+//        }
+     }
+
+    private void setupInterstitialListener(KsSplashScreenAd splashScreenAd) {
+        Log.e(SKD_TAG, "setupInterstitialListener 执行了！！！");
+        final AppActivity act = AppActivity.getInstance();
+        Log.d(SKD_TAG, "activity = " + act);
+        Log.d(SKD_TAG, "isFinishing = " + act.isFinishing());
+        Log.d(SKD_TAG, "isDestroyed = " + act.isDestroyed());
+        // 拿到 Cocos 的根布局（第二层 FrameLayout）
+        ViewGroup content = findViewById(android.R.id.content);
+        if (content == null || content.getChildCount() == 0) {
+            Log.e("KSSDK", "Content root not found!");
+            return;
+        }
+
+        // 这个 FrameLayout 就是装载 GLSurfaceView 的父容器
+        ViewGroup cocosRoot = (ViewGroup) content.getChildAt(0);
+        mCocosRootView = cocosRoot;
+        View adView = splashScreenAd.getView(this, new KsSplashScreenAd.SplashScreenAdInteractionListener() {
             @Override
             public void onAdClicked() {
-                Log.d(SKD_TAG, "插屏广告点击");
+
             }
 
             @Override
-            public void onAdShow() {
-                startNativeHeart();
-                Log.d(SKD_TAG, "插屏广告展示");
-                callJsCallback("onAdShow");
+            public void onAdShowError(int i, String s) {
+                Log.d(SKD_TAG, "开屏广告显示错误:" + i + "extra" + s);
+                removeKsSplashView();
+                callJsCallback("onKsInterstitialFail");
             }
 
             @Override
-            public void onAdClosed() {
-                stopNativeHeart();
-                Log.d(SKD_TAG, "插屏广告关闭");
-                callJsCallback("onAdClose");
-            }
-
-//            @Override
-//            public void onRenderFail() {
-//                Log.e(SKD_TAG, "插屏广告渲染失败");
-//            }
-
-            @Override
-            public void onPageDismiss() {
-                Log.d(SKD_TAG, "插屏广告页面消失");
+            public void onAdShowEnd() {
+                Log.d(SKD_TAG, "开屏广告显示结束");
+                removeKsSplashView();
+//                gotoMainActivity();
             }
 
             @Override
-            public void onVideoPlayError(int code, int extra) {
-                Log.e(SKD_TAG, "插屏视频播放失败 code=" + code + " extra=" + extra);
-            }
-
-            @Override
-            public void onVideoPlayStart() {
-                Log.d(SKD_TAG, "插屏视频播放开始");
-            }
-
-            @Override
-            public void onVideoPlayEnd() {
-                Log.d(SKD_TAG, "插屏视频播放结束");
+            public void onAdShowStart() {
+                Log.d(SKD_TAG, "开屏广告显示开始");
+//                mEmptyView.setVisibility(View.GONE);
             }
 
             @Override
             public void onSkippedAd() {
-                Log.w(SKD_TAG, "插屏广告被跳过（用户跳过）");
+                removeKsSplashView();
+            }
+
+            @Override
+            public void onDownloadTipsDialogShow() {
+
+            }
+
+            @Override
+            public void onDownloadTipsDialogDismiss() {
+
+            }
+
+            @Override
+            public void onDownloadTipsDialogCancel() {
+
             }
         });
+        mKsSplashView = adView;
+        // 添加广告到 Cocos 最上层
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+        );
+        cocosRoot.addView(adView, lp);
+
+        Log.d("KSSDK", "开屏广告已成功添加到 Cocos 上层");
+    }
+
+    private void removeKsSplashView() {
+
+        try {
+            if (mCocosRootView != null && mKsSplashView != null) {
+                mCocosRootView.removeView(mKsSplashView);
+                Log.d(SKD_TAG, "开屏广告已移除");
+            }
+        } catch (Exception e) {
+            Log.e(SKD_TAG, "移除开屏广告失败: " + e.getMessage());
+        }
+
+        mKsSplashView = null;
+        hasGoMain = true; // 防止重复回调
     }
 
     private void showInterstitialAd() {
@@ -619,82 +741,110 @@ public class AppActivity extends CocosActivity {
             instance.loadAndShowGDTFullInterstitial();
         }
     }
+    private ViewGroup gdtSplashContainer;
     private void loadAndShowGDTFullInterstitial() {
-
-        UnifiedInterstitialAD iad = getGDTFullInterstitialAD();
+        final AppActivity act = AppActivity.getInstance();
+//        SplashAD iad = getSplashAd(act, gdtInterstitialPosId, );
 
         // 设置视频配置（可选）
 //        iad.setVideoOption(VideoOptionHelper.getVideoOption());
 
         Log.d("GDT-FULL", "开始加载全屏插屏广告");
-        iad.loadFullScreenAD();   // ⭐ 必须使用全屏插屏的加载接口
+        act.runOnUiThread(() -> {
+
+            try {
+                // 1）先清除旧的容器
+                if (gdtSplashContainer != null) {
+                    ViewGroup parent = (ViewGroup) gdtSplashContainer.getParent();
+                    if (parent != null) parent.removeView(gdtSplashContainer);
+                    gdtSplashContainer = null;
+                }
+
+                // 2）创建新容器（必须全屏 & 顶层，覆盖 GLSurfaceView）
+                gdtSplashContainer = new FrameLayout(act);
+                gdtSplashContainer.setId(View.generateViewId());
+
+                act.addContentView(
+                        gdtSplashContainer,
+                        new ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT
+                        )
+                );
+
+                Log.d("GDT-SPLASH", "开始加载优量汇开屏广告");
+
+                // ★★ 替换你的开屏广告位 ID ★★
+                String posId = "4283261070798411"; // 示例，请换成自己的
+
+                gdtsplashAD = new SplashAD(
+                        act,
+                        posId,
+                        new SplashADListener() {
+                            @Override
+                            public void onADDismissed() {
+                                removeGDTSplash();
+                            }
+
+                            @Override
+                            public void onNoAD(AdError adError) {
+                                Log.d("GDT-FULL", "全屏加载失败" + adError.getErrorMsg());
+                                removeGDTSplash();
+                                callJsCallback("onGDTInterstitialFail");
+                            }
+
+                            @Override
+                            public void onADPresent() {
+
+                            }
+
+                            @Override
+                            public void onADClicked() {
+
+                            }
+
+                            @Override
+                            public void onADTick(long l) {
+
+                            }
+
+                            @Override
+                            public void onADExposure() {
+
+                            }
+
+                            @Override
+                            public void onADLoaded(long l) {
+                                Log.d("GDT-FULL", "全屏插屏加载成功" + l);
+                                gdtsplashAD.showFullScreenAd(gdtSplashContainer);
+                            }
+                        }
+                );
+
+                // 3）展示
+//                gdtsplashAD.showFullScreenAd(
+//                        gdtSplashContainer
+//                );
+                gdtsplashAD.fetchFullScreenAdOnly();
+
+            } catch (Exception e) {
+                Log.e("GDT-SPLASH", "异常: " + e.getMessage());
+                callJsCallback("onGDTInterstitialFail");
+            }
+
+        });
+//        iad.loadFullScreenAD();   // ⭐ 必须使用全屏插屏的加载接口
     }
 
-    private UnifiedInterstitialAD gdtFullInterstitialAD;
-    private String gdtInterstitialPosId = "2223523109573886";
-    // 创建广告对象（包含服务端回调参数）
-    private UnifiedInterstitialAD getGDTFullInterstitialAD() {
-
-        if (gdtFullInterstitialAD == null) {
-            gdtFullInterstitialAD = new UnifiedInterstitialAD(
-                    this,
-                    gdtInterstitialPosId,
-                    new UnifiedInterstitialADListener() {
-
-                        @Override
-                        public void onADReceive() {
-                            Log.d("GDT-FULL", "全屏插屏加载成功");
-//                            gdtFullInterstitialAD.setMediaListener(mediaListener);
-//                            gdtFullInterstitialAD.setRewardListener(rewardListener);
-                        }
-
-                        @Override
-                        public void onRenderSuccess() {
-                            Log.d("GDT-FULL", "全屏插屏渲染成功 → 准备展示");
-                            gdtFullInterstitialAD.showFullScreenAD(AppActivity.this);
-                        }
-
-                        @Override
-                        public void onRenderFail() {
-                            Log.e("GDT-FULL", "渲染失败");
-                            callJsCallback("onGDTInterstitialFail");
-                        }
-
-                        @Override
-                        public void onNoAD(AdError adError) {
-                            Log.e("GDT-FULL", "加载失败：" + adError.getErrorMsg());
-                            callJsCallback("onGDTInterstitialFail");
-                        }
-
-                        @Override
-                        public void onADExposure() {
-                            startNativeHeart();
-                            Log.d("GDT-FULL", "全屏插屏曝光");
-                            callJsCallback("onAdShow");
-                        }
-
-                        @Override
-                        public void onADClicked() {
-                            Log.d("GDT-FULL", "全屏插屏点击");
-                        }
-
-                        @Override
-                        public void onADClosed() {
-                            stopNativeHeart();
-                            Log.d("GDT-FULL", "全屏插屏关闭");
-                            callJsCallback("onGDTInterstitialClosed");
-                            callJsCallback("onAdClose");
-                        }
-
-                        @Override public void onVideoCached() {}
-                        @Override public void onADOpened() {}
-                        @Override public void onADLeftApplication() {}
-                    }
-            );
+    private void removeGDTSplash() {
+        if (gdtSplashContainer != null) {
+            ViewGroup parent = (ViewGroup) gdtSplashContainer.getParent();
+            if (parent != null) parent.removeView(gdtSplashContainer);
+            gdtSplashContainer = null;
         }
-
-        return gdtFullInterstitialAD;
     }
+
+    private SplashAD gdtsplashAD;
 
     //-------------------------穿山甲------------------------------//
     public static void initTTAdSkd(Context context) {
@@ -843,13 +993,6 @@ public class AppActivity extends CocosActivity {
 
     private TTFullScreenVideoAd pangleInterstitialAd;
     public static void showPangleInterstitial() {
-//        if (pangleInterstitialAd != null) {
-//            Log.d("Pangle", "▶️ 展示插屏广告");
-//            pangleInterstitialAd.showFullScreenVideoAd(this);
-//        } else {
-//            Log.w("Pangle", "⚠ 插屏广告对象为空，重新加载");
-//            loadAndShowPangleInterstitial();
-//        }
         Log.d("Pangle", "▶️ 展示插屏广告");
         if (instance != null) {
 
@@ -860,73 +1003,80 @@ public class AppActivity extends CocosActivity {
     public void loadAndShowPangleInterstitial() {
         final AppActivity act = AppActivity.getInstance();
         AdSlot adSlot = new AdSlot.Builder()
-                .setCodeId("972826563")
-                .setOrientation(TTAdConstant.HORIZONTAL)
+                .setCodeId("893493612")
+                .setImageAcceptedSize(1680, 720)
+                .setExpressViewAcceptedSize(1680, 720)
                 .build();
 
-        TTAdSdk.getAdManager().createAdNative(act)
-                .loadFullScreenVideoAd(adSlot, new TTAdNative.FullScreenVideoAdListener() {
-                    @Override
-                    public void onError(int i, String s) {
-                        Log.e("Pangle", "❌ 插屏加载失败：" + i + ", msg=" + s);
-                    }
+        TTAdNative adNative = TTAdSdk.getAdManager().createAdNative(act);
+        adNative.loadSplashAd(adSlot, new TTAdNative.CSJSplashAdListener() {
+            @Override
+            public void onSplashLoadSuccess(CSJSplashAd splashAd) {
+                Log.d("Pangle", "开屏加载成功");
 
-                    @Override
-                    public void onFullScreenVideoAdLoad(TTFullScreenVideoAd ttFullScreenVideoAd) {
-                        Log.d("Pangle", "📥 插屏广告素材加载成功");
-                        pangleInterstitialAd = ttFullScreenVideoAd;
+                View splashView = splashAd.getSplashView();
+                if (splashView == null) {
+                    Log.e("Pangle", "SplashView == null");
+                    return;
+                }
 
-                        bindPangleInterstitialListener();
-                    }
+                // ★★★ 必须加到 DecorView 顶层（覆盖 GLSurfaceView）
+                ViewGroup decor = (ViewGroup) act.getWindow().getDecorView();
+                FrameLayout container = new FrameLayout(act);
+                container.setId(View.generateViewId());
 
-                    @Override
-                    public void onFullScreenVideoCached() {
-                        Log.d("Pangle", "InterstitialFull onFullScreenVideoCached");
-                    }
+                decor.addView(container, new FrameLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                ));
 
-                    @Override
-                    public void onFullScreenVideoCached(TTFullScreenVideoAd ttFullScreenVideoAd) {
-                        Log.d("Pangle", "InterstitialFull onFullScreenVideoCached");
-                        // 建议在该回调后进行广告展示
-                        pangleInterstitialAd = ttFullScreenVideoAd;
+                container.addView(splashView);
 
-                        bindPangleInterstitialListener();
-                    }
-                });
+                bindPangleSplashListener(splashAd, container, splashView);
+
+            }
+            @Override
+            public void onSplashLoadFail(CSJAdError error) {
+                Log.e("Pangle", "开屏加载失败: " + error.getCode() + ", " + error.getMsg());
+                callJsCallback("onPangleInterstitialFail");
+            }
+
+            @Override
+            public void onSplashRenderSuccess(CSJSplashAd splashAd) {
+                Log.d("Pangle", "开屏渲染成功");
+            }
+
+            @Override
+            public void onSplashRenderFail(CSJSplashAd splashAd, CSJAdError error) {
+                Log.e("Pangle", "开屏渲染失败: " + error.getMsg());
+                callJsCallback("onPangleInterstitialFail");
+            }
+
+        }, 3500);
     }
 
-    private void bindPangleInterstitialListener() {
-        final AppActivity act = AppActivity.getInstance();
-        pangleInterstitialAd.setFullScreenVideoAdInteractionListener(new TTFullScreenVideoAd.FullScreenVideoAdInteractionListener() {
+    private void bindPangleSplashListener(CSJSplashAd splashAd, ViewGroup container, View splashView) {
+        splashAd.setSplashAdListener(new CSJSplashAd.SplashAdListener() {
             @Override
-            public void onAdShow() {
-                startNativeHeart();
-                callJsCallback("onAdShow");
-            }
-
-            @Override
-            public void onAdVideoBarClick() {
+            public void onSplashAdShow(CSJSplashAd csjSplashAd) {
 
             }
 
             @Override
-            public void onAdClose() {
-                stopNativeHeart();
-                callJsCallback("onAdClose");
-            }
-
-            @Override
-            public void onVideoComplete() {
+            public void onSplashAdClick(CSJSplashAd csjSplashAd) {
 
             }
 
             @Override
-            public void onSkippedVideo() {
+            public void onSplashAdClose(CSJSplashAd csjSplashAd, int i) {
+                Log.d("Pangle", "开屏跳过");
+                container.removeView(splashView);
 
+                // remove container
+                ViewGroup parent = (ViewGroup) container.getParent();
+                if (parent != null) parent.removeView(container);
             }
         });
-        pangleInterstitialAd.showFullScreenVideoAd(act);
-//        showPangleInterstitial();
     }
 
     //-------百度------------//
@@ -962,59 +1112,92 @@ public class AppActivity extends CocosActivity {
         }
     }
     private FullScreenVideoAd baiduFullVideoAd;
+    private SplashAd baiduSplashAd;
+    private FrameLayout baiduSplashContainer;
     private void loadBaiduFullVideo() {
         final AppActivity act = AppActivity.getInstance();
-        Log.d("bdsdk", "开始加载百度插屏视频");
-        baiduFullVideoAd = new FullScreenVideoAd(act, "18703589", new FullScreenVideoAd.FullScreenVideoAdListener() {
-            @Override
-            public void onAdShow() {
-                startNativeHeart();
-                callJsCallback("onAdShow");
+
+        act.runOnUiThread(() -> {
+            if (baiduSplashContainer == null) {
+                baiduSplashContainer = new FrameLayout(this);
+                baiduSplashContainer.setId(View.generateViewId());
+
+                // 全屏覆盖在 GLSurfaceView 上方
+                act.addContentView(
+                        baiduSplashContainer,
+                        new ViewGroup.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT,
+                                ViewGroup.LayoutParams.MATCH_PARENT
+                        )
+                );
             }
+            Log.d("bdsdk", "开始加载百度插屏视频");
 
-            @Override
-            public void onAdClick() {
+            baiduSplashAd = new SplashAd(act, "18727818", new SplashInteractionListener() {
+                @Override
+                public void onLpClosed() {
 
-            }
+                }
 
-            @Override
-            public void onAdClose(float v) {
-                stopNativeHeart();
-                callJsCallback("onAdClose");
-            }
+                @Override
+                public void onAdPresent() {
 
-            @Override
-            public void onAdFailed(String s) {
-                callJsCallback("onBaiduInterstitialFail");
-                Log.d("bdsdk", "插屏幕视频加载失败" + s);
-            }
+                }
 
-            @Override
-            public void onVideoDownloadSuccess() {
+                @Override
+                public void onAdExposed() {
 
-            }
+                }
 
-            @Override
-            public void onVideoDownloadFailed() {
+                @Override
+                public void onAdDismissed() {
+                    Log.d("bdsdk", "广告关闭");
+                    removeBaiduSplash();
+                }
 
-            }
+                @Override
+                public void onAdSkip() {
+                    Log.d("bdsdk", "用户跳过");
+                    removeBaiduSplash();
+                }
 
-            @Override
-            public void playCompletion() {
+                @Override
+                public void onAdClick() {
 
-            }
+                }
 
-            @Override
-            public void onAdSkip(float v) {
+                @Override
+                public void onAdCacheSuccess() {
 
-            }
+                }
 
-            @Override
-            public void onAdLoaded() {
-                baiduFullVideoAd.show();
-            }
+                @Override
+                public void onAdCacheFailed() {
+
+                }
+
+                @Override
+                public void onADLoaded() {
+                    Log.d("bdsdk", "开屏素材已加载 → 等待展示");
+                }
+
+                @Override
+                public void onAdFailed(String s) {
+                    Log.e("bdsdk", "开屏加载失败: " + s);
+                    removeBaiduSplash();
+                    callJsCallback("onBaiduInterstitialFail");
+                }
+            });
+            baiduSplashAd.loadAndShow(baiduSplashContainer);
         });
-        baiduFullVideoAd.load();
+    }
+
+    private void removeBaiduSplash() {
+        if (baiduSplashContainer != null) {
+            ViewGroup parent = (ViewGroup) baiduSplashContainer.getParent();
+            if (parent != null) parent.removeView(baiduSplashContainer);
+            baiduSplashContainer = null;
+        }
     }
 
     public static void showBaiduRewardVideo() {

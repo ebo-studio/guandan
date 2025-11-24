@@ -313,6 +313,10 @@ export class ADManager {
             this.onRewardFailPlatform(AdPlatform.KS, '');
         }
 
+        (window as any).onPangleInterstitialFail = () => {
+            this.onRewardFailPlatform(AdPlatform.PANGLE, '');
+        }
+
         (window as any).onPangleRewarded = () => {
             this.failCount.pangel = 0;  // ⭐ 清零
             this.counter.add(AdPlatform.PANGLE);
@@ -386,6 +390,9 @@ export class ADManager {
             return;
         }
         try {
+            // @ts-ignore
+            // jsb.reflection.callStaticMethod("com/cocos/game/AppActivity", "showPangleInterstitial", "()V");
+            // return
             const p = this.rewardPlatforms[0];
 
             if (p === AdPlatform.GDT) {
