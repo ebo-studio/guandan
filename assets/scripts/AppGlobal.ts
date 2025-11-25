@@ -247,7 +247,7 @@ export class AppGlobal extends Component {
         console.log("onGameError ", data);
         //提示框
         if (data.type == 1) {
-            if (data.msg == 'token无效' || data.msg == "不能重复登录") {
+            if (data.msg == 'token无效' || data.msg == "不能重复登陆") {
                 return;
                 // UIManager.Instace.showUI({
                 //     path: UIConfig.MessageBoxCommonKey,
@@ -426,7 +426,7 @@ export class AppGlobal extends Component {
                 success: () => {
                     utils.send(GlobalData.localEvent.FirstUpdate);
                 }
-            });
+            }, false);
         }
     }
     //播放音效

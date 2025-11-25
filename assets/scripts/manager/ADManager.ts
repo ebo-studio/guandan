@@ -383,14 +383,28 @@ export class ADManager {
 
         (window as any).onWindowonStart = () => {
             GlobalData.userInfo.isAdshowing = false;
+            if (!GlobalData.userInfo.isLogin) {
+                return;
+            }
             // ⭐ 立刻补一次 Ping（非常关键！！）
-            GameSocket.sendPingOnce();
-            GameSocket.startHeart();
+            // GameSocket.sendPingOnce();
+            // GameSocket.startHeart();
+            if (GameSocket.getIsConnect()) {
+                console.log("Heart: Socket 已连接 → 补一次 Ping 并重启 JS 心跳");
+                GameSocket.sendPingOnce();
+                GameSocket.startHeart();
+                return;
+            }
+
+            // 未连接 → 直接重连
+            console.log("Heart: Socket 未连接 → 前台执行重连");
+            GameSocket.initAndConnect();
         }
 
         (window as any).onWindowonStop = () => {
             GlobalData.userInfo.isAdshowing = true;
             GameSocket.stopHeart();
+            GameSocket.closeSocket();
         }
     }
 

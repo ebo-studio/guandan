@@ -1441,7 +1441,7 @@ public class AppActivity extends CocosActivity {
         SDKWrapper.shared().onStart();
         super.onStart();
         isGameActive = true;     // 前台
-        onStopNativeHeart();       // 停止原生心跳
+//        onStopNativeHeart();       // 停止原生心跳
         Log.i(TAG, "▶️ 游戏前台");
         callJsCallback("onWindowonStart");
     }
@@ -1451,7 +1451,7 @@ public class AppActivity extends CocosActivity {
         SDKWrapper.shared().onStop();
         super.onStop();
         isGameActive = false;    // 后台
-        onStartNativeHeart();      // 启动原生心跳
+//        onStartNativeHeart();      // 启动原生心跳
         Log.i(TAG, "⏸️ 游戏后台");
         callJsCallback("onWindowonStop");
     }
