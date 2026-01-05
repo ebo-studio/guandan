@@ -19,75 +19,14 @@
   },
   "BuildTaskManager": {
     "taskMap": {
-      "1757912159054": {
+      "1765958832978": {
         "type": "build",
-        "id": "1757912159054",
+        "id": "1765958832978",
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "2025-9-15 12:56 Build success in 51589 ms!",
-        "detailMessage": "",
-        "options": {
-          "name": "GoldenAnt",
-          "platform": "web-mobile",
-          "buildPath": "project://build",
-          "debug": false,
-          "md5Cache": true,
-          "skipCompressTexture": false,
-          "sourceMaps": false,
-          "polyfills": {
-            "asyncFunctions": true,
-            "coreJs": true
-          },
-          "experimentalEraseModules": false,
-          "useBuiltinServer": false,
-          "mainBundleIsRemote": false,
-          "mainBundleCompressionType": "merge_dep",
-          "compressTexture": true,
-          "packAutoAtlas": true,
-          "startScene": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-          "outputName": "web-mobile",
-          "scenes": [
-            {
-              "url": "db://assets/scenes/Game.scene",
-              "uuid": "8cd0fb05-2535-4c33-abbf-584bac560df0",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/loading.scene",
-              "uuid": "d5ff4fd8-289c-4879-ac54-dd86476dfd7c",
-              "inBundle": false
-            },
-            {
-              "url": "db://assets/scenes/Lobby.scene",
-              "uuid": "61eb39d8-7561-40f3-a268-06dabc8d192a",
-              "inBundle": false
-            }
-          ],
-          "android": [],
-          "__version__": "1.3.3",
-          "web-mobile": [],
-          "useSplashScreen": true,
-          "packages": {},
-          "overwriteProjectSettings": {
-            "includeModules": {
-              "physics": "inherit-project-setting",
-              "physics-2d": "inherit-project-setting",
-              "gfx-webgl2": "inherit-project-setting"
-            }
-          }
-        },
-        "time": "2025-9-15 12:55",
-        "dirty": false
-      },
-      "1764051085587": {
-        "type": "build",
-        "id": "1764051085587",
-        "progress": 1,
-        "state": "success",
-        "stage": "build",
-        "message": "2025-11-25 14:11:42 build success in 17 s!",
-        "detailMessage": "// ---- build task cocos-service：onAfterBuild ----\r",
+        "message": "2025-12-17 16:08:03 build success in 50 s!",
+        "detailMessage": "builder:build-project-total (50177ms)\r",
         "options": {
           "name": "goldenAnt",
           "server": "",
@@ -142,9 +81,9 @@
           "packages": {},
           "__version__": "1.3.8",
           "buildMode": "normal",
-          "logDest": "project://temp/builder/log/android2025-11-25 14-11.log"
+          "logDest": "project://temp/builder/log/android2025-12-17 16-07.log"
         },
-        "time": "2025-11-25 14:11:25",
+        "time": "2025-12-17 16:07:12",
         "dirty": false
       }
     }
