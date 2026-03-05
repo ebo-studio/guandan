@@ -7,6 +7,7 @@ export module UrlConfig {
     export function getHttpUrl() {
         // return "https://gduatapi.7919.cn/"; //测试服
         return "https://gdapi.7919.cn/";
+        // return "http://129.204.21.168:8089/";
     }
 
     export function getTokenUrl() {

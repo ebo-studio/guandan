@@ -32,6 +32,9 @@ local/
 # 忽略临时文件
 *.tmp
 *.swp
+*.gradle
+*.dm
+# *.gradle
 
 # 忽略 VS Code 配置
 .vscode/

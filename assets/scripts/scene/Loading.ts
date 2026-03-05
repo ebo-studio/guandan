@@ -694,7 +694,64 @@ export class Loading extends Component {
                 }
 
             }
-        })
+        });
+        // let data = { account: email, type: 2, code: code, inviterId: inviter };
+        // LoginGlobal.instance.requestLogin(data, {
+        //     success: (data) => {
+        //         console.log('登录成功:', data);
+        //         UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "登录成功" });
+        //         if (data) {
+        //             GlobalData.loginInfo.token = data.token;
+        //             localStorage.setItem(GlobalData.TOKEN, data.token);
+        //             if (!SignInManager.getUserByName(data.name)) {
+        //                 let userInfodata: SignInManager.UserInfo = {
+        //                     token: data.token,
+        //                     name: data.name,
+        //                     ad_watch_count: 0,
+        //                 };
+        //                 SignInManager.addOrUpdateUser(userInfodata)
+        //             }
+        //             SignInManager.switchUser(data.name);
+        //         }
+
+        //         GlobalData.requestGetUserInfo({
+        //             success: () => {
+        //                 clearInterval(this.timer);
+        //                 GlobalData.userInfo.haveToken = true;
+        //                 ZJSdk.initWithoutStart(new ZJConfig("Ij23wubre", GlobalData.userInfo.user_id.toString(), true));
+        //                 ZJSdk.start({
+        //                     onStartFailed(code, msg) {
+        //                         console.log(`onStartFailed:${code}-${msg}`);
+        //                         // toast(`初始化失败，错误码:${code}，错误信息:${msg}`)
+        //                     }, onStartSuccess() {
+        //                         console.log("onStartSuccess");
+
+        //                     }
+        //                 })
+        //                 this.loginNode.active = false;
+        //                 this.phoneLoginBtn.node.active = false;
+        //                 this.emailBtn.node.active = false;
+        //                 this.joginGame.node.active = true;
+        //                 const url = `${UrlConfig.getHttpUrl()}api/User/queryNotices`;
+        //                 this.postWithFetch(url, { token: GlobalData.loginInfo.token }).then(data => {
+        //                     // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+        //                     GlobalData.userInfo.noticeData = [];
+        //                     if (Number(data?.code) === 200) {
+        //                         for (let i = 0; i < data.data.length; i++) {
+        //                             GlobalData.userInfo.noticeData.push(data.data[i]);
+        //                             // if (data.data[i].title == '系统维护通知') {
+        //                             //     const localNotices = [data.data[i]];
+        //                             //     UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: localNotices });
+        //                             // }
+        //                         }
+        //                         UIManager.Instace.showUI({ path: UIConfig.announceViewItemKey, data: GlobalData.userInfo.noticeData });
+        //                     }
+        //                 })
+        //                     .catch(err => console.error(err));
+        //             }
+        //         });
+        //     }
+        // })
     }
 
     onGetCode() {
