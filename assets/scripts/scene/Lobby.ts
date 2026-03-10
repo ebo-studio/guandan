@@ -16,6 +16,7 @@ import { ZJSdk } from '../ZJSdk/ZJSdk';
 import { SignInManager } from '../manager/SignInManager';
 import { checkForUpdate } from '../common/UpdateChecker';
 import { ad } from '../manager/ADManager';
+import { initData } from '../../app/GameDefine';
 // import { PangleBridge } from '../common/PangleBridge';
 // import { ethers } from "ethers";
 const { ccclass, property } = _decorator;
@@ -329,32 +330,33 @@ export class Lobby extends Component {
     //创建房间
     onBtnCreateRoomClick() {
         SoundManager.playClick();
-        if ((GlobalData.userInfo.score / 100) < 30) {
-            UIManager.Instace.showUI({
-                path: UIConfig.MessageBoxCommonKey,
-                data: {
-                    okName: "观看",
-                    cancleName: "取消",
-                    des: "您的积分不足30,是否观看视频获得积分",
-                    okFunc: () => {
-                        this.onClickShowAd();
-                    },
-                    cancleFunc: () => {
+        UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "更多游戏，敬请期待" });
+        // if ((GlobalData.userInfo.score / 100) < 30) {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.MessageBoxCommonKey,
+        //         data: {
+        //             okName: "观看",
+        //             cancleName: "取消",
+        //             des: "您的积分不足30,是否观看视频获得积分",
+        //             okFunc: () => {
+        //                 this.onClickShowAd();
+        //             },
+        //             cancleFunc: () => {
 
-                    }
-                }
-            });
-        }
-        else {
-            UIManager.Instace.showUI({
-                path: UIConfig.CreateRoomItemKey, data: () => {
-                    let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
-                    let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
-                    let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
-                    GameSocket.send(sendBuffer);
-                }
-            });
-        }
+        //             }
+        //         }
+        //     });
+        // }
+        // else {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.CreateRoomItemKey, data: () => {
+        //             let baseInfo = GameMsg.Time.create({ time: GlobalData.createRoomInfo.time });
+        //             let baseBuffer = GameMsg.Time.encode(baseInfo).finish();
+        //             let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.CreateRoom, baseBuffer);
+        //             GameSocket.send(sendBuffer);
+        //         }
+        //     });
+        // }
 
     }
     //加入房间
@@ -372,13 +374,35 @@ export class Lobby extends Component {
     }
     //自由嗨完
     async onBtnRaceFreeClick() {
-        if ((GlobalData.userInfo.score / 100) < 30) {
+        // if ((GlobalData.userInfo.score / 100) < 30) {
+        //     UIManager.Instace.showUI({
+        //         path: UIConfig.MessageBoxCommonKey,
+        //         data: {
+        //             okName: "观看",
+        //             cancleName: "取消",
+        //             des: "您的积分不足30,是否观看视频获得积分",
+        //             okFunc: () => {
+        //                 this.onClickShowAd();
+        //             },
+        //             cancleFunc: () => {
+
+        //             }
+        //         }
+        //     });
+        // }
+        // else {
+        //     GlobalData.cardInfo.gameType = GlobalData.gameType.free;
+        //     let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
+        //     GameSocket.send(sendBuffer);
+        // }
+
+        if ((GlobalData.userInfo.score / 100) < 10) {
             UIManager.Instace.showUI({
                 path: UIConfig.MessageBoxCommonKey,
                 data: {
                     okName: "观看",
                     cancleName: "取消",
-                    des: "您的积分不足30,是否观看视频获得积分",
+                    des: "您的积分不足10,是否观看视频获得积分",
                     okFunc: () => {
                         this.onClickShowAd();
                     },
@@ -387,11 +411,56 @@ export class Lobby extends Component {
                     }
                 }
             });
+            return
+        }
+        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在加载游戏模块" } });
+        utils.setMusic(false);
+        if (!AppGlobal._isLoadGameModule) {
+            AppGlobal._isLoadGameModule = true;
+            director.loadScene("App");
         }
         else {
-            GlobalData.cardInfo.gameType = GlobalData.gameType.free;
-            let sendBuffer = PbManager.instance.sendMsg(GlobalData.C2S_Event.FreeMatch, null);
-            GameSocket.send(sendBuffer);
+            const ap = (window as any).apeng;
+            if (ap && ap._scene && typeof ap._scene.change === "function") {
+                console.log("[App] 检测到 apeng 已存在，直接加载 Cocos 场景");
+
+                this.scheduleOnce(() => {
+                    try {
+                        // ✅ 普通 Creator 场景（不是 apeng bundle）
+                        ap._scene.change("scene/scene/Scene", () => {
+                            console.log("[App] ✅ apeng Scene 切换完成");
+                            console.log("[App] ✅ 已直接进入 Cocos Scene.scene");
+                            // ✅ 如果 apeng 框架已存在但未初始化逻辑，重新 init
+                            // if (!_gameType || !_gameType.isRun) {
+                            console.log("[Scene] 重新执行 initApeng()");
+                            import("db://assets/main/script/Main")
+                                .then((mainModule) => {
+                                    mainModule.initApeng();
+
+                                    // 等待初始化后再执行 UI / 音频逻辑
+                                    this.scheduleOnce(() => {
+                                        const { _ui, _audio, _gameType } = mainModule;
+                                        if (_gameType) {
+                                            console.log("[Scene] 启动 GameTypeModule.run()");
+                                            _ui.open(initData.uiUrl.index);
+                                            if (_audio?.setVolume) _audio.setVolume(true, 1);
+                                        } else {
+                                            console.warn("[Scene] _gameType 未定义，可能 initApeng 未完成");
+                                        }
+                                    }, 0.5);
+                                })
+                                .catch((e) => console.error("[Scene] 动态导入 Main.ts 失败：", e));
+                            // }
+
+                        });
+
+                    } catch (e) {
+                        console.warn("[App] ❌ 跳转失败：", e);
+                    }
+                }, 0);
+
+                return;
+            }
         }
 
 

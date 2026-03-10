@@ -11,6 +11,7 @@ import { initData } from "../../app/GameDefine"
 import { LogicModule } from "./module/LogicModule"
 import { GameTypeModule } from "./module/GameTypeModule.js"
 import { ZJSdk } from "../../scripts/ZJSdk/ZJSdk"
+import { ad } from "../../scripts/manager/ADManager"
 import { SignInManager } from "../../scripts/manager/SignInManager"
 import { GlobalData } from "../../scripts/manager/GlobalData"
 import { UIManager } from "../../scripts/manager/UIManager"
@@ -100,103 +101,105 @@ export function initApeng() {
                 _main.showVideo = (report: string, complete: () => void, share?: boolean, shareFail?: () => void) => {
                     if (sys.os == sys.OS.ANDROID) {
                         _ui.Loading.wait(true)
-                        SignInManager.getRemainingAds((data) => {
-                            if (GlobalData.userInfo.ad_watch_count >= 30) {
-                                _ui.Loading.wait(false)
-                                _ui.dialogue(
-                                    "当前看视频已达上限,是否扣除5积分获得道具",
-                                    {
-                                        text: "取消",
-                                        onClick: () => {
-                                            // _platform.instance.killGame()
-                                        },
+                        // SignInManager.getRemainingAds((data) => {
+                        if (GlobalData.userInfo.ad_watch_count >= 30) {
+                            _ui.Loading.wait(false)
+                            _ui.dialogue(
+                                "当前看视频已达上限,是否扣除5积分获得道具",
+                                {
+                                    text: "取消",
+                                    onClick: () => {
+                                        // _platform.instance.killGame()
                                     },
-                                    {
-                                        text: "确认",
-                                        color: "darkBlue",
-                                        onClick: () => {
-                                            if(GlobalData.userInfo.score / 100 < 10) {
-                                                _ui.tip('积分不足');
-                                                return;
-                                            }
-                                            const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
-                                            const userId = GlobalData.userInfo.user_id;             // 当前用户ID
-                                            const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
-                                            const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
+                                },
+                                {
+                                    text: "确认",
+                                    color: "darkBlue",
+                                    onClick: () => {
+                                        if (GlobalData.userInfo.score / 100 < 10) {
+                                            _ui.tip('积分不足');
+                                            return;
+                                        }
+                                        const secretKey = "a0b6ecfc6aa8457cb10c7c798c46ac1e"; // 固定秘钥
+                                        const userId = GlobalData.userInfo.user_id;             // 当前用户ID
+                                        const time = Math.floor(Date.now() / 1000);             // 秒级时间戳
+                                        const sign = md5(`${time}${userId}${secretKey}`);       // 签名生成
 
-                                            const url = `${UrlConfig.getHttpUrl()}api/User/deductGold`;
-                                            const postData = {
-                                                token: GlobalData.loginInfo.token,
-                                                userId: userId,
-                                                time: time,
-                                                sign: sign,
-                                                amount: 500
-                                            };
+                                        const url = `${UrlConfig.getHttpUrl()}api/User/deductGold`;
+                                        const postData = {
+                                            token: GlobalData.loginInfo.token,
+                                            userId: userId,
+                                            time: time,
+                                            sign: sign,
+                                            amount: 500
+                                        };
 
-                                            GlobalData.postWithFetch(url, postData)
-                                                .then(data => {
-                                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                                    GlobalData.requestGetUserInfo({
-                                                        success: () => {
+                                        GlobalData.postWithFetch(url, postData)
+                                            .then(data => {
+                                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                                GlobalData.requestGetUserInfo({
+                                                    success: () => {
 
-                                                        }
-                                                    });
-                                                    complete?.();
-                                                    _logic.emit(_logic.EventType.CHANGE_SCORE)
-                                                })
-                                                .catch(err => {
-                                                    console.error('deductGold error:', err);
-
+                                                    }
                                                 });
-                                        },
-                                    },
-                                )
-                                // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
-                            }
-                            else {
-                                // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
-                                ZJSdk.loadRewardedAd('Prvav5lzty4e', GlobalData.userInfo.user_id.toString(), {
-                                    onAdLoaded(msg) {
-                                        // onRequestFinish()
-                                        let ecpm = typeof msg === 'string' && msg.length > 0 ? JSON.parse(msg).ecpm : 0
-                                        console.log(`激励广告加载成功, 价格为${ecpm}`);
-                                        _ui.Loading.wait(false);
-                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                        ZJSdk.showRewardedAd({
-                                            onError(errCode: Number, errMsg: string) {
-                                                console.log(`激励广告展示失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                                UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
-                                            },
-                                            onAdShow() {
-                                                console.log("激励广告展示");
-                                            },
-                                            onAdClick() {
-                                                console.log("激励广告点击");
-                                            },
-                                            onAdClose() {
-                                                console.log("激励广告关闭");
-                                            }
-                                        }, {
-                                            onAdReward(extra) {
                                                 complete?.();
-                                                // SignInManager.addAdWatch((data) => {
-                                                //     console.log(`测试屏蔽了没有`);
-                                                // });
-                                                // UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
-                                            },
-                                        })
-                                    }, onError(errCode, errMsg) {
-                                        _ui.Loading.wait(false);
-                                        _ui.tip('视频加载失败,请稍后重试');
-                                        // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                                        // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
-                                        // onRequestFinish()
-                                        console.log(`激励广告加载失败，错误码:${errCode}，错误信息:${errMsg}`);
-                                    }
-                                });
-                            }
-                        });
+                                                _logic.emit(_logic.EventType.CHANGE_SCORE)
+                                            })
+                                            .catch(err => {
+                                                console.error('deductGold error:', err);
+
+                                            });
+                                    },
+                                },
+                            )
+                            // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                            // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "今日已达观看上限" });
+                        }
+                        else {
+                            // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "视频准备中,请稍后" } });
+                            ad.setUserId(GlobalData.userInfo.user_id);
+                            ad.setRewardVideoId(29730000007);  // 动态设置广告ID
+                            ad.setGDTRewardVideoId("8203029168845782");
+                            ad.showRewardVideo(
+                                () => {
+                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                    _ui.Loading.wait(false)
+                                    complete?.();
+                                    GlobalData.requestGetUserInfo({
+                                        success: () => {
+                                            // _ui.open(CGameData.FailUrl)
+                                            _logic.emit(_logic.EventType.CHANGE_SCORE)
+                                        }
+                                    });
+                                    // _logic.emit(_logic.EventType.CHANGE_SCORE)
+                                    // UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                                    // GlobalData.requestGetUserInfo({
+                                    //     success: () => {
+                                    //         this.onUpdateScore();
+                                    //         // this.updateAdCount();
+                                    //     }
+                                    // }, false);
+                                    // SignInManager.getRemainingAds((data) => {
+                                    //     // success: () => {
+                                    //     this.updateAdCount();
+                                    //     // }
+                                    // })
+
+                                },
+                                () => {
+                                    _ui.Loading.wait(false)
+                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                    // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "视频加载失败,请稍后重试" });
+                                },
+                                () => {
+                                    _ui.Loading.wait(false)
+
+                                    // UIManager.Instace.hideUI(UIConfig.WaitItemKey);
+                                    // UIManager.Instace.showUI({ path: UIConfig.MessageHintKey, data: "中途退出,无法获得奖励" });
+                                }
+                            )
+                        }
+                        // });
                     }
                     else {
                         complete?.();

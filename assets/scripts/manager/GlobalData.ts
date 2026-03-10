@@ -419,6 +419,7 @@ export namespace GlobalData {
         isAdshowing: false,
         is_sign_in: false,
         isShowFullAd: false,
+        level_info: -1
     }
     ////////////////////////////////////////////////////////////////
     //////协议相关
@@ -539,6 +540,12 @@ export namespace GlobalData {
                 userInfo.name = data.name;
                 userInfo.is_vip = data.is_vip;
                 userInfo.is_sign_in = data.is_sign_in;
+                if (data.level_info == null) {
+                    userInfo.level_info = -1;
+                }
+                else {
+                    userInfo.level_info = Number(data.level_info);
+                }
                 // userInfo.ad_watch_count = data.ad_watch_count;
 
                 // let userInfodata: SignInManager.UserInfo = {
@@ -1223,6 +1230,22 @@ export namespace GlobalData {
                 func();
             }
         });
+    }
+
+    export async function postWithFetch(url: string, data: any) {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
+
+        return await res.json();
     }
 }
 

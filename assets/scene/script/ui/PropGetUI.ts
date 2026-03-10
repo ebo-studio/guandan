@@ -44,6 +44,7 @@ export class PropGetUI extends BaseUI {
 		_main.showVideo(
 			id + "道具",
 			() => {
+				console.log('获得道具>>')
 				_ui.tip(_language.get(40001))
 				this.closeUI()
 				_prop.addProp(this._openData.id)

@@ -979,7 +979,7 @@ public class AppActivity extends CocosActivity {
             @Override
             public void onRewardArrived(boolean b, int i, Bundle bundle) {
                 if(pangleUseServerCallback) {
-                    Log.d("Pangle", "Pangle S2S奖励成功：onRewardArrived");
+                    Log.d("Pangle", "Pangle TTAdSdk：onRewardArrived");
                     callJsCallback("onPangleRewarded");
                 }
             }
@@ -1262,9 +1262,12 @@ public class AppActivity extends CocosActivity {
             }
 
             @Override
-            public void onRewardVerify(boolean b) {
-                Log.d("bdsdk", "观看视频完成，获得奖励");
+            public void onRewardVerify(boolean rewardVerify, Map<String, Object> extraInfo) {
+                Log.d("BaiduReward", "onRewardVerify: " + rewardVerify + ", extraInfo=" + extraInfo);
                 callJsCallback("onBaiduReward");
+                if (rewardVerify) {
+                    // 这里写你发奖励的逻辑
+                }
             }
         });
 
