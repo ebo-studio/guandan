@@ -116,6 +116,7 @@ export class UIManager extends Component {
                         if (targetPaths.includes(obj.path)) preCom.show(false);
                         else preCom.show();
                         preCom.setData(obj.data);
+                        this.uiMap.set(obj.path, preCom);
                         return;
                     }
                     let com = utils.addInstanceToRoot(res, find("Canvas"), info.comp);

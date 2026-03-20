@@ -4,6 +4,7 @@ import { UIConfig } from '../manager/UIConfig';
 import { NetworkManager } from '../manager/NetworkManager';
 import { SignInManager } from '../manager/SignInManager';
 import { checkForNotice } from './UpdateNotice';
+import { WaitItem } from '../component/WaitItem';
 
 /**
  * ✅ 游戏启动时调用此函数自动检测更新
@@ -15,7 +16,7 @@ export async function checkForUpdate(showTip: boolean = false) {
     }
 
     const versionUrl = "https://lm6789.com/version.json"; // ✅ 服务器配置文件地址
-    const localVersionCode = 28; // ✅ 当前版本号（与 build.gradle 保持一致）
+    const localVersionCode = 32; // ✅ 当前版本号（与 build.gradle 保持一致）
 
     console.log("🔍 正在检测新版本...");
 
@@ -44,7 +45,7 @@ export async function checkForUpdate(showTip: boolean = false) {
                 );
                 console.log("Android VersionCode:", versionCode);
                 console.log("Android VersionName:", versionName);
-                if(versionCode <= 20) {
+                if (versionCode <= 20) {
                     SignInManager.resetUserList();
                 }
             }
@@ -81,7 +82,8 @@ export async function checkForUpdate(showTip: boolean = false) {
             console.log("✅ 当前已是最新版本");
         }
     } catch (err) {
-        console.error("❌ 检查更新失败:", err);
+        showUpdateFailDialog('更新失败,请前往官网进行手动下载', 'https://lm6789.com/download.html')
+        // console.error("❌ 检查更新失败:", err);
     }
 }
 
@@ -145,29 +147,36 @@ function openUrl(url: string) {
         //     data: "正在下载更新: 0%"
         // });
 
-        UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在下载更新: 0%" } });
+        // UIManager.Instace.showUI({ path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在下载更新: 0%" } });
 
-        _progressUI = UIManager.Instace.getUI(UIConfig.WaitItemKey);
+        // _progressUI = UIManager.Instace.getUI(UIConfig.WaitItemKey);
+        
+        UIManager.Instace.showUI({
+            path: UIConfig.WaitItemKey, data: { opacity: 0.5, des: "正在下载更新: 0%" }, callBack: (node) => {
+                _progressUI = node;
+            }
+        });
 
-        (globalThis as any).onDownloadProgress = (p: number) => {
+
+        (window as any).onDownloadProgress = (p: number) => {
             console.log(`下载进度: ${p.toFixed(1)}%`);
             if (_progressUI && p <= 100) {
                 _progressUI.updateMessage(`正在下载更新: ${p.toFixed(1)}%`);
             }
         };
-        (globalThis as any).onDownloadCompleted = () => {
+        (window as any).onDownloadCompleted = () => {
             console.log("下载完成，准备安装");
             if (_progressUI) {
                 _progressUI.updateMessage("下载完成，正在准备安装...");
             }
         };
-        (globalThis as any).onDownloadFailed = (msg: string) => {
+        (window as any).onDownloadFailed = (msg: string) => {
             console.log("下载失败:", msg);
             UIManager.Instace.hideUI(UIConfig.WaitItemKey);
             showUpdateFailDialog('更新失败,请前往官网进行手动下载', 'https://lm6789.com/download.html')
         };
 
-        (globalThis as any).onInstallCanceled = () => {
+        (window as any).onInstallCanceled = () => {
             console.warn("⚠️ 用户取消了安装");
             UIManager.Instace.showUI({
                 path: UIConfig.MessageBoxCommonKey,

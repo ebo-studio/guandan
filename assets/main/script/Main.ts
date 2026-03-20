@@ -105,7 +105,7 @@ export function initApeng() {
                         if (GlobalData.userInfo.ad_watch_count >= 30) {
                             _ui.Loading.wait(false)
                             _ui.dialogue(
-                                "当前看视频已达上限,是否扣除5积分获得道具",
+                                "当前看视频已达上限,是否扣除50积分获得道具",
                                 {
                                     text: "取消",
                                     onClick: () => {
@@ -116,7 +116,7 @@ export function initApeng() {
                                     text: "确认",
                                     color: "darkBlue",
                                     onClick: () => {
-                                        if (GlobalData.userInfo.score / 100 < 10) {
+                                        if (GlobalData.userInfo.score / 100 < 100) {
                                             _ui.tip('积分不足');
                                             return;
                                         }
@@ -131,7 +131,7 @@ export function initApeng() {
                                             userId: userId,
                                             time: time,
                                             sign: sign,
-                                            amount: 500
+                                            amount: 5000
                                         };
 
                                         GlobalData.postWithFetch(url, postData)

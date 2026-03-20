@@ -89,7 +89,7 @@ export class signInViewItem extends PopWindow {
             }
 
             if (postExChange.code === 200) {
-                UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { count: 10 } });
+                UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { count: 100 } });
                 SignInManager.signToday();
                 GlobalData.userInfo.is_sign_in = true;
                 // this.signInBtn.interactable = false;
@@ -158,7 +158,7 @@ export class signInViewItem extends PopWindow {
 
                 if (Number(data?.code) === 200) {
                     // 成功逻辑
-                    UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                    UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 100 } });
                     SignInManager.signToday();
                     GlobalData.userInfo.is_sign_in = true;
                     // this.signInBtn.interactable = false;

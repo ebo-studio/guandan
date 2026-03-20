@@ -92,12 +92,14 @@ export class SuccessUI extends BaseUI {
 			_platform._interstitial_.show()
 
 		if(this._openData && this._openData) {
-			this.cLabel_desc.node.active = true;
-			this.cLabel_desc1.node.active = true;
+			// this.cLabel_desc.node.active = true;
+			// this.cLabel_desc1.node.active = true;
+			this.cLabel_desc.string = '+10';
 		}
 		else {
-			this.cLabel_desc.node.active = false;
-			this.cLabel_desc1.node.active = false;
+			// this.cLabel_desc.node.active = false;
+			// this.cLabel_desc1.node.active = false;
+			this.cLabel_desc.string = '+0 (已通过此关)'
 		}
 	}
 

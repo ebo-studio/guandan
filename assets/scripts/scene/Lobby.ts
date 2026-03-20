@@ -79,7 +79,7 @@ export class Lobby extends Component {
             ad.showRewardVideo(
                 () => {
                     UIManager.Instace.hideUI(UIConfig.WaitItemKey);
-                    UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 10 } });
+                    UIManager.Instace.showUI({ path: UIConfig.getItemKey, data: { "count": 100 } });
                     // GlobalData.requestGetUserInfo({
                     //     success: () => {
                     //         this.onUpdateScore();
